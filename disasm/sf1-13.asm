@@ -765,8 +765,14 @@ return_164730:
 loc_164732:
 										
 										trap    #0
+
+; END OF FUNCTION CHUNK FOR sub_1645A4
+
 										dc.w $43
 										bra.s   loc_1646E2
+
+; START OF FUNCTION CHUNK FOR sub_1645A4
+
 loc_164738:
 										
 										cmpi.w  #8,($FFFFB7C6).w
@@ -806,8 +812,14 @@ loc_164784:
 										
 										move.b  d0,($FFFF9C4A).w
 										trap    #0
+
+; END OF FUNCTION CHUNK FOR sub_1645A4
+
 										dc.w $42
 										bra.w   loc_164610
+
+; START OF FUNCTION CHUNK FOR sub_1645A4
+
 loc_164790:
 										
 										cmpi.w  #8,($FFFFB7C6).w
@@ -869,8 +881,14 @@ loc_164800:
 										move.b  d0,($FFFF9C4B).w
 										bsr.s   sub_164834
 										trap    #0
+
+; END OF FUNCTION CHUNK FOR sub_1645A4
+
 										dc.w $42
 										bra.w   loc_164610
+
+; START OF FUNCTION CHUNK FOR sub_1645A4
+
 loc_16480E:
 										
 										cmpi.w  #8,($FFFFB7C6).w
@@ -884,12 +902,12 @@ loc_164826:
 										
 										move.b  d0,($FFFF9C4B).w
 										trap    #0
-										dc.w $42
-										bsr.s   sub_164834
-										bra.w   loc_164610
 
 ; END OF FUNCTION CHUNK FOR sub_1645A4
 
+										dc.w $42
+										bsr.s   sub_164834
+										bra.w   loc_164610
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -12168,12 +12186,12 @@ loc_167502:
 loc_16756A:
 										
 										trap    #0
-										dc.w 7
-										jsr     (sub_22C).l
-										rts
 
 ; END OF FUNCTION CHUNK FOR sub_167576
 
+										dc.w 7
+										jsr     (sub_22C).l
+										rts
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -12214,7 +12232,7 @@ loc_1675D0:
 										rts
 loc_1675D4:
 										
-										lea     unk_167E87(pc), a0
+										lea     off_167E87(pc), a0
 										nop
 										moveq   #3,d7
 										lea     (word_FF0C98).l,a1
@@ -14395,10 +14413,7 @@ unk_167B1A:         dc.b $D0
 										dc.b $43 
 										dc.b   4
 										dc.b   6
-unk_167E87:         dc.b   0
-										dc.b   4
-										dc.b   0
-										dc.b $15
+off_167E87:         dc.l MapSprite030+$41
 										dc.b   4
 										dc.b   1
 										dc.b $2B 

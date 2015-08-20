@@ -22100,7 +22100,7 @@ loc_12B66:
 										mulu.w  #$6C0,d0
 										addi.w  #$2240,d0
 										movea.w d0,a1
-										movea.l (pt_Tilesets).l,a0
+										movea.l (pt_MapTilesets).l,a0
 										move.w  #$240,d0
 										move.w  #2,d1
 										jsr     (sub_294).l
@@ -43665,8 +43665,8 @@ unk_1E712:          dc.b   0
 										dc.b   0
 										dc.b   0
 TextBankTreesPointers:
-										incbin "textbanks/textbanktreepointers.bin"
-TextBankTreeData:   incbin "textbanks/textbanktreedata.bin"
+										incbin "scripting/textbanks/textbanktreepointers.bin"
+TextBankTreeData:   incbin "scripting/textbanks/textbanktreedata.bin"
 
 ; =============== S U B R O U T I N E =======================================
 

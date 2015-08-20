@@ -5,11 +5,11 @@
 ; FREE SPACE : 0 bytes.
 
 
-										incbin "sound/pcm/bank0.bin"
+										incbin "sound/pcmbank0.bin"
 																						; PCM Bank
-byte_170000:        incbin "sound/music/bank0.bin"
+byte_170000:        incbin "sound/musicbank0.bin"
 																						; Music Bank 0
-SoundDriver:        incbin "sound/driver/cube.bin"
-										incbin "sound/yminst.bin"
+SoundDriver:        incbin "sound/driver.bin"
+										incbin "sound/instruments.bin"
 																						; Music Bank 1, with instruments
-										incbin "sound/music/bank1.bin"
+										incbin "sound/musicbank1.bin"

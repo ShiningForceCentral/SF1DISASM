@@ -14557,7 +14557,7 @@ loc_2513E:
 
 	; End of function sub_2510A
 
-CharacterData:      incbin "chardata/chardata.bin"
+CharacterData:      incbin "data/chardata.bin"
 off_25604:          dc.l aSegaGenesis       
 										dc.b   1
 										dc.b   1
@@ -14615,8 +14615,8 @@ off_25604:          dc.l aSegaGenesis
 										dc.b   0
 										dc.b $12
 										dc.b   0
-ItemNames:          incbin "misc/itemnames.bin"
-ItemData:           incbin "misc/itemdata.bin"
+ItemNames:          incbin "data/items/itemnames.bin"
+ItemData:           incbin "data/items/itemdata.bin"
 unk_25D06:          dc.b $1B
 										dc.b  $B
 										dc.b   0
@@ -14719,10 +14719,10 @@ byte_25D2C:         dc.b 0
 										dc.b   0
 										dc.b   0
 										dc.b $FF
-ClassNames:         incbin "chardata/classnames.bin"
-ClassData:          incbin "chardata/classdata.bin"
-SpellNames:         incbin "spells/spellnames.bin"
-SpellData:          incbin "spells/spelldata.bin"
+ClassNames:         incbin "data/classes/classnames.bin"
+ClassData:          incbin "data/classes/classdata.bin"
+SpellNames:         incbin "data/spells/spellnames.bin"
+SpellData:          incbin "data/spells/spelldata.bin"
 unk_26566:          dc.b $FF
 										dc.b   1
 										dc.b   1
@@ -16312,10 +16312,10 @@ byte_26BF6:         dc.b 0
 										dc.b $46 
 										dc.b $14
 										dc.b $64 
-StatGrowthCurves:   incbin "chardata/growthcurves.bin"
+StatGrowthCurves:   incbin "data/growthcurves.bin"
 StatGrowthCurvesPromoted:
-										incbin "chardata/growthcurvespromoted.bin"
-SpellsLearningData: incbin "chardata/spellslearningdata.bin"
+										incbin "data/growthcurvespromoted.bin"
+SpellsLearningData: incbin "data/spellslearningdata.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -16650,5 +16650,5 @@ sub_27036:
 MapHeaders:         incbin "maps/mapheaders.bin"
 unk_2751A:          dc.b   0
 										dc.b $FF
-EnemyData:          incbin "battles/enemydata.bin"
+EnemyData:          incbin "data/enemydata.bin"
 										align $4000

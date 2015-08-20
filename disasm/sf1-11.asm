@@ -12789,38 +12789,39 @@ loc_12A4C4:         tst.b   ($FFFFC1CA).w
 loc_12A4DA:         move.w  #1,($FFFFB7C6).w
 										bsr.w   sub_12BF92
 										add.w   d0,d0
-										move.w  off_12A4EE(pc,d0.w),d0
-										jmp     off_12A4EE(pc,d0.w)
-off_12A4EE:         dc.w loc_12A52A-off_12A4EE
-										dc.w return_12A560-off_12A4EE
-										dc.w return_12A560-off_12A4EE
-										dc.w return_12A560-off_12A4EE
-										dc.w return_12A560-off_12A4EE
-										dc.w loc_12A562-off_12A4EE
-										dc.w loc_12A598-off_12A4EE
-										dc.w return_12A5B4-off_12A4EE
-										dc.w loc_12A5B6-off_12A4EE
-										dc.w return_12A5EA-off_12A4EE
-										dc.w loc_12A5EC-off_12A4EE
-										dc.w loc_12A622-off_12A4EE
-										dc.w loc_12A666-off_12A4EE
-										dc.w loc_12A6AE-off_12A4EE
-										dc.w return_12A7F6-off_12A4EE
-										dc.w loc_12A7F8-off_12A4EE
-										dc.w return_12A82E-off_12A4EE
-										dc.w loc_12A830-off_12A4EE
-										dc.w loc_12A866-off_12A4EE
-										dc.w return_12A8EC-off_12A4EE
-										dc.w loc_12A8EE-off_12A4EE
-										dc.w return_12A932-off_12A4EE
-										dc.w loc_12A934-off_12A4EE
-										dc.w loc_12A994-off_12A4EE
-										dc.w loc_12A9C6-off_12A4EE
-										dc.w return_12A9DA-off_12A4EE
-										dc.w loc_12A9DC-off_12A4EE
-										dc.w loc_12AA0E-off_12A4EE
-										dc.w loc_12AA40-off_12A4EE
-										dc.w loc_12AB7E-off_12A4EE
+										move.w  rjt_DialogScriptSet1(pc,d0.w),d0
+										jmp     rjt_DialogScriptSet1(pc,d0.w)
+rjt_DialogScriptSet1:
+										dc.w loc_12A52A-rjt_DialogScriptSet1
+										dc.w return_12A560-rjt_DialogScriptSet1
+										dc.w return_12A560-rjt_DialogScriptSet1
+										dc.w return_12A560-rjt_DialogScriptSet1
+										dc.w return_12A560-rjt_DialogScriptSet1
+										dc.w loc_12A562-rjt_DialogScriptSet1
+										dc.w loc_12A598-rjt_DialogScriptSet1
+										dc.w return_12A5B4-rjt_DialogScriptSet1
+										dc.w loc_12A5B6-rjt_DialogScriptSet1
+										dc.w return_12A5EA-rjt_DialogScriptSet1
+										dc.w loc_12A5EC-rjt_DialogScriptSet1
+										dc.w loc_12A622-rjt_DialogScriptSet1
+										dc.w loc_12A666-rjt_DialogScriptSet1
+										dc.w loc_12A6AE-rjt_DialogScriptSet1
+										dc.w return_12A7F6-rjt_DialogScriptSet1
+										dc.w loc_12A7F8-rjt_DialogScriptSet1
+										dc.w return_12A82E-rjt_DialogScriptSet1
+										dc.w loc_12A830-rjt_DialogScriptSet1
+										dc.w loc_12A866-rjt_DialogScriptSet1
+										dc.w return_12A8EC-rjt_DialogScriptSet1
+										dc.w loc_12A8EE-rjt_DialogScriptSet1
+										dc.w return_12A932-rjt_DialogScriptSet1
+										dc.w loc_12A934-rjt_DialogScriptSet1
+										dc.w loc_12A994-rjt_DialogScriptSet1
+										dc.w loc_12A9C6-rjt_DialogScriptSet1
+										dc.w return_12A9DA-rjt_DialogScriptSet1
+										dc.w loc_12A9DC-rjt_DialogScriptSet1
+										dc.w loc_12AA0E-rjt_DialogScriptSet1
+										dc.w loc_12AA40-rjt_DialogScriptSet1
+										dc.w loc_12AB7E-rjt_DialogScriptSet1
 loc_12A52A:         move.w  #$80,d2 
 										bsr.w   sub_12BFD0
 										bne.w   return_12BFCE
@@ -34889,15 +34890,15 @@ unk_13171C:         dc.b   3
 										dc.b $7B 
 										dc.b   4
 										dc.b $7F 
-TextBank00:         incbin "textbanks/textbank00.bin"
-TextBank01:         incbin "textbanks/textbank01.bin"
-TextBank02:         incbin "textbanks/textbank02.bin"
-TextBank03:         incbin "textbanks/textbank03.bin"
-TextBank04:         incbin "textbanks/textbank04.bin"
-TextBank05:         incbin "textbanks/textbank05.bin"
-TextBank06:         incbin "textbanks/textbank06.bin"
-TextBank07:         incbin "textbanks/textbank07.bin"
-TextBank08:         incbin "textbanks/textbank08.bin"
+TextBank00:         incbin "scripting/textbanks/textbank00.bin"
+TextBank01:         incbin "scripting/textbanks/textbank01.bin"
+TextBank02:         incbin "scripting/textbanks/textbank02.bin"
+TextBank03:         incbin "scripting/textbanks/textbank03.bin"
+TextBank04:         incbin "scripting/textbanks/textbank04.bin"
+TextBank05:         incbin "scripting/textbanks/textbank05.bin"
+TextBank06:         incbin "scripting/textbanks/textbank06.bin"
+TextBank07:         incbin "scripting/textbanks/textbank07.bin"
+TextBank08:         incbin "scripting/textbanks/textbank08.bin"
 pt_TextBanks:       dc.l TextBank00
 										dc.l TextBank01
 										dc.l TextBank02
