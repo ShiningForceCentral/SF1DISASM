@@ -9,7 +9,9 @@ echo Executing assembler ...
 @"../tools/asm68k" /o ae- /p sf1.asm, "../build/%buildname%" > ../build/output.log
 echo End of assembly, produced %buildname%
 cd ../build/
+
 echo -------------------------------------------------------------
-IF EXIST "%buildname%" (IF EXIST sf1.bin (fc /b "%buildname%" sf1.bin) ELSE echo wut) ELSE echo "%buildname%" does not exist, probably due to an assembly error. Check output.log.
+echo Checking build ...
+IF EXIST "%buildname%" (IF EXIST sf1.bin (fc /b "%buildname%" sf1.bin) ELSE echo sf1.bin does not exist in build directory) ELSE echo "%buildname%" does not exist, probably due to an assembly error. Check output.log.
 
 pause
