@@ -14557,7 +14557,7 @@ loc_2513E:
 
 	; End of function sub_2510A
 
-CharacterData:      incbin "data/chardata.bin"
+CharacterData:      incbin "data/allies/chardata.bin"
 off_25604:          dc.l aSegaGenesis       
 										dc.b   1
 										dc.b   1
@@ -14719,8 +14719,8 @@ byte_25D2C:         dc.b 0
 										dc.b   0
 										dc.b   0
 										dc.b $FF
-ClassNames:         incbin "data/classes/classnames.bin"
-ClassData:          incbin "data/classes/classdata.bin"
+ClassNames:         incbin "data/allies/classes/classnames.bin"
+ClassData:          incbin "data/allies/classes/classdata.bin"
 SpellNames:         incbin "data/spells/spellnames.bin"
 SpellData:          incbin "data/spells/spelldata.bin"
 unk_26566:          dc.b $FF
@@ -14851,7 +14851,7 @@ unk_26566:          dc.b $FF
 										dc.b $FF
 										dc.b $FF
 										dc.b $FF
-LandEffectData:     incbin "battles/landeffectdata.bin"
+LandEffectData:     incbin "battles/global/landeffectdata.bin"
 unk_26666:          dc.b   0
 										dc.b $46 
 										dc.b   0
@@ -16312,10 +16312,10 @@ byte_26BF6:         dc.b 0
 										dc.b $46 
 										dc.b $14
 										dc.b $64 
-StatGrowthCurves:   incbin "data/growthcurves.bin"
+StatGrowthCurves:   incbin "data/allies/growthcurves.bin"
 StatGrowthCurvesPromoted:
-										incbin "data/growthcurvespromoted.bin"
-SpellsLearningData: incbin "data/spellslearningdata.bin"
+										incbin "data/allies/growthcurvespromoted.bin"
+SpellsLearningData: incbin "data/allies/spellslearningdata.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -16647,8 +16647,8 @@ sub_27036:
 
 	; End of function sub_27036
 
-MapHeaders:         incbin "maps/mapheaders.bin"
+MapHeaders:         incbin "maps/global/mapheaders.bin"
 unk_2751A:          dc.b   0
 										dc.b $FF
-EnemyData:          incbin "data/enemydata.bin"
+EnemyData:          incbin "data/enemies/enemydata.bin"
 										align $4000

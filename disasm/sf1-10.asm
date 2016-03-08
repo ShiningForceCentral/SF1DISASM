@@ -60,46 +60,46 @@ pt_EnemyBattleSprites:
 										dc.l EnemyBattleSprite39
 										dc.l EnemyBattleSprite39
 										dc.l EnemyBattleSprite39
-EnemyBattleSprite00:incbin "graphics/battlesprites/enemies/enemybattlesprite00.bin"
-EnemyBattleSprite01:incbin "graphics/battlesprites/enemies/enemybattlesprite01.bin"
-EnemyBattleSprite02:incbin "graphics/battlesprites/enemies/enemybattlesprite02.bin"
-EnemyBattleSprite03:incbin "graphics/battlesprites/enemies/enemybattlesprite03.bin"
-EnemyBattleSprite04:incbin "graphics/battlesprites/enemies/enemybattlesprite04.bin"
-EnemyBattleSprite05:incbin "graphics/battlesprites/enemies/enemybattlesprite05.bin"
-EnemyBattleSprite06:incbin "graphics/battlesprites/enemies/enemybattlesprite06.bin"
-EnemyBattleSprite07:incbin "graphics/battlesprites/enemies/enemybattlesprite07.bin"
-EnemyBattleSprite08:incbin "graphics/battlesprites/enemies/enemybattlesprite08.bin"
-EnemyBattleSprite09:incbin "graphics/battlesprites/enemies/enemybattlesprite09.bin"
-EnemyBattleSprite10:incbin "graphics/battlesprites/enemies/enemybattlesprite10.bin"
-EnemyBattleSprite11:incbin "graphics/battlesprites/enemies/enemybattlesprite11.bin"
-EnemyBattleSprite12:incbin "graphics/battlesprites/enemies/enemybattlesprite12.bin"
-EnemyBattleSprite13:incbin "graphics/battlesprites/enemies/enemybattlesprite13.bin"
-EnemyBattleSprite14:incbin "graphics/battlesprites/enemies/enemybattlesprite14.bin"
-EnemyBattleSprite15:incbin "graphics/battlesprites/enemies/enemybattlesprite15.bin"
-EnemyBattleSprite16:incbin "graphics/battlesprites/enemies/enemybattlesprite16.bin"
-EnemyBattleSprite17:incbin "graphics/battlesprites/enemies/enemybattlesprite17.bin"
-EnemyBattleSprite18:incbin "graphics/battlesprites/enemies/enemybattlesprite18.bin"
-EnemyBattleSprite19:incbin "graphics/battlesprites/enemies/enemybattlesprite19.bin"
-EnemyBattleSprite20:incbin "graphics/battlesprites/enemies/enemybattlesprite20.bin"
-EnemyBattleSprite21:incbin "graphics/battlesprites/enemies/enemybattlesprite21.bin"
-EnemyBattleSprite22:incbin "graphics/battlesprites/enemies/enemybattlesprite22.bin"
-EnemyBattleSprite23:incbin "graphics/battlesprites/enemies/enemybattlesprite23.bin"
-EnemyBattleSprite24:incbin "graphics/battlesprites/enemies/enemybattlesprite24.bin"
-EnemyBattleSprite25:incbin "graphics/battlesprites/enemies/enemybattlesprite25.bin"
-EnemyBattleSprite26:incbin "graphics/battlesprites/enemies/enemybattlesprite26.bin"
-EnemyBattleSprite27:incbin "graphics/battlesprites/enemies/enemybattlesprite27.bin"
-EnemyBattleSprite28:incbin "graphics/battlesprites/enemies/enemybattlesprite28.bin"
-EnemyBattleSprite29:incbin "graphics/battlesprites/enemies/enemybattlesprite29.bin"
-EnemyBattleSprite30:incbin "graphics/battlesprites/enemies/enemybattlesprite30.bin"
-EnemyBattleSprite31:incbin "graphics/battlesprites/enemies/enemybattlesprite31.bin"
-EnemyBattleSprite32:incbin "graphics/battlesprites/enemies/enemybattlesprite32.bin"
-EnemyBattleSprite33:incbin "graphics/battlesprites/enemies/enemybattlesprite33.bin"
-EnemyBattleSprite34:incbin "graphics/battlesprites/enemies/enemybattlesprite34.bin"
-EnemyBattleSprite35:incbin "graphics/battlesprites/enemies/enemybattlesprite35.bin"
-EnemyBattleSprite36:incbin "graphics/battlesprites/enemies/enemybattlesprite36.bin"
-EnemyBattleSprite37:incbin "graphics/battlesprites/enemies/enemybattlesprite37.bin"
-EnemyBattleSprite38:incbin "graphics/battlesprites/enemies/enemybattlesprite38.bin"
-EnemyBattleSprite39:incbin "graphics/battlesprites/enemies/enemybattlesprite39.bin"
+EnemyBattleSprite00:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite00.bin"
+EnemyBattleSprite01:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite01.bin"
+EnemyBattleSprite02:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite02.bin"
+EnemyBattleSprite03:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite03.bin"
+EnemyBattleSprite04:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite04.bin"
+EnemyBattleSprite05:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite05.bin"
+EnemyBattleSprite06:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite06.bin"
+EnemyBattleSprite07:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite07.bin"
+EnemyBattleSprite08:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite08.bin"
+EnemyBattleSprite09:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite09.bin"
+EnemyBattleSprite10:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite10.bin"
+EnemyBattleSprite11:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite11.bin"
+EnemyBattleSprite12:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite12.bin"
+EnemyBattleSprite13:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite13.bin"
+EnemyBattleSprite14:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite14.bin"
+EnemyBattleSprite15:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite15.bin"
+EnemyBattleSprite16:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite16.bin"
+EnemyBattleSprite17:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite17.bin"
+EnemyBattleSprite18:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite18.bin"
+EnemyBattleSprite19:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite19.bin"
+EnemyBattleSprite20:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite20.bin"
+EnemyBattleSprite21:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite21.bin"
+EnemyBattleSprite22:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite22.bin"
+EnemyBattleSprite23:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite23.bin"
+EnemyBattleSprite24:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite24.bin"
+EnemyBattleSprite25:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite25.bin"
+EnemyBattleSprite26:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite26.bin"
+EnemyBattleSprite27:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite27.bin"
+EnemyBattleSprite28:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite28.bin"
+EnemyBattleSprite29:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite29.bin"
+EnemyBattleSprite30:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite30.bin"
+EnemyBattleSprite31:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite31.bin"
+EnemyBattleSprite32:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite32.bin"
+EnemyBattleSprite33:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite33.bin"
+EnemyBattleSprite34:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite34.bin"
+EnemyBattleSprite35:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite35.bin"
+EnemyBattleSprite36:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite36.bin"
+EnemyBattleSprite37:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite37.bin"
+EnemyBattleSprite38:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite38.bin"
+EnemyBattleSprite39:incbin "graphics/battles/battlesprites/enemies/enemybattlesprite39.bin"
 pt_EnemiesAnimations:
 										dc.l EnemyBattleSpriteAnimation000
 										dc.l EnemyBattleSpriteAnimation001
@@ -173,145 +173,145 @@ pt_EnemiesAnimations:
 										dc.l EnemyBattleSpriteAnimation069
 										dc.l EnemyBattleSpriteAnimation070
 EnemyBattleSpriteAnimation000:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation000.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation000.bin"
 EnemyBattleSpriteAnimation001:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation001.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation001.bin"
 EnemyBattleSpriteAnimation002:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation002.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation002.bin"
 EnemyBattleSpriteAnimation003:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation003.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation003.bin"
 EnemyBattleSpriteAnimation004:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation004.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation004.bin"
 EnemyBattleSpriteAnimation005:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation005.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation005.bin"
 EnemyBattleSpriteAnimation006:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation006.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation006.bin"
 EnemyBattleSpriteAnimation007:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation007.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation007.bin"
 EnemyBattleSpriteAnimation008:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation008.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation008.bin"
 EnemyBattleSpriteAnimation009:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation009.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation009.bin"
 EnemyBattleSpriteAnimation010:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation010.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation010.bin"
 EnemyBattleSpriteAnimation011:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation011.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation011.bin"
 EnemyBattleSpriteAnimation012:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation012.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation012.bin"
 EnemyBattleSpriteAnimation013:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation013.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation013.bin"
 EnemyBattleSpriteAnimation014:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation014.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation014.bin"
 EnemyBattleSpriteAnimation015:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation015.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation015.bin"
 EnemyBattleSpriteAnimation016:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation016.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation016.bin"
 EnemyBattleSpriteAnimation017:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation017.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation017.bin"
 EnemyBattleSpriteAnimation018:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation018.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation018.bin"
 EnemyBattleSpriteAnimation019:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation019.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation019.bin"
 EnemyBattleSpriteAnimation020:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation020.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation020.bin"
 EnemyBattleSpriteAnimation021:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation021.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation021.bin"
 EnemyBattleSpriteAnimation022:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation022.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation022.bin"
 EnemyBattleSpriteAnimation023:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation023.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation023.bin"
 EnemyBattleSpriteAnimation024:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation024.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation024.bin"
 EnemyBattleSpriteAnimation025:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation025.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation025.bin"
 EnemyBattleSpriteAnimation026:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation026.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation026.bin"
 EnemyBattleSpriteAnimation027:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation027.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation027.bin"
 EnemyBattleSpriteAnimation028:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation028.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation028.bin"
 EnemyBattleSpriteAnimation029:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation029.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation029.bin"
 EnemyBattleSpriteAnimation030:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation030.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation030.bin"
 EnemyBattleSpriteAnimation031:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation031.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation031.bin"
 EnemyBattleSpriteAnimation032:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation032.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation032.bin"
 EnemyBattleSpriteAnimation033:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation033.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation033.bin"
 EnemyBattleSpriteAnimation034:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation034.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation034.bin"
 EnemyBattleSpriteAnimation035:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation035.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation035.bin"
 EnemyBattleSpriteAnimation036:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation036.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation036.bin"
 EnemyBattleSpriteAnimation037:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation037.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation037.bin"
 EnemyBattleSpriteAnimation038:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation038.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation038.bin"
 EnemyBattleSpriteAnimation039:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation039.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation039.bin"
 EnemyBattleSpriteAnimation040:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation040.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation040.bin"
 EnemyBattleSpriteAnimation041:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation041.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation041.bin"
 EnemyBattleSpriteAnimation042:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation042.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation042.bin"
 EnemyBattleSpriteAnimation043:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation043.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation043.bin"
 EnemyBattleSpriteAnimation044:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation044.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation044.bin"
 EnemyBattleSpriteAnimation045:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation045.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation045.bin"
 EnemyBattleSpriteAnimation046:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation046.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation046.bin"
 EnemyBattleSpriteAnimation047:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation047.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation047.bin"
 EnemyBattleSpriteAnimation048:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation048.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation048.bin"
 EnemyBattleSpriteAnimation049:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation049.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation049.bin"
 EnemyBattleSpriteAnimation050:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation050.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation050.bin"
 EnemyBattleSpriteAnimation051:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation051.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation051.bin"
 EnemyBattleSpriteAnimation052:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation052.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation052.bin"
 EnemyBattleSpriteAnimation053:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation053.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation053.bin"
 EnemyBattleSpriteAnimation054:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation054.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation054.bin"
 EnemyBattleSpriteAnimation055:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation055.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation055.bin"
 EnemyBattleSpriteAnimation056:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation056.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation056.bin"
 EnemyBattleSpriteAnimation057:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation057.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation057.bin"
 EnemyBattleSpriteAnimation058:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation058.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation058.bin"
 EnemyBattleSpriteAnimation059:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation059.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation059.bin"
 EnemyBattleSpriteAnimation060:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation060.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation060.bin"
 EnemyBattleSpriteAnimation061:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation061.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation061.bin"
 EnemyBattleSpriteAnimation062:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation062.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation062.bin"
 EnemyBattleSpriteAnimation063:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation063.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation063.bin"
 EnemyBattleSpriteAnimation064:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation064.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation064.bin"
 EnemyBattleSpriteAnimation065:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation065.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation065.bin"
 EnemyBattleSpriteAnimation066:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation066.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation066.bin"
 EnemyBattleSpriteAnimation067:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation067.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation067.bin"
 EnemyBattleSpriteAnimation068:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation068.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation068.bin"
 EnemyBattleSpriteAnimation069:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation069.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation069.bin"
 EnemyBattleSpriteAnimation070:
-										incbin "graphics/battlesprites/enemies/animations/enemybattlespriteanimation070.bin"
+										incbin "graphics/battles/battlesprites/enemies/animations/enemybattlespriteanimation070.bin"
 										align $4000

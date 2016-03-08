@@ -92,7 +92,7 @@ aDevelopedForUseOnlyWi:
 aNtscGenesis:       dc.b '         NTSC GENESIS',0
 aPalAndFrenchSe:    dc.b 'PAL AND FRENCH SECAM MEGA DRIVE',0
 aSystems_:          dc.b '           SYSTEMS.',0
-VariableWidthFont:  incbin "graphics/fonts/variablewidthfont.bin"
+VariableWidthFont:  incbin "graphics/technical/fonts/variablewidthfont.bin"
 pt_Portraits:       dc.l Portrait00
 										dc.l Portrait01
 										dc.l Portrait02
