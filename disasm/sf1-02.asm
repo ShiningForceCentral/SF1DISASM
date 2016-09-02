@@ -43665,8 +43665,8 @@ unk_1E712:          dc.b   0
 										dc.b   0
 										dc.b   0
 TextBankTreesPointers:
-										incbin "scripting/textbanks/textbanktreepointers.bin"
-TextBankTreeData:   incbin "scripting/textbanks/textbanktreedata.bin"
+										incbin "scripting/textbanks/huffmantreeoffsets.bin"
+TextBankTreeData:   incbin "scripting/textbanks/huffmantrees.bin"
 
 ; =============== S U B R O U T I N E =======================================
 

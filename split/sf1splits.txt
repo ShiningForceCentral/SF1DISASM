@@ -1043,8 +1043,8 @@
 #split	0x16370C,0x163A0A,graphics/battles/grounds/ground07.bin
 #split	0x163A0A,0x163CC0,graphics/battles/grounds/ground08.bin
 #split	0x163CC0,0x163FFA,graphics/battles/grounds/ground09.bin
-#split	0x1E892,0x1EA3A,scripting/textbanks/textbanktreepointers.bin
-#split	0x1EA3A,0x1EFE0,scripting/textbanks/textbanktreedata.bin
+#split	0x1E892,0x1EA3A,scripting/textbanks/huffmantreeoffsets.bin
+#split	0x1EA3A,0x1EFE0,scripting/textbanks/huffmantrees.bin
 #split	0x25154,0x25604,data/allies/chardata.bin
 #split	0x25640,0x25916,data/items/itemnames.bin
 #split	0x25916,0x25D06,data/items/itemdata.bin
