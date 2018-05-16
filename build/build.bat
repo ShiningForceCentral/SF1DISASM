@@ -24,6 +24,6 @@ cd ../build/
 
 echo -------------------------------------------------------------
 echo Checking build ...
-IF EXIST "%buildname%" (IF EXIST sf1.bin (fc /b "%buildname%" sf1.bin) ELSE echo sf1.bin does not exist in build directory) ELSE echo "%buildname%" does not exist, probably due to an assembly error. Check output.log.
+IF EXIST "%buildname%" (IF EXIST ../rom/sf1.bin (fc /b "%buildname%" ../rom/sf1.bin) ELSE echo sf1.bin does not exist in rom directory) ELSE echo "%buildname%" does not exist, probably due to an assembly error. Check output.log.
 
 pause
