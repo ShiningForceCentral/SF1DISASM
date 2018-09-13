@@ -24,7 +24,7 @@ sub_8004:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8008:
-		jmp     return_8DDE(pc)
+		jmp     locret_8DDE(pc)
 
 	; End of function sub_8008
 
@@ -592,8 +592,8 @@ loc_8296:
 		movea.l (dword_FF0EFE).l,sp
 		cmpi.w  #1,d0
 		beq.w   loc_82DC
-		trap    #0
-		dc.w $F
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_MAX_DIED
 loc_82AE:
 		bsr.w   sub_AB2C
 		jsr     (sub_304).l
@@ -601,8 +601,8 @@ loc_82AE:
 		trap    #8
 		jsr     (sub_30C).l
 		bsr.w   sub_8770
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		clr.l   (dword_FF0EF6).l
 		moveq   #$FFFFFFFF,d0
@@ -667,7 +667,7 @@ loc_8362:
 		lea     ((unk_FFA8C2-$1000000)).w,a0
 loc_8366:
 		move.b  (a0)+,d0
-		bmi.w   return_83E4
+		bmi.w   locret_83E4
 		move.b  (a0)+,d1
 		ext.w   d0
 		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
@@ -700,7 +700,7 @@ loc_8366:
 		jsr     (sub_30C).l
 		movea.l (sp)+,a0
 		bra.s   loc_8366
-return_83E4:
+locret_83E4:
 		rts
 
 	; End of function sub_8332
@@ -823,7 +823,7 @@ loc_8532:
 sub_853E:
 		move.b  #2,((SPRITE_DIRECTION-$1000000)).w
 		cmpi.b  #1,((CURSOR_POSITION+1-$1000000)).w
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_8598
 		move.l  a0,-(sp)
@@ -846,19 +846,19 @@ sub_853E:
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		neg.w   d0
 		btst    #0,(a0,d0.w)
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 loc_8598:
 		subq.b  #1,((CURSOR_POSITION+1-$1000000)).w
 		move.b  #4,((unk_FFB4C3-$1000000)).w
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION+1-$1000000)).w,d0
 		cmpi.b  #3,d0
-		bne.s   return_85C0
+		bne.s   locret_85C0
 		tst.b   ((SCREEN_POSITION+1-$1000000)).w
-		beq.s   return_85C0
+		beq.s   locret_85C0
 		move.b  #4,((unk_FFB4C1-$1000000)).w
 		clr.b   ((unk_FFB4C3-$1000000)).w
-return_85C0:
+locret_85C0:
 		rts
 
 	; End of function sub_853E
@@ -871,7 +871,7 @@ sub_85C2:
 		move.w  ((MAP_HEIGHT-$1000000)).w,d7
 		subq.w  #2,d7
 		cmp.b   ((CURSOR_POSITION+1-$1000000)).w,d7
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_861E
 		move.l  a0,-(sp)
@@ -893,21 +893,21 @@ sub_85C2:
 		bne.s   loc_861E
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		btst    #0,(a0,d0.w)
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 loc_861E:
 		addq.b  #1,((CURSOR_POSITION+1-$1000000)).w
 		move.b  #$FC,((unk_FFB4C3-$1000000)).w
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION+1-$1000000)).w,d0
 		cmpi.b  #6,d0
-		bne.s   return_864E
+		bne.s   locret_864E
 		move.w  ((MAP_HEIGHT-$1000000)).w,d7
 		subi.b  #$A,d7
 		cmp.b   ((SCREEN_POSITION+1-$1000000)).w,d7
-		beq.s   return_864E
+		beq.s   locret_864E
 		move.b  #$FC,((unk_FFB4C1-$1000000)).w
 		clr.b   ((unk_FFB4C3-$1000000)).w
-return_864E:
+locret_864E:
 		rts
 
 	; End of function sub_85C2
@@ -920,7 +920,7 @@ sub_8650:
 		move.w  ((MAP_WIDTH-$1000000)).w,d7
 		subq.w  #2,d7
 		cmp.b   ((CURSOR_POSITION-$1000000)).w,d7
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_86A8
 		move.l  a0,-(sp)
@@ -941,21 +941,21 @@ sub_8650:
 		tst.b   ((unk_FFB4D4-$1000000)).w
 		bne.s   loc_86A8
 		btst    #0,1(a0)
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 loc_86A8:
 		addq.b  #1,((CURSOR_POSITION-$1000000)).w
 		move.b  #$FC,((unk_FFB4C2-$1000000)).w
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION-$1000000)).w,d0
 		cmpi.b  #7,d0
-		bne.s   return_86D8
+		bne.s   locret_86D8
 		move.w  ((MAP_WIDTH-$1000000)).w,d7
 		subi.b  #$B,d7
 		cmp.b   ((SCREEN_POSITION-$1000000)).w,d7
-		beq.s   return_86D8
+		beq.s   locret_86D8
 		move.b  #4,((unk_FFB4C0-$1000000)).w
 		clr.b   ((unk_FFB4C2-$1000000)).w
-return_86D8:
+locret_86D8:
 		rts
 
 	; End of function sub_8650
@@ -966,7 +966,7 @@ return_86D8:
 sub_86DA:
 		move.b  #1,((SPRITE_DIRECTION-$1000000)).w
 		cmpi.b  #1,((CURSOR_POSITION-$1000000)).w
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_872E
 		move.l  a0,-(sp)
@@ -987,19 +987,19 @@ sub_86DA:
 		tst.b   ((unk_FFB4D4-$1000000)).w
 		bne.s   loc_872E
 		btst    #0,-1(a0)
-		beq.w   return_8DDE
+		beq.w   locret_8DDE
 loc_872E:
 		subq.b  #1,((CURSOR_POSITION-$1000000)).w
 		move.b  #4,((unk_FFB4C2-$1000000)).w
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION-$1000000)).w,d0
 		cmpi.b  #3,d0
-		bne.s   return_8758
+		bne.s   locret_8758
 		cmpi.b  #0,((SCREEN_POSITION-$1000000)).w
-		beq.s   return_8758
+		beq.s   locret_8758
 		move.b  #$FC,((unk_FFB4C0-$1000000)).w
 		clr.b   ((unk_FFB4C2-$1000000)).w
-return_8758:
+locret_8758:
 		rts
 
 	; End of function sub_86DA
@@ -1398,7 +1398,7 @@ loc_89DA:
 		move.w  (sp)+,d7
 loc_89F8:
 		dbf     d7,loc_89A8
-return_89FC:
+locret_89FC:
 		rts
 
 	; End of function sub_8986
@@ -1417,9 +1417,9 @@ sub_89FE:
 		bsr.w   sub_87D2
 		move.w  (sp)+,d7
 		tst.w   d7
-		beq.s   return_8A20
+		beq.s   locret_8A20
 		jmp     (j_WaitForVInt).l
-return_8A20:
+locret_8A20:
 		rts
 
 	; End of function sub_89FE
@@ -1429,7 +1429,7 @@ return_8A20:
 
 sub_8A22:
 		tst.b   ((unk_FFB4C0-$1000000)).w
-		beq.s   return_89FC
+		beq.s   locret_89FC
 		bgt.w   loc_8A6A
 		cmpi.w  #5,d7
 		bne.w   loc_8A52
@@ -1470,7 +1470,7 @@ loc_8A6A:
 
 sub_8A8A:
 		tst.b   ((unk_FFB4C1-$1000000)).w
-		beq.w   return_89FC
+		beq.w   locret_89FC
 		blt.w   loc_8AD4
 		cmpi.w  #5,d7
 		bne.w   loc_8ABC
@@ -1579,9 +1579,9 @@ sub_8B80:
 		bsr.w   sub_87D2
 		move.w  (sp)+,d7
 		tst.w   d7
-		beq.s   return_8BA6
+		beq.s   locret_8BA6
 		jmp     (j_WaitForVInt).l
-return_8BA6:
+locret_8BA6:
 		rts
 
 	; End of function sub_8B80
@@ -1591,7 +1591,7 @@ return_8BA6:
 
 sub_8BA8:
 		tst.b   ((unk_FFB4C0-$1000000)).w
-		beq.w   return_89FC
+		beq.w   locret_89FC
 		bgt.w   loc_8BF2
 		cmpi.w  #$B,d7
 		bne.w   loc_8BDA
@@ -1631,7 +1631,7 @@ loc_8BF2:
 
 sub_8C12:
 		tst.b   ((unk_FFB4C1-$1000000)).w
-		beq.w   return_89FC
+		beq.w   locret_89FC
 		blt.w   loc_8C5C
 		cmpi.w  #$B,d7
 		bne.w   loc_8C44
@@ -1690,12 +1690,12 @@ loc_8CB2:
 		bsr.w   sub_85C2
 loc_8CC0:
 		tst.l   ((unk_FFB4C0-$1000000)).w
-		beq.s   return_8CD2
-		trap    #0
-		dc.w $42
+		beq.s   locret_8CD2
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bsr.w   sub_8986
 		bsr.w   sub_9940
-return_8CD2:
+locret_8CD2:
 		rts
 
 	; End of function sub_8C7C
@@ -1745,8 +1745,8 @@ loc_8D4A:
 		beq.s   loc_8D62
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_8D5A
-		trap    #0
-		dc.w $62
+		trap    #SOUND_COMMAND
+		dc.w SFX_WALKING
 loc_8D5A:
 		bsr.w   sub_8AF4
 		bsr.w   sub_9940
@@ -1814,11 +1814,11 @@ loc_8DC0:
 		beq.s   loc_8DD8
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_8DD0
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_8D66
 
-		dc.w $62
+		dc.w SFX_WALKING
 
 ; START OF FUNCTION CHUNK FOR sub_8D66
 
@@ -1835,7 +1835,7 @@ loc_8DD8:
 
 ; START OF FUNCTION CHUNK FOR sub_853E
 
-return_8DDE:
+locret_8DDE:
 		rts
 
 ; END OF FUNCTION CHUNK FOR sub_853E
@@ -2041,8 +2041,8 @@ loc_8F7A:
 loc_8F8C:
 		clr.w   d0
 		move.b  (a0)+,d0
-		trap    #0
-		dc.w $FFFF
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_GET_D0_PARAMETER
 		move.b  (a0)+,d0
 		move.w  (a0)+,d1
 		move.w  (a0)+,d2
@@ -2582,11 +2582,11 @@ loc_92DA:
 		jsr     (j_CopyBytes).l
 		move.w  (sp)+,d0
 		tst.b   ((CURRENT_MAP_VERSION-$1000000)).w
-		blt.s   return_930C
+		blt.s   locret_930C
 		tst.w   d0
-		blt.s   return_930C
+		blt.s   locret_930C
 		move.w  d0,((MAP_HEIGHT-$1000000)).w
-return_930C:
+locret_930C:
 		rts
 
 	; End of function sub_9126
@@ -2758,7 +2758,7 @@ byte_93BC:      dc.b 0
 sub_93C4:
 		clr.w   d0
 		move.b  ((CURRENT_REGION-$1000000)).w,d0
-		bmi.w   return_95E2
+		bmi.w   locret_95E2
 		clr.w   d1
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d1
 		subq.w  #1,d1
@@ -2769,56 +2769,56 @@ sub_93C4:
 off_93E4:
 		dc.w loc_944C-off_93E4
 		dc.w loc_945C-off_93E4
-		dc.w return_9484-off_93E4
-		dc.w return_9484-off_93E4
-		dc.w return_9484-off_93E4
-		dc.w return_9484-off_93E4
-		dc.w return_9484-off_93E4
-		dc.w return_9486-off_93E4
+		dc.w locret_9484-off_93E4
+		dc.w locret_9484-off_93E4
+		dc.w locret_9484-off_93E4
+		dc.w locret_9484-off_93E4
+		dc.w locret_9484-off_93E4
+		dc.w locret_9486-off_93E4
 		dc.w loc_9498-off_93E4
 		dc.w loc_9488-off_93E4
-		dc.w return_94A8-off_93E4
-		dc.w return_94A8-off_93E4
-		dc.w return_94A8-off_93E4
-		dc.w return_94A8-off_93E4
-		dc.w return_94A8-off_93E4
-		dc.w return_94A8-off_93E4
-		dc.w return_94A8-off_93E4
-		dc.w return_94AA-off_93E4
+		dc.w locret_94A8-off_93E4
+		dc.w locret_94A8-off_93E4
+		dc.w locret_94A8-off_93E4
+		dc.w locret_94A8-off_93E4
+		dc.w locret_94A8-off_93E4
+		dc.w locret_94A8-off_93E4
+		dc.w locret_94A8-off_93E4
+		dc.w locret_94AA-off_93E4
 		dc.w loc_94AC-off_93E4
-		dc.w return_94BC-off_93E4
+		dc.w locret_94BC-off_93E4
 		dc.w loc_94CE-off_93E4
 		dc.w loc_94BE-off_93E4
 		dc.w loc_94DE-off_93E4
-		dc.w return_94EE-off_93E4
-		dc.w return_94EE-off_93E4
-		dc.w return_94EE-off_93E4
-		dc.w return_94EE-off_93E4
-		dc.w return_94EE-off_93E4
-		dc.w return_94EE-off_93E4
-		dc.w return_94EE-off_93E4
+		dc.w locret_94EE-off_93E4
+		dc.w locret_94EE-off_93E4
+		dc.w locret_94EE-off_93E4
+		dc.w locret_94EE-off_93E4
+		dc.w locret_94EE-off_93E4
+		dc.w locret_94EE-off_93E4
+		dc.w locret_94EE-off_93E4
 		dc.w loc_94F0-off_93E4
-		dc.w return_9500-off_93E4
-		dc.w return_9500-off_93E4
-		dc.w return_9500-off_93E4
-		dc.w return_9500-off_93E4
-		dc.w return_9500-off_93E4
-		dc.w return_9500-off_93E4
+		dc.w locret_9500-off_93E4
+		dc.w locret_9500-off_93E4
+		dc.w locret_9500-off_93E4
+		dc.w locret_9500-off_93E4
+		dc.w locret_9500-off_93E4
+		dc.w locret_9500-off_93E4
 		dc.w loc_9502-off_93E4
 		dc.w loc_9512-off_93E4
-		dc.w return_9542-off_93E4
-		dc.w return_9542-off_93E4
-		dc.w return_9542-off_93E4
-		dc.w return_9542-off_93E4
-		dc.w return_9542-off_93E4
+		dc.w locret_9542-off_93E4
+		dc.w locret_9542-off_93E4
+		dc.w locret_9542-off_93E4
+		dc.w locret_9542-off_93E4
+		dc.w locret_9542-off_93E4
 		dc.w loc_9544-off_93E4
 		dc.w loc_9554-off_93E4
-		dc.w return_9564-off_93E4
+		dc.w locret_9564-off_93E4
 		dc.w loc_9566-off_93E4
-		dc.w return_9576-off_93E4
+		dc.w locret_9576-off_93E4
 		dc.w loc_9578-off_93E4
-		dc.w return_95E2-off_93E4
-		dc.w return_95E2-off_93E4
+		dc.w locret_95E2-off_93E4
+		dc.w locret_95E2-off_93E4
 loc_944C:
 		moveq   #$20,d1 
 		moveq   #0,d2
@@ -2830,7 +2830,7 @@ loc_944C:
 loc_945C:
 		moveq   #$32,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_95E2
+		bne.w   locret_95E2
 		moveq   #$11,d1
 		moveq   #0,d2
 		moveq   #2,d3
@@ -2840,10 +2840,10 @@ loc_945C:
 		bra.w   sub_95E4
 		moveq   #$28,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_95E2
-return_9484:
+		bne.w   locret_95E2
+locret_9484:
 		rts
-return_9486:
+locret_9486:
 		rts
 loc_9488:
 		moveq   #$20,d1 
@@ -2861,9 +2861,9 @@ loc_9498:
 		moveq   #0,d5
 		moveq   #1,d6
 		bra.w   sub_95E4
-return_94A8:
+locret_94A8:
 		rts
-return_94AA:
+locret_94AA:
 		rts
 loc_94AC:
 		moveq   #2,d1
@@ -2873,7 +2873,7 @@ loc_94AC:
 		moveq   #1,d5
 		moveq   #0,d6
 		bra.w   sub_95E4
-return_94BC:
+locret_94BC:
 		rts
 loc_94BE:
 		moveq   #$26,d1 
@@ -2899,7 +2899,7 @@ loc_94DE:
 		moveq   #1,d5
 		moveq   #1,d6
 		bra.w   sub_95E4
-return_94EE:
+locret_94EE:
 		rts
 loc_94F0:
 		moveq   #0,d1
@@ -2909,7 +2909,7 @@ loc_94F0:
 		moveq   #1,d5
 		moveq   #1,d6
 		bra.w   sub_95E4
-return_9500:
+locret_9500:
 		rts
 loc_9502:
 		moveq   #0,d1
@@ -2941,7 +2941,7 @@ loc_9512:
 		moveq   #1,d5
 		moveq   #0,d6
 		bra.w   sub_95E4
-return_9542:
+locret_9542:
 		rts
 loc_9544:
 		moveq   #$A,d1
@@ -2959,7 +2959,7 @@ loc_9554:
 		moveq   #1,d5
 		moveq   #2,d6
 		bra.w   sub_95E4
-return_9564:
+locret_9564:
 		rts
 loc_9566:
 		moveq   #$A,d1
@@ -2969,7 +2969,7 @@ loc_9566:
 		moveq   #4,d5
 		moveq   #5,d6
 		bra.w   sub_95E4
-return_9576:
+locret_9576:
 		rts
 loc_9578:
 		moveq   #4,d0
@@ -3017,7 +3017,7 @@ loc_95D2:
 		moveq   #6,d5
 		moveq   #3,d6
 		bra.w   sub_95E4
-return_95E2:
+locret_95E2:
 		rts
 
 	; End of function sub_93C4
@@ -3390,7 +3390,7 @@ loc_97FE:
 loc_9814:
 		movem.w (sp)+,d7
 		dbf     d7,loc_97FE
-return_981C:
+locret_981C:
 		rts
 
 	; End of function sub_97F4
@@ -3406,7 +3406,7 @@ und_981E:       dc.b 0
 
 loc_9824:
 		cmpi.b  #$1E,((unk_FFA1C6-$1000000)).w
-		beq.s   return_981C
+		beq.s   locret_981C
 		clr.w   d0
 		movem.w d0/d2,-(sp)
 		moveq   #$38,d0 
@@ -3709,7 +3709,7 @@ sub_9A9A:
 		lea     ((BATTLE_STATS-$1000000)).w,a0
 		lea     (word_FF0D34).l,a1
 		move.b  defined_byte_9A4E(pc,d6.w),d1
-		beq.w   return_9B4C
+		beq.w   locret_9B4C
 		btst    #6,d1
 		bne.w   loc_9B08
 		move.w  d1,d6
@@ -3756,18 +3756,18 @@ loc_9B12:
 		clr.w   d0
 		move.b  ((byte_FFB4C6-$1000000)).w,d0
 		cmpi.b  #$FF,d0
-		beq.w   return_9B4C
+		beq.w   locret_9B4C
 		tst.b   ((byte_FFB4D7-$1000000)).w
-		bne.w   return_9B4C
+		bne.w   locret_9B4C
 		move.w  d0,d2
 		addi.w  #$17,d2
 		btst    #0,d1
-		beq.s   return_9B4C
+		beq.s   locret_9B4C
 		lea     (word_FF0D34).l,a0
 		lsl.w   #3,d0
 		adda.w  d0,a0
 		move.b  d2,-9(a0)
-return_9B4C:
+locret_9B4C:
 		rts
 
 	; End of function sub_9A9A
@@ -3777,9 +3777,9 @@ return_9B4C:
 
 sub_9B4E:
 		cmpi.b  #$FF,((unk_FFB5B1-$1000000)).w
-		beq.s   return_9BA8
+		beq.s   locret_9BA8
 		subq.w  #1,((unk_FFBC66-$1000000)).w
-		bne.s   return_9BA8
+		bne.s   locret_9BA8
 		move.w  ((unk_FFBC64-$1000000)).w,((unk_FFBC66-$1000000)).w
 		move.w  ((unk_FFBC68-$1000000)).w,d0
 		lea     ((unk_FFB5B1-$1000000)).w,a0
@@ -3803,7 +3803,7 @@ loc_9B74:
 		moveq   #2,d1
 		jsr     (sub_278).l
 		jmp     (j_SetVIntParam3).l
-return_9BA8:
+locret_9BA8:
 		rts
 
 	; End of function sub_9B4E
@@ -4103,23 +4103,23 @@ loc_9F34:
 		jsr     (j_SetEventFlag).l
 loc_9F4E:
 		movea.l (dword_FF0EFE).l,sp
-		trap    #0
-		dc.w $55
+		trap    #SOUND_COMMAND
+		dc.w SFX_WARP
 		jsr     (j_FadeOutToBlack).l
 		clr.l   (dword_FF0EF6).l
 		clr.w   d0
 		rts
 loc_9F68:
-		trap    #0
-		dc.w $55
+		trap    #SOUND_COMMAND
+		dc.w SFX_WARP
 		jsr     (j_FadeOutToBlack).l
 		bsr.w   sub_9FB0
 		jsr     (j_FadeInFromBlack).l
 		move.b  #2,(FADING_PALETTE_FLAGS).l
 		bra.w   loc_9E5E
 loc_9F88:
-		trap    #0
-		dc.w $4D
+		trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 		jsr     (j_FadeOutToWhite).l
 		bsr.w   sub_9FB0
 		moveq   #$3C,d0 
@@ -4376,8 +4376,8 @@ loc_A274:
 		clr.w   ((word_FFC0BE-$1000000)).w
 		move.w  #$1B5,d0
 		trap    #8
-		trap    #0
-		dc.w $4D
+		trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 		move.w  #$1EA,d0
 		trap    #8
 		tst.b   ((byte_FFB4D7-$1000000)).w
@@ -4422,10 +4422,10 @@ sub_A30A:
 		beq.s   loc_A32C
 		clr.b   (FADING_SETTING).l
 		jsr     (sub_360).l
-		bpl.s   return_A32A
+		bpl.s   locret_A32A
 		move.b  #5,(FADING_SETTING).l
 		bra.w   loc_A132
-return_A32A:
+locret_A32A:
 		rts
 loc_A32C:
 		move.b  #2,((byte_FFB51B-$1000000)).w
@@ -5005,8 +5005,8 @@ loc_A9D8:
 		btst    #0,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_A9FE
 		addq.w  #1,d0
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		cmp.w   ((word_FFA8C0-$1000000)).w,d0
 		ble.s   loc_A9FA
 		clr.w   d0
@@ -5016,8 +5016,8 @@ loc_A9FE:
 		btst    #3,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_AA1A
 		addq.w  #1,d0
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		cmp.w   ((word_FFA8C0-$1000000)).w,d0
 		ble.s   loc_AA16
 		clr.w   d0
@@ -5027,8 +5027,8 @@ loc_AA1A:
 		btst    #1,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_AA36
 		subq.w  #1,d0
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		tst.w   d0
 		bge.s   loc_AA32
 		move.w  ((word_FFA8C0-$1000000)).w,d0
@@ -5038,8 +5038,8 @@ loc_AA36:
 		btst    #2,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_AA52
 		subq.w  #1,d0
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		tst.w   d0
 		bge.s   loc_AA4E
 		move.w  ((word_FFA8C0-$1000000)).w,d0
@@ -5060,14 +5060,14 @@ loc_AA66:
 		move.w  (sp)+,d0
 		bra.w   loc_A8E2
 loc_AA76:
-		trap    #0
-		dc.w $43
+		trap    #SOUND_COMMAND
+		dc.w SFX_VALIDATION
 		clr.w   d0
 		move.b  ((unk_FFB4C5-$1000000)).w,d0
 		rts
 loc_AA82:
-		trap    #0
-		dc.w $43
+		trap    #SOUND_COMMAND
+		dc.w SFX_VALIDATION
 		move.b  #1,((unk_FFB4CA-$1000000)).w
 loc_AA8C:
 		clr.w   d0
@@ -5554,13 +5554,13 @@ loc_AE0A:
 		move.w  d3,d0
 		clr.w   d3
 		move.b  3(a0),d3
-		bra.s   return_AE34
+		bra.s   locret_AE34
 loc_AE2A:
 		addq.w  #1,d3
 		addq.l  #4,a0
 		dbf     d7,loc_AE0A
 		moveq   #$FFFFFFFF,d0
-return_AE34:
+locret_AE34:
 		rts
 
 ; END OF FUNCTION CHUNK FOR sub_ADA6
@@ -5571,8 +5571,8 @@ return_AE34:
 ; Display window? D0 = XXXXWWHH D1=? D2=?
 
 sub_AE36:
-		trap    #0
-		dc.w $41
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SWITCH
 loc_AE3A:
 		movem.l d0-d2/a0,-(sp)
 		swap    d1
@@ -5612,7 +5612,7 @@ loc_AE56:
 		jsr     (j_WaitForVInt).l
 		movem.l (sp)+,d0-d3/a0
 		dbf     d2,loc_AE56
-return_AEA6:
+locret_AEA6:
 		rts
 
 	; End of function sub_AE36
@@ -5624,7 +5624,7 @@ sub_AEA8:
 		move.w  d0,((unk_FFB7D4-$1000000)).w
 		move.w  d1,((unk_FFB7D6-$1000000)).w
 		tst.b   ((DONT_SEND_SOUND_COMMANDS-$1000000)).w
-		bne.s   return_AEA6
+		bne.s   locret_AEA6
 		move.w  d0,-(sp)
 		lea     (unk_FFD000).l,a1
 		move.w  d1,-(sp)
@@ -5870,7 +5870,7 @@ loc_B08E:
 
 loc_B092:
 		movem.l d0-a6,-(sp)
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR int_AdressError
 
@@ -5886,8 +5886,8 @@ loc_B092:
 
 sub_B0B8:
 		jsr     j_LoadBattleStats
-		trap    #0
-		dc.w $43
+		trap    #SOUND_COMMAND
+		dc.w SFX_VALIDATION
 		andi.w  #$FF,d0
 		move.w  d0,((word_FFB7C4-$1000000)).w
 		bsr.w   sub_B4A6
@@ -6028,9 +6028,9 @@ sub_B29C:
 		move.l  d0,(a0)
 		subq.l  #4,a0
 		cmpi.w  #$C020,(a0)
-		beq.s   return_B2AA
+		beq.s   locret_B2AA
 		lea     ((unk_FFB84C-$1000000)).w,a0
-return_B2AA:
+locret_B2AA:
 		rts
 
 	; End of function sub_B29C
@@ -6549,7 +6549,7 @@ loc_B710:
 loc_B72A:
 		move.b  (a0)+,d1
 		cmpi.b  #$FF,d1
-		beq.w   return_B78A
+		beq.w   locret_B78A
 		bsr.w   sub_B7B4
 		movem.w d0-d1/d6-d7,-(sp)
 		movem.l a0-a1,-(sp)
@@ -6575,7 +6575,7 @@ loc_B72A:
 loc_B782:
 		adda.w  #$84,a1 
 		dbf     d6,loc_B72A
-return_B78A:
+locret_B78A:
 		rts
 unk_B78C:
 		dc.b $A5 
@@ -6930,11 +6930,11 @@ loc_BF6A:
 		bsr.w   sub_C262
 		bcs.w   loc_BF8C
 		move.b  #1,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_BEE0
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
 
 ; START OF FUNCTION CHUNK FOR sub_BEE0
@@ -6946,11 +6946,11 @@ loc_BF8C:
 		bsr.w   sub_C262
 		bcs.s   loc_BFAC
 		move.b  #2,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_BEE0
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
 
 ; START OF FUNCTION CHUNK FOR sub_BEE0
@@ -6959,11 +6959,11 @@ loc_BFAC:
 		btst    #0,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BFC2
 		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_BEE0
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
 
 ; START OF FUNCTION CHUNK FOR sub_BEE0
@@ -6975,11 +6975,11 @@ loc_BFC2:
 		bsr.w   sub_C262
 		bcs.s   loc_BFE2
 		move.b  #3,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_BEE0
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
 
 ; START OF FUNCTION CHUNK FOR sub_BEE0
@@ -7030,11 +7030,11 @@ loc_C04C:
 loc_C050:
 		cmpi.b  #2,((byte_FFB526-$1000000)).w
 		bne.w   loc_C090
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_BEE0
 
-		dc.w $43
+		dc.w SFX_VALIDATION
 		move.w  d0,-(sp)
 		moveq   #$14,d6
 		bsr.w   sub_C1A6
@@ -7046,8 +7046,8 @@ loc_C050:
 		bsr.w   sub_C29C
 		clr.w   d6
 		bsr.w   sub_C16A
-		trap    #0
-		dc.w $43
+		trap    #SOUND_COMMAND
+		dc.w SFX_VALIDATION
 		move.w  (sp)+,d0
 		cmpi.w  #$FFFF,d1
 		beq.s   loc_C01A
@@ -7190,7 +7190,7 @@ loc_C1D2:
 sub_C1DA:
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d7
 		cmp.b   ((byte_FFB529-$1000000)).w,d7
-		beq.w   return_C242
+		beq.w   locret_C242
 		move.b  d7,((byte_FFB529-$1000000)).w
 
 	; End of function sub_C1DA
@@ -7200,9 +7200,9 @@ sub_C1DA:
 
 sub_C1EA:
 		btst    #1,((byte_FFB526-$1000000)).w
-		beq.w   return_C242
+		beq.w   locret_C242
 		tst.b   ((byte_FFB53A-$1000000)).w
-		bne.s   return_C242
+		bne.s   locret_C242
 		move.b  ((unk_FFB4C9-$1000000)).w,d0
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
@@ -7210,7 +7210,7 @@ loc_C204:
 		btst    #0,((byte_FFB526-$1000000)).w
 		beq.s   loc_C226
 		tst.b   ((unk_FFB52A-$1000000)).w
-		beq.w   return_C242
+		beq.w   locret_C242
 		jsr     j_GetForceItemsFromForceID
 loc_C21A:
 		move.b  (a0,d1.w),d1
@@ -7224,7 +7224,7 @@ loc_C236:
 		moveq   #1,d0
 		bsr.w   sub_AB9C
 		jsr     (j_WaitForVInt).l
-return_C242:
+locret_C242:
 		rts
 
 	; End of function sub_C1EA
@@ -7315,8 +7315,8 @@ loc_C302:
 		or.w    d5,d1
 		rts
 loc_C308:
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		movem.w d1/d4-d5,-(sp)
 		lsl.w   #2,d4
 		add.w   d5,d4
@@ -7639,7 +7639,7 @@ sub_C6C6:
 		bne.s   loc_C6E0
 		movea.l (off_CC024).l,a0
 		adda.w  #$2F40,a0
-		bra.s   return_C6EC
+		bra.s   locret_C6EC
 loc_C6E0:
 		move.w  d1,d7
 		add.w   d1,d1
@@ -7647,7 +7647,7 @@ loc_C6E0:
 		lsl.w   #6,d1
 		movea.l a2,a0
 		adda.w  d1,a0
-return_C6EC:
+locret_C6EC:
 		rts
 
 	; End of function sub_C6C6
@@ -7713,13 +7713,13 @@ loc_C74E:
 		bsr.w   sub_B054
 		move.w  (sp)+,d1
 		btst    #7,d1
-		beq.s   return_C790
+		beq.s   locret_C790
 		lea     unk_B78C(pc), a0
 		lea     ((unk_FFB886-$1000000)).w,a1
 		move.w  #8,d7
 		moveq   #$FFFFFFDA,d1
 		bsr.w   sub_B054
-return_C790:
+locret_C790:
 		rts
 
 ; END OF FUNCTION CHUNK FOR sub_C3AA
@@ -9715,9 +9715,9 @@ sub_D21E:
 		moveq   #$64,d2 
 loc_D226:
 		cmpi.w  #$64,d3 
-		blt.s   return_D22E
+		blt.s   locret_D22E
 		moveq   #$64,d3 
-return_D22E:
+locret_D22E:
 		rts
 
 	; End of function sub_D21E
@@ -9997,8 +9997,8 @@ sub_D32C:
 		or.w    d7,d1
 		move.w  #8,d2
 		bsr.w   sub_AE36        
-		trap    #0
-		dc.w $44
+		trap    #SOUND_COMMAND
+		dc.w SFX_REFUSAL
 		jsr     (j_WaitForInputFor3Seconds).l
 		movem.w (sp)+,d0/d7
 		move.l  #$EA0C000C,d1
@@ -10128,8 +10128,8 @@ loc_D83C:
 		cmpi.w  #2,((word_FFA8C0-$1000000)).w
 		blt.s   loc_D85C
 		move.b  #1,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D85C:
 		btst    #3,(CURRENT_PLAYER_INPUT).l
@@ -10137,22 +10137,22 @@ loc_D85C:
 		cmpi.w  #3,((word_FFA8C0-$1000000)).w
 		blt.s   loc_D87C
 		move.b  #2,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D87C:
 		btst    #0,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D892
 		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D892:
 		btst    #1,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D8AA
 		move.b  #3,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D8AA:
 		btst    #4,(CURRENT_PLAYER_INPUT).l
@@ -10324,7 +10324,7 @@ loc_DA6A:
 sub_DA78:
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d7
 		cmp.b   ((byte_FFB529-$1000000)).w,d7
-		beq.s   return_DAA8
+		beq.s   locret_DAA8
 		move.b  d7,((byte_FFB529-$1000000)).w
 
 	; End of function sub_DA78
@@ -10334,15 +10334,15 @@ sub_DA78:
 
 sub_DA86:
 		tst.b   ((byte_FFB526-$1000000)).w
-		bne.s   return_DAA8
+		bne.s   locret_DAA8
 		tst.b   ((byte_FFB53A-$1000000)).w
-		bne.s   return_DAA8
+		bne.s   locret_DAA8
 		move.b  ((unk_FFB4C9-$1000000)).w,d0
 		jsr     sub_202BC
 		moveq   #1,d0
 		bsr.w   sub_AB9C
 		jsr     (j_WaitForVInt).l
-return_DAA8:
+locret_DAA8:
 		rts
 
 	; End of function sub_DA86
@@ -10529,7 +10529,7 @@ sub_DC6E:
 		bne.s   loc_DC8C
 		adda.l  #$C0,a0 
 loc_DC8C:
-		bra.s   return_DCA2
+		bra.s   locret_DCA2
 loc_DC8E:
 		lsl.w   #2,d1
 		move.w  2(a3,d1.w),d1
@@ -10539,7 +10539,7 @@ loc_DC8E:
 		add.w   d7,d1
 		lsl.w   #6,d1
 		adda.w  d1,a0
-return_DCA2:
+locret_DCA2:
 		rts
 
 	; End of function sub_DC6E
@@ -10584,8 +10584,8 @@ loc_DCF0:
 ; =============== S U B R O U T I N E =======================================
 
 sub_DCFA:
-		trap    #0
-		dc.w 2
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_CURSED_ITEM
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		rts
@@ -10727,7 +10727,7 @@ loc_E01E:
 
 sub_E02C:
 		tst.b   ((byte_FFB5AC-$1000000)).w
-		beq.w   return_E0B2
+		beq.w   locret_E0B2
 		lea     ((unk_FFB56A-$1000000)).w,a0
 		subq.w  #1,(a0)
 		cmpi.w  #3,(a0)
@@ -10764,7 +10764,7 @@ loc_E07C:
 		bsr.w   sub_E0B4
 loc_E092:
 		tst.w   (a0)
-		bne.s   return_E0B2
+		bne.s   locret_E0B2
 loc_E096:
 		clr.w   d1
 		lea     ((unk_FFB56E-$1000000)).w,a2
@@ -10774,7 +10774,7 @@ loc_E096:
 		jsr     (j_UpdateRandomSeed).l
 		addi.w  #$A,d7
 		move.w  d7,(a0)
-return_E0B2:
+locret_E0B2:
 		rts
 
 	; End of function sub_E02C
@@ -11120,8 +11120,8 @@ loc_E4FA:
 		cmp.w   ((word_FFA93E-$1000000)).w,d2
 		bge.s   loc_E546
 		addq.w  #1,d0
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		cmp.w   ((unk_FFA944-$1000000)).w,d0
 		blt.s   loc_E53A
 		addq.w  #1,((unk_FFA940-$1000000)).w
@@ -11142,8 +11142,8 @@ loc_E546:
 		add.w   d0,d2
 		ble.s   loc_E58C
 		subq.w  #1,d0
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bge.s   loc_E580
 		subq.w  #1,((unk_FFA940-$1000000)).w
 		move.w  #5,((unk_FFA942-$1000000)).w
@@ -11160,8 +11160,8 @@ loc_E58C:
 		tst.w   ((unk_FFA940-$1000000)).w
 		beq.s   loc_E5AE
 		subq.w  #1,((unk_FFA940-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		move.b  #1,((unk_FFB4D8-$1000000)).w
 		bsr.w   sub_E992
 loc_E5AE:
@@ -11173,8 +11173,8 @@ loc_E5AE:
 		cmp.w   ((word_FFA93E-$1000000)).w,d2
 		bge.s   loc_E608
 		addq.w  #1,((unk_FFA940-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		move.w  ((unk_FFA942-$1000000)).w,d0
 		move.w  ((unk_FFA940-$1000000)).w,d2
 		move.w  d2,d1
@@ -11280,9 +11280,9 @@ loc_E6DC:
 		move.w  #$C084,4(a0)
 loc_E712:
 		subq.w  #1,d1
-		bne.s   return_E718
+		bne.s   locret_E718
 		moveq   #$14,d1
-return_E718:
+locret_E718:
 		rts
 
 	; End of function sub_E67A
@@ -11674,8 +11674,8 @@ loc_EAC4:
 		cmpi.b  #$FF,1(a2)
 		beq.s   loc_EAE4
 		move.b  #1,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EAE4:
 		btst    #3,(CURRENT_PLAYER_INPUT).l
@@ -11683,15 +11683,15 @@ loc_EAE4:
 		cmpi.b  #$FF,2(a2)
 		beq.s   loc_EB04
 		move.b  #2,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EB04:
 		btst    #0,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EB1A
 		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EB1A:
 		btst    #1,(CURRENT_PLAYER_INPUT).l
@@ -11699,8 +11699,8 @@ loc_EB1A:
 		cmpi.b  #$FF,3(a2)
 		beq.s   loc_EB3A
 		move.b  #3,((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EB3A:
 		btst    #4,(CURRENT_PLAYER_INPUT).l
@@ -11869,8 +11869,8 @@ loc_ECAC:
 		bsr.w   sub_EEEC
 loc_ECDA:
 		move.w  d0,((unk_FFC1C4-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bsr.w   sub_EEAC
 loc_ECE6:
 		btst    #1,(CURRENT_PLAYER_INPUT).l
@@ -11891,8 +11891,8 @@ loc_ECE6:
 		bsr.w   sub_EEEC
 loc_ED1A:
 		move.w  d0,((unk_FFC1C4-$1000000)).w
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bsr.w   sub_EEAC
 loc_ED26:
 		btst    #4,(CURRENT_PLAYER_INPUT).l
@@ -12168,7 +12168,7 @@ loc_EFDA:
 		moveq   #5,d7
 loc_EFF4:
 		move.b  (a0)+,d0
-		bmi.w   return_F068
+		bmi.w   locret_F068
 		bclr    #6,d0
 		beq.s   loc_F006
 		move.w  ((unk_FFC0B6-$1000000)).w,-2(a1)
@@ -12204,7 +12204,7 @@ loc_F006:
 		lea     $54(a1),a1
 		move.w  (sp)+,d7
 		dbf     d7,loc_EFF4
-return_F068:
+locret_F068:
 		rts
 
 	; End of function sub_EF98
@@ -13580,10 +13580,10 @@ loc_FC48:
 		cmpi.w  #7,d3
 		bge.s   loc_FC8C
 		move.w  #0,4(a1)
-		bra.s   return_FC92
+		bra.s   locret_FC92
 loc_FC8C:
 		move.w  #$C03B,4(a1)
-return_FC92:
+locret_FC92:
 		rts
 
 	; End of function sub_FBF4
@@ -13614,9 +13614,9 @@ loc_FCCC:
 loc_FCDA:
 		move.w  (sp)+,d3
 		tst.l   ((unk_FFB4C0-$1000000)).w
-		beq.w   return_FD56
-		trap    #0
-		dc.w $42
+		beq.w   locret_FD56
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		moveq   #$14,d3
 		movem.w d1-d7,-(sp)
 		clr.w   d1
@@ -13655,7 +13655,7 @@ loc_FD38:
 loc_FD4E:
 		dbf     d7,loc_FD10
 		movem.w (sp)+,d1-d7
-return_FD56:
+locret_FD56:
 		rts
 
 	; End of function sub_FC94

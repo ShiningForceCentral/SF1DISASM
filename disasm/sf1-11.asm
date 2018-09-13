@@ -11330,7 +11330,7 @@ loc_D2F06:
 		clr.w   d0
 		move.b  (a3)+,d0
 		cmpi.b  #$FF,d0
-		beq.s   return_D2F4E
+		beq.s   locret_D2F4E
 		cmpi.b  #$FE,d0
 		bne.s   loc_D2F1E
 		addi.w  #$12,d5
@@ -11359,7 +11359,7 @@ loc_D2F3A:
 loc_D2F48:
 		bsr.w   sub_D2F50
 		bra.s   loc_D2F06
-return_D2F4E:
+locret_D2F4E:
 		rts
 
 	; End of function sub_D2F02

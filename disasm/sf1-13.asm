@@ -179,13 +179,13 @@ loc_1240D2:     move.w  (a6)+,d0
 		move.w  d3,((unk_FFBC78-$1000000)).w
 		move.w  #$64,((unk_FFBC7A-$1000000)).w 
 		move.w  #$65,((unk_FFBC7E-$1000000)).w 
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		clr.l   (dword_FF0EF6).l
 		jsr     (j_WaitForVInt).l
-		trap    #0
-		dc.w 6
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ATTACK
 		jsr     (j_DisableDisplayAndInterrupts).w
 		lea     (FF3000_LOADING_SPACE).l,a0
 		move.w  #$7FF,d0
@@ -432,9 +432,9 @@ loc_124502:
 		move.w  d1,-(sp)
 		andi.w  #2,d1
 		movem.w (sp)+,d1
-		beq.s   return_124514
+		beq.s   locret_124514
 		move.w  #$7530,((unk_FFBC7A-$1000000)).w
-return_124514:
+locret_124514:
 		
 		rts
 
@@ -465,9 +465,9 @@ loc_124550:
 		move.w  d1,-(sp)
 		andi.w  #2,d1
 		movem.w (sp)+,d1
-		beq.s   return_124562
+		beq.s   locret_124562
 		move.w  #$7530,((unk_FFBC7E-$1000000)).w
-return_124562:
+locret_124562:
 		
 		rts
 
@@ -627,8 +627,8 @@ loc_12472A:     tst.b   (P1_INPUT).l
 		bne.s   loc_12473C
 		jsr     (j_WaitForVInt).l
 		dbf     d0,loc_12472A
-loc_12473C:     trap    #0
-		dc.w $FD
+loc_12473C:     trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).w
 		movem.l a5-a6,-(sp)
 		jsr     sub_8024
@@ -805,8 +805,8 @@ loc_124922:
 		lea     unk_125C3E(pc), a0
 		jsr     (j_DecompressGraphics).l
 		lea     (FF3000_LOADING_SPACE).l,a0
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		moveq   #3,d7
 loc_12493C:
 		movem.l a0/a5,-(sp)
@@ -879,13 +879,13 @@ loc_1249DC:     move.w  ((BATTLE_MEMBER_INDEX-$1000000)).w,d0
 		add.w   d1,d1
 		move.w  off_124A14(pc,d1.w),d1
 		jmp     off_124A14(pc,d1.w)
-off_124A14:     dc.w return_124B20-off_124A14
+off_124A14:     dc.w locret_124B20-off_124A14
 		dc.w loc_124A1A-off_124A14
 		dc.w loc_124B4C-off_124A14
 loc_124A1A:     cmpi.w  #$FC19,d7
 		beq.w   loc_124B22
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.b  (FADING_COUNTER_MAX).l,d0
 		move.w  d0,-(sp)
 		move.b  #1,(FADING_COUNTER_MAX).l
@@ -942,11 +942,11 @@ loc_124A70:     move.w  d0,-(sp)
 		move.w  ((BATTLE_MEMBER_INDEX-$1000000)).w,d0
 		jsr     j_GetHPFromForceID
 		tst.w   d1
-		bne.s   return_124B20
+		bne.s   locret_124B20
 		move.w  d0,(a5)+
 		move.w  #$FFFF,(a5)
 		bsr.w   sub_124C58
-return_124B20:  rts
+locret_124B20:  rts
 loc_124B22:     move.w  ((BATTLE_MEMBER_INDEX-$1000000)).w,d0
 		move.w  d0,(a5)+
 		move.w  #$FFFF,(a5)
@@ -958,8 +958,8 @@ loc_124B22:     move.w  ((BATTLE_MEMBER_INDEX-$1000000)).w,d0
 		move.w  #$B8,d3 
 		move.w  #$80,d4 
 		bra.w   loc_126CF0
-loc_124B4C:     trap    #0
-		dc.w $65
+loc_124B4C:     trap    #SOUND_COMMAND
+		dc.w SFX_HEALING
 		rts
 loc_124B52:     move.w  ((word_FFBC72-$1000000)).w,d0
 		move.w  (a6)+,d1
@@ -977,13 +977,13 @@ loc_124B52:     move.w  ((word_FFBC72-$1000000)).w,d0
 		add.w   d1,d1
 		move.w  off_124B8A(pc,d1.w),d1
 		jmp     off_124B8A(pc,d1.w)
-off_124B8A:     dc.w return_124C3A-off_124B8A
+off_124B8A:     dc.w locret_124C3A-off_124B8A
 		dc.w loc_124B90-off_124B8A
 		dc.w loc_124C52-off_124B8A
 loc_124B90:     cmpi.w  #$FC19,d7
 		beq.w   loc_124C3C
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.b  (FADING_COUNTER_MAX).l,d0
 		move.w  d0,-(sp)
 		move.b  #1,(FADING_COUNTER_MAX).l
@@ -1020,11 +1020,11 @@ loc_124BD6:     move.w  d0,-(sp)
 		move.w  ((word_FFBC72-$1000000)).w,d0
 		jsr     j_GetHPFromForceID
 		tst.w   d1
-		bne.s   return_124C3A
+		bne.s   locret_124C3A
 		move.w  d0,(a5)+
 		move.w  #$FFFF,(a5)
 		bsr.w   sub_124D46
-return_124C3A:  rts
+locret_124C3A:  rts
 loc_124C3C:     move.w  ((word_FFBC72-$1000000)).w,d0
 		move.w  d0,(a5)+
 		move.w  #$FFFF,(a5)
@@ -1032,8 +1032,8 @@ loc_124C3C:     move.w  ((word_FFBC72-$1000000)).w,d0
 		moveq   #$48,d3 
 		moveq   #$70,d4 
 		bra.w   loc_126CF0
-loc_124C52:     trap    #0
-		dc.w $65
+loc_124C52:     trap    #SOUND_COMMAND
+		dc.w SFX_HEALING
 		rts
 
 ; =============== S U B R O U T I N E =======================================
@@ -1202,9 +1202,9 @@ sub_124DCE:
 		jsr     j_IncreaseEXPFromForceID
 		jsr     j_GetEXPFromForceID
 		cmpi.w  #$64,d1 
-		blt.s   return_124DEC
+		blt.s   locret_124DEC
 		jsr     j_LevelUp
-return_124DEC:
+locret_124DEC:
 		
 		rts
 
@@ -1235,13 +1235,13 @@ loc_124E02:     move.w  (a6)+,d0
 		jsr     sub_124EA0(pc)
 		nop
 		cmpi.w  #$12,(a6)
-		beq.s   return_124E42
+		beq.s   locret_124E42
 		cmpi.w  #$F,(a6)
-		beq.s   return_124E42
+		beq.s   locret_124E42
 		cmpi.w  #$B,(a6)
-		beq.s   return_124E42
+		beq.s   locret_124E42
 		jsr     (sub_30C).l
-return_124E42:  rts
+locret_124E42:  rts
 loc_124E44:     move.w  (a6)+,d0
 		move.w  (a6)+,((TEXT_NAME_INDEX-$1000000)).w
 		move.w  (a6)+,((word_FFF846-$1000000)).w
@@ -1262,7 +1262,7 @@ loc_124E44:     move.w  (a6)+,d0
 		cmpi.w  #$B,(a6)
 		beq.s   loc_124E8A
 		jsr     (sub_30C).l
-loc_124E8A:     bra.s   return_124E9E
+loc_124E8A:     bra.s   locret_124E9E
 loc_124E8C:     clr.w   d0
 		move.b  ((unk_FF9C05-$1000000)).w,d0
 		moveq   #8,d1
@@ -1270,7 +1270,7 @@ loc_124E8C:     clr.w   d0
 		clr.w   d0
 		bset    d1,d0
 		bsr.w   sub_124EB8
-return_124E9E:  rts
+locret_124E9E:  rts
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -1280,7 +1280,7 @@ sub_124EA0:
 		bne.s   loc_124EB0
 		move.w  #$1EA,d0
 		trap    #8
-		bra.s   return_124ECA
+		bra.s   locret_124ECA
 loc_124EB0:
 		moveq   #8,d1
 		sub.w   d0,d1
@@ -1294,10 +1294,10 @@ loc_124EB0:
 
 sub_124EB8:
 		tst.b   (P1_INPUT).l    
-		bne.s   return_124ECA
+		bne.s   locret_124ECA
 		jsr     (j_WaitForVInt).l
 		dbf     d0,sub_124EB8
-return_124ECA:
+locret_124ECA:
 		
 		rts
 
@@ -1518,12 +1518,12 @@ loc_1250F6:
 		bsr.w   sub_1255CC
 		bset    #3,((byte_FFB4D2-$1000000)).w
 		cmpi.w  #$FFFF,((BATTLE_MEMBER_INDEX-$1000000)).w
-		beq.s   return_12518A
+		beq.s   locret_12518A
 		move.w  ((word_FFBC76-$1000000)).w,d0
 		cmpi.w  #$FFFF,d0
-		beq.s   return_12518A
+		beq.s   locret_12518A
 		bsr.w   sub_12634C
-return_12518A:
+locret_12518A:
 		
 		rts
 
@@ -1827,9 +1827,9 @@ loc_125478:
 
 sub_125496:
 		tst.b   ((byte_FFB4D1-$1000000)).w
-		beq.s   return_1254A2
+		beq.s   locret_1254A2
 		jsr     (j_WaitForVInt).l
-return_1254A2:
+locret_1254A2:
 		
 		rts
 
@@ -4748,7 +4748,7 @@ byte_12603E:    dc.b $10
 
 sub_126100:
 		tst.b   (byte_FFB4D1).l
-		bne.s   return_126130
+		bne.s   locret_126130
 		move.b  #1,(byte_FFB4D1).l
 		lea     (unk_FFD000).l,a0
 		lea     (loc_E000).l,a1
@@ -4756,7 +4756,7 @@ sub_126100:
 		move.w  #2,d1
 		jsr     (sub_278).l
 		jsr     (j_SetVIntParam3).l
-return_126130:
+locret_126130:
 		
 		rts
 
@@ -5066,7 +5066,7 @@ loc_126424:
 		dbf     d7,loc_126424
 loc_12642A:
 		move.w  (sp)+,d0
-		bmi.w   return_12647C
+		bmi.w   locret_12647C
 		lea     (FF3000_LOADING_SPACE).l,a1
 		lea     (unk_FF6000).l,a0
 		move.w  #$2FFF,d7
@@ -5100,16 +5100,16 @@ loc_126462:
 		move.l  (a3)+,(a1)+
 		move.l  (a3)+,(a1)+
 		move.l  (a3)+,(a1)+
-return_12647C:
+locret_12647C:
 		
 		rts
 
 	; End of function sub_1263E8
 
 loc_12647E:     tst.b   ((byte_FFB5BC-$1000000)).w
-		bne.w   return_1266BE
+		bne.w   locret_1266BE
 		tst.b   d0
-		bmi.w   return_1266BE
+		bmi.w   locret_1266BE
 		move.w  d0,d7
 		add.w   d7,d7
 		move.w  off_126498(pc,d7.w),d7
@@ -5162,15 +5162,15 @@ off_126498:     dc.w loc_126534-off_126498
 		dc.w loc_126624-off_126498
 		dc.w loc_12662A-off_126498
 		dc.w loc_126630-off_126498
-		dc.w return_126532-off_126498
+		dc.w locret_126532-off_126498
 		dc.w loc_126636-off_126498
 		dc.w loc_12662A-off_126498
 		dc.w loc_12662A-off_126498
 		dc.w loc_126630-off_126498
-		dc.w return_126532-off_126498
+		dc.w locret_126532-off_126498
 		dc.w loc_12666C-off_126498
 		dc.w loc_12663C-off_126498
-		dc.w return_126532-off_126498
+		dc.w locret_126532-off_126498
 		dc.w loc_126642-off_126498
 		dc.w loc_126648-off_126498
 		dc.w loc_126642-off_126498
@@ -5191,7 +5191,7 @@ off_126498:     dc.w loc_126534-off_126498
 		dc.w loc_126EFA-off_126498
 		dc.w loc_126654-off_126498
 		dc.w loc_12665A-off_126498
-return_126532:  rts
+locret_126532:  rts
 loc_126534:     moveq   #$FFFFFF81,d3
 		bra.w   loc_126DFE
 loc_12653A:     moveq   #1,d3
@@ -5292,11 +5292,11 @@ loc_126654:     moveq   #2,d3
 		bra.w   loc_126E9A
 loc_12665A:     moveq   #3,d3
 		bra.w   loc_126E9A
-loc_126660:     trap    #0
-		dc.w $5A
+loc_126660:     trap    #SOUND_COMMAND
+		dc.w SFX_CRIT
 		rts
-loc_126666:     trap    #0
-		dc.w $59
+loc_126666:     trap    #SOUND_COMMAND
+		dc.w SFX_DEMON_SMILE
 		rts
 loc_12666C:     moveq   #$FFFFFF81,d3
 		bra.w   loc_126B48
@@ -5307,8 +5307,8 @@ loc_12667A:     moveq   #1,d3
 		bra.w   loc_126C30
 loc_126680:     moveq   #2,d3
 		bra.w   loc_126C30
-loc_126686:     trap    #0
-		dc.w $4D
+loc_126686:     trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 loc_12668A:     add.w   d2,d2
 		move.w  word_1266C0(pc,d2.w),d4
 		moveq   #4,d7
@@ -5321,7 +5321,7 @@ loc_126692:     move.w  d4,(RAM_START).l
 		moveq   #5,d0
 		jsr     (j_Sleep).l
 		dbf     d7,loc_126692
-return_1266BE:  rts
+locret_1266BE:  rts
 word_1266C0:    dc.w $6CC
 		dc.w $8E
 		dc.w $E04
@@ -5870,8 +5870,8 @@ loc_126B42:
 	; End of function sub_126B20
 
 loc_126B48:     move.w  d3,-(sp)
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		lea     plt_BlazeEffect(pc), a0
 		lea     (word_FF002C).l,a1
 		move.l  (a0)+,(a1)+
@@ -5937,8 +5937,8 @@ loc_126C06:     bsr.s   sub_126BA8
 plt_DemonBlazeEffect:
 		incbin "data/graphics/tech/palettes/plt-demonblazeeffect.bin"
 loc_126C30:     movem.l d3,-(sp)
-		trap    #0
-		dc.w $5F
+		trap    #SOUND_COMMAND
+		dc.w SFX_FIRE_BREATH
 		bsr.w   sub_1267AC
 		lea     plt_DemonBlazeEffect(pc), a0
 		lea     (word_FF002C).l,a1
@@ -6107,8 +6107,8 @@ loc_126DFE:     move.w  d3,-(sp)
 plt_LyleAttackEffect:
 		incbin "data/graphics/tech/palettes/plt-lyleattackeffect.bin"
 						; Armed Skeleton/Lyle effect palette
-loc_126E82:     trap    #0
-		dc.w $60
+loc_126E82:     trap    #SOUND_COMMAND
+		dc.w SFX_MACHINE_GUN
 		lea     plt_LyleAttackEffect(pc), a0
 		moveq   #$F,d4
 		bra.w   loc_126EA0
@@ -6200,8 +6200,8 @@ loc_126F78:     bsr.w   sub_1267AC
 		move.w  (a0)+,(a1)+
 		jsr     (j_StoreVDPCommandster).l
 		move.b  #0,((byte_FFB5BE-$1000000)).w
-loc_126F98:     trap    #0
-		dc.w $67
+loc_126F98:     trap    #SOUND_COMMAND
+		dc.w SFX_ELECTRIC_BREATH
 		movea.l (off_124058).l,a0
 		move.w  #$B800,d0
 		movea.w d0,a1
@@ -6227,8 +6227,8 @@ loc_126FDA:     bsr.w   sub_1267AC
 		bra.w   loc_126F98
 plt_LaserEffect:incbin "data/graphics/tech/palettes/plt-lasereffect.bin"
 loc_127008:     moveq   #0,d3
-loc_12700A:     trap    #0
-		dc.w $5D
+loc_12700A:     trap    #SOUND_COMMAND
+		dc.w SFX_LASER
 		bsr.w   sub_1267AC
 		lea     plt_LaserEffect(pc), a0
 		lea     (word_FF002C).l,a1
@@ -6249,7 +6249,7 @@ loc_12702C:     movea.l (off_124054).l,a0
 		clr.b   ((byte_FFB5BD-$1000000)).w
 		move.b  #1,((byte_FFB5BC-$1000000)).w
 		rts
-off_127060:     dc.l return_EEE
+off_127060:     dc.l locret_EEE
 		dc.b  $E
 		dc.b $EA 
 		dc.b  $E
@@ -6258,8 +6258,8 @@ off_127060:     dc.l return_EEE
 		dc.b $A0 
 unk_12706A:     dc.b $76 
 		dc.b   1
-loc_12706C:     trap    #0
-		dc.w $5D
+loc_12706C:     trap    #SOUND_COMMAND
+		dc.w SFX_LASER
 		bsr.w   sub_1267AC
 		lea     off_127060(pc), a0
 		lea     (word_FF002C).l,a1
@@ -6271,8 +6271,8 @@ loc_12706C:     trap    #0
 		bra.w   loc_12702C
 plt_ShellExplosionEffect:
 		incbin "data/graphics/tech/palettes/plt-shellexplosioneffect.bin"
-loc_12709C:     trap    #0
-		dc.w $4E
+loc_12709C:     trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		bsr.w   sub_1267AC
 		lea     plt_ShellExplosionEffect(pc), a0
 		lea     (word_FF002C).l,a1
@@ -6303,8 +6303,8 @@ loc_1270FE:     lea     plt_MusashiAttackEffect(pc), a0
 		move.w  (a0)+,(a1)+
 		jsr     (j_StoreVDPCommandster).l
 		move.b  #$14,((byte_FFB5BF-$1000000)).w
-loc_12711A:     trap    #0
-		dc.w $69
+loc_12711A:     trap    #SOUND_COMMAND
+		dc.w SFX_ENERGY_WAVE
 		movea.l (off_124050).l,a0
 		move.w  #$B800,d0
 		movea.w d0,a1
@@ -6327,8 +6327,8 @@ loc_12711A:     trap    #0
 		dc.b $80 
 		dc.b   0
 		dc.b $40 
-loc_12715C:     trap    #0
-		dc.w $69
+loc_12715C:     trap    #SOUND_COMMAND
+		dc.w SFX_ENERGY_WAVE
 		bsr.w   sub_1267AC
 		lea     plt_MusashiAttackEffect(pc), a0
 		lea     (word_FF002C).l,a1
@@ -6344,8 +6344,8 @@ plt_FireBreathEffect:
 ; =============== S U B R O U T I N E =======================================
 
 sub_12718C:
-		trap    #0
-		dc.w $5F
+		trap    #SOUND_COMMAND
+		dc.w SFX_FIRE_BREATH
 		move.w  d3,-(sp)
 		bsr.w   sub_126908
 		lea     plt_FireBreathEffect(pc), a0
@@ -6438,9 +6438,9 @@ off_127258:     dc.w unk_127666-off_127258
 		dc.w loc_128536-off_127258
 		dc.w loc_127E74-off_127258
 		dc.w loc_127A6E-off_127258
-		dc.w return_127284-off_127258
-		dc.w return_127284-off_127258
-		dc.w return_127284-off_127258
+		dc.w locret_127284-off_127258
+		dc.w locret_127284-off_127258
+		dc.w locret_127284-off_127258
 		dc.w loc_128730-off_127258
 		dc.w loc_128798-off_127258
 		dc.w loc_1288B4-off_127258
@@ -6448,7 +6448,7 @@ off_127258:     dc.w unk_127666-off_127258
 		dc.w loc_128D04-off_127258
 		dc.w loc_128E16-off_127258
 		dc.w loc_128F04-off_127258
-return_127284:  rts
+locret_127284:  rts
 loc_127286:     clr.w   (RAM_START).l   
 		lea     ((unk_FFB5C0-$1000000)).w,a0
 		moveq   #$22,d0 
@@ -6560,7 +6560,7 @@ loc_1273D8:     jsr     (j_StoreVDPCommandster).l
 loc_1273E0:     moveq   #$A,d6
 		jsr     (j_UpdateRandomSeed).w
 		lsr.w   #1,d7
-		bne.w   return_127438
+		bne.w   locret_127438
 		tst.b   ((byte_FFB5BE-$1000000)).w
 		bpl.s   loc_1273F8
 		move.w  #$B0,d5 
@@ -6584,9 +6584,9 @@ loc_1273FC:     moveq   #$10,d6
 		addi.w  #$80,d6 
 loc_12742E:     moveq   #$A,d4
 		bsr.w   sub_126B20
-		trap    #0
-		dc.w $57
-return_127438:  rts
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOLT_SPELL
+locret_127438:  rts
 unk_12743A:     dc.b   0
 		dc.b   4
 		dc.w 0
@@ -7874,7 +7874,7 @@ loc_1279C0:     jsr     (j_StoreVDPCommandster).l
 loc_1279D4:     moveq   #8,d6
 		jsr     (j_UpdateRandomSeed).w
 		lsr.w   #1,d7
-		bne.w   return_127A3A
+		bne.w   locret_127A3A
 		moveq   #6,d6
 		jsr     (j_UpdateRandomSeed).w
 		lsr.w   #1,d7
@@ -7902,10 +7902,10 @@ loc_127A16:     moveq   #$40,d6
 		move.w  d0,d6
 		move.w  d1,d5
 		bsr.w   sub_126B20
-		trap    #0
-		dc.w $61
+		trap    #SOUND_COMMAND
+		dc.w SFX_TREASURE_CHEST
 		move.w  #$EE,(RAM_START).l 
-return_127A3A:  rts
+locret_127A3A:  rts
 unk_127A3C:     dc.b $F0 
 		dc.b $E0 
 		dc.b   0
@@ -8018,10 +8018,10 @@ loc_127B24:     add.w   (a0),d0
 		clr.b   ((byte_FFB5BC-$1000000)).w
 		bsr.w   sub_126982
 loc_127B38:     jsr     (j_StoreVDPCommandster).w
-		bne.s   return_127B4A
+		bne.s   locret_127B4A
 		jsr     (sub_288).l
 		jsr     (j_SetVIntParam3).l
-return_127B4A:  rts
+locret_127B4A:  rts
 unk_127B4C:     dc.b $E0 
 		dc.b $E0 
 		dc.b   0
@@ -8096,10 +8096,10 @@ loc_127C02:     add.w   (a0),d0
 		clr.b   ((byte_FFB5BC-$1000000)).w
 		bsr.w   sub_126982
 loc_127C16:     jsr     (j_StoreVDPCommandster).w
-		bne.s   return_127C28
+		bne.s   locret_127C28
 		jsr     (sub_288).l
 		jsr     (j_SetVIntParam3).l
-return_127C28:  rts
+locret_127C28:  rts
 loc_127C2A:     movem.l d7,-(sp)
 		moveq   #8,d6
 		jsr     (j_UpdateRandomSeed).w
@@ -8118,8 +8118,8 @@ loc_127C2A:     movem.l d7,-(sp)
 		sub.w   d7,d5
 		movem.l (sp)+,d6
 loc_127C62:     bsr.w   sub_126B20
-		trap    #0
-		dc.w $64
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOW_MASTER
 		move.w  #$CCC,(RAM_START).l
 loc_127C72:     movem.l (sp)+,d7
 		rts
@@ -8285,8 +8285,8 @@ loc_127E2A:     moveq   #$20,d6
 		sub.w   d7,d5
 		movem.l (sp)+,d6
 		bsr.w   sub_126B20
-		trap    #0
-		dc.w $51
+		trap    #SOUND_COMMAND
+		dc.w SFX_TINKLING
 		move.w  #$A20,(RAM_START).l
 loc_127E6E:     movem.l (sp)+,d7
 		rts
@@ -8459,8 +8459,8 @@ loc_12806A:     clr.l   (a0)
 		clr.w   d7
 		move.w  #$FFD8,d4
 		movem.l d0,-(sp)
-		trap    #0
-		dc.w $51
+		trap    #SOUND_COMMAND
+		dc.w SFX_TINKLING
 		move.w  #$EA0,(RAM_START).l
 		movem.l (sp)+,d0
 loc_12808A:     lsr.w   #2,d7
@@ -8810,7 +8810,7 @@ loc_12833A:     movem.l (sp)+,d0/d7-a0
 		cmpi.b  #$FF,((byte_FFB5BD-$1000000)).w
 		beq.s   loc_128356
 		bsr.w   sub_12837A
-		bra.w   return_128378
+		bra.w   locret_128378
 loc_128356:     lea     ((unk_FFB5C4-$1000000)).w,a0
 		clr.w   d0
 		moveq   #$13,d7
@@ -8818,11 +8818,11 @@ loc_12835E:     add.w   (a0),d0
 		addq.l  #8,a0
 		dbf     d7,loc_12835E
 		tst.w   d0
-		bne.s   return_128378
+		bne.s   locret_128378
 		clr.b   ((byte_FFB5BC-$1000000)).w
 		bsr.w   sub_126982
 		jsr     (j_StoreVDPCommandster).l
-return_128378:  rts
+locret_128378:  rts
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -9294,7 +9294,7 @@ loc_1285EC:     movem.l (sp)+,d0/d7-a0
 		addq.w  #8,a0
 		dbf     d7,loc_12859A
 		tst.b   ((byte_FFB5BD-$1000000)).w
-		bpl.s   return_128616
+		bpl.s   locret_128616
 		lea     ((unk_FFB5C4-$1000000)).w,a0
 		clr.w   d0
 		moveq   #$14,d7
@@ -9302,9 +9302,9 @@ loc_128606:     add.w   (a0),d0
 		addq.l  #8,a0
 		dbf     d7,loc_128606
 		tst.w   d0
-		bne.s   return_128616
+		bne.s   locret_128616
 		clr.b   ((byte_FFB5BC-$1000000)).w
-return_128616:  rts
+locret_128616:  rts
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -9657,8 +9657,8 @@ loc_12883E:     moveq   #3,d6
 		move.w  d7,d5
 		move.w  (sp)+,d6
 		bsr.w   sub_126B20
-		trap    #0
-		dc.w $64
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOW_MASTER
 		rts
 unk_128894:     dc.b   0
 		dc.b $90 
@@ -9693,7 +9693,7 @@ unk_1288A0:     dc.b $FC
 		dc.b   0
 		dc.b   0
 loc_1288B4:     cmpi.w  #$3C,((unk_FFB5C0-$1000000)).w 
-		beq.w   return_12890E
+		beq.w   locret_12890E
 		moveq   #$20,d0 
 		moveq   #1,d1
 		moveq   #5,d2
@@ -9719,7 +9719,7 @@ loc_128902:     lea     unk_128910(pc), a0
 		nop
 		adda.w  d7,a0
 		bsr.w   sub_12672A
-return_12890E:  rts
+locret_12890E:  rts
 unk_128910:     dc.b $A0 
 		dc.b $E0 
 		dc.b   0
@@ -9887,14 +9887,14 @@ loc_128A10:     or.w    (a0),d0
 		clr.b   ((byte_FFB5BC-$1000000)).w
 		bsr.w   sub_126982
 loc_128A24:     jsr     (j_StoreVDPCommandster).w
-		bne.s   return_128A36
+		bne.s   locret_128A36
 		jsr     (sub_288).l
 		jsr     (j_SetVIntParam3).l
-return_128A36:  rts
+locret_128A36:  rts
 loc_128A38:     cmpi.b  #$82,((byte_FFB5BE-$1000000)).w
 		beq.w   loc_128988
 		cmpi.w  #$23,((unk_FFB5C0-$1000000)).w 
-		beq.w   return_128AF2
+		beq.w   locret_128AF2
 		moveq   #$20,d0 
 		moveq   #1,d1
 		moveq   #2,d2
@@ -9949,7 +9949,7 @@ loc_128AE6:     lea     unk_128C23(pc), a0
 		nop
 loc_128AEC:     adda.w  d7,a0
 		bsr.w   sub_12672A
-return_128AF2:  rts
+locret_128AF2:  rts
 off_128AF4:     dc.l sub_10000+1
 		dc.b   2
 		dc.b   1
@@ -10920,13 +10920,13 @@ off_128FD6:     dc.w loc_129012-off_128FD6
 		dc.w loc_12A15E-off_128FD6
 		dc.w loc_12A17E-off_128FD6
 		dc.w loc_12A19E-off_128FD6
-		dc.w return_12A22E-off_128FD6
+		dc.w locret_12A22E-off_128FD6
 		dc.w loc_12A230-off_128FD6
 		dc.w loc_12A3B4-off_128FD6
 		dc.w loc_12A4BA-off_128FD6
 loc_129012:     moveq   #$32,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$32,d0 
 		jsr     (j_SetEventFlag).l
 		jsr     sub_8094
@@ -11037,8 +11037,8 @@ loc_12917C:     trap    #7
 		jsr     sub_8098
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
-loc_1291C8:     trap    #0
-		dc.w $1F
+loc_1291C8:     trap    #SOUND_COMMAND
+		dc.w MUSIC_EARTHQUAKE
 		move.l  (dword_FF0EF6).l,-(sp)
 		bsr.w   sub_12C312
 		move.l  #sub_12C36E,(dword_FF0EF6).l
@@ -11066,14 +11066,14 @@ loc_1291C8:     trap    #0
 		move.w  #$6F,d0 
 		trap    #8
 		trap    #6
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 loc_12922E:     jsr     (j_WaitForVInt).l
 		subq.w  #1,((word_FFB7C4-$1000000)).w
 		bne.s   loc_12922E
 		move.l  (sp)+,(dword_FF0EF6).l
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		jsr     sub_8094
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
@@ -11173,7 +11173,7 @@ loc_129396:     moveq   #$29,d0
 		rts
 loc_1293B6:     move.w  #$1DF,d0
 		jsr     (j_CheckEventFlag).l
-		beq.w   return_12BFCE
+		beq.w   locret_12BFCE
 		move.w  #$1DF,d0
 		jsr     (j_ClearEventFlag).l
 		jsr     sub_8094
@@ -11274,10 +11274,10 @@ loc_1294E0:     moveq   #$24,d0
 loc_129510:     move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
-		blt.s   return_129524
+		blt.s   locret_129524
 		moveq   #$FFFFFFFF,d1
 		jsr     j_SetTargetID
-return_129524:  rts
+locret_129524:  rts
 loc_129526:     moveq   #$29,d0 
 		jsr     sub_802C
 		moveq   #$39,d1 
@@ -11300,7 +11300,7 @@ loc_129546:     moveq   #$29,d0
 		rts
 loc_129566:     move.w  #$1DF,d0
 		jsr     (j_CheckEventFlag).l
-		beq.w   return_12BFCE
+		beq.w   locret_12BFCE
 		move.w  #$1DF,d0
 		jsr     (j_ClearEventFlag).l
 		jsr     sub_8094
@@ -11353,13 +11353,13 @@ loc_129608:     trap    #7
 loc_129628:     move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
-		blt.s   return_12963C
+		blt.s   locret_12963C
 		moveq   #$FFFFFFFF,d1
 		jsr     j_SetTargetID
-return_12963C:  rts
+locret_12963C:  rts
 loc_12963E:     move.w  #$1DE,d0
 		jsr     (j_CheckEventFlag).l
-		beq.w   return_12BFCE
+		beq.w   locret_12BFCE
 		move.w  #$1DE,d0
 		jsr     (j_ClearEventFlag).l
 		move.w  #$80,d2 
@@ -11396,8 +11396,8 @@ loc_12969A:     moveq   #$2F,d0
 		move.w  #0,d2
 		bsr.w   sub_12C2DC
 loc_1296CA:     move.l  (sp)+,(dword_FF0EF6).l
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		bsr.w   sub_128F98
 		moveq   #$28,d0 
 		jsr     sub_802C
@@ -11451,13 +11451,13 @@ loc_129760:     trap    #6
 loc_129778:     move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
-		blt.s   return_12978C
+		blt.s   locret_12978C
 		moveq   #$FFFFFFFF,d1
 		jsr     j_SetTargetID
-return_12978C:  rts
+locret_12978C:  rts
 loc_12978E:     moveq   #$32,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$32,d0 
 		jsr     (j_SetEventFlag).l
 		jsr     sub_8094
@@ -11623,7 +11623,7 @@ loc_1299C4:     moveq   #$29,d0
 		rts
 loc_1299E4:     move.w  #$1DF,d0
 		jsr     (j_CheckEventFlag).l
-		beq.w   return_12BFCE
+		beq.w   locret_12BFCE
 		move.w  #$1DF,d0
 		jsr     (j_ClearEventFlag).l
 		move.l  (dword_FF0EF6).l,-(sp)
@@ -11772,8 +11772,8 @@ loc_129C08:     trap    #5
 		moveq   #3,d2
 		moveq   #2,d1
 		bsr.w   loc_12C0AE
-loc_129C30:     trap    #0
-		dc.w $4E
+loc_129C30:     trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11798,8 +11798,8 @@ loc_129C6C:     moveq   #2,d0
 		trap    #8
 		trap    #6
 		jsr     sub_8030
-		trap    #0
-		dc.w $63
+		trap    #SOUND_COMMAND
+		dc.w SFX_FALLING
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11831,7 +11831,7 @@ loc_129CD4:     trap    #5
 		rts
 loc_129CE6:     moveq   #$32,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$32,d0 
 		jsr     (j_SetEventFlag).l
 		jsr     sub_8094
@@ -11878,7 +11878,7 @@ loc_129D74:     moveq   #$29,d0
 		rts
 loc_129D94:     moveq   #$33,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$33,d0 
 		jsr     (j_SetEventFlag).l
 		jsr     sub_8094
@@ -12049,7 +12049,7 @@ loc_129FE4:     moveq   #$21,d0
 		rts
 loc_12A004:     moveq   #$31,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$31,d0 
 		jsr     (j_SetEventFlag).l
 		jsr     sub_8094
@@ -12199,13 +12199,13 @@ loc_12A1E4:     moveq   #$23,d0
 loc_12A21A:     move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
-		blt.s   return_12A22E
+		blt.s   locret_12A22E
 		moveq   #$FFFFFFFF,d1
 		jsr     j_SetTargetID
-return_12A22E:  rts
+locret_12A22E:  rts
 loc_12A230:     moveq   #$30,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$30,d0 
 		jsr     (j_SetEventFlag).l
 		moveq   #$29,d0 
@@ -12289,8 +12289,8 @@ loc_12A344:     move.w  #$82,d2
 		bsr.w   sub_12C342
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
-loc_12A35C:     trap    #0
-		dc.w $4D
+loc_12A35C:     trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 		moveq   #$3C,d0 
 		jsr     (j_Sleep).l
 		moveq   #$29,d0 
@@ -12349,7 +12349,7 @@ unk_12A388:     dc.b   0
 		dc.b $FF
 loc_12A3B4:     moveq   #$32,d0 
 		jsr     (j_CheckEventFlag).l
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$32,d0 
 		jsr     (j_SetEventFlag).l
 		move.w  #$80,d2 
@@ -12439,38 +12439,38 @@ loc_12A4DA:     move.w  #1,((unk_FFB7C6-$1000000)).w
 		jmp     rjt_DialogScriptSet1(pc,d0.w)
 rjt_DialogScriptSet1:
 		dc.w loc_12A52A-rjt_DialogScriptSet1
-		dc.w return_12A560-rjt_DialogScriptSet1
-		dc.w return_12A560-rjt_DialogScriptSet1
-		dc.w return_12A560-rjt_DialogScriptSet1
-		dc.w return_12A560-rjt_DialogScriptSet1
+		dc.w locret_12A560-rjt_DialogScriptSet1
+		dc.w locret_12A560-rjt_DialogScriptSet1
+		dc.w locret_12A560-rjt_DialogScriptSet1
+		dc.w locret_12A560-rjt_DialogScriptSet1
 		dc.w loc_12A562-rjt_DialogScriptSet1
 		dc.w loc_12A598-rjt_DialogScriptSet1
-		dc.w return_12A5B4-rjt_DialogScriptSet1
+		dc.w locret_12A5B4-rjt_DialogScriptSet1
 		dc.w loc_12A5B6-rjt_DialogScriptSet1
-		dc.w return_12A5EA-rjt_DialogScriptSet1
+		dc.w locret_12A5EA-rjt_DialogScriptSet1
 		dc.w loc_12A5EC-rjt_DialogScriptSet1
 		dc.w loc_12A622-rjt_DialogScriptSet1
 		dc.w loc_12A666-rjt_DialogScriptSet1
 		dc.w loc_12A6AE-rjt_DialogScriptSet1
-		dc.w return_12A7F6-rjt_DialogScriptSet1
+		dc.w locret_12A7F6-rjt_DialogScriptSet1
 		dc.w loc_12A7F8-rjt_DialogScriptSet1
-		dc.w return_12A82E-rjt_DialogScriptSet1
+		dc.w locret_12A82E-rjt_DialogScriptSet1
 		dc.w loc_12A830-rjt_DialogScriptSet1
 		dc.w loc_12A866-rjt_DialogScriptSet1
-		dc.w return_12A8EC-rjt_DialogScriptSet1
+		dc.w locret_12A8EC-rjt_DialogScriptSet1
 		dc.w loc_12A8EE-rjt_DialogScriptSet1
-		dc.w return_12A932-rjt_DialogScriptSet1
+		dc.w locret_12A932-rjt_DialogScriptSet1
 		dc.w loc_12A934-rjt_DialogScriptSet1
 		dc.w loc_12A994-rjt_DialogScriptSet1
 		dc.w loc_12A9C6-rjt_DialogScriptSet1
-		dc.w return_12A9DA-rjt_DialogScriptSet1
+		dc.w locret_12A9DA-rjt_DialogScriptSet1
 		dc.w loc_12A9DC-rjt_DialogScriptSet1
 		dc.w loc_12AA0E-rjt_DialogScriptSet1
 		dc.w loc_12AA40-rjt_DialogScriptSet1
 		dc.w loc_12AB7E-rjt_DialogScriptSet1
 loc_12A52A:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12485,10 +12485,10 @@ loc_12A54E:     trap    #5
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
-return_12A560:  rts
+locret_12A560:  rts
 loc_12A562:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12505,17 +12505,17 @@ loc_12A586:     trap    #5
 		rts
 loc_12A598:     move.w  #$81,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		trap    #5
 		move.w  #$87,d0 
 		trap    #8
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
-return_12A5B4:  rts
+locret_12A5B4:  rts
 loc_12A5B6:     move.w  #$82,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12529,10 +12529,10 @@ loc_12A5DA:     trap    #5
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
-return_12A5EA:  rts
+locret_12A5EA:  rts
 loc_12A5EC:     move.w  #$82,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12549,7 +12549,7 @@ loc_12A610:     trap    #5
 		rts
 loc_12A622:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$1F,d0
 		jsr     sub_802C
 		move.w  #$80,d2 
@@ -12573,23 +12573,23 @@ loc_12A666:     move.w  #$85,d2
 		moveq   #$FFFFFF80,d0
 		jsr     j_GetForceMemberHP
 		tst.w   d1
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$30,d0 
 		jsr     (j_SetEventFlag).l
 		bra.w   loc_12A6A6
 loc_12A68C:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$FFFFFF85,d0
 		jsr     j_GetForceMemberHP
 		tst.w   d1
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 loc_12A6A6:     moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
 loc_12A6AE:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$20,d0 
 		jsr     sub_802C
 		moveq   #$71,d1 
@@ -12631,8 +12631,8 @@ loc_12A6E6:     move.w  #$AF,d0
 		trap    #8
 		trap    #6
 		jsr     sub_8030
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		moveq   #$28,d0 
 		jsr     sub_802C
 		moveq   #$6E,d1 
@@ -12658,8 +12658,8 @@ loc_12A6E6:     move.w  #$AF,d0
 		trap    #5
 		move.w  #$B4,d0 
 		trap    #8
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		bsr.w   sub_128F98
 		trap    #6
 		jsr     sub_8030
@@ -12682,10 +12682,10 @@ loc_12A7D0:     moveq   #$20,d0
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
-return_12A7F6:  rts
+locret_12A7F6:  rts
 loc_12A7F8:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12700,10 +12700,10 @@ loc_12A81C:     trap    #5
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
-return_12A82E:  rts
+locret_12A82E:  rts
 loc_12A830:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12720,7 +12720,7 @@ loc_12A854:     trap    #5
 		rts
 loc_12A866:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$24,d0 
 		jsr     sub_802C
 		move.w  #$80,d2 
@@ -12735,8 +12735,8 @@ loc_12A892:     trap    #5
 		trap    #8
 		bsr.w   sub_128F98
 		jsr     sub_8030
-		trap    #0
-		dc.w $68
+		trap    #SOUND_COMMAND
+		dc.w SFX_METALLIC
 		moveq   #$25,d0 
 		jsr     sub_802C
 		trap    #7
@@ -12758,10 +12758,10 @@ loc_12A8D0:     move.w  #$80,d2
 loc_12A8E4:     moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
-return_12A8EC:  rts
+locret_12A8EC:  rts
 loc_12A8EE:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$21,d0 
 		jsr     sub_802C
 		move.w  #$80,d2 
@@ -12779,10 +12779,10 @@ loc_12A91A:     trap    #5
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
-return_12A932:  rts
+locret_12A932:  rts
 loc_12A934:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		jsr     sub_8094
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
@@ -12807,7 +12807,7 @@ loc_12A982:     trap    #5
 		rts
 loc_12A994:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$22,d0 
 		jsr     sub_802C
 		moveq   #$73,d1 
@@ -12822,14 +12822,14 @@ loc_12A994:     move.w  #$80,d2
 		rts
 loc_12A9C6:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
-return_12A9DA:  rts
+locret_12A9DA:  rts
 loc_12A9DC:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$23,d0 
 		jsr     sub_802C
 		moveq   #$74,d1 
@@ -12844,7 +12844,7 @@ loc_12A9DC:     move.w  #$80,d2
 		rts
 loc_12AA0E:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$26,d0 
 		jsr     sub_802C
 		moveq   #$76,d1 
@@ -12859,7 +12859,7 @@ loc_12AA0E:     move.w  #$80,d2
 		rts
 loc_12AA40:     move.w  #$80,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$28,d0 
 		jsr     sub_802C
 		moveq   #$6E,d1 
@@ -12954,7 +12954,7 @@ loc_12AB7E:     move.w  #$80,d2
 		beq.s   loc_12AB9E
 		move.w  #$82,d2 
 		bsr.w   sub_12BFD0
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 loc_12AB9E:     clr.w   d2
 		moveq   #$FFFFFF80,d0
 		jsr     j_GetForceMemberHP
@@ -12965,7 +12965,7 @@ loc_12AB9E:     clr.w   d2
 		moveq   #$FFFFFF82,d0
 		jsr     j_GetForceMemberHP
 		add.w   d1,d2
-		bne.w   return_12BFCE
+		bne.w   locret_12BFCE
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
 		rts
@@ -13005,8 +13005,8 @@ off_12ABE0:     dc.w loc_12AC1C-off_12ABE0
 		dc.w loc_12B490-off_12ABE0
 		dc.w loc_12B5E8-off_12ABE0
 		dc.w loc_12B638-off_12ABE0
-loc_12AC1C:     trap    #0
-		dc.w $1F
+loc_12AC1C:     trap    #SOUND_COMMAND
+		dc.w MUSIC_EARTHQUAKE
 		move.l  (dword_FF0EF6).l,-(sp)
 		bsr.w   sub_12C312
 		move.l  #sub_12C36E,(dword_FF0EF6).l
@@ -13020,8 +13020,8 @@ loc_12AC50:     jsr     (j_WaitForVInt).l
 		subq.w  #1,((word_FFB7C4-$1000000)).w
 		bne.s   loc_12AC50
 		move.l  (sp)+,(dword_FF0EF6).l
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		moveq   #$29,d0 
 		jsr     sub_802C
 		moveq   #$39,d1 
@@ -13280,8 +13280,8 @@ loc_12AFD8:     moveq   #$29,d0
 		trap    #6
 		jsr     sub_8030
 		jsr     (j_FadeOutToBlack).l
-		trap    #0
-		dc.w $5C
+		trap    #SOUND_COMMAND
+		dc.w SFX_TRAIN_WHISTLE
 		moveq   #$78,d0 
 		jsr     (j_Sleep).l
 		move.b  #1,((CURRENT_REGION-$1000000)).w
@@ -13319,8 +13319,8 @@ loc_12B05C:     move.b  #4,((CURRENT_REGION-$1000000)).w
 loc_12B074:     move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		jsr     j_InitBattle
 		jsr     sub_203A0
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		moveq   #$14,d0
 		jmp     (j_Sleep).l
 loc_12B092:     moveq   #$28,d0 
@@ -13603,8 +13603,8 @@ loc_12B490:     moveq   #$29,d0
 		trap    #8
 		trap    #6
 		jsr     sub_8030
-		trap    #0
-		dc.w $1F
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_EARTHQUAKE
 		jsr     sub_8094
 		move.w  #$10,d1
 		move.w  #3,d0
@@ -13649,8 +13649,8 @@ loc_12B54A:     jsr     (j_WaitForVInt).l
 		subq.w  #1,((word_FFB7C4-$1000000)).w
 		bne.s   loc_12B54A
 		move.l  (sp)+,(dword_FF0EF6).l
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		jsr     j_InitBattle
@@ -13902,8 +13902,8 @@ loc_12B7DC:     moveq   #$3C,d0
 		move.w  #2,d2
 		move.w  #$95,d3 
 		bsr.w   sub_12C2BE
-loc_12B808:     trap    #0
-		dc.w $64
+loc_12B808:     trap    #SOUND_COMMAND
+		dc.w SFX_BOW_MASTER
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
 		move.w  #0,d2
@@ -13914,8 +13914,8 @@ loc_12B808:     trap    #0
 		move.w  #0,d2
 		move.w  #$95,d3 
 		bsr.w   sub_12C2BE
-loc_12B830:     trap    #0
-		dc.w $65
+loc_12B830:     trap    #SOUND_COMMAND
+		dc.w SFX_HEALING
 		moveq   #$3C,d0 
 		jsr     (j_Sleep).l
 		move.w  #0,d2
@@ -13926,12 +13926,12 @@ loc_12B830:     trap    #0
 		move.w  #1,d2
 		move.w  #$95,d3 
 		bsr.w   sub_12C2BE
-loc_12B858:     trap    #0
-		dc.w $58
+loc_12B858:     trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $57
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOLT_SPELL
 		bsr.w   sub_1267AC
 		movea.l (off_BC018).l,a0
 		lea     (unk_FF0020).l,a1
@@ -13992,15 +13992,15 @@ loc_12B87A:     move.l  (a0),$80(a1)
 		moveq   #5,d0
 		jsr     (j_Sleep).l
 		bsr.w   sub_126982
-		trap    #0
-		dc.w $1F
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_EARTHQUAKE
 		bsr.w   sub_12C312
 		move.l  #sub_12C36E,(dword_FF0EF6).l
 		move.w  #$3C,((word_FFB7C4-$1000000)).w 
 		moveq   #$1E,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $54
+		trap    #SOUND_COMMAND
+		dc.w SFX_MONSTER_3
 		move.w  #$5A,((word_FFB7C4-$1000000)).w 
 		moveq   #$1E,d0
 		jsr     (j_Sleep).l
@@ -14017,16 +14017,16 @@ loc_12B9AA:     clr.w   d0
 		jsr     (j_Sleep).l
 		movea.l (sp)+,a0
 		bra.s   loc_12B9AA
-loc_12B9C8:     trap    #0
-		dc.w $FD
+loc_12B9C8:     trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 loc_12B9CC:     jsr     (j_WaitForVInt).l
 		subq.w  #1,((word_FFB7C4-$1000000)).w
 		bne.s   loc_12B9CC
 		move.w  #$B4,d0 
 		jsr     (j_Sleep).l
 		move.w  #$1E,((word_FFB7C4-$1000000)).w
-		trap    #0
-		dc.w 6
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ATTACK
 		moveq   #$29,d0 
 		jsr     sub_802C
 		moveq   #$39,d1 
@@ -14076,8 +14076,8 @@ loc_12BA0E:     jsr     (j_WaitForVInt).l
 		trap    #5
 		move.w  #$F9,d0 
 		trap    #8
-		trap    #0
-		dc.w $4D
+		trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 		lea     (unk_FF0020).l,a0
 		lea     (unk_FF00A0).l,a1
 		move.l  (a0)+,(a1)+
@@ -14089,8 +14089,8 @@ loc_12BA0E:     jsr     (j_WaitForVInt).l
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
 		jsr     (j_FadeOutToWhite).l
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		clr.b   ((byte_FFB5AC-$1000000)).w
 		lea     (PALETTE_1_BIS).l,a0
 		moveq   #$1F,d7
@@ -14173,8 +14173,8 @@ loc_12BBC2:     trap    #7
 		moveq   #4,d5
 		moveq   #3,d6
 		jsr     sub_80AC
-		trap    #0
-		dc.w $1F
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_EARTHQUAKE
 		jsr     sub_8094
 		move.w  #5,d1
 		move.w  #$A,d0
@@ -14294,8 +14294,8 @@ loc_12BD02:     move.l  (dword_FF0EF6).l,-(sp)
 		moveq   #3,d6
 		jsr     sub_80AC
 		move.w  #$5A,((word_FFB7C4-$1000000)).w 
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		moveq   #$1E,d0
 		jsr     (j_Sleep).l
 loc_12BD96:     jsr     (j_WaitForVInt).l
@@ -14326,8 +14326,8 @@ loc_12BD96:     jsr     (j_WaitForVInt).l
 		jsr     sub_8098
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
-loc_12BE08:     trap    #0
-		dc.w $B
+loc_12BE08:     trap    #SOUND_COMMAND
+		dc.w MUSIC_SAD_THEME
 		moveq   #$E,d0
 		jsr     sub_802C
 		trap    #5
@@ -14484,11 +14484,11 @@ sub_12BFB6:
 loc_12BFBA:
 		jsr     j_GetTargetID
 		cmp.b   d2,d1
-		beq.w   return_12BFCE
+		beq.w   locret_12BFCE
 		addq.w  #1,d0
 		dbf     d7,loc_12BFBA
 		moveq   #$FFFFFFFF,d0
-return_12BFCE:
+locret_12BFCE:
 		
 		rts
 
@@ -14502,13 +14502,13 @@ sub_12BFD0:
 		lea     ((unk_FFC08E-$1000000)).w,a0
 loc_12BFD6:
 		move.w  (a0)+,d0
-		bmi.w   return_12BFEE
+		bmi.w   locret_12BFEE
 		jsr     j_GetTargetID
 		cmp.b   d1,d2
-		beq.w   return_12BFEE
+		beq.w   locret_12BFEE
 		dbf     d7,loc_12BFD6
 		moveq   #$FFFFFFFF,d0
-return_12BFEE:
+locret_12BFEE:
 		
 		rts
 
@@ -14763,14 +14763,14 @@ loc_12C1E0:
 		addq.w  #1,d0
 		dbf     d7,loc_12C1C2
 		move.w  #$FFFF,(a0)
-return_12C1EA:
+locret_12C1EA:
 		
 		rts
 
 	; End of function sub_12C1BA
 
 loc_12C1EC:     tst.b   d2
-		bmi.s   return_12C1EA
+		bmi.s   locret_12C1EA
 		move.w  d2,d7
 		andi.w  #3,d7
 		add.w   d7,d7
@@ -15046,8 +15046,8 @@ sub_12C446:
 		clr.w   ((word_FFC0BE-$1000000)).w
 		trap    #7
 		jsr     (j_WaitForVInt).l
-		trap    #0
-		dc.w 1
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_JOIN
 		move.w  #$397,d0
 		trap    #8
 		move.w  #$FB,d0 
@@ -15072,13 +15072,13 @@ loc_12C480:
 
 ; END OF FUNCTION CHUNK FOR sub_12BF92
 
-off_12C49C:     dc.w return_12C4A8-off_12C49C
+off_12C49C:     dc.w locret_12C4A8-off_12C49C
 		dc.w loc_12C4AA-off_12C49C
 		dc.w loc_12C524-off_12C49C
 		dc.w loc_12C59C-off_12C49C
 		dc.w loc_12C608-off_12C49C
 		bset    d0,(a4)+
-return_12C4A8:  rts
+locret_12C4A8:  rts
 loc_12C4AA:     jsr     sub_8094
 		move.w  #0,d2
 		bsr.w   sub_12BFB6
@@ -15251,8 +15251,8 @@ unk_12C666:     dc.b   1
 		dc.b $FF
 		moveq   #$38,d0 
 		jsr     (sub_384).l
-		trap    #0
-		dc.w $25
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_RISE_OF_THE_CASTLE
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
 		move.l  (dword_FF0EF6).l,-(sp)
@@ -15328,8 +15328,8 @@ loc_12C74C:     jsr     (j_WaitForVInt).l
 		jsr     sub_8098
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
-loc_12C7AA:     trap    #0
-		dc.w $FB
+loc_12C7AA:     trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		rts
 EffectGraphics: incbin "data/graphics/effectgraphics.bin"
 unk_12CBD0:     dc.b $10

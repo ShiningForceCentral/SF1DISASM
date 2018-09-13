@@ -201,11 +201,11 @@ loc_100FC:
 		subq.b  #1,d0
 loc_100FE:
 		move.b  d0,(CURRENT_MAP).l
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_1096C
 
-		dc.w $55
+		dc.w SFX_WARP
 		bsr.w   sub_11940
 		rts
 
@@ -613,7 +613,7 @@ sub_10310:
 		or.b    d0,(TEMP_INPUT_STATES).l
 loc_1032E:
 		tst.w   (word_FFF834).l 
-		bne.w   return_103C6
+		bne.w   locret_103C6
 		tst.b   (byte_FF500F).l 
 		bne.s   loc_1035A
 loc_10340:
@@ -650,7 +650,7 @@ loc_103B0:
 		jsr     (sub_33C).l
 		andi.b  #$F,(TEMP_INPUT_STATES).l
 		move.b  #$FF,(byte_FFF81C).l
-return_103C6:
+locret_103C6:
 		rts
 loc_103C8:
 		move.b  (MAP_SPRITE_POSITION).l,d0
@@ -1128,7 +1128,7 @@ loc_10966:
 ; =============== S U B R O U T I N E =======================================
 
 sub_1096C:
-		bcc.w   return_10A6C
+		bcc.w   locret_10A6C
 		tst.b   d0
 		bne.s   loc_1098E
 		movem.l (sp)+,d0-d1
@@ -1194,12 +1194,12 @@ loc_10A3C:
 		rts
 loc_10A58:
 		cmpi.b  #8,d0
-		bne.s   return_10A6C
+		bne.s   locret_10A6C
 		movem.l (sp)+,d0
 		move.b  #$1B,d0
 		ori     #1,ccr
 		rts
-return_10A6C:
+locret_10A6C:
 		rts
 
 	; End of function sub_1096C
@@ -1209,7 +1209,7 @@ return_10A6C:
 
 sub_10A6E:
 		tst.b   (byte_FFF81D).l
-		bpl.s   return_10A9E
+		bpl.s   locret_10A9E
 		eori.b  #1,(byte_FFF81D).l
 		move.w  (dword_FF0500+2).l,d6
 		btst    #0,(byte_FFF81D).l
@@ -1219,7 +1219,7 @@ loc_10A90:
 		addq.w  #2,d6
 		jsr     (sub_290).l
 		jsr     (j_SetVIntParam3).l
-return_10A9E:
+locret_10A9E:
 		rts
 
 	; End of function sub_10A6E
@@ -1377,10 +1377,10 @@ loc_10C22:
 		bne.s   loc_10C46
 		andi.w  #$3FF,d2
 		cmpi.w  #$294,d2
-		bcs.s   return_10C44
+		bcs.s   locret_10C44
 		subi.w  #$294,d2
 		movea.l (dword_FFF914).l,a0
-return_10C44:
+locret_10C44:
 		rts
 loc_10C46:
 		movea.l (dword_FFF91C).l,a0
@@ -1908,7 +1908,7 @@ sub_11092:
 		move.w  #$1F,d7
 loc_110A2:
 		tst.w   (a0)
-		bmi.w   return_1111C
+		bmi.w   locret_1111C
 		cmpi.w  #$758,4(a0)
 		bcs.w   loc_11114
 		cmpi.w  #$8C0,4(a0)
@@ -1943,7 +1943,7 @@ loc_11108:
 loc_11114:
 		lea     $10(a0),a0
 		dbf     d7,loc_110A2
-return_1111C:
+locret_1111C:
 		rts
 
 	; End of function sub_11092
@@ -2107,15 +2107,15 @@ sub_112BA:
 		bsr.w   sub_10D20
 		andi.w  #$C00,d2
 		beq.s   loc_11302
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		subi.w  #$1400,d3
 		lsr.w   #6,d3
 		bsr.w   sub_113EE
 		bra.s   loc_11318
 loc_112E0:
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.b  #4,d1
 		cmpi.w  #$C00,d2
 		beq.s   loc_112F8
@@ -2529,13 +2529,13 @@ sub_11554:
 		andi.w  #$7000,d4
 		beq.s   loc_11564
 		cmp.w   (word_FFF8D2).l,d4
-		bne.s   return_1156E
+		bne.s   locret_1156E
 loc_11564:
 		bsr.s   sub_11570
 		bsr.s   sub_115A4
-		bcs.s   return_1156E
+		bcs.s   locret_1156E
 		bsr.w   sub_116F0
-return_1156E:
+locret_1156E:
 		rts
 
 	; End of function sub_11554
@@ -2552,14 +2552,14 @@ sub_11570:
 		lsr.w   #6,d3
 		move.w  d3,d2
 		andi.w  #$F,d2
-		bra.s   return_115A2
+		bra.s   locret_115A2
 loc_1158E:
 		andi.w  #$3FF,d2
 		cmpi.w  #$294,d2
-		bcs.s   return_115A2
+		bcs.s   locret_115A2
 		subi.w  #$294,d2
 		movea.l (dword_FFF914).l,a0
-return_115A2:
+locret_115A2:
 		rts
 
 	; End of function sub_11570
@@ -2947,60 +2947,60 @@ loc_11A62:
 		cmpi.b  #0,d0
 		bne.s   loc_11A76
 		tst.b   (byte_FF9C5A).l
-		bpl.s   return_11A74
+		bpl.s   locret_11A74
 		move.b  #$2F,d0 
-return_11A74:
+locret_11A74:
 		rts
 loc_11A76:
 		cmpi.b  #6,d0
 		bne.s   loc_11A8E
 		btst    #6,(byte_FF9C5A).l
-		beq.w   return_11B12
+		beq.w   locret_11B12
 		move.b  #$30,d0 
 		rts
 loc_11A8E:
 		cmpi.b  #$2E,d0 
 		bne.s   loc_11AA4
 		btst    #1,(byte_FF9C59).l
-		beq.s   return_11B12
+		beq.s   locret_11B12
 		move.b  #4,d0
 		rts
 loc_11AA4:
 		cmpi.b  #5,d0
 		bne.s   loc_11ABA
 		btst    #1,(byte_FF9C59).l
-		bne.s   return_11B12
+		bne.s   locret_11B12
 		move.b  #$31,d0 
 		rts
 loc_11ABA:
 		cmpi.b  #9,d0
 		bne.s   loc_11AD0
 		btst    #4,(byte_FF9C5A).l
-		beq.s   return_11B12
+		beq.s   locret_11B12
 		move.b  #$33,d0 
 		rts
 loc_11AD0:
 		cmpi.b  #8,d0
 		bne.s   loc_11AE6
 		btst    #3,(byte_FF9C5A).l
-		beq.s   return_11B12
+		beq.s   locret_11B12
 		move.b  #$34,d0 
 		rts
 loc_11AE6:
 		cmpi.b  #$A,d0
 		bne.s   loc_11AFC
 		btst    #2,(byte_FF9C59).l
-		beq.s   return_11B12
+		beq.s   locret_11B12
 		move.b  #$2C,d0 
 		rts
 loc_11AFC:
 		cmpi.b  #$18,d0
-		bne.s   return_11B12
+		bne.s   locret_11B12
 		btst    #7,(byte_FF9C56).l
-		beq.s   return_11B12
+		beq.s   locret_11B12
 		move.b  #$35,d0 
 		rts
-return_11B12:
+locret_11B12:
 		rts
 
 	; End of function sub_11A30
@@ -3042,7 +3042,7 @@ sub_11BA0:
 		lea     byte_12C00(pc), a0
 loc_11BAA:
 		move.b  (a0),d0
-		bmi.s   return_11C0A
+		bmi.s   locret_11C0A
 		cmp.b   (byte_FFF80A).l,d0
 		bne.s   loc_11C04
 		move.b  1(a0),d0
@@ -3061,7 +3061,7 @@ loc_11BAA:
 loc_11C04:
 		lea     $10(a0),a0
 		bra.s   loc_11BAA
-return_11C0A:
+locret_11C0A:
 		rts
 
 	; End of function sub_11BA0
@@ -3071,12 +3071,12 @@ return_11C0A:
 
 sub_11C0C:
 		move.w  (word_FFF8EC).l,d0
-		beq.s   return_11C5A
+		beq.s   locret_11C5A
 		move.b  (byte_FFF820).l,d0
 		move.b  (byte_FFF81F).l,d1
 		andi.b  #$7F,d1 
 		and.b   d1,d0
-		bne.s   return_11C5A
+		bne.s   locret_11C5A
 		movea.l (dword_FFF938).l,a0
 		bchg    #7,(byte_FFF81F).l
 		beq.s   loc_11C3E
@@ -3087,7 +3087,7 @@ loc_11C3E:
 		move.w  #2,d1
 		jsr     (sub_278).l
 		jsr     (j_SetVIntParam3).l
-return_11C5A:
+locret_11C5A:
 		rts
 
 	; End of function sub_11C0C
@@ -3192,11 +3192,11 @@ sub_11D36:
 		move.w  #$1E,d7
 loc_11D40:
 		tst.w   -4(a1)
-		bmi.s   return_11D50
+		bmi.s   locret_11D50
 		bsr.s   sub_11D52
 		lea     $A(a1),a1
 		dbf     d7,loc_11D40
-return_11D50:
+locret_11D50:
 		rts
 
 	; End of function sub_11D36
@@ -3574,19 +3574,19 @@ loc_12008:
 		ori.b   #$18,(byte_FF50D2).l
 loc_1203C:
 		btst    #3,(byte_FF9C5B).l
-		beq.s   return_12056
+		beq.s   locret_12056
 		move.b  #9,(byte_FF5180).l
 		move.b  #$FF,(byte_FF50E1).l
-return_12056:
+locret_12056:
 		rts
 loc_12058:
 		cmpi.b  #4,(DIALOG_INDEX).l
 		bne.s   loc_1207A
 		tst.b   (byte_FF9C56).l
-		bpl.s   return_12078
+		bpl.s   locret_12078
 		move.b  #$FF,(byte_FF5111).l
 		clr.b   (byte_FF511D).l
-return_12078:
+locret_12078:
 		rts
 loc_1207A:
 		cmpi.b  #$2E,(DIALOG_INDEX).l 
@@ -3597,22 +3597,22 @@ loc_1207A:
 		clr.b   (byte_FF508D).l
 loc_1209C:
 		btst    #3,(byte_FF9C5C).l
-		bne.s   return_120AA
+		bne.s   locret_120AA
 		bsr.w   sub_16306
-return_120AA:
+locret_120AA:
 		rts
 loc_120AC:
 		cmpi.b  #$2F,(DIALOG_INDEX).l 
 		bne.s   loc_120F0
 		btst    #1,(byte_FF9C59).l
-		beq.s   return_120EE
+		beq.s   locret_120EE
 		move.b  #$FF,(byte_FF5011).l
 		move.b  #$FF,(word_FF5030+1).l
 		move.b  #$FF,(byte_FF5051).l
 		move.b  #$14,(byte_FF5020).l
 		move.b  #$10,(byte_FF5021).l
 		clr.b   (word_FF502C+1).l
-return_120EE:
+locret_120EE:
 		rts
 loc_120F0:
 		cmpi.b  #6,(DIALOG_INDEX).l
@@ -3640,10 +3640,10 @@ loc_12138:
 		clr.b   (byte_FF50FD).l
 		ori.b   #$18,(byte_FF50F2).l
 		move.b  #$1B,(byte_FF50F0).l
-		bra.s   return_121EA
+		bra.s   locret_121EA
 loc_1218A:
 		move.b  #$FF,(byte_FF5141).l
-		bra.s   return_121EA
+		bra.s   locret_121EA
 loc_12194:
 		move.b  #$FF,(byte_FF5141).l
 		move.b  #$FF,(byte_FF5121).l
@@ -3652,27 +3652,27 @@ loc_12194:
 		btst    #1,(byte_FF9C5B).l
 		bne.s   loc_121E2
 		btst    #0,(byte_FF9C5B).l
-		beq.s   return_121EA
+		beq.s   locret_121EA
 		move.b  #$3E,(byte_FF5050).l 
 		move.b  #$14,(byte_FF5051).l
 		move.b  #$15,(word_FF505C).l
-		bra.s   return_121EA
+		bra.s   locret_121EA
 loc_121E2:
 		move.b  #$FF,(byte_FF5051).l
-return_121EA:
+locret_121EA:
 		rts
 loc_121EC:
 		cmpi.b  #5,(DIALOG_INDEX).l
 		bne.s   loc_12232
 		btst    #6,(byte_FF9C5A).l
-		beq.s   return_12230
+		beq.s   locret_12230
 		move.b  #$FF,(byte_FF5051).l
 		move.b  #$FF,(byte_FF50F1).l
 		move.b  #$24,(byte_FF5130).l 
 		move.b  #$10,(byte_FF5131).l
 		move.b  #$20,(byte_FF5140).l 
 		move.b  #$F,(byte_FF5141).l
-return_12230:
+locret_12230:
 		rts
 loc_12232:
 		cmpi.b  #$F,(DIALOG_INDEX).l
@@ -3692,21 +3692,21 @@ loc_1224E:
 		move.b  #$14,(word_FF505C).l
 loc_1228A:
 		btst    #1,(byte_FF9C5B).l
-		beq.s   return_122AA
+		beq.s   locret_122AA
 		move.b  #$25,(byte_FF5130).l 
 		move.b  #$2C,(byte_FF5131).l 
 		clr.b   (byte_FF513D).l
-return_122AA:
+locret_122AA:
 		rts
 loc_122AC:
 		cmpi.b  #9,(DIALOG_INDEX).l
 		bne.s   loc_122D8
 		btst    #4,(byte_FF9C5C).l
-		beq.s   return_122D6
+		beq.s   locret_122D6
 		move.b  #6,(byte_FF5020).l
 		move.b  #$20,(byte_FF5021).l 
 		clr.b   (byte_FF507D).l
-return_122D6:
+locret_122D6:
 		rts
 loc_122D8:
 		cmpi.b  #8,(DIALOG_INDEX).l
@@ -3718,10 +3718,10 @@ loc_122D8:
 		clr.b   (word_FF502C+1).l
 loc_12302:
 		btst    #1,(byte_FF9C56).l
-		beq.s   return_1231A
+		beq.s   locret_1231A
 		move.b  #$FF,(byte_FF5071).l
 		clr.b   (byte_FF507D).l
-return_1231A:
+locret_1231A:
 		rts
 loc_1231C:
 		cmpi.b  #$34,(DIALOG_INDEX).l 
@@ -3744,11 +3744,11 @@ loc_12360:
 		move.b  #$A,(byte_FF50EC).l
 loc_12372:
 		btst    #7,(byte_FF9C56).l
-		beq.s   return_12392
+		beq.s   locret_12392
 		move.b  #$FF,(byte_FF50E1).l
 		move.b  #$43,(byte_FF50E0).l 
 		clr.b   (byte_FF50DD).l
-return_12392:
+locret_12392:
 		rts
 loc_12394:
 		cmpi.b  #$A,(DIALOG_INDEX).l
@@ -3764,7 +3764,7 @@ loc_123C0:
 		btst    #2,(byte_FF9C5C).l
 		beq.s   loc_123D4
 		move.b  #$FF,(byte_FF51A1).l
-		bra.s   return_12412
+		bra.s   locret_12412
 loc_123D4:
 		move.b  (byte_FF51A3).l,d0
 		andi.w  #$F,d0
@@ -3780,7 +3780,7 @@ loc_123D4:
 		adda.w  #$480,a1
 		move.w  #$120,d0
 		jsr     (j_DMAFromRAMToVRAM).l
-return_12412:
+locret_12412:
 		rts
 loc_12414:
 		cmpi.b  #$2C,(DIALOG_INDEX).l 
@@ -3806,9 +3806,9 @@ loc_12454:
 		move.b  #$FF,(byte_FF5191).l
 loc_12470:
 		btst    #6,(byte_FF9C59).l
-		beq.s   return_12482
+		beq.s   locret_12482
 		move.b  #$FF,(byte_FF50B1).l
-return_12482:
+locret_12482:
 		rts
 loc_12484:
 		cmpi.b  #2,(DIALOG_INDEX).l
@@ -3820,7 +3820,7 @@ loc_1249E:
 		btst    #0,(byte_FF9C5B).l
 		bne.s   loc_124B4
 		btst    #0,(byte_FF9C54).l
-		beq.s   return_124FE
+		beq.s   locret_124FE
 		bne.s   loc_124C6
 loc_124B4:
 		move.b  #$FF,(byte_FF50B1).l
@@ -3834,7 +3834,7 @@ loc_124C6:
 		move.w  #$101,(word_FF50AA).l
 		move.b  #$20,(word_FF50AC).l 
 		move.b  #$FF,(byte_FF50B1).l
-return_124FE:
+locret_124FE:
 		rts
 loc_12500:
 		move.b  #$80,(byte_FFF819).l
@@ -3884,25 +3884,25 @@ loc_125CC:
 		ori.b   #$18,(byte_FF5182).l
 loc_125EE:
 		btst    #6,(byte_FF9C5B).l
-		beq.s   return_125FE
+		beq.s   locret_125FE
 		clr.b   (byte_FF518D).l
-return_125FE:
+locret_125FE:
 		rts
 loc_12600:
 		cmpi.b  #$17,(DIALOG_INDEX).l
 		bne.s   loc_1261A
 		cmpi.b  #$19,(MAP_SPRITE_POSITION).l
-		bne.s   return_12618
+		bne.s   locret_12618
 		bsr.w   sub_16306
-return_12618:
+locret_12618:
 		rts
 loc_1261A:
 		cmpi.b  #$16,(DIALOG_INDEX).l
 		bne.s   loc_12634
 		cmpi.b  #$10,(MAP_SPRITE_POSITION).l
-		bne.s   return_12632
+		bne.s   locret_12632
 		bsr.w   sub_16306
-return_12632:
+locret_12632:
 		rts
 loc_12634:
 		cmpi.b  #$18,(DIALOG_INDEX).l
@@ -3924,19 +3924,19 @@ loc_12652:
 		rts
 loc_12698:
 		btst    #3,(byte_FF9C56).l
-		beq.s   return_126BA
+		beq.s   locret_126BA
 		move.b  #$2C,(byte_FF50E0).l 
 		move.b  #$11,(byte_FF50E1).l
 		move.b  #4,(byte_FF50EC).l
-return_126BA:
+locret_126BA:
 		rts
 loc_126BC:
 		cmpi.b  #$33,(DIALOG_INDEX).l 
 		bne.s   loc_126DA
 		btst    #7,(byte_FF9C5C).l
-		beq.s   return_126D8
+		beq.s   locret_126D8
 		move.b  #$FF,(word_FF5030+1).l
-return_126D8:
+locret_126D8:
 		rts
 loc_126DA:
 		cmpi.b  #$11,(DIALOG_INDEX).l
@@ -3979,11 +3979,11 @@ loc_12792:
 		rts
 loc_127B6:
 		btst    #3,(byte_FF9C59).l
-		beq.s   return_127D8
+		beq.s   locret_127D8
 		move.b  #$1B,(byte_FF5050).l
 		move.b  #7,(byte_FF5051).l
 		move.b  #$C,(word_FF505C).l
-return_127D8:
+locret_127D8:
 		rts
 loc_127DA:
 		cmpi.b  #$10,(DIALOG_INDEX).l
@@ -4009,9 +4009,9 @@ loc_12844:
 		move.b  #$FF,(byte_FF5051).l
 loc_12856:
 		btst    #1,(byte_FF9C5A).l
-		beq.s   return_12868
+		beq.s   locret_12868
 		move.b  #$FF,(byte_FF5171).l
-return_12868:
+locret_12868:
 		rts
 loc_1286A:
 		cmpi.b  #$19,(DIALOG_INDEX).l
@@ -4038,12 +4038,12 @@ loc_128C0:
 		clr.b   (byte_FF504D).l
 loc_128D0:
 		btst    #3,(byte_FF9C5D).l
-		beq.s   return_128F8
+		beq.s   locret_128F8
 		move.b  #$2A,(byte_FF5150).l 
 		move.b  #$33,(byte_FF5151).l 
 		clr.b   (byte_FF515D).l
 		andi.b  #$E7,(byte_FF5152).l
-return_128F8:
+locret_128F8:
 		rts
 loc_128FA:
 		cmpi.b  #$35,(DIALOG_INDEX).l 
@@ -4053,9 +4053,9 @@ loc_128FA:
 		move.b  #$FF,(byte_FF5051).l
 loc_12918:
 		btst    #6,(byte_FF9C5A).l
-		beq.s   return_1292A
+		beq.s   locret_1292A
 		move.b  #$FF,(byte_FF5131).l
-return_1292A:
+locret_1292A:
 		rts
 loc_1292C:
 		cmpi.b  #$1A,(DIALOG_INDEX).l
@@ -4095,29 +4095,29 @@ loc_129D4:
 		btst    #2,(byte_FF9C59).l
 		bne.s   loc_129FA
 		btst    #0,(byte_FF9C5A).l
-		beq.s   return_12A02
+		beq.s   locret_12A02
 		move.b  #$7F,(byte_FF5011).l 
 		move.b  #$42,(byte_FF501C).l 
-		bra.s   return_12A02
+		bra.s   locret_12A02
 loc_129FA:
 		move.b  #$FF,(byte_FF5011).l
-return_12A02:
+locret_12A02:
 		rts
 loc_12A04:
 		cmpi.b  #$25,(DIALOG_INDEX).l 
 		bne.w   loc_12A22
 		btst    #3,(byte_FF9C5A).l
-		beq.s   return_12A20
+		beq.s   locret_12A20
 		clr.b   (byte_FF501D).l
-return_12A20:
+locret_12A20:
 		rts
 loc_12A22:
 		cmpi.b  #$21,(DIALOG_INDEX).l 
 		bne.s   loc_12A3A
 		btst    #4,(byte_FF9C5A).l
-		bne.s   return_12A38
+		bne.s   locret_12A38
 		rts
-return_12A38:
+locret_12A38:
 		rts
 loc_12A3A:
 		cmpi.b  #$22,(DIALOG_INDEX).l 
@@ -4132,16 +4132,16 @@ loc_12A6E:
 		cmpi.b  #$C,(MAP_SPRITE_POSITION+1).l
 		bne.s   loc_12A7E
 		bsr.w   sub_16306
-		bra.s   return_12A86
+		bra.s   locret_12A86
 loc_12A7E:
 		move.b  #$FF,(byte_FF5011).l
-return_12A86:
+locret_12A86:
 		rts
 loc_12A88:
 		cmpi.b  #$12,(DIALOG_INDEX).l
 		bne.s   loc_12AD2
 		btst    #0,(byte_FF9C58).l
-		beq.s   return_12AD0
+		beq.s   locret_12AD0
 		move.w  #$925,(word_FF5100).l
 		andi.b  #$E7,(byte_FF5102).l
 		ori.b   #$10,(byte_FF5102).l
@@ -4149,7 +4149,7 @@ loc_12A88:
 		andi.b  #$E7,(byte_FF50F2).l
 		ori.b   #$10,(byte_FF50F2).l
 		clr.b   (byte_FF50FD).l
-return_12AD0:
+locret_12AD0:
 		rts
 loc_12AD2:
 		cmpi.b  #7,(DIALOG_INDEX).l
@@ -4183,9 +4183,9 @@ loc_12B66:
 		btst    #6,(byte_FF9C5B).l
 		bne.s   loc_12BD2
 		cmpi.b  #$24,(MAP_SPRITE_POSITION).l 
-		bne.s   return_12BDA
+		bne.s   locret_12BDA
 		btst    #5,(byte_FF9C5B).l
-		beq.s   return_12BDA
+		beq.s   locret_12BDA
 		move.b  (byte_FF50B3).l,d0
 		andi.w  #$F,d0
 		mulu.w  #$6C0,d0
@@ -4203,15 +4203,15 @@ loc_12B66:
 		rts
 loc_12BD2:
 		move.b  #$FF,(byte_FF50B1).l
-return_12BDA:
+locret_12BDA:
 		rts
 loc_12BDC:
 		cmpi.b  #$D,(DIALOG_INDEX).l
 		bne.w   loc_12BFC
 		btst    #3,(byte_FF9C5D).l
-		beq.s   return_12BFA
+		beq.s   locret_12BFA
 		move.b  #$FF,(word_FF5040+1).l
-return_12BFA:
+locret_12BFA:
 		rts
 loc_12BFC:
 		nop
@@ -4346,14 +4346,14 @@ loc_12CA2:
 		move.b  6(a0,d7.w),(MAP_SPRITE_POSITION+1).l
 		tst.b   7(a0,d7.w)
 		bmi.s   loc_12CCC
-		trap    #0
-		dc.w $55
+		trap    #SOUND_COMMAND
+		dc.w SFX_WARP
 		bra.s   loc_12CD8
 loc_12CCC:
 		btst    #6,7(a0,d7.w)
 		beq.s   loc_12CD8
-		trap    #0
-		dc.w $4D
+		trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 loc_12CD8:
 		cmpi.b  #7,d0
 		bne.s   loc_12D02
@@ -4379,11 +4379,11 @@ loc_12D06:
 		move.b  -2(a0,d7.w),(MAP_SPRITE_POSITION+1).l
 		tst.b   -1(a0,d7.w)
 		bmi.s   loc_12D2A
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_12C62
 
-		dc.w $55
+		dc.w SFX_WARP
 		bra.s   loc_12D36
 
 ; START OF FUNCTION CHUNK FOR sub_12C62
@@ -4391,11 +4391,11 @@ loc_12D06:
 loc_12D2A:
 		btst    #6,-1(a0,d7.w)
 		beq.s   loc_12D36
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_12C62
 
-		dc.w $4D
+		dc.w SFX_SPELL_CAST
 
 ; START OF FUNCTION CHUNK FOR sub_12C62
 
@@ -4433,12 +4433,12 @@ byte_12D71:     dc.b $75
 
 sub_12D74:
 		cmpi.b  #2,d0
-		bne.s   return_12D88
+		bne.s   locret_12D88
 		tst.b   (byte_FF9C5A).l
-		bpl.s   return_12D88
+		bpl.s   locret_12D88
 		move.b  #3,d0
 		rts
-return_12D88:
+locret_12D88:
 		rts
 
 	; End of function sub_12D74
@@ -4519,7 +4519,7 @@ sub_13214:
 		move.w  #$7F,d7 
 loc_13224:
 		move.w  (a0),d0
-		bmi.s   return_13246
+		bmi.s   locret_13246
 		cmp.b   (byte_FFF807).l,d0
 		bne.s   loc_13240
 		move.w  2(a0),d2
@@ -4529,7 +4529,7 @@ loc_13224:
 loc_13240:
 		addq.w  #4,a0
 		dbf     d7,loc_13224
-return_13246:
+locret_13246:
 		rts
 
 	; End of function sub_13214
@@ -4568,7 +4568,7 @@ loc_1327A:
 		bsr.w   sub_137CA
 loc_132BC:
 		btst    #2,(byte_FF9C59).l
-		beq.w   return_137C8
+		beq.w   locret_137C8
 		move.w  #$2B,d0 
 		move.w  #$1E,d1
 		move.w  #$A,d4
@@ -4576,7 +4576,7 @@ loc_132BC:
 		move.w  #1,d6
 		move.w  #4,d7
 		bsr.w   sub_137CA
-		bra.w   return_137C8
+		bra.w   locret_137C8
 loc_132E8:
 		cmpi.b  #6,(byte_FFF807).l
 		bne.s   loc_13340
@@ -4591,7 +4591,7 @@ loc_132E8:
 		bsr.w   sub_137CA
 loc_13318:
 		btst    #5,(byte_FF9C5A).l
-		beq.s   return_1333E
+		beq.s   locret_1333E
 		move.w  #$2B,d0 
 		move.w  #$26,d1 
 		move.w  #$15,d4
@@ -4599,7 +4599,7 @@ loc_13318:
 		move.w  #$A,d6
 		move.w  #$A,d7
 		bsr.w   sub_137CA
-return_1333E:
+locret_1333E:
 		rts
 loc_13340:
 		cmpi.b  #7,(byte_FFF807).l
@@ -4615,7 +4615,7 @@ loc_13340:
 		bsr.w   sub_137CA
 loc_13370:
 		btst    #3,(byte_FF9C5A).l
-		bne.s   return_133B2
+		bne.s   locret_133B2
 		move.w  #$30,d0 
 		move.w  #5,d1
 		move.w  #$3D,d4 
@@ -4630,7 +4630,7 @@ loc_13370:
 		move.w  #1,d6
 		move.w  #1,d7
 		bsr.w   sub_137CA
-return_133B2:
+locret_133B2:
 		rts
 loc_133B4:
 		cmpi.b  #9,(byte_FFF807).l
@@ -4653,7 +4653,7 @@ loc_133B4:
 		bsr.w   sub_137CA
 loc_13400:
 		btst    #2,(byte_FF9C5C).l
-		beq.s   return_13426
+		beq.s   locret_13426
 		move.w  #9,d0
 		move.w  #2,d1
 		move.w  #7,d4
@@ -4661,7 +4661,7 @@ loc_13400:
 		move.w  #2,d6
 		move.w  #1,d7
 		bsr.w   sub_137CA
-return_13426:
+locret_13426:
 		rts
 loc_13428:
 		cmpi.b  #$1D,(byte_FFF807).l
@@ -4719,7 +4719,7 @@ loc_134EC:
 		cmpi.b  #4,(byte_FFF807).l
 		bne.s   loc_1351E
 		btst    #1,(byte_FF9C5B).l
-		bne.s   return_1351C
+		bne.s   locret_1351C
 		move.w  #$3F,d0 
 		move.w  #6,d1
 		move.w  #$3F,d4 
@@ -4727,15 +4727,15 @@ loc_134EC:
 		move.w  #1,d6
 		move.w  #1,d7
 		bsr.w   sub_137CA
-return_1351C:
+locret_1351C:
 		rts
 loc_1351E:
 		cmpi.b  #$20,(byte_FFF807).l 
 		bne.s   loc_1355A
 		btst    #4,(byte_FF9C5B).l
-		beq.s   return_13558
+		beq.s   locret_13558
 		btst    #7,(byte_FF9C5B).l
-		bne.s   return_13558
+		bne.s   locret_13558
 		move.w  #$33,d0 
 		move.w  #$14,d1
 		move.w  #5,d4
@@ -4743,13 +4743,13 @@ loc_1351E:
 		move.w  #$15,d6
 		move.w  #$14,d7
 		bsr.w   sub_137CA
-return_13558:
+locret_13558:
 		rts
 loc_1355A:
 		cmpi.b  #$21,(byte_FFF807).l 
 		bne.s   loc_1358C
 		btst    #3,(byte_FF9C56).l
-		beq.s   return_1358A
+		beq.s   locret_1358A
 		move.w  #$2F,d0 
 		move.w  #$2F,d1 
 		move.w  #$28,d4 
@@ -4757,13 +4757,13 @@ loc_1355A:
 		move.w  #$A,d6
 		move.w  #9,d7
 		bsr.w   sub_137CA
-return_1358A:
+locret_1358A:
 		rts
 loc_1358C:
 		cmpi.b  #8,(byte_FFF807).l
 		bne.s   loc_135CC
 		btst    #4,(byte_FF9C5A).l
-		beq.s   return_135CA
+		beq.s   locret_135CA
 		move.w  #8,d0
 		move.w  #6,d1
 		move.w  #8,d4
@@ -4772,9 +4772,9 @@ loc_1358C:
 		move.w  #1,d7
 		bsr.w   sub_137CA
 		btst    #7,(byte_FF9C5C).l
-		bne.s   return_135CA
+		bne.s   locret_135CA
 		bsr.w   sub_16306
-return_135CA:
+locret_135CA:
 		rts
 loc_135CC:
 		cmpi.b  #$1F,(byte_FFF807).l
@@ -4797,7 +4797,7 @@ loc_135CC:
 		bsr.w   sub_137CA
 loc_13618:
 		btst    #1,(byte_FF9C59).l
-		beq.s   return_1363E
+		beq.s   locret_1363E
 		move.w  #$39,d0 
 		move.w  #7,d1
 		move.w  #$27,d4 
@@ -4805,7 +4805,7 @@ loc_13618:
 		move.w  #2,d6
 		move.w  #2,d7
 		bsr.w   sub_137CA
-return_1363E:
+locret_1363E:
 		rts
 loc_13640:
 		cmpi.b  #$22,(byte_FFF807).l 
@@ -4821,7 +4821,7 @@ loc_13640:
 		bsr.w   sub_137CA
 loc_13670:
 		btst    #1,(byte_FF9C59).l
-		beq.s   return_13696
+		beq.s   locret_13696
 		move.w  #$E,d0
 		move.w  #$3B,d1 
 		move.w  #$C,d4
@@ -4829,7 +4829,7 @@ loc_13670:
 		move.w  #7,d6
 		move.w  #5,d7
 		bsr.w   sub_137CA
-return_13696:
+locret_13696:
 		rts
 loc_13698:
 		cmpi.b  #$10,(byte_FFF807).l
@@ -4864,12 +4864,12 @@ loc_136F0:
 		bsr.w   sub_137CA
 loc_13716:
 		cmpi.b  #$38,(MAP_SPRITE_POSITION+1).l 
-		bne.s   return_1373A
+		bne.s   locret_1373A
 		btst    #7,(byte_FF9C59).l
-		beq.s   return_1373A
+		beq.s   locret_1373A
 		move.b  #$16,(MAP_SPRITE_POSITION).l
 		move.b  #$A,(MAP_SPRITE_POSITION+1).l
-return_1373A:
+locret_1373A:
 		rts
 loc_1373C:
 		cmpi.b  #$24,(byte_FFF807).l 
@@ -4885,7 +4885,7 @@ loc_1373C:
 		bsr.w   sub_137CA
 loc_1376C:
 		btst    #0,(byte_FF9C59).l
-		bne.s   return_13792
+		bne.s   locret_13792
 		move.w  #$32,d0 
 		move.w  #0,d1
 		move.w  #$29,d4 
@@ -4893,13 +4893,13 @@ loc_1376C:
 		move.w  #2,d6
 		move.w  #1,d7
 		bsr.w   sub_137CA
-return_13792:
+locret_13792:
 		rts
 loc_13794:
 		cmpi.b  #$25,(byte_FFF807).l 
 		bne.s   loc_137C6
 		btst    #1,(byte_FF9C53).l
-		beq.s   return_137C4
+		beq.s   locret_137C4
 		move.w  #1,d0
 		move.w  #$30,d1 
 		move.w  #3,d4
@@ -4907,11 +4907,11 @@ loc_13794:
 		move.w  #1,d6
 		move.w  #1,d7
 		bsr.w   sub_137CA
-return_137C4:
+locret_137C4:
 		rts
 loc_137C6:
 		nop
-return_137C8:
+locret_137C8:
 		rts
 
 	; End of function sub_13248
@@ -5019,8 +5019,8 @@ loc_13878:
 		clr.w   d0
 		jsr     j_FindEmptyItemSlot
 		bcs.s   loc_13908
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		move.w  #$48,d0 
 		trap    #8
 		movem.w d1,-(sp)
@@ -5043,8 +5043,8 @@ loc_13918:
 		ext.l   d1
 		move.l  d1,(dword_FFF900).l
 		clr.w   (TEXT_NAME_INDEX).l
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		move.w  #$4C,d0 
 		trap    #8
 		movem.w d1,-(sp)
@@ -5414,8 +5414,8 @@ loc_13DB0:
 loc_13DBE:
 		cmpi.b  #$16,(byte_FF5190).l
 		bne.w   loc_15CC6
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_15CC0
 loc_13DD2:
 		lea     (MAP_SPRITE_POSITION).l,a6
@@ -5575,8 +5575,8 @@ loc_13FD2:
 		move.w  #$101,(word_FF504A).l
 		bra.w   loc_15CC0
 loc_14038:
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.w  #$B,d7
 loc_14040:
 		movem.w d7,-(sp)
@@ -5660,8 +5660,8 @@ loc_14180:
 		beq.s   loc_14180
 		rts
 loc_14198:
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		move.b  #$18,d1
 		move.b  #9,d2
 		bsr.w   loc_15CCE
@@ -5695,8 +5695,8 @@ loc_14206:
 		bra.w   loc_15CC0
 loc_14216:
 		movem.l a0-a1,-(sp)
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #$3E,d0 
 		move.w  #$1D,d1
 		bsr.w   sub_10D20
@@ -5758,8 +5758,8 @@ loc_142D8:
 loc_14300:
 		clr.b   d2
 		bsr.w   sub_15CCA
-		trap    #0
-		dc.w $66
+		trap    #SOUND_COMMAND
+		dc.w SFX_DESOUL_HOVERING
 		move.w  #$27,d0 
 		move.w  #$18,d1
 		move.w  #$30,d2 
@@ -5904,8 +5904,8 @@ loc_144E0:
 		move.w  #$A,d3
 loc_1451C:
 		bsr.w   sub_15E38
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.w  #$F,d0
 		jsr     (j_Sleep).l
 		bra.w   loc_15CC0
@@ -6053,8 +6053,8 @@ loc_146EA:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_1470A:
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		clr.w   d0
 		move.w  #$2B,d1 
 		move.w  #6,d2
@@ -6085,8 +6085,8 @@ loc_14770:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_1477C:
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.b  (byte_FF5153).l,d0
 		andi.w  #$F,d0
 		move.w  #$7F,d1 
@@ -6106,8 +6106,8 @@ loc_147B2:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_147BE:
-		trap    #0
-		dc.w $5C
+		trap    #SOUND_COMMAND
+		dc.w SFX_TRAIN_WHISTLE
 		movem.l (sp)+,d2/d7-a0
 		movem.l (sp)+,d0
 		move.w  #1,d0
@@ -6128,8 +6128,8 @@ loc_147FE:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_1480A:
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #$57,d0 
 		move.w  #$19,d1
 		move.w  #$2E,d2 
@@ -6157,8 +6157,8 @@ loc_1484C:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_1484C
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		moveq   #5,d7
 loc_14874:
 		movem.w d7,-(sp)
@@ -6178,8 +6178,8 @@ loc_1489A:
 		movem.w (sp)+,d7
 		dbf     d7,loc_1489A
 		movem.l (sp)+,a0-a1
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		bra.w   loc_15CC0
 loc_148C2:
 		move.w  #$B,d0
@@ -6220,8 +6220,8 @@ loc_14932:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_14932
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		bsr.w   sub_15E76
 		rts
 loc_14958:
@@ -6367,8 +6367,8 @@ loc_14B62:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_14B6E:
-		trap    #0
-		dc.w $66
+		trap    #SOUND_COMMAND
+		dc.w SFX_DESOUL_HOVERING
 		movem.l (sp)+,d2/d7-a0
 		movem.l (sp)+,d0
 		move.w  #3,d0
@@ -6389,8 +6389,8 @@ loc_14B9E:
 		clr.w   (word_FFF8E4).l
 		bra.w   loc_15CC0
 loc_14BB8:
-		trap    #0
-		dc.w $1F
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_EARTHQUAKE
 		ori.b   #$80,(byte_FFF81D).l
 		move.w  (word_FFF8E4).l,d0
 		andi.b  #3,d0
@@ -6400,8 +6400,8 @@ loc_14BB8:
 		lsl.w   #2,d0
 		cmpi.w  #$50,d0 
 		bcc.s   loc_14BF2
-		trap    #0
-		dc.w $44
+		trap    #SOUND_COMMAND
+		dc.w SFX_REFUSAL
 		lea     (byte_FF5050).l,a2
 		move.w  #0,$A(a2,d0.w)
 loc_14BF2:
@@ -6409,8 +6409,8 @@ loc_14BF2:
 		cmpi.w  #$1A,(word_FFF8E4).l
 		bne.w   loc_15CC6
 		move.w  #$101,(word_FF50AA).l
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		bra.w   loc_15CC0
 loc_14C14:
 		move.l  a0,d0
@@ -6453,8 +6453,8 @@ loc_14C90:
 		bne.w   loc_15CC6
 		bra.w   loc_15CC0
 loc_14CBE:
-		trap    #0
-		dc.w $1F
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_EARTHQUAKE
 		bsr.w   sub_15E76
 		move.w  #$42,d0 
 		move.w  #$28,d1 
@@ -6481,8 +6481,8 @@ loc_14CBE:
 		move.w  #$15,d4
 		move.w  #$14,d5
 		bsr.w   sub_15E38
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		bra.w   loc_15CC0
 loc_14D36:
 		move.b  #7,d2
@@ -6498,8 +6498,8 @@ loc_14D44:
 loc_14D56:
 		bsr.w   sub_11D84
 		bsr.s   loc_14DBC
-		trap    #0
-		dc.w $45
+		trap    #SOUND_COMMAND
+		dc.w SFX_DIALOG_BLEEP_1
 		jsr     (j_WaitForVInt).l
 		dbf     d7,loc_14D44
 		bsr.s   loc_14D9A
@@ -6511,8 +6511,8 @@ loc_14D78:
 		move.w  #$32,d0 
 loc_14D80:
 		bsr.s   loc_14DBC
-		trap    #0
-		dc.w $45
+		trap    #SOUND_COMMAND
+		dc.w SFX_DIALOG_BLEEP_1
 		jsr     (j_Sleep).l
 		subq.b  #4,d0
 		bpl.s   loc_14D94
@@ -6525,8 +6525,8 @@ loc_14D9A:
 		move.w  #1,d0
 loc_14DA2:
 		bsr.s   loc_14DBC
-		trap    #0
-		dc.w $45
+		trap    #SOUND_COMMAND
+		dc.w SFX_DIALOG_BLEEP_1
 		jsr     (j_Sleep).l
 		cmpi.w  #$F,d7
 		bcc.s   loc_14DB6
@@ -6556,8 +6556,8 @@ loc_14DEC:
 loc_14DFE:
 		bsr.w   sub_11D84
 		bsr.s   loc_14DBC
-		trap    #0
-		dc.w $45
+		trap    #SOUND_COMMAND
+		dc.w SFX_DIALOG_BLEEP_1
 		jsr     (j_WaitForVInt).l
 		dbf     d7,loc_14DEC
 		bsr.s   loc_14D9A
@@ -6647,8 +6647,8 @@ loc_14F5E:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_14F6A:
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #$39,d0 
 		move.w  #7,d1
 		move.w  #$27,d2 
@@ -6686,8 +6686,8 @@ loc_14FC4:
 		move.w  #5,d4
 		move.w  #4,d5
 		bsr.w   sub_15E38
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		bsr.w   sub_15E76
 		bset    #0,(byte_FF9C59).l
 		bra.w   loc_15CC0
@@ -6730,8 +6730,8 @@ loc_15080:
 loc_15094:
 		move.b  #8,d2
 		bsr.w   sub_15CCA
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		movem.l a0,-(sp)
 		move.w  #9,d7
 loc_150A8:
@@ -6770,8 +6770,8 @@ loc_1511C:
 loc_15128:
 		move.b  #0,d2
 		bsr.w   sub_15CCA
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #$20,d0 
 		move.w  #0,d1
 		move.w  #$20,d2 
@@ -6781,8 +6781,8 @@ loc_15128:
 		bsr.w   sub_15E38
 		bra.w   loc_15CC0
 loc_15154:
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #$20,d0 
 		move.w  #$E,d1
 		move.w  #$20,d2 
@@ -6822,8 +6822,8 @@ loc_151D0:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_151DC:
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #0,d0
 		move.w  #$3B,d1 
 		move.w  #$C,d2
@@ -6833,8 +6833,8 @@ loc_151DC:
 		bsr.w   sub_15E38
 		move.w  #$1E,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #7,d0
 		move.w  #$3B,d1 
 		move.w  #$C,d2
@@ -6842,8 +6842,8 @@ loc_151DC:
 		bsr.w   sub_15E38
 		move.w  #$1E,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #$E,d0
 		move.w  #$3B,d1 
 		move.w  #$C,d2
@@ -6897,8 +6897,8 @@ loc_152E0:
 		move.w  #3,d4
 		move.w  #2,d5
 		bsr.w   sub_15E38
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.w  #$1E,d0
 		jsr     (j_Sleep).l
 		rts
@@ -6950,8 +6950,8 @@ loc_1538C:
 		bsr.w   sub_15CCA
 		bra.w   loc_15CC0
 loc_15398:
-		trap    #0
-		dc.w $58
+		trap    #SOUND_COMMAND
+		dc.w SFX_DOOR_OPEN
 		move.w  #$3D,d0 
 		move.w  #$1D,d1
 		move.w  #$3E,d2 
@@ -7304,8 +7304,8 @@ loc_15944:
 		addq.b  #6,d0
 		cmpi.b  #$32,d7 
 		bcs.s   loc_15964
-		trap    #0
-		dc.w $5B
+		trap    #SOUND_COMMAND
+		dc.w SFX_JOGURT
 		addi.b  #$A,d0
 loc_15964:
 		andi.b  #$3F,d0 
@@ -7361,8 +7361,8 @@ loc_15A22:
 loc_15A38:
 		bsr.w   loc_15A7E
 		dbf     d7,loc_15A38
-		trap    #0
-		dc.w $5B
+		trap    #SOUND_COMMAND
+		dc.w SFX_JOGURT
 		andi.b  #$C0,9(a0)
 		bsr.w   sub_1106C
 		move.w  #$A,d7
@@ -7399,8 +7399,8 @@ loc_15AA6:
 		andi.w  #$F,d0
 		move.w  #$1D,d1
 		bsr.w   sub_11E4C
-		trap    #0
-		dc.w $5B
+		trap    #SOUND_COMMAND
+		dc.w SFX_JOGURT
 		move.w  #$5A,d0 
 		jsr     (j_Sleep).l
 		movem.l (sp)+,a0
@@ -7872,8 +7872,8 @@ loc_15E7A:
 
 	; End of function sub_15E76
 
-loc_15EB8:      trap    #0
-		dc.w $4E
+loc_15EB8:      trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		move.w  #$3C,d7 
 loc_15EC0:      movem.w d7,-(sp)
 		move.w  (dword_FF0100+2).l,d6
@@ -7919,7 +7919,7 @@ sub_15F20:
 		move.w  #$10,d2
 loc_15F2E:
 		tst.w   (a0)
-		bmi.s   return_15F56
+		bmi.s   locret_15F56
 		movem.l d2/d7-a0,-(sp)
 		tst.b   8(a0)
 		bpl.s   loc_15F46
@@ -7931,7 +7931,7 @@ loc_15F46:
 		adda.w  #$10,a0
 		addi.w  #$10,d2
 		dbf     d7,loc_15F2E
-return_15F56:
+locret_15F56:
 		rts
 
 	; End of function sub_15F20
@@ -8388,7 +8388,7 @@ loc_164E6:
 
 sub_164EC:
 		btst    #6,9(a0)
-		bne.s   return_16528
+		bne.s   locret_16528
 		move.b  #2,d1
 		tst.b   9(a0)
 		bpl.s   loc_16514
@@ -8404,7 +8404,7 @@ loc_16514:
 		andi.b  #$3F,d0 
 		andi.b  #$C0,9(a0)
 		or.b    d0,9(a0)
-return_16528:
+locret_16528:
 		rts
 
 	; End of function sub_164EC
@@ -8422,14 +8422,14 @@ sub_1652A:
 		movem.l a1,-(sp)
 		bsr.w   sub_165FC
 		movem.l (sp)+,a1
-		bcc.s   return_1655A
+		bcc.s   locret_1655A
 		move.b  #1,d0
 		ori     #1,ccr
 		rts
 loc_16554:
 		clr.b   d0
 		ori     #1,ccr
-return_1655A:
+locret_1655A:
 		rts
 loc_1655C:
 		tst.b   d0
@@ -9017,9 +9017,9 @@ loc_1689C:
 
 sub_168A2:
 		tst.b   -$1B(a6)
-		beq.s   return_168D6
+		beq.s   locret_168D6
 		tst.b   -$19(a6)
-		bne.s   return_168D6
+		bne.s   locret_168D6
 		movem.l d0-a6,-(sp)
 		clr.w   d0
 		move.b  -$1A(a6),d0
@@ -9028,7 +9028,7 @@ sub_168A2:
 		st      -$19(a6)
 		jsr     (sub_328).l
 		movem.l (sp)+,d0-a6
-return_168D6:
+locret_168D6:
 		rts
 
 	; End of function sub_168A2
@@ -9038,15 +9038,15 @@ return_168D6:
 
 sub_168D8:
 		tst.b   -$1B(a6)
-		beq.s   return_168FC
+		beq.s   locret_168FC
 		tst.b   -$19(a6)
-		beq.s   return_168FC
+		beq.s   locret_168FC
 		movem.l d0-a6,-(sp)
 		jsr     sub_8030
 		clr.l   (dword_FF0EF6).l
 		sf      -$19(a6)
 		movem.l (sp)+,d0-a6
-return_168FC:
+locret_168FC:
 		rts
 
 	; End of function sub_168D8
@@ -9242,36 +9242,36 @@ loc_16B4E:
 loc_16B78:
 		move.w  #$189,d0
 		bsr.w   sub_16860
-		trap    #0
-		dc.w $5E
+		trap    #SOUND_COMMAND
+		dc.w SFX_SWORDS_HIT
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $5E
+		trap    #SOUND_COMMAND
+		dc.w SFX_SWORDS_HIT
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $64
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOW_MASTER
 		moveq   #$A,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $64
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOW_MASTER
 		moveq   #$A,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $64
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOW_MASTER
 		moveq   #$A,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $64
+		trap    #SOUND_COMMAND
+		dc.w SFX_BOW_MASTER
 		moveq   #$1E,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $5E
+		trap    #SOUND_COMMAND
+		dc.w SFX_SWORDS_HIT
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $5E
+		trap    #SOUND_COMMAND
+		dc.w SFX_SWORDS_HIT
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
 		move.w  #$18A,d0
@@ -9676,8 +9676,8 @@ loc_17086:
 		move.w  #$27,d0 
 		jsr     (j_ClearEventFlag).l
 		movem.l (sp)+,d0-a6
-		trap    #0
-		dc.w $E
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_SAVE
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  #$191,d0
@@ -9689,8 +9689,8 @@ loc_17086:
 		move.w  #$193,d0
 		bsr.w   sub_16860
 		bsr.w   sub_168D8
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		jmp     (sub_370).l
 loc_170E6:
@@ -9742,8 +9742,8 @@ loc_17178:
 		moveq   #$A,d1
 		jsr     j_DecreaseGold
 		bsr.w   sub_16DCE
-		trap    #0
-		dc.w $15
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_REVIVE
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  #$19B,d0
@@ -9823,8 +9823,8 @@ loc_172B4:
 		moveq   #$14,d1
 		jsr     j_DecreaseGold
 		bsr.w   sub_16DCE
-		trap    #0
-		dc.w $15
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_REVIVE
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  #$19C,d0
@@ -9900,8 +9900,8 @@ loc_173B0:
 		move.w  -4(a6),d1
 		jsr     j_DecreaseGold
 		bsr.w   sub_16DCE
-		trap    #0
-		dc.w $15
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_REVIVE
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  #$1A0,d0
@@ -10020,8 +10020,8 @@ loc_17562:
 		move.w  d1,((unk_FFF848-$1000000)).w
 		move.w  #$1A7,d0
 		bsr.w   sub_16860
-		trap    #0
-		dc.w $C
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_PROMOTION
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		movem.l d0-a6,-(sp)
@@ -10608,14 +10608,14 @@ loc_17A0A:
 		add.w   d0,d0
 		adda.w  d0,a1
 		cmpa.l  a2,a1
-		bcc.s   return_17A26
+		bcc.s   locret_17A26
 		move.b  (a0)+,d0
 		or.b    d0,(a1)
 		addq.w  #2,a1
 loc_17A22:
 		cmpa.l  a2,a1
 		bcs.s   loc_17A0A
-return_17A26:
+locret_17A26:
 		rts
 loc_17A28:
 		lea     $1FE(a1),a1
@@ -10925,9 +10925,9 @@ DialogHeader:   incbin "data/scripting/dialogheader.bin"
 
 sub_17E34:
 		tst.b   -3(a6)
-		beq.s   return_17E40
+		beq.s   locret_17E40
 		jsr     (sub_328).l
-return_17E40:
+locret_17E40:
 		rts
 
 	; End of function sub_17E34
@@ -10937,12 +10937,12 @@ return_17E40:
 
 sub_17E42:
 		tst.b   -3(a6)
-		beq.s   return_17E56
+		beq.s   locret_17E56
 		move.l  d0,-(sp)
 		jsr     (sub_30C).l
 		sf      -3(a6)
 		move.l  (sp)+,d0
-return_17E56:
+locret_17E56:
 		rts
 
 	; End of function sub_17E42
@@ -10952,12 +10952,12 @@ return_17E56:
 
 sub_17E58:
 		tst.b   -3(a6)
-		bne.s   return_17E6C
+		bne.s   locret_17E6C
 		move.l  d0,-(sp)
 		jsr     (sub_304).l
 		st      -3(a6)
 		move.l  (sp)+,d0
-return_17E6C:
+locret_17E6C:
 		rts
 
 	; End of function sub_17E58
@@ -10973,9 +10973,9 @@ sub_17E6E:
 loc_17E7E:
 		add.w   d6,d0
 		tst.b   (byte_FF9C5F).l
-		bne.s   return_17E8E
+		bne.s   locret_17E8E
 		jsr     (j_LoadText).l
-return_17E8E:
+locret_17E8E:
 		rts
 
 	; End of function sub_17E6E
@@ -11001,13 +11001,13 @@ sub_17E90:
 
 sub_17EB6:
 		tst.b   -2(a6)
-		beq.s   return_17ED4
+		beq.s   locret_17ED4
 		movem.l d0-a6,-(sp)
 		jsr     sub_8030
 		clr.l   (dword_FF0EF6).l
 		sf      -2(a6)
 		movem.l (sp)+,d0-a6
-return_17ED4:
+locret_17ED4:
 		rts
 
 	; End of function sub_17EB6
@@ -11106,8 +11106,8 @@ sub_17F88:
 		clr.w   ((word_FFC0BE-$1000000)).w
 		jsr     (sub_328).l
 		jsr     (j_WaitForVInt).l
-		trap    #0
-		dc.w 1
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_JOIN
 		jsr     (a3)
 		move.w  #$393,d6
 		moveq   #4,d0
@@ -11144,8 +11144,8 @@ sub_17FF6:
 		clr.w   ((word_FFC0BE-$1000000)).w
 		jsr     (sub_328).l
 		jsr     (j_WaitForVInt).l
-		trap    #0
-		dc.w $FFFF
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_GET_D0_PARAMETER
 		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
 		jsr     (a3)
 		moveq   #0,d0
@@ -11407,11 +11407,11 @@ sub_18208:
 		jsr     (a5)
 		move.w  #$48,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_18232
+		bra.s   locret_18232
 loc_1822E:
 		moveq   #4,d0
 		jsr     (a5)
-return_18232:
+locret_18232:
 		rts
 
 	; End of function sub_18208
@@ -11460,7 +11460,7 @@ loc_1828E:      cmpi.w  #$17,d1
 		bne.s   loc_182A8
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_182C4
+		bra.s   locret_182C4
 loc_182A8:      move.w  #$53,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_182C0
@@ -11468,10 +11468,10 @@ loc_182A8:      move.w  #$53,d0
 		jsr     (a5)
 		move.w  #$53,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_182C4
+		bra.s   locret_182C4
 loc_182C0:      moveq   #2,d0
 		jsr     (a5)
-return_182C4:   rts
+locret_182C4:   rts
 loc_182C6:      cmpi.w  #$18,d1
 		bne.s   loc_182E6
 		move.w  #$369,d6
@@ -11480,10 +11480,10 @@ loc_182C6:      cmpi.w  #$18,d1
 		bne.s   loc_182E0
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_182E4
+		bra.s   locret_182E4
 loc_182E0:      moveq   #2,d0
 		jsr     (a5)
-return_182E4:   rts
+locret_182E4:   rts
 loc_182E6:      cmpi.w  #$19,d1
 		bne.s   loc_18310
 		moveq   #1,d0
@@ -11541,8 +11541,8 @@ loc_18360:      moveq   #$31,d0
 		jsr     (a3)
 		move.w  ((word_FFC0BE-$1000000)).w,-6(a6)
 		clr.w   ((word_FFC0BE-$1000000)).w
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		moveq   #$10,d0
 		jsr     (a5)
 		move.w  #$FB,d0 
@@ -11636,12 +11636,12 @@ loc_18452:
 		bsr.w   j_j_SetEventFlag
 		move.w  #$6A,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1847E
+		bra.s   locret_1847E
 loc_18476:
 		moveq   #$A,d0
 		jsr     (a5)
 		st      ((unk_FFF00D-$1000000)).w
-return_1847E:
+locret_1847E:
 		rts
 
 ; END OF FUNCTION CHUNK FOR sub_183CE
@@ -11672,12 +11672,12 @@ loc_1849A:
 		bne.s   loc_184AA
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_184B2
+		bra.s   locret_184B2
 loc_184AA:
 		moveq   #5,d0
 		jsr     (a5)
 		st      ((unk_FFF00A-$1000000)).w
-return_184B2:
+locret_184B2:
 		rts
 loc_184B4:
 		cmpi.w  #$E,d1
@@ -11689,12 +11689,12 @@ loc_184B4:
 		bne.s   loc_184CE
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_184D6
+		bra.s   locret_184D6
 loc_184CE:
 		moveq   #6,d0
 		jsr     (a5)
 		st      ((unk_FFF00B-$1000000)).w
-return_184D6:
+locret_184D6:
 		rts
 loc_184D8:
 		cmpi.w  #$F,d1
@@ -11711,12 +11711,12 @@ loc_184EE:
 		bne.s   loc_184FE
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_18506
+		bra.s   locret_18506
 loc_184FE:
 		moveq   #7,d0
 		jsr     (a5)
 		st      ((unk_FFF00C-$1000000)).w
-return_18506:
+locret_18506:
 		rts
 loc_18508:
 		move.w  #$382,d6
@@ -11736,14 +11736,14 @@ loc_18522:
 		move.w  #$45,d0 
 		bsr.w   j_j_SetEventFlag
 		st      ((unk_FFF00E-$1000000)).w
-		bra.s   return_18548
+		bra.s   locret_18548
 loc_1853A:
 		moveq   #$A,d0
 		moveq   #2,d1
 		jsr     sub_11126
 		moveq   #9,d0
 		jsr     (a5)
-return_18548:
+locret_18548:
 		rts
 loc_1854A:
 		cmpi.w  #4,d1
@@ -11757,12 +11757,12 @@ loc_1854A:
 		jsr     sub_11126
 		moveq   #8,d0
 		jsr     (a5)
-		bra.s   return_18572
+		bra.s   locret_18572
 loc_1856C:
 		move.w  d1,d0
 		subq.w  #4,d0
 		jsr     (a5)
-return_18572:
+locret_18572:
 		rts
 loc_18574:
 		cmpi.w  #$15,d1
@@ -11780,11 +11780,11 @@ loc_18594:
 		moveq   #3,d0
 		jsr     (a5)
 loc_18598:
-		bra.s   return_1859E
+		bra.s   locret_1859E
 loc_1859A:
 		moveq   #2,d0
 		jsr     (a5)
-return_1859E:
+locret_1859E:
 		rts
 loc_185A0:
 		cmpi.w  #$16,d1
@@ -11798,11 +11798,11 @@ loc_185A0:
 		bne.s   loc_185C2
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_185C6
+		bra.s   locret_185C6
 loc_185C2:
 		moveq   #1,d0
 		jsr     (a5)
-return_185C6:
+locret_185C6:
 		rts
 loc_185C8:
 		move.w  #$345,d6
@@ -11967,7 +11967,7 @@ loc_18740:
 
 ; END OF FUNCTION CHUNK FOR sub_186E6
 
-		bra.s   return_1878A
+		bra.s   locret_1878A
 
 ; START OF FUNCTION CHUNK FOR sub_186E6
 
@@ -11983,11 +11983,11 @@ loc_18762:
 		jsr     (a5)
 		move.w  #$50,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1878A
+		bra.s   locret_1878A
 loc_18786:
 		moveq   #4,d0
 		jsr     (a5)
-return_1878A:
+locret_1878A:
 		rts
 loc_1878C:
 		cmpi.w  #$C,d1
@@ -12034,11 +12034,11 @@ loc_187F4:
 		moveq   #1,d0
 		jsr     (a5)
 loc_187F8:
-		bra.s   return_187FE
+		bra.s   locret_187FE
 loc_187FA:
 		moveq   #1,d0
 		jsr     (a5)
-return_187FE:
+locret_187FE:
 		rts
 loc_18800:
 		cmpi.w  #$12,d1
@@ -12048,11 +12048,11 @@ loc_18800:
 		bne.s   loc_18816
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1881A
+		bra.s   locret_1881A
 loc_18816:
 		moveq   #0,d0
 		jsr     (a5)
-return_1881A:
+locret_1881A:
 		rts
 loc_1881C:
 		move.w  #$340,d6
@@ -12070,11 +12070,11 @@ loc_1883C:
 		moveq   #3,d0
 		jsr     (a5)
 loc_18840:
-		bra.s   return_18846
+		bra.s   locret_18846
 loc_18842:
 		moveq   #0,d0
 		jsr     (a5)
-return_18846:
+locret_18846:
 		rts
 loc_18848:
 		cmpi.w  #$17,d1
@@ -12091,11 +12091,11 @@ loc_18864:
 		moveq   #4,d0
 		jsr     (a5)
 loc_18868:
-		bra.s   return_1886E
+		bra.s   locret_1886E
 loc_1886A:
 		moveq   #0,d0
 		jsr     (a5)
-return_1886E:
+locret_1886E:
 		rts
 loc_18870:
 		cmpi.w  #$1B,d1
@@ -12179,7 +12179,7 @@ loc_18944:      move.w  #$3B1,d6
 		bne.s   loc_1895A
 		moveq   #5,d0
 		jsr     (a5)
-		bra.s   return_1897E
+		bra.s   locret_1897E
 loc_1895A:      move.l  d0,-(sp)
 		move.b  #$92,d0
 		bsr.w   sub_17F64
@@ -12194,7 +12194,7 @@ loc_1895A:      move.l  d0,-(sp)
 		jsr     (a5)
 		move.w  #$67,d0 
 		bsr.w   j_j_SetEventFlag
-return_1897E:   rts
+locret_1897E:   rts
 loc_18980:      cmpi.w  #2,d1
 		bne.s   loc_1898C
 		moveq   #6,d0
@@ -12238,18 +12238,18 @@ loc_189C6:      move.w  #$39D,d6
 		moveq   #$11,d0
 		jsr     (a5)
 loc_189FE:      cmpi.w  #9,d2
-		bne.s   return_18A08
+		bne.s   locret_18A08
 		moveq   #0,d0
 		jsr     (a5)
-return_18A08:   rts
+locret_18A08:   rts
 loc_18A0A:      cmpi.w  #1,d1
 		bne.s   loc_18A88
 		moveq   #$31,d0 
 		jsr     (a4)
 		cmpi.w  #$11,d2
-		bne.s   return_18A86
-		trap    #0
-		dc.w $B
+		bne.s   locret_18A86
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_SAD_THEME
 		move.l  d0,-(sp)
 		move.b  #$8E,d0
 		bsr.w   sub_17F64
@@ -12287,7 +12287,7 @@ loc_18A0A:      cmpi.w  #1,d1
 		jsr     (a5)
 		move.w  #$30,d0 
 		bsr.w   j_j_SetEventFlag
-return_18A86:   rts
+locret_18A86:   rts
 loc_18A88:      cmpi.w  #3,d1
 		bne.w   loc_18B2A
 		cmpi.w  #$A,d2
@@ -12325,8 +12325,8 @@ loc_18A88:      cmpi.w  #3,d1
 		moveq   #4,d0
 		jsr     (a5)
 		bsr.w   sub_17E42
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		movem.l d6/a0-a6,-(sp)
 		jsr     sub_124028
 		movem.l (sp)+,d6/a0-a6
@@ -12342,11 +12342,11 @@ loc_18A88:      cmpi.w  #3,d1
 		jsr     (a5)
 		move.w  (sp)+,d6
 loc_18B1A:      cmpi.w  #$C,d2
-		bne.s   return_18B28
+		bne.s   locret_18B28
 		clr.w   ((word_FFC0BE-$1000000)).w
 		moveq   #5,d0
 		jsr     (a5)
-return_18B28:   rts
+locret_18B28:   rts
 loc_18B2A:      cmpi.w  #4,d1
 		bne.s   loc_18B5A
 		move.l  d0,-(sp)
@@ -12360,12 +12360,12 @@ loc_18B2A:      cmpi.w  #4,d1
 		moveq   #6,d0
 		jsr     (a5)
 loc_18B4A:      cmpi.w  #$10,d2
-		bne.s   return_18B58
+		bne.s   locret_18B58
 		moveq   #8,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $FD
-return_18B58:   rts
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
+locret_18B58:   rts
 loc_18B5A:      cmpi.w  #5,d1
 		bne.s   loc_18B86
 		move.l  d0,-(sp)
@@ -12379,10 +12379,10 @@ loc_18B5A:      cmpi.w  #5,d1
 		moveq   #4,d0
 		jsr     (a5)
 loc_18B7A:      cmpi.w  #$E,d2
-		bne.s   return_18B84
+		bne.s   locret_18B84
 		moveq   #7,d0
 		jsr     (a5)
-return_18B84:   rts
+locret_18B84:   rts
 loc_18B86:      cmpi.w  #$C,d1
 		bne.s   loc_18B9E
 		move.w  #$3E7,d6
@@ -12399,10 +12399,10 @@ loc_18B9E:      move.w  #$3CB,d6
 		beq.s   loc_18BB8
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_18BBC
+		bra.s   locret_18BBC
 loc_18BB8:      moveq   #0,d0
 		jsr     (a5)
-return_18BBC:   rts
+locret_18BBC:   rts
 loc_18BBE:      cmpi.w  #7,d1
 		bne.s   loc_18BDA
 		move.w  #$59,d0 
@@ -12410,10 +12410,10 @@ loc_18BBE:      cmpi.w  #7,d1
 		beq.s   loc_18BD4
 		moveq   #5,d0
 		jsr     (a5)
-		bra.s   return_18BD8
+		bra.s   locret_18BD8
 loc_18BD4:      moveq   #1,d0
 		jsr     (a5)
-return_18BD8:   rts
+locret_18BD8:   rts
 loc_18BDA:      move.w  #$3BA,d6
 		bra.w   sub_180A6
 loc_18BE2:      cmpi.w  #0,d2
@@ -12501,10 +12501,10 @@ loc_18CC8:      cmpi.w  #$C,d1
 		bne.s   loc_18CE2
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_18CE6
+		bra.s   locret_18CE6
 loc_18CE2:      moveq   #0,d0
 		jsr     (a5)
-return_18CE6:   rts
+locret_18CE6:   rts
 loc_18CE8:      cmpi.w  #$F,d1
 		bne.s   loc_18D2C
 		moveq   #$2F,d0 
@@ -12605,12 +12605,12 @@ loc_18DD2:      move.w  #$470,d6
 		bra.s   loc_18E16
 loc_18E12:      moveq   #1,d0
 		jsr     (a5)
-loc_18E16:      bra.s   return_18E24
+loc_18E16:      bra.s   locret_18E24
 loc_18E18:      moveq   #3,d0
 		jsr     (a5)
 		move.w  #$405,d0
 		bsr.w   sub_18046
-return_18E24:   rts
+locret_18E24:   rts
 loc_18E26:      move.w  #$476,d6
 		cmpi.w  #$F,d1
 		bne.s   loc_18E9E
@@ -12671,26 +12671,26 @@ loc_18EAE:      move.w  #$47D,d6
 		bne.s   loc_18ECA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_18ECE
+		bra.s   locret_18ECE
 loc_18ECA:      moveq   #2,d0
 		jsr     (a5)
-return_18ECE:   rts
+locret_18ECE:   rts
 loc_18ED0:      cmpi.w  #$19,d1
 		bne.s   loc_18EFE
 		move.w  #$47D,d6
 		cmpi.w  #8,d2
-		bne.s   return_18EFC
+		bne.s   locret_18EFC
 		move.w  #$4B,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_18EF0
 		moveq   #3,d0
 		jsr     (a5)
-		bra.s   return_18EFC
+		bra.s   locret_18EFC
 loc_18EF0:      moveq   #1,d0
 		jsr     (a5)
 		move.w  #$4A,d0 
 		bsr.w   j_j_SetEventFlag
-return_18EFC:   rts
+locret_18EFC:   rts
 loc_18EFE:      cmpi.w  #$B,d1
 		bne.s   loc_18F2E
 		move.w  #$21E,d6
@@ -12730,22 +12730,22 @@ loc_18F66:      move.w  #$481,d6
 		bne.s   loc_18F90
 		move.w  #$49A,d6
 		cmpi.w  #8,d2
-		bne.s   return_18F8E
+		bne.s   locret_18F8E
 		move.w  #$4B,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_18F8A
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_18F8E
+		bra.s   locret_18F8E
 loc_18F8A:      moveq   #1,d0
 		jsr     (a5)
-return_18F8E:   rts
+locret_18F8E:   rts
 loc_18F90:      cmpi.w  #$18,d1
 		bne.s   loc_18FA2
 		cmpi.w  #8,d2
-		bne.s   return_18FA0
+		bne.s   locret_18FA0
 		bra.w   sub_180B4
-return_18FA0:   rts
+locret_18FA0:   rts
 loc_18FA2:      cmpi.w  #$E,d1
 		bne.s   loc_18FD2
 		move.w  #$21E,d6
@@ -12821,10 +12821,10 @@ loc_19064:      cmpi.w  #4,d1
 		beq.s   loc_1907E
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_19082
+		bra.s   locret_19082
 loc_1907E:      moveq   #2,d0
 		jsr     (a5)
-return_19082:   rts
+locret_19082:   rts
 loc_19084:      cmpi.w  #$11,d1
 		bne.s   loc_190D0
 		move.l  d0,-(sp)
@@ -12850,10 +12850,10 @@ loc_190BE:      cmpi.w  #$C,d2
 		bne.s   loc_190C8
 		moveq   #4,d0
 		jsr     (a5)
-loc_190C8:      bra.s   return_190CE
+loc_190C8:      bra.s   locret_190CE
 loc_190CA:      moveq   #4,d0
 		jsr     (a5)
-return_190CE:   rts
+locret_190CE:   rts
 loc_190D0:      cmpi.w  #$D,d1
 		bne.s   loc_190E4
 		move.w  d6,-(sp)
@@ -12883,7 +12883,7 @@ loc_19116:      move.w  d6,-(sp)
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-loc_19122:      bra.s   return_1916C
+loc_19122:      bra.s   locret_1916C
 loc_19124:      move.w  #$425,d6
 		moveq   #$A,d0
 		jsr     (a5)
@@ -12907,7 +12907,7 @@ loc_19124:      move.w  #$425,d6
 		bsr.w   j_j_SetEventFlag
 		move.w  #$31,d0 
 		bsr.w   j_j_SetEventFlag
-return_1916C:   rts
+locret_1916C:   rts
 loc_1916E:      move.w  #$425,d6
 		move.l  d0,-(sp)
 		move.b  #$F,d0
@@ -12922,7 +12922,7 @@ loc_19188:      cmpi.w  #$A,d2
 		moveq   #$B,d0
 		jsr     (a5)
 loc_19192:      cmpi.w  #$B,d2
-		bne.s   return_191AA
+		bne.s   locret_191AA
 		moveq   #$C,d0
 		jsr     (a5)
 		moveq   #5,d0
@@ -12930,7 +12930,7 @@ loc_19192:      cmpi.w  #$B,d2
 		jsr     sub_11126
 		moveq   #$E,d0
 		jsr     (a5)
-return_191AA:   rts
+locret_191AA:   rts
 loc_191AC:      move.w  #$425,d6
 		cmpi.w  #$E,d1
 		bne.s   loc_19228
@@ -12957,7 +12957,7 @@ loc_191E8:      move.l  d0,-(sp)
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
-loc_191F8:      bra.s   return_19226
+loc_191F8:      bra.s   locret_19226
 loc_191FA:      move.l  d0,-(sp)
 		move.b  #$8E,d0
 		bsr.w   sub_17F64
@@ -12974,7 +12974,7 @@ loc_191FA:      move.l  d0,-(sp)
 		jsr     (a5)
 		move.w  #$7A,d0 
 		bsr.w   j_j_SetEventFlag
-return_19226:   rts
+locret_19226:   rts
 loc_19228:      cmpi.w  #$F,d1
 		bne.s   loc_19244
 		move.w  #$5C,d0 
@@ -12982,10 +12982,10 @@ loc_19228:      cmpi.w  #$F,d1
 		bne.s   loc_1923E
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_19242
+		bra.s   locret_19242
 loc_1923E:      moveq   #2,d0
 		jsr     (a5)
-return_19242:   rts
+locret_19242:   rts
 loc_19244:      cmpi.w  #$12,d1
 		bne.s   loc_19250
 		moveq   #4,d0
@@ -13013,10 +13013,10 @@ loc_19274:      move.w  #$437,d6
 		bne.s   loc_1928E
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_19292
+		bra.s   locret_19292
 loc_1928E:      moveq   #3,d0
 		jsr     (a5)
-return_19292:   rts
+locret_19292:   rts
 loc_19294:      cmpi.w  #$18,d1
 		bne.s   loc_192B0
 		move.w  #$55,d0 
@@ -13024,10 +13024,10 @@ loc_19294:      cmpi.w  #$18,d1
 		bne.s   loc_192AA
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_192AE
+		bra.s   locret_192AE
 loc_192AA:      moveq   #3,d0
 		jsr     (a5)
-return_192AE:   rts
+locret_192AE:   rts
 loc_192B0:      cmpi.w  #$19,d1
 		bne.s   loc_192CC
 		move.w  #$55,d0 
@@ -13035,10 +13035,10 @@ loc_192B0:      cmpi.w  #$19,d1
 		bne.s   loc_192C6
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_192CA
+		bra.s   locret_192CA
 loc_192C6:      moveq   #3,d0
 		jsr     (a5)
-return_192CA:   rts
+locret_192CA:   rts
 loc_192CC:      cmpi.w  #$1A,d1
 		bne.s   loc_19314
 		moveq   #$2F,d0 
@@ -13105,10 +13105,10 @@ loc_19348:      bra.w   sub_18074
 		bra.s   loc_19398
 loc_19394:      moveq   #1,d0
 		jsr     (a5)
-loc_19398:      bra.s   return_1939E
+loc_19398:      bra.s   locret_1939E
 loc_1939A:      moveq   #3,d0
 		jsr     (a5)
-return_1939E:   rts
+locret_1939E:   rts
 loc_193A0:      cmpi.w  #$E,d1
 		bne.s   loc_193B8
 		move.w  #$44F,d6
@@ -13141,7 +13141,7 @@ loc_193EA:      cmpi.w  #0,d2
 		moveq   #0,d0
 		jsr     (a5)
 		bsr.w   sub_18056
-		beq.w   return_1944A
+		beq.w   locret_1944A
 		moveq   #1,d0
 		jsr     (a5)
 		move.w  #$7D,d0 
@@ -13155,7 +13155,7 @@ loc_193EA:      cmpi.w  #0,d2
 		rts
 loc_1941E:      move.w  #$5A,d0 
 		bsr.w   j_j_CheckEventFlag
-		bne.w   return_1944A
+		bne.w   locret_1944A
 		move.w  #$5A,d0 
 		bsr.w   j_j_SetEventFlag
 		movem.l a0-a6,-(sp)
@@ -13164,7 +13164,7 @@ loc_1941E:      move.w  #$5A,d0
 		jsr     (j_Sleep).l
 		bsr.w   sub_15DE2
 		movem.l (sp)+,a0-a6
-return_1944A:   rts
+locret_1944A:   rts
 loc_1944C:      bra.w   sub_18074
 		move.w  #$89E,d6
 		cmpi.w  #1,d1
@@ -13282,16 +13282,16 @@ loc_19578:      cmpi.w  #$19,d1
 		bne.s   loc_1959E
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_195B2
+		bra.s   locret_195B2
 loc_1959E:      move.w  #$4D,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_195AE
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_195B2
+		bra.s   locret_195B2
 loc_195AE:      moveq   #7,d0
 		jsr     (a5)
-return_195B2:   rts
+locret_195B2:   rts
 loc_195B4:      cmpi.w  #$18,d1
 		bne.w   loc_196A2
 		move.w  #$90,d0 
@@ -13337,7 +13337,7 @@ loc_195B4:      cmpi.w  #$18,d1
 		bra.s   loc_19638
 loc_19634:      moveq   #2,d0
 		jsr     (a5)
-loc_19638:      bra.s   return_196A0
+loc_19638:      bra.s   locret_196A0
 loc_1963A:      move.w  #$4D,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1969C
@@ -13372,10 +13372,10 @@ loc_1963A:      move.w  #$4D,d0
 		jsr     (a5)
 		move.w  #$4D,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_196A0
+		bra.s   locret_196A0
 loc_1969C:      moveq   #6,d0
 		jsr     (a5)
-return_196A0:   rts
+locret_196A0:   rts
 loc_196A2:      cmpi.w  #$B,d1
 		beq.w   sub_180B4
 		cmpi.w  #6,d1
@@ -13410,7 +13410,7 @@ loc_196FA:      moveq   #8,d0
 		jsr     (a5)
 		move.w  #$4E,d0 
 		bsr.w   j_j_SetEventFlag
-loc_19706:      bra.s   return_19728
+loc_19706:      bra.s   locret_19728
 loc_19708:      moveq   #$18,d0
 		jsr     (a5)
 		jsr     sub_18056
@@ -13418,12 +13418,12 @@ loc_19708:      moveq   #$18,d0
 		moveq   #$19,d0
 		jsr     (a5)
 		rts
-		bra.s   return_19728
+		bra.s   locret_19728
 loc_1971C:      moveq   #$1A,d0
 		jsr     (a5)
 		move.w  #$4E,d0 
 		bsr.w   j_j_SetEventFlag
-return_19728:   rts
+locret_19728:   rts
 loc_1972A:      cmpi.w  #3,d1
 		bne.s   loc_19782
 		move.w  #$4D7,d6
@@ -13432,7 +13432,7 @@ loc_1972A:      cmpi.w  #3,d1
 		bne.s   loc_19744
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_19780
+		bra.s   locret_19780
 loc_19744:      move.w  #$7F,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1976C
@@ -13446,16 +13446,16 @@ loc_1975E:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$7F,d0 
 		bsr.w   j_j_SetEventFlag
-loc_1976A:      bra.s   return_19780
+loc_1976A:      bra.s   locret_19780
 loc_1976C:      move.w  #$2A,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1977C
 		moveq   #3,d0
 		jsr     (a5)
-		bra.s   return_19780
+		bra.s   locret_19780
 loc_1977C:      moveq   #4,d0
 		jsr     (a5)
-return_19780:   rts
+locret_19780:   rts
 loc_19782:      cmpi.w  #$11,d1
 		bne.s   loc_197A0
 		move.w  #$54,d0 
@@ -13513,10 +13513,10 @@ loc_19804:      cmpi.w  #$15,d1
 		bsr.w   j_j_SetEventFlag
 		move.w  #$30,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_19832
+		bra.s   locret_19832
 loc_1982E:      moveq   #1,d0
 		jsr     (a5)
-return_19832:   rts
+locret_19832:   rts
 loc_19834:      cmpi.w  #$16,d1
 		bne.s   loc_19844
 		move.w  #$4CE,d6
@@ -13572,10 +13572,10 @@ loc_19894:      cmpi.w  #$15,d1
 		bra.s   loc_198CA
 loc_198C6:      moveq   #3,d0
 		jsr     (a5)
-loc_198CA:      bra.s   return_198D0
+loc_198CA:      bra.s   locret_198D0
 loc_198CC:      moveq   #5,d0
 		jsr     (a5)
-return_198D0:   rts
+locret_198D0:   rts
 loc_198D2:      cmpi.w  #$16,d1
 		bne.s   loc_198E2
 		move.w  #$4CE,d6
@@ -13596,10 +13596,10 @@ loc_198F2:      cmpi.w  #4,d1
 		bne.s   loc_1990C
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_19910
+		bra.s   locret_19910
 loc_1990C:      moveq   #2,d0
 		jsr     (a5)
-return_19910:   rts
+locret_19910:   rts
 loc_19912:      cmpi.w  #$D,d1
 		bne.s   loc_19922
 		move.w  #$4BD,d6
@@ -13689,10 +13689,10 @@ loc_19A00:      moveq   #9,d0
 		jsr     (a5)
 		move.w  #$52,d0 
 		bsr.w   j_j_SetEventFlag
-loc_19A0C:      bra.s   return_19A12
+loc_19A0C:      bra.s   locret_19A12
 loc_19A0E:      moveq   #$C,d0
 		jsr     (a5)
-return_19A12:   rts
+locret_19A12:   rts
 loc_19A14:      cmpi.w  #$16,d1
 		bne.s   loc_19A24
 		move.w  #$4CE,d6
@@ -13782,8 +13782,8 @@ loc_19AB6:      cmpi.w  #1,d2
 		clr.w   ((word_FFC0BE-$1000000)).w
 		moveq   #$E,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		moveq   #5,d0
 		jsr     (a5)
 		jsr     (sub_328).l
@@ -13863,8 +13863,8 @@ loc_19BA8:      cmpi.w  #1,d2
 		clr.w   ((word_FFC0BE-$1000000)).w
 		moveq   #$20,d0 
 		jsr     (a5)
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		moveq   #5,d0
 		jsr     (a5)
 		jsr     (sub_328).l
@@ -13923,13 +13923,13 @@ loc_19C74:      move.w  d6,-(sp)
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		rts
 loc_19CC6:      cmpi.b  #1,d2
 		bne.s   loc_19CE6
-		trap    #0
-		dc.w $10
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_BATTLE_3
 		moveq   #$21,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
@@ -14018,27 +14018,27 @@ loc_19DAC:      move.w  #$530,d6
 		bne.s   loc_19DC0
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_19DC4
+		bra.s   locret_19DC4
 loc_19DC0:      moveq   #1,d0
 		jsr     (a5)
-return_19DC4:   rts
+locret_19DC4:   rts
 loc_19DC6:      cmpi.w  #9,d1
 		bne.s   loc_19DF0
 		tst.b   d7
 		beq.s   loc_19DD6
 		moveq   #9,d0
 		jsr     (a5)
-		bra.s   return_19DEE
+		bra.s   locret_19DEE
 loc_19DD6:      move.w  #$532,d6
 		move.w  #$54,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_19DEA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_19DEE
+		bra.s   locret_19DEE
 loc_19DEA:      moveq   #1,d0
 		jsr     (a5)
-return_19DEE:   rts
+locret_19DEE:   rts
 loc_19DF0:      cmpi.w  #7,d1
 		bne.s   loc_19E18
 		move.w  #$1F,d0
@@ -14113,17 +14113,17 @@ loc_19EAC:      moveq   #5,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$65,d0 
 		bsr.w   j_j_SetEventFlag
-loc_19EC4:      bra.s   return_19ECA
+loc_19EC4:      bra.s   locret_19ECA
 loc_19EC6:      moveq   #6,d0
 		jsr     (a5)
-return_19ECA:   rts
+locret_19ECA:   rts
 loc_19ECC:      cmpi.w  #$A,d1
 		bne.s   loc_19EFE
 		tst.b   d7
 		beq.s   loc_19EDC
 		moveq   #8,d0
 		jsr     (a5)
-		bra.s   return_19EFC
+		bra.s   locret_19EFC
 loc_19EDC:      move.w  #$53C,d6
 		move.w  #$54,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -14132,10 +14132,10 @@ loc_19EDC:      move.w  #$53C,d6
 		jsr     (a5)
 		move.w  #$201,d0
 		bsr.w   sub_18046
-		bra.s   return_19EFC
+		bra.s   locret_19EFC
 loc_19EF8:      moveq   #3,d0
 		jsr     (a5)
-return_19EFC:   rts
+locret_19EFC:   rts
 loc_19EFE:      cmpi.w  #$12,d1
 		bne.s   loc_19F40
 		tst.b   d7
@@ -14157,10 +14157,10 @@ loc_19F0E:      move.w  #$540,d6
 		bra.s   loc_19F38
 loc_19F34:      moveq   #1,d0
 		jsr     (a5)
-loc_19F38:      bra.s   return_19F3E
+loc_19F38:      bra.s   locret_19F3E
 loc_19F3A:      moveq   #2,d0
 		jsr     (a5)
-return_19F3E:   rts
+locret_19F3E:   rts
 loc_19F40:      cmpi.w  #$14,d1
 		bne.s   loc_19F86
 		tst.b   d7
@@ -14173,7 +14173,7 @@ loc_19F40:      cmpi.w  #$14,d1
 		jsr     (a5)
 		move.w  (sp)+,d6
 		sf      ((unk_FFF00A-$1000000)).w
-		bra.s   return_19F84
+		bra.s   locret_19F84
 loc_19F64:      move.w  #$544,d6
 		move.w  #$54,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -14182,10 +14182,10 @@ loc_19F64:      move.w  #$544,d6
 		jsr     (a5)
 		move.w  #$102,d0
 		bsr.w   sub_18046
-		bra.s   return_19F84
+		bra.s   locret_19F84
 loc_19F80:      moveq   #3,d0
 		jsr     (a5)
-return_19F84:   rts
+locret_19F84:   rts
 loc_19F86:      cmpi.w  #5,d1
 		bne.w   loc_1A014
 		moveq   #$A,d0
@@ -14212,7 +14212,7 @@ loc_19FC2:      moveq   #$C,d0
 		jsr     (a5)
 loc_19FC6:      move.w  #$71,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1A012
+		bra.s   locret_1A012
 loc_19FD0:      tst.b   d7
 		beq.s   loc_19FE2
 		move.w  d6,-(sp)
@@ -14237,7 +14237,7 @@ loc_19FE2:      moveq   #9,d0
 		jsr     (a5)
 		move.w  #$72,d0 
 		bsr.w   j_j_SetEventFlag
-return_1A012:   rts
+locret_1A012:   rts
 loc_1A014:      cmpi.w  #$1A,d1
 		bne.s   loc_1A03E
 		tst.b   d7
@@ -14268,7 +14268,7 @@ loc_1A052:      move.w  #$577,d6
 		bne.s   loc_1A066
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A080
+		bra.s   locret_1A080
 loc_1A066:      moveq   #1,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
@@ -14279,7 +14279,7 @@ loc_1A066:      moveq   #1,d0
 		jsr     (a5)
 		move.w  #$70,d0 
 		bsr.w   j_j_SetEventFlag
-return_1A080:   rts
+locret_1A080:   rts
 loc_1A082:      cmpi.w  #$1B,d1
 		bne.s   loc_1A0EC
 		tst.b   d7
@@ -14293,7 +14293,7 @@ loc_1A092:      move.w  #$57B,d6
 		beq.s   loc_1A0A6
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_1A0EA
+		bra.s   locret_1A0EA
 loc_1A0A6:      move.w  #$1F,d0
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1A0E6
@@ -14315,10 +14315,10 @@ loc_1A0D0:      moveq   #0,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$6F,d0 
 		bsr.w   j_j_SetEventFlag
-loc_1A0E4:      bra.s   return_1A0EA
+loc_1A0E4:      bra.s   locret_1A0EA
 loc_1A0E6:      moveq   #3,d0
 		jsr     (a5)
-return_1A0EA:   rts
+locret_1A0EA:   rts
 loc_1A0EC:      cmpi.w  #$19,d1
 		bne.s   loc_1A114
 		move.w  #$55A,d6
@@ -14327,12 +14327,12 @@ loc_1A0EC:      cmpi.w  #$19,d1
 		bne.s   loc_1A106
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A112
+		bra.s   locret_1A112
 loc_1A106:      moveq   #1,d0
 		jsr     (a5)
 		move.w  #$4A,d0 
 		bsr.w   j_j_SetEventFlag
-return_1A112:   rts
+locret_1A112:   rts
 loc_1A114:      move.w  #$512,d6
 		cmpi.w  #1,d1
 		bne.s   loc_1A136
@@ -14340,39 +14340,39 @@ loc_1A114:      move.w  #$512,d6
 		bne.s   loc_1A128
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1A134
+		bra.s   locret_1A134
 loc_1A128:      move.w  d6,-(sp)
 		move.w  #$565,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A134:   rts
+locret_1A134:   rts
 loc_1A136:      cmpi.w  #2,d1
 		bne.s   loc_1A154
 		tst.b   d7
 		bne.s   loc_1A146
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1A152
+		bra.s   locret_1A152
 loc_1A146:      move.w  d6,-(sp)
 		move.w  #$564,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A152:   rts
+locret_1A152:   rts
 loc_1A154:      cmpi.w  #4,d1
 		bne.s   loc_1A172
 		tst.b   d7
 		bne.s   loc_1A164
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_1A170
+		bra.s   locret_1A170
 loc_1A164:      move.w  d6,-(sp)
 		move.w  #$563,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A170:   rts
+locret_1A170:   rts
 loc_1A172:      cmpi.w  #7,d1
 		bne.s   loc_1A1A8
 		tst.b   d7
@@ -14388,52 +14388,52 @@ loc_1A172:      cmpi.w  #7,d1
 		bra.s   loc_1A198
 loc_1A194:      moveq   #7,d0
 		jsr     (a5)
-loc_1A198:      bra.s   return_1A1A6
+loc_1A198:      bra.s   locret_1A1A6
 loc_1A19A:      move.w  d6,-(sp)
 		move.w  #$563,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A1A6:   rts
+locret_1A1A6:   rts
 loc_1A1A8:      cmpi.w  #$B,d1
 		bne.s   loc_1A1C6
 		tst.b   d7
 		bne.s   loc_1A1B8
 		moveq   #$B,d0
 		jsr     (a5)
-		bra.s   return_1A1C4
+		bra.s   locret_1A1C4
 loc_1A1B8:      move.w  d6,-(sp)
 		move.w  #$563,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A1C4:   rts
+locret_1A1C4:   rts
 loc_1A1C6:      cmpi.w  #$15,d1
 		bne.s   loc_1A1E4
 		tst.b   d7
 		bne.s   loc_1A1D6
 		moveq   #$15,d0
 		jsr     (a5)
-		bra.s   return_1A1E2
+		bra.s   locret_1A1E2
 loc_1A1D6:      move.w  d6,-(sp)
 		move.w  #$565,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A1E2:   rts
+locret_1A1E2:   rts
 loc_1A1E4:      cmpi.w  #$17,d1
 		bne.s   loc_1A202
 		tst.b   d7
 		bne.s   loc_1A1F4
 		moveq   #$17,d0
 		jsr     (a5)
-		bra.s   return_1A200
+		bra.s   locret_1A200
 loc_1A1F4:      move.w  d6,-(sp)
 		move.w  #$565,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A200:   rts
+locret_1A200:   rts
 loc_1A202:      cmpi.w  #$13,d1
 		bne.s   loc_1A23E
 		move.w  #$55D,d6
@@ -14447,17 +14447,17 @@ loc_1A202:      cmpi.w  #$13,d1
 		rts
 loc_1A220:      moveq   #$D,d0
 		jsr     (a5)
-		bra.s   return_1A23C
+		bra.s   locret_1A23C
 loc_1A226:      tst.b   d7
 		bne.s   loc_1A230
 		moveq   #$B,d0
 		jsr     (a5)
-		bra.s   return_1A23C
+		bra.s   locret_1A23C
 loc_1A230:      moveq   #$C,d0
 		jsr     (a5)
 		move.w  #$69,d0 
 		bsr.w   j_j_SetEventFlag
-return_1A23C:   rts
+locret_1A23C:   rts
 loc_1A23E:      cmpi.w  #$16,d1
 		bne.s   loc_1A27C
 		move.w  #$55D,d6
@@ -14476,10 +14476,10 @@ loc_1A260:      moveq   #2,d0
 		bsr.w   j_j_SetEventFlag
 		st      ((unk_FFF00A-$1000000)).w
 		st      ((unk_FFF00B-$1000000)).w
-loc_1A274:      bra.s   return_1A27A
+loc_1A274:      bra.s   locret_1A27A
 loc_1A276:      moveq   #5,d0
 		jsr     (a5)
-return_1A27A:   rts
+locret_1A27A:   rts
 loc_1A27C:      move.w  #$513,d6
 		bra.w   sub_180A6
 loc_1A284:      move.w  #$570,d6
@@ -14605,8 +14605,8 @@ loc_1A3A8:      cmpi.w  #5,d2
 		rts
 loc_1A3C4:      cmpi.w  #6,d2
 		bne.s   loc_1A3E8
-		trap    #0
-		dc.w 7
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_INTRO
 		move.l  d0,-(sp)
 		move.b  #$A0,d0
 		bsr.w   sub_17F64
@@ -14614,8 +14614,8 @@ loc_1A3C4:      cmpi.w  #6,d2
 		move.w  #$580,d6
 		moveq   #0,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		rts
 loc_1A3E8:      cmpi.w  #7,d2
 		bne.s   loc_1A404
@@ -14651,8 +14651,8 @@ loc_1A42E:      tst.b   d7
 		bsr.w   j_j_SetEventFlag
 		move.w  #$78,d0 
 		bsr.w   j_j_SetEventFlag
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		rts
 loc_1A450:      bra.w   sub_1808A
 loc_1A454:      cmpi.w  #0,d2
@@ -14673,8 +14673,8 @@ loc_1A454:      cmpi.w  #0,d2
 		bcs.s   loc_1A4B0
 		move.w  #$91,d0 
 		bsr.w   j_j_SetEventFlag
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		move.w  d6,-(sp)
 		move.w  #$48,d6 
 		moveq   #0,d0
@@ -14694,13 +14694,13 @@ loc_1A4B0:      move.w  d6,-(sp)
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-loc_1A4CE:      bra.s   return_1A4DC
+loc_1A4CE:      bra.s   locret_1A4DC
 loc_1A4D0:      move.w  d6,-(sp)
 		move.w  #$4B,d6 
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1A4DC:   rts
+locret_1A4DC:   rts
 loc_1A4DE:      bra.w   sub_18074
 		cmpi.b  #$FF,d1
 		beq.w   loc_1A5FA
@@ -14722,10 +14722,10 @@ loc_1A506:      cmpi.w  #2,d1
 		bne.s   loc_1A520
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A524
+		bra.s   locret_1A524
 loc_1A520:      moveq   #1,d0
 		jsr     (a5)
-return_1A524:   rts
+locret_1A524:   rts
 loc_1A526:      move.w  #$685,d6
 		cmpi.w  #3,d1
 		bne.s   loc_1A536
@@ -14768,10 +14768,10 @@ loc_1A576:      cmpi.w  #7,d1
 		jsr     (a5)
 		move.w  #$74,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1A5A0
+		bra.s   locret_1A5A0
 loc_1A59C:      moveq   #1,d0
 		jsr     (a5)
-return_1A5A0:   rts
+locret_1A5A0:   rts
 loc_1A5A2:      cmpi.w  #9,d1
 		bne.s   loc_1A5B2
 		move.w  #$681,d6
@@ -14967,10 +14967,10 @@ loc_1A7BC:      moveq   #2,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$40,d0 
 		bsr.w   j_j_SetEventFlag
-loc_1A7D4:      bra.s   return_1A7DA
+loc_1A7D4:      bra.s   locret_1A7DA
 loc_1A7D6:      moveq   #3,d0
 		jsr     (a5)
-return_1A7DA:   rts
+locret_1A7DA:   rts
 loc_1A7DC:      cmpi.w  #9,d1
 		bne.s   loc_1A7F4
 		move.w  #$6AB,d6
@@ -14987,10 +14987,10 @@ loc_1A7F4:      cmpi.w  #2,d1
 		bne.s   loc_1A80E
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A812
+		bra.s   locret_1A812
 loc_1A80E:      moveq   #1,d0
 		jsr     (a5)
-return_1A812:   rts
+locret_1A812:   rts
 loc_1A814:      cmpi.w  #7,d1
 		bne.s   loc_1A852
 		moveq   #$12,d0
@@ -15001,7 +15001,7 @@ loc_1A814:      cmpi.w  #7,d1
 		bne.s   loc_1A832
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A850
+		bra.s   locret_1A850
 loc_1A832:      moveq   #1,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
@@ -15014,7 +15014,7 @@ loc_1A832:      moveq   #1,d0
 		jsr     (a5)
 		move.w  #$41,d0 
 		bsr.w   j_j_SetEventFlag
-return_1A850:   rts
+locret_1A850:   rts
 loc_1A852:      move.w  #$695,d6
 		bra.w   sub_180A6
 		cmpi.b  #$FD,d1
@@ -15077,10 +15077,10 @@ loc_1A8FC:      cmpi.w  #5,d1
 		bne.s   loc_1A916
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A91A
+		bra.s   locret_1A91A
 loc_1A916:      moveq   #1,d0
 		jsr     (a5)
-return_1A91A:   rts
+locret_1A91A:   rts
 loc_1A91C:      cmpi.w  #6,d1
 		bne.s   loc_1A93C
 		move.w  #$6D2,d6
@@ -15089,10 +15089,10 @@ loc_1A91C:      cmpi.w  #6,d1
 		bne.s   loc_1A936
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A93A
+		bra.s   locret_1A93A
 loc_1A936:      moveq   #1,d0
 		jsr     (a5)
-return_1A93A:   rts
+locret_1A93A:   rts
 loc_1A93C:      cmpi.w  #8,d1
 		bne.s   loc_1A95C
 		move.w  #$6D4,d6
@@ -15101,10 +15101,10 @@ loc_1A93C:      cmpi.w  #8,d1
 		bne.s   loc_1A956
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A95A
+		bra.s   locret_1A95A
 loc_1A956:      moveq   #1,d0
 		jsr     (a5)
-return_1A95A:   rts
+locret_1A95A:   rts
 loc_1A95C:      cmpi.w  #9,d1
 		bne.s   loc_1A97C
 		move.w  #$6D6,d6
@@ -15113,10 +15113,10 @@ loc_1A95C:      cmpi.w  #9,d1
 		bne.s   loc_1A976
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A97A
+		bra.s   locret_1A97A
 loc_1A976:      moveq   #1,d0
 		jsr     (a5)
-return_1A97A:   rts
+locret_1A97A:   rts
 loc_1A97C:      cmpi.w  #$A,d1
 		bne.s   loc_1A99C
 		move.w  #$6D8,d6
@@ -15125,10 +15125,10 @@ loc_1A97C:      cmpi.w  #$A,d1
 		bne.s   loc_1A996
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A99A
+		bra.s   locret_1A99A
 loc_1A996:      moveq   #1,d0
 		jsr     (a5)
-return_1A99A:   rts
+locret_1A99A:   rts
 loc_1A99C:      cmpi.w  #$10,d1
 		bne.s   loc_1A9B4
 		move.w  #$6DA,d6
@@ -15145,10 +15145,10 @@ loc_1A9B4:      move.w  #$6DD,d6
 		bne.s   loc_1A9CE
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1A9D2
+		bra.s   locret_1A9D2
 loc_1A9CE:      moveq   #9,d0
 		jsr     (a5)
-return_1A9D2:   rts
+locret_1A9D2:   rts
 loc_1A9D4:      cmpi.w  #$D,d1
 		bne.s   loc_1A9F0
 		move.w  #$53,d0 
@@ -15156,10 +15156,10 @@ loc_1A9D4:      cmpi.w  #$D,d1
 		bne.s   loc_1A9EA
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1A9EE
+		bra.s   locret_1A9EE
 loc_1A9EA:      moveq   #$A,d0
 		jsr     (a5)
-return_1A9EE:   rts
+locret_1A9EE:   rts
 loc_1A9F0:      cmpi.w  #$E,d1
 		bne.s   loc_1AA18
 		moveq   #$17,d0
@@ -15169,12 +15169,12 @@ loc_1A9F0:      cmpi.w  #$E,d1
 		bne.s   loc_1AA0A
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1AA16
+		bra.s   locret_1AA16
 loc_1AA0A:      moveq   #4,d0
 		jsr     (a5)
 		move.w  #$46,d0 
 		bsr.w   j_j_SetEventFlag
-return_1AA16:   rts
+locret_1AA16:   rts
 loc_1AA18:      cmpi.w  #3,d1
 		bne.s   loc_1AA72
 		move.w  #$6E8,d6
@@ -15183,32 +15183,32 @@ loc_1AA18:      cmpi.w  #3,d1
 		beq.s   loc_1AA32
 		moveq   #5,d0
 		jsr     (a5)
-		bra.s   return_1AA70
+		bra.s   locret_1AA70
 loc_1AA32:      move.w  #$52,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   loc_1AA42
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_1AA70
+		bra.s   locret_1AA70
 loc_1AA42:      moveq   #0,d0
 		jsr     (a5)
 		bsr.w   sub_18056
 		bne.s   loc_1AA52
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1AA70
+		bra.s   locret_1AA70
 loc_1AA52:      clr.w   d0
 		moveq   #$13,d1
 		jsr     j_IsItemHeldByForce
 		bcc.s   loc_1AA64
 		moveq   #6,d0
 		jsr     (a5)
-		bra.s   return_1AA70
+		bra.s   locret_1AA70
 loc_1AA64:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$43,d0 
 		bsr.w   j_j_SetEventFlag
-return_1AA70:   rts
+locret_1AA70:   rts
 loc_1AA72:      cmpi.w  #$B,d1
 		bne.s   loc_1AAD0
 		move.w  #$6EF,d6
@@ -15217,13 +15217,13 @@ loc_1AA72:      cmpi.w  #$B,d1
 		beq.s   loc_1AA8C
 		moveq   #$B,d0
 		jsr     (a5)
-		bra.s   return_1AACE
+		bra.s   locret_1AACE
 loc_1AA8C:      move.w  #$44,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   loc_1AA9C
 		moveq   #$A,d0
 		jsr     (a5)
-		bra.s   return_1AACE
+		bra.s   locret_1AACE
 loc_1AA9C:      moveq   #0,d0
 		jsr     (a5)
 		clr.w   d0
@@ -15232,19 +15232,19 @@ loc_1AA9C:      moveq   #0,d0
 		bcc.s   loc_1AAB2
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1AACE
+		bra.s   locret_1AACE
 loc_1AAB2:      moveq   #2,d0
 		jsr     (a5)
 		bsr.w   sub_18056
 		bne.s   loc_1AAC2
 		moveq   #3,d0
 		jsr     (a5)
-		bra.s   return_1AACE
+		bra.s   locret_1AACE
 loc_1AAC2:      moveq   #4,d0
 		jsr     (a5)
 		move.w  #$44,d0 
 		bsr.w   j_j_SetEventFlag
-return_1AACE:   rts
+locret_1AACE:   rts
 loc_1AAD0:      cmpi.w  #$16,d1
 		bne.s   loc_1AAE4
 		move.w  #$6EF,d6
@@ -15278,8 +15278,8 @@ loc_1AAEC:      cmpi.w  #0,d2
 		movem.l (sp)+,d0-d1
 		clr.w   ((word_FFC0BE-$1000000)).w
 		jsr     (sub_328).l
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		move.w  d6,-(sp)
 		move.w  #$4E,d6 
 		moveq   #0,d0
@@ -15379,7 +15379,7 @@ loc_1AC2C:      cmpi.w  #0,d2
 		bsr.w   j_j_SetEventFlag
 		move.w  #$45,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1AC70
+		bra.s   locret_1AC70
 loc_1AC58:      move.w  #$6DD,d6
 		move.l  d0,-(sp)
 		move.b  #$17,d0
@@ -15389,7 +15389,7 @@ loc_1AC58:      move.w  #$6DD,d6
 		jsr     (a4)
 		moveq   #3,d0
 		jsr     (a5)
-return_1AC70:   rts
+locret_1AC70:   rts
 loc_1AC72:      bra.w   sub_18074
 loc_1AC76:      cmpi.w  #$1514,d2
 		bne.s   loc_1AC98
@@ -15475,10 +15475,10 @@ loc_1AD42:      cmpi.w  #2,d1
 		bra.s   loc_1AD72
 loc_1AD6E:      moveq   #3,d0
 		jsr     (a5)
-loc_1AD72:      bra.s   return_1AD78
+loc_1AD72:      bra.s   locret_1AD78
 loc_1AD74:      moveq   #4,d0
 		jsr     (a5)
-return_1AD78:   rts
+locret_1AD78:   rts
 loc_1AD7A:      cmpi.w  #7,d1
 		bne.s   loc_1ADB2
 		move.w  #$71B,d6
@@ -15495,10 +15495,10 @@ loc_1AD7A:      cmpi.w  #7,d1
 		bra.s   loc_1ADAA
 loc_1ADA6:      moveq   #3,d0
 		jsr     (a5)
-loc_1ADAA:      bra.s   return_1ADB0
+loc_1ADAA:      bra.s   locret_1ADB0
 loc_1ADAC:      moveq   #4,d0
 		jsr     (a5)
-return_1ADB0:   rts
+locret_1ADB0:   rts
 loc_1ADB2:      cmpi.w  #3,d1
 		bne.s   loc_1ADD2
 		move.w  #$720,d6
@@ -15507,10 +15507,10 @@ loc_1ADB2:      cmpi.w  #3,d1
 		bne.s   loc_1ADCC
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1ADD0
+		bra.s   locret_1ADD0
 loc_1ADCC:      moveq   #1,d0
 		jsr     (a5)
-return_1ADD0:   rts
+locret_1ADD0:   rts
 loc_1ADD2:      cmpi.w  #4,d1
 		bne.s   loc_1ADF2
 		move.w  #$722,d6
@@ -15519,10 +15519,10 @@ loc_1ADD2:      cmpi.w  #4,d1
 		bne.s   loc_1ADEC
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1ADF0
+		bra.s   locret_1ADF0
 loc_1ADEC:      moveq   #1,d0
 		jsr     (a5)
-return_1ADF0:   rts
+locret_1ADF0:   rts
 loc_1ADF2:      cmpi.w  #5,d1
 		bne.s   loc_1AE12
 		move.w  #$724,d6
@@ -15531,10 +15531,10 @@ loc_1ADF2:      cmpi.w  #5,d1
 		bne.s   loc_1AE0C
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1AE10
+		bra.s   locret_1AE10
 loc_1AE0C:      moveq   #1,d0
 		jsr     (a5)
-return_1AE10:   rts
+locret_1AE10:   rts
 loc_1AE12:      cmpi.w  #$1A,d1
 		bne.s   loc_1AE32
 		move.w  #$726,d6
@@ -15543,10 +15543,10 @@ loc_1AE12:      cmpi.w  #$1A,d1
 		bne.s   loc_1AE2C
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1AE30
+		bra.s   locret_1AE30
 loc_1AE2C:      moveq   #1,d0
 		jsr     (a5)
-return_1AE30:   rts
+locret_1AE30:   rts
 loc_1AE32:      cmpi.w  #9,d1
 		bne.s   loc_1AE62
 		moveq   #$1F,d0
@@ -15575,21 +15575,21 @@ loc_1AE62:      cmpi.w  #$18,d1
 		bsr.w   j_j_SetEventFlag
 		move.w  #$51,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1AEB0
+		bra.s   locret_1AEB0
 loc_1AE8C:      moveq   #3,d0
 		jsr     (a5)
 		bsr.w   sub_18056
 		bne.s   loc_1AE9C
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_1AEB0
+		bra.s   locret_1AEB0
 loc_1AE9C:      moveq   #5,d0
 		jsr     (a5)
 		move.w  #$52,d0 
 		bsr.w   j_j_SetEventFlag
 		move.w  #$5A,d0 
 		bsr.w   j_j_SetEventFlag
-return_1AEB0:   rts
+locret_1AEB0:   rts
 loc_1AEB2:      move.w  #$6FB,d6
 		bra.w   sub_180A6
 loc_1AEBA:      cmpi.w  #0,d2
@@ -15797,10 +15797,10 @@ loc_1B0D0:      cmpi.w  #$17,d1
 		bsr.w   j_j_SetEventFlag
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1B0F6
+		bra.s   locret_1B0F6
 loc_1B0F2:      moveq   #1,d0
 		jsr     (a5)
-return_1B0F6:   rts
+locret_1B0F6:   rts
 loc_1B0F8:      cmpi.w  #$19,d1
 		bne.s   loc_1B120
 		move.w  #$75A,d6
@@ -15810,12 +15810,12 @@ loc_1B0F8:      cmpi.w  #$19,d1
 		bne.s   loc_1B112
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1B11E
+		bra.s   locret_1B11E
 loc_1B112:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$304,d0
 		bsr.w   sub_18046
-return_1B11E:   rts
+locret_1B11E:   rts
 loc_1B120:      cmpi.w  #$A,d1
 		bne.s   loc_1B190
 		move.w  #$75F,d6
@@ -15851,10 +15851,10 @@ loc_1B148:      moveq   #$16,d0
 		jsr     (a5)
 		move.w  #$5C,d0 
 		bsr.w   j_j_SetEventFlag
-loc_1B188:      bra.s   return_1B18E
+loc_1B188:      bra.s   locret_1B18E
 loc_1B18A:      moveq   #1,d0
 		jsr     (a5)
-return_1B18E:   rts
+locret_1B18E:   rts
 loc_1B190:      cmpi.w  #$1A,d1
 		bne.s   loc_1B1BE
 		move.w  #$75F,d6
@@ -15889,10 +15889,10 @@ loc_1B1C6:      cmpi.w  #0,d2
 		beq.s   loc_1B1F0
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1B1F4
+		bra.s   locret_1B1F4
 loc_1B1F0:      moveq   #1,d0
 		jsr     (a5)
-return_1B1F4:   rts
+locret_1B1F4:   rts
 loc_1B1F6:      cmpi.w  #1,d2
 		bne.s   loc_1B228
 		move.l  d0,-(sp)
@@ -15959,7 +15959,7 @@ loc_1B298:      cmpi.w  #3,d1
 		bne.s   loc_1B2B2
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1B2D6
+		bra.s   locret_1B2D6
 loc_1B2B2:      move.w  #$56,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1B2D2
@@ -15969,10 +15969,10 @@ loc_1B2B2:      move.w  #$56,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$5F,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1B2D6
+		bra.s   locret_1B2D6
 loc_1B2D2:      moveq   #2,d0
 		jsr     (a5)
-return_1B2D6:   rts
+locret_1B2D6:   rts
 loc_1B2D8:      cmpi.w  #8,d1
 		bne.s   loc_1B2F8
 		move.w  #$77D,d6
@@ -15981,10 +15981,10 @@ loc_1B2D8:      cmpi.w  #8,d1
 		bne.s   loc_1B2F2
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1B2F6
+		bra.s   locret_1B2F6
 loc_1B2F2:      moveq   #1,d0
 		jsr     (a5)
-return_1B2F6:   rts
+locret_1B2F6:   rts
 loc_1B2F8:      cmpi.w  #$A,d1
 		bne.s   loc_1B37C
 		moveq   #5,d0
@@ -16011,7 +16011,7 @@ loc_1B2F8:      cmpi.w  #$A,d1
 		jsr     (a5)
 		move.w  #$68,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1B37A
+		bra.s   locret_1B37A
 loc_1B34A:      moveq   #5,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
@@ -16028,7 +16028,7 @@ loc_1B34A:      moveq   #5,d0
 		jsr     (a5)
 		move.w  #$68,d0 
 		bsr.w   j_j_SetEventFlag
-return_1B37A:   rts
+locret_1B37A:   rts
 loc_1B37C:      move.w  #$76F,d6
 		bra.w   sub_180A6
 loc_1B384:      move.w  #$782,d6
@@ -16149,10 +16149,10 @@ loc_1B4B0:      cmpi.w  #$C,d1
 		jsr     (a5)
 		move.w  #$102,d0
 		bsr.w   sub_18046
-		bra.s   return_1B4D6
+		bra.s   locret_1B4D6
 loc_1B4D2:      moveq   #3,d0
 		jsr     (a5)
-return_1B4D6:   rts
+locret_1B4D6:   rts
 loc_1B4D8:      cmpi.w  #$13,d1
 		bne.s   loc_1B4F0
 		move.w  #$5A5,d6
@@ -16210,10 +16210,10 @@ loc_1B56E:      move.w  #$5AB,d6
 		jsr     (a5)
 		move.w  #$51,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1B58E
+		bra.s   locret_1B58E
 loc_1B58A:      moveq   #1,d0
 		jsr     (a5)
-return_1B58E:   rts
+locret_1B58E:   rts
 loc_1B590:      cmpi.w  #$F,d1
 		bne.s   loc_1B5C8
 		move.w  #$5B1,d6
@@ -16223,19 +16223,19 @@ loc_1B590:      cmpi.w  #$F,d1
 		bne.s   loc_1B5AA
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1B5C6
+		bra.s   locret_1B5C6
 loc_1B5AA:      moveq   #2,d0
 		jsr     (a5)
 		bsr.w   sub_18056
 		bne.s   loc_1B5BA
 		moveq   #3,d0
 		jsr     (a5)
-		bra.s   return_1B5C6
+		bra.s   locret_1B5C6
 loc_1B5BA:      moveq   #4,d0
 		jsr     (a5)
 		move.w  #$6B,d0 
 		bsr.w   j_j_SetEventFlag
-return_1B5C6:   rts
+locret_1B5C6:   rts
 loc_1B5C8:      cmpi.w  #$18,d1
 		bne.s   loc_1B60A
 		moveq   #$2F,d0 
@@ -16253,13 +16253,13 @@ loc_1B5C8:      cmpi.w  #$18,d1
 		jsr     (a5)
 loc_1B5F6:      moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1B608
+		bra.s   locret_1B608
 loc_1B5FC:      move.w  d6,-(sp)
 		move.w  #$5BA,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1B608:   rts
+locret_1B608:   rts
 loc_1B60A:      cmpi.w  #$1A,d1
 		bne.s   loc_1B61A
 		move.w  #$5AE,d6
@@ -16361,10 +16361,10 @@ loc_1B71C:      cmpi.w  #2,d1
 		bne.s   loc_1B736
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1B73A
+		bra.s   locret_1B73A
 loc_1B736:      moveq   #1,d0
 		jsr     (a5)
-return_1B73A:   rts
+locret_1B73A:   rts
 loc_1B73C:      cmpi.w  #7,d1
 		bne.w   loc_1B7DE
 		moveq   #$2E,d0 
@@ -16401,14 +16401,14 @@ loc_1B780:      moveq   #$F,d0
 loc_1B7A2:      move.w  #$5DF,d6
 		move.w  #$53,d0 
 		bsr.w   j_j_CheckEventFlag
-		bne.s   return_1B7DC
+		bne.s   locret_1B7DC
 		moveq   #0,d0
 		jsr     (a5)
 		bsr.w   sub_18056
 		bne.s   loc_1B7C0
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1B7DC
+		bra.s   locret_1B7DC
 loc_1B7C0:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$403,d0
@@ -16419,7 +16419,7 @@ loc_1B7C0:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$53,d0 
 		bsr.w   j_j_SetEventFlag
-return_1B7DC:   rts
+locret_1B7DC:   rts
 loc_1B7DE:      cmpi.w  #$11,d1
 		bne.s   loc_1B7F6
 		move.w  #$5E6,d6
@@ -16440,10 +16440,10 @@ loc_1B7F6:      cmpi.w  #$18,d1
 		bsr.w   j_j_SetEventFlag
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1B820
+		bra.s   locret_1B820
 loc_1B81C:      moveq   #1,d0
 		jsr     (a5)
-return_1B820:   rts
+locret_1B820:   rts
 loc_1B822:      cmpi.w  #$1B,d1
 		bne.s   loc_1B842
 		moveq   #$2A,d0 
@@ -16544,8 +16544,8 @@ loc_1B91E:      move.w  #$5BB,d6
 		rts
 loc_1B942:      cmpi.w  #1,d2
 		bne.s   loc_1B95E
-		trap    #0
-		dc.w 7
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_INTRO
 		move.l  d0,-(sp)
 		move.b  #$59,d0 
 		bsr.w   sub_17F64
@@ -16565,8 +16565,8 @@ loc_1B95E:      cmpi.w  #2,d2
 		jsr     (sub_328).l
 		moveq   #3,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		rts
 loc_1B988:      cmpi.w  #3,d2
 		bne.s   loc_1B9A0
@@ -16585,13 +16585,13 @@ loc_1B9A8:      cmpi.w  #5,d2
 		rts
 loc_1B9B0:      cmpi.w  #6,d2
 		bne.s   loc_1BA04
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		clr.w   ((word_FFC0BE-$1000000)).w
 		moveq   #5,d0
 		jsr     (a5)
-		trap    #0
-		dc.w 7
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_INTRO
 		move.l  d0,-(sp)
 		move.b  #$59,d0 
 		bsr.w   sub_17F64
@@ -16599,8 +16599,8 @@ loc_1B9B0:      cmpi.w  #6,d2
 		jsr     (sub_328).l
 		moveq   #6,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		move.l  d0,-(sp)
 		move.b  #$39,d0 
 		bsr.w   sub_17F64
@@ -16698,12 +16698,12 @@ loc_1BAD8:      cmpi.w  #$1E,d1
 		bne.s   loc_1BB02
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1BB0E
+		bra.s   locret_1BB0E
 loc_1BB02:      moveq   #1,d0
 		jsr     (a5)
 		move.w  #$203,d0
 		bsr.w   sub_18046
-return_1BB0E:   rts
+locret_1BB0E:   rts
 loc_1BB10:      cmpi.w  #$19,d1
 		bne.s   loc_1BB58
 		move.w  #$7D8,d6
@@ -16714,22 +16714,22 @@ loc_1BB10:      cmpi.w  #$19,d1
 		jsr     (a5)
 		move.w  #$41,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1BB56
+		bra.s   locret_1BB56
 loc_1BB32:      move.w  #$51,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   loc_1BB42
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_1BB56
+		bra.s   locret_1BB56
 loc_1BB42:      move.w  #$50,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BB52
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1BB56
+		bra.s   locret_1BB56
 loc_1BB52:      moveq   #3,d0
 		jsr     (a5)
-return_1BB56:   rts
+locret_1BB56:   rts
 loc_1BB58:      cmpi.w  #$18,d1
 		bne.s   loc_1BBA8
 		move.w  #$7D8,d6
@@ -16746,7 +16746,7 @@ loc_1BB58:      cmpi.w  #$18,d1
 		bra.s   loc_1BB88
 loc_1BB84:      moveq   #6,d0
 		jsr     (a5)
-loc_1BB88:      bra.s   return_1BBA6
+loc_1BB88:      bra.s   locret_1BBA6
 loc_1BB8A:      move.w  #$52,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BBA2
@@ -16754,10 +16754,10 @@ loc_1BB8A:      move.w  #$52,d0
 		bsr.w   j_j_SetEventFlag
 		moveq   #7,d0
 		jsr     (a5)
-		bra.s   return_1BBA6
+		bra.s   locret_1BBA6
 loc_1BBA2:      moveq   #8,d0
 		jsr     (a5)
-return_1BBA6:   rts
+locret_1BBA6:   rts
 loc_1BBA8:      cmpi.w  #$1B,d1
 		bne.s   loc_1BC04
 		move.w  #$7E2,d6
@@ -16784,10 +16784,10 @@ loc_1BBA8:      cmpi.w  #$1B,d1
 		bsr.w   j_j_SetEventFlag
 		move.w  #$53,d0 
 		bsr.w   j_j_SetEventFlag
-loc_1BBFC:      bra.s   return_1BC02
+loc_1BBFC:      bra.s   locret_1BC02
 loc_1BBFE:      moveq   #0,d0
 		jsr     (a5)
-return_1BC02:   rts
+locret_1BC02:   rts
 loc_1BC04:      cmpi.w  #$1C,d1
 		bne.w   loc_1BC90
 		move.w  #$7E2,d6
@@ -16833,10 +16833,10 @@ loc_1BC74:      moveq   #4,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$51,d0 
 		bsr.w   j_j_SetEventFlag
-loc_1BC88:      bra.s   return_1BC8E
+loc_1BC88:      bra.s   locret_1BC8E
 loc_1BC8A:      moveq   #6,d0
 		jsr     (a5)
-return_1BC8E:   rts
+locret_1BC8E:   rts
 loc_1BC90:      cmpi.w  #5,d1
 		bne.s   loc_1BCCA
 		moveq   #$14,d0
@@ -16848,7 +16848,7 @@ loc_1BC90:      cmpi.w  #5,d1
 		bne.s   loc_1BCAE
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1BCC8
+		bra.s   locret_1BCC8
 loc_1BCAE:      moveq   #2,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
@@ -16859,7 +16859,7 @@ loc_1BCAE:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$40,d0 
 		bsr.w   j_j_SetEventFlag
-return_1BCC8:   rts
+locret_1BCC8:   rts
 loc_1BCCA:      cmpi.w  #$E,d1
 		bne.s   loc_1BD3E
 		move.w  #$7F1,d6
@@ -16868,7 +16868,7 @@ loc_1BCCA:      cmpi.w  #$E,d1
 		beq.s   loc_1BCE4
 		moveq   #6,d0
 		jsr     (a5)
-		bra.s   return_1BD3C
+		bra.s   locret_1BD3C
 loc_1BCE4:      move.w  #$51,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BD0C
@@ -16882,7 +16882,7 @@ loc_1BCE4:      move.w  #$51,d0
 		moveq   #$E,d0
 		moveq   #1,d1
 		jsr     sub_11126
-		bra.s   return_1BD3C
+		bra.s   locret_1BD3C
 loc_1BD0C:      moveq   #2,d0
 		jsr     (a5)
 		moveq   #$E,d0
@@ -16899,7 +16899,7 @@ loc_1BD0C:      moveq   #2,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$55,d0 
 		bsr.w   j_j_SetEventFlag
-return_1BD3C:   rts
+locret_1BD3C:   rts
 loc_1BD3E:      move.w  #$7B7,d6
 		bra.w   sub_180A6
 loc_1BD46:      cmpi.w  #0,d2
@@ -16975,7 +16975,7 @@ loc_1BDEE:      cmpi.w  #$1E,d1
 		bne.s   loc_1BE1C
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1BE36
+		bra.s   locret_1BE36
 loc_1BE1C:      moveq   #2,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
@@ -16986,7 +16986,7 @@ loc_1BE1C:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$40,d0 
 		bsr.w   j_j_SetEventFlag
-return_1BE36:   rts
+locret_1BE36:   rts
 loc_1BE38:      cmpi.w  #$17,d1
 		bne.s   loc_1BE50
 		move.w  #$815,d6
@@ -17009,7 +17009,7 @@ loc_1BE50:      cmpi.w  #$18,d1
 		bsr.w   j_j_SetEventFlag
 		move.w  #$56,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1BE9A
+		bra.s   locret_1BE9A
 loc_1BE7E:      move.w  #$57,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BE96
@@ -17017,10 +17017,10 @@ loc_1BE7E:      move.w  #$57,d0
 		bsr.w   j_j_SetEventFlag
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1BE9A
+		bra.s   locret_1BE9A
 loc_1BE96:      moveq   #1,d0
 		jsr     (a5)
-return_1BE9A:   rts
+locret_1BE9A:   rts
 loc_1BE9C:      cmpi.w  #$1C,d1
 		bne.s   loc_1BEF0
 		move.w  #$81C,d6
@@ -17049,10 +17049,10 @@ loc_1BEDC:      moveq   #5,d0
 		jsr     (a5)
 		move.w  #$80,d0 
 		bsr.w   j_j_SetEventFlag
-loc_1BEE8:      bra.s   return_1BEEE
+loc_1BEE8:      bra.s   locret_1BEEE
 loc_1BEEA:      moveq   #6,d0
 		jsr     (a5)
-return_1BEEE:   rts
+locret_1BEEE:   rts
 loc_1BEF0:      cmpi.w  #$E,d1
 		bne.s   loc_1BF20
 		move.w  #$823,d6
@@ -17061,16 +17061,16 @@ loc_1BEF0:      cmpi.w  #$E,d1
 		bne.s   loc_1BF0A
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1BF1E
+		bra.s   locret_1BF1E
 loc_1BF0A:      move.w  #$56,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BF1A
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1BF1E
+		bra.s   locret_1BF1E
 loc_1BF1A:      moveq   #1,d0
 		jsr     (a5)
-return_1BF1E:   rts
+locret_1BF1E:   rts
 loc_1BF20:      move.w  #$7F8,d6
 		bra.w   sub_180A6
 		move.w  #$46,d0 
@@ -17124,7 +17124,7 @@ loc_1BF98:      cmpi.w  #5,d1
 		bsr.w   j_j_SetEventFlag
 		move.w  #$5B,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1C02C
+		bra.s   locret_1C02C
 loc_1BFC8:      move.w  #$79,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BFE8
@@ -17134,13 +17134,13 @@ loc_1BFC8:      move.w  #$79,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$5C,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1C02C
+		bra.s   locret_1C02C
 loc_1BFE8:      move.w  #$7A,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BFF8
 		moveq   #4,d0
 		jsr     (a5)
-		bra.s   return_1C02C
+		bra.s   locret_1C02C
 loc_1BFF8:      moveq   #$10,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
@@ -17159,7 +17159,7 @@ loc_1BFF8:      moveq   #$10,d0
 		jsr     (a5)
 		move.w  #$61,d0 
 		bsr.w   j_j_SetEventFlag
-return_1C02C:   rts
+locret_1C02C:   rts
 loc_1C02E:      cmpi.w  #6,d1
 		bne.s   loc_1C052
 		move.w  #$64D,d6
@@ -17191,7 +17191,7 @@ loc_1C052:      cmpi.w  #8,d1
 		jsr     (a5)
 loc_1C088:      moveq   #$15,d0
 		jsr     (a5)
-		bra.s   return_1C0A6
+		bra.s   locret_1C0A6
 loc_1C08E:      moveq   #$25,d0 
 		jsr     (a4)
 		move.w  d6,-(sp)
@@ -17201,7 +17201,7 @@ loc_1C08E:      moveq   #$25,d0
 		move.w  (sp)+,d6
 		move.w  #$59,d0 
 		bsr.w   j_j_SetEventFlag
-return_1C0A6:   rts
+locret_1C0A6:   rts
 loc_1C0A8:      move.w  #$644,d6
 		bra.w   sub_180A6
 loc_1C0B0:      move.w  #$663,d6
@@ -17490,10 +17490,10 @@ loc_1C3B0:      move.w  #$58,d0
 		bra.s   loc_1C3CE
 loc_1C3CA:      moveq   #1,d0
 		jsr     (a5)
-loc_1C3CE:      bra.s   return_1C3D4
+loc_1C3CE:      bra.s   locret_1C3D4
 loc_1C3D0:      moveq   #2,d0
 		jsr     (a5)
-return_1C3D4:   rts
+locret_1C3D4:   rts
 loc_1C3D6:      move.w  #$608,d6
 		bra.w   sub_180A6
 loc_1C3DE:      cmpi.w  #0,d2
@@ -17571,10 +17571,10 @@ loc_1C4A0:      cmpi.w  #4,d1
 		bne.s   loc_1C4BA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C4BE
+		bra.s   locret_1C4BE
 loc_1C4BA:      moveq   #1,d0
 		jsr     (a5)
-return_1C4BE:   rts
+locret_1C4BE:   rts
 loc_1C4C0:      cmpi.w  #6,d1
 		bne.s   loc_1C4E0
 		move.w  #$840,d6
@@ -17583,10 +17583,10 @@ loc_1C4C0:      cmpi.w  #6,d1
 		bne.s   loc_1C4DA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C4DE
+		bra.s   locret_1C4DE
 loc_1C4DA:      moveq   #1,d0
 		jsr     (a5)
-return_1C4DE:   rts
+locret_1C4DE:   rts
 loc_1C4E0:      cmpi.w  #7,d1
 		bne.s   loc_1C500
 		move.w  #$842,d6
@@ -17595,10 +17595,10 @@ loc_1C4E0:      cmpi.w  #7,d1
 		bne.s   loc_1C4FA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C4FE
+		bra.s   locret_1C4FE
 loc_1C4FA:      moveq   #1,d0
 		jsr     (a5)
-return_1C4FE:   rts
+locret_1C4FE:   rts
 loc_1C500:      cmpi.w  #8,d1
 		bne.s   loc_1C520
 		move.w  #$844,d6
@@ -17607,10 +17607,10 @@ loc_1C500:      cmpi.w  #8,d1
 		bne.s   loc_1C51A
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C51E
+		bra.s   locret_1C51E
 loc_1C51A:      moveq   #1,d0
 		jsr     (a5)
-return_1C51E:   rts
+locret_1C51E:   rts
 loc_1C520:      cmpi.w  #$A,d1
 		bne.s   loc_1C560
 		move.w  #$846,d6
@@ -17619,22 +17619,22 @@ loc_1C520:      cmpi.w  #$A,d1
 		beq.s   loc_1C53A
 		moveq   #3,d0
 		jsr     (a5)
-		bra.s   return_1C55E
+		bra.s   locret_1C55E
 loc_1C53A:      move.w  #$41,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   loc_1C54A
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1C55E
+		bra.s   locret_1C55E
 loc_1C54A:      move.w  #$40,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   loc_1C55A
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1C55E
+		bra.s   locret_1C55E
 loc_1C55A:      moveq   #0,d0
 		jsr     (a5)
-return_1C55E:   rts
+locret_1C55E:   rts
 loc_1C560:      cmpi.w  #$B,d1
 		bne.s   loc_1C590
 		move.w  #$84A,d6
@@ -17643,16 +17643,16 @@ loc_1C560:      cmpi.w  #$B,d1
 		beq.s   loc_1C57A
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1C58E
+		bra.s   locret_1C58E
 loc_1C57A:      move.w  #$40,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1C58A
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C58E
+		bra.s   locret_1C58E
 loc_1C58A:      moveq   #1,d0
 		jsr     (a5)
-return_1C58E:   rts
+locret_1C58E:   rts
 loc_1C590:      cmpi.w  #$C,d1
 		bne.s   loc_1C5C0
 		move.w  #$84A,d6
@@ -17661,16 +17661,16 @@ loc_1C590:      cmpi.w  #$C,d1
 		beq.s   loc_1C5AA
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1C5BE
+		bra.s   locret_1C5BE
 loc_1C5AA:      move.w  #$40,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1C5BA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C5BE
+		bra.s   locret_1C5BE
 loc_1C5BA:      moveq   #1,d0
 		jsr     (a5)
-return_1C5BE:   rts
+locret_1C5BE:   rts
 loc_1C5C0:      cmpi.w  #$E,d1
 		bne.s   loc_1C5E0
 		move.w  #$84D,d6
@@ -17679,10 +17679,10 @@ loc_1C5C0:      cmpi.w  #$E,d1
 		bne.s   loc_1C5DA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C5DE
+		bra.s   locret_1C5DE
 loc_1C5DA:      moveq   #1,d0
 		jsr     (a5)
-return_1C5DE:   rts
+locret_1C5DE:   rts
 loc_1C5E0:      cmpi.w  #$F,d1
 		bne.s   loc_1C600
 		move.w  #$84F,d6
@@ -17691,10 +17691,10 @@ loc_1C5E0:      cmpi.w  #$F,d1
 		bne.s   loc_1C5FA
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C5FE
+		bra.s   locret_1C5FE
 loc_1C5FA:      moveq   #1,d0
 		jsr     (a5)
-return_1C5FE:   rts
+locret_1C5FE:   rts
 loc_1C600:      cmpi.w  #$11,d1
 		bne.s   loc_1C620
 		move.w  #$851,d6
@@ -17703,10 +17703,10 @@ loc_1C600:      cmpi.w  #$11,d1
 		bne.s   loc_1C61A
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C61E
+		bra.s   locret_1C61E
 loc_1C61A:      moveq   #1,d0
 		jsr     (a5)
-return_1C61E:   rts
+locret_1C61E:   rts
 loc_1C620:      cmpi.w  #9,d1
 		bne.w   loc_1C6BC
 		moveq   #$2E,d0 
@@ -17724,7 +17724,7 @@ loc_1C620:      cmpi.w  #9,d1
 		move.w  #$45,d0 
 		bsr.w   j_j_SetEventFlag
 		rts
-		bra.s   return_1C6BA
+		bra.s   locret_1C6BA
 loc_1C656:      move.w  #$51,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1C67E
@@ -17737,7 +17737,7 @@ loc_1C656:      move.w  #$51,d0
 		bsr.w   j_j_SetEventFlag
 		move.w  #$41,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1C6BA
+		bra.s   locret_1C6BA
 loc_1C67E:      move.w  #$42,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   loc_1C696
@@ -17746,7 +17746,7 @@ loc_1C67E:      move.w  #$42,d0
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		bra.s   return_1C6BA
+		bra.s   locret_1C6BA
 loc_1C696:      move.w  #$52,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1C6AE
@@ -17755,13 +17755,13 @@ loc_1C696:      move.w  #$52,d0
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		bra.s   return_1C6BA
+		bra.s   locret_1C6BA
 loc_1C6AE:      move.w  d6,-(sp)
 		move.w  #$863,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1C6BA:   rts
+locret_1C6BA:   rts
 loc_1C6BC:      cmpi.w  #$13,d1
 		bne.s   loc_1C6FC
 		clr.w   ((word_FFC0BE-$1000000)).w
@@ -17790,16 +17790,16 @@ loc_1C6FC:      cmpi.w  #$D,d1
 		beq.s   loc_1C716
 		moveq   #2,d0
 		jsr     (a5)
-		bra.s   return_1C72A
+		bra.s   locret_1C72A
 loc_1C716:      move.w  #$41,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1C726
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C72A
+		bra.s   locret_1C72A
 loc_1C726:      moveq   #1,d0
 		jsr     (a5)
-return_1C72A:   rts
+locret_1C72A:   rts
 loc_1C72C:      cmpi.w  #$14,d1
 		bne.s   loc_1C75C
 		move.l  d0,-(sp)
@@ -17955,10 +17955,10 @@ loc_1C8B0:      cmpi.b  #$FF,d1
 		bne.s   loc_1C8E2
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C8E6
+		bra.s   locret_1C8E6
 loc_1C8E2:      moveq   #1,d0
 		jsr     (a5)
-return_1C8E6:   rts
+locret_1C8E6:   rts
 loc_1C8E8:      cmpi.w  #7,d1
 		bne.s   loc_1C908
 		move.w  #$87E,d6
@@ -17967,10 +17967,10 @@ loc_1C8E8:      cmpi.w  #7,d1
 		bne.s   loc_1C902
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C906
+		bra.s   locret_1C906
 loc_1C902:      moveq   #1,d0
 		jsr     (a5)
-return_1C906:   rts
+locret_1C906:   rts
 loc_1C908:      cmpi.w  #8,d1
 		bne.s   loc_1C928
 		move.w  #$880,d6
@@ -17979,10 +17979,10 @@ loc_1C908:      cmpi.w  #8,d1
 		bne.s   loc_1C922
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C926
+		bra.s   locret_1C926
 loc_1C922:      moveq   #1,d0
 		jsr     (a5)
-return_1C926:   rts
+locret_1C926:   rts
 loc_1C928:      cmpi.w  #9,d1
 		bne.w   loc_1C9D4
 		move.w  #$882,d6
@@ -18013,8 +18013,8 @@ loc_1C964:      moveq   #8,d0
 		bra.s   loc_1C9B0
 loc_1C97C:      jsr     (a3)
 		clr.w   ((word_FFC0BE-$1000000)).w
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		moveq   #$A,d0
 		jsr     (a5)
 		move.w  #$FB,d0 
@@ -18032,7 +18032,7 @@ loc_1C97C:      jsr     (a3)
 loc_1C9B0:      bra.s   loc_1C9B6
 loc_1C9B2:      moveq   #9,d0
 		jsr     (a5)
-loc_1C9B6:      bra.s   return_1C9D2
+loc_1C9B6:      bra.s   locret_1C9D2
 loc_1C9B8:      move.w  #$7C,d0 
 		bsr.w   j_j_SetEventFlag
 		move.w  #$7D,d0 
@@ -18042,7 +18042,7 @@ loc_1C9B8:      move.w  #$7C,d0
 		jsr     (a5)
 loc_1C9CE:      moveq   #$C,d0
 		jsr     (a5)
-return_1C9D2:   rts
+locret_1C9D2:   rts
 loc_1C9D4:      cmpi.w  #$A,d1
 		bne.s   loc_1C9F4
 		move.w  #$892,d6
@@ -18051,10 +18051,10 @@ loc_1C9D4:      cmpi.w  #$A,d1
 		bne.s   loc_1C9EE
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1C9F2
+		bra.s   locret_1C9F2
 loc_1C9EE:      moveq   #1,d0
 		jsr     (a5)
-return_1C9F2:   rts
+locret_1C9F2:   rts
 loc_1C9F4:      cmpi.w  #$E,d1
 		bne.s   loc_1CA14
 		move.w  #$894,d6
@@ -18063,10 +18063,10 @@ loc_1C9F4:      cmpi.w  #$E,d1
 		bne.s   loc_1CA0E
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1CA12
+		bra.s   locret_1CA12
 loc_1CA0E:      moveq   #1,d0
 		jsr     (a5)
-return_1CA12:   rts
+locret_1CA12:   rts
 loc_1CA14:      cmpi.w  #$F,d1
 		bne.s   loc_1CA34
 		move.w  #$896,d6
@@ -18075,10 +18075,10 @@ loc_1CA14:      cmpi.w  #$F,d1
 		bne.s   loc_1CA2E
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1CA32
+		bra.s   locret_1CA32
 loc_1CA2E:      moveq   #1,d0
 		jsr     (a5)
-return_1CA32:   rts
+locret_1CA32:   rts
 loc_1CA34:      cmpi.w  #$11,d1
 		bne.s   loc_1CA6C
 		move.w  #$898,d6
@@ -18087,7 +18087,7 @@ loc_1CA34:      cmpi.w  #$11,d1
 		bne.s   loc_1CA4E
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1CA6A
+		bra.s   locret_1CA6A
 loc_1CA4E:      move.w  #$54,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1CA66
@@ -18095,10 +18095,10 @@ loc_1CA4E:      move.w  #$54,d0
 		bsr.w   j_j_SetEventFlag
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1CA6A
+		bra.s   locret_1CA6A
 loc_1CA66:      moveq   #2,d0
 		jsr     (a5)
-return_1CA6A:   rts
+locret_1CA6A:   rts
 loc_1CA6C:      cmpi.w  #$12,d1
 		bne.s   loc_1CA8C
 		move.w  #$89B,d6
@@ -18107,10 +18107,10 @@ loc_1CA6C:      cmpi.w  #$12,d1
 		bne.s   loc_1CA86
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1CA8A
+		bra.s   locret_1CA8A
 loc_1CA86:      moveq   #1,d0
 		jsr     (a5)
-return_1CA8A:   rts
+locret_1CA8A:   rts
 loc_1CA8C:      cmpi.w  #$16,d1
 		bne.s   loc_1CADA
 		moveq   #$30,d0 
@@ -18123,7 +18123,7 @@ loc_1CA8C:      cmpi.w  #$16,d1
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		bra.s   return_1CAD8
+		bra.s   locret_1CAD8
 loc_1CAAE:      move.w  #$7E,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1CACC
@@ -18139,7 +18139,7 @@ loc_1CACC:      move.w  d6,-(sp)
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1CAD8:   rts
+locret_1CAD8:   rts
 loc_1CADA:      move.w  #$86A,d6
 		bra.w   sub_180A6
 loc_1CAE2:      cmpi.w  #$1512,d2
@@ -18216,11 +18216,11 @@ loc_1CB1A:      cmpi.w  #1,d2
 		jsr     (a5)
 		move.w  #$50,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1CBE4
+		bra.s   locret_1CBE4
 loc_1CBB0:      jsr     (a3)
 		clr.w   ((word_FFC0BE-$1000000)).w
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		moveq   #$A,d0
 		jsr     (a5)
 		move.w  #$FB,d0 
@@ -18235,7 +18235,7 @@ loc_1CBB0:      jsr     (a3)
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
-return_1CBE4:   rts
+locret_1CBE4:   rts
 loc_1CBE6:      move.w  d6,-(sp)
 		move.w  #$8A0,d6
 		moveq   #0,d0
@@ -18258,7 +18258,7 @@ loc_1CBE6:      move.w  d6,-(sp)
 		bne.s   loc_1CC2A
 		moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1CC42
+		bra.s   locret_1CC42
 loc_1CC2A:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$60,d0 
@@ -18267,12 +18267,12 @@ loc_1CC2A:      moveq   #2,d0
 		moveq   #$19,d0
 		bsr.w   sub_17FE0
 		movem.l (sp)+,d0
-return_1CC42:   rts
+locret_1CC42:   rts
 loc_1CC44:      bra.w   sub_180B4
 loc_1CC48:      cmpi.w  #0,d2
 		bne.s   loc_1CC78
-		trap    #0
-		dc.w 7
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_INTRO
 		move.l  d0,-(sp)
 		move.b  #$59,d0 
 		bsr.w   sub_17F64
@@ -18284,13 +18284,13 @@ loc_1CC48:      cmpi.w  #0,d2
 		move.w  (sp)+,d6
 		move.w  #$5B,d0 
 		bsr.w   j_j_ClearEventFlag
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		rts
 loc_1CC78:      cmpi.w  #1,d2
 		bne.s   loc_1CCA0
-		trap    #0
-		dc.w 7
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_INTRO
 		move.l  d0,-(sp)
 		move.b  #$59,d0 
 		bsr.w   sub_17F64
@@ -18300,8 +18300,8 @@ loc_1CC78:      cmpi.w  #1,d2
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		rts
 loc_1CCA0:      cmpi.w  #2,d2
 		bne.s   loc_1CCC4
@@ -18433,18 +18433,18 @@ loc_1CDBA:      cmpi.w  #8,d2
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		trap    #0
-		dc.w $4D
+		trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 		movem.l d6/a0-a6,-(sp)
 		jsr     sub_124028
 		movem.l (sp)+,d6/a0-a6
-		trap    #0
-		dc.w $4D
+		trap    #SOUND_COMMAND
+		dc.w SFX_SPELL_CAST
 		rts
 loc_1CE10:      cmpi.w  #9,d2
 		bne.s   loc_1CE40
-		trap    #0
-		dc.w 7
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_INTRO
 		move.l  d0,-(sp)
 		move.b  #$59,d0 
 		bsr.w   sub_17F64
@@ -18456,8 +18456,8 @@ loc_1CE10:      cmpi.w  #9,d2
 		move.w  (sp)+,d6
 		move.w  #$7A,d0 
 		bsr.w   j_j_ClearEventFlag
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		rts
 loc_1CE40:      move.w  d6,-(sp)
 		move.w  #$8A0,d6
@@ -18471,15 +18471,15 @@ loc_1CE4E:      cmpi.w  #0,d2
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1CE64
 		bra.w   sub_18074
-		bra.s   return_1CEC6
+		bra.s   locret_1CEC6
 loc_1CE64:      clr.w   ((word_FFC0BE-$1000000)).w
 		clr.w   ((TEXT_NAME_INDEX-$1000000)).w
 		move.w  #$27,((word_FFF846-$1000000)).w 
 		moveq   #$27,d0 
 		bsr.w   sub_17ED6
 		bcs.s   loc_1CEAE
-		trap    #0
-		dc.w $D
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ITEM
 		move.w  d6,-(sp)
 		move.w  #$48,d6 
 		moveq   #0,d0
@@ -18493,7 +18493,7 @@ loc_1CE64:      clr.w   ((word_FFC0BE-$1000000)).w
 		bsr.w   j_j_SetEventFlag
 		move.w  #$5E,d0 
 		bsr.w   j_j_SetEventFlag
-		bra.s   return_1CEC6
+		bra.s   locret_1CEC6
 loc_1CEAE:      move.w  d6,-(sp)
 		move.w  #$48,d6 
 		moveq   #0,d0
@@ -18504,7 +18504,7 @@ loc_1CEAE:      move.w  d6,-(sp)
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-return_1CEC6:   rts
+locret_1CEC6:   rts
 loc_1CEC8:      bra.w   sub_18074
 loc_1CECC:      cmpi.w  #$1512,d2
 		bne.s   loc_1CEF8
@@ -18515,11 +18515,11 @@ loc_1CECC:      cmpi.w  #$1512,d2
 		bsr.w   j_j_SetEventFlag
 		move.w  #$5B,d0 
 		bsr.w   j_j_SetEventFlag
-		trap    #0
-		dc.w $FD
-		bra.s   return_1CEF6
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
+		bra.s   locret_1CEF6
 loc_1CEF2:      bra.w   sub_1808A
-return_1CEF6:   rts
+locret_1CEF6:   rts
 loc_1CEF8:      cmpi.w  #$1626,d2
 		bne.s   loc_1CF20
 		move.w  #$5D,d0 
@@ -18528,10 +18528,10 @@ loc_1CEF8:      cmpi.w  #$1626,d2
 		bsr.w   sub_17EEC
 		move.w  #$5C,d0 
 		bsr.w   j_j_CheckEventFlag
-		beq.s   return_1CF1E
+		beq.s   locret_1CF1E
 		move.w  #$56,d0 
 		bsr.w   j_j_SetEventFlag
-return_1CF1E:   rts
+locret_1CF1E:   rts
 loc_1CF20:      cmpi.w  #$1725,d2
 		bne.s   loc_1CF48
 		move.w  #$5C,d0 
@@ -18540,17 +18540,17 @@ loc_1CF20:      cmpi.w  #$1725,d2
 		bsr.w   sub_17EEC
 		move.w  #$5D,d0 
 		bsr.w   j_j_CheckEventFlag
-		beq.s   return_1CF46
+		beq.s   locret_1CF46
 		move.w  #$56,d0 
 		bsr.w   j_j_SetEventFlag
-return_1CF46:   rts
+locret_1CF46:   rts
 loc_1CF48:      cmpi.w  #$1812,d2
 		bne.s   loc_1CF66
 		move.w  #$57,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1CF66
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		move.w  #$7A,d0 
 		bsr.w   j_j_SetEventFlag
 		rts
@@ -18679,8 +18679,8 @@ loc_1D068:      cmpi.w  #8,d2
 		moveq   #6,d0
 		jsr     (a5)
 		bsr.w   sub_17E42
-		trap    #0
-		dc.w $4E
+		trap    #SOUND_COMMAND
+		dc.w SFX_HIT
 		movem.l d6/a0-a6,-(sp)
 		jsr     sub_124028
 		movem.l (sp)+,d6/a0-a6
@@ -18703,13 +18703,13 @@ loc_1D0C2:      cmpi.w  #9,d2
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		rts
 loc_1D0F6:      cmpi.w  #$A,d2
 		bne.s   loc_1D116
-		trap    #0
-		dc.w $B
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_SAD_THEME
 		moveq   #$25,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
@@ -18733,8 +18733,8 @@ loc_1D116:      cmpi.w  #$B,d2
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
-		trap    #0
-		dc.w $FB
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		rts
 loc_1D144:      move.w  d6,-(sp)
 		move.w  #$8A0,d6
@@ -18817,7 +18817,7 @@ loc_1D204:      cmpi.w  #$16,d1
 		jsr     (a5)
 loc_1D22E:      moveq   #1,d0
 		jsr     (a5)
-		bra.s   return_1D24E
+		bra.s   locret_1D24E
 loc_1D234:      move.w  #$51,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1D24A
@@ -18827,7 +18827,7 @@ loc_1D234:      move.w  #$51,d0
 		jsr     (a5)
 loc_1D24A:      moveq   #3,d0
 		jsr     (a5)
-return_1D24E:   rts
+locret_1D24E:   rts
 loc_1D250:      cmpi.w  #$17,d1
 		bne.s   loc_1D278
 		move.w  #$7AE,d6
@@ -18838,10 +18838,10 @@ loc_1D250:      cmpi.w  #$17,d1
 		jsr     (a5)
 		move.w  #$201,d0
 		bsr.w   sub_18046
-		bra.s   return_1D276
+		bra.s   locret_1D276
 loc_1D272:      moveq   #3,d0
 		jsr     (a5)
-return_1D276:   rts
+locret_1D276:   rts
 loc_1D278:      cmpi.w  #$F,d1
 		bne.s   loc_1D298
 		move.w  #$7B2,d6
@@ -18850,10 +18850,10 @@ loc_1D278:      cmpi.w  #$F,d1
 		bne.s   loc_1D292
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1D296
+		bra.s   locret_1D296
 loc_1D292:      moveq   #1,d0
 		jsr     (a5)
-return_1D296:   rts
+locret_1D296:   rts
 loc_1D298:      cmpi.w  #$10,d1
 		bne.s   loc_1D2B8
 		move.w  #$7B4,d6
@@ -18862,10 +18862,10 @@ loc_1D298:      cmpi.w  #$10,d1
 		bne.s   loc_1D2B2
 		moveq   #0,d0
 		jsr     (a5)
-		bra.s   return_1D2B6
+		bra.s   locret_1D2B6
 loc_1D2B2:      moveq   #1,d0
 		jsr     (a5)
-return_1D2B6:   rts
+locret_1D2B6:   rts
 loc_1D2B8:      move.w  #$78E,d6
 		bra.w   sub_180A6
 		move.w  #$8A3,d6
@@ -18937,8 +18937,8 @@ loc_1D360:      clr.b   d1
 		bra.s   loc_1D360
 loc_1D36E:      clr.b   d0
 		move.b  (a0),d0
-		trap    #0
-		dc.w $FFFF
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_GET_D0_PARAMETER
 		movea.l (sp)+,a0
 		move.w  (sp)+,d1
 		move.w  (sp)+,d0
@@ -19016,8 +19016,8 @@ BattleChests:   incbin "data/battles/global/battlechests.bin"
 ; =============== S U B R O U T I N E =======================================
 
 sub_1DA8E:
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		jsr     (sub_374).l
 		clr.l   (dword_FF0EF6).l
@@ -19095,8 +19095,8 @@ loc_1DB4C:
 		jsr     (j_FadeOutToBlack).l
 		move.w  #$C8,d0 
 		jsr     (j_Sleep).l
-		trap    #0
-		dc.w $27
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_ENDING
 		jsr     (j_DisableDisplayAndInterrupts).l
 		moveq   #$3F,d0 
 		jsr     (j_InitSprites).l

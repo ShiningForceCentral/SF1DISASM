@@ -23,12 +23,12 @@ off_BC018:      dc.l unk_BED2A
 
 sub_BC01C:
 		tst.b   (byte_203819).l
-		beq.w   return_BC226
+		beq.w   locret_BC226
 		cmpi.b  #$82,(P1_INPUT).l
-		bne.w   return_BC226
+		bne.w   locret_BC226
 		clr.l   (dword_FF0EF6).l
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_DisableDisplayAndInterrupts).l
 		moveq   #$3F,d0 
 		jsr     (j_InitSprites).l
@@ -99,8 +99,8 @@ loc_BC096:
 		move.l  #$813,d1
 		jsr     sub_801C
 		bsr.w   sub_BC228
-		trap    #0
-		dc.w 3
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_TOWN
 		jsr     (j_FadeInFromBlack).l
 		move.l  #sub_BC246,(dword_FF0EF6).l
 		moveq   #1,d0
@@ -124,8 +124,8 @@ loc_BC1A2:
 		bne.w   loc_BC218
 		btst    #4,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BC1C8
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 loc_BC1C8:
 		movem.l d7-a1,-(sp)
 		lea     wl_SoundTest(pc), a0
@@ -146,11 +146,11 @@ loc_BC1C8:
 		jsr     (j_WaitForVInt).l
 		bra.w   loc_BC17E
 loc_BC218:
-		trap    #0
-		dc.w $FFFF
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_GET_D0_PARAMETER
 		jsr     (j_WaitForVInt).l
 		bra.w   loc_BC17E
-return_BC226:
+locret_BC226:
 		rts
 
 	; End of function sub_BC01C
@@ -226,7 +226,7 @@ off_BC29E:      dc.l unk_BE338
 		dc.l unk_BE43A
 		dc.l unk_BE450
 		dc.l unk_BE460
-off_BC2CE:      dc.l return_EEE
+off_BC2CE:      dc.l locret_EEE
 		dc.b   6
 		dc.b $AE 
 		dc.b   4

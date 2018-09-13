@@ -3124,9 +3124,9 @@ loc_20D02:
 
 CapEXPToGain:
 		cmpi.w  #$30,((EXP_TO_GAIN-$1000000)).w 
-		bcs.s   return_20D16
+		bcs.s   locret_20D16
 		move.w  #$30,((EXP_TO_GAIN-$1000000)).w 
-return_20D16:
+locret_20D16:
 		rts
 
 	; End of function CapEXPToGain
@@ -3653,9 +3653,9 @@ loc_21166:
 		move.w  #$1C0,((MESSAGE_INDEX-$1000000)).w
 loc_21172:
 		tst.b   ((byte_FFCBB2-$1000000)).w
-		bne.s   return_2117E
+		bne.s   locret_2117E
 		move.b  #3,((byte_FFCBB2-$1000000)).w
-return_2117E:
+locret_2117E:
 		rts
 
 	; End of function sub_21152
@@ -4742,9 +4742,9 @@ loc_219B2:
 sub_219C0:
 		clr.b   ((unk_FFCBC6-$1000000)).w
 		bsr.s   sub_219E6       
-		bgt.s   return_219CE
+		bgt.s   locret_219CE
 		move.w  #1,((NUMBER_OF_ATTACKS-$1000000)).w
-return_219CE:
+locret_219CE:
 		rts
 
 	; End of function sub_219C0
@@ -4756,10 +4756,10 @@ sub_219D0:
 		andi.w  #1,d3
 		bne.s   loc_219DE
 		jsr     sub_20314
-		bra.s   return_219E4
+		bra.s   locret_219E4
 loc_219DE:
 		jsr     sub_20318
-return_219E4:
+locret_219E4:
 		rts
 
 	; End of function sub_219D0
@@ -4825,11 +4825,11 @@ loc_21A3A:
 
 sub_21A3E:
 		ext.w   d4
-		blt.s   return_21A4C
+		blt.s   locret_21A4C
 		bsr.w   IsEnemy         
-		bge.s   return_21A4C
+		bge.s   locret_21A4C
 		eori.w  #1,d4
-return_21A4C:
+locret_21A4C:
 		rts
 
 	; End of function sub_21A3E
@@ -5638,9 +5638,9 @@ IsInForce:
 
 sub_220C8:
 		bsr.s   IsInForce       
-		beq.s   return_220CE
+		beq.s   locret_220CE
 		bsr.s   sub_220D0
-return_220CE:
+locret_220CE:
 		rts
 
 	; End of function sub_220C8
@@ -5673,10 +5673,10 @@ loc_220EE:
 
 sub_220F4:
 		bsr.s   IsInForce       
-		beq.s   return_220FE
+		beq.s   locret_220FE
 		bsr.s   sub_220D0
 		eori    #4,ccr
-return_220FE:
+locret_220FE:
 		rts
 
 	; End of function sub_220F4
@@ -8655,14 +8655,14 @@ loc_22FD0:
 
 sub_22FD8:
 		bsr.w   GetEquippedItem 
-		bcs.s   return_22FF0
+		bcs.s   locret_22FF0
 		move.b  d2,d1
 		bsr.w   GetItemType     
 		btst    #$D,d2
-		beq.s   return_22FF0
+		beq.s   locret_22FF0
 		andi.w  #1,d2
 		bset    d2,d4
-return_22FF0:
+locret_22FF0:
 		rts
 
 	; End of function sub_22FD8
@@ -10374,12 +10374,12 @@ loc_23CF6:
 		bsr.w   sub_23EFA
 		bne.s   loc_23D0C
 		move.b  #3,(a1)
-		bra.s   return_23D18
+		bra.s   locret_23D18
 loc_23D0C:
 		move.b  ((byte_FFCB3F-$1000000)).w,(a1)+
 		move.b  ((byte_FFCB40-$1000000)).w,(a1)+
 		move.b  ((unk_FFA947-$1000000)).w,(a1)
-return_23D18:
+locret_23D18:
 		rts
 loc_23D1A:
 		movem.l d1/d7-a0,-(sp)
@@ -10602,14 +10602,14 @@ loc_23EDC:
 
 sub_23EE2:
 		bsr.w   sub_209CA       
-		bcs.s   return_23EF8
+		bcs.s   locret_23EF8
 		move.w  d1,d3
 		mulu.w  d4,d3
 		add.w   d2,d3
 		tst.b   (a1,d3.w)
-		bge.s   return_23EF8
+		bge.s   locret_23EF8
 		ori     #1,ccr
-return_23EF8:
+locret_23EF8:
 		rts
 
 	; End of function sub_23EE2
@@ -11538,10 +11538,10 @@ byte_246DB:     dc.b 8
 
 LevelUp:
 		bsr.s   IncreaseStatsFromForceID
-		bcs.s   return_246F6
+		bcs.s   locret_246F6
 		bsr.w   ShowLevelUpMessages
 		tst.b   d0
-return_246F6:
+locret_246F6:
 		rts
 
 	; End of function LevelUp

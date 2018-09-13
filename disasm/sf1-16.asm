@@ -42,7 +42,7 @@ loc_164018:
 		jmp     loc_1641E6(pc)
 loc_16401C:
 		tst.b   ((byte_FFB5AC-$1000000)).w
-		beq.w   return_164092
+		beq.w   locret_164092
 		lea     ((unk_FFB56A-$1000000)).w,a0
 		subq.w  #1,(a0)
 		cmpi.w  #3,(a0)
@@ -75,7 +75,7 @@ loc_164064:
 		bsr.w   loc_164094
 loc_164076:
 		tst.w   (a0)
-		bne.s   return_164092
+		bne.s   locret_164092
 		clr.w   d1
 		lea     unk_1640C8(pc), a2
 		bsr.w   loc_164094
@@ -83,7 +83,7 @@ loc_164076:
 		jsr     (j_UpdateRandomSeed).l
 		addi.w  #$A,d7
 		move.w  d7,(a0)
-return_164092:
+locret_164092:
 		
 		rts
 loc_164094:
@@ -321,8 +321,8 @@ loc_164308:
 		andi.w  #3,d0
 		btst    d0,((unk_FFB7C8-$1000000)).w
 		beq.s   loc_164308
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		move.w  d0,((word_FFB7C4-$1000000)).w
 loc_16431C:
 		btst    #3,(CURRENT_PLAYER_INPUT).l
@@ -333,8 +333,8 @@ loc_16432A:
 		andi.w  #3,d0
 		btst    d0,((unk_FFB7C8-$1000000)).w
 		beq.s   loc_16432A
-		trap    #0
-		dc.w $42
+		trap    #SOUND_COMMAND
+		dc.w SFX_MENU_SELECTION
 		move.w  d0,((word_FFB7C4-$1000000)).w
 loc_16433E:
 		btst    #4,(CURRENT_PLAYER_INPUT).l
@@ -365,8 +365,8 @@ loc_164388:
 		move.w  (sp)+,d7
 		dbf     d7,loc_164388
 		jsr     sub_8054
-		trap    #0
-		dc.w $43
+		trap    #SOUND_COMMAND
+		dc.w SFX_VALIDATION
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		rts
 
@@ -593,8 +593,8 @@ loc_164610:
 		jsr     (j_WaitForVInt).l
 		bra.s   loc_1645BC
 loc_16461C:
-		trap    #0
-		dc.w $43
+		trap    #SOUND_COMMAND
+		dc.w SFX_VALIDATION
 		clr.w   d0
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		cmpi.w  #$13,d0
@@ -680,10 +680,10 @@ loc_164718:
 		cmpi.b  #$9F,d2
 		beq.s   loc_164718
 		tst.b   d2
-		beq.s   return_164730
+		beq.s   locret_164730
 		addq.w  #1,((unk_FFB7C6-$1000000)).w
 		bra.s   loc_164718
-return_164730:
+locret_164730:
 		
 		rts
 
@@ -693,11 +693,11 @@ return_164730:
 ; START OF FUNCTION CHUNK FOR sub_1645A4
 
 loc_164732:
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_1645A4
 
-		dc.w $43
+		dc.w SFX_VALIDATION
 		bra.s   loc_1646E2
 
 ; START OF FUNCTION CHUNK FOR sub_1645A4
@@ -733,11 +733,11 @@ loc_16477C:
 		moveq   #0,d0
 loc_164784:
 		move.b  d0,((CURSOR_POSITION-$1000000)).w
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_1645A4
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_164610
 
 ; START OF FUNCTION CHUNK FOR sub_1645A4
@@ -773,11 +773,11 @@ loc_1647D4:
 		moveq   #$17,d0
 loc_1647DC:
 		move.b  d0,((CURSOR_POSITION-$1000000)).w
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_1645A4
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_164610
 
 ; START OF FUNCTION CHUNK FOR sub_1645A4
@@ -793,11 +793,11 @@ loc_1647E8:
 loc_164800:
 		move.b  d0,((CURSOR_POSITION+1-$1000000)).w
 		bsr.s   sub_164834
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_1645A4
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bra.w   loc_164610
 
 ; START OF FUNCTION CHUNK FOR sub_1645A4
@@ -812,11 +812,11 @@ loc_16480E:
 		moveq   #0,d0
 loc_164826:
 		move.b  d0,((CURSOR_POSITION+1-$1000000)).w
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_1645A4
 
-		dc.w $42
+		dc.w SFX_MENU_SELECTION
 		bsr.s   sub_164834
 		bra.w   loc_164610
 
@@ -824,7 +824,7 @@ loc_164826:
 
 sub_164834:
 		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w
-		bne.s   return_164874
+		bne.s   locret_164874
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		cmpi.b  #$12,d0
 		bne.s   loc_164848
@@ -851,7 +851,7 @@ loc_164868:
 		moveq   #$17,d0
 loc_164870:
 		move.b  d0,((CURSOR_POSITION-$1000000)).w
-return_164874:
+locret_164874:
 		
 		rts
 
@@ -912,9 +912,9 @@ loc_164904:
 		clr.b   $A(a0)
 		move.w  #$C5B3,$C(a0)
 		subq.w  #1,d1
-		bne.s   return_164914
+		bne.s   locret_164914
 		moveq   #$14,d1
-return_164914:
+locret_164914:
 		
 		rts
 
@@ -12077,11 +12077,11 @@ loc_167502:
 ; START OF FUNCTION CHUNK FOR sub_167576
 
 loc_16756A:
-		trap    #0
+		trap    #SOUND_COMMAND
 
 ; END OF FUNCTION CHUNK FOR sub_167576
 
-		dc.w 7
+		dc.w MUSIC_INTRO
 		jsr     (j_FadeOutToBlack).l
 		rts
 
@@ -13270,10 +13270,10 @@ loc_167FD2:
 		dbf     d2,loc_167FD2
 		dbf     d1,loc_167FD2
 		move.w  d0,((ROM_CHECKSUM-$1000000)).w
-		bra.s   return_167FE8
+		bra.s   locret_167FE8
 loc_167FE2:
 		jsr     (j_WaitForInputFor1Second).l
-return_167FE8:
+locret_167FE8:
 		
 		rts
 

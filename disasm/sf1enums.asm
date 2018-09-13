@@ -8,6 +8,11 @@ BATTLE_PARTY_MAX_SIZE: equ $C
 
 ; ---------------------------------------------------------------------------
 
+; enum Traps
+SOUND_COMMAND: equ $0
+
+; ---------------------------------------------------------------------------
+
 ; enum BattleSpriteID
 BATTLE_SPRITE_ID_JOGURT: equ $12
 BATTLE_SPRITE_ID_MAX_HERO: equ $13
@@ -203,6 +208,104 @@ RANGE_OFFSET_MIN: equ $1
 RANGE_OFFSET_AREA: equ $2
 RANGE_OFFSET_GROUP: equ $3
 RANGE_OFFSET_ROUTINE: equ $4
+
+; ---------------------------------------------------------------------------
+
+; enum SoundCommands
+SOUND_COMMAND_INIT_DRIVER: equ $20
+SOUND_COMMAND_WAIT_MUSIC_END: equ $F0
+SOUND_COMMAND_PLAY_PREVIOUS_MUSIC: equ $FB
+SOUND_COMMAND_FADE_OUT: equ $FD
+SOUND_COMMAND_GET_D0_PARAMETER: equ $FFFF
+
+; ---------------------------------------------------------------------------
+
+; enum Music
+MUSIC_NOTHING: equ $0
+MUSIC_JOIN: equ $1
+MUSIC_CURSED_ITEM: equ $2
+MUSIC_TOWN: equ $3
+MUSIC_SUSPEND: equ $4
+MUSIC_SIMONE: equ $5
+MUSIC_ATTACK: equ $6
+MUSIC_INTRO: equ $7
+MUSIC_MAIN_THEME: equ $8
+MUSIC_BATTLE_1: equ $9
+MUSIC_BATTLE_2: equ $A
+MUSIC_SAD_THEME: equ $B
+MUSIC_PROMOTION: equ $C
+MUSIC_ITEM: equ $D
+MUSIC_SAVE: equ $E
+MUSIC_MAX_DIED: equ $F
+MUSIC_BATTLE_3: equ $10
+MUSIC_NOTHING_0: equ $11
+MUSIC_HQ: equ $12
+MUSIC_SHIP: equ $13
+MUSIC_CHAPTER_END: equ $14
+MUSIC_REVIVE: equ $15
+MUSIC_SAD_JOIN: equ $16
+MUSIC_DARKSOL_BATTLE: equ $17
+MUSIC_SAD_TOWN: equ $18
+MUSIC_NOTHING_1: equ $19
+MUSIC_NOTHING_2: equ $1A
+MUSIC_NOTHING_3: equ $1B
+MUSIC_NOTHING_4: equ $1C
+MUSIC_NOTHING_5: equ $1D
+MUSIC_NOTHING_6: equ $1E
+MUSIC_EARTHQUAKE: equ $1F
+MUSIC_STOP: equ $20
+MUSIC_BATTLE_4: equ $21
+MUSIC_CASTLE: equ $22
+MUSIC_TITLE: equ $23
+MUSIC_FINAL_BATTLE: equ $24
+MUSIC_RISE_OF_THE_CASTLE: equ $25
+MUSIC_CREDITS: equ $26
+MUSIC_ENDING: equ $27
+
+; ---------------------------------------------------------------------------
+
+; enum Sfx
+SFX_MENU_SWITCH: equ $41
+SFX_MENU_SELECTION: equ $42
+SFX_VALIDATION: equ $43
+SFX_REFUSAL: equ $44
+SFX_DIALOG_BLEEP_1: equ $45
+SFX_DIALOG_BLEEP_2: equ $46
+SFX_DIALOG_BLEEP_3: equ $47
+SFX_DIALOG_BLEEP_4: equ $48
+SFX_DIALOG_BLEEP_5: equ $49
+SFX_DIALOG_BLEEP_6: equ $4A
+SFX_DIALOG_BLEEP_7: equ $4B
+SFX_DIALOG_BLEEP_8: equ $4C
+SFX_SPELL_CAST: equ $4D
+SFX_HIT: equ $4E
+SFX_NOTHING: equ $4F
+SFX_NOTHING_0: equ $50
+SFX_TINKLING: equ $51
+SFX_MONSTER_1: equ $52
+SFX_MONSTER_2: equ $53
+SFX_MONSTER_3: equ $54
+SFX_WARP: equ $55
+SFX_DOOR_OPEN_HIGH_PITCH: equ $56
+SFX_BOLT_SPELL: equ $57
+SFX_DOOR_OPEN: equ $58
+SFX_DEMON_SMILE: equ $59
+SFX_CRIT: equ $5A
+SFX_JOGURT: equ $5B
+SFX_TRAIN_WHISTLE: equ $5C
+SFX_LASER: equ $5D
+SFX_SWORDS_HIT: equ $5E
+SFX_FIRE_BREATH: equ $5F
+SFX_MACHINE_GUN: equ $60
+SFX_TREASURE_CHEST: equ $61
+SFX_WALKING: equ $62
+SFX_FALLING: equ $63
+SFX_BOW_MASTER: equ $64
+SFX_HEALING: equ $65
+SFX_DESOUL_HOVERING: equ $66
+SFX_ELECTRIC_BREATH: equ $67
+SFX_METALLIC: equ $68
+SFX_ENERGY_WAVE: equ $69
 
 ; ---------------------------------------------------------------------------
 

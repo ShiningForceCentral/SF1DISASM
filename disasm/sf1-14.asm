@@ -208,13 +208,13 @@ loc_1301F4:     move.l  #$EEE0EEE,(a0)+
 		bsr.w   loc_1304FE
 		trap    #6
 		clr.l   (dword_FF0EF6).l
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		move.w  #$3C,d0 
 		bsr.w   loc_1304FE
-		trap    #0
-		dc.w $23
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_TITLE
 		move.w  #$5A,d0 
 		bsr.w   loc_1304FE
 		move.w  #$280,((word_FFB7C4-$1000000)).w
@@ -316,12 +316,12 @@ unk_130464:     dc.b   0
 loc_1304FE:     btst    #7,(P1_INPUT).l 
 		beq.s   loc_13052A
 		clr.l   (dword_FF0EF6).l
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		movem.l (sp)+,d7
-		trap    #0
-		dc.w $23
+		trap    #SOUND_COMMAND
+		dc.w MUSIC_TITLE
 		move.w  #$50,((word_FFB7C4-$1000000)).w 
 		bra.w   loc_1303C4
 loc_13052A:     jsr     (j_WaitForVInt).l
@@ -330,8 +330,8 @@ loc_13052A:     jsr     (j_WaitForVInt).l
 loc_130536:     btst    #7,(P1_INPUT).l 
 		beq.s   loc_130556
 		clr.l   (dword_FF0EF6).l
-		trap    #0
-		dc.w $FD
+		trap    #SOUND_COMMAND
+		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		movem.l (sp)+,d7
 		rts
@@ -418,7 +418,7 @@ off_130580:     dc.l unk_130740
 		dc.b  $C
 		dc.b $40 
 loc_1305B4:     subq.w  #1,((unk_FFB7C6-$1000000)).w
-		bne.s   return_1305F6
+		bne.s   locret_1305F6
 		move.w  #5,((unk_FFB7C6-$1000000)).w
 loc_1305C0:     move.w  ((word_FFB7C4-$1000000)).w,d0
 		move.b  byte_130562(pc,d0.w),d0
@@ -436,7 +436,7 @@ loc_1305D2:     addq.w  #1,((word_FFB7C4-$1000000)).w
 		sub.w   d2,d1
 		jsr     sub_801C
 		bsr.w   sub_13066E
-return_1305F6:  rts
+locret_1305F6:  rts
 byte_1305F8:    dc.b 0
 		dc.b   3
 		dc.b   0
@@ -485,7 +485,7 @@ off_130612:     dc.l unk_13100A
 		dc.b $15
 		dc.b $28 
 loc_13062A:     subq.w  #1,((unk_FFB7C6-$1000000)).w
-		bne.s   return_13066C
+		bne.s   locret_13066C
 		move.w  #$F,((unk_FFB7C6-$1000000)).w
 loc_130636:     move.w  ((word_FFB7C4-$1000000)).w,d0
 		move.b  byte_1305F8(pc,d0.w),d0
@@ -503,7 +503,7 @@ loc_130648:     addq.w  #1,((word_FFB7C4-$1000000)).w
 		sub.w   d2,d1
 		jsr     sub_801C
 		bsr.w   sub_13066E
-return_13066C:  rts
+locret_13066C:  rts
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -537,7 +537,7 @@ loc_1306B0:     move.l  4(a0),(a0)+
 		jsr     (sub_27C).l
 		jsr     (j_SetVIntParam3).l
 		subq.w  #1,((unk_FFB7C6-$1000000)).w
-		bne.s   return_130704
+		bne.s   locret_130704
 		move.w  #$19,((unk_FFB7C6-$1000000)).w
 loc_1306D0:     move.w  ((word_FFB7C4-$1000000)).w,d0
 		move.b  byte_13068C(pc,d0.w),d0
@@ -552,7 +552,7 @@ loc_1306E0:     addq.w  #1,((word_FFB7C4-$1000000)).w
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		jsr     (j_StoreVDPCommandster).l
-return_130704:  rts
+locret_130704:  rts
 loc_130706:     subq.w  #1,((word_FFB7C4-$1000000)).w
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		bne.s   loc_130722
@@ -561,13 +561,13 @@ loc_130706:     subq.w  #1,((word_FFB7C4-$1000000)).w
 		move.w  #$28,((word_FFB7C4-$1000000)).w 
 		rts
 loc_130722:     cmpi.w  #$14,d0
-		bne.s   return_13073E
+		bne.s   locret_13073E
 		lea     unk_130464(pc), a0
 		move.w  #$1201,d0
 		move.w  #$711,d1
 		jsr     sub_801C
 		bsr.w   sub_13066E
-return_13073E:  rts
+locret_13073E:  rts
 unk_130740:     dc.b   4
 		dc.b   4
 		dc.b   1
