@@ -1,71 +1,76 @@
 
 ; GAME SECTION 14 :
-; Text banks, ...
+; Game intro, title screen, text banks
 ; FREE SPACE : 22228 bytes.
 
 
 p_pt_TextBanks: dc.l pt_TextBanks
-loc_130004:     jmp     *+4(pc)
+
+; =============== S U B R O U T I N E =======================================
+
+PlayIntro:
+		jmp     *+4(pc)
 		jsr     (j_DisableDisplayAndInterrupts).l
 		bsr.w   sub_13162E
-		clr.b   ((unk_FF9C05-$1000000)).w
-		movea.l (p_plt_Intro).l,a0
+		clr.b   ((byte_FF9C05-$1000000)).w
+		movea.l (p_IntroPalette_Scene1).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
 		movea.l (off_124078).l,a0
-		lea     (unk_2000).w,a1
+		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
 		trap    #5
 		move.b  #2,((byte_FFF804-$1000000)).w
-		move.w  #5,((unk_FFB7C6-$1000000)).w
+		move.w  #5,((word_FFB7C6-$1000000)).w
 		clr.w   ((word_FFB7C4-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
-		move.l  #loc_1305B4,(dword_FF0EF6).l
+		move.l  #sub_1305B4,(dword_FF0EF6).l
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$52,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #7
 		move.w  #$53,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #7
 		move.w  #$54,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #6
-		move.w  #5,((unk_FFB7C6-$1000000)).w
+		move.w  #5,((word_FFB7C6-$1000000)).w
 		move.w  #$10,((word_FFB7C4-$1000000)).w
 		move.w  #$19,d0
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		clr.l   (dword_FF0EF6).l
 		jsr     (j_FadeOutToWhite).l
 		lea     (PALETTE_1_BIS).l,a0
 		moveq   #$1F,d7
-loc_1300C4:     move.l  #$EEE0EEE,(a0)+
+loc_1300C4:
+		move.l  #$EEE0EEE,(a0)+
 		dbf     d7,loc_1300C4
 		clr.l   (dword_FF0EF6).l
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		bsr.w   sub_13162E
 		bsr.w   sub_1316A8
-		movea.l (p_IntroGraphics).l,a0
-		lea     (unk_2000).w,a1
+		movea.l (p_IntroTiles_Scene1_1).l,a0
+		lea     ($2000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_IntroGraphics2).l,a0
-		lea     (loc_3800).w,a1
+		movea.l (p_IntroTiles_Scene1_2).l,a0
+		lea     ($3800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_plt_Intro).l,a0
+		movea.l (p_IntroPalette_Scene1).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
@@ -76,65 +81,66 @@ loc_1300C4:     move.l  #$EEE0EEE,(a0)+
 		move.w  #$55,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #7
 		move.w  #$56,d0 
 		trap    #8
 		move.w  #$168,d0
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #6
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		bsr.w   sub_13162E
-		movea.l (p_plt_IntroSc2).l,a0
+		movea.l (p_IntroPalette_Scene2).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
-		movea.l (p_IntroSc2Graphics).l,a0
-		lea     (unk_2000).w,a1
+		movea.l (p_IntroTiles_Scene2).l,a0
+		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
 		trap    #5
 		move.b  #2,((byte_FFF804-$1000000)).w
-		move.w  #5,((unk_FFB7C6-$1000000)).w
+		move.w  #5,((word_FFB7C6-$1000000)).w
 		clr.w   ((word_FFB7C4-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
-		move.l  #loc_13062A,(dword_FF0EF6).l
+		move.l  #sub_13062A,(dword_FF0EF6).l
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$57,d0 
 		trap    #8
 		move.w  #$168,d0
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #6
 		move.w  #$19,d0
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		clr.l   (dword_FF0EF6).l
 		jsr     (j_FadeOutToWhite).l
 		lea     (PALETTE_1_BIS).l,a0
 		moveq   #$1F,d7
-loc_1301F4:     move.l  #$EEE0EEE,(a0)+
+loc_1301F4:
+		move.l  #$EEE0EEE,(a0)+
 		dbf     d7,loc_1301F4
 		clr.l   (dword_FF0EF6).l
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		bsr.w   sub_13162E
 		bsr.w   sub_1316A8
-		movea.l (p_IntroSc3Graphics).l,a0
+		movea.l (p_IntroTiles_Scene3_1).l,a0
 		lea     (unk_2000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_IntroSc3Pt2Graphics).l,a0
-		lea     (loc_3800).w,a1
+		movea.l (p_IntroTiles_Scene3_2).l,a0
+		lea     ($3800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_plt_Intro).l,a0
+		movea.l (p_IntroPalette_Scene1).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
-		movea.l (p_plt_IntroSc3).l,a0
+		movea.l (p_IntroPalette_Scene3).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
@@ -145,102 +151,103 @@ loc_1301F4:     move.l  #$EEE0EEE,(a0)+
 		move.w  #$58,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #7
 		move.w  #$59,d0 
 		trap    #8
 		move.w  #$168,d0
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #6
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		bsr.w   sub_13162E
 		bsr.w   sub_1316D8
-		movea.l (p_IntroSc4Graphics).l,a0
+		movea.l (p_IntroTiles_Scene4_1).l,a0
 		lea     (unk_2000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_IntroSc4Pt2Graphics).l,a0
-		lea     (loc_3800).w,a1
+		movea.l (p_IntroTiles_Scene4_2).l,a0
+		lea     ($3800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_IntroSc4BGGraphics).l,a0
-		lea     (loc_6000).w,a1
+		movea.l (p_IntroTiles_Scene4_BG1).l,a0
+		lea     ($6000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_IntroSc4Pt2BGGraphics).l,a0
+		movea.l (p_IntroTiles_Scene4_BG2).l,a0
 		lea     ($7800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_plt_IntroSc4).l,a0
+		movea.l (p_IntroPalette_Scene4).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		trap    #5
 		move.b  #2,((byte_FFF804-$1000000)).w
-		move.w  #$1E,((unk_FFB7C6-$1000000)).w
+		move.w  #$1E,((word_FFB7C6-$1000000)).w
 		clr.w   ((word_FFB7C4-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
-		move.l  #loc_130694,(dword_FF0EF6).l
+		move.l  #sub_130694,(dword_FF0EF6).l
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$5A,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #7
 		move.w  #$5B,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #7
 		move.w  #$5C,d0 
 		trap    #8
 		move.w  #$B4,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #7
 		move.w  #$5D,d0 
 		trap    #8
 		move.w  #$168,d0
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #6
 		clr.l   (dword_FF0EF6).l
 		trap    #SOUND_COMMAND
 		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		move.w  #$3C,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_TITLE
 		move.w  #$5A,d0 
-		bsr.w   loc_1304FE
+		bsr.w   sub_1304FE
 		move.w  #$280,((word_FFB7C4-$1000000)).w
-loc_1303C4:     jsr     (j_DisableDisplayAndInterrupts).l
+loc_1303C4:
+		jsr     (j_DisableDisplayAndInterrupts).l
 		bsr.w   sub_13162E
-		movea.l (off_C0060).l,a0
-		lea     (unk_FFD000).l,a1
+		movea.l (p_TitleScreenLayout).l,a0
+		lea     (byte_FFD000).l,a1
 		move.w  #$700,d7
 		jsr     (j_CopyBytes).l
-		movea.l (off_C0060).l,a0
-		lea     (loc_E000).l,a1
+		movea.l (p_TitleScreenLayout).l,a0
+		lea     ($E000).l,a1
 		move.w  #$380,d0
 		move.w  #2,d1
 		jsr     (j_DMAFromRAMToVRAM).l
-		movea.l (p_plt_TitleScreen).l,a0
+		movea.l (p_TitleScreenPalette).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
-		movea.l (p_TitleScreenGraphics).l,a0
-		lea     (unk_2000).w,a1
+		movea.l (p_TitleScreenTiles).l,a0
+		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
-		move.l  #loc_130706,(dword_FF0EF6).l
+		move.l  #sub_130706,(dword_FF0EF6).l
 		move.w  #$5A0,d0
 		bsr.w   loc_130536
 		jsr     (j_FadeOutToBlack).l
@@ -249,60 +256,23 @@ loc_1303C4:     jsr     (j_DisableDisplayAndInterrupts).l
 		movea.l (InitStack).w,sp
 		movea.l (p_Start).w,a0  
 		jmp     (a0)
-unk_130464:     dc.b   0
-		dc.b $50 
-		dc.b   0
-		dc.b $52 
-		dc.b   0
-		dc.b $45 
-		dc.b   0
-		dc.b $53 
-		dc.b   0
-		dc.b $53 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $53 
-		dc.b   0
-		dc.b $54 
-		dc.b   0
-		dc.b $41 
-		dc.b   0
-		dc.b $52 
-		dc.b   0
-		dc.b $54 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $42 
-		dc.b   0
-		dc.b $55 
-		dc.b   0
-		dc.b $54 
-		dc.b   0
-		dc.b $54 
-		dc.b   0
-		dc.b $4F 
-		dc.b   0
-		dc.b $4E 
-		dc.b $4E 
-		dc.b $B9 
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b $14
+
+	; End of function PlayIntro
+
+wl_PressStartButton:
+		incbin "data/graphics/specialscreens/titlescreen/wl-pressstartbutton.bin"
 		bsr.w   sub_13162E
-		movea.l (off_C0060).l,a0
-		lea     (loc_E000).l,a1
+		movea.l (p_TitleScreenLayout).l,a0
+		lea     ($E000).l,a1
 		move.w  #$380,d0
 		move.w  #2,d1
 		jsr     (j_DMAFromRAMToVRAM).l
-		movea.l (p_plt_TitleScreen).l,a0
+		movea.l (p_TitleScreenPalette).l,a0
 		lea     (PALETTE_1_BIS).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
-		movea.l (p_TitleScreenGraphics).l,a0
-		lea     (unk_2000).w,a1
+		movea.l (p_TitleScreenTiles).l,a0
+		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
@@ -313,7 +283,11 @@ unk_130464:     dc.b   0
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		rts
-loc_1304FE:     btst    #7,(P1_INPUT).l 
+
+; =============== S U B R O U T I N E =======================================
+
+sub_1304FE:
+		btst    #INPUT_A_START_BIT,(P1_INPUT).l
 		beq.s   loc_13052A
 		clr.l   (dword_FF0EF6).l
 		trap    #SOUND_COMMAND
@@ -324,10 +298,12 @@ loc_1304FE:     btst    #7,(P1_INPUT).l
 		dc.w MUSIC_TITLE
 		move.w  #$50,((word_FFB7C4-$1000000)).w 
 		bra.w   loc_1303C4
-loc_13052A:     jsr     (j_WaitForVInt).l
-		dbf     d0,loc_1304FE
+loc_13052A:
+		jsr     (j_WaitForVInt).l
+		dbf     d0,sub_1304FE
 		rts
-loc_130536:     btst    #7,(P1_INPUT).l 
+loc_130536:
+		btst    #INPUT_A_START_BIT,(P1_INPUT).l
 		beq.s   loc_130556
 		clr.l   (dword_FF0EF6).l
 		trap    #SOUND_COMMAND
@@ -335,97 +311,71 @@ loc_130536:     btst    #7,(P1_INPUT).l
 		jsr     (j_FadeOutToBlack).l
 		movem.l (sp)+,d7
 		rts
-loc_130556:     jsr     (j_WaitForVInt).l
+loc_130556:
+		jsr     (j_WaitForVInt).l
 		dbf     d0,loc_130536
 		rts
+
+	; End of function sub_1304FE
+
 byte_130562:    dc.b 0
-		dc.b   1
-		dc.b   2
-		dc.b   3
-		dc.b   4
-		dc.b   5
-		dc.b   6
-		dc.b   7
-		dc.b   6
-		dc.b   5
-		dc.b   4
-		dc.b   3
-		dc.b   2
-		dc.b   1
+		dc.b 1
+		dc.b 2
+		dc.b 3
+		dc.b 4
+		dc.b 5
+		dc.b 6
+		dc.b 7
+		dc.b 6
+		dc.b 5
+		dc.b 4
+		dc.b 3
+		dc.b 2
+		dc.b 1
 		dc.b $FF
 		dc.b $FF
-		dc.b   8
-		dc.b   9
-		dc.b  $A
-		dc.b  $B
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-		dc.b  $C
-off_130580:     dc.l unk_130740
-		dc.b   0
-		dc.b $13
-		dc.b   7
-		dc.b $62 
-		dc.b   0
-		dc.b $13
-		dc.b   7
-		dc.b $84 
-		dc.b   0
-		dc.b $13
-		dc.b   7
-		dc.b $A6 
-		dc.b   0
-		dc.b $13
-		dc.b   7
-		dc.b $C8 
-		dc.b   0
-		dc.b $13
-		dc.b   7
-		dc.b $EA 
-		dc.b   0
-		dc.b $13
-		dc.b   8
-		dc.b  $C
-		dc.b   0
-		dc.b $13
-		dc.b   8
-		dc.b $2E 
-		dc.b   0
-		dc.b $13
-		dc.b   8
-		dc.b $50 
-		dc.b   0
-		dc.b $13
-		dc.b   8
-		dc.b $9A 
-		dc.b   0
-		dc.b $13
-		dc.b   9
-		dc.b $1C
-		dc.b   0
-		dc.b $13
-		dc.b  $A
-		dc.b $3E 
-		dc.b   0
-		dc.b $13
-		dc.b  $C
-		dc.b $40 
-loc_1305B4:     subq.w  #1,((unk_FFB7C6-$1000000)).w
+		dc.b 8
+		dc.b 9
+		dc.b $A
+		dc.b $B
+		dc.b $C
+		dc.b $C
+		dc.b $C
+		dc.b $C
+		dc.b $C
+		dc.b $C
+		dc.b $C
+		dc.b $C
+		dc.b $C
+		dc.b $C
+off_130580:     dc.l byte_130740
+		dc.l byte_130762
+		dc.l byte_130784
+		dc.l byte_1307A6
+		dc.l byte_1307C8
+		dc.l byte_1307EA
+		dc.l byte_13080C
+		dc.l byte_13082E
+		dc.l byte_130850
+		dc.l byte_13089A
+		dc.l byte_13091C
+		dc.l byte_130A3E
+		dc.l byte_130C40
+
+; =============== S U B R O U T I N E =======================================
+
+sub_1305B4:
+		subq.w  #1,((word_FFB7C6-$1000000)).w
 		bne.s   locret_1305F6
-		move.w  #5,((unk_FFB7C6-$1000000)).w
-loc_1305C0:     move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  #5,((word_FFB7C6-$1000000)).w
+loc_1305C0:
+		move.w  ((word_FFB7C4-$1000000)).w,d0
 		move.b  byte_130562(pc,d0.w),d0
 		bpl.s   loc_1305D2
 		subi.w  #$E,((word_FFB7C4-$1000000)).w
 		bra.s   loc_1305C0
-loc_1305D2:     addq.w  #1,((word_FFB7C4-$1000000)).w
+loc_1305D2:
+		addq.w  #1,((word_FFB7C4-$1000000)).w
 		lsl.w   #2,d0
 		movea.l off_130580(pc,d0.w),a0
 		move.w  (a0)+,d0
@@ -436,63 +386,59 @@ loc_1305D2:     addq.w  #1,((word_FFB7C4-$1000000)).w
 		sub.w   d2,d1
 		jsr     sub_801C
 		bsr.w   sub_13066E
-locret_1305F6:  rts
+locret_1305F6:
+		
+		rts
+
+	; End of function sub_1305B4
+
 byte_1305F8:    dc.b 0
-		dc.b   3
-		dc.b   0
-		dc.b   3
-		dc.b   0
-		dc.b   3
-		dc.b   0
-		dc.b   3
-		dc.b   1
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   1
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   1
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   1
-		dc.b   4
-		dc.b   2
-		dc.b   5
+		dc.b 3
+		dc.b 0
+		dc.b 3
+		dc.b 0
+		dc.b 3
+		dc.b 0
+		dc.b 3
+		dc.b 1
+		dc.b 4
+		dc.b 2
+		dc.b 5
+		dc.b 1
+		dc.b 4
+		dc.b 2
+		dc.b 5
+		dc.b 1
+		dc.b 4
+		dc.b 2
+		dc.b 5
+		dc.b 1
+		dc.b 4
+		dc.b 2
+		dc.b 5
 		dc.b $FF
 		dc.b $FF
-off_130612:     dc.l unk_13100A
-		dc.b   0
-		dc.b $13
-		dc.b $11
-		dc.b $10
-		dc.b   0
-		dc.b $13
-		dc.b $12
-		dc.b $16
-		dc.b   0
-		dc.b $13
-		dc.b $13
-		dc.b $1C
-		dc.b   0
-		dc.b $13
-		dc.b $14
-		dc.b $22 
-		dc.b   0
-		dc.b $13
-		dc.b $15
-		dc.b $28 
-loc_13062A:     subq.w  #1,((unk_FFB7C6-$1000000)).w
+off_130612:     dc.l byte_13100A
+		dc.l byte_131110
+		dc.l byte_131216
+		dc.l byte_13131C
+		dc.l byte_131422
+		dc.l byte_131528
+
+; =============== S U B R O U T I N E =======================================
+
+sub_13062A:
+		subq.w  #1,((word_FFB7C6-$1000000)).w
 		bne.s   locret_13066C
-		move.w  #$F,((unk_FFB7C6-$1000000)).w
-loc_130636:     move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  #$F,((word_FFB7C6-$1000000)).w
+loc_130636:
+		move.w  ((word_FFB7C4-$1000000)).w,d0
 		move.b  byte_1305F8(pc,d0.w),d0
 		bpl.s   loc_130648
 		subi.w  #$10,((word_FFB7C4-$1000000)).w
 		bra.s   loc_130636
-loc_130648:     addq.w  #1,((word_FFB7C4-$1000000)).w
+loc_130648:
+		addq.w  #1,((word_FFB7C4-$1000000)).w
 		lsl.w   #2,d0
 		movea.l off_130612(pc,d0.w),a0
 		move.w  (a0)+,d0
@@ -503,14 +449,19 @@ loc_130648:     addq.w  #1,((word_FFB7C4-$1000000)).w
 		sub.w   d2,d1
 		jsr     sub_801C
 		bsr.w   sub_13066E
-locret_13066C:  rts
+locret_13066C:
+		
+		rts
+
+	; End of function sub_13062A
+
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_13066E:
-		lea     (loc_E000).l,a1
+		lea     ($E000).l,a1
 		move.w  #$780,d0
-		lea     (unk_FFD000).l,a0
+		lea     (byte_FFD000).l,a0
 		moveq   #2,d1
 		jsr     (sub_278).l
 		jmp     (j_SetVIntParam3).l
@@ -518,57 +469,79 @@ sub_13066E:
 	; End of function sub_13066E
 
 byte_13068C:    dc.b 0
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b   0
+		dc.b 1
+		dc.b 2
+		dc.b 1
+		dc.b 0
 		dc.b $FF
 		dc.b $FF
 		dc.b $FF
-loc_130694:     lea     (unk_FF031E).l,a0
+
+; =============== S U B R O U T I N E =======================================
+
+sub_130694:
+		lea     (word_FF031E).l,a0
 		moveq   #3,d6
 		jsr     (j_UpdateRandomSeed).l
 		subq.w  #1,d7
 		add.w   d7,(a0)
-		lea     (unk_FF01A0).l,a0
+		lea     (dword_FF01A0).l,a0
 		move.w  #$5F,d7 
-loc_1306B0:     move.l  4(a0),(a0)+
+loc_1306B0:
+		move.l  4(a0),(a0)+
 		dbf     d7,loc_1306B0
-		jsr     (sub_27C).l
+		jsr     (j_StoreVDPCommands).l
 		jsr     (j_SetVIntParam3).l
-		subq.w  #1,((unk_FFB7C6-$1000000)).w
+		subq.w  #1,((word_FFB7C6-$1000000)).w
 		bne.s   locret_130704
-		move.w  #$19,((unk_FFB7C6-$1000000)).w
-loc_1306D0:     move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  #$19,((word_FFB7C6-$1000000)).w
+loc_1306D0:
+		move.w  ((word_FFB7C4-$1000000)).w,d0
 		move.b  byte_13068C(pc,d0.w),d0
 		bpl.s   loc_1306E0
 		subq.w  #4,((word_FFB7C4-$1000000)).w
 		bra.s   loc_1306D0
-loc_1306E0:     addq.w  #1,((word_FFB7C4-$1000000)).w
-		movea.l (p_plt_IntroSc4).l,a0
+loc_1306E0:
+		addq.w  #1,((word_FFB7C4-$1000000)).w
+		movea.l (p_IntroPalette_Scene4).l,a0
 		lsl.w   #5,d0
 		adda.w  d0,a0
-		lea     (RAM_START).l,a1
+		lea     (PALETTE_1).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		jsr     (j_StoreVDPCommandster).l
-locret_130704:  rts
-loc_130706:     subq.w  #1,((word_FFB7C4-$1000000)).w
+locret_130704:
+		
+		rts
+
+	; End of function sub_130694
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_130706:
+		subq.w  #1,((word_FFB7C4-$1000000)).w
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		bne.s   loc_130722
 		jsr     sub_80DC
 		bsr.w   sub_13066E
 		move.w  #$28,((word_FFB7C4-$1000000)).w 
 		rts
-loc_130722:     cmpi.w  #$14,d0
+loc_130722:
+		cmpi.w  #$14,d0
 		bne.s   locret_13073E
-		lea     unk_130464(pc), a0
+		lea     wl_PressStartButton(pc), a0
 		move.w  #$1201,d0
 		move.w  #$711,d1
 		jsr     sub_801C
 		bsr.w   sub_13066E
-locret_13073E:  rts
-unk_130740:     dc.b   4
+locret_13073E:
+		
+		rts
+
+	; End of function sub_130706
+
+byte_130740:    dc.b 4
 		dc.b   4
 		dc.b   1
 		dc.b   0
@@ -602,7 +575,7 @@ unk_130740:     dc.b   4
 		dc.b   0
 		dc.b $19
 		dc.b   0
-		dc.b   4
+byte_130762:    dc.b 4
 		dc.b   4
 		dc.b   1
 		dc.b   0
@@ -636,7 +609,7 @@ unk_130740:     dc.b   4
 		dc.b   0
 		dc.b $19
 		dc.b   0
-		dc.b   4
+byte_130784:    dc.b 4
 		dc.b   4
 		dc.b   1
 		dc.b   0
@@ -670,7 +643,7 @@ unk_130740:     dc.b   4
 		dc.b   0
 		dc.b $19
 		dc.b   0
-		dc.b   4
+byte_1307A6:    dc.b 4
 		dc.b   4
 		dc.b   1
 		dc.b   0
@@ -704,7 +677,7 @@ unk_130740:     dc.b   4
 		dc.b   5
 		dc.b $19
 		dc.b   0
-		dc.b   4
+byte_1307C8:    dc.b 4
 		dc.b   4
 		dc.b   1
 		dc.b   0
@@ -738,7 +711,7 @@ unk_130740:     dc.b   4
 		dc.b   8
 		dc.b $19
 		dc.b   0
-		dc.b   4
+byte_1307EA:    dc.b 4
 		dc.b   4
 		dc.b   1
 		dc.b   0
@@ -772,7 +745,7 @@ unk_130740:     dc.b   4
 		dc.b  $B
 		dc.b $19
 		dc.b   0
-		dc.b   4
+byte_13080C:    dc.b 4
 		dc.b   4
 		dc.b   1
 		dc.b  $D
@@ -806,8 +779,8 @@ unk_130740:     dc.b   4
 		dc.b  $F
 		dc.b $19
 		dc.b  $D
+byte_13082E:    dc.b 4
 		dc.b   4
-		dc.b   4
 		dc.b   1
 		dc.b $11
 		dc.b   1
@@ -840,7 +813,7 @@ unk_130740:     dc.b   4
 		dc.b $13
 		dc.b $19
 		dc.b $11
-		dc.b   6
+byte_130850:    dc.b 6
 		dc.b   6
 		dc.b   1
 		dc.b   0
@@ -914,7 +887,7 @@ unk_130740:     dc.b   4
 		dc.b $17
 		dc.b $19
 		dc.b   0
-		dc.b   8
+byte_13089A:    dc.b 8
 		dc.b   8
 		dc.b   1
 		dc.b   0
@@ -1044,7 +1017,7 @@ unk_130740:     dc.b   4
 		dc.b   0
 		dc.b $19
 		dc.b   0
-		dc.b  $C
+byte_13091C:    dc.b $C
 		dc.b  $C
 		dc.b   1
 		dc.b   0
@@ -1334,7 +1307,7 @@ unk_130740:     dc.b   4
 		dc.b   0
 		dc.b $19
 		dc.b   0
-		dc.b $10
+byte_130A3E:    dc.b $10
 		dc.b $10
 		dc.b   1
 		dc.b   0
@@ -1848,7 +1821,7 @@ unk_130740:     dc.b   4
 		dc.b   0
 		dc.b $19
 		dc.b   0
-		dc.b $16
+byte_130C40:    dc.b $16
 		dc.b $16
 		dc.b   1
 		dc.b   0
@@ -2818,7 +2791,7 @@ unk_130740:     dc.b   4
 		dc.b   0
 		dc.b $19
 		dc.b   0
-unk_13100A:     dc.b  $A
+byte_13100A:    dc.b $A
 		dc.b  $D
 		dc.b   1
 		dc.b   0
@@ -3080,7 +3053,7 @@ unk_13100A:     dc.b  $A
 		dc.b $37 
 		dc.b   1
 		dc.b   0
-		dc.b  $A
+byte_131110:    dc.b $A
 		dc.b  $D
 		dc.b   1
 		dc.b   0
@@ -3342,7 +3315,7 @@ unk_13100A:     dc.b  $A
 		dc.b $37 
 		dc.b   1
 		dc.b   0
-		dc.b  $A
+byte_131216:    dc.b $A
 		dc.b  $D
 		dc.b   1
 		dc.b   0
@@ -3604,7 +3577,7 @@ unk_13100A:     dc.b  $A
 		dc.b $37 
 		dc.b   1
 		dc.b   0
-		dc.b  $A
+byte_13131C:    dc.b $A
 		dc.b  $D
 		dc.b   1
 		dc.b   0
@@ -3866,7 +3839,7 @@ unk_13100A:     dc.b  $A
 		dc.b $54 
 		dc.b   1
 		dc.b   0
-		dc.b  $A
+byte_131422:    dc.b $A
 		dc.b  $D
 		dc.b   1
 		dc.b   0
@@ -4128,7 +4101,7 @@ unk_13100A:     dc.b  $A
 		dc.b $54 
 		dc.b   1
 		dc.b   0
-		dc.b  $A
+byte_131528:    dc.b $A
 		dc.b  $D
 		dc.b   1
 		dc.b   0
@@ -4409,17 +4382,17 @@ sub_13162E:
 		move.w  #$8B03,d0
 		jsr     (j_SetVDPRegStatus).w
 		move.w  #0,d6
-		jsr     (sub_28C).w
+		jsr     (j_ClearVScrollStuff).w
 		move.w  #$100,d6
-		jsr     (sub_290).w
+		jsr     (j_ClearOtherVScrollStuff).w
 		jsr     (j_SetVIntParam3).w
-		lea     (unk_FFD000).l,a0
+		lea     (byte_FFD000).l,a0
 		move.w  #$3FF,d7
 loc_131688:
 		clr.l   (a0)+
 		dbf     d7,loc_131688
-		lea     (unk_FFD000).l,a0
-		lea     (loc_E000).l,a1
+		lea     (byte_FFD000).l,a0
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
 		jmp     (j_DMAFromRAMToVRAM).l
@@ -4431,11 +4404,11 @@ loc_131688:
 
 sub_1316A8:
 		movea.l (off_10034).l,a0
-		lea     (unk_FFD140).l,a1
+		lea     (byte_FFD140).l,a1
 		move.w  #$300,d7
 		jsr     (j_CopyBytes).l
-		lea     (unk_FFD000).l,a0
-		lea     (loc_E000).l,a1
+		lea     (byte_FFD000).l,a0
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
 		jmp     (j_DMAFromRAMToVRAM).l
@@ -4447,22 +4420,22 @@ sub_1316A8:
 
 sub_1316D8:
 		movea.l (off_10034).l,a0
-		lea     (unk_FFD140).l,a1
+		lea     (byte_FFD140).l,a1
 		move.w  #$300,d7
 		jsr     (j_CopyBytes).l
-		lea     unk_13171C(pc), a0
-		lea     (unk_FFD940).l,a1
+		lea     byte_13171C(pc), a0
+		lea     (byte_FFD940).l,a1
 		move.w  #$300,d7
 		jsr     (j_CopyBytes).l
-		lea     (unk_FFD000).l,a0
-		lea     (loc_E000).l,a1
+		lea     (byte_FFD000).l,a0
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
 		jmp     (j_DMAFromRAMToVRAM).l
 
 	; End of function sub_1316D8
 
-unk_13171C:     dc.b   3
+byte_13171C:    dc.b 3
 		dc.b   0
 		dc.b   3
 		dc.b   4
@@ -5248,7 +5221,4 @@ pt_TextBanks:   dc.l TextBank00
 		dc.l TextBank06
 		dc.l TextBank07
 		dc.l TextBank08
-		dc.b $FF
-		dc.b $FF
-		dcb.b $16D4,$FF
-		dcb.b $4000,$FF
+		dcb.b $56D6,$FF

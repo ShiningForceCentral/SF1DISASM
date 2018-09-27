@@ -1,6 +1,6 @@
 
 ; GAME SECTION 17 :
-; Sound driver
+; PCM banks, Music banks, Sound driver, YM instruments
 ; FREE SPACE : 0 bytes.
 
 

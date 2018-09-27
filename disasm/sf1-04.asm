@@ -1446,12 +1446,12 @@ j_GetEquippedItem:
 	; End of function j_GetEquippedItem
 
 
-; START OF FUNCTION CHUNK FOR sub_70A6
+; =============== S U B R O U T I N E =======================================
 
-loc_20290:
+j_EquipItem:
 		jmp     EquipItem(pc)   
 
-; END OF FUNCTION CHUNK FOR sub_70A6
+	; End of function j_EquipItem
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2098,7 +2098,7 @@ sub_20404:
 		bsr.w   sub_2053E       
 loc_2040C:
 		movem.l d1/a0,-(sp)
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1
 		adda.w  d1,a0
@@ -2325,7 +2325,7 @@ sub_205AC:
 
 sub_205B2:
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		movea.l (p_TerrainData).l,a1
 		move.w  #$3FF,d0
 loc_205C4:
@@ -2349,7 +2349,7 @@ loc_205D2:
 sub_205DE:
 		movem.l d0-d2/a0-a1,-(sp)
 		lea     ((word_FFA8C0-$1000000)).w,a0
-		lea     ((unk_FFA4C0-$1000000)).w,a1
+		lea     ((byte_FFA4C0-$1000000)).w,a1
 		move.w  #$1F,d0
 loc_205EE:
 		jsr     j_GetTargetID
@@ -2390,12 +2390,12 @@ loc_2063C:
 		bsr.w   sub_20822       
 		bra.w   loc_2068C
 loc_2064A:
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		movea.l a0,a1
 		movem.w d1-d2,-(sp)
 		jsr     j_GetTargetPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
-		add.w   d2,d1
+		add.w   d2,d1           ; convert target position to offset into map square flags table
 		adda.w  d1,a0
 		movem.w (sp)+,d1-d2
 		move.w  d1,d3
@@ -2425,10 +2425,10 @@ loc_2068C:
 sub_20692:
 		movem.l d0-d3/a2-a4,-(sp)
 		move.l  a1,d1
-		sub.l   a0,d1
+		sub.l   a0,d1           ; D1 = offset of currently evaluated map square
 		move.w  ((MAP_WIDTH-$1000000)).w,d3
 		lea     word_206DC(pc), a2
-		lea     $800(a0),a3
+		lea     $800(a0),a3     ; A3 = terrain data
 		move.w  #$1B,d0
 loc_206AA:
 		move.w  2(a2),d2
@@ -2454,228 +2454,117 @@ loc_206D6:
 	; End of function sub_20692
 
 word_206DC:     dc.w 0                  ; Table of XY offsets, two bytes each X,Y
-		dc.b $FF
-		dc.b $FD 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FD 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FE 
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FE 
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FE 
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   2
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FD 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FD 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   3
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   3
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   0
-		dc.b $FF
-		dc.b $FE 
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   2
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   1
-		dc.b $FF
-		dc.b $FF
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   3
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   3
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
+		dc.w $FFFD
+		dc.w 0
+		dc.w $FFFE
+		dc.w 0
+		dc.w $FFFD
+		dc.w 0
+		dc.w $FFFF
+		dc.w $FFFF
+		dc.w $FFFE
+		dc.w $FFFF
+		dc.w $FFFF
+		dc.w $FFFF
+		dc.w $FFFE
+		dc.w 0
+		dc.w $FFFF
+		dc.w 0
+		dc.w $FFFE
+		dc.w 0
+		dc.w $FFFF
+		dc.w 1
+		dc.w $FFFE
+		dc.w 0
+		dc.w $FFFF
+		dc.w 1
+		dc.w $FFFE
+		dc.w 1
+		dc.w $FFFF
+		dc.w $FFFE
+		dc.w $FFFF
+		dc.w $FFFF
+		dc.w $FFFF
+		dc.w $FFFE
+		dc.w $FFFF
+		dc.w $FFFF
+		dc.w 0
+		dc.w 2
+		dc.w $FFFF
+		dc.w 1
+		dc.w $FFFF
+		dc.w 2
+		dc.w $FFFF
+		dc.w 1
+		dc.w 0
+		dc.w $FFFD
+		dc.w 0
+		dc.w $FFFE
+		dc.w 0
+		dc.w $FFFD
+		dc.w 0
+		dc.w $FFFF
+		dc.w 0
+		dc.w $FFFE
+		dc.w 0
+		dc.w $FFFF
+		dc.w 0
+		dc.w 2
+		dc.w 0
+		dc.w 1
+		dc.w 0
+		dc.w 3
+		dc.w 0
+		dc.w 1
+		dc.w 0
+		dc.w 3
+		dc.w 0
+		dc.w 2
+		dc.w 0
+		dc.w $FFFE
+		dc.w 1
+		dc.w $FFFF
+		dc.w 0
+		dc.w $FFFE
+		dc.w 1
+		dc.w $FFFF
+		dc.w 1
+		dc.w 2
+		dc.w 1
+		dc.w 1
+		dc.w 0
+		dc.w 2
+		dc.w 1
+		dc.w 1
+		dc.w 1
+		dc.w $FFFF
+		dc.w 2
+		dc.w $FFFF
+		dc.w 1
+		dc.w $FFFF
+		dc.w 2
+		dc.w 0
+		dc.w 1
+		dc.w 0
+		dc.w 2
+		dc.w 0
+		dc.w 1
+		dc.w 1
+		dc.w 2
+		dc.w 0
+		dc.w 1
+		dc.w 1
+		dc.w 2
+		dc.w 1
+		dc.w 1
+		dc.w 0
+		dc.w 3
+		dc.w 0
+		dc.w 1
+		dc.w 0
+		dc.w 3
+		dc.w 0
+		dc.w 2
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -2702,7 +2591,7 @@ sub_20802:
 		jsr     j_GetTargetPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		clr.b   (a0,d1.w)
 		movem.l (sp)+,d1-d2/a0
 		rts
@@ -2718,7 +2607,7 @@ sub_20822:
 		movem.l d1-d3/a0,-(sp)
 		moveq   #0,d1
 		jsr     sub_20398
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		move.w  ((MAP_HEIGHT-$1000000)).w,d1
 		subq.w  #1,d1
 		blt.s   loc_20862
@@ -2727,7 +2616,7 @@ loc_2083A:
 		subq.w  #1,d2
 		blt.s   loc_2085E
 loc_20842:
-		bsr.w   sub_20994       
+		bsr.w   GetDistanceToTarget
 		cmpi.w  #2,d7
 		bgt.s   loc_2085A
 		move.w  d1,d3
@@ -2754,7 +2643,7 @@ sub_20868:
 		lea     ((byte_FFC200-$1000000)).w,a0
 		clr.w   d0
 		move.w  ((MAP_WIDTH-$1000000)).w,d3
-		lea     ((unk_FFA4C0-$1000000)).w,a1
+		lea     ((byte_FFA4C0-$1000000)).w,a1
 		mulu.w  d3,d1
 		add.w   d2,d1
 loc_2087E:
@@ -2791,7 +2680,7 @@ loc_208BE:
 		ble.s   loc_208C6
 		moveq   #$F,d0
 loc_208C6:
-		lea     ((unk_FFCB28-$1000000)).w,a1
+		lea     ((byte_FFCB28-$1000000)).w,a1
 		subq.w  #1,d0
 		bcs.s   loc_208D4
 loc_208CE:
@@ -2857,7 +2746,7 @@ loc_20930:
 		beq.s   loc_20970
 		tst.b   d6
 		bge.s   loc_20970
-		bsr.s   sub_20994       
+		bsr.s   GetDistanceToTarget
 		cmp.w   d3,d7
 		bcs.s   loc_20970
 		movem.w d1-d2,-(sp)
@@ -2878,7 +2767,8 @@ loc_20970:
 
 ; Computes distance (DX+DY) of two points stored in D1,D2 and D5,D6 and returns as D7
 
-sub_2097A:
+CalculateDistance:
+		
 		movem.w d1-d2,-(sp)
 		sub.w   d6,d2
 		bge.s   loc_20984
@@ -2893,49 +2783,52 @@ loc_2098A:
 		movem.w (sp)+,d1-d2
 		rts
 
-	; End of function sub_2097A
+	; End of function CalculateDistance
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Computes distance between D1,D2 and member D0 and returns as D7
 
-sub_20994:
+GetDistanceToTarget:
+		
 		movem.w d5-d6,-(sp)
 		move.w  d2,d6
 		move.w  d1,d5
 		jsr     j_GetTargetPosition
-		bsr.w   sub_2097A       
+		bsr.w   CalculateDistance
 		move.w  d6,d2
 		move.w  d5,d1
 		movem.w (sp)+,d5-d6
 		rts
 
-	; End of function sub_20994
+	; End of function GetDistanceToTarget
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Wrapper for 20994, swaps D3 (target) to D0
+; Get distance between members D0 and D1 -> D7
 
-sub_209B0:
+GetDistanceBetweenTargets:
+		
 		movem.w d1-d3,-(sp)
 		move.w  d0,d3
 		move.w  d1,d0
 		jsr     j_GetTargetPosition
 		move.w  d3,d0
-		bsr.w   sub_20994       
+		bsr.w   GetDistanceToTarget
 		movem.w (sp)+,d1-d3
 		rts
 
-	; End of function sub_209B0
+	; End of function GetDistanceBetweenTargets
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Find member at D1,D2 and store in D0
 
-sub_209CA:
+FindTargetAtPosition:
+		
 		movem.l d0-d4,-(sp)
 		clr.w   d4
 		move.b  d2,d4
@@ -2960,7 +2853,7 @@ loc_209FE:
 		movem.l (sp)+,d0-d4
 		rts
 
-	; End of function sub_209CA
+	; End of function FindTargetAtPosition
 
 EffectData:     incbin "data/stats/effects/effectdata.bin"
 
@@ -2970,11 +2863,11 @@ EffectData:     incbin "data/stats/effects/effectdata.bin"
 
 sub_20BDC:
 		movem.l d1-d2/a0,-(sp)
-		move.b  ((unk_FF9C7E-$1000000)).w,d2
+		move.b  ((byte_FF9C7E-$1000000)).w,d2
 		cmpi.b  #5,d2
 		blt.s   loc_20BF4
 		bsr.w   sub_20C1C       
-		clr.b   ((unk_FF9C7E-$1000000)).w
+		clr.b   ((byte_FF9C7E-$1000000)).w
 		bra.s   loc_20C16
 loc_20BF4:
 		moveq   #$FFFFFFFF,d1
@@ -2986,7 +2879,7 @@ loc_20BF4:
 		bsr.w   sub_215FC       
 		bsr.s   sub_20C40       
 		bsr.w   sub_21620       
-		addq.b  #1,((unk_FF9C7E-$1000000)).w
+		addq.b  #1,((byte_FF9C7E-$1000000)).w
 loc_20C16:
 		movem.l (sp)+,d1-d2/a0
 		rts
@@ -3056,8 +2949,8 @@ loc_20C88:
 		bge.s   loc_20C8E
 		move.w  d2,d3
 loc_20C8E:
-		move.w  #1,((unk_FFA9DE-$1000000)).w
-		move.w  d3,((unk_FFA9D8-$1000000)).w
+		move.w  #1,((word_FFA9DE-$1000000)).w
+		move.w  d3,((word_FFA9D8-$1000000)).w
 		move.w  #$1C6,((MESSAGE_INDEX-$1000000)).w
 		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
 		ext.l   d3
@@ -3146,31 +3039,31 @@ ActionEffect_Detox:
 		bsr.w   IsSpellNullified
 		bcs.s   loc_20D76
 loc_20D28:
-		move.w  ((unk_FFA9DC-$1000000)).w,d3
+		move.w  ((word_FFA9DC-$1000000)).w,d3
 						; Cure poison
 		tst.b   2(a0)
 		bne.s   loc_20D3E
-		andi.w  #$FFFE,((unk_FFA9DC-$1000000)).w
+		andi.w  #$FFFE,((word_FFA9DC-$1000000)).w
 		move.w  #$1C8,d2
 		bra.s   loc_20D48
 loc_20D3E:
-		andi.w  #$F300,((unk_FFA9DC-$1000000)).w
+		andi.w  #$F300,((word_FFA9DC-$1000000)).w
 		move.w  #$1C9,d2
 loc_20D48:
-		cmp.w   ((unk_FFA9DC-$1000000)).w,d3
+		cmp.w   ((word_FFA9DC-$1000000)).w,d3
 		bne.s   loc_20D52
 		move.w  #$1D1,d2
 loc_20D52:
 		bsr.s   IsHealer        
 		bne.s   loc_20D68
-		cmp.w   ((unk_FFA9DC-$1000000)).w,d3
+		cmp.w   ((word_FFA9DC-$1000000)).w,d3
 		bne.s   loc_20D62
 		addq.w  #1,((EXP_TO_GAIN-$1000000)).w
 		bra.s   loc_20D68
 loc_20D62:
 		addi.w  #$A,((EXP_TO_GAIN-$1000000)).w
 loc_20D68:
-		move.w  #1,((unk_FFA9DE-$1000000)).w
+		move.w  #1,((word_FFA9DE-$1000000)).w
 		move.w  d2,((MESSAGE_INDEX-$1000000)).w
 		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
 loc_20D76:
@@ -3195,17 +3088,17 @@ loc_20D8E:
 		move.w  #$1BC,((MESSAGE_INDEX-$1000000)).w
 loc_20D94:
 		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
-		bsr.w   sub_21224       
+		bsr.w   CheckEvasion    
 		bcs.s   loc_20DE2
 		clr.w   ((DAMAGE_MULTIPLIER-$1000000)).w
-		tst.b   ((unk_FFCBC6-$1000000)).w
+		tst.b   ((byte_FFCBC6-$1000000)).w
 		beq.s   loc_20DB4
-		move.b  ((unk_FFCBC6-$1000000)).w,((byte_FFCB67-$1000000)).w
-		move.b  #$64,((unk_FFCB66-$1000000)).w 
+		move.b  ((byte_FFCBC6-$1000000)).w,((byte_FFCB67-$1000000)).w
+		move.b  #$64,((byte_FFCB66-$1000000)).w 
 loc_20DB4:
 		move.b  2(a0),d2
 		bsr.w   UpdateRandomSeed0To100
-		cmp.b   ((unk_FFCB66-$1000000)).w,d7
+		cmp.b   ((byte_FFCB66-$1000000)).w,d7
 		bge.s   loc_20DC8
 		bsr.w   sub_2130E       
 		bra.s   loc_20DCC
@@ -3217,8 +3110,8 @@ loc_20DCC:
 		beq.s   loc_20DE2
 		move.l  d3,((MESSAGE_ARG_NUMBER-$1000000)).w
 		neg.w   d3
-		move.w  d3,((unk_FFA9D8-$1000000)).w
-		clr.w   ((unk_FFA9DE-$1000000)).w
+		move.w  d3,((word_FFA9D8-$1000000)).w
+		clr.w   ((word_FFA9DE-$1000000)).w
 loc_20DE2:
 		tst.w   ((EXP_TO_GAIN-$1000000)).w
 		bne.s   loc_20DEE
@@ -3275,12 +3168,12 @@ sub_20E4A:
 		move.w  d1,d0
 		bsr.w   IsEnemy         
 		blt.s   loc_20E5C
-		move.w  #$1C3,((unk_FFA9EA-$1000000)).w
+		move.w  #$1C3,((word_FFA9EA-$1000000)).w
 		bra.s   loc_20E62
 loc_20E5C:
-		move.w  #$1C2,((unk_FFA9EA-$1000000)).w
+		move.w  #$1C2,((word_FFA9EA-$1000000)).w
 loc_20E62:
-		move.w  d1,((unk_FFA9EC-$1000000)).w
+		move.w  d1,((word_FFA9EC-$1000000)).w
 		move.l  (sp)+,d0
 		rts
 
@@ -3380,7 +3273,7 @@ loc_20EF0:
 
 sub_20EF6:
 		movem.l d2-d7,-(sp)
-		bsr.w   sub_21224       
+		bsr.w   CheckEvasion    
 		bcs.w   loc_20DE2
 		clr.w   ((DAMAGE_MULTIPLIER-$1000000)).w
 		move.b  2(a0),d2
@@ -3410,7 +3303,7 @@ loc_20F3A:
 		clr.w   d3
 		move.b  3(a0),d3
 		bsr.w   ApplyDamageSpread
-		bsr.w   ApplyResistance 
+		bsr.w   ApplyElemResist 
 		move.b  2(a0),d4
 		andi.w  #$18,d4
 		asr.w   #2,d4
@@ -3444,7 +3337,7 @@ loc_20F94:
 loc_20FA0:
 		tst.b   3(a0)
 		beq.s   loc_20FB0
-		bsr.w   sub_212B6       
+		bsr.w   CheckStatusFailure
 		bcc.s   loc_20FB0
 		bsr.s   sub_20FBA       
 		bra.s   loc_20FB6
@@ -3463,7 +3356,7 @@ loc_20FB6:
 
 sub_20FBA:
 		move.w  d0,-(sp)
-		tst.w   ((unk_FFCB5A-$1000000)).w
+		tst.w   ((word_FFCB5A-$1000000)).w
 		beq.s   loc_20FC8
 		move.w  #$1C4,d0
 		bra.s   loc_20FCC
@@ -3494,13 +3387,13 @@ sub_20FD4:
 		blt.s   loc_20FF0
 		addi.w  #$1D7,d4
 loc_20FF0:
-		move.w  d4,((unk_FFA9EA-$1000000)).w
-		move.w  d0,((unk_FFA9EC-$1000000)).w
+		move.w  d4,((word_FFA9EA-$1000000)).w
+		move.w  d0,((word_FFA9EC-$1000000)).w
 		moveq   #0,d4
 		move.b  (a0)+,d4
-		move.l  d4,((unk_FFA9F0-$1000000)).w
+		move.l  d4,((dword_FFA9F0-$1000000)).w
 		move.w  (a0),d4
-		or.w    d4,((unk_FFA9DC-$1000000)).w
+		or.w    d4,((word_FFA9DC-$1000000)).w
 		movem.l (sp)+,d0/d2/d4/a0
 		rts
 
@@ -3529,7 +3422,7 @@ loc_21054:
 		bsr.w   sub_212FA       
 		beq.w   loc_21068
 		moveq   #3,d2
-		bsr.w   sub_212B6       
+		bsr.w   CheckStatusFailure
 		bcc.s   loc_21070
 loc_21068:
 		bsr.w   sub_20FBA       
@@ -3540,9 +3433,9 @@ loc_21070:
 ActionEffect_StealMP:
 		
 		movem.l d6-d7,-(sp)     ; Demon Rod Routine
-		move.w  #$1D5,((unk_FFA9CE-$1000000)).w
+		move.w  #$1D5,((word_FFA9CE-$1000000)).w
 		move.w  ((word_FFCB62-$1000000)).w,d6
-		move.w  d6,((unk_FFA9D0-$1000000)).w
+		move.w  d6,((word_FFA9D0-$1000000)).w
 		movem.w d0-d1,-(sp)
 		move.b  d1,d0
 		jsr     j_GetMPFromForceID
@@ -3565,9 +3458,9 @@ loc_210A8:
 loc_210C6:
 		bsr.w   sub_20FBA       
 loc_210CA:
-		add.b   d7,((unk_FFCB6C-$1000000)).w
+		add.b   d7,((byte_FFCB6C-$1000000)).w
 		neg.w   d7
-		move.w  d7,((unk_FFA9DA-$1000000)).w
+		move.w  d7,((word_FFA9DA-$1000000)).w
 		movem.l (sp)+,d6-d7
 		rts
 ActionEffect_IncreaseStat:
@@ -3600,7 +3493,7 @@ CalculateDamage:
 		sub.w   d1,d3           ; subtract DEF from ATK
 		move.w  (sp)+,d0
 		bsr.w   ApplyLandEffect 
-		bsr.w   ApplyResistance 
+		bsr.w   ApplyElemResist 
 		bsr.s   CheckCriticalHit
 		bsr.s   ApplyDamageSpread
 		tst.w   d3
@@ -3645,11 +3538,11 @@ loc_2114C:
 sub_21152:
 		bsr.w   IsEnemy         
 		blt.s   loc_21166
-		move.w  #$3E,((unk_FFA9CC-$1000000)).w 
+		move.w  #$3E,((word_FFA9CC-$1000000)).w 
 		move.w  #$1BF,((MESSAGE_INDEX-$1000000)).w
 		bra.s   loc_21172
 loc_21166:
-		move.w  #$3E,((unk_FFA9CC-$1000000)).w 
+		move.w  #$3E,((word_FFA9CC-$1000000)).w 
 		move.w  #$1C0,((MESSAGE_INDEX-$1000000)).w
 loc_21172:
 		tst.b   ((byte_FFCBB2-$1000000)).w
@@ -3704,9 +3597,9 @@ ApplyLandEffect:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Apply resistance D2 to damage D3
+; Apply elemental resistance D2 to damage D3
 
-ApplyResistance:
+ApplyElemResist:
 		
 		move.l  d2,-(sp)
 		cmpi.b  #7,d2
@@ -3714,17 +3607,17 @@ ApplyResistance:
 		clr.w   d2
 		bra.s   loc_211D4
 loc_211D2:
-		bsr.s   sub_211E6       
+		bsr.s   GetTargetResistance
 loc_211D4:
-		move.b  ResistancePercents(pc,d2.w),d2
+		move.b  ElemResistPercents(pc,d2.w),d2
 		muls.w  d2,d3
 		divs.w  #$64,d3 
 		move.l  (sp)+,d2
 		rts
 
-	; End of function ApplyResistance
+	; End of function ApplyElemResist
 
-ResistancePercents:
+ElemResistPercents:
 		dc.b 100
 		dc.b 75
 		dc.b 50
@@ -3732,9 +3625,10 @@ ResistancePercents:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Wrapper for 23956, backs up registers
+; Get battle member D1 resistance flags D2 -> D2
 
-sub_211E6:
+GetTargetResistance:
+		
 		movem.l d0-d1,-(sp)
 		move.b  d1,d0
 		move.b  d2,d1
@@ -3743,7 +3637,7 @@ sub_211E6:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function sub_211E6
+	; End of function GetTargetResistance
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3753,7 +3647,7 @@ sub_211E6:
 IsSpellNullified:
 		
 		movem.l d0-d1,-(sp)
-		tst.w   ((unk_FFCB5A-$1000000)).w
+		tst.w   ((word_FFCB5A-$1000000)).w
 		beq.s   loc_2121E
 		move.b  d1,d0
 		jsr     j_GetStatusFromForceID
@@ -3772,14 +3666,14 @@ loc_2121E:
 
 ; Evasion check
 
-sub_21224:
+CheckEvasion:
 		movem.l d1-d3/d7,-(sp)
 		bsr.s   IsAbleToEvade   
 		bcc.s   loc_21260
 		clr.w   d3
 		move.b  d1,d3
 		move.w  #7,d2
-		bsr.s   sub_211E6       
+		bsr.s   GetTargetResistance
 		move.b  EvasionPercents(pc,d2.w),d2
 		bne.s   loc_2124C
 		moveq   #$19,d2
@@ -3798,7 +3692,7 @@ loc_21260:
 		movem.l (sp)+,d1-d3/d7
 		rts
 
-	; End of function sub_21224
+	; End of function CheckEvasion
 
 EvasionPercents:dc.b 0
 		dc.b 25
@@ -3837,9 +3731,9 @@ loc_2129E:
 	; End of function IsAbleToEvade
 
 UnableToEvadeClasses:
-		dc.b $53
-		dc.b $5B
-		dc.b $68
+		dc.b CLASS_ID_LASER_EYE
+		dc.b CLASS_ID_DARK_DRAGON
+		dc.b CLASS_ID_DARK_DRAGON_0
 		dc.b $FF
 
 ; =============== S U B R O U T I N E =======================================
@@ -3861,12 +3755,13 @@ UpdateRandomSeed0To100:
 
 ; Check for status effect failure
 
-sub_212B6:
+CheckStatusFailure:
+		
 		movem.l d0-d2/d7,-(sp)
-		tst.b   ((unk_FFCBC9-$1000000)).w
+		tst.b   ((byte_FFCBC9-$1000000)).w
 		bne.s   loc_212D4
-		bsr.w   sub_211E6       
-		move.b  byte_212DA(pc,d2.w),d2
+		bsr.w   GetTargetResistance
+		move.b  StatusResistPercents(pc,d2.w),d2
 		muls.w  #$25,d2 
 		divs.w  #$64,d2 
 		bsr.s   UpdateRandomSeed0To100
@@ -3875,12 +3770,13 @@ loc_212D4:
 		movem.l (sp)+,d0-d2/d7
 		rts
 
-	; End of function sub_212B6
+	; End of function CheckStatusFailure
 
-byte_212DA:     dc.b $64
-		dc.b $32
+StatusResistPercents:
+		dc.b 100
+		dc.b 50
 		dc.b 0
-		dc.b $7D
+		dc.b 125
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -3908,9 +3804,9 @@ CalculateLevelDifference:
 
 sub_212FA:
 		movem.w d2,-(sp)
-		moveq   #3,d2
-		bsr.w   sub_211E6       
-		move.b  byte_212DA(pc,d2.w),d2
+		moveq   #CLASS_RESIST_SLEEP_AND_DESOUL,d2
+		bsr.w   GetTargetResistance
+		move.b  StatusResistPercents(pc,d2.w),d2
 		movem.w (sp)+,d2
 		rts
 
@@ -3963,7 +3859,7 @@ loc_21358:
 		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
 		bsr.w   sub_212FA       
 		beq.s   loc_21382
-		tst.b   ((unk_FFCBC6-$1000000)).w
+		tst.b   ((byte_FFCBC6-$1000000)).w
 		bne.s   loc_21372
 		bsr.w   UpdateRandomSeed0To100
 		cmpi.w  #6,d7
@@ -3971,7 +3867,7 @@ loc_21358:
 loc_21372:
 		move.w  #$1D4,((MESSAGE_INDEX-$1000000)).w
 		move.w  #$63,d3 
-		clr.b   ((unk_FFCB6B-$1000000)).w
+		clr.b   ((byte_FFCB6B-$1000000)).w
 		bra.s   loc_21386
 loc_21382:
 		bsr.w   CalculateDamage 
@@ -3990,7 +3886,7 @@ sub_2138C:
 		move.l  d7,-(sp)
 		move.b  #3,d3
 loc_21392:
-		tst.b   ((unk_FFCBC6-$1000000)).w
+		tst.b   ((byte_FFCBC6-$1000000)).w
 		bne.s   loc_213A2
 		bsr.w   UpdateRandomSeed0To100
 		cmpi.w  #$19,d7
@@ -4026,10 +3922,10 @@ loc_213BA:
 loc_213DA:
 		ext.l   d7
 		movem.w (sp)+,d0-d1
-		move.w  #$3F,((unk_FFA9CC-$1000000)).w 
-		move.w  #$1CF,((unk_FFA9CE-$1000000)).w
+		move.w  #$3F,((word_FFA9CC-$1000000)).w 
+		move.w  #$1CF,((word_FFA9CE-$1000000)).w
 		andi.w  #$FF,d0
-		move.w  d0,((unk_FFA9D0-$1000000)).w
+		move.w  d0,((word_FFA9D0-$1000000)).w
 		tst.l   d7
 		beq.s   loc_2140C
 		move.w  #$1D0,((MESSAGE_INDEX-$1000000)).w
@@ -4040,9 +3936,9 @@ loc_213DA:
 loc_2140C:
 		move.w  #$1D1,((MESSAGE_INDEX-$1000000)).w
 loc_21412:
-		add.b   d7,((unk_FFCB6C-$1000000)).w
+		add.b   d7,((byte_FFCB6C-$1000000)).w
 		neg.w   d7
-		move.w  d7,((unk_FFA9DA-$1000000)).w
+		move.w  d7,((word_FFA9DA-$1000000)).w
 		clr.w   d3
 		movem.l (sp)+,d6-d7
 		rts
@@ -4060,10 +3956,10 @@ sub_21424:
 		jsr     (j_UpdateRandomSeed).l
 		addq.w  #8,d7
 		ext.l   d7
-		move.w  #$3F,((unk_FFA9CC-$1000000)).w 
-		move.w  #$1D2,((unk_FFA9CE-$1000000)).w
+		move.w  #$3F,((word_FFA9CC-$1000000)).w 
+		move.w  #$1D2,((word_FFA9CE-$1000000)).w
 		andi.w  #$FF,d0
-		move.w  d0,((unk_FFA9D0-$1000000)).w
+		move.w  d0,((word_FFA9D0-$1000000)).w
 		move.w  #$1D3,((MESSAGE_INDEX-$1000000)).w
 		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
 		move.l  d7,((MESSAGE_ARG_NUMBER-$1000000)).w
@@ -4081,7 +3977,7 @@ sub_21424:
 sub_21460:
 		movem.l d2/d7,-(sp)
 		bsr.w   CalculateDamage 
-		tst.b   ((unk_FFCBC6-$1000000)).w
+		tst.b   ((byte_FFCBC6-$1000000)).w
 		bne.s   loc_21478
 		bsr.w   UpdateRandomSeed0To100
 		cmpi.w  #$19,d7
@@ -4103,7 +3999,7 @@ loc_2147E:
 sub_21484:
 		movem.l d2/d7,-(sp)
 		bsr.w   CalculateDamage 
-		tst.b   ((unk_FFCBC6-$1000000)).w
+		tst.b   ((byte_FFCBC6-$1000000)).w
 		bne.s   loc_2149C
 		bsr.w   UpdateRandomSeed0To100
 		cmpi.w  #$19,d7
@@ -4175,7 +4071,7 @@ loc_2151A:
 
 sub_21520:
 		movem.l d0-d2,-(sp)
-		lea     (unk_FFBC8E).l,a2
+		lea     (byte_FFBC8E).l,a2
 		move.w  d1,d2
 		jsr     j_GetTargetID
 		tst.b   d1
@@ -4399,7 +4295,7 @@ loc_21684:
 loc_2168E:
 		btst    #$E,d2
 		beq.s   loc_216C4
-		tst.b   ((unk_FFCBC8-$1000000)).w
+		tst.b   ((byte_FFCBC8-$1000000)).w
 		bne.s   loc_216A4
 		bsr.w   UpdateRandomSeed0To100
 		cmpi.w  #$19,d7
@@ -4473,7 +4369,7 @@ loc_2173E:
 
 sub_21744:
 		move.l  a0,-(sp)
-		lea     (unk_FFBC8E).l,a2
+		lea     (byte_FFBC8E).l,a2
 		move.w  #$FFFF,(a2)+
 		movea.l (sp)+,a0
 		rts
@@ -4486,17 +4382,17 @@ sub_21744:
 sub_21754:
 		movem.l d0-d6/a3-a4,-(sp)
 		andi.w  #$FF,d0
-		lea     ((unk_FFA946-$1000000)).w,a3
+		lea     ((byte_FFA946-$1000000)).w,a3
 		bsr.w   sub_21934       
 		move.w  d1,((word_FFCB6E-$1000000)).w
 		bsr.w   sub_21520       
 		jsr     j_IsItemUnequippableFromForceID
-		move.b  d1,((unk_FFCB6A-$1000000)).w
+		move.b  d1,((byte_FFCB6A-$1000000)).w
 		bsr.w   sub_21A4E       
 		bcs.w   loc_218A8
 		bsr.w   sub_219FC       
 		bcc.s   loc_2178E
-		move.w  #$1BA,((unk_FFCB70-$1000000)).w
+		move.w  #$1BA,((word_FFCB70-$1000000)).w
 		bra.w   loc_218A8
 loc_2178E:
 		clr.w   d3
@@ -4506,10 +4402,10 @@ loc_2178E:
 loc_2179A:
 		andi.w  #$FF,d3
 		addi.w  #$1B4,d3
-		move.w  d3,((unk_FFCB70-$1000000)).w
-		move.w  d0,((unk_FFCB72-$1000000)).w
+		move.w  d3,((word_FFCB70-$1000000)).w
+		move.w  d0,((word_FFCB72-$1000000)).w
 		move.l  a0,-(sp)
-		lea     ((unk_FFCB70-$1000000)).w,a0
+		lea     ((word_FFCB70-$1000000)).w,a0
 		bsr.w   sub_215FC       
 		movea.l (sp)+,a0
 		move.b  (a0),d3
@@ -4526,7 +4422,7 @@ loc_217CE:
 		bsr.w   sub_21A3E
 		bsr.w   sub_2157A       
 loc_217D6:
-		move.w  ((unk_FFCB5A-$1000000)).w,d4
+		move.w  ((word_FFCB5A-$1000000)).w,d4
 		beq.s   loc_217EE
 		clr.w   d3
 		neg.w   d4
@@ -4550,29 +4446,29 @@ loc_2180A:
 		bsr.w   sub_218EE
 		jsr     (a1)
 		move.l  a0,-(sp)
-		lea     ((unk_FFA9CE-$1000000)).w,a0
+		lea     ((word_FFA9CE-$1000000)).w,a0
 		cmpi.w  #$FFFF,(a0)
 		beq.s   loc_21820
 		bsr.w   sub_215FC       
 loc_21820:
 		movea.l (sp)+,a0
-		move.w  ((unk_FFA9CA-$1000000)).w,d3
+		move.w  ((word_FFA9CA-$1000000)).w,d3
 		blt.s   loc_2183E
 		bsr.w   sub_219D0
-		move.w  ((unk_FFA9CC-$1000000)).w,d4
+		move.w  ((word_FFA9CC-$1000000)).w,d4
 		bsr.w   sub_2157A       
-		tst.b   ((unk_FFCB6B-$1000000)).w
+		tst.b   ((byte_FFCB6B-$1000000)).w
 		bne.s   loc_2183E
 		bsr.w   sub_215AA
 loc_2183E:
-		move.w  ((unk_FFA9D8-$1000000)).w,d3
-		move.w  ((unk_FFA9DA-$1000000)).w,d4
-		move.w  ((unk_FFA9DC-$1000000)).w,d5
-		move.w  ((unk_FFA9DE-$1000000)).w,d6
+		move.w  ((word_FFA9D8-$1000000)).w,d3
+		move.w  ((word_FFA9DA-$1000000)).w,d4
+		move.w  ((word_FFA9DC-$1000000)).w,d5
+		move.w  ((word_FFA9DE-$1000000)).w,d6
 		bsr.w   sub_215F2       
-		tst.w   ((unk_FFA9CA-$1000000)).w
+		tst.w   ((word_FFA9CA-$1000000)).w
 		blt.s   loc_21862
-		tst.b   ((unk_FFCB6B-$1000000)).w
+		tst.b   ((byte_FFCB6B-$1000000)).w
 		beq.s   loc_21862
 		bsr.w   sub_215AA
 loc_21862:
@@ -4582,13 +4478,13 @@ loc_21862:
 		beq.s   loc_21872
 		bsr.w   sub_215FC       
 loc_21872:
-		lea     ((unk_FFA9EA-$1000000)).w,a0
+		lea     ((word_FFA9EA-$1000000)).w,a0
 		cmpi.w  #$FFFF,(a0)
 		beq.s   loc_21880
 		bsr.w   sub_2160E       
 loc_21880:
 		movea.l (sp)+,a0
-		tst.w   ((unk_FFA9CA-$1000000)).w
+		tst.w   ((word_FFA9CA-$1000000)).w
 		blt.s   loc_21890
 		move.w  #$D,(a2)+
 		move.w  #$E,(a2)+
@@ -4625,7 +4521,7 @@ sub_218D4:
 		movem.w d0-d1,-(sp)
 		move.b  d1,d0
 		jsr     j_GetStatusFromForceID
-		move.w  d1,((unk_FFA9DC-$1000000)).w
+		move.w  d1,((word_FFA9DC-$1000000)).w
 		movem.w (sp)+,d0-d1
 		rts
 
@@ -4636,7 +4532,7 @@ sub_218D4:
 
 sub_218EE:
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     ((unk_FFA9CA-$1000000)).w,a1
+		lea     ((word_FFA9CA-$1000000)).w,a1
 		move.b  (a0)+,d0
 		bge.s   loc_21900
 		move.w  #$FFFF,(a1)+
@@ -4648,9 +4544,9 @@ loc_21906:
 		move.w  #$FFFF,d0
 		move.w  d0,(a1)+
 		move.w  d0,(a1)+
-		move.b  d0,((unk_FFCB6B-$1000000)).w
-		clr.b   ((unk_FFCB6C-$1000000)).w
-		lea     ((unk_FFA9D8-$1000000)).w,a1
+		move.b  d0,((byte_FFCB6B-$1000000)).w
+		clr.b   ((byte_FFCB6C-$1000000)).w
+		lea     ((word_FFA9D8-$1000000)).w,a1
 		clr.w   (a1)+
 		clr.w   (a1)+
 		addq.l  #2,a1
@@ -4658,7 +4554,7 @@ loc_21906:
 		move.w  d1,(a1)+
 		move.w  d1,(a1)+
 		move.w  d1,((MESSAGE_INDEX-$1000000)).w
-		move.w  d1,((unk_FFA9EA-$1000000)).w
+		move.w  d1,((word_FFA9EA-$1000000)).w
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
@@ -4695,7 +4591,7 @@ loc_21958:
 
 sub_2195E:
 		movem.l d1-d2/d7,-(sp)
-		tst.b   ((unk_FFCBC7-$1000000)).w
+		tst.b   ((byte_FFCBC7-$1000000)).w
 		bne.s   loc_219A6
 		moveq   #1,d2
 		tst.b   ((MESSAGE_OFFSET-$1000000)).w
@@ -4740,7 +4636,7 @@ loc_219B2:
 ; Attack cleanup - clear item dropped, set to single attack if first will kill enemy
 
 sub_219C0:
-		clr.b   ((unk_FFCBC6-$1000000)).w
+		clr.b   ((byte_FFCBC6-$1000000)).w
 		bsr.s   sub_219E6       
 		bgt.s   locret_219CE
 		move.w  #1,((NUMBER_OF_ATTACKS-$1000000)).w
@@ -4786,7 +4682,7 @@ sub_219E6:
 
 sub_219FC:
 		movem.w d1,-(sp)
-		tst.w   ((unk_FFCB5A-$1000000)).w
+		tst.w   ((word_FFCB5A-$1000000)).w
 		beq.s   loc_21A16
 		jsr     j_GetStatusFromForceID
 		andi.w  #$C0,d1 
@@ -4841,7 +4737,7 @@ locret_21A4C:
 
 sub_21A4E:
 		movem.l d7,-(sp)
-		move.b  ((unk_FFCB6A-$1000000)).w,d7
+		move.b  ((byte_FFCB6A-$1000000)).w,d7
 		btst    #0,d7
 		beq.s   loc_21A7A
 		bsr.w   UpdateRandomSeed0To100
@@ -4865,12 +4761,12 @@ loc_21A7A:
 
 sub_21A80:
 		movem.l d1/d3-d7,-(sp)
-		btst    #1,((unk_FFCB6A-$1000000)).w
+		btst    #1,((byte_FFCB6A-$1000000)).w
 		beq.s   loc_21AC2
 		bsr.w   UpdateRandomSeed0To100
 		cmpi.w  #$32,d7 
 		bcc.s   loc_21AC2
-		move.w  ((unk_FFA9D8-$1000000)).w,d3
+		move.w  ((word_FFA9D8-$1000000)).w,d3
 		bge.s   loc_21AC2
 		asr.w   #3,d3
 		clr.w   d4
@@ -4905,7 +4801,7 @@ nullsub_3:
 
 sub_21ACA:
 		movem.l d1/d3-d7,-(sp)
-		move.b  ((unk_FFCB6C-$1000000)).w,d4
+		move.b  ((byte_FFCB6C-$1000000)).w,d4
 		beq.s   loc_21AE8
 		clr.w   d3
 		ext.w   d4
@@ -4926,8 +4822,8 @@ loc_21AE8:
 
 InitGameSettings:
 		
-		move.b  #2,((unk_FF9C05-$1000000)).w
-		clr.b   ((unk_FF9C06-$1000000)).w
+		move.b  #2,((byte_FF9C05-$1000000)).w
+		clr.b   ((byte_FF9C06-$1000000)).w
 		lea     ((EVENT_FLAGS-$1000000)).w,a0
 		move.w  #$3F,d0 
 loc_21B00:
@@ -4981,7 +4877,7 @@ sub_21B80:
 		movem.l d0-d2/a0-a1,-(sp)
 		bsr.s   sub_21BDC       
 		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
-		movea.l ((unk_FFC61A-$1000000)).w,a1
+		movea.l ((dword_FFC61A-$1000000)).w,a1
 		move.b  (a1)+,d0
 loc_21B90:
 		beq.s   loc_21BA0
@@ -4994,7 +4890,7 @@ loc_21B90:
 loc_21BA0:
 		bsr.s   sub_21BCC
 		beq.s   loc_21BBE
-		lea     ((unk_FFA476-$1000000)).w,a0
+		lea     ((byte_FFA476-$1000000)).w,a0
 		move.b  #$80,d1
 		move.b  (a1)+,d0
 loc_21BAE:
@@ -5006,7 +4902,7 @@ loc_21BAE:
 		subq.b  #1,d0
 		bra.s   loc_21BAE
 loc_21BBE:
-		clr.b   ((unk_FF9C7E-$1000000)).w
+		clr.b   ((byte_FF9C7E-$1000000)).w
 		clr.b   ((AI_REGIONS_TRIGGERED-$1000000)).w
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
@@ -5018,7 +4914,7 @@ loc_21BBE:
 
 sub_21BCC:
 		movem.l d0,-(sp)
-		movea.l ((unk_FFC61E-$1000000)).w,a1
+		movea.l ((dword_FFC61E-$1000000)).w,a1
 		move.l  a1,d0
 		movem.l (sp)+,d0
 		rts
@@ -5079,10 +4975,10 @@ loc_21C38:
 		movem.l d1-d2/a1,-(sp)
 		move.b  (a1)+,d2
 		move.b  (a1),d1
-		bsr.w   sub_209CA       
+		bsr.w   FindTargetAtPosition
 		movem.l (sp)+,d1-d2/a1
 		bcs.s   loc_21C60
-		lea     ((unk_FFA476-$1000000)).w,a0
+		lea     ((byte_FFA476-$1000000)).w,a0
 		move.w  d1,d2
 		andi.w  #$7F,d2 
 		adda.w  d2,a0
@@ -5148,7 +5044,7 @@ sub_21C9C:
 		move.w  (sp)+,d1
 		tst.b   d1
 		bge.s   loc_21CC8
-		lea     ((unk_FFA496-$1000000)).w,a1
+		lea     ((byte_FFA496-$1000000)).w,a1
 		andi.w  #$7F,d1 
 		clr.b   (a1,d1.w)
 loc_21CC8:
@@ -5352,7 +5248,7 @@ loc_21EB6:
 		clr.b   (a0)+
 		dbf     d1,loc_21EB6
 		move.b  ENEMY_OFFSET_B(a3),d1
-		movea.l ((unk_FFC612-$1000000)).w,a0
+		movea.l ((dword_FFC612-$1000000)).w,a0
 		bsr.w   sub_238CC       
 		beq.s   loc_21ED2
 		subq.w  #1,d1
@@ -5372,7 +5268,7 @@ sub_21ED8:
 		movem.l d0-d2/a0-a1,-(sp)
 		bsr.w   sub_21BCC
 		beq.w   loc_21F10
-		lea     ((unk_FFA3B6-$1000000)).w,a0
+		lea     ((byte_FFA3B6-$1000000)).w,a0
 		move.b  #$80,d0
 		move.b  (a1),d2
 loc_21EEE:
@@ -5400,12 +5296,12 @@ sub_21F16:
 		movem.l d0-d2/a0-a1,-(sp)
 		bsr.w   sub_21BCC
 		beq.w   loc_21F5E
-		lea     ((unk_FFA3B6-$1000000)).w,a0
+		lea     ((byte_FFA3B6-$1000000)).w,a0
 		move.w  #$BF,d0 
 loc_21F2A:
 		move.b  #$FF,(a0)+
 		dbf     d0,loc_21F2A
-		lea     ((unk_FFA3B6-$1000000)).w,a0
+		lea     ((byte_FFA3B6-$1000000)).w,a0
 		move.b  #$80,d0
 		move.b  (a1),d2
 loc_21F3C:
@@ -5431,13 +5327,13 @@ loc_21F5E:
 
 sub_21F64:
 		movem.l d0-d3/a0-a1,-(sp)
-		move.l  ((unk_FFC60A-$1000000)).w,d3
+		move.l  ((dword_FFC60A-$1000000)).w,d3
 		beq.s   loc_21F72
 		movea.l d3,a0
 		jsr     (a0)
 loc_21F72:
 		clr.w   d3
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_21FDE
 		bsr.w   sub_21BCC
@@ -5492,7 +5388,7 @@ loc_21FDE:
 GetEnemyEntryAddress:
 		
 		movem.l d0-d1,-(sp)
-		movea.l ((unk_FFC616-$1000000)).w,a0
+		movea.l ((dword_FFC616-$1000000)).w,a0
 		move.l  a0,d1
 		beq.s   loc_2201C
 		andi.w  #FORCE_MASK_ID,d0
@@ -5501,7 +5397,7 @@ GetEnemyEntryAddress:
 		move.b  (a0),d1
 		cmpi.b  #$FF,d1
 		beq.s   loc_2201C
-		movea.l ((unk_FFC60E-$1000000)).w,a1
+		movea.l ((dword_FFC60E-$1000000)).w,a1
 		andi.w  #$FF,d1
 		asl.w   #4,d1
 		adda.w  d1,a1
@@ -5544,7 +5440,7 @@ sub_2204C:
 		movem.l d1/a0-a1,-(sp)
 		lea     unk_2204A(pc), a1
 		bsr.w   sub_22090
-		lea     ((unk_FFCB84-$1000000)).w,a0
+		lea     ((byte_FFCB84-$1000000)).w,a0
 loc_2205C:
 		move.b  (a0)+,d1
 		blt.s   loc_22066
@@ -5560,7 +5456,7 @@ loc_22066:
 ; START OF FUNCTION CHUNK FOR sub_22090
 
 loc_2206C:
-		lea     ((unk_FFCB84-$1000000)).w,a0
+		lea     ((byte_FFCB84-$1000000)).w,a0
 		clr.w   d1
 		clr.w   d0
 loc_22074:
@@ -5572,7 +5468,7 @@ loc_2207C:
 		addq.w  #1,d0
 		cmpi.w  #$1F,d0
 		bcs.s   loc_22074
-		move.w  d1,((unk_FFCB82-$1000000)).w
+		move.w  d1,((word_FFCB82-$1000000)).w
 		st      (a0)
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
@@ -5848,7 +5744,7 @@ loc_221EA:
 		beq.s   loc_22216
 		jsr     j_GetForceMemberClass
 		bsr.w   GetClassEntryAddress
-		btst    #CLASS_FLAG_REGEN_HP,CLASS_OFFSET_FLAGS(a0)
+		btst    #CLASS_FLAG_REGEN_HP,CLASS_OFFSET_SETTINGS(a0)
 		beq.s   loc_22216
 		jsr     j_GetForceMemberMaxHP
 		asr.w   #2,d1
@@ -6074,7 +5970,7 @@ loc_2237A:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get position of D0 X to D2 Y to D1
+; Get position of member D0 -> X to D2, Y to D1
 
 GetTargetPosition:
 		
@@ -6309,7 +6205,7 @@ GetForceMemberStatus:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get class by force index
+; Get class by force index D0 -> D1
 
 GetClassFromForceID:
 		
@@ -8358,7 +8254,7 @@ BreakItemFromTargetID:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get equipped item with flags matching D1 by force index
+; Get equipped item matching flags D1 by force index D0 -> D2
 
 GetEquippedItemFromForceID:
 		
@@ -8433,7 +8329,7 @@ IsItemUnequippableFromForceID:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get address of item's (D1) stats
+; Get address of item D1 entry -> A1
 
 GetItemEntryAddress:
 		
@@ -8450,7 +8346,7 @@ GetItemEntryAddress:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get flag byte of item (D1) data to D2
+; Get word-sized type flags of item D1 -> D2
 
 GetItemType:
 		move.l  a1,-(sp)
@@ -8470,7 +8366,7 @@ loc_22EA4:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get price of item (D1) data
+; Get price of item D1 -> D2
 
 GetItemPrice:
 		move.l  a1,-(sp)
@@ -8488,8 +8384,8 @@ GetItemPrice:
 ; Prepare RAM Offsets for attack effect
 
 sub_22EB6:
-		move.w  ((unk_FFCBAC-$1000000)).w,d2
-		move.w  ((unk_FFCBAE-$1000000)).w,d3
+		move.w  ((word_FFCBAC-$1000000)).w,d2
+		move.w  ((word_FFCBAE-$1000000)).w,d3
 		rts
 
 	; End of function sub_22EB6
@@ -8497,7 +8393,7 @@ sub_22EB6:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get equipped item of force member D0 with flags matching D1
+; Get equipped item matching flags D1 of force member D0 -> D2
 
 GetEquippedItem:
 		
@@ -8564,7 +8460,7 @@ loc_22F30:
 LoadEquippableItems:
 		
 		movem.l d0-d4/a0-a1,-(sp)
-		lea     ((unk_FFA8C2-$1000000)).w,a1
+		lea     ((byte_FFA8C2-$1000000)).w,a1
 		moveq   #$FFFFFFFF,d3
 		move.l  d3,(a1)+
 		move.l  d3,(a1)+
@@ -8572,7 +8468,7 @@ LoadEquippableItems:
 		move.l  d3,(a1)+
 		jsr     j_GetForceItemsAddress
 		clr.w   d3
-		lea     ((unk_FFA8C2-$1000000)).w,a1
+		lea     ((byte_FFA8C2-$1000000)).w,a1
 		clr.w   d4
 loc_22F56:
 		move.b  (a0)+,d2
@@ -8715,7 +8611,7 @@ ItemDrops:      dc.b ITEM_ID_DOOM_BLADE
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get address of spell D1 data
+; Get address of spell D1 entry -> A1
 
 GetSpellEntryAddress:
 		
@@ -8733,13 +8629,13 @@ GetSpellEntryAddress:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Spell MP Cost to D2
+; Get MP cost of spell D1 -> D2
 
 GetMPCost:
 		movem.l d1/a1,-(sp)
 		bsr.s   GetSpellEntryAddress
 		clr.w   d2
-		move.b  2(a1),d2
+		move.b  SPELL_OFFSET_MP_COST(a1),d2
 		movem.l (sp)+,d1/a1
 		rts
 
@@ -8748,7 +8644,7 @@ GetMPCost:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get address of range D4 data
+; Get address of range D4 entry -> A1
 
 GetRangeEntryAddress:
 		
@@ -8774,33 +8670,33 @@ sub_2307A:
 		bsr.s   GetRangeEntryAddress
 		clr.w   d1
 		jsr     sub_20398
-		clr.b   ((unk_FFC600-$1000000)).w
-		move.b  3(a1),d4
+		clr.b   ((byte_FFC600-$1000000)).w
+		move.b  RANGE_OFFSET_GROUP(a1),d4
 		beq.w   loc_230D4
 		moveq   #3,d3
 		clr.w   d4
 		bsr.w   sub_2059E       
-		move.b  3(a1),d1
-		andi.b  #3,d1
-		move.b  d1,((unk_FFC600-$1000000)).w
-		move.b  (a1),d1
-		move.b  1(a1),d2
+		move.b  RANGE_OFFSET_GROUP(a1),d1
+		andi.b  #RANGE_GROUP_MASK_TARGETS,d1
+		move.b  d1,((byte_FFC600-$1000000)).w
+		move.b  (a1),d1         ; D1 = max range
+		move.b  RANGE_OFFSET_MIN(a1),d2
 		bsr.w   sub_2061C       
 		clr.w   d1
-		move.b  2(a1),d1
+		move.b  RANGE_OFFSET_AREA(a1),d1
 		bge.s   loc_230CA
 		andi.w  #$7F,d1 
-		lea     unk_230EF(pc), a1
+		lea     AreaCursors_0(pc), a1
 		bra.s   loc_230CE
 loc_230CA:
-		lea     unk_230EC(pc), a1
+		lea     AreaCursors(pc), a1
 loc_230CE:
 		move.b  (a1,d1.w),((byte_FFB4C7-$1000000)).w
 loc_230D4:
 		movem.l (sp)+,d0-d4/a0-a1
 		rts
 loc_230DA:
-		clr.b   ((unk_FFC600-$1000000)).w
+		clr.b   ((byte_FFC600-$1000000)).w
 		clr.b   d1
 		jsr     sub_20398
 		clr.b   ((byte_FFB4C7-$1000000)).w
@@ -8808,11 +8704,11 @@ loc_230DA:
 
 	; End of function sub_2307A
 
-unk_230EC:      dc.b   0                ; Area Cursors
+AreaCursors:    dc.b 0                  ; Area Cursors
 		dc.b $11
 		dc.b $12
-unk_230EF:      dc.b   0
-		dc.b   0
+AreaCursors_0:  dc.b 0
+		dc.b 0
 		dc.b $12
 
 ; =============== S U B R O U T I N E =======================================
@@ -8831,8 +8727,8 @@ sub_230F2:
 		movem.w (sp)+,d0-d1/d4
 		bsr.w   GetRangeEntryAddress
 		move.b  3(a1),d4
-		bsr.s   sub_23136
-		move.b  d4,((unk_FFC600-$1000000)).w
+		bsr.s   GetAdjustedGroupFlags
+		move.b  d4,((byte_FFC600-$1000000)).w
 		move.b  d1,d0
 		move.b  2(a1),d1
 		clr.b   d2
@@ -8849,33 +8745,38 @@ loc_2312E:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23136:
+; Check if caster D0 is enemy and adjust group flags D4 accordingly
+
+GetAdjustedGroupFlags:
+		
 		move.w  d1,-(sp)
 		jsr     j_GetTargetID
 		tst.b   d1
 		bge.s   loc_23144
-		bsr.s   sub_23148
+		bsr.s   AdjustGroupFlags
 loc_23144:
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_23136
+	; End of function GetAdjustedGroupFlags
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23148:
+AdjustGroupFlags:
+		
 		move.w  d5,-(sp)
 		move.w  d4,d5
-		andi.w  #$FC,d4 
-		andi.w  #3,d5
-		or.b    byte_2315C(pc,d5.w),d4
+		andi.w  #RANGE_GROUP_MASK_ALL,d4
+		andi.w  #RANGE_GROUP_MASK_TARGETS,d5
+		or.b    AdjustedGroupFlags(pc,d5.w),d4
 		move.w  (sp)+,d5
 		rts
 
-	; End of function sub_23148
+	; End of function AdjustGroupFlags
 
-byte_2315C:     dc.b 0
+AdjustedGroupFlags:
+		dc.b 0
 		dc.b 2
 		dc.b 1
 		dc.b 3
@@ -8897,6 +8798,7 @@ loc_23172:
 	; End of function sub_23160
 
 RangeData:      incbin "data/stats/ranges/rangedata.bin"
+		rts
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -9368,29 +9270,29 @@ sub_235BA:
 		movem.l d1-d3/a0-a1,-(sp)
 		tst.b   ((byte_FFCB3E-$1000000)).w
 		beq.s   loc_235D2
-		clr.b   ((unk_FFCB66-$1000000)).w
-		move.b  ((byte_FFCB42-$1000000)).w,d4
-		move.b  ((byte_FFCB43-$1000000)).w,d5
+		clr.b   ((byte_FFCB66-$1000000)).w
+		move.b  ((RANGE_TO_USE-$1000000)).w,d4
+		move.b  ((EFFECT_TO_USE-$1000000)).w,d5
 		bra.s   loc_23614
 loc_235D2:
 		jsr     j_GetClassFromForceID
 		bsr.w   GetClassEntryAddress
-		move.w  #$100,d1
+		move.w  #ITEM_TYPE_MASK_WEAPON,d1
 		jsr     j_GetEquippedItemFromForceID
 		bcc.s   loc_235F2
-		move.b  5(a0),d4
-		move.b  6(a0),d5
+		move.b  CLASS_OFFSET_UNARMED_RANGE(a0),d4
+		move.b  CLASS_OFFSET_UNARMED_EFFECT(a0),d5
 		bra.s   loc_23600
 loc_235F2:
 		move.b  d2,d1
 		bsr.w   GetItemEntryAddress
-		move.b  $C(a1),d4
-		move.b  $D(a1),d5
+		move.b  ITEM_OFFSET_ATK_RANGE(a1),d4
+		move.b  ITEM_OFFSET_ATK_EFFECT(a1),d5
 loc_23600:
-		move.b  4(a0),d1
-		andi.w  #3,d1
-		move.b  SpecialAttackPercents(pc,d1.w),((unk_FFCB66-$1000000)).w
-		move.b  7(a0),((byte_FFCB67-$1000000)).w
+		move.b  CLASS_OFFSET_SETTINGS(a0),d1
+		andi.w  #CLASS_MASK_SP_ATK_CHANCE,d1
+		move.b  SpecialAttackPercents(pc,d1.w),((byte_FFCB66-$1000000)).w
+		move.b  CLASS_OFFSET_SP_ATK_TYPE(a0),((byte_FFCB67-$1000000)).w
 loc_23614:
 		movem.l (sp)+,d1-d3/a0-a1
 		rts
@@ -9430,7 +9332,7 @@ loc_2364C:
 loc_2364E:
 		moveq   #$FFFFFFFF,d4
 loc_23650:
-		move.b  d1,((unk_FFCB7E-$1000000)).w
+		move.b  d1,((byte_FFCB7E-$1000000)).w
 		jsr     sub_202A8
 		movem.l (sp)+,d1-d2/d4-d5
 		rts
@@ -9446,7 +9348,7 @@ GetItemUseRangeAndEffect:
 		
 		movem.l d1/a1,-(sp)
 		andi.w  #$3F,d1 
-		move.w  d1,((word_FFCB74-$1000000)).w
+		move.w  d1,((ITEM_OR_SPELL_BEING_USED-$1000000)).w
 		bsr.w   GetItemEntryAddress
 		move.b  8(a1),d4
 		cmpi.b  #$FF,d4
@@ -9498,19 +9400,19 @@ sub_236A6:
 sub_236B8:
 		movem.l d2/a1,-(sp)
 		move.b  d1,d2
-		andi.w  #$3F,d2 
-		move.w  d2,((word_FFCB74-$1000000)).w
+		andi.w  #SPELL_MASK_ID,d2
+		move.w  d2,((ITEM_OR_SPELL_BEING_USED-$1000000)).w
 		move.b  d1,d2
-		andi.l  #$C0,d2 
+		andi.l  #SPELL_MASK_LEVEL,d2
 		asr.l   #6,d2
 		addq.l  #1,d2
-		move.l  d2,((unk_FFCB76-$1000000)).w
+		move.l  d2,((dword_FFCB76-$1000000)).w
 		bsr.w   GetSpellEntryAddress
 		clr.w   d4
-		move.b  2(a1),d4
-		move.w  d4,((unk_FFCB5A-$1000000)).w
+		move.b  SPELL_OFFSET_MP_COST(a1),d4
+		move.w  d4,((word_FFCB5A-$1000000)).w
 		move.b  (a1),d4
-		move.b  1(a1),d5
+		move.b  SPELL_OFFSET_EFFECT(a1),d5
 		movem.l (sp)+,d2/a1
 		rts
 
@@ -9523,15 +9425,15 @@ sub_236B8:
 
 sub_236F0:
 		movem.l d0-d5/a0,-(sp)
-		lea     ((unk_FFB51A-$1000000)).w,a0
+		lea     ((byte_FFB51A-$1000000)).w,a0
 		clr.w   d2
 		move.b  1(a0),d2
 		cmpi.b  #3,d2
 		bcc.s   loc_23740
 		move.b  d2,((MESSAGE_OFFSET-$1000000)).w
-		clr.w   ((unk_FFCB5A-$1000000)).w
+		clr.w   ((word_FFCB5A-$1000000)).w
 		move.w  #$FFFF,((word_FFCB60-$1000000)).w
-		clr.b   ((unk_FFCB66-$1000000)).w
+		clr.b   ((byte_FFCB66-$1000000)).w
 		move.b  (a0),d0
 		move.b  2(a0),d1
 		asl.w   #2,d2
@@ -9583,7 +9485,7 @@ sub_23752:
 		bsr.w   sub_2059E       
 		moveq   #1,d1
 		move.w  d1,d2
-		move.b  #1,((unk_FFC600-$1000000)).w
+		move.b  #1,((byte_FFC600-$1000000)).w
 		bsr.w   sub_2061C       
 		movem.l (sp)+,d0-d4/a0
 		rts
@@ -9650,11 +9552,11 @@ sub_237CA:
 
 sub_237FA:
 		movem.l d0-d5/a0-a2,-(sp)
-		lea     ((unk_FFA4C0-$1000000)).w,a0
-		move.b  ((unk_FFC600-$1000000)).w,d3
+		lea     ((byte_FFA4C0-$1000000)).w,a0
+		move.b  ((byte_FFC600-$1000000)).w,d3
 		clr.w   d4
-		lea     ((unk_FFA8C2-$1000000)).w,a1
-		lea     ((unk_FFA946-$1000000)).w,a2
+		lea     ((byte_FFA8C2-$1000000)).w,a1
+		lea     ((byte_FFA946-$1000000)).w,a2
 		moveq   #$1F,d0
 loc_23812:
 		jsr     j_GetTargetID
@@ -9700,8 +9602,8 @@ loc_2385A:
 
 sub_23870:
 		movem.l d0-d2/a0-a3,-(sp)
-		lea     ((unk_FFA8C2-$1000000)).w,a0
-		lea     ((unk_FFA946-$1000000)).w,a1
+		lea     ((byte_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA946-$1000000)).w,a1
 		move.w  ((word_FFA8C0-$1000000)).w,d0
 		subq.w  #1,d0
 loc_23882:
@@ -9817,7 +9719,7 @@ loc_2390E:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Calculate offset into class data table for class D1
+; Get address of class D1 entry -> A0
 
 GetClassEntryAddress:
 		
@@ -9897,7 +9799,7 @@ sub_2397C:
 		move.l  a0,-(sp)
 		jsr     j_GetClassFromForceID
 		bsr.w   GetClassEntryAddress
-		move.b  CLASS_OFFSET_FLAGS(a0),d1
+		move.b  CLASS_OFFSET_SETTINGS(a0),d1
 		andi.w  #$40,d1 
 		asr.w   #6,d1
 		addq.w  #1,d1
@@ -9916,7 +9818,7 @@ GetClassDoubleAttack:
 		move.l  a0,-(sp)
 		jsr     j_GetClassFromForceID
 		bsr.w   GetClassEntryAddress
-		move.b  CLASS_OFFSET_FLAGS(a0),d1
+		move.b  CLASS_OFFSET_SETTINGS(a0),d1
 		andi.w  #$C,d1
 		asr.w   #2,d1
 		movea.l (sp)+,a0
@@ -10100,7 +10002,7 @@ sub_23AD6:
 		bsr.w   sub_23B86
 		bsr.w   sub_23BEC
 		move.w  ((word_FFCBA6-$1000000)).w,d1
-		move.w  ((unk_FFCBA8-$1000000)).w,d2
+		move.w  ((word_FFCBA8-$1000000)).w,d2
 		move.w  ((word_FFCBAA-$1000000)).w,d3
 		rts
 
@@ -10151,7 +10053,7 @@ sub_23B24:
 		movem.l d0-d2/a0-a1,-(sp)
 		moveq   #$FFFFFFFF,d1
 		move.w  d1,((word_FFCBA6-$1000000)).w
-		move.w  d1,((unk_FFCBA8-$1000000)).w
+		move.w  d1,((word_FFCBA8-$1000000)).w
 		bsr.w   GetForceMemberID
 		cmpi.b  #$FF,d0
 		beq.s   loc_23B80
@@ -10181,7 +10083,7 @@ loc_23B60:
 		addi.w  #BATTLE_SPRITE_ID_MAX_HERO,d1
 loc_23B78:
 		move.w  d1,((word_FFCBA6-$1000000)).w
-		move.w  d2,((unk_FFCBA8-$1000000)).w
+		move.w  d2,((word_FFCBA8-$1000000)).w
 loc_23B80:
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
@@ -10193,7 +10095,7 @@ loc_23B80:
 
 sub_23B86:
 		movem.l d1-d3/a0,-(sp)
-		move.w  #$FFFF,((unk_FFCBAE-$1000000)).w
+		move.w  #$FFFF,((word_FFCBAE-$1000000)).w
 		move.w  #$80,((word_FFCBB0-$1000000)).w 
 		bsr.w   sub_23C5C
 		bne.s   loc_23BE6
@@ -10211,7 +10113,7 @@ loc_23BB0:
 		bcs.s   loc_23BE6
 		movea.l (p_WeaponSpriteData).l,a0
 		andi.w  #$3F,d2 
-		move.w  d2,((unk_FFCBAE-$1000000)).w
+		move.w  d2,((word_FFCBAE-$1000000)).w
 		sub.b   (a0)+,d2
 		bcs.s   loc_23BE6
 		clr.w   d1
@@ -10232,7 +10134,7 @@ sub_23BEC:
 		movem.l d1-d2/a0,-(sp)
 		move.w  #$FFFF,d1
 		move.w  d1,((word_FFCBAA-$1000000)).w
-		move.w  d1,((unk_FFCBAC-$1000000)).w
+		move.w  d1,((word_FFCBAC-$1000000)).w
 		bsr.s   sub_23C2E
 		addq.l  #1,a0
 		move.w  ((word_FFCBB0-$1000000)).w,d2
@@ -10250,7 +10152,7 @@ loc_23C18:
 		move.w  d1,((word_FFCBAA-$1000000)).w
 		move.b  (a0),d1
 		ext.w   d1
-		move.w  d1,((unk_FFCBAC-$1000000)).w
+		move.w  d1,((word_FFCBAC-$1000000)).w
 loc_23C28:
 		movem.l (sp)+,d1-d2/a0
 		rts
@@ -10317,13 +10219,13 @@ loc_23C82:
 
 sub_23C88:
 		movem.l d7-a2,-(sp)
-		bsr.w   sub_23F6E
+		bsr.w   sub_23F6E       
 		bcc.s   loc_23C96
 		bsr.w   sub_2414C
 loc_23C96:
-		lea     ((unk_FFB51A-$1000000)).w,a1
+		lea     ((byte_FFB51A-$1000000)).w,a1
 		move.b  d0,(a1)+
-		bsr.w   sub_2425C
+		bsr.w   sub_2425C       
 		bsr.w   sub_24292
 		addq.w  #1,d7
 		asl.w   #2,d7
@@ -10345,7 +10247,7 @@ sub_23CB6:
 loc_23CC6:
 		move.w  d1,-(sp)
 		moveq   #$FFFFFFFF,d1
-		move.b  d1,((unk_FFCB28-$1000000)).w
+		move.b  d1,((byte_FFCB28-$1000000)).w
 		bsr.w   sub_24306
 		move.b  #3,(a1)
 		move.w  (sp)+,d1
@@ -10377,8 +10279,8 @@ loc_23CF6:
 		bra.s   locret_23D18
 loc_23D0C:
 		move.b  ((byte_FFCB3F-$1000000)).w,(a1)+
-		move.b  ((byte_FFCB40-$1000000)).w,(a1)+
-		move.b  ((unk_FFA947-$1000000)).w,(a1)
+		move.b  ((ITEM_OR_SPELL_TO_USE-$1000000)).w,(a1)+
+		move.b  ((byte_FFA947-$1000000)).w,(a1)
 locret_23D18:
 		rts
 loc_23D1A:
@@ -10395,10 +10297,10 @@ loc_23D32:
 		clr.w   d1
 		move.b  (a0),d1
 		adda.w  d1,a0
-		st      ((unk_FFCB28-$1000000)).w
+		st      ((byte_FFCB28-$1000000)).w
 		jsr     j_GetTargetPosition
-		move.w  d2,((unk_FFCB38-$1000000)).w
-		move.w  d1,((unk_FFCB3A-$1000000)).w
+		move.w  d2,((word_FFCB38-$1000000)).w
+		move.w  d1,((word_FFCB3A-$1000000)).w
 		bsr.w   sub_242EC
 		move.w  d1,d4
 		cmpi.w  #$FFFF,d4
@@ -10440,7 +10342,7 @@ loc_23D94:
 sub_23D9C:
 		movem.l d3-d6,-(sp)
 		move.w  d3,d4
-		bsr.w   sub_20994       
+		bsr.w   GetDistanceToTarget
 		cmp.w   d4,d7
 		bge.s   loc_23DAE
 		bsr.w   sub_23E9A
@@ -10449,7 +10351,7 @@ loc_23DAE:
 		clr.w   d3
 		bsr.s   sub_23DDE
 		beq.w   loc_23DD8
-		bsr.w   sub_20994       
+		bsr.w   GetDistanceToTarget
 		move.w  d7,d3
 		asr.w   #1,d3
 		bsr.s   sub_23DDE
@@ -10487,7 +10389,7 @@ loc_23DE8:
 
 sub_23DEC:
 		movem.l d0-d6/a0-a2,-(sp)
-		move.w  d4,((unk_FFCB3C-$1000000)).w
+		move.w  d4,((word_FFCB3C-$1000000)).w
 		bsr.w   sub_208DE       
 		bsr.w   sub_20868       
 		move.w  d2,d6
@@ -10497,8 +10399,8 @@ sub_23DEC:
 		moveq   #1,d4
 		bsr.w   sub_20584       
 		bsr.w   sub_205AC       
-		lea     ((unk_FFCB28-$1000000)).w,a0
-		lea     ((unk_FFA4C0-$1000000)).w,a1
+		lea     ((byte_FFCB28-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a1
 		jsr     j_GetTargetPosition
 		move.w  ((MAP_WIDTH-$1000000)).w,d3
 		mulu.w  d3,d1
@@ -10512,7 +10414,7 @@ loc_23E34:
 		movem.w d1-d2,-(sp)
 		bsr.w   sub_23E8E
 		movem.w (sp)+,d1-d2
-		cmp.w   ((unk_FFCB3C-$1000000)).w,d7
+		cmp.w   ((word_FFCB3C-$1000000)).w,d7
 		ble.w   loc_23E7A
 		tst.b   (a0)
 		bne.s   loc_23E50
@@ -10542,8 +10444,8 @@ loc_23E70:
 loc_23E7A:
 		move.b  #$FF,(a2)
 		bsr.s   sub_23E8E
-		move.w  d2,((unk_FFCB38-$1000000)).w
-		move.w  d1,((unk_FFCB3A-$1000000)).w
+		move.w  d2,((word_FFCB38-$1000000)).w
+		move.w  d1,((word_FFCB3A-$1000000)).w
 		movem.l (sp)+,d0-d6/a0-a2
 		rts
 
@@ -10556,7 +10458,7 @@ sub_23E8E:
 		divu.w  d3,d2
 		move.w  d2,d1
 		swap    d2
-		bsr.w   sub_2097A       
+		bsr.w   CalculateDistance
 		rts
 
 	; End of function sub_23E8E
@@ -10601,7 +10503,7 @@ loc_23EDC:
 ; =============== S U B R O U T I N E =======================================
 
 sub_23EE2:
-		bsr.w   sub_209CA       
+		bsr.w   FindTargetAtPosition
 		bcs.s   locret_23EF8
 		move.w  d1,d3
 		mulu.w  d4,d3
@@ -10621,20 +10523,20 @@ sub_23EFA:
 		movem.l d1-d2/a3,-(sp)
 		jsr     j_GetTargetPosition
 		movem.w d1-d2,-(sp)
-		move.w  ((unk_FFCB38-$1000000)).w,d2
-		move.w  ((unk_FFCB3A-$1000000)).w,d1
+		move.w  ((word_FFCB38-$1000000)).w,d2
+		move.w  ((word_FFCB3A-$1000000)).w,d1
 		jsr     j_SetTargetPosition
 		move.b  ((byte_FFCB3F-$1000000)).w,d1
 		cmpi.b  #1,d1
 		bne.s   loc_23F30
-		move.b  ((byte_FFCB40-$1000000)).w,d1
+		move.b  ((ITEM_OR_SPELL_TO_USE-$1000000)).w,d1
 		jsr     sub_202C8
 		movea.l ((PRIORITY_ROUTINE_POINTER-$1000000)).w,a3
 		bra.s   loc_23F50
 loc_23F30:
 		cmpi.b  #2,d1
 		bne.s   loc_23F46
-		move.b  ((byte_FFCB40-$1000000)).w,d1
+		move.b  ((ITEM_OR_SPELL_TO_USE-$1000000)).w,d1
 		jsr     j_UseItem
 		movea.l ((PRIORITY_ROUTINE_POINTER-$1000000)).w,a3
 		bra.s   loc_23F50
@@ -10657,51 +10559,53 @@ loc_23F5A:
 
 ; =============== S U B R O U T I N E =======================================
 
+; Check action type
+
 sub_23F6E:
 		movem.l d1-d2/d7-a0,-(sp)
 		jsr     j_GetClassFromForceID
 		bsr.w   GetClassEntryAddress
-		move.b  4(a0),d2
-		andi.w  #$30,d2 
+		move.b  CLASS_OFFSET_SETTINGS(a0),d2
+		andi.w  #CLASS_MASK_AI_ACTION_CHANCE,d2
 		asr.w   #4,d2
-		move.b  byte_24002(pc,d2.w),d2
+		move.b  AIActionPercents(pc,d2.w),d2
 		bsr.w   UpdateRandomSeed0To100
 		cmp.b   d2,d7
 		bcc.s   loc_23FFC
-		move.b  1(a0),d2
+		move.b  CLASS_OFFSET_ACTION_TYPE(a0),d2
 		cmpi.b  #$FF,d2
 		beq.s   loc_23FFC
-		cmpi.b  #$80,d2
+		cmpi.b  #CLASS_AI_ACTION_CAST_SPELL,d2
 		bne.s   loc_23FA8
-		bsr.w   sub_2401C
+		bsr.w   sub_2401C       
 		bra.s   loc_23FF6
 loc_23FA8:
-		cmpi.b  #$81,d2
+		cmpi.b  #CLASS_AI_ACTION_USE_ITEM_0,d2
 		bne.s   loc_23FB6
 		clr.w   d2
-		bsr.w   sub_240E8
+		bsr.w   sub_240E8       
 		bra.s   loc_23FF6
 loc_23FB6:
-		cmpi.b  #$82,d2
+		cmpi.b  #CLASS_AI_ACTION_USE_ITEM_1,d2
 		bne.s   loc_23FC4
 		moveq   #1,d2
-		bsr.w   sub_240E8
+		bsr.w   sub_240E8       
 		bra.s   loc_23FF6
 loc_23FC4:
-		cmpi.b  #$83,d2
+		cmpi.b  #CLASS_AI_ACTION_DARK_DRAGON,d2
 		bne.s   loc_23FD0
-		bsr.w   sub_240BC
+		bsr.w   sub_240BC       
 		bra.s   loc_23FF6
 loc_23FD0:
 		move.b  #1,((byte_FFCB3E-$1000000)).w
 		move.b  #2,((byte_FFCBB2-$1000000)).w
 		ext.w   d2
 		add.w   d2,d2
-		lea     unk_24006(pc,d2.w),a0
+		lea     SpecialAttackData(pc,d2.w),a0
 		move.b  (a0)+,d4
-		move.b  d4,((byte_FFCB42-$1000000)).w
-		bsr.w   sub_24170
-		move.b  (a0),((byte_FFCB43-$1000000)).w
+		move.b  d4,((RANGE_TO_USE-$1000000)).w
+		bsr.w   sub_24170       
+		move.b  (a0),((EFFECT_TO_USE-$1000000)).w
 		clr.b   ((byte_FFCB3F-$1000000)).w
 loc_23FF6:
 		movem.l (sp)+,d1-d2/d7-a0
@@ -10712,34 +10616,38 @@ loc_23FFC:
 
 	; End of function sub_23F6E
 
-byte_24002:     dc.b $64
-		dc.b $19
-		dc.b $32 
-		dc.b $4B 
-unk_24006:      dc.b $35 
-		dc.b   4
-		dc.b $35 
-		dc.b   5
-		dc.b $35 
-		dc.b   6
-		dc.b $35 
-		dc.b   7
-		dc.b $35 
-		dc.b   8
-		dc.b $35 
-		dc.b   9
-		dc.b $35 
-		dc.b  $A
-		dc.b $37 
-		dc.b  $B
+AIActionPercents:
+		dc.b 100
+		dc.b 25
+		dc.b 50
+		dc.b 75
+SpecialAttackData:
+		dc.b $35
+		dc.b 4
+		dc.b $35
+		dc.b 5
+		dc.b $35
+		dc.b 6
+		dc.b $35
+		dc.b 7
+		dc.b $35
+		dc.b 8
+		dc.b $35
+		dc.b 9
+		dc.b $35
+		dc.b $A
+		dc.b $37
+		dc.b $B
 		dc.b $13
-		dc.b  $C
-		dc.b $38 
-		dc.b  $D
-		dc.b $39 
-		dc.b $3A 
+		dc.b $C
+		dc.b $38
+		dc.b $D
+		dc.b $39
+		dc.b $3A
 
 ; =============== S U B R O U T I N E =======================================
+
+; Cast spell AI
 
 sub_2401C:
 		movem.l d1-d4/a0-a1,-(sp)
@@ -10747,20 +10655,20 @@ sub_2401C:
 		cmpi.b  #$FF,(a0)
 		beq.w   loc_2405C
 		jsr     j_GetMPFromForceID
-		move.w  d1,d3
-		move.b  (a0),d1
+		move.w  d1,d3           ; D3 = caster's current MP
+		move.b  (a0),d1         ; D1 = spell index
 		move.b  d1,d4
-		andi.w  #$C0,d4 
-		asr.w   #6,d4
+		andi.w  #SPELL_MASK_LEVEL,d4
+		asr.w   #6,d4           ; D4 = spell level counter
 loc_24040:
 		jsr     j_GetMPCost
 		cmp.w   d2,d3
 		bge.s   loc_24054
-		subi.b  #$40,d1 
+		subi.b  #$40,d1 ; get previous level spell index
 		dbf     d4,loc_24040
 		bra.s   loc_2405C
 loc_24054:
-		bsr.s   sub_24062
+		bsr.s   sub_24062       
 loc_24056:
 		movem.l (sp)+,d1-d4/a0-a1
 		rts
@@ -10773,18 +10681,20 @@ loc_2405C:
 
 ; =============== S U B R O U T I N E =======================================
 
+; Caster AI : prepare to cast spell D1
+
 sub_24062:
 		movem.l d1/d4/a0-a1,-(sp)
 		bsr.w   GetSpellEntryAddress
 		move.b  (a1),d4
-		move.b  d4,((byte_FFCB42-$1000000)).w
-		bsr.w   sub_24170
-		move.b  1(a1),((byte_FFCB43-$1000000)).w
+		move.b  d4,((RANGE_TO_USE-$1000000)).w
+		bsr.w   sub_24170       
+		move.b  SPELL_OFFSET_EFFECT(a1),((EFFECT_TO_USE-$1000000)).w
 		move.b  #1,((byte_FFCB3F-$1000000)).w
-		move.b  d1,((byte_FFCB40-$1000000)).w
-		andi.w  #$3F,d1 
+		move.b  d1,((ITEM_OR_SPELL_TO_USE-$1000000)).w
+		andi.w  #SPELL_MASK_ID,d1
 		add.w   d1,d1
-		lea     unk_2409C(pc,d1.w),a0
+		lea     PriorityRoutineOffsets(pc,d1.w),a0
 		move.w  (a0),d1
 		adda.w  d1,a0
 		move.l  a0,((PRIORITY_ROUTINE_POINTER-$1000000)).w
@@ -10793,45 +10703,32 @@ sub_24062:
 
 	; End of function sub_24062
 
-unk_2409C:      dc.b   4
-		dc.b $7A 
-		dc.b   4
-		dc.b $78 
-		dc.b   4
-		dc.b $76 
-		dc.b   4
-		dc.b $9C 
-		dc.b   4
-		dc.b $AC 
-		dc.b   4
-		dc.b $9E 
-		dc.b   4
-		dc.b $AE 
-		dc.b   4
-		dc.b $A0 
-		dc.b   4
-		dc.b $B0 
-		dc.b   2
-		dc.b $CA 
-		dc.b   2
-		dc.b $C8 
-		dc.b   2
-		dc.b $C6 
-		dc.b   2
-		dc.b $C4 
-		dc.b   4
-		dc.b $60 
-		dc.b   4
-		dc.b $5E 
-		dc.b   2
-		dc.b $BE 
+PriorityRoutineOffsets:
+		dc.w $47A
+		dc.w $478
+		dc.w $476
+		dc.w $49C
+		dc.w $4AC
+		dc.w $49E
+		dc.w $4AE
+		dc.w $4A0
+		dc.w $4B0
+		dc.w $2CA
+		dc.w $2C8
+		dc.w $2C6
+		dc.w $2C4
+		dc.w $460
+		dc.w $45E
+		dc.w $2BE
 
 ; =============== S U B R O U T I N E =======================================
+
+; Dark Dragon AI
 
 sub_240BC:
 		movem.l d1/d7-a0,-(sp)
 		bsr.w   UpdateRandomSeed0To100
-		lea     unk_240DC(pc), a0
+		lea     DarkDragonAIData(pc), a0
 loc_240C8:
 		sub.b   (a0)+,d7
 		bcs.s   loc_240D0
@@ -10839,44 +10736,47 @@ loc_240C8:
 		bra.s   loc_240C8
 loc_240D0:
 		move.b  (a0),d1
-		bsr.w   sub_24062
+		bsr.w   sub_24062       
 		movem.l (sp)+,d1/d7-a0
 		rts
 
 	; End of function sub_240BC
 
-unk_240DC:      dc.b $19
-		dc.b $89 
+DarkDragonAIData:
 		dc.b $19
-		dc.b $4B 
-		dc.b $19
-		dc.b $4A 
-		dc.b  $C
-		dc.b $4C 
-		dc.b  $C
-		dc.b $CB 
-		dc.b $64 
-		dc.b $C9 
+		dc.b SPELL_ID_BLAZE_3
+		dc.b 25
+		dc.b SPELL_ID_BOLT_2
+		dc.b 25
+		dc.b SPELL_ID_FREEZE_2
+		dc.b 12
+		dc.b SPELL_ID_DESOUL_2
+		dc.b 12
+		dc.b SPELL_ID_BOLT_4
+		dc.b 100
+		dc.b SPELL_ID_BLAZE_4
 
 ; =============== S U B R O U T I N E =======================================
 
+; Use item AI
+
 sub_240E8:
 		movem.l d1-d2/d4/a0-a1,-(sp)
-		move.b  d2,((byte_FFCB40-$1000000)).w
+		move.b  d2,((ITEM_OR_SPELL_TO_USE-$1000000)).w
 		jsr     j_GetForceItemsFromForceID
-		move.b  (a0,d2.w),d1
+		move.b  (a0,d2.w),d1    ; D1 = item in slot # D2
 		cmpi.b  #$FF,d1
 		beq.s   loc_24146
 		jsr     j_GetItemType
-		btst    #$A,d2
+		btst    #ITEM_TYPE_FLAG_USABLE,d2
 		beq.s   loc_24146
 		bsr.w   GetItemEntryAddress
-		move.b  8(a1),d4
-		move.b  d4,((byte_FFCB42-$1000000)).w
-		bsr.s   sub_24170
-		move.b  9(a1),((byte_FFCB43-$1000000)).w
+		move.b  ITEM_OFFSET_USE_RANGE(a1),d4
+		move.b  d4,((RANGE_TO_USE-$1000000)).w
+		bsr.s   sub_24170       
+		move.b  ITEM_OFFSET_USE_EFFECT(a1),((EFFECT_TO_USE-$1000000)).w
 		bsr.w   GetRangeEntryAddress
-		btst    #0,3(a1)
+		btst    #RANGE_GROUP_FLAG_ALLIES,RANGE_OFFSET_GROUP(a1)
 		beq.s   loc_24132
 		lea     sub_24516(pc), a1
 		bra.s   loc_24136
@@ -10902,9 +10802,9 @@ sub_2414C:
 		clr.b   ((byte_FFCB3E-$1000000)).w
 		clr.b   ((byte_FFCBB2-$1000000)).w
 		bsr.w   sub_235BA       
-		move.b  d4,((byte_FFCB42-$1000000)).w
-		move.b  d5,((byte_FFCB43-$1000000)).w
-		bsr.s   sub_24170
+		move.b  d4,((RANGE_TO_USE-$1000000)).w
+		move.b  d5,((EFFECT_TO_USE-$1000000)).w
+		bsr.s   sub_24170       
 		clr.b   ((byte_FFCB3F-$1000000)).w
 		movem.l (sp)+,d4-d5
 		rts
@@ -10913,6 +10813,8 @@ sub_2414C:
 
 
 ; =============== S U B R O U T I N E =======================================
+
+; Load range data
 
 sub_24170:
 		movem.l d4/a1,-(sp)
@@ -10924,11 +10826,11 @@ sub_24170:
 		moveq   #1,d4
 loc_24184:
 		move.w  d4,((word_FFCB46-$1000000)).w
-		move.b  1(a1),d4
+		move.b  RANGE_OFFSET_MIN(a1),d4
 		move.w  d4,((word_FFCB48-$1000000)).w
-		move.b  3(a1),d4
-		bsr.w   sub_23136
-		move.b  d4,((unk_FFCB44-$1000000)).w
+		move.b  RANGE_OFFSET_GROUP(a1),d4
+		bsr.w   GetAdjustedGroupFlags
+		move.b  d4,((byte_FFCB44-$1000000)).w
 		movem.l (sp)+,d4/a1
 		rts
 
@@ -10943,7 +10845,7 @@ sub_241A2:
 		bne.s   loc_241B0
 		bsr.w   sub_241CA
 loc_241B0:
-		move.w  ((unk_FFA946-$1000000)).w,d1
+		move.w  ((byte_FFA946-$1000000)).w,d1
 		cmpi.b  #$FF,d1
 		beq.s   loc_241C0
 		bsr.w   sub_24220
@@ -11019,10 +10921,10 @@ sub_24220:
 
 sub_2423E:
 		movem.w d1-d2,-(sp)
-		move.b  #$FF,((unk_FFCB28-$1000000)).w
+		move.b  #$FF,((byte_FFCB28-$1000000)).w
 		jsr     j_GetTargetPosition
-		move.w  d2,((unk_FFCB38-$1000000)).w
-		move.w  d1,((unk_FFCB3A-$1000000)).w
+		move.w  d2,((word_FFCB38-$1000000)).w
+		move.w  d1,((word_FFCB3A-$1000000)).w
 		movem.w (sp)+,d1-d2
 		rts
 
@@ -11031,15 +10933,17 @@ sub_2423E:
 
 ; =============== S U B R O U T I N E =======================================
 
+; Trigger AI regions (or set AI regions to trigger?)
+
 sub_2425C:
 		movem.l d0-d3/a0,-(sp)
 		clr.b   d3
-		lea     ((unk_FFB0C0-$1000000)).w,a0
-		moveq   #$1F,d0
+		lea     ((byte_FFB0C0-$1000000)).w,a0
+		moveq   #COM_ENTRIES_COUNTER,d0
 loc_24268:
 		jsr     j_GetTargetID
 		tst.b   d1
-		blt.s   loc_24284
+		blt.s   loc_24284       ; branch if enemy
 		jsr     j_GetTargetPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1
@@ -11058,7 +10962,7 @@ loc_24284:
 
 sub_24292:
 		movem.l d1-d3,-(sp)
-		movea.l ((unk_FFC622-$1000000)).w,a0
+		movea.l ((dword_FFC622-$1000000)).w,a0
 		move.l  a0,d2
 		beq.w   loc_242E6
 		jsr     j_GetTargetID
@@ -11105,7 +11009,7 @@ sub_242EC:
 		move.l  a0,-(sp)
 		jsr     j_GetTargetID
 		andi.w  #$7F,d1 
-		lea     ((unk_FFA496-$1000000)).w,a0
+		lea     ((byte_FFA496-$1000000)).w,a0
 		move.b  (a0,d1.w),d1
 		ext.w   d1
 		movea.l (sp)+,a0
@@ -11121,7 +11025,7 @@ sub_24306:
 		move.b  d1,d2
 		jsr     j_GetTargetID
 		andi.w  #$7F,d1 
-		lea     ((unk_FFA496-$1000000)).w,a0
+		lea     ((byte_FFA496-$1000000)).w,a0
 		move.b  d2,(a0,d1.w)
 		movem.l (sp)+,d2/a0
 		rts
@@ -11133,7 +11037,7 @@ sub_24306:
 
 sub_24324:
 		movem.l d1/d6/a0-a2,-(sp)
-		move.b  ((unk_FFCB44-$1000000)).w,((unk_FFC600-$1000000)).w
+		move.b  ((byte_FFCB44-$1000000)).w,((byte_FFC600-$1000000)).w
 		jsr     sub_202D8
 		lea     ($FFFFA8C2).w,a0
 		lea     $84(a0),a1
@@ -11150,8 +11054,8 @@ loc_24348:
 		bsr.w   sub_245A2
 		tst.w   ((TARGET_PRIORITY_TABLE-$1000000)).w
 		beq.s   loc_24372
-		move.w  ((unk_FFA946-$1000000)).w,d1
-		bsr.w   sub_209B0       
+		move.w  ((byte_FFA946-$1000000)).w,d1
+		bsr.w   GetDistanceBetweenTargets
 		tst.w   d0
 loc_2436C:
 		movem.l (sp)+,d1/d6/a0-a2
@@ -11200,7 +11104,7 @@ sub_244CA:
 		movem.l d1-d2/a0,-(sp)
 		move.w  (a0)+,d2
 		move.w  (a0),d1
-		bsr.w   sub_20994       
+		bsr.w   GetDistanceToTarget
 		move.w  #$64,d1 
 		subq.w  #1,d7
 		muls.w  #$A,d7
@@ -11257,7 +11161,7 @@ sub_24516:
 
 sub_2453E:
 		move.w  #$300,d6
-		bra.s   loc_24562
+		bra.s   sub_24562
 
 	; End of function sub_2453E
 
@@ -11266,7 +11170,7 @@ sub_2453E:
 
 sub_24544:
 		move.w  #$3000,d6
-		bra.s   loc_24562
+		bra.s   sub_24562
 
 	; End of function sub_24544
 
@@ -11275,7 +11179,7 @@ sub_24544:
 
 sub_2454A:
 		move.w  #$C000,d6
-		bra.s   loc_24562
+		bra.s   sub_24562
 
 	; End of function sub_2454A
 
@@ -11284,7 +11188,7 @@ sub_2454A:
 
 sub_24550:
 		move.w  #$C00,d6
-		bra.s   loc_24580
+		bra.s   sub_24580
 
 	; End of function sub_24550
 
@@ -11293,7 +11197,7 @@ sub_24550:
 
 sub_24556:
 		move.w  #$C0,d6 
-		bra.s   loc_24580
+		bra.s   sub_24580
 
 	; End of function sub_24556
 
@@ -11302,14 +11206,14 @@ sub_24556:
 
 sub_2455C:
 		move.w  #$30,d6 
-		bra.s   loc_24580
+		bra.s   sub_24580
 
 	; End of function sub_2455C
 
 
-; START OF FUNCTION CHUNK FOR sub_2453E
+; =============== S U B R O U T I N E =======================================
 
-loc_24562:
+sub_24562:
 		movem.l d0-d1,-(sp)
 		move.w  (a1),d0
 		jsr     j_GetStatusFromForceID
@@ -11323,12 +11227,12 @@ loc_2457A:
 		movem.l (sp)+,d0-d1
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_2453E
+	; End of function sub_24562
 
 
-; START OF FUNCTION CHUNK FOR sub_24550
+; =============== S U B R O U T I N E =======================================
 
-loc_24580:
+sub_24580:
 		movem.l d0-d2,-(sp)
 		move.b  d0,d2
 		move.w  (a1),d0
@@ -11344,7 +11248,7 @@ loc_2459C:
 		movem.l (sp)+,d0-d2
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_24550
+	; End of function sub_24580
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11495,7 +11399,7 @@ sub_2468E:
 		move.b  byte_246D3(pc,d0.w),d0
 		bra.s   loc_246C8
 loc_246C0:
-		move.b  ((unk_FFCBB3-$1000000)).w,d0
+		move.b  ((byte_FFCBB3-$1000000)).w,d0
 		move.b  byte_246DB(pc,d0.w),d0
 loc_246C8:
 		ext.w   d0
@@ -11709,7 +11613,7 @@ ShowLevelUpMessages:
 		lea     ((TEXT_NAME_INDEX-$1000000)).w,a0
 		move.w  d0,(a0)+
 		move.w  d0,(a0)
-		lea     ((dword_FFF900-$1000000)).w,a0
+		lea     ((TEXT_NUMBER-$1000000)).w,a0
 		moveq   #0,d1
 		jsr     j_GetLevelFromForceID
 		move.l  d1,(a0)
@@ -12058,7 +11962,7 @@ GetPromotedAtLevel:
 
 LearnSpell:
 		movem.l d1-d3/a0-a1,-(sp)
-		lea     ((unk_FFA9FA-$1000000)).w,a1
+		lea     ((byte_FFA9FA-$1000000)).w,a1
 		bsr.w   GetSpellLearningEntryAddress
 		bcs.s   loc_24B26
 		bsr.w   CalculateTotalLevel
@@ -12222,36 +12126,36 @@ loc_24C06:
 		bsr.w   sub_24CA6       
 		trap    #5
 		andi.w  #$FF,d0
-		move.w  d0,((unk_FFA9D0-$1000000)).w
+		move.w  d0,((word_FFA9D0-$1000000)).w
 		btst    #$1F,d3
 		beq.s   loc_24C3E
-		move.w  #$1CD,((unk_FFA9CE-$1000000)).w
-		move.l  #2,((unk_FFA9D4-$1000000)).w
+		move.w  #$1CD,((word_FFA9CE-$1000000)).w
+		move.l  #2,((dword_FFA9D4-$1000000)).w
 		bsr.w   sub_24D9E       
 loc_24C3E:
 		btst    #$1E,d3
 		beq.s   loc_24C50
-		move.w  #$1CE,((unk_FFA9CE-$1000000)).w
+		move.w  #$1CE,((word_FFA9CE-$1000000)).w
 		bsr.w   sub_24D9E       
 		bra.s   loc_24C8A
 loc_24C50:
 		btst    #$1D,d3
 		beq.s   loc_24C60
-		move.w  #$1CC,((unk_FFA9CE-$1000000)).w
+		move.w  #$1CC,((word_FFA9CE-$1000000)).w
 		bsr.w   sub_24D9E       
 loc_24C60:
-		move.w  d0,((unk_FFA9D2-$1000000)).w
+		move.w  d0,((word_FFA9D2-$1000000)).w
 		lea     byte_24C98(pc), a0
 		clr.w   d4
 		move.w  #$1E1,d0
 		moveq   #6,d2
 loc_24C70:
 		move.b  (a0)+,d4
-		move.w  d4,((unk_FFA9D0-$1000000)).w
+		move.w  d4,((word_FFA9D0-$1000000)).w
 		move.b  (a0)+,d4
 		btst    d4,d3
 		beq.s   loc_24C84
-		move.w  d0,((unk_FFA9CE-$1000000)).w
+		move.w  d0,((word_FFA9CE-$1000000)).w
 		bsr.w   sub_24D9E       
 loc_24C84:
 		addq.w  #1,d0
@@ -12424,10 +12328,10 @@ loc_24D98:
 
 sub_24D9E:
 		move.l  d0,-(sp)
-		move.w  ((unk_FFA9CE-$1000000)).w,d0
-		move.w  ((unk_FFA9D0-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
-		move.w  ((unk_FFA9D2-$1000000)).w,((word_FFF846-$1000000)).w
-		move.l  ((unk_FFA9D4-$1000000)).w,((dword_FFF900-$1000000)).w
+		move.w  ((word_FFA9CE-$1000000)).w,d0
+		move.w  ((word_FFA9D0-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
+		move.w  ((word_FFA9D2-$1000000)).w,((word_FFF846-$1000000)).w
+		move.l  ((dword_FFA9D4-$1000000)).w,((TEXT_NUMBER-$1000000)).w
 		trap    #8
 		move.l  (sp)+,d0
 		rts
@@ -12831,7 +12735,7 @@ RefillMPFromTargetID:
 
 sub_24FC4:
 		movem.l d0/a0,-(sp)
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		bra.s   loc_24FD6
 
 	; End of function sub_24FC4
@@ -12901,7 +12805,7 @@ loc_25016:
 
 sub_25026:
 		movem.l d0-d3/a0-a2,-(sp)
-		movea.l ((unk_FFC602-$1000000)).w,a2
+		movea.l ((dword_FFC602-$1000000)).w,a2
 		lea     $10(a2),a0
 		clr.w   d0
 		move.b  (a0)+,d0
@@ -12934,10 +12838,10 @@ loc_25074:
 		dbf     d3,loc_2505E
 		adda.w  #2,a1
 		dbf     d2,loc_25058
-		move.l  ((unk_FFC606-$1000000)).w,d0
+		move.l  ((dword_FFC606-$1000000)).w,d0
 		beq.w   loc_250D4
 		movea.l d0,a0
-		lea     ((unk_FFB0C0-$1000000)).w,a1
+		lea     ((byte_FFB0C0-$1000000)).w,a1
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		lea     1(a1,d0.w),a1
 		moveq   #$FFFFFFFF,d0
@@ -13004,7 +12908,7 @@ loc_25100:
 sub_2510A:
 		movem.l d0-d3/a0-a1,-(sp)
 		bsr.w   sub_24FC4       
-		lea     ((unk_FFA4C0-$1000000)).w,a1
+		lea     ((byte_FFA4C0-$1000000)).w,a1
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		lea     1(a1,d0.w),a1
 		moveq   #$FFFFFFFF,d0
@@ -13109,7 +13013,7 @@ sub_26E7E:
 		move.w  d0,d1
 		asl.w   #2,d1
 		adda.w  d1,a0
-		lea     (unk_FFBC8E).l,a2
+		lea     (byte_FFBC8E).l,a2
 		move.b  (a0)+,d1
 		ext.w   d1
 		move.b  (a0)+,d2
@@ -13157,7 +13061,7 @@ EndingAnimationSequence:
 
 InitBattle:
 		movem.l d0-d1/a0-a3,-(sp)
-		lea     (unk_FFC602).l,a0
+		lea     (dword_FFC602).l,a0
 		lea     EnemyData(pc), a2
 		move.l  a2,$C(a0)
 		lea     byte_2751A(pc), a2

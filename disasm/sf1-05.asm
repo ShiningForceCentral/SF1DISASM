@@ -42,7 +42,7 @@ loc_2C060:
 		lea     (REGION_LOCK_STRING_3).l,a1
 		bsr.w   CopyRegionLockString
 		jsr     (j_EnableDisplayAndInterrupts).l
-		lea     (unk_FFD000).l,a0
+		lea     (byte_FFD000).l,a0
 		lea     ($C000).l,a1
 		move.w  #$800,d0
 		moveq   #2,d1

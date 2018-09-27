@@ -8,7 +8,7 @@
 ; =============== S U B R O U T I N E =======================================
 
 sub_8000:
-		jmp     loc_811A(pc)
+		jmp     sub_811A(pc)
 
 	; End of function sub_8000
 
@@ -24,7 +24,7 @@ sub_8004:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8008:
-		jmp     locret_8DDE(pc)
+		jmp     sub_8DDE(pc)
 
 	; End of function sub_8008
 
@@ -37,12 +37,12 @@ sub_800C:
 	; End of function sub_800C
 
 
-; START OF FUNCTION CHUNK FOR int_AdressError
+; =============== S U B R O U T I N E =======================================
 
-loc_8010:
-		jmp     loc_B092(pc)
+sub_8010:
+		jmp     sub_B092(pc)
 
-; END OF FUNCTION CHUNK FOR int_AdressError
+	; End of function sub_8010
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -266,7 +266,7 @@ sub_8080:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8084:
-		jmp     loc_BF14(pc)
+		jmp     sub_BF14(pc)
 
 	; End of function sub_8084
 
@@ -383,12 +383,12 @@ j_nullsub_5:
 	; End of function j_nullsub_5
 
 
-; START OF FUNCTION CHUNK FOR sub_191C
+; =============== S U B R O U T I N E =======================================
 
-loc_80C0:
+sub_80C0:
 		jmp     loc_AE3A(pc)
 
-; END OF FUNCTION CHUNK FOR sub_191C
+	; End of function sub_80C0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -471,7 +471,13 @@ loc_810C:
 loc_8110:
 		move.b  #$FF,((byte_FFB4D3-$1000000)).w
 		bra.w   loc_81D4
-loc_811A:
+
+	; End of function sub_80E2
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_811A:
 		move.l  sp,(dword_FF0EFE).l
 		clr.w   ((SCREEN_POSITION-$1000000)).w
 		move.w  #$101,((CURSOR_POSITION-$1000000)).w
@@ -525,17 +531,17 @@ loc_81C4:
 		clr.w   ((word_FFC0BE-$1000000)).w
 		bsr.w   sub_8332
 		bsr.w   sub_8EBC
-		clr.b   ((unk_FF9C07-$1000000)).w
+		clr.b   ((byte_FF9C07-$1000000)).w
 loc_81D4:
-		lea     ((unk_FF9C08-$1000000)).w,a0
+		lea     ((byte_FF9C08-$1000000)).w,a0
 		clr.w   d0
-		move.b  ((unk_FF9C07-$1000000)).w,d0
+		move.b  ((byte_FF9C07-$1000000)).w,d0
 		add.w   d0,d0
 		adda.w  d0,a0
 		clr.b   ((byte_FFB4C7-$1000000)).w
 		clr.w   d0
 		move.b  (a0),d0
-		move.b  d0,((unk_FFB53B-$1000000)).w
+		move.b  d0,((byte_FFB53B-$1000000)).w
 		cmpi.b  #$FF,d0
 		beq.w   loc_8284
 		jsr     j_GetHPFromForceID
@@ -555,7 +561,7 @@ loc_81D4:
 		move.w  (sp)+,d0
 		move.b  d0,((byte_FFB4C6-$1000000)).w
 		bsr.w   sub_AB5C
-		move.b  ((unk_FFB53B-$1000000)).w,d0
+		move.b  ((byte_FFB53B-$1000000)).w,d0
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_824A
 		jsr     j_IsAsleep
@@ -567,7 +573,7 @@ loc_824A:
 		beq.s   loc_81D4
 loc_8254:
 		jsr     (j_WaitForVInt).l
-		move.b  ((unk_FFB53B-$1000000)).w,d0
+		move.b  ((byte_FFB53B-$1000000)).w,d0
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_827C
 		jsr     sub_20344
@@ -583,8 +589,8 @@ loc_827C:
 														;     2 = lose
 		bne.s   loc_8296
 loc_8284:
-		addq.b  #1,((unk_FF9C07-$1000000)).w
-		cmpi.b  #$20,((unk_FF9C07-$1000000)).w 
+		addq.b  #1,((byte_FF9C07-$1000000)).w
+		cmpi.b  #$20,((byte_FF9C07-$1000000)).w 
 		bne.w   loc_81D4
 		bra.w   loc_81C4
 loc_8296:
@@ -620,7 +626,7 @@ loc_82DE:
 		jsr     j_ResetForceMemberStats
 		bra.w   loc_81C4
 
-	; End of function sub_80E2
+	; End of function sub_811A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -653,7 +659,7 @@ sub_8332:
 loc_8342:
 		clr.l   (a0)+
 		dbf     d7,loc_8342
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 loc_834C:
 		move.b  (a0)+,d0
 		bmi.w   loc_8362
@@ -664,7 +670,7 @@ loc_834C:
 		movea.l (sp)+,a0
 		bra.s   loc_834C
 loc_8362:
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 loc_8366:
 		move.b  (a0)+,d0
 		bmi.w   locret_83E4
@@ -685,7 +691,7 @@ loc_8366:
 		bsr.w   sub_8E52
 		move.w  (sp)+,d0
 		jsr     j_GetMapSpriteFromForceID
-		movea.l (p_pt_Sprites).l,a0
+		movea.l (p_pt_MapSprites).l,a0
 		lsl.w   #2,d1
 		movea.l (a0,d1.w),a0
 		movem.w d0,-(sp)
@@ -722,35 +728,35 @@ loc_83F4:
 		bsr.w   sub_A6CE
 		bra.w   loc_8488
 loc_8410:
-		move.b  #$FF,((unk_FFB53E-$1000000)).w
+		move.b  #$FF,((byte_FFB53E-$1000000)).w
 		clr.b   (CURRENT_PLAYER_INPUT).l
 		move.b  #$16,(INPUT_REPEAT_DELAYER).l
 loc_8424:
 		move.b  #1,(byte_FF0F03).l
 		bsr.w   sub_8C7C
-		tst.b   ((unk_FFB53E-$1000000)).w
+		tst.b   ((byte_FFB53E-$1000000)).w
 		beq.s   loc_8448
-		clr.b   ((unk_FFB53E-$1000000)).w
+		clr.b   ((byte_FFB53E-$1000000)).w
 		bsr.w   sub_9D08
 		cmpi.w  #$FFFF,d0
 		beq.s   loc_8424
 		bra.w   loc_8488
 loc_8448:
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_8460
 		bsr.w   sub_9D08
 		cmpi.w  #$FFFF,d0
 		beq.s   loc_8424
 		bra.w   loc_8488
 loc_8460:
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_8476
 		bsr.w   sub_9D08
 		cmpi.w  #$FFFF,d0
 		beq.s   loc_8424
 		bra.s   loc_8488
 loc_8476:
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.s   loc_8492
 		jsr     (j_WaitForVInt).l
 		bra.s   loc_8424
@@ -770,7 +776,7 @@ loc_8492:
 
 sub_849C:
 		move.w  #$FF,d0
-		lea     (unk_FFA4C0).l,a0
+		lea     (byte_FFA4C0).l,a0
 loc_84A6:
 		clr.l   (a0)+
 		dbf     d0,loc_84A6
@@ -802,9 +808,9 @@ loc_84DE:
 		bsr.w   sub_9126
 		jsr     (j_EnableDisplayAndInterrupts).l
 		moveq   #$FFFFFFFC,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		moveq   #8,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jsr     (j_SetVIntParam3AndWait).l
 		bsr.w   sub_8DE2        
 		move.l  #$9A8A,(dword_FF0EF6).l
@@ -823,13 +829,13 @@ loc_8532:
 sub_853E:
 		move.b  #2,((SPRITE_DIRECTION-$1000000)).w
 		cmpi.b  #1,((CURSOR_POSITION+1-$1000000)).w
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_8598
 		move.l  a0,-(sp)
-		lea     (unk_FF4240).l,a0
+		lea     (byte_FF4240).l,a0
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.w  d0,d7
 		lsl.w   #3,d0
 		add.w   d7,d0
@@ -841,23 +847,23 @@ sub_853E:
 		moveq   #2,d1
 		jsr     (sub_278).l
 		movea.l (sp)+,a0
-		tst.b   ((unk_FFB4D4-$1000000)).w
+		tst.b   ((byte_FFB4D4-$1000000)).w
 		bne.s   loc_8598
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		neg.w   d0
 		btst    #0,(a0,d0.w)
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 loc_8598:
 		subq.b  #1,((CURSOR_POSITION+1-$1000000)).w
-		move.b  #4,((unk_FFB4C3-$1000000)).w
+		move.b  #4,((byte_FFB4C3-$1000000)).w
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION+1-$1000000)).w,d0
 		cmpi.b  #3,d0
 		bne.s   locret_85C0
 		tst.b   ((SCREEN_POSITION+1-$1000000)).w
 		beq.s   locret_85C0
-		move.b  #4,((unk_FFB4C1-$1000000)).w
-		clr.b   ((unk_FFB4C3-$1000000)).w
+		move.b  #4,((byte_FFB4C1-$1000000)).w
+		clr.b   ((byte_FFB4C3-$1000000)).w
 locret_85C0:
 		rts
 
@@ -871,13 +877,13 @@ sub_85C2:
 		move.w  ((MAP_HEIGHT-$1000000)).w,d7
 		subq.w  #2,d7
 		cmp.b   ((CURSOR_POSITION+1-$1000000)).w,d7
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_861E
 		move.l  a0,-(sp)
-		lea     (unk_FF4000).l,a0
+		lea     (byte_FF4000).l,a0
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.w  d0,d7
 		lsl.w   #3,d0
 		add.w   d7,d0
@@ -889,14 +895,14 @@ sub_85C2:
 		moveq   #2,d1
 		jsr     (sub_278).l
 		movea.l (sp)+,a0
-		tst.b   ((unk_FFB4D4-$1000000)).w
+		tst.b   ((byte_FFB4D4-$1000000)).w
 		bne.s   loc_861E
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		btst    #0,(a0,d0.w)
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 loc_861E:
 		addq.b  #1,((CURSOR_POSITION+1-$1000000)).w
-		move.b  #$FC,((unk_FFB4C3-$1000000)).w
+		move.b  #$FC,((byte_FFB4C3-$1000000)).w
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION+1-$1000000)).w,d0
 		cmpi.b  #6,d0
@@ -905,8 +911,8 @@ loc_861E:
 		subi.b  #$A,d7
 		cmp.b   ((SCREEN_POSITION+1-$1000000)).w,d7
 		beq.s   locret_864E
-		move.b  #$FC,((unk_FFB4C1-$1000000)).w
-		clr.b   ((unk_FFB4C3-$1000000)).w
+		move.b  #$FC,((byte_FFB4C1-$1000000)).w
+		clr.b   ((byte_FFB4C3-$1000000)).w
 locret_864E:
 		rts
 
@@ -920,13 +926,13 @@ sub_8650:
 		move.w  ((MAP_WIDTH-$1000000)).w,d7
 		subq.w  #2,d7
 		cmp.b   ((CURSOR_POSITION-$1000000)).w,d7
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_86A8
 		move.l  a0,-(sp)
-		lea     (unk_FF46C0).l,a0
+		lea     (byte_FF46C0).l,a0
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.w  d0,d7
 		lsl.w   #3,d0
 		add.w   d7,d0
@@ -938,13 +944,13 @@ sub_8650:
 		moveq   #2,d1
 		jsr     (sub_278).l
 		movea.l (sp)+,a0
-		tst.b   ((unk_FFB4D4-$1000000)).w
+		tst.b   ((byte_FFB4D4-$1000000)).w
 		bne.s   loc_86A8
 		btst    #0,1(a0)
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 loc_86A8:
 		addq.b  #1,((CURSOR_POSITION-$1000000)).w
-		move.b  #$FC,((unk_FFB4C2-$1000000)).w
+		move.b  #$FC,((byte_FFB4C2-$1000000)).w
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION-$1000000)).w,d0
 		cmpi.b  #7,d0
@@ -953,8 +959,8 @@ loc_86A8:
 		subi.b  #$B,d7
 		cmp.b   ((SCREEN_POSITION-$1000000)).w,d7
 		beq.s   locret_86D8
-		move.b  #4,((unk_FFB4C0-$1000000)).w
-		clr.b   ((unk_FFB4C2-$1000000)).w
+		move.b  #4,((byte_FFB4C0-$1000000)).w
+		clr.b   ((byte_FFB4C2-$1000000)).w
 locret_86D8:
 		rts
 
@@ -966,13 +972,13 @@ locret_86D8:
 sub_86DA:
 		move.b  #1,((SPRITE_DIRECTION-$1000000)).w
 		cmpi.b  #1,((CURSOR_POSITION-$1000000)).w
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_872E
 		move.l  a0,-(sp)
-		lea     (unk_FF4480).l,a0
+		lea     (byte_FF4480).l,a0
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.w  d0,d7
 		lsl.w   #3,d0
 		add.w   d7,d0
@@ -984,21 +990,21 @@ sub_86DA:
 		moveq   #2,d1
 		jsr     (sub_278).l
 		movea.l (sp)+,a0
-		tst.b   ((unk_FFB4D4-$1000000)).w
+		tst.b   ((byte_FFB4D4-$1000000)).w
 		bne.s   loc_872E
 		btst    #0,-1(a0)
-		beq.w   locret_8DDE
+		beq.w   sub_8DDE
 loc_872E:
 		subq.b  #1,((CURSOR_POSITION-$1000000)).w
-		move.b  #4,((unk_FFB4C2-$1000000)).w
+		move.b  #4,((byte_FFB4C2-$1000000)).w
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION-$1000000)).w,d0
 		cmpi.b  #3,d0
 		bne.s   locret_8758
 		cmpi.b  #0,((SCREEN_POSITION-$1000000)).w
 		beq.s   locret_8758
-		move.b  #$FC,((unk_FFB4C0-$1000000)).w
-		clr.b   ((unk_FFB4C2-$1000000)).w
+		move.b  #$FC,((byte_FFB4C0-$1000000)).w
+		clr.b   ((byte_FFB4C2-$1000000)).w
 locret_8758:
 		rts
 
@@ -1008,7 +1014,7 @@ locret_8758:
 ; =============== S U B R O U T I N E =======================================
 
 sub_875A:
-		movea.l (p_CursorGraphics).l,a0
+		movea.l (p_CursorTiles).l,a0
 		lea     ($D000).l,a1
 		move.w  #$800,d0
 		jmp     (sub_294).l
@@ -1023,7 +1029,7 @@ sub_8770:
 		movem.l d0-d2/a0-a1,-(sp)
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_8786
-		movea.l (p_CursorGraphics).l,a0
+		movea.l (p_CursorTiles).l,a0
 		bra.s   loc_878C
 loc_8786:
 		lea     unk_87A2(pc), a0
@@ -1315,7 +1321,7 @@ unk_8914:
 		dc.b   0
 		dc.b $78 
 loc_891C:
-		addq.b  #1,((unk_FFB4C8-$1000000)).w
+		addq.b  #1,((byte_FFB4C8-$1000000)).w
 		lea     (word_FF0C98).l,a1
 		move.w  ((SCREEN_ADJUSTED_CURSOR_Y-$1000000)).w,d0
 		addi.w  #$70,d0 
@@ -1324,7 +1330,7 @@ loc_891C:
 		move.w  d0,(a1)+
 		move.w  #$A08,(a1)+
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.w  d1,-(sp)
 		jsr     j_GetTargetID
 		move.w  d0,d7
@@ -1332,7 +1338,7 @@ loc_891C:
 		add.w   d7,d0
 		add.w   d0,d0
 		addi.w  #$4100,d0
-		btst    #3,((unk_FFB4C8-$1000000)).w
+		btst    #3,((byte_FFB4C8-$1000000)).w
 		bne.s   loc_895E
 		addi.w  #9,d0
 loc_895E:
@@ -1347,7 +1353,7 @@ loc_8968:
 		ext.w   d1
 		add.w   d1,d0
 		move.w  d0,(a1)+
-		move.l  #(loc_10F02+2),(dword_FF0E30).l
+		move.l  #$10F04,(dword_FF0E30).l
 		rts
 
 	; End of function sub_87D2
@@ -1360,8 +1366,8 @@ sub_8986:
 		clr.w   d2
 		clr.w   d3
 		clr.w   d4
-		move.b  ((unk_FFB4C0-$1000000)).w,d3
-		move.b  ((unk_FFB4C1-$1000000)).w,d4
+		move.b  ((byte_FFB4C0-$1000000)).w,d3
+		move.b  ((byte_FFB4C1-$1000000)).w,d4
 		ext.w   d3
 		ext.w   d4
 		add.w   d3,d3
@@ -1370,7 +1376,7 @@ sub_8986:
 		addi.w  #$14,d4
 		moveq   #5,d7
 loc_89A8:
-		clr.b   ((unk_FFB4C4-$1000000)).w
+		clr.b   ((byte_FFB4C4-$1000000)).w
 		move.w  d7,-(sp)
 		bsr.w   sub_8A22
 		move.w  (sp)+,d7
@@ -1380,7 +1386,7 @@ loc_89A8:
 		movem.w d1-d7,-(sp)
 		bsr.w   sub_99CC
 		movem.w (sp)+,d1-d7
-		tst.b   ((unk_FFB4C4-$1000000)).w
+		tst.b   ((byte_FFB4C4-$1000000)).w
 		beq.s   loc_89DA
 		movem.w d1-d7,-(sp)
 		bsr.w   sub_8DE2        
@@ -1407,10 +1413,10 @@ locret_89FC:
 ; =============== S U B R O U T I N E =======================================
 
 sub_89FE:
-		move.b  ((unk_FFB4C2-$1000000)).w,d0
+		move.b  ((byte_FFB4C2-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d1
-		move.b  ((unk_FFB4C3-$1000000)).w,d0
+		move.b  ((byte_FFB4C3-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d2
 		move.w  d7,-(sp)
@@ -1428,26 +1434,26 @@ locret_8A20:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8A22:
-		tst.b   ((unk_FFB4C0-$1000000)).w
+		tst.b   ((byte_FFB4C0-$1000000)).w
 		beq.s   locret_89FC
 		bgt.w   loc_8A6A
 		cmpi.w  #5,d7
 		bne.w   loc_8A52
 		move.w  d3,d6
 loc_8A36:
-		jsr     (sub_284).l
-		move.b  ((unk_FFB4C0-$1000000)).w,d0
+		jsr     (j_ClearOtherHScrollStuff).l
+		move.b  ((byte_FFB4C0-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d3
 		asr.w   #2,d0
 		add.b   d0,((SCREEN_POSITION-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 loc_8A52:
 		move.w  d3,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		jsr     (j_SetVIntParam3).l
-		move.b  ((unk_FFB4C0-$1000000)).w,d0
+		move.b  ((byte_FFB4C0-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d3
 		rts
@@ -1455,12 +1461,12 @@ loc_8A6A:
 		tst.w   d7
 		bne.s   loc_8A52
 		moveq   #$FFFFFFFC,d6
-		jsr     (sub_284).l
-		move.b  ((unk_FFB4C0-$1000000)).w,d0
+		jsr     (j_ClearOtherHScrollStuff).l
+		move.b  ((byte_FFB4C0-$1000000)).w,d0
 		ext.w   d0
 		asr.w   #2,d0
 		add.b   d0,((SCREEN_POSITION-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 
 	; End of function sub_8A22
@@ -1469,25 +1475,25 @@ loc_8A6A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8A8A:
-		tst.b   ((unk_FFB4C1-$1000000)).w
+		tst.b   ((byte_FFB4C1-$1000000)).w
 		beq.w   locret_89FC
 		blt.w   loc_8AD4
 		cmpi.w  #5,d7
 		bne.w   loc_8ABC
 		move.w  d4,d6
-		jsr     (sub_290).l
-		move.b  ((unk_FFB4C1-$1000000)).w,d0
+		jsr     (j_ClearOtherVScrollStuff).l
+		move.b  ((byte_FFB4C1-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d4
 		asr.w   #2,d0
 		sub.b   d0,((SCREEN_POSITION+1-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 loc_8ABC:
 		move.w  d4,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jsr     (j_SetVIntParam3).l
-		move.b  ((unk_FFB4C1-$1000000)).w,d0
+		move.b  ((byte_FFB4C1-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d4
 		rts
@@ -1495,12 +1501,12 @@ loc_8AD4:
 		tst.w   d7
 		bne.s   loc_8ABC
 		moveq   #8,d6
-		jsr     (sub_290).l
-		move.b  ((unk_FFB4C1-$1000000)).w,d0
+		jsr     (j_ClearOtherVScrollStuff).l
+		move.b  ((byte_FFB4C1-$1000000)).w,d0
 		ext.w   d0
 		asr.w   #2,d0
 		sub.b   d0,((SCREEN_POSITION+1-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 
 	; End of function sub_8A8A
@@ -1513,25 +1519,25 @@ sub_8AF4:
 		clr.w   d2
 		clr.w   d3
 		clr.w   d4
-		move.b  ((unk_FFB4C0-$1000000)).w,d3
+		move.b  ((byte_FFB4C0-$1000000)).w,d3
 		ext.w   d3
 		asr.w   #1,d3
-		move.b  d3,((unk_FFB4C0-$1000000)).w
+		move.b  d3,((byte_FFB4C0-$1000000)).w
 		move.w  d3,d0
 		asl.w   #2,d3
 		add.w   d0,d3
 		addi.w  #-$10,d3
-		move.b  ((unk_FFB4C1-$1000000)).w,d4
+		move.b  ((byte_FFB4C1-$1000000)).w,d4
 		ext.w   d4
 		asr.w   #1,d4
-		move.b  d4,((unk_FFB4C1-$1000000)).w
+		move.b  d4,((byte_FFB4C1-$1000000)).w
 		move.w  d4,d0
 		asl.w   #2,d4
 		add.w   d0,d4
 		addi.w  #$14,d4
 		moveq   #$B,d7
 loc_8B2A:
-		clr.b   ((unk_FFB4C4-$1000000)).w
+		clr.b   ((byte_FFB4C4-$1000000)).w
 		move.w  d7,-(sp)
 		bsr.w   sub_8BA8
 		move.w  (sp)+,d7
@@ -1541,7 +1547,7 @@ loc_8B2A:
 		movem.w d1-d7,-(sp)
 		bsr.w   sub_99CC
 		movem.w (sp)+,d1-d7
-		tst.b   ((unk_FFB4C4-$1000000)).w
+		tst.b   ((byte_FFB4C4-$1000000)).w
 		beq.s   loc_8B5C
 		movem.w d1-d7,-(sp)
 		bsr.w   sub_8DE2        
@@ -1567,11 +1573,11 @@ loc_8B7A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8B80:
-		move.b  ((unk_FFB4C2-$1000000)).w,d0
+		move.b  ((byte_FFB4C2-$1000000)).w,d0
 		ext.w   d0
 		lsr.w   #1,d0
 		sub.w   d0,d1
-		move.b  ((unk_FFB4C3-$1000000)).w,d0
+		move.b  ((byte_FFB4C3-$1000000)).w,d0
 		ext.w   d0
 		lsr.w   #1,d0
 		sub.w   d0,d2
@@ -1590,25 +1596,25 @@ locret_8BA6:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8BA8:
-		tst.b   ((unk_FFB4C0-$1000000)).w
+		tst.b   ((byte_FFB4C0-$1000000)).w
 		beq.w   locret_89FC
 		bgt.w   loc_8BF2
 		cmpi.w  #$B,d7
 		bne.w   loc_8BDA
 		move.w  d3,d6
-		jsr     (sub_284).l
-		move.b  ((unk_FFB4C0-$1000000)).w,d0
+		jsr     (j_ClearOtherHScrollStuff).l
+		move.b  ((byte_FFB4C0-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d3
 		asr.w   #1,d0
 		add.b   d0,((SCREEN_POSITION-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 loc_8BDA:
 		move.w  d3,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		jsr     (j_SetVIntParam3).l
-		move.b  ((unk_FFB4C0-$1000000)).w,d0
+		move.b  ((byte_FFB4C0-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d3
 		rts
@@ -1616,12 +1622,12 @@ loc_8BF2:
 		tst.w   d7
 		bne.s   loc_8BDA
 		moveq   #$FFFFFFFC,d6
-		jsr     (sub_284).l
-		move.b  ((unk_FFB4C0-$1000000)).w,d0
+		jsr     (j_ClearOtherHScrollStuff).l
+		move.b  ((byte_FFB4C0-$1000000)).w,d0
 		ext.w   d0
 		asr.w   #1,d0
 		add.b   d0,((SCREEN_POSITION-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 
 	; End of function sub_8BA8
@@ -1630,25 +1636,25 @@ loc_8BF2:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8C12:
-		tst.b   ((unk_FFB4C1-$1000000)).w
+		tst.b   ((byte_FFB4C1-$1000000)).w
 		beq.w   locret_89FC
 		blt.w   loc_8C5C
 		cmpi.w  #$B,d7
 		bne.w   loc_8C44
 		move.w  d4,d6
-		jsr     (sub_290).l
-		move.b  ((unk_FFB4C1-$1000000)).w,d0
+		jsr     (j_ClearOtherVScrollStuff).l
+		move.b  ((byte_FFB4C1-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d4
 		asr.w   #1,d0
 		sub.b   d0,((SCREEN_POSITION+1-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 loc_8C44:
 		move.w  d4,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jsr     (j_SetVIntParam3).l
-		move.b  ((unk_FFB4C1-$1000000)).w,d0
+		move.b  ((byte_FFB4C1-$1000000)).w,d0
 		ext.w   d0
 		sub.w   d0,d4
 		rts
@@ -1656,12 +1662,12 @@ loc_8C5C:
 		tst.w   d7
 		bne.s   loc_8C44
 		moveq   #8,d6
-		jsr     (sub_290).l
-		move.b  ((unk_FFB4C1-$1000000)).w,d0
+		jsr     (j_ClearOtherVScrollStuff).l
+		move.b  ((byte_FFB4C1-$1000000)).w,d0
 		ext.w   d0
 		asr.w   #1,d0
 		sub.b   d0,((SCREEN_POSITION+1-$1000000)).w
-		move.b  #1,((unk_FFB4C4-$1000000)).w
+		move.b  #1,((byte_FFB4C4-$1000000)).w
 		rts
 
 	; End of function sub_8C12
@@ -1671,25 +1677,25 @@ loc_8C5C:
 
 sub_8C7C:
 		clr.b   ((byte_FFB538-$1000000)).w
-		clr.l   ((unk_FFB4C0-$1000000)).w
+		clr.l   ((byte_FFB4C0-$1000000)).w
 		bsr.w   sub_87AA
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_8C96
 		bsr.w   sub_86DA
 loc_8C96:
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_8CA4
 		bsr.w   sub_8650
 loc_8CA4:
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_8CB2
 		bsr.w   sub_853E
 loc_8CB2:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_8CC0
 		bsr.w   sub_85C2
 loc_8CC0:
-		tst.l   ((unk_FFB4C0-$1000000)).w
+		tst.l   ((byte_FFB4C0-$1000000)).w
 		beq.s   locret_8CD2
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
@@ -1712,7 +1718,7 @@ sub_8CD4:
 loc_8CE4:
 		move.b  #2,((byte_FFB538-$1000000)).w
 loc_8CEA:
-		clr.l   ((unk_FFB4C0-$1000000)).w
+		clr.l   ((byte_FFB4C0-$1000000)).w
 		bsr.w   sub_87AA
 		clr.w   d1
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
@@ -1720,28 +1726,28 @@ loc_8CEA:
 		clr.w   d0
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		add.w   d1,d0
-		lea     (unk_FFA4C0).l,a0
+		lea     (byte_FFA4C0).l,a0
 		adda.w  d0,a0
-		btst    #0,(P1_INPUT).l 
+		btst    #INPUT_A_UP_BIT,(P1_INPUT).l
 		beq.s   loc_8D1C
 		bsr.w   sub_853E
 		bra.s   loc_8D4A
 loc_8D1C:
-		btst    #1,(P1_INPUT).l 
+		btst    #INPUT_A_DOWN_BIT,(P1_INPUT).l
 		beq.s   loc_8D2C
 		bsr.w   sub_85C2
 		bra.s   loc_8D4A
 loc_8D2C:
-		btst    #2,(P1_INPUT).l 
+		btst    #INPUT_A_LEFT_BIT,(P1_INPUT).l
 		beq.s   loc_8D3C
 		bsr.w   sub_86DA
 		bra.s   loc_8D4A
 loc_8D3C:
-		btst    #3,(P1_INPUT).l 
+		btst    #INPUT_A_RIGHT_BIT,(P1_INPUT).l
 		beq.s   loc_8D4A
 		bsr.w   sub_8650
 loc_8D4A:
-		tst.l   ((unk_FFB4C0-$1000000)).w
+		tst.l   ((byte_FFB4C0-$1000000)).w
 		beq.s   loc_8D62
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_8D5A
@@ -1770,19 +1776,13 @@ sub_8D66:
 
 sub_8D6E:
 		move.b  #1,((byte_FFB538-$1000000)).w
-
-	; End of function sub_8D6E
-
-
-; START OF FUNCTION CHUNK FOR sub_8D66
-
 loc_8D74:
 		clr.w   d1
 		move.b  (a0)+,d1
 		move.l  a0,-(sp)
 		move.w  d1,-(sp)
 		move.w  d1,-(sp)
-		clr.l   ((unk_FFB4C0-$1000000)).w
+		clr.l   ((byte_FFB4C0-$1000000)).w
 		bsr.w   sub_87AA
 		clr.w   d1
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
@@ -1790,7 +1790,7 @@ loc_8D74:
 		clr.w   d0
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		add.w   d1,d0
-		lea     (unk_FFA4C0).l,a0
+		lea     (byte_FFA4C0).l,a0
 		adda.w  d0,a0
 		move.w  (sp)+,d1
 		cmpi.w  #3,d1
@@ -1799,29 +1799,18 @@ loc_8D74:
 		move.w  off_8DB8(pc,d1.w),d1
 		jsr     off_8DB8(pc,d1.w)
 		bra.w   loc_8DC0
-
-; END OF FUNCTION CHUNK FOR sub_8D66
-
-off_8DB8:       dc.w sub_853E+$10000-off_8DB8
+off_8DB8:
+		dc.w sub_853E+$10000-off_8DB8
 		dc.w sub_85C2+$10000-off_8DB8
 		dc.w sub_8650+$10000-off_8DB8
 		dc.w sub_86DA+$10000-off_8DB8
-
-; START OF FUNCTION CHUNK FOR sub_8D66
-
 loc_8DC0:
-		tst.l   ((unk_FFB4C0-$1000000)).w
+		tst.l   ((byte_FFB4C0-$1000000)).w
 		beq.s   loc_8DD8
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_8DD0
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_8D66
-
 		dc.w SFX_WALKING
-
-; START OF FUNCTION CHUNK FOR sub_8D66
-
 loc_8DD0:
 		bsr.w   sub_8AF4
 		bsr.w   sub_9940
@@ -1830,15 +1819,15 @@ loc_8DD8:
 		movea.l (sp)+,a0
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_8D66
+	; End of function sub_8D6E
 
 
-; START OF FUNCTION CHUNK FOR sub_853E
+; =============== S U B R O U T I N E =======================================
 
-locret_8DDE:
+sub_8DDE:
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_853E
+	; End of function sub_8DDE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1854,7 +1843,7 @@ nullsub_4:
 ; Update screen after tile changes
 
 sub_8DE2:
-		lea     (unk_FFE000).l,a1
+		lea     (byte_FFE000).l,a1
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		move.w  d0,d1
 		add.w   d0,d0
@@ -1887,8 +1876,8 @@ loc_8E28:
 		dbf     d2,loc_8E28
 		adda.w  d0,a0
 		dbf     d1,loc_8E26
-		lea     (unk_FFE000).l,a0
-		lea     (loc_E000).l,a1
+		lea     (byte_FFE000).l,a0
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -1904,7 +1893,7 @@ sub_8E52:
 		lsr.w   #8,d0
 		move.b  d0,((byte_FFB51E-$1000000)).w
 loc_8E5C:
-		clr.l   ((unk_FFB4C0-$1000000)).w
+		clr.l   ((byte_FFB4C0-$1000000)).w
 		bsr.w   sub_87AA
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		cmp.b   ((byte_FFB51E-$1000000)).w,d0
@@ -1924,7 +1913,7 @@ loc_8E8C:
 		bge.s   loc_8E92
 		bsr.w   sub_85C2
 loc_8E92:
-		tst.l   ((unk_FFB4C0-$1000000)).w
+		tst.l   ((byte_FFB4C0-$1000000)).w
 		beq.s   loc_8EA0
 		bsr.w   sub_8986
 		bsr.w   sub_9940
@@ -1944,7 +1933,7 @@ loc_8EA0:
 ; =============== S U B R O U T I N E =======================================
 
 sub_8EBC:
-		lea     ((unk_FF9C08-$1000000)).w,a0
+		lea     ((byte_FF9C08-$1000000)).w,a0
 		move.l  a0,-(sp)
 		moveq   #$F,d7
 loc_8EC4:
@@ -1999,7 +1988,7 @@ loc_8F38:
 		moveq   #$1D,d6
 loc_8F3A:
 		moveq   #$1E,d7
-		lea     ((unk_FF9C08-$1000000)).w,a0
+		lea     ((byte_FF9C08-$1000000)).w,a0
 loc_8F40:
 		move.w  (a0),d0
 		move.w  2(a0),d1
@@ -2125,7 +2114,7 @@ unk_8FCE:       dc.b   8
 		dc.b $FF
 		dc.b   8
 		dc.b $12
-unk_9000:       dc.b   0
+		dc.b   0
 		dc.b   0
 		dc.b   0
 		dc.b   0
@@ -2427,7 +2416,7 @@ sub_9126:
 		move.w  ((MAP_WIDTH-$1000000)).w,d3
 		move.w  ((MAP_HEIGHT-$1000000)).w,d4
 		movem.w d1-d4,-(sp)
-		movea.l (p_Maps).l,a0
+		movea.l (p_pt_Maps).l,a0
 		lsl.w   #5,d0
 		adda.w  d0,a0
 		movea.l (a0)+,a1
@@ -2444,9 +2433,9 @@ sub_9126:
 		move.w  d0,-(sp)
 		andi.w  #$F0,d0 
 		lsr.w   #2,d0
-		movea.l (p_p_MapTileset02).l,a0
+		movea.l (p_pt_MapTilesets).l,a0
 		movea.l (a0,d0.w),a0
-		lea     (loc_77C0).w,a1
+		lea     ($77C0).w,a1
 		move.w  #$1000,d0
 		moveq   #2,d1
 		jsr     (sub_294).l
@@ -2454,17 +2443,17 @@ sub_9126:
 		move.w  d0,d1
 		andi.w  #$F0,d1 
 		lsr.w   #2,d1
-		movea.l (p_p_p_MapTileset14).l,a0
+		movea.l (off_58010).l,a0
 		movea.l (a0,d1.w),a0
 		andi.w  #$F,d0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
-		lea     (unk_97C0).l,a1
+		lea     ($97C0).l,a1
 		move.w  #$1000,d0
 		moveq   #2,d1
 		jsr     (sub_294).l
 		movem.l (sp)+,a1-a4
-		lea     ($FF0082).l,a0
+		lea     (word_FF0082).l,a0
 		move.l  (a4)+,(a0)+
 		move.l  (a4)+,(a0)+
 		move.l  (a4)+,(a0)+
@@ -2560,24 +2549,24 @@ loc_92A0:
 		move.w  (a0)+,d0
 		blt.s   loc_92DA
 		move.l  a0,-(sp)
-		movea.l (p_TileAnimationData).l,a0
+		movea.l (p_pt_TileAnimations).l,a0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (j_DecompressGraphics).l
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (unk_FF4900).l,a1
+		lea     (byte_FF4900).l,a1
 		move.w  #$1BF,d7
 loc_92D2:
 		move.l  (a0)+,(a1)+
 		dbf     d7,loc_92D2
 		movea.l (sp)+,a0
 loc_92DA:
-		move.w  (a0)+,((unk_FFBC60-$1000000)).w
-		move.w  (a0)+,((unk_FFBC62-$1000000)).w
-		move.w  (a0)+,((unk_FFBC64-$1000000)).w
-		move.w  #1,((unk_FFBC66-$1000000)).w
-		clr.w   ((unk_FFBC68-$1000000)).w
-		lea     ((unk_FFB5B1-$1000000)).w,a1
+		move.w  (a0)+,((word_FFBC60-$1000000)).w
+		move.w  (a0)+,((word_FFBC62-$1000000)).w
+		move.w  (a0)+,((word_FFBC64-$1000000)).w
+		move.w  #1,((word_FFBC66-$1000000)).w
+		clr.w   ((word_FFBC68-$1000000)).w
+		lea     ((byte_FFB5B1-$1000000)).w,a1
 		moveq   #$A,d7
 		jsr     (j_CopyBytes).l
 		move.w  (sp)+,d0
@@ -3202,7 +3191,7 @@ sub_9734:
 		lsl.w   #5,d0
 		adda.w  d0,a0
 		lea     (PALETTE_1_BIS).l,a1
-		lea     (RAM_START).l,a2
+		lea     (PALETTE_1).l,a2
 		moveq   #7,d7
 loc_974A:
 		move.l  (a0),(a1)+
@@ -3320,7 +3309,7 @@ byte_9754:      dc.b 0
 		dc.b $A8 
 		dc.b   6
 		dc.b $64 
-unk_97C0:       dc.b   4
+		dc.b   4
 		dc.b $42 
 		dc.b   2
 		dc.b $44 
@@ -3392,20 +3381,15 @@ loc_9814:
 		dbf     d7,loc_97FE
 locret_981C:
 		rts
-
-	; End of function sub_97F4
-
-und_981E:       dc.b 0
+und_981E:
+		dc.b 0
 		dc.b $9A 
 		dc.b $99 
 		dc.b $99 
 		dc.b $99 
 		dc.b   0
-
-; START OF FUNCTION CHUNK FOR sub_97F4
-
 loc_9824:
-		cmpi.b  #$1E,((unk_FFA1C6-$1000000)).w
+		cmpi.b  #$1E,((byte_FFA1C6-$1000000)).w
 		beq.s   locret_981C
 		clr.w   d0
 		movem.w d0/d2,-(sp)
@@ -3432,13 +3416,13 @@ loc_985A:
 		dbf     d7,loc_985A
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_97F4
+	; End of function sub_97F4
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_9872:
-		movea.l (p_pt_Sprites).l,a0
+		movea.l (p_pt_MapSprites).l,a0
 		lsl.w   #2,d1
 		movea.l (a0,d1.w),a0
 		movem.w d0,-(sp)
@@ -3595,14 +3579,14 @@ sub_99CC:
 		moveq   #$1F,d7
 loc_99D4:
 		move.w  (a1),d0
-		move.b  ((unk_FFB4C1-$1000000)).w,d1
+		move.b  ((byte_FFB4C1-$1000000)).w,d1
 		ext.w   d1
 		add.w   d1,d0
 		ble.s   loc_99E2
 		move.w  d0,(a1)
 loc_99E2:
 		move.w  6(a1),d0
-		move.b  ((unk_FFB4C0-$1000000)).w,d1
+		move.b  ((byte_FFB4C0-$1000000)).w,d1
 		ext.w   d1
 		sub.w   d1,d0
 		ble.s   loc_99F4
@@ -3618,15 +3602,15 @@ loc_99F4:
 ; =============== S U B R O U T I N E =======================================
 
 sub_99FC:
-		lea     plt_MapSprites(pc), a0
-loc_9A00:
-		lea     (unk_FF00C0).l,a1
+		lea     MapSpritePalettes(pc), a0
+		lea     (PALETTE_3_BIS).l,a1
 		moveq   #$1F,d0
-		jmp     (loc_2C0).l
+		jmp     (sub_2C0).l
 
 	; End of function sub_99FC
 
-plt_MapSprites: incbin "data/graphics/tech/palettes/plt-mapsprites.bin"
+MapSpritePalettes:
+		incbin "data/graphics/tech/palettes/mapspritepalettes.bin"
 defined_byte_9A4E:
 		dc.b $10
 		dc.b   0
@@ -3745,7 +3729,7 @@ loc_9AFC:
 		dbf     d7,loc_9AD0
 		rts
 loc_9B08:
-		lea     (unk_FF0D2B).l,a0
+		lea     (byte_FF0D2B).l,a0
 		moveq   #$1F,d7
 		moveq   #$16,d0
 loc_9B12:
@@ -3776,13 +3760,13 @@ locret_9B4C:
 ; =============== S U B R O U T I N E =======================================
 
 sub_9B4E:
-		cmpi.b  #$FF,((unk_FFB5B1-$1000000)).w
+		cmpi.b  #$FF,((byte_FFB5B1-$1000000)).w
 		beq.s   locret_9BA8
-		subq.w  #1,((unk_FFBC66-$1000000)).w
+		subq.w  #1,((word_FFBC66-$1000000)).w
 		bne.s   locret_9BA8
-		move.w  ((unk_FFBC64-$1000000)).w,((unk_FFBC66-$1000000)).w
-		move.w  ((unk_FFBC68-$1000000)).w,d0
-		lea     ((unk_FFB5B1-$1000000)).w,a0
+		move.w  ((word_FFBC64-$1000000)).w,((word_FFBC66-$1000000)).w
+		move.w  ((word_FFBC68-$1000000)).w,d0
+		lea     ((byte_FFB5B1-$1000000)).w,a0
 		cmpi.b  #$FF,(a0,d0.w)
 		bne.s   loc_9B74
 		clr.w   d0
@@ -3790,13 +3774,13 @@ loc_9B74:
 		clr.w   d1
 		move.b  (a0,d0.w),d1
 		addq.w  #1,d0
-		move.w  d0,((unk_FFBC68-$1000000)).w
-		lea     (unk_FF4900).l,a0
-		move.w  ((unk_FFBC60-$1000000)).w,d0
+		move.w  d0,((word_FFBC68-$1000000)).w
+		lea     (byte_FF4900).l,a0
+		move.w  ((word_FFBC60-$1000000)).w,d0
 		mulu.w  d0,d1
 		lsl.w   #5,d1
 		adda.w  d1,a0
-		move.w  ((unk_FFBC62-$1000000)).w,d1
+		move.w  ((word_FFBC62-$1000000)).w,d1
 		lsl.w   #5,d1           ; Controlling scroll effect of water tiles?
 		movea.w d1,a1
 		lsl.w   #4,d0
@@ -3812,14 +3796,14 @@ locret_9BA8:
 ; =============== S U B R O U T I N E =======================================
 
 sub_9BAA:
-		btst    #7,(P1_INPUT).l 
+		btst    #INPUT_A_START_BIT,(P1_INPUT).l
 		beq.s   loc_9BBA
 		move.w  #$100,d6
 		bra.s   loc_9BBC
 loc_9BBA:
 		clr.w   d6
 loc_9BBC:
-		jsr     (sub_280).l
+		jsr     (j_ClearHScrollStuff).l
 		jsr     (j_SetVIntParam3).l
 		rts
 
@@ -3853,13 +3837,13 @@ loc_9BF6:
 loc_9BFC:
 		move.w  d1,((word_FFB7C4-$1000000)).w
 		move.w  d1,d0
-		movea.l (p_pt_Sprites).l,a0
+		movea.l (p_pt_MapSprites).l,a0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (sub_300).l
 		movem.l d7-a1,-(sp)
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (unk_FF4000).l,a1
+		lea     (byte_FF4000).l,a1
 		move.w  #$240,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -3870,7 +3854,7 @@ loc_9BFC:
 		jsr     (sub_300).l
 		movem.l d7-a1,-(sp)
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (unk_FF4240).l,a1
+		lea     (byte_FF4240).l,a1
 		move.w  #$240,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -3881,11 +3865,11 @@ loc_9BFC:
 		jsr     (sub_300).l
 		movem.l d7-a1,-(sp)
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (unk_FF4480).l,a1
+		lea     (byte_FF4480).l,a1
 		move.w  #$240,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     (unk_FF4480).l,a0
+		lea     (byte_FF4480).l,a0
 		moveq   #1,d6
 loc_9CA2:
 		movea.l a0,a1
@@ -3941,14 +3925,14 @@ loc_9CEC:
 
 sub_9D08:
 		clr.b   (FADING_SETTING).l
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB537-$1000000)).w
-		move.b  ((CURSOR_POSITION-$1000000)).w,((unk_FFB535-$1000000)).w
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,((unk_FFB536-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB537-$1000000)).w
+		move.b  ((CURSOR_POSITION-$1000000)).w,((byte_FFB535-$1000000)).w
+		move.b  ((CURSOR_POSITION+1-$1000000)).w,((byte_FFB536-$1000000)).w
 		bsr.w   sub_AB5C
 		bcs.w   loc_AAE4
 		clr.b   ((byte_FFB4C7-$1000000)).w
-		clr.b   ((unk_FFB4CB-$1000000)).w
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		clr.b   ((byte_FFB4CB-$1000000)).w
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_9D8C
 		bsr.w   sub_A8C0
 		jsr     (j_WaitForVInt).l
@@ -3956,11 +3940,11 @@ sub_9D08:
 		jsr     sub_20398
 		clr.w   d0
 		bsr.w   sub_AB9C
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.b  d0,((byte_FFB4C6-$1000000)).w
 		bsr.w   sub_B0B8
 		jsr     (j_WaitForVInt).l
-		move.b  ((unk_FFB537-$1000000)).w,((byte_FFB4C6-$1000000)).w
+		move.b  ((byte_FFB537-$1000000)).w,((byte_FFB4C6-$1000000)).w
 		move.w  d0,-(sp)
 		bsr.w   sub_A8C0
 		move.w  (sp)+,d0
@@ -3968,22 +3952,22 @@ sub_9D08:
 		bne.s   loc_9D7C
 		rts
 loc_9D7C:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		cmp.b   ((byte_FFB4C6-$1000000)).w,d0
 		beq.w   loc_9DC4
 		bra.w   loc_9DBE
 loc_9D8C:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		cmp.b   ((byte_FFB4C6-$1000000)).w,d0
 		beq.w   loc_9DC4
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CED8
 		bsr.w   sub_DEC0
 loc_9DA4:
 		jsr     (j_WaitForVInt).l
 		tst.b   (CURRENT_PLAYER_INPUT).l
 		beq.s   loc_9DA4
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CF1E
 		bsr.w   sub_DEE4
 loc_9DBE:
@@ -3991,7 +3975,7 @@ loc_9DBE:
 		rts
 loc_9DC4:
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_9DD8
 		bsr.w   sub_CED8
@@ -3999,7 +3983,7 @@ loc_9DC4:
 loc_9DD8:
 		move.b  #$FF,((byte_FFB4C6-$1000000)).w
 		bsr.w   sub_AC86
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_9DFA
 		jsr     sub_202C0
@@ -4010,9 +3994,9 @@ loc_9DFA:
 		jsr     sub_202D0
 loc_9E00:
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_9BD0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.b  d0,((byte_FFB4D3-$1000000)).w
 		jsr     (j_WaitForVInt).l
 		bsr.w   sub_9940
@@ -4023,28 +4007,28 @@ loc_9E26:
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
 		lsl.w   #8,d0
 		or.b    ((CURSOR_POSITION-$1000000)).w,d0
-		move.w  d0,((unk_FFC0B2-$1000000)).w
+		move.w  d0,((word_FFC0B2-$1000000)).w
 loc_9E34:
-		clr.b   ((unk_FFB4D4-$1000000)).w
+		clr.b   ((byte_FFB4D4-$1000000)).w
 		bsr.w   sub_8CD4
 		jsr     (j_WaitForVInt).l
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
 		lsl.w   #8,d0
 		or.b    ((CURSOR_POSITION-$1000000)).w,d0
-		cmp.w   ((unk_FFC0B2-$1000000)).w,d0
+		cmp.w   ((word_FFC0B2-$1000000)).w,d0
 		beq.s   loc_9E5E
-		move.w  d0,((unk_FFC0B2-$1000000)).w
-		bsr.w   sub_AD3A
+		move.w  d0,((word_FFC0B2-$1000000)).w
+		bsr.w   ParseBattleExits
 		bge.w   loc_9E8A
 loc_9E5E:
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_9E70
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_A026
 loc_9E70:
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_A0DE
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_A0DE
 		bra.s   loc_9E34
 loc_9E8A:
@@ -4070,7 +4054,7 @@ loc_9ECC:
 		bsr.w   sub_E20A
 		jsr     (sub_304).l
 		move.w  #$4B,((word_FFC0BE-$1000000)).w 
-		move.b  ((unk_FF9C4D-$1000000)).w,d0
+		move.b  ((byte_FF9C4D-$1000000)).w,d0
 		cmp.b   ((CURRENT_MAP-$1000000)).w,d0
 		bne.s   loc_9EF8
 		move.w  #$1B3,d0
@@ -4090,11 +4074,11 @@ loc_9EFE:
 		moveq   #1,d0
 		bsr.w   sub_AB9C
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_9BD0
 		bra.w   loc_9E5E
 loc_9F34:
-		move.b  ((unk_FF9C4D-$1000000)).w,d0
+		move.b  ((byte_FF9C4D-$1000000)).w,d0
 		cmp.b   ((CURRENT_MAP-$1000000)).w,d0
 		bne.s   loc_9F4E
 		clr.w   d0
@@ -4135,7 +4119,7 @@ loc_9F88:
 
 sub_9FB0:
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.b  d3,d1
 		jsr     j_SetTargetX
 		move.b  d1,((CURSOR_POSITION-$1000000)).w
@@ -4165,17 +4149,16 @@ loc_9FEE:
 		move.w  d2,d1
 loc_9FFC:
 		move.b  d1,((SCREEN_POSITION+1-$1000000)).w
-loc_A000:
 		bsr.w   sub_8DE2        
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_9BD0
 		bsr.w   sub_87AA
 		bsr.w   sub_9940
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
 		lsl.w   #8,d0
 		or.b    ((CURSOR_POSITION-$1000000)).w,d0
-		move.w  d0,((unk_FFC0B2-$1000000)).w
+		move.w  d0,((word_FFC0B2-$1000000)).w
 		rts
 
 	; End of function sub_9FB0
@@ -4184,27 +4167,27 @@ loc_A000:
 ; START OF FUNCTION CHUNK FOR sub_9D08
 
 loc_A026:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CF1E
 		bsr.w   sub_DEE4
 		clr.w   d1
 		clr.w   d2
-		move.b  ((unk_FFB535-$1000000)).w,d1
-		move.b  ((unk_FFB536-$1000000)).w,d2
+		move.b  ((byte_FFB535-$1000000)).w,d1
+		move.b  ((byte_FFB536-$1000000)).w,d2
 		move.b  ((byte_FFB4C6-$1000000)).w,d0
-		move.b  ((unk_FFB4C5-$1000000)).w,((byte_FFB4D3-$1000000)).w
+		move.b  ((byte_FFB4C5-$1000000)).w,((byte_FFB4D3-$1000000)).w
 		movem.w d0-d2,-(sp)
 		bsr.w   sub_9940
 		movem.w (sp)+,d0-d2
 		move.b  #$FF,((byte_FFB4C6-$1000000)).w
 		movem.w d0-d2,-(sp)
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
 		move.b  ((CURSOR_POSITION-$1000000)).w,d2
 		jsr     sub_202D4
-		lea     ((unk_FFCB28-$1000000)).w,a0
+		lea     ((byte_FFCB28-$1000000)).w,a0
 loc_A074:
-		move.b  #1,((unk_FFB4D4-$1000000)).w
+		move.b  #1,((byte_FFB4D4-$1000000)).w
 		bsr.w   sub_8D66
 		move.w  d0,-(sp)
 		jsr     (j_WaitForVInt).l
@@ -4219,9 +4202,9 @@ loc_A074:
 		bsr.w   sub_AB2C
 		bsr.w   sub_A8C0
 		bsr.w   sub_9940
-		lea     (unk_FF4000).l,a0
+		lea     (byte_FF4000).l,a0
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.w  d0,d7
 		lsl.w   #3,d0
 		add.w   d7,d0
@@ -4239,7 +4222,7 @@ loc_A0DE:
 		bsr.w   sub_AB40
 		beq.w   loc_9E34
 		clr.w   d6
-		move.b  ((unk_FFB4C5-$1000000)).w,d6
+		move.b  ((byte_FFB4C5-$1000000)).w,d6
 		lsl.w   #4,d6
 		lea     ((BATTLE_STATS-$1000000)).w,a0
 		adda.w  d6,a0
@@ -4255,16 +4238,16 @@ loc_A0DE:
 		move.b  d4,2(a0)
 		bsr.w   sub_9940
 		bsr.w   sub_A8C0
-		clr.b   ((unk_FFB4CA-$1000000)).w
+		clr.b   ((byte_FFB4CA-$1000000)).w
 		bsr.w   sub_AB2C
-		clr.l   ((unk_FFB51A-$1000000)).w
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB51A-$1000000)).w
+		clr.l   ((byte_FFB51A-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB51A-$1000000)).w
 loc_A132:
 		clr.b   ((byte_FFB4C7-$1000000)).w
 		move.b  #$FF,((byte_FFB4D3-$1000000)).w
 		bsr.w   sub_9940
-		clr.b   ((unk_FFB4CB-$1000000)).w
-		cmpi.b  #$1E,((unk_FFA1C6-$1000000)).w
+		clr.b   ((byte_FFB4CB-$1000000)).w
+		cmpi.b  #$1E,((byte_FFA1C6-$1000000)).w
 		bne.s   loc_A15C
 		clr.b   (FADING_SETTING).l
 		jsr     (sub_33C).l
@@ -4280,9 +4263,9 @@ loc_A15C:
 loc_A17A:
 		clr.w   d1
 		clr.w   d2
-		move.b  ((unk_FFB535-$1000000)).w,d1
-		move.b  ((unk_FFB536-$1000000)).w,d2
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB535-$1000000)).w,d1
+		move.b  ((byte_FFB536-$1000000)).w,d2
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_SetTargetX
 		move.w  d2,d1
 		jsr     j_SetTargetY
@@ -4304,7 +4287,7 @@ off_A1A6:       dc.w sub_A1AE-off_A1A6
 sub_A1AE:
 		clr.b   ((byte_FFB51B-$1000000)).w
 		bsr.w   sub_AC86
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     sub_202BC
 		moveq   #1,d0
 		bsr.w   sub_AB9C
@@ -4333,9 +4316,9 @@ loc_A1F0:
 
 sub_A202:
 		move.b  #1,((byte_FFB51B-$1000000)).w
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB4C9-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB4C9-$1000000)).w
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_GetForceSpellsFromForceID
 		cmpi.b  #$FF,(a0)
 		bne.s   loc_A22A
@@ -4353,7 +4336,7 @@ loc_A22A:
 		bra.w   loc_A132
 loc_A24A:
 		move.b  d1,((byte_FFB51C-$1000000)).w
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_GetMPFromForceID
 		move.w  d1,-(sp)
 		move.b  ((byte_FFB51C-$1000000)).w,d1
@@ -4371,7 +4354,7 @@ loc_A274:
 		clr.w   ((TEXT_NAME_INDEX-$1000000)).w
 		move.w  #$D,((word_FFF846-$1000000)).w
 		moveq   #1,d0
-		move.l  d0,((dword_FFF900-$1000000)).w
+		move.l  d0,((TEXT_NUMBER-$1000000)).w
 		trap    #5
 		clr.w   ((word_FFC0BE-$1000000)).w
 		move.w  #$1B5,d0
@@ -4396,7 +4379,7 @@ loc_A2CC:
 		bra.w   loc_A306
 loc_A2D0:
 		jsr     sub_202D8
-		tst.b   ((unk_FFC600-$1000000)).w
+		tst.b   ((byte_FFC600-$1000000)).w
 		beq.w   loc_A306
 		subq.w  #1,((word_FFA8C0-$1000000)).w
 		blt.w   loc_A1E4
@@ -4429,9 +4412,9 @@ locret_A32A:
 		rts
 loc_A32C:
 		move.b  #2,((byte_FFB51B-$1000000)).w
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB4C9-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB4C9-$1000000)).w
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_GetForceItemsFromForceID
 		cmpi.b  #$FF,(a0)
 		bne.s   loc_A354
@@ -4439,7 +4422,7 @@ loc_A32C:
 		bsr.w   sub_D32C
 		bra.w   loc_A132
 loc_A354:
-		clr.b   ((unk_FFB52A-$1000000)).w
+		clr.b   ((byte_FFB52A-$1000000)).w
 		move.b  #4,((byte_FFB526-$1000000)).w
 		bsr.w   sub_BF10
 		cmpi.w  #$FFFF,d0
@@ -4458,7 +4441,7 @@ off_A374:       dc.w sub_A37C-off_A374
 ; =============== S U B R O U T I N E =======================================
 
 sub_A37C:
-		move.b  #1,((unk_FFB52A-$1000000)).w
+		move.b  #1,((byte_FFB52A-$1000000)).w
 		move.b  #3,((byte_FFB526-$1000000)).w
 		bsr.w   sub_BF10
 		cmpi.w  #$FFFF,d0
@@ -4468,7 +4451,7 @@ sub_A37C:
 		jsr     (j_WaitForVInt).l
 		beq.s   loc_A354
 loc_A3A0:
-		tst.b   ((unk_FFCB7E-$1000000)).w
+		tst.b   ((byte_FFCB7E-$1000000)).w
 		beq.s   loc_A3AE
 		moveq   #8,d0
 		bsr.w   sub_D32C
@@ -4476,7 +4459,7 @@ loc_A3A0:
 loc_A3AE:
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,((byte_FFB51C-$1000000)).w
 		jsr     sub_202D8
-		tst.b   ((unk_FFC600-$1000000)).w
+		tst.b   ((byte_FFC600-$1000000)).w
 		beq.w   loc_A3E8
 		subq.w  #1,((word_FFA8C0-$1000000)).w
 		blt.w   loc_A1E4
@@ -4499,7 +4482,7 @@ loc_A3E8:
 ; =============== S U B R O U T I N E =======================================
 
 sub_A3EE:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     sub_202CC
 		moveq   #1,d0
 		bsr.w   sub_AB9C
@@ -4520,13 +4503,13 @@ loc_A432:
 		jsr     j_GetForceItemsFromForceID
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
-		move.b  d1,((unk_FFB4CD-$1000000)).w
+		move.b  d1,((byte_FFB4CD-$1000000)).w
 		move.b  (a0,d1.w),d1
-		move.b  d1,((unk_FFB4CE-$1000000)).w
+		move.b  d1,((byte_FFB4CE-$1000000)).w
 loc_A44E:
-		move.b  #1,((unk_FFB4CC-$1000000)).w
+		move.b  #1,((byte_FFB4CC-$1000000)).w
 		bsr.w   sub_A8D4
-		clr.b   ((unk_FFB4CC-$1000000)).w
+		clr.b   ((byte_FFB4CC-$1000000)).w
 		cmpi.w  #$FFFF,d0
 		bne.s   loc_A474
 		bsr.w   sub_A8C0
@@ -4534,43 +4517,43 @@ loc_A44E:
 		jsr     (j_WaitForVInt).l
 		bra.w   sub_A3EE
 loc_A474:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
-		move.b  ((unk_FFB4CE-$1000000)).w,d1
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4CE-$1000000)).w,d1
 		jsr     j_FindEmptyItemSlotFromTargetID
 		bcc.w   loc_A500
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CF1E
-		move.b  ((unk_FFB4C5-$1000000)).w,((unk_FFB4C9-$1000000)).w
-		move.b  #1,((unk_FFB4CC-$1000000)).w
+		move.b  ((byte_FFB4C5-$1000000)).w,((byte_FFB4C9-$1000000)).w
+		move.b  #1,((byte_FFB4CC-$1000000)).w
 		move.b  #3,((byte_FFB526-$1000000)).w
 		bsr.w   sub_BF10
-		clr.b   ((unk_FFB4CC-$1000000)).w
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB4C9-$1000000)).w
+		clr.b   ((byte_FFB4CC-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB4C9-$1000000)).w
 		cmpi.w  #$FFFF,d0
 		beq.s   loc_A44E
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 loc_A4B8:
 		jsr     j_GetForceItemsFromForceID
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
-		move.b  d1,((unk_FFB4CF-$1000000)).w
+		move.b  d1,((byte_FFB4CF-$1000000)).w
 		move.b  (a0,d1.w),d2
-		move.b  d2,((unk_FFB4D0-$1000000)).w
+		move.b  d2,((byte_FFB4D0-$1000000)).w
 		jsr     j_RemoveItemFromTargetID
-		move.b  ((unk_FFB4CE-$1000000)).w,d1
+		move.b  ((byte_FFB4CE-$1000000)).w,d1
 		jsr     j_FindEmptyItemSlotFromTargetID
 		move.b  ((byte_FFB4C6-$1000000)).w,d0
-		move.b  ((unk_FFB4CD-$1000000)).w,d1
+		move.b  ((byte_FFB4CD-$1000000)).w,d1
 		jsr     j_RemoveItemFromTargetID
-		move.b  ((unk_FFB4D0-$1000000)).w,d1
+		move.b  ((byte_FFB4D0-$1000000)).w,d1
 		jsr     j_FindEmptyItemSlotFromTargetID
 		bsr.w   loc_AAAA
 		bra.w   loc_A51A
 loc_A500:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_BEC0
 		move.b  ((byte_FFB4C6-$1000000)).w,d0
-		move.b  ((unk_FFB4CD-$1000000)).w,d1
+		move.b  ((byte_FFB4CD-$1000000)).w,d1
 		jsr     j_RemoveItemFromTargetID
 		bsr.w   loc_AA8C
 loc_A51A:
@@ -4578,7 +4561,7 @@ loc_A51A:
 		bsr.w   sub_AB9C
 		jsr     (j_WaitForVInt).l
 loc_A526:
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB4C5-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB4C5-$1000000)).w
 		bra.w   loc_A656
 
 	; End of function sub_A3EE
@@ -4587,10 +4570,10 @@ loc_A526:
 ; =============== S U B R O U T I N E =======================================
 
 sub_A530:
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB4C9-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB4C9-$1000000)).w
 		move.w  #$300,d1
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_LoadEquippableItemsFromForceID
 		bne.s   loc_A552
 		moveq   #4,d0
@@ -4599,7 +4582,7 @@ sub_A530:
 loc_A552:
 		move.w  #$100,d1
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 loc_A55C:
 		jsr     j_LoadEquippableItemsFromForceID
 		beq.w   loc_A58C
@@ -4617,7 +4600,7 @@ loc_A55C:
 loc_A58C:
 		move.w  #$200,d1
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 loc_A596:
 		jsr     j_LoadEquippableItemsFromForceID
 		beq.w   loc_A5D6
@@ -4631,7 +4614,7 @@ loc_A5B2:
 		jsr     (j_WaitForVInt).l
 		move.w  #$100,d1
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_LoadEquippableItemsFromForceID
 		bne.s   loc_A552
 		bsr.w   sub_D75A
@@ -4653,17 +4636,17 @@ sub_A5EA:
 		bsr.w   sub_BF10
 		cmpi.w  #$FFFF,d0
 		beq.w   loc_A354
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_GetForceItemsFromForceID
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
-		move.b  d1,((unk_FFB4CD-$1000000)).w
+		move.b  d1,((byte_FFB4CD-$1000000)).w
 		move.b  (a0,d1.w),d1
 		jsr     j_GetItemType
 		btst    #$B,d2
 		bne.s   loc_A644
 loc_A620:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
 		movem.w d1,-(sp)
@@ -4687,9 +4670,9 @@ loc_A650:
 ; START OF FUNCTION CHUNK FOR sub_A202
 
 loc_A656:
-		move.b  #$FF,((unk_FFB537-$1000000)).w
-		clr.b   ((unk_FFB4CB-$1000000)).w
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  #$FF,((byte_FFB537-$1000000)).w
+		clr.b   ((byte_FFB4CB-$1000000)).w
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 loc_A664:
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_A672
@@ -4703,15 +4686,15 @@ loc_A672:
 		beq.s   loc_A68A
 		rts
 loc_A68A:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_GetMapSpriteFromForceID
-		movea.l (p_pt_Sprites).l,a0
+		movea.l (p_pt_MapSprites).l,a0
 		lsl.w   #2,d1
 		movea.l (a0,d1.w),a0
 		jsr     (sub_300).l
 		lea     (FF3000_LOADING_SPACE).l,a0
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.w  d0,d7
 		lsl.w   #3,d0
 		add.w   d7,d0
@@ -4729,36 +4712,36 @@ loc_A68A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_A6CE:
-		move.b  ((byte_FFB4C6-$1000000)).w,((unk_FFB537-$1000000)).w
+		move.b  ((byte_FFB4C6-$1000000)).w,((byte_FFB537-$1000000)).w
 		bsr.w   sub_AB5C
 		bcs.w   loc_AAE4
 		clr.b   ((byte_FFB4C7-$1000000)).w
-		clr.b   ((unk_FFB4CB-$1000000)).w
+		clr.b   ((byte_FFB4CB-$1000000)).w
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CED8
 		bsr.w   sub_DEC0
 		move.b  #$FF,((byte_FFB4C6-$1000000)).w
 		bsr.w   sub_AC86
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     sub_202C0
 		moveq   #1,d0
 		bsr.w   sub_AB9C
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_9BD0
 		bsr.w   sub_AB2C
 		bsr.w   sub_9940
 		clr.b   ((byte_FFCBB2-$1000000)).w
 		clr.b   ((byte_FFCB3E-$1000000)).w
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     sub_20320
 		jsr     (j_WaitForVInt).l
-		move.b  ((unk_FFB4C5-$1000000)).w,((byte_FFB4D3-$1000000)).w
+		move.b  ((byte_FFB4C5-$1000000)).w,((byte_FFB4D3-$1000000)).w
 		bsr.w   sub_9940
-		lea     ((unk_FFCB28-$1000000)).w,a0
+		lea     ((byte_FFCB28-$1000000)).w,a0
 loc_A744:
-		move.b  #1,((unk_FFB4D4-$1000000)).w
+		move.b  #1,((byte_FFB4D4-$1000000)).w
 		bsr.w   sub_8D6E
 		move.w  d0,-(sp)
 		moveq   #$A,d0
@@ -4770,7 +4753,7 @@ loc_A744:
 		bsr.w   sub_AB2C
 		bsr.w   sub_9940
 		clr.w   d6
-		move.b  ((unk_FFB4C5-$1000000)).w,d6
+		move.b  ((byte_FFB4C5-$1000000)).w,d6
 		lsl.w   #4,d6
 		lea     ((BATTLE_STATS-$1000000)).w,a0
 		adda.w  d6,a0
@@ -4787,8 +4770,8 @@ loc_A744:
 		bsr.w   sub_9940
 		bsr.w   sub_A8C0
 		jsr     (j_WaitForVInt).l
-		clr.b   ((unk_FFB4CA-$1000000)).w
-		clr.b   ((unk_FFB4CB-$1000000)).w
+		clr.b   ((byte_FFB4CA-$1000000)).w
+		clr.b   ((byte_FFB4CB-$1000000)).w
 		cmpi.b  #3,((byte_FFB51B-$1000000)).w
 		beq.w   loc_A656
 		move.b  #$FF,((byte_FFB4D3-$1000000)).w
@@ -4800,15 +4783,15 @@ loc_A744:
 		cmpi.b  #$FF,d0
 		blt.w   loc_A8BA
 		jsr     (j_WaitForVInt).l
-		move.b  #1,((unk_FFB4CB-$1000000)).w
+		move.b  #1,((byte_FFB4CB-$1000000)).w
 		clr.w   d0
 		move.w  d0,d7
 		lsl.w   #2,d7
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 		move.w  (a0,d7.w),d1
 		move.w  2(a0,d7.w),d2
 		movem.w d0-d2,-(sp)
-		lea     (unk_FF4000).l,a0
+		lea     (byte_FF4000).l,a0
 		movem.w d0-d1,-(sp)
 		move.b  ((byte_FFB4C6-$1000000)).w,d0
 		jsr     j_GetTargetX
@@ -4874,11 +4857,11 @@ loc_A864:
 		bsr.w   sub_8E52
 		bsr.w   sub_AB5C
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CED8
-		tst.b   ((unk_FFB4CC-$1000000)).w
+		tst.b   ((byte_FFB4CC-$1000000)).w
 		beq.s   loc_A8B8
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_BE94
 loc_A8B8:
 		move.w  (sp)+,d0
@@ -4892,8 +4875,8 @@ loc_A8BA:
 ; =============== S U B R O U T I N E =======================================
 
 sub_A8C0:
-		move.b  ((unk_FFB537-$1000000)).w,((byte_FFB4C6-$1000000)).w
-		move.b  #1,((unk_FFB539-$1000000)).w
+		move.b  ((byte_FFB537-$1000000)).w,((byte_FFB4C6-$1000000)).w
+		move.b  #1,((byte_FFB539-$1000000)).w
 		clr.w   d0
 		bsr.w   sub_AB9C
 		rts
@@ -4905,17 +4888,17 @@ sub_A8C0:
 
 sub_A8D4:
 		jsr     (j_WaitForVInt).l
-		move.b  #1,((unk_FFB4CB-$1000000)).w
+		move.b  #1,((byte_FFB4CB-$1000000)).w
 		clr.w   d0
 loc_A8E2:
 		move.w  d0,d7
 		lsl.w   #2,d7
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 loc_A8EA:
 		move.w  (a0,d7.w),d1
 		move.w  2(a0,d7.w),d2
 		movem.w d0-d2,-(sp)
-		lea     (unk_FF4000).l,a0
+		lea     (byte_FF4000).l,a0
 		movem.w d0-d1,-(sp)
 		move.b  ((byte_FFB4C6-$1000000)).w,d0
 		jsr     j_GetTargetX
@@ -4982,27 +4965,27 @@ loc_A95C:
 		bsr.w   sub_8E52
 		bsr.w   sub_AB5C
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CED8
-		tst.b   ((unk_FFB4CC-$1000000)).w
+		tst.b   ((byte_FFB4CC-$1000000)).w
 		beq.s   loc_A9B0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_BE94
 loc_A9B0:
 		move.w  (sp)+,d0
 loc_A9B2:
 		jsr     (j_WaitForVInt).l
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_AA82
 loc_A9C4:
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_AA76
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 loc_A9D8:
 		bne.w   loc_AA76
 		tst.w   ((word_FFA8C0-$1000000)).w
 		beq.s   loc_A9B2
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_A9FE
 		addq.w  #1,d0
 		trap    #SOUND_COMMAND
@@ -5013,7 +4996,7 @@ loc_A9D8:
 loc_A9FA:
 		bra.w   loc_AA56
 loc_A9FE:
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_AA1A
 		addq.w  #1,d0
 		trap    #SOUND_COMMAND
@@ -5024,7 +5007,7 @@ loc_A9FE:
 loc_AA16:
 		bra.w   loc_AA56
 loc_AA1A:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_AA36
 		subq.w  #1,d0
 		trap    #SOUND_COMMAND
@@ -5035,7 +5018,7 @@ loc_AA1A:
 loc_AA32:
 		bra.w   loc_AA56
 loc_AA36:
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_AA52
 		subq.w  #1,d0
 		trap    #SOUND_COMMAND
@@ -5049,13 +5032,13 @@ loc_AA52:
 		bra.w   loc_A9B2
 loc_AA56:
 		move.w  d0,-(sp)
-		tst.b   ((unk_FFB4CC-$1000000)).w
+		tst.b   ((byte_FFB4CC-$1000000)).w
 		beq.s   loc_AA66
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_BEC0
 loc_AA66:
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CF1E
 		move.w  (sp)+,d0
 		bra.w   loc_A8E2
@@ -5063,26 +5046,26 @@ loc_AA76:
 		trap    #SOUND_COMMAND
 		dc.w SFX_VALIDATION
 		clr.w   d0
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		rts
 loc_AA82:
 		trap    #SOUND_COMMAND
 		dc.w SFX_VALIDATION
-		move.b  #1,((unk_FFB4CA-$1000000)).w
+		move.b  #1,((byte_FFB4CA-$1000000)).w
 loc_AA8C:
 		clr.w   d0
-		tst.b   ((unk_FFB4CC-$1000000)).w
+		tst.b   ((byte_FFB4CC-$1000000)).w
 		beq.s   loc_AA9C
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_BEC0
 loc_AA9C:
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		bsr.w   sub_CF1E
 		jsr     (j_WaitForVInt).l
 loc_AAAA:
 		clr.w   d0
 		move.b  ((byte_FFB4C6-$1000000)).w,d0
-		move.b  d0,((unk_FFB4C5-$1000000)).w
+		move.b  d0,((byte_FFB4C5-$1000000)).w
 		jsr     j_GetTargetX
 		lsl.w   #8,d1
 		move.w  d1,d6
@@ -5104,7 +5087,7 @@ loc_AAAA:
 
 loc_AAE4:
 		bsr.w   sub_AB2C
-		clr.b   ((unk_FFB4CA-$1000000)).w
+		clr.b   ((byte_FFB4CA-$1000000)).w
 loc_AAEC:
 		clr.b   ((byte_FFB526-$1000000)).w
 		bsr.w   sub_BF10
@@ -5177,7 +5160,7 @@ sub_AB40:
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		move.b  ((CURSOR_POSITION-$1000000)).w,d2
 		add.w   d2,d1
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		btst    d0,(a0,d1.w)
 		rts
 
@@ -5201,13 +5184,13 @@ loc_AB62:
 loc_AB7C:
 		adda.w  #$10,a0
 		dbf     d7,loc_AB62
-		move.b  #$FF,((unk_FFB4C5-$1000000)).w
+		move.b  #$FF,((byte_FFB4C5-$1000000)).w
 		ori     #1,ccr
 		rts
 loc_AB90:
 		moveq   #$1F,d0
 		sub.w   d7,d0
-		move.b  d0,((unk_FFB4C5-$1000000)).w
+		move.b  d0,((byte_FFB4C5-$1000000)).w
 		tst.b   d0
 		rts
 
@@ -5228,7 +5211,7 @@ sub_AB9C:
 loc_ABB4:
 		andi.l  #$9FFF9FFF,(a1)+
 		dbf     d7,loc_ABB4
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		lea     (MAP_SPRITE_POSITION).l,a1
 		move.w  ((MAP_HEIGHT-$1000000)).w,d7
 		subq.w  #1,d7
@@ -5333,7 +5316,7 @@ sub_AC80:
 ; =============== S U B R O U T I N E =======================================
 
 sub_AC86:
-		lea     (unk_FF00A0).l,a0
+		lea     (PALETTE_2_BIS).l,a0
 		move.l  -$20(a0),(a0)+
 		move.l  -$20(a0),(a0)+
 		move.l  -$20(a0),(a0)+
@@ -5356,9 +5339,9 @@ loc_ACCA:
 ; =============== S U B R O U T I N E =======================================
 
 sub_ACD4:
-		lea     ((unk_FFBC8E-$1000000)).w,a6
+		lea     ((byte_FFBC8E-$1000000)).w,a6
 		jsr     sub_202DC
-		jmp     loc_124000
+		jmp     sub_124000
 
 	; End of function sub_ACD4
 
@@ -5410,8 +5393,9 @@ loc_AD36:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_AD3A:
-		tst.b   ((unk_FFB4C5-$1000000)).w
+ParseBattleExits:
+		
+		tst.b   ((byte_FFB4C5-$1000000)).w
 		bne.w   loc_AD9C
 loc_AD42:
 		move.b  ((CURRENT_REGION-$1000000)).w,d0
@@ -5428,19 +5412,19 @@ loc_AD54:
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d7
 		subq.w  #1,d7
 		lsl.w   #2,d7
-		movea.l (a0,d7.w),a0
+		movea.l (a0,d7.w),a0    ; get battle exits for current chapter
 		clr.w   d3
 loc_AD72:
 		tst.b   (a0)
 		bmi.w   loc_AD9C
-		cmp.b   (a0),d0
+		cmp.b   (a0),d0         ; compare to current region
 		bne.s   loc_AD98
-		cmp.b   1(a0),d1
+		cmp.b   1(a0),d1        ; compare to current X position
 		bne.s   loc_AD98
-		cmp.b   2(a0),d2
+		cmp.b   2(a0),d2        ; compare to current Y position
 		bne.s   loc_AD98
 		clr.w   d0
-		move.b  3(a0),d0
+		move.b  3(a0),d0        ; get destination map ID
 		move.b  5(a0),d3
 		move.b  6(a0),d4
 		bra.s   loc_ADA0
@@ -5454,7 +5438,7 @@ loc_ADA0:
 		move.b  d0,((CURRENT_MAP-$1000000)).w
 		rts
 
-	; End of function sub_AD3A
+	; End of function ParseBattleExits
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5621,12 +5605,12 @@ locret_AEA6:
 ; =============== S U B R O U T I N E =======================================
 
 sub_AEA8:
-		move.w  d0,((unk_FFB7D4-$1000000)).w
-		move.w  d1,((unk_FFB7D6-$1000000)).w
+		move.w  d0,((word_FFB7D4-$1000000)).w
+		move.w  d1,((word_FFB7D6-$1000000)).w
 		tst.b   ((DONT_SEND_SOUND_COMMANDS-$1000000)).w
 		bne.s   locret_AEA6
 		move.w  d0,-(sp)
-		lea     (unk_FFD000).l,a1
+		lea     (byte_FFD000).l,a1
 		move.w  d1,-(sp)
 		andi.w  #$FF00,d1
 		asr.w   #7,d1
@@ -5706,7 +5690,7 @@ loc_AF60:
 ; =============== S U B R O U T I N E =======================================
 
 sub_AF66:
-		lea     ((loc_BFFE+2)).l,a1
+		lea     ($C000).l,a1
 		move.w  #$780,d0
 
 	; End of function sub_AF66
@@ -5715,7 +5699,7 @@ sub_AF66:
 ; =============== S U B R O U T I N E =======================================
 
 sub_AF70:
-		lea     (unk_FFD000).l,a0
+		lea     (byte_FFD000).l,a0
 		moveq   #2,d1
 		jsr     (sub_278).l
 		jmp     (j_SetVIntParam3).l
@@ -5727,10 +5711,10 @@ sub_AF70:
 
 sub_AF84:
 		movem.l d0-a1,-(sp)
-		move.w  ((unk_FFB7D4-$1000000)).w,d0
-		move.w  ((unk_FFB7D6-$1000000)).w,d1
+		move.w  ((word_FFB7D4-$1000000)).w,d0
+		move.w  ((word_FFB7D6-$1000000)).w,d1
 		move.w  d0,-(sp)
-		lea     (unk_FFD000).l,a1
+		lea     (byte_FFD000).l,a1
 		move.w  d1,-(sp)
 		andi.w  #$FF00,d1
 		asr.w   #7,d1
@@ -5807,7 +5791,7 @@ loc_B02C:
 ; =============== S U B R O U T I N E =======================================
 
 sub_B030:
-		lea     (unk_FFD000).l,a0
+		lea     (byte_FFD000).l,a0
 loc_B036:
 		move.w  #$3FF,d0
 loc_B03A:
@@ -5866,14 +5850,11 @@ loc_B08E:
 	; End of function sub_B054
 
 
-; START OF FUNCTION CHUNK FOR int_AdressError
+; =============== S U B R O U T I N E =======================================
 
-loc_B092:
+sub_B092:
 		movem.l d0-a6,-(sp)
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR int_AdressError
-
 		dc.w $FE
 		jsr     (j_WaitForVInt).l
 		jsr     (j_WaitForVInt).l
@@ -5881,6 +5862,9 @@ loc_B092:
 		jsr     (j_DisableDisplayAndInterrupts).l
 		movem.l (sp)+,d0-a6
 		rts
+
+	; End of function sub_B092
+
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -5903,16 +5887,16 @@ loc_B0EA:
 loc_B0EE:
 		move.w  (dword_FF0E30).l,d0
 		subi.w  #$7C,d0 
-		move.b  d0,((unk_FFB521-$1000000)).w
+		move.b  d0,((byte_FFB521-$1000000)).w
 		move.b  d0,((byte_FFB51F-$1000000)).w
 		move.w  (word_FF0E36).l,d0
 		subi.w  #$7C,d0 
-		move.b  d0,((unk_FFB520-$1000000)).w
+		move.b  d0,((byte_FFB520-$1000000)).w
 		move.b  d0,((byte_FFB51E-$1000000)).w
-		move.l  #$187C0800,((unk_FFB522-$1000000)).w
+		move.l  #$187C0800,((byte_FFB522-$1000000)).w
 		move.l  #$B4F8,(dword_FF0EF6).l
 		bsr.w   sub_B274
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$161A,d0
 		move.l  #$1F010901,d1
 		move.w  #8,d2
@@ -5922,8 +5906,8 @@ loc_B0EE:
 		jsr     sub_20300
 		cmpi.w  #$FFFF,d1
 		beq.s   loc_B168
-		lea     ((unk_FFB58C-$1000000)).w,a0
-		lea     (RAM_START).l,a1
+		lea     ((byte_FFB58C-$1000000)).w,a0
+		lea     (PALETTE_1).l,a1
 		jsr     (j_CopyPalette).l
 		jsr     (j_StoreVDPCommandster).l
 loc_B168:
@@ -5933,16 +5917,16 @@ loc_B168:
 		bne.s   loc_B1BA
 		movem.l d7-a1,-(sp)
 		lea     wl_StatusGold(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$40,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		jsr     j_GetGold
 		move.l  d1,d0
-		lea     ((unk_FFB7FC-$1000000)).w,a1
+		lea     ((byte_FFB7FC-$1000000)).w,a1
 		moveq   #6,d7
 		bsr.w   DisplayNumber
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$804,d0
 		move.l  #$11B0117,d1
 		move.w  #4,d2
@@ -5956,7 +5940,7 @@ loc_B1BA:
 loc_B1CE:
 		jsr     (j_WaitForPlayer1NewButtonPush).l
 		clr.b   ((byte_FFB5AC-$1000000)).w
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.s   loc_B1E6
 		clr.w   d0
 		bra.s   loc_B1E8
@@ -5964,27 +5948,27 @@ loc_B1E6:
 		moveq   #$FFFFFFFF,d0
 loc_B1E8:
 		move.w  d0,-(sp)
-		move.w  ((unk_FFB520-$1000000)).w,d0
-		move.w  ((unk_FFB522-$1000000)).w,((unk_FFB520-$1000000)).w
-		move.w  d0,((unk_FFB522-$1000000)).w
-		move.w  #$1000,((unk_FFB524-$1000000)).w
+		move.w  ((byte_FFB520-$1000000)).w,d0
+		move.w  ((byte_FFB522-$1000000)).w,((byte_FFB520-$1000000)).w
+		move.w  d0,((byte_FFB522-$1000000)).w
+		move.w  #$1000,((byte_FFB524-$1000000)).w
 		move.l  #$B4F8,(dword_FF0EF6).l
 		movem.l d7-a1,-(sp)
 		lea     wl_StatusMain(pc), a0
 loc_B210:
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 loc_B214:
 		move.w  #$478,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		bsr.w   sub_B2AC
 		bsr.w   sub_B5F2
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$161A,d0
 		move.l  #$901E001,d1
 		move.w  #8,d2
 		bsr.w   sub_AE36        
-		lea     (RAM_START).l,a1
+		lea     (PALETTE_1).l,a1
 		clr.l   (a1)+
 		clr.l   (a1)+
 		clr.l   (a1)+
@@ -6010,7 +5994,7 @@ loc_B214:
 sub_B274:
 		movem.l d7-a1,-(sp)
 		lea     wl_StatusMain(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$478,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -6029,7 +6013,7 @@ sub_B29C:
 		subq.l  #4,a0
 		cmpi.w  #$C020,(a0)
 		beq.s   locret_B2AA
-		lea     ((unk_FFB84C-$1000000)).w,a0
+		lea     ((byte_FFB84C-$1000000)).w,a0
 locret_B2AA:
 		rts
 
@@ -6042,7 +6026,7 @@ sub_B2AC:
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetClassFromForceID
 		jsr     j_GetClassName
-		lea     ((unk_FFB808-$1000000)).w,a1
+		lea     ((byte_FFB808-$1000000)).w,a1
 		move.w  d1,d7
 		moveq   #$FFFFFFD4,d1
 		bsr.w   sub_B054
@@ -6053,7 +6037,7 @@ loc_B2CC:
 		moveq   #$FFFFFFD4,d1
 		moveq   #$A,d7
 		bsr.w   sub_B054
-		lea     ((unk_FFB82C-$1000000)).w,a0
+		lea     ((byte_FFB82C-$1000000)).w,a0
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetStatusFromForceID
 		btst    #2,d1
@@ -6087,7 +6071,7 @@ loc_B338:
 		jsr     j_GetHPFromForceID
 		cmpi.w  #$64,d1 
 		bge.s   loc_B352
-		lea     ((unk_FFB8C0-$1000000)).w,a1
+		lea     ((byte_FFB8C0-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
@@ -6097,7 +6081,7 @@ loc_B352:
 		jsr     j_GetMaxHPFromForceID
 		cmpi.w  #$64,d1 
 		bge.s   loc_B372
-		lea     ((unk_FFB8C4-$1000000)).w,a1
+		lea     ((byte_FFB8C4-$1000000)).w,a1
 		addq.w  #2,a1
 		moveq   #2,d7
 		move.w  d1,d0
@@ -6109,7 +6093,7 @@ loc_B376:
 		jsr     j_GetMPFromForceID
 		cmpi.w  #$64,d1 
 		bge.s   loc_B390
-		lea     ((unk_FFB918-$1000000)).w,a1
+		lea     ((byte_FFB918-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
@@ -6120,7 +6104,7 @@ loc_B394:
 		jsr     j_GetMaxMPFromForceID
 		cmpi.w  #$64,d1 
 		bge.s   loc_B3B0
-		lea     ((unk_FFB91C-$1000000)).w,a1
+		lea     ((byte_FFB91C-$1000000)).w,a1
 		addq.w  #2,a1
 		moveq   #2,d7
 		move.w  d1,d0
@@ -6132,14 +6116,14 @@ loc_B3B0:
 		tst.b   d1
 		blt.s   loc_B3EC
 		jsr     j_GetLevelFromForceID
-		lea     ((unk_FFB86E-$1000000)).w,a1
+		lea     ((byte_FFB86E-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
 		bsr.w   DisplayNumber
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetEXPFromForceID
-		lea     ((unk_FFB976-$1000000)).w,a1
+		lea     ((byte_FFB976-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
@@ -6147,38 +6131,38 @@ loc_B3B0:
 		bra.s   loc_B408
 loc_B3EC:
 		lea     unk_B46A(pc), a0
-		lea     ((unk_FFB86C-$1000000)).w,a1
+		lea     ((byte_FFB86C-$1000000)).w,a1
 		moveq   #3,d7
 		bsr.w   sub_B054
 		lea     unk_B46A(pc), a0
-		lea     ((unk_FFB974-$1000000)).w,a1
+		lea     ((byte_FFB974-$1000000)).w,a1
 		moveq   #3,d7
 		bsr.w   sub_B054
 loc_B408:
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetTargetATT
-		lea     ((unk_FFB884-$1000000)).w,a1
+		lea     ((byte_FFB884-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
 		bsr.w   DisplayNumber
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetTargetDEF
-		lea     ((unk_FFB8DC-$1000000)).w,a1
+		lea     ((byte_FFB8DC-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
 		bsr.w   DisplayNumber
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetTargetMOVE
-		lea     ((unk_FFB934-$1000000)).w,a1
+		lea     ((byte_FFB934-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
 		bsr.w   DisplayNumber
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetTargetAGI
-		lea     ((unk_FFB98C-$1000000)).w,a1
+		lea     ((byte_FFB98C-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
@@ -6195,7 +6179,7 @@ unk_B46A:       dc.b $4E
 ; =============== S U B R O U T I N E =======================================
 
 sub_B46E:
-		lea     (unk_FFE000).l,a0
+		lea     (byte_FFE000).l,a0
 		move.w  #$97F,d0
 loc_B478:
 		move.w  (a0)+,d1
@@ -6204,9 +6188,9 @@ loc_B478:
 		clr.w   -2(a0)
 loc_B484:
 		dbf     d0,loc_B478
-		lea     (unk_FFE000).l,a0
+		lea     (byte_FFE000).l,a0
 loc_B48E:
-		lea     (loc_E000).l,a1
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -6219,7 +6203,7 @@ loc_B48E:
 
 sub_B4A6:
 		lea     (word_FF0D30).l,a0
-		lea     ((unk_FFB52B-$1000000)).w,a1
+		lea     ((byte_FFB52B-$1000000)).w,a1
 		moveq   #$1F,d0
 		move.w  $100(a0),d1
 		addi.l  #$1C,d1
@@ -6255,17 +6239,17 @@ loc_B4EC:
 
 sub_B4F8:
 		clr.w   d0
-		move.b  ((unk_FFB520-$1000000)).w,d0
+		move.b  ((byte_FFB520-$1000000)).w,d0
 		clr.w   d1
-		move.b  ((unk_FFB521-$1000000)).w,d1
+		move.b  ((byte_FFB521-$1000000)).w,d1
 		clr.w   d2
-		move.b  ((unk_FFB522-$1000000)).w,d2
+		move.b  ((byte_FFB522-$1000000)).w,d2
 		clr.w   d3
-		move.b  ((unk_FFB523-$1000000)).w,d3
+		move.b  ((byte_FFB523-$1000000)).w,d3
 		clr.w   d4
-		move.b  ((unk_FFB524-$1000000)).w,d4
+		move.b  ((byte_FFB524-$1000000)).w,d4
 		clr.w   d5
-		move.b  ((unk_FFB525-$1000000)).w,d5
+		move.b  ((byte_FFB525-$1000000)).w,d5
 		sub.w   d0,d2
 		muls.w  d5,d2
 		divs.w  d4,d2
@@ -6280,7 +6264,7 @@ sub_B4F8:
 		move.w  d0,6(a0)
 		addi.w  #$7C,6(a0) 
 		lea     (word_FF0D30).l,a0
-		lea     ((unk_FFB52B-$1000000)).w,a1
+		lea     ((byte_FFB52B-$1000000)).w,a1
 		lea     ((BATTLE_STATS-$1000000)).w,a2
 		clr.w   d6
 		move.b  ((byte_FFB4C6-$1000000)).w,d6
@@ -6300,7 +6284,6 @@ loc_B564:
 		move.b  1(a2,d7.w),d4
 		clr.w   d5
 		move.b  2(a2,d7.w),d5
-loc_B580:
 		lsr.w   #1,d7
 		sub.w   d2,d4
 		sub.w   d3,d5
@@ -6328,19 +6311,19 @@ loc_B5B0:
 		move.w  d0,d6
 		sub.w   d2,d6
 		subq.w  #4,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		move.w  d1,d6
 		sub.w   d3,d6
 		subq.w  #8,d6
 		neg.w   d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jsr     (j_SetVIntParam3).l
 		cmp.w   d4,d5
 		bne.s   loc_B5EA
 loc_B5E0:
 		move.l  #$9A8A,(dword_FF0EF6).l
 loc_B5EA:
-		addq.b  #1,((unk_FFB525-$1000000)).w
+		addq.b  #1,((byte_FFB525-$1000000)).w
 		bra.w   sub_9A8A
 
 	; End of function sub_B4F8
@@ -6352,11 +6335,10 @@ sub_B5F2:
 		move.w  #$C6D0,d7
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetForceSpellsFromForceID
-loc_B600:
 		move.b  (a0),d1
 		cmpi.b  #$FF,d1
 		beq.w   loc_B6FC
-		lea     ((unk_FFBA1A-$1000000)).w,a1
+		lea     ((byte_FFBA1A-$1000000)).w,a1
 		moveq   #3,d6
 loc_B610:
 		move.b  (a0)+,d1
@@ -6533,7 +6515,7 @@ unk_B6F4:
 loc_B6FC:
 		move.w  d7,-(sp)
 		lea     unk_B6F4(pc), a0
-		lea     ((unk_FFBA46-$1000000)).w,a1
+		lea     ((byte_FFBA46-$1000000)).w,a1
 		moveq   #$FFFFFFD4,d1
 		moveq   #7,d7
 		bsr.w   sub_B054
@@ -6544,7 +6526,7 @@ loc_B710:
 		move.b  (a0),d1
 		cmpi.b  #$FF,d1
 		beq.w   loc_B79C
-		lea     ((unk_FFBA2C-$1000000)).w,a1
+		lea     ((byte_FFBA2C-$1000000)).w,a1
 		moveq   #3,d6
 loc_B72A:
 		move.b  (a0)+,d1
@@ -6598,7 +6580,7 @@ unk_B794:
 loc_B79C:
 		move.w  d7,-(sp)
 		lea     unk_B794(pc), a0
-		lea     ((unk_FFBA58-$1000000)).w,a1
+		lea     ((byte_FFBA58-$1000000)).w,a1
 		moveq   #$FFFFFFD4,d1
 		moveq   #7,d7
 		bsr.w   sub_B054
@@ -6633,7 +6615,7 @@ sub_B7B4:
 ; =============== S U B R O U T I N E =======================================
 
 sub_B7D8:
-		lea     (unk_FF4000).l,a1
+		lea     (byte_FF4000).l,a1
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetForceSpellsFromForceID
 		moveq   #3,d6
@@ -6643,8 +6625,7 @@ loc_B7EA:
 		beq.w   loc_B81E
 		move.l  a0,-(sp)
 		andi.w  #$1F,d1
-		movea.l (p_Icons).l,a0
-loc_B800:
+		movea.l (p_SpellIcons).l,a0
 		move.w  d1,d2
 		add.w   d1,d1
 		add.w   d2,d1
@@ -6664,7 +6645,7 @@ loc_B826:
 		beq.w   loc_B85A
 		move.l  a0,-(sp)
 		andi.w  #$3F,d1 
-		movea.l (off_CC024).l,a0
+		movea.l (p_ItemIcons).l,a0
 		move.w  d1,d2
 		add.w   d1,d1
 		add.w   d2,d1
@@ -6676,8 +6657,8 @@ loc_B826:
 		adda.w  #$C0,a1 
 		dbf     d6,loc_B826
 loc_B85A:
-		lea     (unk_FF4000).l,a0
-		lea     (loc_DA00).l,a1
+		lea     (byte_FF4000).l,a0
+		lea     ($DA00).l,a1
 		move.w  #$300,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -6691,8 +6672,8 @@ loc_B85A:
 
 sub_B87A:
 		clr.b   (FADING_SETTING).l
-		lea     (unk_FF00A0).l,a0
-		lea     (unk_FF0020).l,a1
+		lea     (PALETTE_2_BIS).l,a0
+		lea     (PALETTE_2).l,a1
 		move.l  -$20(a0),(a1)+
 		move.l  -$20(a0),(a0)+
 		move.l  -$20(a0),(a1)+
@@ -6713,7 +6694,7 @@ sub_B87A:
 		jsr     (j_WaitForVInt).l
 		moveq   #1,d0
 		bsr.w   sub_B936
-		move.b  #2,(FADING_SETTING).l
+		move.b  #OUT_TO_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		move.b  #1,(FADING_PALETTE_FLAGS).l
@@ -6725,7 +6706,7 @@ sub_B87A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_B900:
-		move.b  #1,(FADING_SETTING).l
+		move.b  #IN_FROM_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		move.b  #1,(FADING_PALETTE_FLAGS).l
@@ -6757,7 +6738,7 @@ sub_B936:
 		clr.w   d1
 		move.b  ((CURSOR_POSITION-$1000000)).w,d1
 		add.w   d2,d1
-		lea     ((unk_FFA4C0-$1000000)).w,a0
+		lea     ((byte_FFA4C0-$1000000)).w,a0
 		adda.w  d1,a0
 		move.w  ((MAP_WIDTH-$1000000)).w,d2
 		move.b  d0,-1(a0,d2.w)
@@ -6783,7 +6764,7 @@ wl_StatusGold:  incbin "data/graphics/tech/windowlayouts/wl-statusgold.bin"
 sub_BE3A:
 		move.b  #3,((byte_FFB526-$1000000)).w
 		jsr     j_GetForceItemsAddress
-		movea.l (off_CC024).l,a2
+		movea.l (p_ItemIcons).l,a2
 		bra.w   loc_C5F4
 
 	; End of function sub_BE3A
@@ -6799,23 +6780,22 @@ sub_BE50:
 		rts
 loc_BE5E:
 		lsl.w   #2,d0
-		movea.l pt_MenuGraphicsBanks(pc,d0.w),a0
+		movea.l pt_MenuTiles(pc,d0.w),a0
 		movea.l (a0),a0
 		jmp     (j_DecompressGraphics).l
 
 	; End of function sub_BE50
 
-pt_MenuGraphicsBanks:
-		dc.l p_MenuGraphics
-		dc.l off_CC00C
-		dc.l p_MenuGraphics
-		dc.l p_MenuGraphics
-		dc.l off_CC010
-		dc.l off_CC014
-		dc.l p_MenuGraphics
-		dc.l p_MenuGraphics
-		dc.l off_CC018
-		dc.l off_CC01C
+pt_MenuTiles:   dc.l p_MenuTiles_Options
+		dc.l p_MenuTiles_Main
+		dc.l p_MenuTiles_Options
+		dc.l p_MenuTiles_Options
+		dc.l p_MenuTiles_Item
+		dc.l p_MenuTiles_Shop
+		dc.l p_MenuTiles_Options
+		dc.l p_MenuTiles_Options
+		dc.l p_MenuTiles_HQ
+		dc.l p_MenuTiles_Church
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -6825,7 +6805,7 @@ sub_BE94:
 		lea     unk_CC90(pc), a0
 		nop
 		move.w  #$606,d0
-		bclr    #0,((unk_FFB4CA-$1000000)).w
+		bclr    #0,((byte_FFB4CA-$1000000)).w
 		bne.s   loc_BEBA
 		move.l  #$20101910,d1
 		moveq   #3,d2
@@ -6857,7 +6837,7 @@ sub_BEC0:
 
 sub_BEE0:
 		clr.w   d7
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     sub_202BC
 		jsr     sub_202D8
 		tst.w   ((word_FFA8C0-$1000000)).w
@@ -6878,7 +6858,7 @@ loc_BEFE:
 
 sub_BF08:
 		move.b  #3,((byte_FFB4D5-$1000000)).w
-		bra.s   loc_BF14
+		bra.s   sub_BF14
 
 	; End of function sub_BF08
 
@@ -6887,15 +6867,15 @@ sub_BF08:
 
 sub_BF10:
 		clr.b   ((byte_FFB4D5-$1000000)).w
-loc_BF14:
-		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		clr.b   ((byte_FFB529-$1000000)).w
 
 	; End of function sub_BF10
 
 
-; START OF FUNCTION CHUNK FOR sub_BEE0
+; =============== S U B R O U T I N E =======================================
 
+sub_BF14:
+		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		clr.b   ((byte_FFB529-$1000000)).w
 loc_BF1C:
 		btst    #1,((byte_FFB526-$1000000)).w
 		bne.s   loc_BF28
@@ -6903,11 +6883,11 @@ loc_BF1C:
 loc_BF28:
 		bsr.w   sub_C3AA
 		bsr.w   sub_C480
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$1306,d0
-		bclr    #0,((unk_FFB4CA-$1000000)).w
+		bclr    #0,((byte_FFB4CA-$1000000)).w
 		bne.s   loc_BF56
-		tst.b   ((unk_FFB4CC-$1000000)).w
+		tst.b   ((byte_FFB4CC-$1000000)).w
 		beq.s   loc_BF4E
 		move.l  #$19100C15,d1
 		bra.s   loc_BF54
@@ -6924,95 +6904,66 @@ loc_BF5C:
 loc_BF68:
 		moveq   #$F,d6
 loc_BF6A:
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BF8C
 		moveq   #1,d1
 		bsr.w   sub_C262
 		bcs.w   loc_BF8C
 		move.b  #1,((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_BEE0
-
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
-
-; START OF FUNCTION CHUNK FOR sub_BEE0
-
 loc_BF8C:
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BFAC
 		moveq   #2,d1
 		bsr.w   sub_C262
 		bcs.s   loc_BFAC
 		move.b  #2,((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_BEE0
-
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
-
-; START OF FUNCTION CHUNK FOR sub_BEE0
-
 loc_BFAC:
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BFC2
 		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_BEE0
-
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
-
-; START OF FUNCTION CHUNK FOR sub_BEE0
-
 loc_BFC2:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BFE2
 		moveq   #3,d1
 		bsr.w   sub_C262
 		bcs.s   loc_BFE2
 		move.b  #3,((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_BEE0
-
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_C01A
-
-; START OF FUNCTION CHUNK FOR sub_BEE0
-
 loc_BFE2:
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BFF2
 		moveq   #$FFFFFFFF,d0
 		bra.w   loc_C090
 loc_BFF2:
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_C006
 		clr.w   d0
 loc_BFFE:
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
 		bra.w   loc_C050
 loc_C006:
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_C02E
 		clr.w   d0
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
 		bra.w   loc_C050
-
-; END OF FUNCTION CHUNK FOR sub_BEE0
-
-loc_C01A:       bsr.w   sub_C1DA
+loc_C01A:
+		bsr.w   sub_C1DA
 		bsr.w   sub_C3AA
 		bsr.w   sub_C154
 		jsr     (j_WaitForVInt).l
 		moveq   #$13,d6
-
-; START OF FUNCTION CHUNK FOR sub_BEE0
-
 loc_C02E:
 		btst    #1,((byte_FFB526-$1000000)).w
 		beq.s   loc_C042
@@ -7031,14 +6982,11 @@ loc_C050:
 		cmpi.b  #2,((byte_FFB526-$1000000)).w
 		bne.w   loc_C090
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_BEE0
-
 		dc.w SFX_VALIDATION
 		move.w  d0,-(sp)
 		moveq   #$14,d6
 		bsr.w   sub_C1A6
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     j_GetForceSpellsFromForceID
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
@@ -7051,9 +6999,6 @@ loc_C050:
 		move.w  (sp)+,d0
 		cmpi.w  #$FFFF,d1
 		beq.s   loc_C01A
-
-; START OF FUNCTION CHUNK FOR sub_BEE0
-
 loc_C090:
 		movem.w d0-d1,-(sp)
 		move.w  d0,-(sp)
@@ -7064,11 +7009,11 @@ loc_C090:
 		beq.w   loc_C10E
 		cmpi.b  #3,((byte_FFB526-$1000000)).w
 		bne.w   loc_C10E
-		tst.b   ((unk_FFB52A-$1000000)).w
+		tst.b   ((byte_FFB52A-$1000000)).w
 		bne.w   loc_C10E
 		cmpi.w  #$FFFF,d0
 		beq.w   loc_C10E
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     j_GetForceItemsFromForceID
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
@@ -7087,32 +7032,26 @@ loc_C0E8:
 		bra.w   loc_BF68
 loc_C100:
 		bra.s   loc_C10E
-
-; END OF FUNCTION CHUNK FOR sub_BEE0
-
 		clr.w   d0
 		bsr.w   sub_AB9C
 		jsr     (j_WaitForVInt).l
-
-; START OF FUNCTION CHUNK FOR sub_BEE0
-
 loc_C10E:
 		movem.w (sp)+,d0-d1
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		movem.w d0-d1,-(sp)
 		cmpi.b  #$FF,d0
 		beq.s   loc_C128
 		move.l  #$C152015,d1
 		bra.s   loc_C142
 loc_C128:
-		tst.b   ((unk_FFB4CC-$1000000)).w
+		tst.b   ((byte_FFB4CC-$1000000)).w
 		beq.s   loc_C136
 		move.l  #$C151710,d1
 		bra.s   loc_C13C
 loc_C136:
 		move.l  #$C150C1C,d1
 loc_C13C:
-		bset    #0,((unk_FFB4CA-$1000000)).w
+		bset    #0,((byte_FFB4CA-$1000000)).w
 loc_C142:
 		move.w  #$1306,d0
 		move.w  #4,d2
@@ -7120,13 +7059,13 @@ loc_C142:
 		movem.w (sp)+,d0-d1
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_BEE0
+	; End of function sub_BF14
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_C154:
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$1306,d0
 		move.l  #$C15,d1
 		bsr.w   sub_AEA8
@@ -7138,7 +7077,7 @@ sub_C154:
 ; =============== S U B R O U T I N E =======================================
 
 sub_C16A:
-		lea     (unk_FF0C88).l,a1
+		lea     (word_FF0C88).l,a1
 		lea     unk_C7B2(pc), a0
 		nop
 		move.l  (a0)+,(a1)+
@@ -7150,7 +7089,7 @@ sub_C16A:
 		move.w  #1,-$10(a1)
 		move.w  #1,-8(a1)
 loc_C190:
-		btst    #7,(P1_INPUT).l 
+		btst    #INPUT_A_START_BIT,(P1_INPUT).l
 		beq.s   sub_C1A6
 		move.w  #1,-$10(a1)
 		move.w  #1,-8(a1)
@@ -7161,7 +7100,7 @@ loc_C190:
 ; =============== S U B R O U T I N E =======================================
 
 sub_C1A6:
-		lea     (SPRITE_Y).l,a1 
+		lea     (SPRITE_TABLE).l,a1
 		lea     unk_C792(pc), a0
 		nop
 		clr.w   d0
@@ -7173,7 +7112,7 @@ sub_C1A6:
 		bge.s   loc_C1C6
 		moveq   #1,d0
 loc_C1C6:
-		btst    #7,(P1_INPUT).l 
+		btst    #INPUT_A_START_BIT,(P1_INPUT).l
 		beq.s   loc_C1D2
 		moveq   #1,d0
 loc_C1D2:
@@ -7203,13 +7142,13 @@ sub_C1EA:
 		beq.w   locret_C242
 		tst.b   ((byte_FFB53A-$1000000)).w
 		bne.s   locret_C242
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
 loc_C204:
 		btst    #0,((byte_FFB526-$1000000)).w
 		beq.s   loc_C226
-		tst.b   ((unk_FFB52A-$1000000)).w
+		tst.b   ((byte_FFB52A-$1000000)).w
 		beq.w   locret_C242
 		jsr     j_GetForceItemsFromForceID
 loc_C21A:
@@ -7233,7 +7172,7 @@ locret_C242:
 ; =============== S U B R O U T I N E =======================================
 
 sub_C244:
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		tst.b   ((byte_FFB53A-$1000000)).w
 		beq.s   loc_C250
 		rts
@@ -7252,7 +7191,7 @@ loc_C250:
 sub_C262:
 		btst    #1,((byte_FFB526-$1000000)).w
 		beq.w   loc_C298
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		btst    #0,((byte_FFB526-$1000000)).w
 		beq.s   loc_C280
 		jsr     j_GetForceItemsFromForceID
@@ -7281,7 +7220,7 @@ sub_C29C:
 		andi.w  #$3F,d1 
 		jsr     (j_WaitForVInt).l
 loc_C2AC:
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_C2C4
 		subq.w  #1,d5
 		cmpi.w  #$FFFF,d5
@@ -7290,7 +7229,7 @@ loc_C2AC:
 loc_C2C0:
 		bra.w   loc_C308
 loc_C2C4:
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_C2DA
 		addq.w  #1,d5
 		cmp.w   d4,d5
@@ -7299,16 +7238,16 @@ loc_C2C4:
 loc_C2D6:
 		bra.w   loc_C308
 loc_C2DA:
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_C2E8
 		moveq   #$FFFFFFFF,d1
 		rts
 loc_C2E8:
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_C2F6
 		bra.w   loc_C302
 loc_C2F6:
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_C34E
 loc_C302:
 		lsl.w   #6,d5
@@ -7324,7 +7263,7 @@ loc_C308:
 		lea     off_C362(pc), a0
 		nop
 		movea.l (a0,d4.w),a0
-		lea     ((unk_FFB860-$1000000)).w,a1
+		lea     ((byte_FFB860-$1000000)).w,a1
 		moveq   #$C,d7
 		jsr     (j_CopyBytes).l
 		lsl.w   #6,d5
@@ -7386,7 +7325,7 @@ loc_C3C2:
 loc_C3C4:
 		lea     asc_C900(pc), a0
 		adda.w  d0,a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$E4,d7 
 		jsr     (j_CopyBytes).l
 		move.w  (sp)+,d0
@@ -7398,7 +7337,7 @@ loc_C3C4:
 		andi.w  #3,d7
 		add.w   d7,d7
 		move.w  defined_word_C3A2(pc,d7.w),d7
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		adda.w  d7,a1
 		lsl.w   #4,d0
 		clr.w   d1
@@ -7441,12 +7380,12 @@ loc_C45C:
 ; =============== S U B R O U T I N E =======================================
 
 sub_C46A:
-		move.b  ((unk_FFB4C9-$1000000)).w,d1
+		move.b  ((byte_FFB4C9-$1000000)).w,d1
 		move.w  d1,-(sp)
-		move.b  d0,((unk_FFB4C9-$1000000)).w
+		move.b  d0,((byte_FFB4C9-$1000000)).w
 		bsr.w   sub_C480
 		move.w  (sp)+,d1
-		move.b  d1,((unk_FFB4C9-$1000000)).w
+		move.b  d1,((byte_FFB4C9-$1000000)).w
 		rts
 
 	; End of function sub_C46A
@@ -7461,7 +7400,7 @@ sub_C480:
 		bne.w   loc_C5CC
 		cmpi.b  #1,((byte_FFB526-$1000000)).w
 		bne.s   loc_C49E
-		movea.l (off_CC00C).l,a2
+		movea.l (p_MenuTiles_Main).l,a2
 		bra.s   loc_C4A4
 loc_C49E:
 		lea     (FF3000_LOADING_SPACE).l,a2
@@ -7551,7 +7490,7 @@ loc_C5A0:
 		jsr     (j_CopyBytes).l
 		adda.w  #$120,a1
 		lea     (FF0FFE_LOADING_SPACE).l,a0
-		lea     (loc_F800).l,a1
+		lea     ($F800).l,a1
 		move.w  #$400,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -7559,13 +7498,13 @@ loc_C5A0:
 loc_C5CC:
 		btst    #0,d0
 		beq.s   loc_C5E4
-		movea.l (off_CC024).l,a2
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		movea.l (p_ItemIcons).l,a2
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     j_GetForceItemsFromForceID
 		bra.s   loc_C5F4
 loc_C5E4:
-		movea.l (p_Icons).l,a2
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		movea.l (p_SpellIcons).l,a2
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     j_GetForceSpellsFromForceID
 loc_C5F4:
 		movea.l a0,a3
@@ -7621,7 +7560,7 @@ loc_C65A:
 		move.w  #$200,d7
 		jsr     (j_CopyBytes).l
 		lea     (FF0FFE_LOADING_SPACE).l,a0
-		lea     (loc_F800).l,a1
+		lea     ($F800).l,a1
 		move.w  #$300,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -7637,7 +7576,7 @@ sub_C6C6:
 		andi.w  #$3F,d1 
 		cmpi.w  #$3F,d1 
 		bne.s   loc_C6E0
-		movea.l (off_CC024).l,a0
+		movea.l (p_ItemIcons).l,a0
 		adda.w  #$2F40,a0
 		bra.s   locret_C6EC
 loc_C6E0:
@@ -7656,7 +7595,7 @@ locret_C6EC:
 ; START OF FUNCTION CHUNK FOR sub_C3AA
 
 loc_C6EE:
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     j_GetForceSpellsFromForceID
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
@@ -7664,7 +7603,7 @@ loc_C6EE:
 		move.w  d1,-(sp)
 		jsr     j_GetSpellName
 		move.w  d1,d7
-		lea     ((unk_FFB83A-$1000000)).w,a1
+		lea     ((byte_FFB83A-$1000000)).w,a1
 		moveq   #$FFFFFFDA,d1
 		bsr.w   sub_B054
 		move.w  (sp)+,d1
@@ -7676,7 +7615,7 @@ loc_C6EE:
 		add.w   d2,d1
 		lsr.w   #4,d1
 		adda.w  d1,a0
-		lea     ((unk_FFB860-$1000000)).w,a1
+		lea     ((byte_FFB860-$1000000)).w,a1
 		moveq   #$C,d7
 		jsr     (j_CopyBytes).l
 		move.w  (sp)+,d1
@@ -7688,7 +7627,7 @@ loc_C6EE:
 
 sub_C73A:
 		jsr     j_GetMPCost
-		lea     ((unk_FFB88C-$1000000)).w,a1
+		lea     ((byte_FFB88C-$1000000)).w,a1
 		moveq   #3,d7
 		move.w  d2,d0
 		ext.l   d0
@@ -7700,7 +7639,7 @@ sub_C73A:
 ; START OF FUNCTION CHUNK FOR sub_C3AA
 
 loc_C74E:
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     j_GetForceItemsFromForceID
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
@@ -7708,14 +7647,14 @@ loc_C74E:
 		move.w  d1,-(sp)
 		jsr     j_GetItemName
 		move.w  d1,d7
-		lea     ((unk_FFB83A-$1000000)).w,a1
+		lea     ((byte_FFB83A-$1000000)).w,a1
 		moveq   #$FFFFFFDA,d1
 		bsr.w   sub_B054
 		move.w  (sp)+,d1
 		btst    #7,d1
 		beq.s   locret_C790
 		lea     unk_B78C(pc), a0
-		lea     ((unk_FFB886-$1000000)).w,a1
+		lea     ((byte_FFB886-$1000000)).w,a1
 		move.w  #8,d7
 		moveq   #$FFFFFFDA,d1
 		bsr.w   sub_B054
@@ -9368,21 +9307,21 @@ unk_CCD8:       dc.b   0
 sub_CED8:
 		movem.l d0-a1,-(sp)
 		bsr.w   sub_CFA6
-		lea     (unk_FFB7DA).l,a0
-		move.w  ((unk_FFB7D8-$1000000)).w,d0
+		lea     (byte_FFB7DA).l,a0
+		move.w  ((word_FFB7D8-$1000000)).w,d0
 		lsl.w   #7,d0
 		addq.w  #5,d0
 		move.l  #$20010001,d1
-		move.w  ((unk_FFB7D8-$1000000)).w,d3
+		move.w  ((word_FFB7D8-$1000000)).w,d3
 		lsr.w   #1,d3
 		move.w  #$1F,d4
 		sub.w   d3,d4
 		lsl.w   #8,d4
 		or.w    d4,d1
 		move.w  #4,d2
-		tst.b   ((unk_FFB4CB-$1000000)).w
+		tst.b   ((byte_FFB4CB-$1000000)).w
 		beq.s   loc_CF14
-		addi.l  #(AllyBattleSprite14+$16F1),d1
+		addi.l  #$150015,d1
 loc_CF14:
 		bsr.w   sub_AE36        
 		movem.l (sp)+,d0-a1
@@ -9396,12 +9335,12 @@ loc_CF14:
 sub_CF1E:
 		movem.l d0-a1,-(sp)
 		bsr.w   sub_CFA6
-		lea     (unk_FFB7DA).l,a0
-		move.w  ((unk_FFB7D8-$1000000)).w,d0
+		lea     (byte_FFB7DA).l,a0
+		move.w  ((word_FFB7D8-$1000000)).w,d0
 		lsl.w   #7,d0
 		addq.w  #5,d0
 		move.l  #$20010001,d1
-		move.w  ((unk_FFB7D8-$1000000)).w,d3
+		move.w  ((word_FFB7D8-$1000000)).w,d3
 		lsr.w   #1,d3
 		move.w  #$1F,d4
 		sub.w   d3,d4
@@ -9409,7 +9348,7 @@ sub_CF1E:
 		or.w    d4,d1
 		swap    d1
 		move.w  #4,d2
-		tst.b   ((unk_FFB4CB-$1000000)).w
+		tst.b   ((byte_FFB4CB-$1000000)).w
 		beq.s   loc_CF5C
 		addi.l  #$150015,d1
 loc_CF5C:
@@ -9424,12 +9363,12 @@ loc_CF5C:
 
 sub_CF66:
 		bsr.w   loc_CFAC
-		lea     (unk_FFB7DA).l,a0
-		move.w  ((unk_FFB7D8-$1000000)).w,d0
+		lea     (byte_FFB7DA).l,a0
+		move.w  ((word_FFB7D8-$1000000)).w,d0
 		lsl.w   #7,d0
 		addq.w  #5,d0
 		moveq   #1,d1
-		move.w  ((unk_FFB7D8-$1000000)).w,d3
+		move.w  ((word_FFB7D8-$1000000)).w,d3
 		lsr.w   #1,d3
 		moveq   #$1F,d4
 		sub.w   d3,d4
@@ -9444,8 +9383,8 @@ sub_CF66:
 
 sub_CF8C:
 		bsr.w   loc_CFAC
-		lea     (unk_FFB7DA).l,a0
-		move.w  ((unk_FFB7D8-$1000000)).w,d0
+		lea     (byte_FFB7DA).l,a0
+		move.w  ((word_FFB7D8-$1000000)).w,d0
 		lsl.w   #7,d0
 		addq.w  #5,d0
 		move.w  #$114,d1
@@ -9510,13 +9449,13 @@ loc_D026:
 		move.w  d2,d6
 loc_D02E:
 		movem.w (sp)+,d0-d2
-		move.w  d6,((unk_FFB7D8-$1000000)).w
+		move.w  d6,((word_FFB7D8-$1000000)).w
 		lea     unk_D230(pc), a0
-		lea     (unk_FFB7DA).l,a1
+		lea     (byte_FFB7DA).l,a1
 		bsr.w   sub_D1B2
 		bsr.w   sub_D1B2
 		bsr.w   sub_D1B2
-		move.w  ((unk_FFB7D8-$1000000)).w,d7
+		move.w  ((word_FFB7D8-$1000000)).w,d7
 		lsr.w   #1,d7
 		subi.w  #9,d7
 loc_D056:
@@ -9544,10 +9483,10 @@ loc_D09C:
 		jsr     j_GetClassName
 		move.w  d1,d7
 loc_D0AA:
-		lea     (unk_FFB7DA).l,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		lea     (byte_FFB7DA).l,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		addq.l  #2,a1
-		move.w  ((unk_FFB7D8-$1000000)).w,d1
+		move.w  ((word_FFB7D8-$1000000)).w,d1
 		neg.w   d1
 		bsr.w   sub_B054
 		move.w  ((word_FFB7C4-$1000000)).w,d0
@@ -9572,21 +9511,21 @@ loc_D0DE:
 loc_D0FA:
 		moveq   #2,d7
 		subq.l  #2,a1
-		lea     unk_D1B0(pc), a0
+		lea     byte_D1B0(pc), a0
 		bsr.w   sub_B054
 loc_D106:
 		movem.w (sp)+,d0-d3
 		movem.w d0-d3,-(sp)
-		lea     (unk_FFB7DA).l,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		lea     (byte_FFB7DA).l,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		addq.w  #6,a1
 		move.l  a1,-(sp)
 		move.w  d0,d4
 		move.w  d1,d5
 		bsr.w   sub_D1D8
 		movea.l (sp)+,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		tst.w   d3
 		bne.s   loc_D138
 		move.w  #$C083,-2(a1)
@@ -9596,10 +9535,10 @@ loc_D138:
 		bsr.w   sub_D1D8
 		movem.w (sp)+,d0-d3
 		ext.l   d0
-		lea     (unk_FFB7DA).l,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		lea     (byte_FFB7DA).l,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		suba.w  #$C,a1
 		move.l  a1,-(sp)
 		moveq   #2,d7
@@ -9612,7 +9551,7 @@ loc_D138:
 		moveq   #2,d7
 		bsr.w   sub_D19A
 		movea.l (sp)+,a1
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		move.l  a1,-(sp)
 		suba.w  #$C,a1
 		move.w  d2,d0
@@ -9636,16 +9575,16 @@ sub_D19A:
 		cmpi.w  #$64,d0 
 		bge.s   loc_D1A6
 		bra.w   DisplayNumber
-		bra.s   unk_D1AE
+		bra.s   byte_D1AE
 loc_D1A6:
-		lea     unk_D1AE(pc), a0
+		lea     byte_D1AE(pc), a0
 		bra.w   sub_B054
 
 	; End of function sub_D19A
 
-unk_D1AE:       dc.b $3F 
-		dc.b $3F 
-unk_D1B0:       dc.b $20
+byte_D1AE:      dc.b $3F
+		dc.b $3F
+byte_D1B0:      dc.b $20
 		dc.b $20
 
 ; =============== S U B R O U T I N E =======================================
@@ -9653,13 +9592,13 @@ unk_D1B0:       dc.b $20
 sub_D1B2:
 		movem.l a1,-(sp)
 		move.w  (a0)+,(a1)
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		move.w  (a0)+,(a1)
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		move.w  (a0)+,(a1)
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		move.w  (a0)+,(a1)
-		adda.w  ((unk_FFB7D8-$1000000)).w,a1
+		adda.w  ((word_FFB7D8-$1000000)).w,a1
 		move.w  (a0)+,(a1)
 		movem.l (sp)+,a1
 		addq.w  #2,a1
@@ -9978,11 +9917,11 @@ word_D28A:      dc.w $C0ED
 
 sub_D32C:
 		movem.l d0-a1,-(sp)
-		lea     off_D39A(pc), a0
+		lea     pt_MiscMessageWindowLayouts(pc), a0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		move.w  (a0)+,d0
-		lea     (unk_FFB7DA).l,a1
+		lea     (byte_FFB7DA).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
 		move.w  d0,d7
@@ -9992,7 +9931,7 @@ sub_D32C:
 		addi.w  #$10,d7
 		lsl.w   #8,d7
 		movem.w d0/d7,-(sp)
-		lea     (unk_FFB7DA).l,a0
+		lea     (byte_FFB7DA).l,a0
 		move.l  #$200C000C,d1
 		or.w    d7,d1
 		move.w  #8,d2
@@ -10011,39 +9950,49 @@ sub_D32C:
 
 	; End of function sub_D32C
 
-off_D39A:       dc.l wl_MiscMsgNoTarget
-		dc.l wl_MiscMsgNoMagic
-		dc.l wl_MiscMsgNoItem
-		dc.l wl_MiscMsgNotEnoughMP
-		dc.l wl_MiscMsgNoEquippableItem
-		dc.l wl_MiscMsgTheItemLovesYou
-		dc.l wl_MiscMsgTheItemIsCursed
-		dc.l wl_MiscMsgNoKeepTheItem
-		dc.l wl_MiscMsgYouCantUseIt
-wl_MiscMsgNoTarget:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgnotarget.bin"
-wl_MiscMsgNoMagic:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgnomagic.bin"
-wl_MiscMsgNoItem:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgnoitem.bin"
-wl_MiscMsgNotEnoughMP:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgnotenoughmp.bin"
-wl_MiscMsgNoEquippableItem:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgnoequippableitem.bin"
-wl_MiscMsgTheItemLovesYou:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgtheitemlovesyou.bin"
-wl_MiscMsgTheItemIsCursed:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgtheitemiscursed.bin"
-wl_MiscMsgNoKeepTheItem:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgnokeeptheitem.bin"
-wl_MiscMsgYouCantUseIt:
-		incbin "data/graphics/tech/windowlayouts/wl-miscmsgyoucantuseit.bin"
+pt_MiscMessageWindowLayouts:
+		dc.l MiscMessageWindowLayout0
+		dc.l MiscMessageWindowLayout1
+		dc.l MiscMessageWindowLayout2
+		dc.l MiscMessageWindowLayout3
+		dc.l MiscMessageWindowLayout4
+		dc.l MiscMessageWindowLayout5
+		dc.l MiscMessageWindowLayout6
+		dc.l MiscMessageWindowLayout7
+		dc.l MiscMessageWindowLayout8
+MiscMessageWindowLayout0:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout0.bin"
+						; "No target."
+MiscMessageWindowLayout1:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout1.bin"
+						; "No magic."
+MiscMessageWindowLayout2:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout2.bin"
+						; "No item."
+MiscMessageWindowLayout3:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout3.bin"
+						; "Not enough MP."
+MiscMessageWindowLayout4:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout4.bin"
+						; "No equippable item."
+MiscMessageWindowLayout5:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout5.bin"
+						; "The item loves you."
+MiscMessageWindowLayout6:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout6.bin"
+						; "The item is cursed."
+MiscMessageWindowLayout7:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout7.bin"
+						; "No! Keep the item."
+MiscMessageWindowLayout8:
+		incbin "data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout8.bin"
+						; "You can't use it."
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_D75A:
 		bsr.w   sub_DAFC
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$C09,d0
 		move.l  #$112F412,d1
 		move.w  #4,d2
@@ -10063,7 +10012,7 @@ loc_D780:
 		move.w  #$200,d1
 loc_D784:
 		clr.w   d0
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     j_GetEquippedItemFromForceID
 		move.w  d2,((word_FFBC5A-$1000000)).w
 		move.w  d2,((word_FFBC5C-$1000000)).w
@@ -10085,7 +10034,7 @@ loc_D7B8:
 loc_D7BC:
 		bsr.w   sub_DB76
 		clr.w   d0
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 loc_D7C6:
 		cmp.w   (a0),d3
 		beq.s   loc_D7D0
@@ -10098,9 +10047,9 @@ loc_D7D0:
 		move.b  d0,((byte_FFB529-$1000000)).w
 		bsr.w   sub_DAE2
 		bsr.w   sub_DB92
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$1106,d0
-		bclr    #0,((unk_FFB4CA-$1000000)).w
+		bclr    #0,((byte_FFB4CA-$1000000)).w
 		bne.s   loc_D7FC
 		move.l  #$E1B0E15,d1
 		bra.s   loc_D802
@@ -10112,7 +10061,7 @@ loc_D802:
 		tst.w   (word_FFD902).l
 		bne.w   loc_D82E
 		bsr.w   sub_DAFC
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$C09,d0
 		move.l  #$F4120112,d1
 		move.w  #4,d2
@@ -10123,7 +10072,7 @@ loc_D82E:
 		bsr.w   sub_DB76
 		moveq   #$F,d6
 loc_D83C:
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D85C
 		cmpi.w  #2,((word_FFA8C0-$1000000)).w
 		blt.s   loc_D85C
@@ -10132,7 +10081,7 @@ loc_D83C:
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D85C:
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D87C
 		cmpi.w  #3,((word_FFA8C0-$1000000)).w
 		blt.s   loc_D87C
@@ -10141,21 +10090,21 @@ loc_D85C:
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D87C:
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D892
 		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D892:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D8AA
 		move.b  #3,((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_D8FA
 loc_D8AA:
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D8D0
 		move.w  ((word_FFBC58-$1000000)).w,d2
 		bsr.w   loc_DAC0
@@ -10165,13 +10114,13 @@ loc_D8AA:
 		moveq   #$FFFFFFFF,d0
 		bra.w   loc_D9CC
 loc_D8D0:
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_D8E4
 		clr.w   d0
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
 		bra.w   loc_D942
 loc_D8E4:
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_D92E
 		clr.w   d0
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
@@ -10235,7 +10184,7 @@ loc_D9A2:
 		bsr.w   sub_DCFA
 		moveq   #6,d0
 		bsr.w   sub_D32C
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		moveq   #4,d1
 		jsr     j_SetStatusFromForceID
 loc_D9C8:
@@ -10245,7 +10194,7 @@ loc_D9CC:
 		clr.w   d6
 		bsr.w   sub_DA3E
 		bsr.w   sub_DAE2
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		movem.w (sp)+,d0-d1
 		movem.w d0-d1,-(sp)
 		cmpi.b  #$FF,d0
@@ -10254,7 +10203,7 @@ loc_D9CC:
 		bra.s   loc_DA00
 loc_D9F4:
 		move.l  #$E150E1C,d1
-		bset    #0,((unk_FFB4CA-$1000000)).w
+		bset    #0,((byte_FFB4CA-$1000000)).w
 loc_DA00:
 		move.w  #$1106,d0
 		move.w  #4,d2
@@ -10268,7 +10217,7 @@ loc_DA00:
 ; =============== S U B R O U T I N E =======================================
 
 sub_DA12:
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$1106,d0
 		move.l  #$E15,d1
 		bsr.w   sub_AEA8
@@ -10280,7 +10229,7 @@ sub_DA12:
 ; =============== S U B R O U T I N E =======================================
 
 sub_DA28:
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$C09,d0
 		move.l  #$112,d1
 		bsr.w   sub_AEA8
@@ -10292,7 +10241,7 @@ sub_DA28:
 ; =============== S U B R O U T I N E =======================================
 
 sub_DA3E:
-		lea     (SPRITE_Y).l,a1 
+		lea     (SPRITE_TABLE).l,a1
 		lea     (unk_C792).l,a0
 loc_DA4A:
 		clr.w   d0
@@ -10304,7 +10253,7 @@ loc_DA4A:
 		bge.s   loc_DA5E
 		moveq   #1,d0
 loc_DA5E:
-		btst    #7,(P1_INPUT).l 
+		btst    #INPUT_A_START_BIT,(P1_INPUT).l
 		beq.s   loc_DA6A
 		moveq   #1,d0
 loc_DA6A:
@@ -10337,7 +10286,7 @@ sub_DA86:
 		bne.s   locret_DAA8
 		tst.b   ((byte_FFB53A-$1000000)).w
 		bne.s   locret_DAA8
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jsr     sub_202BC
 		moveq   #1,d0
 		bsr.w   sub_AB9C
@@ -10351,14 +10300,14 @@ locret_DAA8:
 ; =============== S U B R O U T I N E =======================================
 
 sub_DAAA:
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 		clr.w   d2
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d2
 		lsl.w   #2,d2
 		move.w  2(a0,d2.w),((word_FFBC5C-$1000000)).w
 		move.w  (a0,d2.w),d2
 loc_DAC0:
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		tst.b   ((byte_FFB526-$1000000)).w
 		bne.s   loc_DAD0
 		move.w  #$100,d1
@@ -10384,7 +10333,7 @@ loc_DAD4:
 sub_DAE2:
 		bsr.w   sub_DB76
 		lea     wl_BattleEquipItemName(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$CC,d7 
 		jsr     (j_CopyBytes).l
 		bra.w   loc_DCA4
@@ -10396,35 +10345,35 @@ sub_DAE2:
 
 sub_DAFC:
 		lea     wl_BattleEquipStats(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$D8,d7 
 		jsr     (j_CopyBytes).l
 		clr.w   d0
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		move.w  d0,((word_FFB7C4-$1000000)).w
 		jsr     j_GetTargetATT
-		lea     ((unk_FFB804-$1000000)).w,a1
+		lea     ((byte_FFB804-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
 		bsr.w   DisplayNumber
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetTargetDEF
-		lea     ((unk_FFB834-$1000000)).w,a1
+		lea     ((byte_FFB834-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
 		bsr.w   DisplayNumber
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetTargetMOVE
-		lea     ((unk_FFB864-$1000000)).w,a1
+		lea     ((byte_FFB864-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
 		bsr.w   DisplayNumber
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     j_GetTargetAGI
-		lea     ((unk_FFB894-$1000000)).w,a1
+		lea     ((byte_FFB894-$1000000)).w,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
@@ -10445,7 +10394,7 @@ loc_DB82:
 		move.w  #$200,d1
 loc_DB86:
 		clr.w   d0
-		move.b  ((unk_FFB4C9-$1000000)).w,d0
+		move.b  ((byte_FFB4C9-$1000000)).w,d0
 		jmp     j_LoadEquippableItemsFromForceID
 
 	; End of function sub_DB76
@@ -10457,7 +10406,7 @@ sub_DB92:
 		bsr.s   sub_DB76
 		move.w  ((word_FFA8C0-$1000000)).w,d7
 		subq.w  #1,d7
-		lea     ((unk_FFA8C2-$1000000)).w,a3
+		lea     ((byte_FFA8C2-$1000000)).w,a3
 		clr.w   d1
 		bsr.w   sub_DC6E
 		lea     (FF3000_LOADING_SPACE).l,a1
@@ -10509,7 +10458,7 @@ loc_DC02:
 		move.w  #$200,d7
 		jsr     (j_CopyBytes).l
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (loc_F800).l,a1
+		lea     ($F800).l,a1
 		move.w  #$400,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -10521,7 +10470,7 @@ loc_DC02:
 ; =============== S U B R O U T I N E =======================================
 
 sub_DC6E:
-		movea.l (off_CC024).l,a0
+		movea.l (p_ItemIcons).l,a0
 		cmp.w   ((word_FFA8C0-$1000000)).w,d1
 		blt.s   loc_DC8E
 		adda.l  #$2F40,a0
@@ -10549,7 +10498,7 @@ locret_DCA2:
 
 loc_DCA4:
 		lea     aWeaponring_0(pc), a0
-		lea     ((unk_FFB82E-$1000000)).w,a1
+		lea     ((byte_FFB82E-$1000000)).w,a1
 		btst    #0,((byte_FFB526-$1000000)).w
 		beq.s   loc_DCB6
 		addq.w  #6,a0
@@ -10568,13 +10517,13 @@ loc_DCB6:
 		moveq   #6,d7
 		bra.s   loc_DCF0
 loc_DCDE:
-		lea     ((unk_FFA8C2-$1000000)).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 		lsl.w   #2,d1
 		move.w  2(a0,d1.w),d1
 		jsr     j_GetItemName
 		move.w  d1,d7
 loc_DCF0:
-		lea     ((unk_FFB850-$1000000)).w,a1
+		lea     ((byte_FFB850-$1000000)).w,a1
 		moveq   #$FFFFFFDE,d1
 		bra.w   sub_B054
 
@@ -10610,7 +10559,7 @@ wl_BattleEquipItemName:
 sub_DEC0:
 		movem.l d0-a1,-(sp)
 		bsr.w   sub_DF30
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$806,d0
 		move.l  #$F8010101,d1
 		move.w  #4,d2
@@ -10626,7 +10575,7 @@ sub_DEC0:
 sub_DEE4:
 		movem.l d0-a1,-(sp)
 		bsr.w   sub_DF30
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$806,d0
 		move.l  #$101F801,d1
 		move.w  #4,d2
@@ -10642,7 +10591,7 @@ sub_DEE4:
 sub_DF08:
 		movem.l d0-a1,-(sp)
 		bsr.w   sub_DF30
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$806,d0
 		move.l  #$101,d1
 		move.w  #8,d2
@@ -10658,19 +10607,19 @@ sub_DF08:
 
 sub_DF30:
 		lea     wl_LandEffect(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$60,d7 
 		jsr     (j_CopyBytes).l
 		clr.w   d0
 		clr.w   d1
 		clr.w   d2
-		move.b  ((unk_FFB4C5-$1000000)).w,d0
+		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.b  ((CURSOR_POSITION-$1000000)).w,d2
 		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
 		jsr     j_GetLandEffectAtCoord
 		move.w  d1,-(sp)
 		lea     unk_DF7E(pc), a0
-		lea     ((unk_FFB7EC-$1000000)).w,a1
+		lea     ((byte_FFB7EC-$1000000)).w,a1
 		moveq   #$FFFFFFF0,d1
 		clr.w   d7
 		move.b  (a0)+,d7
@@ -10678,7 +10627,7 @@ sub_DF30:
 		move.w  (sp)+,d0
 		ext.l   d0
 		moveq   #2,d7
-		lea     ((unk_FFB822-$1000000)).w,a1
+		lea     ((byte_FFB822-$1000000)).w,a1
 		bsr.w   DisplayNumber
 		rts
 
@@ -10704,8 +10653,8 @@ loc_E000:
 loc_E002:
 		moveq   #1,d1
 loc_E004:
-		lea     ((unk_FFB54E-$1000000)).w,a2
-		move.w  ((unk_FFB54C-$1000000)).w,d7
+		lea     ((byte_FFB54E-$1000000)).w,a2
+		move.w  ((word_FFB54C-$1000000)).w,d7
 		bsr.w   sub_E0B4
 		move.w  (sp)+,d0
 		btst    #1,d0
@@ -10715,8 +10664,8 @@ loc_E004:
 loc_E01C:
 		moveq   #1,d1
 loc_E01E:
-		lea     ((unk_FFB56E-$1000000)).w,a2
-		move.w  ((unk_FFB56C-$1000000)).w,d7
+		lea     ((byte_FFB56E-$1000000)).w,a2
+		move.w  ((word_FFB56C-$1000000)).w,d7
 		bsr.w   sub_E0B4
 		rts
 
@@ -10728,28 +10677,27 @@ loc_E01E:
 sub_E02C:
 		tst.b   ((byte_FFB5AC-$1000000)).w
 		beq.w   locret_E0B2
-		lea     ((unk_FFB56A-$1000000)).w,a0
+		lea     ((word_FFB56A-$1000000)).w,a0
 		subq.w  #1,(a0)
 		cmpi.w  #3,(a0)
 		bne.s   loc_E04E
-loc_E040:
 		moveq   #1,d1
-		lea     ((unk_FFB54E-$1000000)).w,a2
-		move.w  ((unk_FFB54C-$1000000)).w,d7
+		lea     ((byte_FFB54E-$1000000)).w,a2
+		move.w  ((word_FFB54C-$1000000)).w,d7
 		bsr.w   sub_E0B4
 loc_E04E:
 		tst.w   (a0)
 		bne.s   loc_E06E
 		clr.w   d1
-		lea     ((unk_FFB54E-$1000000)).w,a2
-		move.w  ((unk_FFB54C-$1000000)).w,d7
+		lea     ((byte_FFB54E-$1000000)).w,a2
+		move.w  ((word_FFB54C-$1000000)).w,d7
 		bsr.w   sub_E0B4
 		moveq   #$78,d6 
 		jsr     (j_UpdateRandomSeed).l
 		addi.w  #$1E,d7
 		move.w  d7,(a0)
 loc_E06E:
-		lea     ((unk_FFB58A-$1000000)).w,a0
+		lea     ((word_FFB58A-$1000000)).w,a0
 		tst.b   ((CURRENTLY_TYPEWRITING-$1000000)).w
 		bne.s   loc_E07C
 		clr.w   (a0)
@@ -10759,16 +10707,16 @@ loc_E07C:
 		cmpi.w  #5,(a0)
 		bne.s   loc_E092
 		moveq   #1,d1
-		lea     ((unk_FFB56E-$1000000)).w,a2
-		move.w  ((unk_FFB56C-$1000000)).w,d7
+		lea     ((byte_FFB56E-$1000000)).w,a2
+		move.w  ((word_FFB56C-$1000000)).w,d7
 		bsr.w   sub_E0B4
 loc_E092:
 		tst.w   (a0)
 		bne.s   locret_E0B2
 loc_E096:
 		clr.w   d1
-		lea     ((unk_FFB56E-$1000000)).w,a2
-		move.w  ((unk_FFB56C-$1000000)).w,d7
+		lea     ((byte_FFB56E-$1000000)).w,a2
+		move.w  ((word_FFB56C-$1000000)).w,d7
 		bsr.w   sub_E0B4
 		moveq   #5,d6
 		jsr     (j_UpdateRandomSeed).l
@@ -10802,13 +10750,13 @@ loc_E0BA:
 		add.w   d0,d0
 		move.w  unk_E0F6(pc,d0.w),d0
 loc_E0D8:
-		or.w    ((unk_FFB5AE-$1000000)).w,d0
-		add.w   ((unk_FFB548-$1000000)).w,d5
-		add.w   ((unk_FFB54A-$1000000)).w,d6
+		or.w    ((word_FFB5AE-$1000000)).w,d0
+		add.w   ((word_FFB548-$1000000)).w,d5
+		add.w   ((word_FFB54A-$1000000)).w,d6
 		jsr     (sub_248).l
 		move.w  (sp)+,d7
 		dbf     d7,loc_E0BA
-		jmp     (loc_258).l
+		jmp     (j_SetVIntParam0).l
 
 	; End of function sub_E0B4
 
@@ -10916,24 +10864,24 @@ sub_E156:
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		move.w  (a0)+,d0
-		move.w  d0,((unk_FFB54C-$1000000)).w
+		move.w  d0,((word_FFB54C-$1000000)).w
 		beq.s   loc_E176
 		subq.w  #1,d0
-		lea     ((unk_FFB54E-$1000000)).w,a1
+		lea     ((byte_FFB54E-$1000000)).w,a1
 loc_E170:
 		move.l  (a0)+,(a1)+
 		dbf     d0,loc_E170
 loc_E176:
 		move.w  (a0)+,d0
-		move.w  d0,((unk_FFB56C-$1000000)).w
+		move.w  d0,((word_FFB56C-$1000000)).w
 		beq.s   loc_E18A
 		subq.w  #1,d0
-		lea     ((unk_FFB56E-$1000000)).w,a1
+		lea     ((byte_FFB56E-$1000000)).w,a1
 loc_E184:
 		move.l  (a0)+,(a1)+
 		dbf     d0,loc_E184
 loc_E18A:
-		lea     ((unk_FFB58C-$1000000)).w,a1
+		lea     ((byte_FFB58C-$1000000)).w,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -10942,7 +10890,7 @@ loc_E18A:
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
-		lea     (loc_B800).l,a1
+		lea     ($B800).l,a1
 		move.w  #$380,d0
 		jsr     (sub_298).l
 		jmp     (j_SetVIntParam3).l
@@ -10953,19 +10901,18 @@ loc_E18A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_E1B4:
-		move.w  #$85C0,((unk_FFB5AE-$1000000)).w
-		move.w  #2,((unk_FFB548-$1000000)).w
-loc_E1C0:
-		move.w  #2,((unk_FFB54A-$1000000)).w
-		move.w  #$14,((unk_FFB56A-$1000000)).w
-		move.w  #$14,((unk_FFB58A-$1000000)).w
+		move.w  #$85C0,((word_FFB5AE-$1000000)).w
+		move.w  #2,((word_FFB548-$1000000)).w
+		move.w  #2,((word_FFB54A-$1000000)).w
+		move.w  #$14,((word_FFB56A-$1000000)).w
+		move.w  #$14,((word_FFB58A-$1000000)).w
 		movem.l d7-a1,-(sp)
-		lea     wl_E3C2(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_Portrait2(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$A0,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$80A,d0
 		move.l  #$1F60101,d1
 		move.w  #4,d2
@@ -10982,25 +10929,25 @@ sub_E20A:
 		move.w  d0,-(sp)
 		bsr.w   sub_E156
 		jsr     (j_WaitForVInt).l
-		lea     ((unk_FFB58C-$1000000)).w,a0
-		lea     (unk_FF0020).l,a1
+		lea     ((byte_FFB58C-$1000000)).w,a0
+		lea     (PALETTE_2).l,a1
 		moveq   #7,d7
 loc_E222:
 		move.l  (a0)+,(a1)+
 		dbf     d7,loc_E222
 		jsr     (j_StoreVDPCommandster).l
-		move.w  #$A5C0,((unk_FFB5AE-$1000000)).w
-		move.w  #2,((unk_FFB548-$1000000)).w
-		move.w  #2,((unk_FFB54A-$1000000)).w
-		move.w  #$14,((unk_FFB56A-$1000000)).w
-		move.w  #$14,((unk_FFB58A-$1000000)).w
+		move.w  #$A5C0,((word_FFB5AE-$1000000)).w
+		move.w  #2,((word_FFB548-$1000000)).w
+		move.w  #2,((word_FFB54A-$1000000)).w
+		move.w  #$14,((word_FFB56A-$1000000)).w
+		move.w  #$14,((word_FFB58A-$1000000)).w
 		movem.l d7-a1,-(sp)
-		lea     wl_E322(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_Portrait1(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$A0,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$80A,d0
 		move.l  #$1F60101,d1
 		move.w  #4,d2
@@ -11018,12 +10965,12 @@ sub_E286:
 		movem.w d0,-(sp)
 		clr.b   ((byte_FFB5AC-$1000000)).w
 		movem.l d7-a1,-(sp)
-		lea     wl_E322(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_Portrait1(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$A0,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$80A,d0
 		move.l  #$10101F6,d1
 		move.w  #4,d2
@@ -11064,45 +11011,45 @@ sub_E2D6:
 
 sub_E2E8:
 		movem.l d7-a1,-(sp)
-		lea     wl_E462(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_SpeakerName(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$3C,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		jsr     j_GetForceStatsAddress
 		move.w  d1,d7
-		lea     ((unk_FFB7F0-$1000000)).w,a1
+		lea     ((byte_FFB7F0-$1000000)).w,a1
 		moveq   #$FFFFFFF0,d1
 		bsr.w   sub_B054
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$A03,d0
 		move.w  #4,d2
 		rts
 
 	; End of function sub_E2E8
 
-wl_E322:        incbin "data/graphics/tech/windowlayouts/wl-e322.bin"
-wl_E3C2:        incbin "data/graphics/tech/windowlayouts/wl-e3c2.bin"
-wl_E462:        incbin "data/graphics/tech/windowlayouts/wl-e462.bin"
+wl_Portrait1:   incbin "data/graphics/tech/windowlayouts/wl-portrait1.bin"
+wl_Portrait2:   incbin "data/graphics/tech/windowlayouts/wl-portrait2.bin"
+wl_SpeakerName: incbin "data/graphics/tech/windowlayouts/wl-speakername.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_E49E:
-		clr.w   ((unk_FFA940-$1000000)).w
-		clr.w   ((unk_FFA942-$1000000)).w
+		clr.w   ((word_FFA940-$1000000)).w
+		clr.w   ((word_FFA942-$1000000)).w
 		movem.l d7-a1,-(sp)
-		lea     wl_F1CA(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_ShopInventory(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$144,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		bsr.w   sub_E71A
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$1B06,d0
 		move.l  #$2F70201,d1
 		move.w  #4,d2
 		bsr.w   sub_AE36        
-		lea     unk_F344(pc), a0
+		lea     ShopIconHighlightTiles(pc), a0
 		lea     ($FE00).l,a1
 		move.w  #$100,d0
 		jsr     (sub_298).l
@@ -11110,10 +11057,10 @@ sub_E49E:
 		moveq   #$14,d1
 		bsr.w   sub_EA04
 loc_E4FA:
-		move.w  ((unk_FFA942-$1000000)).w,d0
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		move.w  ((word_FFA942-$1000000)).w,d0
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_E546
-		move.w  ((unk_FFA940-$1000000)).w,d2
+		move.w  ((word_FFA940-$1000000)).w,d2
 		mulu.w  #6,d2
 		add.w   d0,d2
 		addq.w  #1,d2
@@ -11122,22 +11069,22 @@ loc_E4FA:
 		addq.w  #1,d0
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
-		cmp.w   ((unk_FFA944-$1000000)).w,d0
+		cmp.w   ((word_FFA944-$1000000)).w,d0
 		blt.s   loc_E53A
-		addq.w  #1,((unk_FFA940-$1000000)).w
-		clr.w   ((unk_FFA942-$1000000)).w
-		clr.b   ((unk_FFB4D8-$1000000)).w
+		addq.w  #1,((word_FFA940-$1000000)).w
+		clr.w   ((word_FFA942-$1000000)).w
+		clr.b   ((byte_FFB4D8-$1000000)).w
 		bsr.w   sub_E992
 		bra.w   loc_E62C
 loc_E53A:
-		move.w  d0,((unk_FFA942-$1000000)).w
+		move.w  d0,((word_FFA942-$1000000)).w
 		bsr.w   sub_E9F0
 		bra.w   loc_E62C
 loc_E546:
-		move.w  ((unk_FFA942-$1000000)).w,d0
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		move.w  ((word_FFA942-$1000000)).w,d0
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_E58C
-		move.w  ((unk_FFA940-$1000000)).w,d2
+		move.w  ((word_FFA940-$1000000)).w,d2
 		mulu.w  #6,d2
 		add.w   d0,d2
 		ble.s   loc_E58C
@@ -11145,38 +11092,38 @@ loc_E546:
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
 		bge.s   loc_E580
-		subq.w  #1,((unk_FFA940-$1000000)).w
-		move.w  #5,((unk_FFA942-$1000000)).w
-		move.b  #1,((unk_FFB4D8-$1000000)).w
+		subq.w  #1,((word_FFA940-$1000000)).w
+		move.w  #5,((word_FFA942-$1000000)).w
+		move.b  #1,((byte_FFB4D8-$1000000)).w
 		bsr.w   sub_E992
 		bra.w   loc_E62C
 loc_E580:
-		move.w  d0,((unk_FFA942-$1000000)).w
+		move.w  d0,((word_FFA942-$1000000)).w
 		bsr.w   sub_E9F0
 		bra.w   loc_E62C
 loc_E58C:
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_E5AE
-		tst.w   ((unk_FFA940-$1000000)).w
+		tst.w   ((word_FFA940-$1000000)).w
 		beq.s   loc_E5AE
-		subq.w  #1,((unk_FFA940-$1000000)).w
+		subq.w  #1,((word_FFA940-$1000000)).w
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
-		move.b  #1,((unk_FFB4D8-$1000000)).w
+		move.b  #1,((byte_FFB4D8-$1000000)).w
 		bsr.w   sub_E992
 loc_E5AE:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_E608
-		move.w  ((unk_FFA940-$1000000)).w,d2
+		move.w  ((word_FFA940-$1000000)).w,d2
 		addq.w  #1,d2
 		mulu.w  #6,d2
 		cmp.w   ((word_FFA93E-$1000000)).w,d2
 		bge.s   loc_E608
-		addq.w  #1,((unk_FFA940-$1000000)).w
+		addq.w  #1,((word_FFA940-$1000000)).w
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
-		move.w  ((unk_FFA942-$1000000)).w,d0
-		move.w  ((unk_FFA940-$1000000)).w,d2
+		move.w  ((word_FFA942-$1000000)).w,d0
+		move.w  ((word_FFA940-$1000000)).w,d2
 		move.w  d2,d1
 		add.w   d2,d2
 		add.w   d1,d2
@@ -11187,22 +11134,22 @@ loc_E5AE:
 		ble.s   loc_E5EE
 		moveq   #6,d1
 loc_E5EE:
-		move.w  d1,((unk_FFA944-$1000000)).w
+		move.w  d1,((word_FFA944-$1000000)).w
 loc_E5F2:
 		cmp.w   d1,d0
 		blt.w   loc_E5FC
 		subq.w  #1,d0
 		bne.s   loc_E5F2
 loc_E5FC:
-		move.w  d0,((unk_FFA942-$1000000)).w
-		clr.b   ((unk_FFB4D8-$1000000)).w
+		move.w  d0,((word_FFA942-$1000000)).w
+		clr.b   ((byte_FFB4D8-$1000000)).w
 		bsr.w   sub_E992
 loc_E608:
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_E63A
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_E640
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_E640
 loc_E62C:
 		bsr.w   sub_E67A
@@ -11212,9 +11159,9 @@ loc_E63A:
 		moveq   #$FFFFFFFF,d0
 		bra.w   loc_E656
 loc_E640:
-		move.w  ((unk_FFA940-$1000000)).w,d0
+		move.w  ((word_FFA940-$1000000)).w,d0
 		mulu.w  #6,d0
-		add.w   ((unk_FFA942-$1000000)).w,d0
+		add.w   ((word_FFA942-$1000000)).w,d0
 		lea     ((word_FFA8C0-$1000000)).w,a0
 		add.w   d0,d0
 		move.w  (a0,d0.w),d0
@@ -11223,7 +11170,7 @@ loc_E656:
 		clr.w   d1
 		bsr.s   sub_E67A
 		bsr.w   sub_AF84
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$1B06,d0
 		move.l  #$20102F7,d1
 		move.w  #4,d2
@@ -11237,14 +11184,14 @@ loc_E656:
 ; =============== S U B R O U T I N E =======================================
 
 sub_E67A:
-		lea     (unk_FF0D18).l,a0
+		lea     (word_FF0D18).l,a0
 		cmpi.w  #7,d1
 		bge.s   loc_E692
 		move.w  #1,(a0)
 		move.w  #1,6(a0)
 		bra.s   loc_E6A4
 loc_E692:
-		move.w  ((unk_FFA942-$1000000)).w,d0
+		move.w  ((word_FFA942-$1000000)).w,d0
 		lsl.w   #5,d0
 		addi.w  #$9C,d0 
 		move.w  d0,6(a0)
@@ -11255,7 +11202,7 @@ loc_E6A4:
 		addq.l  #8,a0
 		move.w  #1,(a0)
 		move.w  #1,6(a0)
-		tst.w   ((unk_FFA940-$1000000)).w
+		tst.w   ((word_FFA940-$1000000)).w
 		beq.s   loc_E6DC
 		cmpi.w  #7,d1
 		blt.s   loc_E6DC
@@ -11267,7 +11214,7 @@ loc_E6DC:
 		addq.l  #8,a0
 		move.w  #1,(a0)
 		move.w  #1,6(a0)
-		move.w  ((unk_FFA940-$1000000)).w,d0
+		move.w  ((word_FFA940-$1000000)).w,d0
 		addq.w  #1,d0
 		mulu.w  #6,d0
 		cmp.w   ((word_FFA93E-$1000000)).w,d0
@@ -11291,13 +11238,13 @@ locret_E718:
 ; =============== S U B R O U T I N E =======================================
 
 sub_E71A:
-		lea     (unk_FF113E).l,a0
+		lea     (byte_FF113E).l,a0
 		move.w  #$63F,d7
 loc_E724:
 		move.l  #$DDDDDDDD,(a0)+
 		dbf     d7,loc_E724
 		lea     ((word_FFA8C0-$1000000)).w,a1
-		move.w  ((unk_FFA940-$1000000)).w,d0
+		move.w  ((word_FFA940-$1000000)).w,d0
 		move.w  d0,d1
 		add.w   d0,d0
 		add.w   d1,d0
@@ -11310,11 +11257,11 @@ loc_E724:
 		ble.s   loc_E750
 		moveq   #6,d1
 loc_E750:
-		move.w  d1,((unk_FFA944-$1000000)).w
+		move.w  d1,((word_FFA944-$1000000)).w
 		move.w  d1,d7
 		subq.w  #1,d7
 		lea     (FF0FFE_LOADING_SPACE).l,a0
-		lea     ((unk_FFB816-$1000000)).w,a2
+		lea     ((byte_FFB816-$1000000)).w,a2
 loc_E762:
 		move.w  (a1)+,d0
 		move.w  d7,-(sp)
@@ -11327,7 +11274,7 @@ loc_E762:
 		move.w  (sp)+,d7
 		dbf     d7,loc_E762
 		lea     (FF0FFE_LOADING_SPACE).l,a0
-		lea     (loc_B800).l,a1
+		lea     ($B800).l,a1
 		move.w  #$3C0,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -11351,7 +11298,7 @@ loc_E7B4:
 		movea.l (sp)+,a0
 		adda.w  #$14,a0
 		jsr     (j_WriteAsciiNumber).l
-		lea     (unk_FF0E85).l,a2
+		lea     (byte_FF0E85).l,a2
 		moveq   #4,d7
 loc_E7CE:
 		clr.w   d0
@@ -11384,7 +11331,7 @@ loc_E7F6:
 sub_E802:
 		move.l  a1,-(sp)
 		move.w  d0,-(sp)
-		movea.l (off_CC024).l,a1
+		movea.l (p_ItemIcons).l,a1
 		move.w  d0,d1
 		add.w   d0,d0
 		add.w   d1,d0
@@ -11408,12 +11355,12 @@ loc_E818:
 ; =============== S U B R O U T I N E =======================================
 
 sub_E83C:
-		move.w  ((unk_FFA940-$1000000)).w,d0
+		move.w  ((word_FFA940-$1000000)).w,d0
 		move.w  d0,d1
 		add.w   d0,d0
 		add.w   d1,d0
 		add.w   d0,d0
-		move.w  ((unk_FFA942-$1000000)).w,d1
+		move.w  ((word_FFA942-$1000000)).w,d1
 		add.w   d1,d0
 		add.w   d0,d0
 		lea     ((word_FFA8C0-$1000000)).w,a0
@@ -11428,27 +11375,27 @@ sub_E83C:
 sub_E85A:
 		bsr.w   *+4
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFBA0C-$1000000)).w,a0
-		lea     ((unk_FFB9A0-$1000000)).w,a1
+		lea     ((byte_FFBA0C-$1000000)).w,a0
+		lea     ((byte_FFB9A0-$1000000)).w,a1
 		move.w  #$6C,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		movem.l d7-a1,-(sp)
 		lea     wl_F30E(pc), a0
-		lea     ((unk_FFBA0C-$1000000)).w,a1
+		lea     ((byte_FFBA0C-$1000000)).w,a1
 		move.w  #$36,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		movem.l d7-a1,-(sp)
 		lea     wl_F30E(pc), a0
-		lea     ((unk_FFBA42-$1000000)).w,a1
+		lea     ((byte_FFBA42-$1000000)).w,a1
 		move.w  #$36,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 loc_E8AC:
 		move.w  #$1B06,d0
 		move.w  #$201,d1
-		lea     ((unk_FFB96A-$1000000)).w,a0
+		lea     ((byte_FFB96A-$1000000)).w,a0
 		bsr.w   sub_AEA8
 		bsr.w   sub_AF66
 		jmp     (j_SetVIntParam3AndWait).l
@@ -11460,15 +11407,15 @@ loc_E8AC:
 
 sub_E8C6:
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB810-$1000000)).w,a0
-		lea     ((unk_FFBA0C-$1000000)).w,a1
+		lea     ((byte_FFB810-$1000000)).w,a0
+		lea     ((byte_FFBA0C-$1000000)).w,a1
 		move.w  #$6C,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		bsr.w   sub_E8FE
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB810-$1000000)).w,a0
-		lea     ((unk_FFB9A0-$1000000)).w,a1
+		lea     ((byte_FFB810-$1000000)).w,a0
+		lea     ((byte_FFB9A0-$1000000)).w,a1
 		move.w  #$D8,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -11489,20 +11436,20 @@ sub_E8FE:
 sub_E900:
 		bsr.w   *+4
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB9A0-$1000000)).w,a0
-		lea     ((unk_FFBA0C-$1000000)).w,a1
+		lea     ((byte_FFB9A0-$1000000)).w,a0
+		lea     ((byte_FFBA0C-$1000000)).w,a1
 		move.w  #$6C,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		movem.l d7-a1,-(sp)
 		lea     wl_F30E(pc), a0
-		lea     ((unk_FFB9A0-$1000000)).w,a1
+		lea     ((byte_FFB9A0-$1000000)).w,a1
 		move.w  #$36,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		movem.l d7-a1,-(sp)
 		lea     wl_F30E(pc), a0
-		lea     ((unk_FFB9D6-$1000000)).w,a1
+		lea     ((byte_FFB9D6-$1000000)).w,a1
 		move.w  #$36,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -11515,16 +11462,15 @@ sub_E900:
 
 sub_E956:
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB87C-$1000000)).w,a0
-		lea     ((unk_FFB9A0-$1000000)).w,a1
+		lea     ((byte_FFB87C-$1000000)).w,a0
+		lea     ((byte_FFB9A0-$1000000)).w,a1
 		move.w  #$6C,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		bsr.w   sub_E98E
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB810-$1000000)).w,a0
-		lea     ((unk_FFB9A0-$1000000)).w,a1
-loc_E980:
+		lea     ((byte_FFB810-$1000000)).w,a0
+		lea     ((byte_FFB9A0-$1000000)).w,a1
 		move.w  #$D8,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -11545,12 +11491,12 @@ sub_E98E:
 sub_E992:
 		bsr.w   sub_AF84
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB7DA-$1000000)).w,a0
-		lea     ((unk_FFB96A-$1000000)).w,a1
+		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB96A-$1000000)).w,a1
 		move.w  #$144,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		tst.b   ((unk_FFB4D8-$1000000)).w
+		tst.b   ((byte_FFB4D8-$1000000)).w
 		bne.s   loc_E9BC
 		bsr.w   sub_E85A
 		bra.s   loc_E9C0
@@ -11558,13 +11504,13 @@ loc_E9BC:
 		bsr.w   sub_E900
 loc_E9C0:
 		movem.l d7-a1,-(sp)
-		lea     wl_F1CA(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_ShopInventory(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$144,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		bsr.w   sub_E71A
-		tst.b   ((unk_FFB4D8-$1000000)).w
+		tst.b   ((byte_FFB4D8-$1000000)).w
 		bne.s   loc_E9EA
 		bsr.w   sub_E8C6
 		bra.s   loc_E9EE
@@ -11592,8 +11538,8 @@ sub_E9F0:
 
 sub_EA04:
 		movem.l d7-a1,-(sp)
-		lea     wl_F364(pc), a0
-		lea     ((unk_FFB96A-$1000000)).w,a1
+		lea     wl_ShopItemNameAndPrice(pc), a0
+		lea     ((byte_FFB96A-$1000000)).w,a1
 		move.w  #$64,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -11602,19 +11548,18 @@ sub_EA04:
 		move.w  d1,-(sp)
 		jsr     j_GetItemName
 		move.w  d1,d7
-		lea     ((unk_FFB980-$1000000)).w,a1
+		lea     ((byte_FFB980-$1000000)).w,a1
 		moveq   #$FFFFFFEC,d1
 		bsr.w   sub_B054
 		move.w  (sp)+,d1
 		jsr     j_GetItemPrice
-loc_EA40:
 		move.l  d2,d0
-		lea     ((unk_FFB9AE-$1000000)).w,a1
+		lea     ((byte_FFB9AE-$1000000)).w,a1
 		moveq   #5,d7
 		bsr.w   DisplayNumber
-		lea     ((unk_FFB96A-$1000000)).w,a0
+		lea     ((byte_FFB96A-$1000000)).w,a0
 		move.w  #$A05,d0
-		move.w  ((unk_FFA942-$1000000)).w,d1
+		move.w  ((word_FFA942-$1000000)).w,d1
 		ror.w   #6,d1
 		ori.w   #$106,d1
 		bsr.w   sub_AEA8
@@ -11669,7 +11614,7 @@ sub_EAA2:
 		bsr.w   sub_AE36        
 		moveq   #$14,d6
 loc_EAC4:
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EAE4
 		cmpi.b  #$FF,1(a2)
 		beq.s   loc_EAE4
@@ -11678,7 +11623,7 @@ loc_EAC4:
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EAE4:
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EB04
 		cmpi.b  #$FF,2(a2)
 		beq.s   loc_EB04
@@ -11687,14 +11632,14 @@ loc_EAE4:
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EB04:
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EB1A
 		clr.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EB1A:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EB3A
 		cmpi.b  #$FF,3(a2)
 		beq.s   loc_EB3A
@@ -11703,16 +11648,16 @@ loc_EB1A:
 		dc.w SFX_MENU_SELECTION
 		bra.w   loc_EB6A
 loc_EB3A:
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EB4E
 		move.b  #$FF,((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		bra.w   loc_EB94
 loc_EB4E:
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EB5C
 		bra.w   loc_EB94
 loc_EB5C:
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_EB80
 		bra.w   loc_EB94
 loc_EB6A:
@@ -11733,7 +11678,7 @@ loc_EB90:
 loc_EB94:
 		clr.w   d6
 		bsr.w   sub_EBB2
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$A04,d0
 		move.l  #$90E200E,d1
 		move.w  #6,d2
@@ -11746,7 +11691,7 @@ loc_EB94:
 ; =============== S U B R O U T I N E =======================================
 
 sub_EBB2:
-		lea     (SPRITE_Y).l,a1 
+		lea     (SPRITE_TABLE).l,a1
 		lea     unk_EBC0(pc), a0
 		bra.w   loc_DA4A
 
@@ -11789,8 +11734,8 @@ unk_EBC0:       dc.b   0
 
 sub_EBE0:
 		movem.l d7-a1,-(sp)
-		lea     wl_F48E(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_ItemMenuItemName(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		move.w  #$50,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -11801,10 +11746,10 @@ sub_EBE0:
 		andi.w  #$3F,d1 
 		jsr     j_GetItemName
 		move.w  d1,d7
-		lea     ((unk_FFB7F0-$1000000)).w,a1
+		lea     ((byte_FFB7F0-$1000000)).w,a1
 		moveq   #$FFFFFFEC,d1
 		bsr.w   sub_B054
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		rts
 
 	; End of function sub_EBE0
@@ -11814,11 +11759,11 @@ sub_EBE0:
 
 sub_EC28:
 		bsr.w   sub_F61E
-		tst.b   ((unk_FFC140-$1000000)).w
+		tst.b   ((byte_FFC140-$1000000)).w
 		bpl.s   loc_EC3E
-		clr.w   ((unk_FFC1C4-$1000000)).w
-		clr.w   ((unk_FFC1C6-$1000000)).w
-		clr.w   ((unk_FFC140-$1000000)).w
+		clr.w   ((word_FFC1C4-$1000000)).w
+		clr.w   ((word_FFC1C6-$1000000)).w
+		clr.w   ((byte_FFC140-$1000000)).w
 loc_EC3E:
 		lea     unk_F4DE(pc), a0
 		lea     ($FE00).l,a1
@@ -11827,7 +11772,7 @@ loc_EC3E:
 		jsr     (sub_278).l
 		jsr     (j_SetVIntParam3AndWait).l
 		bsr.w   sub_EF98
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$150D,d0
 		move.l  #$9F30901,d1
 		move.w  #4,d2
@@ -11854,52 +11799,52 @@ sub_ECA6:
 		bsr.w   sub_EF98
 		moveq   #$14,d1
 loc_ECAC:
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_ECE6
-		move.w  ((unk_FFC1C4-$1000000)).w,d0
+		move.w  ((word_FFC1C4-$1000000)).w,d0
 		subq.w  #1,d0
 		blt.s   loc_ECE6
 		clr.w   d1
 		bsr.w   sub_EDCC
 		moveq   #$14,d1
-		cmp.w   ((unk_FFC1C6-$1000000)).w,d0
+		cmp.w   ((word_FFC1C6-$1000000)).w,d0
 		bge.s   loc_ECDA
-		subq.w  #1,((unk_FFC1C6-$1000000)).w
-		move.b  #1,((unk_FFB4D8-$1000000)).w
+		subq.w  #1,((word_FFC1C6-$1000000)).w
+		move.b  #1,((byte_FFB4D8-$1000000)).w
 		bsr.w   sub_EEEC
 loc_ECDA:
-		move.w  d0,((unk_FFC1C4-$1000000)).w
+		move.w  d0,((word_FFC1C4-$1000000)).w
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
 		bsr.w   sub_EEAC
 loc_ECE6:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_ED26
-		move.w  ((unk_FFC1C4-$1000000)).w,d0
+		move.w  ((word_FFC1C4-$1000000)).w,d0
 		addq.w  #1,d0
-		cmp.w   ((unk_FFCB82-$1000000)).w,d0
+		cmp.w   ((word_FFCB82-$1000000)).w,d0
 		bge.s   loc_ED26
 		clr.w   d1
 		bsr.w   sub_EDCC
 		moveq   #$14,d1
-		move.w  ((unk_FFC1C6-$1000000)).w,d2
+		move.w  ((word_FFC1C6-$1000000)).w,d2
 		addq.w  #6,d2
 		cmp.w   d2,d0
 		blt.s   loc_ED1A
-		addq.w  #1,((unk_FFC1C6-$1000000)).w
-		clr.b   ((unk_FFB4D8-$1000000)).w
+		addq.w  #1,((word_FFC1C6-$1000000)).w
+		clr.b   ((byte_FFB4D8-$1000000)).w
 		bsr.w   sub_EEEC
 loc_ED1A:
-		move.w  d0,((unk_FFC1C4-$1000000)).w
+		move.w  d0,((word_FFC1C4-$1000000)).w
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
 		bsr.w   sub_EEAC
 loc_ED26:
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_ED58
-		btst    #5,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   sub_EE9A
-		btst    #6,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.w   sub_EE9A
 		bsr.w   sub_EDCC
 		jsr     (j_WaitForVInt).l
@@ -11917,7 +11862,7 @@ loc_ED5C:
 		movem.w d0-d1,-(sp)
 		clr.w   d1
 		bsr.s   sub_EDCC
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$150D,d0
 		move.l  #$90109F3,d1
 		move.w  #4,d2
@@ -11934,7 +11879,7 @@ loc_ED9E:
 		move.l  #$DDDDDDDD,(a0)+
 		dbf     d7,loc_ED9E
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (loc_F800).l,a1
+		lea     ($F800).l,a1
 		move.w  #$400,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -11949,7 +11894,7 @@ loc_ED9E:
 
 sub_EDCC:
 		move.w  d0,-(sp)
-		lea     (unk_FF0C88).l,a0
+		lea     (word_FF0C88).l,a0
 		lea     unk_EE72(pc), a1
 		cmpi.w  #7,d1
 		bge.s   loc_EDE4
@@ -11958,8 +11903,8 @@ sub_EDCC:
 loc_EDE4:
 		clr.w   d0
 loc_EDE6:
-		move.w  ((unk_FFC1C4-$1000000)).w,d2
-		sub.w   ((unk_FFC1C6-$1000000)).w,d2
+		move.w  ((word_FFC1C4-$1000000)).w,d2
+		sub.w   ((word_FFC1C6-$1000000)).w,d2
 		lsl.w   #4,d2
 		add.w   d2,d0
 		moveq   #4,d7
@@ -11974,7 +11919,7 @@ loc_EDF4:
 		dbf     d7,loc_EDF4
 		move.w  #1,(a0)
 		move.w  #1,6(a0)
-		tst.w   ((unk_FFC1C6-$1000000)).w
+		tst.w   ((word_FFC1C6-$1000000)).w
 		beq.s   loc_EE36
 		cmpi.w  #7,d1
 		blt.s   loc_EE36
@@ -11986,9 +11931,9 @@ loc_EE36:
 		addq.l  #8,a0
 		move.w  #1,(a0)
 		move.w  #1,6(a0)
-		move.w  ((unk_FFC1C6-$1000000)).w,d0
+		move.w  ((word_FFC1C6-$1000000)).w,d0
 		addq.w  #6,d0
-		cmp.w   ((unk_FFCB82-$1000000)).w,d0
+		cmp.w   ((word_FFCB82-$1000000)).w,d0
 		bge.s   loc_EE68
 		cmpi.w  #7,d1
 		blt.s   loc_EE68
@@ -12050,8 +11995,8 @@ unk_EE72:       dc.b   0
 ; =============== S U B R O U T I N E =======================================
 
 sub_EE9A:
-		lea     ((unk_FFCB84-$1000000)).w,a0
-		move.w  ((unk_FFC1C4-$1000000)).w,d0
+		lea     ((byte_FFCB84-$1000000)).w,a0
+		move.w  ((word_FFC1C4-$1000000)).w,d0
 		move.b  (a0,d0.w),d0
 		bclr    #6,d0
 		rts
@@ -12071,8 +12016,8 @@ sub_EEAC:
 		move.w  d1,d0
 		andi.w  #$FF,d0
 		bsr.w   sub_E156
-		lea     ((unk_FFB58C-$1000000)).w,a0
-		lea     (unk_FF0020).l,a1
+		lea     ((byte_FFB58C-$1000000)).w,a0
+		lea     (PALETTE_2).l,a1
 		jsr     (j_CopyPalette).l
 		jsr     (j_StoreVDPCommandster).l
 		jsr     (j_SetVIntParam3).l
@@ -12086,43 +12031,43 @@ sub_EEAC:
 
 sub_EEEC:
 		movem.w d0-d1,-(sp)
-		tst.b   ((unk_FFB4D8-$1000000)).w
+		tst.b   ((byte_FFB4D8-$1000000)).w
 		beq.s   loc_EF2C
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB804-$1000000)).w,a0
-		lea     ((unk_FFB82E-$1000000)).w,a1
+		lea     ((byte_FFB804-$1000000)).w,a0
+		lea     ((byte_FFB82E-$1000000)).w,a1
 		move.w  #$1A4,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		movem.l d7-a1,-(sp)
-		lea     wl_F43A(pc), a0
-		lea     ((unk_FFB804-$1000000)).w,a1
+		lea     wl_MemberList2(pc), a0
+		lea     ((byte_FFB804-$1000000)).w,a1
 		move.w  #$2A,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		bra.s   loc_EF60
 loc_EF2C:
 		movem.l d7-a1,-(sp)
-		lea     ((unk_FFB82E-$1000000)).w,a0
-		lea     ((unk_FFB804-$1000000)).w,a1
+		lea     ((byte_FFB82E-$1000000)).w,a0
+		lea     ((byte_FFB804-$1000000)).w,a1
 		move.w  #$1A4,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		movem.l d7-a1,-(sp)
-		lea     wl_F43A(pc), a0
-		lea     ((unk_FFB9A8-$1000000)).w,a1
+		lea     wl_MemberList2(pc), a0
+		lea     ((byte_FFB9A8-$1000000)).w,a1
 		move.w  #$2A,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 loc_EF60:
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$150D,d0
 		move.w  #$901,d1
 		bsr.w   sub_AEA8
 		bsr.w   sub_AF66
 		jsr     (j_WaitForVInt).l
 		bsr.w   sub_EF98
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$150D,d0
 		move.w  #$901,d1
 		bsr.w   sub_AEA8
@@ -12136,8 +12081,8 @@ loc_EF60:
 ; =============== S U B R O U T I N E =======================================
 
 sub_EF98:
-		lea     wl_F410(pc), a0
-		lea     ((unk_FFB7DA-$1000000)).w,a1
+		lea     wl_MemberList1(pc), a0
+		lea     ((byte_FFB7DA-$1000000)).w,a1
 		movem.l d7,-(sp)
 		move.w  #$29,d7 
 loc_EFA8:
@@ -12146,7 +12091,7 @@ loc_EFA8:
 		movem.l (sp)+,d7
 		moveq   #$A,d6
 loc_EFB4:
-		lea     wl_F43A(pc), a0
+		lea     wl_MemberList2(pc), a0
 		movem.l d7,-(sp)
 		move.w  #$29,d7 
 loc_EFC0:
@@ -12154,16 +12099,16 @@ loc_EFC0:
 		dbf     d7,loc_EFC0
 		movem.l (sp)+,d7
 		dbf     d6,loc_EFB4
-		lea     wl_F464(pc), a0
+		lea     wl_MemberList3(pc), a0
 		movem.l d7,-(sp)
 		move.w  #$29,d7 
 loc_EFDA:
 		move.b  (a0)+,(a1)+
 		dbf     d7,loc_EFDA
 		movem.l (sp)+,d7
-		lea     ((unk_FFB80A-$1000000)).w,a1
-		lea     ((unk_FFCB84-$1000000)).w,a0
-		move.w  ((unk_FFC1C6-$1000000)).w,d0
+		lea     ((byte_FFB80A-$1000000)).w,a1
+		lea     ((byte_FFCB84-$1000000)).w,a0
+		move.w  ((word_FFC1C6-$1000000)).w,d0
 		adda.w  d0,a0
 		moveq   #5,d7
 loc_EFF4:
@@ -12171,7 +12116,7 @@ loc_EFF4:
 		bmi.w   locret_F068
 		bclr    #6,d0
 		beq.s   loc_F006
-		move.w  ((unk_FFC0B6-$1000000)).w,-2(a1)
+		move.w  ((word_FFC0B6-$1000000)).w,-2(a1)
 loc_F006:
 		move.w  d7,-(sp)
 		movem.l a0-a1,-(sp)
@@ -12561,42 +12506,14 @@ byte_F0EA:      dc.b $BE
 		dc.b   0
 		dc.b   0
 		dc.b   0
-wl_F1CA:        incbin "data/graphics/tech/windowlayouts/wl-f1ca.bin"
+wl_ShopInventory:
+		incbin "data/graphics/tech/windowlayouts/wl-shopinventory.bin"
 wl_F2D8:        incbin "data/graphics/tech/windowlayouts/wl-f2d8.bin"
 wl_F30E:        incbin "data/graphics/tech/windowlayouts/wl-f30e.bin"
-unk_F344:       dc.b   4
-		dc.b   4
-		dc.b $C2 
-		dc.b $59 
-		dc.b $D5 
-		dc.b $55 
-		dc.b $55 
-		dc.b $55 
-		dc.b $55 
-		dc.b $55 
-		dc.b $59 
-		dc.b $28 
-		dc.b $4A 
-		dc.b $A9 
-		dc.b $75 
-		dc.b $55 
-		dc.b $55 
-		dc.b $55 
-		dc.b $55 
-		dc.b $55 
-		dc.b $52 
-		dc.b $80 
-		dc.b $8C 
-		dc.b $28 
-		dc.b $1C
-		dc.b $A0 
-		dc.b   7
-		dc.b  $D
-		dc.b $5C 
-		dc.b $20
-		dc.b   1
-		dc.b   0
-wl_F364:        incbin "data/graphics/tech/windowlayouts/wl-f364.bin"
+ShopIconHighlightTiles:
+		incbin "data/graphics/tech/menus/shopiconhighlighttiles.bin"
+wl_ShopItemNameAndPrice:
+		incbin "data/graphics/tech/windowlayouts/wl-shopitemnameandprice.bin"
 unk_F3C8:       dc.b $C0 
 		dc.b   0
 		dc.b $C0 
@@ -12669,10 +12586,11 @@ unk_F3C8:       dc.b $C0
 		dc.b   0
 		dc.b $C0 
 		dc.b   0
-wl_F410:        incbin "data/graphics/tech/windowlayouts/wl-f410.bin"
-wl_F43A:        incbin "data/graphics/tech/windowlayouts/wl-f43a.bin"
-wl_F464:        incbin "data/graphics/tech/windowlayouts/wl-f464.bin"
-wl_F48E:        incbin "data/graphics/tech/windowlayouts/wl-f48e.bin"
+wl_MemberList1: incbin "data/graphics/tech/windowlayouts/wl-memberlist1.bin"
+wl_MemberList2: incbin "data/graphics/tech/windowlayouts/wl-memberlist2.bin"
+wl_MemberList3: incbin "data/graphics/tech/windowlayouts/wl-memberlist3.bin"
+wl_ItemMenuItemName:
+		incbin "data/graphics/tech/windowlayouts/wl-itemmenuitemname.bin"
 unk_F4DE:       dc.b   0
 		dc.b   0
 		dc.b   0
@@ -12997,7 +12915,7 @@ unk_F4DE:       dc.b   0
 ; =============== S U B R O U T I N E =======================================
 
 sub_F61E:
-		lea     (unk_FFDC86).l,a0
+		lea     (byte_FFDC86).l,a0
 		move.l  #$C020C020,-$50(a0)
 		moveq   #$C,d7
 loc_F62E:
@@ -13011,8 +12929,8 @@ loc_F62E:
 ; =============== S U B R O U T I N E =======================================
 
 sub_F63A:
-		lea     (RAM_START).l,a0
-		lea     (unk_FF0020).l,a1
+		lea     (PALETTE_1).l,a0
+		lea     (PALETTE_2).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -13034,8 +12952,8 @@ loc_F692:
 		jsr     (j_WaitForVInt).l
 		tst.b   (FADING_SETTING).l
 		bne.s   loc_F692
-		lea     (unk_FF00C0).l,a0
-		lea     (unk_FF0040).l,a1
+		lea     (PALETTE_3_BIS).l,a0
+		lea     (PALETTE_3).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -13049,7 +12967,7 @@ loc_F692:
 		jsr     (j_ClearSpriteTable).l
 		move.w  #$3E,(word_FF0E2A).l 
 		bsr.w   sub_FAC6
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		bsr.w   sub_FB38
 		andi.l  #$FFFFFF,d1
 		ori.l   #$20000000,d1
@@ -13076,24 +12994,24 @@ loc_F726:
 		beq.s   loc_F708
 		clr.b   (byte_FF0F03).l
 		jsr     (j_ClearSpriteTable).l
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		bsr.w   sub_FB38
 		andi.l  #$FFFFFF,d1
-		btst    #4,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
 		bne.s   loc_F764
 		ori.l   #$E0000000,d1
 		clr.w   d7
 		bra.s   loc_F772
 loc_F764:
 		ori.l   #$20000000,d1
-		bset    #0,((unk_FFB4CA-$1000000)).w
+		bset    #0,((byte_FFB4CA-$1000000)).w
 		moveq   #$FFFFFFFF,d7
 loc_F772:
 		move.w  d7,-(sp)
 		swap    d1
 		move.w  #6,d2
 		bsr.w   sub_AE36        
-		lea     (unk_FF0040).l,a1
+		lea     (PALETTE_3).l,a1
 		clr.l   (a1)+
 		clr.l   (a1)+
 		clr.l   (a1)+
@@ -13132,7 +13050,6 @@ loc_F7EE:
 		jsr     (j_EnableInterrupts).l
 		jsr     (j_WaitForVInt).l
 		jsr     (j_DisableInterrupts).l
-loc_F800:
 		move.w  ((MAP_WIDTH-$1000000)).w,d7
 		lsr.w   #1,d7
 		subq.w  #1,d7
@@ -13369,7 +13286,7 @@ sub_FA46:
 
 loc_FA6C:
 		lea     (FF0FFE_LOADING_SPACE).l,a0
-		lea     (loc_B800).l,a1
+		lea     ($B800).l,a1
 		move.w  #$400,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -13382,7 +13299,7 @@ loc_FA6C:
 		move.w  #$400,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
-		lea     (loc_F800).l,a1
+		lea     ($F800).l,a1
 		move.w  #$400,d0
 		moveq   #2,d1
 		jsr     (sub_278).l
@@ -13394,7 +13311,7 @@ loc_FA6C:
 ; =============== S U B R O U T I N E =======================================
 
 sub_FAC6:
-		lea     ((unk_FFB7DA-$1000000)).w,a0
+		lea     ((byte_FFB7DA-$1000000)).w,a0
 		move.w  #$A5C0,d5
 		move.w  ((MAP_WIDTH-$1000000)).w,d7
 		lsr.w   #1,d7
@@ -13562,10 +13479,10 @@ loc_FC48:
 		addq.l  #8,a0
 		addq.l  #8,a1
 		dbf     d7,loc_FC20
-		lea     (unk_FF0D28).l,a1
+		lea     (byte_FF0D28).l,a1
 		move.w  d3,-(sp)
 		bsr.w   sub_FBD6
-		lea     (unk_FF10FE).l,a0
+		lea     (byte_FF10FE).l,a0
 		clr.w   d0
 		move.b  ((CURSOR_POSITION-$1000000)).w,d0
 		lsl.w   #2,d0
@@ -13594,26 +13511,26 @@ locret_FC92:
 sub_FC94:
 		move.w  d3,-(sp)
 		clr.b   ((byte_FFB538-$1000000)).w
-		clr.l   ((unk_FFB4C0-$1000000)).w
+		clr.l   ((byte_FFB4C0-$1000000)).w
 		bsr.w   sub_87AA
-		btst    #2,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_FCB0
 		bsr.w   sub_86DA
 loc_FCB0:
-		btst    #3,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_FCBE
 		bsr.w   sub_8650
 loc_FCBE:
-		btst    #0,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_FCCC
 		bsr.w   sub_853E
 loc_FCCC:
-		btst    #1,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_FCDA
 		bsr.w   sub_85C2
 loc_FCDA:
 		move.w  (sp)+,d3
-		tst.l   ((unk_FFB4C0-$1000000)).w
+		tst.l   ((byte_FFB4C0-$1000000)).w
 		beq.w   locret_FD56
 		trap    #SOUND_COMMAND
 		dc.w SFX_MENU_SELECTION
@@ -13623,8 +13540,8 @@ loc_FCDA:
 		clr.w   d2
 		clr.w   d3
 		clr.w   d4
-		move.b  ((unk_FFB4C0-$1000000)).w,d3
-		move.b  ((unk_FFB4C1-$1000000)).w,d4
+		move.b  ((byte_FFB4C0-$1000000)).w,d3
+		move.b  ((byte_FFB4C1-$1000000)).w,d4
 		ext.w   d3
 		ext.w   d4
 		add.w   d3,d3
@@ -13633,14 +13550,14 @@ loc_FCDA:
 		addi.w  #$14,d4
 		moveq   #5,d7
 loc_FD10:
-		clr.b   ((unk_FFB4C4-$1000000)).w
+		clr.b   ((byte_FFB4C4-$1000000)).w
 		move.w  d7,-(sp)
 		bsr.w   sub_8A22
 		move.w  (sp)+,d7
 		move.w  d7,-(sp)
 		bsr.w   sub_8A8A
 		move.w  (sp)+,d7
-		tst.b   ((unk_FFB4C4-$1000000)).w
+		tst.b   ((byte_FFB4C4-$1000000)).w
 		beq.w   loc_FD38
 		movem.w d1-d7,-(sp)
 		bsr.w   sub_8DE2        

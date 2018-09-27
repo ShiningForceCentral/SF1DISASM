@@ -10,6 +10,7 @@ BATTLE_PARTY_MAX_SIZE: equ $C
 
 ; enum Traps
 SOUND_COMMAND: equ $0
+DISPLAY_MESSAGE: equ $8
 
 ; ---------------------------------------------------------------------------
 
@@ -22,6 +23,7 @@ BATTLE_SPRITE_ID_MAX_HERO: equ $13
 ; enum ClassID
 CLASS_ID_MONK: equ $5
 CLASS_ID_HEAL: equ $6
+CLASS_ID_WRWF: equ $D
 CLASS_ID_SMR: equ $E
 CLASS_ID_MSMK: equ $15
 CLASS_ID_VICR: equ $16
@@ -36,15 +38,37 @@ CLASS_ID_DARK_DRAGON_0: equ $68
 CLASS_OFFSET_MOVE_TYPE: equ $0
 CLASS_OFFSET_ACTION_TYPE: equ $1
 CLASS_OFFSET_RESISTANCES: equ $2
-CLASS_OFFSET_FLAGS: equ $4
-CLASS_OFFSET_RANGE_UNARMED: equ $5
-CLASS_OFFSET_EFFECT_UNARMED: equ $6
-CLASS_OFFSET_SPECIAL_ATTACK: equ $7
+CLASS_OFFSET_SETTINGS: equ $4
+CLASS_OFFSET_UNARMED_RANGE: equ $5
+CLASS_OFFSET_UNARMED_EFFECT: equ $6
+CLASS_OFFSET_SP_ATK_TYPE: equ $7
 
 ; ---------------------------------------------------------------------------
 
-; enum ClassEntry_Flags
+; enum ClassEntry_ActionTypes
+CLASS_AI_ACTION_CAST_SPELL: equ $80
+CLASS_AI_ACTION_USE_ITEM_0: equ $81
+CLASS_AI_ACTION_USE_ITEM_1: equ $82
+CLASS_AI_ACTION_DARK_DRAGON: equ $83
+
+; ---------------------------------------------------------------------------
+
+; enum ClassEntry_Resistances
+CLASS_RESIST_BLAZE: equ $0
+CLASS_RESIST_FREEZE: equ $1
+CLASS_RESIST_BOLT: equ $2
+CLASS_RESIST_SLEEP_AND_DESOUL: equ $3
+CLASS_RESIST_MUDDLE: equ $4
+CLASS_RESIST_SLOW: equ $5
+CLASS_RESIST_6: equ $6
+CLASS_RESIST_EVASION: equ $7
+
+; ---------------------------------------------------------------------------
+
+; enum ClassEntry_Settings
+CLASS_MASK_SP_ATK_CHANCE: equ $3
 CLASS_FLAG_REGEN_HP: equ $7
+CLASS_MASK_AI_ACTION_CHANCE: equ $30
 
 ; ---------------------------------------------------------------------------
 
@@ -105,6 +129,7 @@ FORCE_PROJECTION_LEVEL: equ $14
 FORCE_LEVEL_CAP: equ $14
 FORCE_ENTRIES_COUNTER: equ $1E
 FORCE_ENTRY_SIZE: equ $28
+FORCE_MASK_ID_0: equ $3F
 FORCE_STAT_CAP: equ $63
 FORCE_LEVEL_CAP_PROMOTED: equ $63
 FORCE_MASK_ID: equ $7F
@@ -160,6 +185,18 @@ FORCE_STATUS_FLAG_SHIELD: equ $E
 
 ; ---------------------------------------------------------------------------
 
+; enum Input_A_Bitfield
+INPUT_A_UP_BIT: equ $0
+INPUT_A_DOWN_BIT: equ $1
+INPUT_A_LEFT_BIT: equ $2
+INPUT_A_RIGHT_BIT: equ $3
+INPUT_A_B_BIT: equ $4
+INPUT_A_C_BIT: equ $5
+INPUT_A_A_BIT: equ $6
+INPUT_A_START_BIT: equ $7
+
+; ---------------------------------------------------------------------------
+
 ; enum ItemDef
 ITEM_FLAG_EQUIPPED: equ $7
 ITEM_MASK_ID: equ $3F
@@ -185,11 +222,26 @@ ITEM_OFFSET_FLAGS_EQUIP: equ $0
 ITEM_OFFSET_FLAGS_TYPE: equ $4
 ITEM_OFFSET_EQUIP_EFFECT: equ $6
 ITEM_OFFSET_EQUIP_VALUE: equ $7
-ITEM_OFFSET_RANGE_USE: equ $8
-ITEM_OFFSET_EFFECT_USE: equ $9
-ITEM_OFFSET_RANGE_ATK: equ $C
-ITEM_OFFSET_EFFECT_ATK: equ $D
+ITEM_OFFSET_USE_RANGE: equ $8
+ITEM_OFFSET_USE_EFFECT: equ $9
+ITEM_OFFSET_ATK_RANGE: equ $C
+ITEM_OFFSET_ATK_EFFECT: equ $D
 ITEM_OFFSET_PRICE: equ $E
+
+; ---------------------------------------------------------------------------
+
+; enum ItemEntry_TypeFlags
+ITEM_TYPE_FLAG_CURSED: equ $0
+ITEM_TYPE_FLAG_WEAPON: equ $8
+ITEM_TYPE_FLAG_RING: equ $9
+ITEM_TYPE_FLAG_USABLE: equ $A
+ITEM_TYPE_FLAG_CANNOT_DROP: equ $B
+ITEM_TYPE_FLAG_CONSUMABLE: equ $C
+ITEM_TYPE_FLAG_UNEQUIPPABLE: equ $D
+ITEM_TYPE_FLAG_CHANCE_TO_CRACK: equ $E
+ITEM_TYPE_FLAG_RARE: equ $F
+ITEM_TYPE_MASK_WEAPON: equ $100
+ITEM_TYPE_MASK_RING: equ $200
 
 ; ---------------------------------------------------------------------------
 
@@ -202,12 +254,39 @@ MAP_SPRITE_ID_TAO_OUTFIT: equ $3B
 
 ; ---------------------------------------------------------------------------
 
+; enum MenuActions
+CHURCH_CURE_COST_POISON: equ $A
+CHURCH_RAISE_COST_PER_LEVEL: equ $A
+CHURCH_BASE_PROMOTION_LEVEL: equ $A
+CHURCH_CURE_COST_CURSE: equ $14
+
+; ---------------------------------------------------------------------------
+
 ; enum RangeEntry_Offsets
 RANGE_OFFSET_MAX: equ $0
 RANGE_OFFSET_MIN: equ $1
 RANGE_OFFSET_AREA: equ $2
 RANGE_OFFSET_GROUP: equ $3
 RANGE_OFFSET_ROUTINE: equ $4
+
+; ---------------------------------------------------------------------------
+
+; enum RangeEntry_GroupFlags
+RANGE_GROUP_FLAG_ALLIES: equ $0
+RANGE_GROUP_FLAG_ENEMIES: equ $1
+RANGE_GROUP_FLAG_ALL: equ $2
+RANGE_GROUP_MASK_TARGETS: equ $3
+RANGE_GROUP_MASK_ALL: equ $FC
+
+; ---------------------------------------------------------------------------
+
+; enum SpellID
+SPELL_ID_FREEZE_2: equ $4A
+SPELL_ID_BOLT_2: equ $4B
+SPELL_ID_DESOUL_2: equ $4C
+SPELL_ID_BLAZE_3: equ $89
+SPELL_ID_BLAZE_4: equ $C9
+SPELL_ID_BOLT_4: equ $CB
 
 ; ---------------------------------------------------------------------------
 
@@ -311,9 +390,25 @@ SFX_ENERGY_WAVE: equ $69
 
 ; enum SpellDef
 SPELL_MASK_ID: equ $3F
+SPELL_MASK_LEVEL: equ $C0
+
+; ---------------------------------------------------------------------------
+
+; enum SpellEntry_Offsets
+SPELL_OFFSET_RANGE: equ $0
+SPELL_OFFSET_EFFECT: equ $1
+SPELL_OFFSET_MP_COST: equ $2
 
 ; ---------------------------------------------------------------------------
 
 ; enum StatGrowthDef
 STAT_GROWTH_MASK_VALUE: equ $3F
 STAT_GROWTH_MASK_CURVE: equ $C0
+
+; ---------------------------------------------------------------------------
+
+; enum Fading
+IN_FROM_BLACK: equ $1
+OUT_TO_BLACK: equ $2
+IN_FROM_WHITE: equ $3
+OUT_TO_WHITE: equ $4

@@ -1,6 +1,6 @@
 
 ; GAME SECTION 03 :
-; 
+; Exploration engine, ...
 ; FREE SPACE : 3992 bytes.
 
 
@@ -15,16 +15,17 @@ sub_10000:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_10004:
-		jmp     sub_168FE(pc)
+j_ShopMenuActions:
+		
+		jmp     ShopMenuActions(pc)
 
-	; End of function sub_10004
+	; End of function j_ShopMenuActions
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_10008:
-		jmp     loc_1005C(pc)
+		jmp     sub_1005C(pc)
 
 	; End of function sub_10008
 
@@ -55,10 +56,11 @@ sub_10014:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_10018:
-		jmp     sub_17028(pc)
+j_ChurchMenuActions:
+		
+		jmp     ChurchMenuActions(pc)
 
-	; End of function sub_10018
+	; End of function j_ChurchMenuActions
 
 p_SpriteTextSounds:
 		dc.l SpriteTextSounds
@@ -71,32 +73,32 @@ sub_10020:
 	; End of function sub_10020
 
 
-; START OF FUNCTION CHUNK FOR sub_5B8C
+; =============== S U B R O U T I N E =======================================
 
-loc_10024:
-		jmp     loc_17B10(pc)
+sub_10024:
+		jmp     sub_17B10(pc)
 
-; END OF FUNCTION CHUNK FOR sub_5B8C
+	; End of function sub_10024
 
 
-; START OF FUNCTION CHUNK FOR sub_5A88
+; =============== S U B R O U T I N E =======================================
 
-loc_10028:
-		jmp     loc_11148(pc)
+sub_10028:
+		jmp     sub_11148(pc)
 
-; END OF FUNCTION CHUNK FOR sub_5A88
+	; End of function sub_10028
 
 p_pt_BattleExits:
 		dc.l pt_BattleExits
 p_BattleChests: dc.l BattleChests
-off_10034:      dc.l unk_1E37A
+off_10034:      dc.l byte_1E37A
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_10038:
-		jmp     sub_1DA8E
+j_PlayEnding:
+		jmp     PlayEnding
 
-	; End of function sub_10038
+	; End of function j_PlayEnding
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -147,7 +149,13 @@ loc_10050:
 		bsr.w   sub_1010E
 		move.b  (CURRENT_MAP).l,d1
 		bra.s   loc_1005E
-loc_1005C:
+
+; END OF FUNCTION CHUNK FOR sub_1096C
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_1005C:
 		clr.w   d1
 loc_1005E:
 		movem.w d1,-(sp)
@@ -162,7 +170,6 @@ loc_1005E:
 loc_10088:
 		bsr.w   sub_102D6
 		bcc.s   loc_10088
-loc_1008E:
 		cmpi.b  #1,d0
 		beq.s   loc_100FC
 		cmpi.b  #$12,d0
@@ -172,13 +179,13 @@ loc_1008E:
 		cmpi.b  #$1D,d0
 		beq.s   loc_100EC
 		movem.w d0,-(sp)
-		bsr.w   sub_12C62
+		bsr.w   sub_12C62       
 		movem.w (sp)+,d1
 		bcs.s   loc_100FC
 		cmpi.b  #$1A,d1
 		beq.s   loc_100C2
 		jsr     (j_FadeOutToBlack).l
-		bra.s   loc_1005C
+		bra.s   sub_1005C
 loc_100C2:
 		jsr     (j_FadeOutToWhite).l
 		movem.w d0,-(sp)
@@ -202,12 +209,12 @@ loc_100FC:
 loc_100FE:
 		move.b  d0,(CURRENT_MAP).l
 		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_1096C
-
 		dc.w SFX_WARP
 		bsr.w   sub_11940
 		rts
+
+	; End of function sub_1005C
+
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -240,7 +247,7 @@ loc_1012C:
 		clr.w   (a1)+
 		move.w  #2,(word_FFF8E2).l
 		move.b  #$FF,(byte_FFF807).l
-		lea     (unk_FF92EA).l,a0
+		lea     (byte_FF92EA).l,a0
 		move.l  a0,(dword_FFF928).l
 		move.w  #$7F,d7 
 loc_10170:
@@ -953,14 +960,14 @@ loc_10780:
 loc_10786:
 		lea     (MAP_SPRITE_POSITION).l,a6
 		clr.w   d7
-		lea     (unk_FFF88C).l,a0
+		lea     (byte_FFF88C).l,a0
 loc_10794:
 		move.w  d3,(a0)+
 		movem.l d7-a0,-(sp)
 		bsr.s   sub_107C6
 		movem.l (sp)+,d7-a0
 		bcs.s   loc_107B8
-		lea     (unk_FFF88C).l,a0
+		lea     (byte_FFF88C).l,a0
 loc_107A8:
 		move.w  (a0)+,d3
 		bset    #7,8(a6,d3.w)
@@ -1135,7 +1142,7 @@ sub_1096C:
 		jsr     (j_FadeOutToBlack).l
 		move.b  #$FF,(byte_FFF807).l
 		move.b  #2,d0
-		bra.w   loc_1005C
+		bra.w   sub_1005C
 loc_1098E:
 		cmpi.b  #1,d0
 		bne.s   loc_109B6
@@ -1211,13 +1218,13 @@ sub_10A6E:
 		tst.b   (byte_FFF81D).l
 		bpl.s   locret_10A9E
 		eori.b  #1,(byte_FFF81D).l
-		move.w  (dword_FF0500+2).l,d6
+		move.w  (word_FF0500+2).l,d6
 		btst    #0,(byte_FFF81D).l
 		bne.s   loc_10A90
 		subq.w  #4,d6
 loc_10A90:
 		addq.w  #2,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jsr     (j_SetVIntParam3).l
 locret_10A9E:
 		rts
@@ -1420,16 +1427,16 @@ sub_10C70:
 		bcc.s   loc_10C8C
 		lea     (MAP_DATA).l,a2
 		suba.w  d2,a2
-		lea     (unk_FF72EA).l,a3
+		lea     (byte_FF72EA).l,a3
 		suba.w  d2,a3
-		lea     (unk_FF5200).l,a1
+		lea     (byte_FF5200).l,a1
 		rts
 loc_10C8C:
 		lea     (MAP_DATA).l,a2
 		adda.w  d2,a2
-		lea     (unk_FF72EA).l,a3
+		lea     (byte_FF72EA).l,a3
 		adda.w  d2,a3
-		lea     (unk_FF5200).l,a1
+		lea     (byte_FF5200).l,a1
 		rts
 
 	; End of function sub_10C70
@@ -1568,57 +1575,57 @@ sub_10D8A:
 ; START OF FUNCTION CHUNK FOR sub_10B26
 
 loc_10D92:
-		lea     (unk_FF5200).l,a1
+		lea     (byte_FF5200).l,a1
 		move.w  #$FED0,d2
 		bra.w   loc_10E9A
 loc_10DA0:
-		lea     (unk_FF524E).l,a1
+		lea     (byte_FF524E).l,a1
 		move.w  #$FECA,d2
 		bra.w   loc_10E9A
 loc_10DAE:
-		lea     (unk_FF529C).l,a1
+		lea     (byte_FF529C).l,a1
 		move.w  #$FEC6,d2
 		bra.w   loc_10E9A
 loc_10DBC:
-		lea     (unk_FF529C).l,a1
+		lea     (byte_FF529C).l,a1
 		move.w  #0,d2
 		bra.w   loc_10E9A
 loc_10DCA:
-		lea     (unk_FF524E).l,a1
+		lea     (byte_FF524E).l,a1
 		move.w  #4,d2
 		bra.w   loc_10E9A
 loc_10DD8:
-		lea     (unk_FF5200).l,a1
+		lea     (byte_FF5200).l,a1
 		move.w  #8,d2
 		bra.w   loc_10E9A
 loc_10DE6:
-		lea     (unk_FF529C).l,a1
+		lea     (byte_FF529C).l,a1
 		move.b  #$F8,d1
 		bra.s   loc_10E2C
 loc_10DF2:
-		lea     (unk_FF524E).l,a1
+		lea     (byte_FF524E).l,a1
 		move.b  #$F4,d1
 		bra.s   loc_10E2C
 loc_10DFE:
-		lea     (unk_FF5200).l,a1
+		lea     (byte_FF5200).l,a1
 		move.b  #$F0,d1
 		bra.s   loc_10E2C
 loc_10E0A:
-		lea     (unk_FF5200).l,a1
+		lea     (byte_FF5200).l,a1
 		move.b  #$E0,d1
 		bra.s   loc_10E2C
 loc_10E16:
-		lea     (unk_FF524E).l,a1
+		lea     (byte_FF524E).l,a1
 		move.b  #$E4,d1
 		bra.s   loc_10E2C
 loc_10E22:
-		lea     (unk_FF529C).l,a1
+		lea     (byte_FF529C).l,a1
 		move.b  #$E8,d1
 loc_10E2C:
 		clr.w   d2
 		bsr.s   sub_10E38
 		bsr.s   sub_10E60
-		jmp     (loc_258).l
+		jmp     (j_SetVIntParam0).l
 
 ; END OF FUNCTION CHUNK FOR sub_10B26
 
@@ -1626,7 +1633,7 @@ loc_10E2C:
 ; =============== S U B R O U T I N E =======================================
 
 sub_10E38:
-		move.w  (dword_FF0500+2).l,d0
+		move.w  (word_FF0500+2).l,d0
 		add.b   d1,d0
 		lsl.w   #5,d0
 		move.w  (dword_FF0100+2).l,d1
@@ -1676,7 +1683,7 @@ loc_10E9A:
 		move.b  #$F8,d1
 		bsr.s   sub_10E38
 		bsr.s   sub_10EA8
-		jmp     (loc_258).l
+		jmp     (j_SetVIntParam0).l
 
 ; END OF FUNCTION CHUNK FOR sub_10B26
 
@@ -1715,9 +1722,8 @@ sub_10EE2:
 		move.w  (word_FFF832).l,d6
 		beq.s   loc_10F40
 		move.w  (dword_FF0100+2).l,d4
-		move.w  (dword_FF0500+2).l,d5
+		move.w  (word_FF0500+2).l,d5
 		move.b  (MAP_SPRITE_FACING).l,d0
-loc_10F02:
 		andi.b  #$18,d0
 		beq.s   loc_10F28
 		cmpi.b  #$10,d0
@@ -1730,7 +1736,7 @@ loc_10F14:
 		move.w  d4,d6
 loc_10F18:
 		andi.w  #$1FF,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		jmp     (j_SetVIntParam3).l
 loc_10F28:
 		sub.w   d6,d5
@@ -1740,7 +1746,7 @@ loc_10F2E:
 		add.w   d5,d6
 loc_10F30:
 		andi.w  #$FF,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 loc_10F3A:
 		jmp     (j_SetVIntParam3).l
 loc_10F40:
@@ -1810,9 +1816,9 @@ sub_10FB0:
 		move.w  #$8C00,d0
 		jsr     (j_SetVDPRegStatus).l
 		move.w  #$FFE4,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		move.w  #8,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jmp     (j_SetVIntParam3).l
 
 	; End of function sub_10FB0
@@ -1857,7 +1863,7 @@ loc_11024:
 ; =============== S U B R O U T I N E =======================================
 
 sub_1103C:
-		lea     (unk_FF5200).l,a0
+		lea     (byte_FF5200).l,a0
 		move.w  #2,d5
 loc_11046:
 		move.w  d6,(VDP_Control).l
@@ -1972,9 +1978,9 @@ sub_11126:
 	; End of function sub_11126
 
 
-; START OF FUNCTION CHUNK FOR sub_5A88
+; =============== S U B R O U T I N E =======================================
 
-loc_11148:
+sub_11148:
 		lea     (MAP_SPRITE_POSITION).l,a0
 		move.b  (a0),d0
 		move.b  1(a0),d1
@@ -2021,20 +2027,16 @@ loc_111BE:
 		jsr     (j_WaitForPlayerInput).l
 		jsr     (sub_30C).l
 		rts
-
-; END OF FUNCTION CHUNK FOR sub_5A88
-
-byte_111DC:     dc.b 0
-byte_111DD:     dc.b $FF
-		dc.b   1
-		dc.b   0
-		dc.b   0
-		dc.b   1
+byte_111DC:
+		dc.b 0
+byte_111DD:
 		dc.b $FF
-		dc.b   0
-
-; START OF FUNCTION CHUNK FOR sub_5A88
-
+		dc.b 1
+		dc.b 0
+		dc.b 0
+		dc.b 1
+		dc.b $FF
+		dc.b 0
 loc_111E4:
 		move.b  2(a0),d0
 		movem.l d0/a0,-(sp)
@@ -2096,7 +2098,7 @@ loc_112A4:
 		ori     #1,ccr
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_5A88
+	; End of function sub_11148
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2497,7 +2499,7 @@ sub_114F8:
 		andi.w  #$F000,(a2,d4.w)
 		or.w    d2,(a2,d4.w)
 		move.w  (a2,d4.w),d2
-		lea     (unk_FF72EA).l,a2
+		lea     (byte_FF72EA).l,a2
 		andi.w  #$803F,(a2,d4.w)
 		or.w    d3,(a2,d4.w)
 		move.w  (a2,d4.w),d3
@@ -2515,7 +2517,7 @@ sub_11530:
 		movem.w (sp)+,d2
 		lea     (MAP_DATA).l,a2
 		move.w  d2,(a2,d4.w)
-		lea     (unk_FF72EA).l,a2
+		lea     (byte_FF72EA).l,a2
 		move.w  d3,(a2,d4.w)
 		rts
 
@@ -2847,7 +2849,7 @@ sub_1190A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_11940:
-		lea     (unk_FF92EA).l,a0
+		lea     (byte_FF92EA).l,a0
 		move.l  a0,(dword_FFF928).l
 		move.w  #$7F,d7 
 loc_11950:
@@ -2866,7 +2868,7 @@ sub_1195C:
 		clr.w   d1
 		move.b  (CURRENT_CHAPTER).l,d2
 		subq.b  #1,d2
-		movea.l (p_Maps).l,a0
+		movea.l (p_pt_Maps).l,a0
 loc_11974:
 		dbf     d0,loc_1197A
 		bra.s   loc_11994
@@ -3014,19 +3016,19 @@ sub_11B4A:
 		move.b  (byte_FFF80A).l,d0
 		lsl.b   #2,d0
 		movem.w d0,-(sp)
-		movea.l (p_p_MapTileset02).l,a0
+		movea.l (p_pt_MapTilesets).l,a0
 		movea.l (a0,d0.w),a0
-		lea     (loc_77C0).w,a1
+		lea     ($77C0).w,a1
 		move.w  #$1000,d0
 		jsr     (sub_294).l
 		movem.w (sp)+,d0
-		movea.l (p_p_p_MapTileset14).l,a0
+		movea.l (off_58010).l,a0
 		movea.l (a0,d0.w),a0
 		clr.w   d0
 		move.b  (byte_FFF80B).l,d0
 		lsl.b   #2,d0
 		movea.l (a0,d0.w),a0
-		lea     (unk_97C0).l,a1
+		lea     ($97C0).l,a1
 		move.w  #$1000,d0
 		jsr     (sub_294).l
 		bsr.s   sub_11BA0
@@ -3188,7 +3190,7 @@ byte_11D2E:     dc.b 0
 ; =============== S U B R O U T I N E =======================================
 
 sub_11D36:
-		lea     (unk_FF5014).l,a1
+		lea     (word_FF5014).l,a1
 		move.w  #$1E,d7
 loc_11D40:
 		tst.w   -4(a1)
@@ -3230,7 +3232,7 @@ sub_11D84:
 		mulu.w  #3,d0
 		movea.l (p_p_MapSprite304).l,a0
 		bsr.s   sub_11DAA
-		movea.l (p_pt_Sprites).l,a0
+		movea.l (p_pt_MapSprites).l,a0
 		bsr.s   sub_11DAA
 		movea.l (p_p_MapSprite156).l,a0
 		bsr.s   sub_11DAA
@@ -3272,7 +3274,7 @@ sub_11DE6:
 		bsr.s   sub_11E0C
 		movea.l (p_p_MapSprite156).l,a0
 		bsr.s   sub_11E0C
-		movea.l (p_pt_Sprites).l,a0
+		movea.l (p_pt_MapSprites).l,a0
 		bsr.s   sub_11E0C
 		movem.l (sp)+,d2/d4/d7-a1
 		rts
@@ -3313,7 +3315,7 @@ sub_11E4C:
 		bsr.s   sub_11E72
 		movea.l (p_p_MapSprite156).l,a0
 		bsr.s   sub_11E72
-		movea.l (p_pt_Sprites).l,a0
+		movea.l (p_pt_MapSprites).l,a0
 		bsr.s   sub_11E72
 		movem.l (sp)+,d2/d4/d7-a1
 		rts
@@ -3356,7 +3358,7 @@ loc_11EC4:
 		move.w  (a0)+,(a1)+
 		dbf     d7,loc_11EC4
 		lea     byte_11EE0(pc), a0
-		lea     (unk_FF00E0).l,a1
+		lea     (PALETTE_4_BIS).l,a1
 		move.w  #$F,d0
 loc_11ED8:
 		move.w  (a0)+,(a1)+
@@ -3402,12 +3404,12 @@ byte_11EE0:     dc.b 0
 
 sub_11F00:
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (unk_FF3303).l,a1
+		lea     (byte_FF3303).l,a1
 		bsr.s   sub_11F24
-		lea     (unk_FF3120).l,a0
-		lea     (unk_FF3423).l,a1
+		lea     (byte_FF3120).l,a0
+		lea     (byte_FF3423).l,a1
 		bsr.s   sub_11F24
-		lea     (unk_FF3240).l,a0
+		lea     (byte_FF3240).l,a0
 		rts
 
 	; End of function sub_11F00
@@ -3481,12 +3483,12 @@ loc_11F4C:
 
 sub_11F7C:
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (unk_FF329C).l,a1
+		lea     (byte_FF329C).l,a1
 		bsr.s   sub_11FA0
-		lea     (unk_FF3120).l,a0
-		lea     (unk_FF33BC).l,a1
+		lea     (byte_FF3120).l,a0
+		lea     (byte_FF33BC).l,a1
 		bsr.s   sub_11FA0
-		lea     (unk_FF3240).l,a0
+		lea     (byte_FF3240).l,a0
 		rts
 
 	; End of function sub_11F7C
@@ -3719,7 +3721,7 @@ loc_122D8:
 loc_12302:
 		btst    #1,(byte_FF9C56).l
 		beq.s   locret_1231A
-		move.b  #$FF,(byte_FF5071).l
+		move.b  #$FF,(word_FF5070+1).l
 		clr.b   (byte_FF507D).l
 locret_1231A:
 		rts
@@ -3733,7 +3735,7 @@ loc_1231C:
 loc_12340:
 		btst    #3,(byte_FF9C56).l
 		beq.s   loc_12350
-		clr.b   (word_FF503C+1).l
+		clr.b   (byte_FF503C+1).l
 loc_12350:
 		btst    #4,(byte_FF9C56).l
 		beq.s   loc_12360
@@ -3772,7 +3774,7 @@ loc_123D4:
 		addi.w  #$2000,d0
 		movea.w d0,a1
 		movem.l a1,-(sp)
-		movea.l (off_58018).l,a0
+		movea.l (p_SpecialSprite_Jogurt2).l,a0
 		move.w  #$90,d0 
 		move.w  #2,d1
 		jsr     (sub_294).l
@@ -3815,7 +3817,7 @@ loc_12484:
 		bne.s   loc_12500
 		btst    #7,(byte_FF9C59).l
 		beq.s   loc_1249E
-		clr.b   (word_FF503C+1).l
+		clr.b   (byte_FF503C+1).l
 loc_1249E:
 		btst    #0,(byte_FF9C5B).l
 		bne.s   loc_124B4
@@ -3974,8 +3976,8 @@ loc_12792:
 		btst    #2,(byte_FF9C5A).l
 		beq.s   loc_127B6
 		move.b  #$FF,(byte_FF5051).l
-		move.b  #$FF,(byte_FF5061).l
-		move.b  #$FF,(byte_FF5071).l
+		move.b  #$FF,(word_FF5060+1).l
+		move.b  #$FF,(word_FF5070+1).l
 		rts
 loc_127B6:
 		btst    #3,(byte_FF9C59).l
@@ -4001,7 +4003,7 @@ loc_12810:
 		clr.b   (byte_FF507D).l
 		clr.b   (byte_FF508D).l
 		clr.b   (byte_FF509D).l
-		move.b  #$F,(byte_FF5071).l
+		move.b  #$F,(word_FF5070+1).l
 		move.b  #$1A,(word_FF5090).l
 loc_12844:
 		btst    #0,(byte_FF9C5D).l
@@ -4035,7 +4037,7 @@ loc_128AE:
 loc_128C0:
 		btst    #1,(byte_FF9C59).l
 		beq.s   loc_128D0
-		clr.b   (byte_FF504D).l
+		clr.b   (word_FF504C+1).l
 loc_128D0:
 		btst    #3,(byte_FF9C5D).l
 		beq.s   locret_128F8
@@ -4160,7 +4162,7 @@ loc_12AD2:
 		move.b  #$21,(word_FF5040+1).l 
 		andi.b  #$E7,(byte_FF5042).l
 		ori.b   #$10,(byte_FF5042).l
-		clr.b   (byte_FF504D).l
+		clr.b   (word_FF504C+1).l
 loc_12B0E:
 		btst    #7,(byte_FF9C5D).l
 		bne.s   loc_12B44
@@ -4169,10 +4171,10 @@ loc_12B0E:
 		move.b  #$1F,(word_FF5030).l
 		move.b  #$25,(word_FF5030+1).l 
 		andi.b  #$E7,(byte_FF5032).l
-		move.b  #9,(word_FF503C).l
+		move.b  #9,(byte_FF503C).l
 		bra.s   loc_12B4A
 loc_12B44:
-		clr.b   (word_FF503C+1).l
+		clr.b   (byte_FF503C+1).l
 loc_12B4A:
 		btst    #5,(byte_FF9C5A).l
 		beq.s   loc_12B66
@@ -4191,7 +4193,7 @@ loc_12B66:
 		mulu.w  #$6C0,d0
 		addi.w  #$2240,d0
 		movea.w d0,a1
-		movea.l (pt_MapTilesets).l,a0
+		movea.l (p_SpecialSprite_BurningShip).l,a0
 		move.w  #$240,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
@@ -4320,6 +4322,8 @@ byte_12C00:     dc.b 0
 
 ; =============== S U B R O U T I N E =======================================
 
+; Teleport map sprite (on same map?)
+
 sub_12C62:
 		lea     MapTeleports(pc), a0
 		clr.w   d7
@@ -4426,8 +4430,8 @@ loc_12D48:
 
 byte_12D70:     dc.b $4E
 byte_12D71:     dc.b $75
-		dc.b   6
-		dc.b   1
+		dc.b 6
+		dc.b 1
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -4504,7 +4508,7 @@ sub_131F8:
 		move.w  d2,d3
 		lsr.w   #3,d2
 		andi.w  #7,d3
-		lea     (unk_FF9C6E).l,a1
+		lea     (byte_FF9C6E).l,a1
 		btst    d3,(a1,d2.w)
 		rts
 
@@ -4514,8 +4518,8 @@ sub_131F8:
 ; =============== S U B R O U T I N E =======================================
 
 sub_13214:
-		lea     (unk_FF92EA).l,a0
-		move.l  #RAM_START,d2   
+		lea     (byte_FF92EA).l,a0
+		move.l  #PALETTE_1,d2   
 		move.w  #$7F,d7 
 loc_13224:
 		move.w  (a0),d0
@@ -4954,7 +4958,7 @@ sub_13804:
 		movem.w (sp)+,d2
 		lea     (MAP_DATA).l,a2
 		move.w  d2,(a2,d4.w)
-		lea     (unk_FF72EA).l,a2
+		lea     (byte_FF72EA).l,a2
 		move.w  d3,(a2,d4.w)
 		rts
 
@@ -5041,7 +5045,7 @@ loc_13918:
 		add.w   d1,d1
 		move.w  (a0,d1.w),d1
 		ext.l   d1
-		move.l  d1,(dword_FFF900).l
+		move.l  d1,(TEXT_NUMBER).l
 		clr.w   (TEXT_NAME_INDEX).l
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_ITEM
@@ -5058,7 +5062,7 @@ loc_13958:
 		move.w  d6,d4
 		lsr.w   #3,d4
 		andi.w  #7,d6
-		lea     (unk_FF9C6E).l,a1
+		lea     (byte_FF9C6E).l,a1
 		bset    d6,(a1,d4.w)
 		movem.w (sp)+,d0-d3
 		rts
@@ -5079,7 +5083,7 @@ loc_13996:
 		move.w  d6,d4
 		lsr.w   #3,d4
 		andi.w  #7,d6
-		lea     (unk_FF9C6E).l,a1
+		lea     (byte_FF9C6E).l,a1
 		bset    d6,(a1,d4.w)
 		movem.w (sp)+,d0-d3
 loc_139B0:
@@ -5656,7 +5660,7 @@ loc_140B6:
 loc_14180:
 		jsr     (j_WaitForVInt).l
 		jsr     (j_nullsub_1).l
-		btst    #3,(P1_INPUT).l 
+		btst    #INPUT_A_RIGHT_BIT,(P1_INPUT).l
 		beq.s   loc_14180
 		rts
 loc_14198:
@@ -5993,8 +5997,8 @@ loc_14626:
 		lea     unk_15C83(pc), a2
 		bsr.w   loc_145CC
 		bcc.w   loc_15CC6
-		clr.w   (word_FF503C).l
-		clr.w   (unk_FF504C).l
+		clr.w   (byte_FF503C).l
+		clr.w   (word_FF504C).l
 		clr.w   (word_FF50AC).l
 		bra.w   loc_15CC0
 loc_14648:
@@ -6004,8 +6008,8 @@ loc_14648:
 		move.w  #$101,(word_FF503A).l
 		move.w  #$224C,d0
 		move.w  d0,(word_FF502C).l
-		move.w  d0,(word_FF503C).l
-		move.w  d0,(unk_FF504C).l
+		move.w  d0,(byte_FF503C).l
+		move.w  d0,(word_FF504C).l
 		move.w  d0,(word_FF50AC).l
 		bra.w   loc_15CC0
 loc_1467C:
@@ -6747,7 +6751,7 @@ loc_150B6:
 		jsr     (j_SetVIntParam3).l
 		jsr     (j_WaitForVInt).l
 		move.w  #$F,d7
-		lea     (unk_FF00A0).l,a0
+		lea     (PALETTE_2_BIS).l,a0
 loc_150E0:
 		movem.w (sp)+,d0
 		move.w  d0,-(a0)
@@ -6966,7 +6970,7 @@ loc_153BC:
 		bsr.w   sub_15CCA
 		move.b  #8,(FADING_COUNTER_MAX).l
 		move.b  #1,(FADING_PALETTE_FLAGS).l
-		move.b  #2,(FADING_SETTING).l
+		move.b  #OUT_TO_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 loc_153F0:
@@ -6978,8 +6982,8 @@ loc_153F0:
 		move.w  #$52A,(word_FF5030).l
 		move.w  #$72A,(word_FF5040).l
 		move.w  #$42A,(word_FF50C0).l
-		move.w  #$429,(unk_FF5060).l
-		move.w  #$329,(unk_FF5070).l
+		move.w  #$429,(word_FF5060).l
+		move.w  #$329,(word_FF5070).l
 		move.w  #$32A,(word_FF5080).l
 		move.w  #$32B,(word_FF5090).l
 		move.w  #$42B,(word_FF50A0).l
@@ -6990,7 +6994,7 @@ loc_153F0:
 		movem.l (sp)+,a0-a1
 		move.b  #8,(FADING_COUNTER_MAX).l
 		move.b  #1,(FADING_PALETTE_FLAGS).l
-		move.b  #1,(FADING_SETTING).l
+		move.b  #IN_FROM_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		move.w  #4,d7
@@ -7021,7 +7025,7 @@ loc_154B8:
 		bsr.w   sub_15CCA
 		move.b  #8,(FADING_COUNTER_MAX).l
 		move.b  #1,(FADING_PALETTE_FLAGS).l
-		move.b  #2,(FADING_SETTING).l
+		move.b  #OUT_TO_BLACK,(FADING_SETTING).l
 		move.b  #1,(FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		move.w  #4,d7
@@ -7038,8 +7042,8 @@ loc_15512:
 		move.w  d0,(word_FF50C0).l
 		move.w  d0,(word_FF5080).l
 		subq.b  #1,d0
-		move.w  d0,(unk_FF5060).l
-		move.w  d0,(unk_FF5070).l
+		move.w  d0,(word_FF5060).l
+		move.w  d0,(word_FF5070).l
 		move.w  d0,(unk_FF50B0).l
 		movem.l a0-a1,-(sp)
 		bsr.w   sub_11D36
@@ -7047,7 +7051,7 @@ loc_15512:
 		movem.l (sp)+,a0-a1
 		move.b  #8,(FADING_COUNTER_MAX).l
 		move.b  #1,(FADING_PALETTE_FLAGS).l
-		move.b  #1,(FADING_SETTING).l
+		move.b  #IN_FROM_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 loc_15596:
@@ -7103,7 +7107,7 @@ loc_1562E:
 loc_15640:
 		move.b  #1,(FADING_COUNTER_MAX).l
 		move.b  #$F,(FADING_PALETTE_FLAGS).l
-		move.b  #4,(FADING_SETTING).l
+		move.b  #OUT_TO_WHITE,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 loc_15668:
@@ -7115,7 +7119,7 @@ loc_15668:
 loc_15680:
 		move.b  #1,(FADING_COUNTER_MAX).l
 		move.b  #$F,(FADING_PALETTE_FLAGS).l
-		move.b  #3,(FADING_SETTING).l
+		move.b  #IN_FROM_WHITE,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 loc_156A8:
@@ -7381,7 +7385,7 @@ loc_15A7E:
 		movem.l d7-a1,-(sp)
 		lea     (MAP_SPRITE_POSITION).l,a0
 		bsr.w   sub_164EC
-		lea     (unk_FF5060).l,a0
+		lea     (word_FF5060).l,a0
 		bsr.w   sub_164EC
 		bsr.w   sub_1106C
 		jsr     (j_WaitForVInt).l
@@ -7419,7 +7423,7 @@ loc_15AA6:
 		mulu.w  #$6C0,d0
 		addi.w  #$2240,d0
 		movea.w d0,a1
-		movea.l (off_58018).l,a0
+		movea.l (p_SpecialSprite_Jogurt2).l,a0
 		move.w  #$90,d0 
 		move.w  #2,d1
 		jsr     (sub_294).l
@@ -7855,16 +7859,16 @@ sub_15E76:
 		move.w  #$3C,d7 
 loc_15E7A:
 		movem.w d7,-(sp)
-		move.w  (dword_FF0500+2).l,d6
+		move.w  (word_FF0500+2).l,d6
 		movem.w d6,-(sp)
 		move.w  d7,d1
 		divu.w  #8,d1
 		addq.w  #1,d1
 		sub.w   d1,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jsr     (j_SetVIntParam3AndWait).l
 		movem.w (sp)+,d6
-		jsr     (sub_290).l
+		jsr     (j_ClearOtherVScrollStuff).l
 		jsr     (j_SetVIntParam3AndWait).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_15E7A
@@ -7882,10 +7886,10 @@ loc_15EC0:      movem.w d7,-(sp)
 		divu.w  #8,d1
 		addq.w  #1,d1
 		sub.w   d1,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		jsr     (j_SetVIntParam3AndWait).l
 		movem.w (sp)+,d6
-		jsr     (sub_284).l
+		jsr     (j_ClearOtherHScrollStuff).l
 		jsr     (j_SetVIntParam3AndWait).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_15EC0
@@ -7961,7 +7965,7 @@ loc_15F82:
 		bpl.w   loc_15FAE
 		move.b  $A(a0),$B(a0)
 loc_15F9E:
-		jsr     sub_8000C       
+		jsr     sub_8000C
 		bcs.s   loc_15FAE
 loc_15FA6:
 		bsr.s   sub_15FC2
@@ -9054,10 +9058,11 @@ locret_168FC:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_168FE:
+ShopMenuActions:
+		
 		movem.l d3-a5,-(sp)
 		link    a6,#-$40
-		move.b  d0,((unk_FFF000-$1000000)).w
+		move.b  d0,((byte_FFF000-$1000000)).w
 		move.w  d1,-6(a6)
 		move.w  d2,-$1A(a6)
 		move.b  d2,-$1B(a6)
@@ -9065,30 +9070,30 @@ sub_168FE:
 		clr.w   -2(a6)
 		tst.w   -6(a6)
 		bne.s   loc_1692C
-		move.w  #$16B,d0
+		move.w  #$16B,d0        ; Welcome! Do come in! We've[Line]got the best, you know. Take[Line]your time, take your time![Wait2]
 		bsr.w   sub_16860
 loc_1692C:
 		jsr     (sub_30C).l
 		clr.w   -6(a6)
 		bsr.w   sub_16EA6
-		beq.w   loc_16D8C
+		beq.w   loc_16D8C       
 		dbf     d0,loc_16AA2
 		clr.w   -$12(a6)
 loc_16946:
 		bsr.w   sub_16DCE
 		bsr.w   sub_16F1C
 		bne.s   loc_1695C
-		move.w  #$178,d0
+		move.w  #$178,d0        ; Sorry, no deals today.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_16D6C
 loc_1695C:
 		tst.w   -$12(a6)
-		beq.s   loc_1696C
-		move.w  #$179,d0
+		beq.s   loc_1696C       
+		move.w  #$179,d0        ; I have some great stuff here.[Line]See anything you like?
 		bsr.w   sub_16860
 		bra.s   loc_16974
 loc_1696C:
-		move.w  #$16F,d0
+		move.w  #$16F,d0        ; What would you like?
 		bsr.w   sub_16860
 loc_16974:
 		bsr.w   sub_16E66
@@ -9099,17 +9104,17 @@ loc_16974:
 		jsr     j_GetItemPrice
 		move.w  d2,-4(a6)
 		ext.l   d2
-		move.l  d2,((dword_FFF900-$1000000)).w
-		move.w  #$170,d0
+		move.l  d2,((TEXT_NUMBER-$1000000)).w
+		move.w  #$170,d0        ; [Item], right?[Line]That comes to [Num] coins.[Line]OK?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		bne.w   loc_169C4
 loc_169A6:
-		move.w  #$171,d0
+		move.w  #$171,d0        ; Rats! We almost had a deal.[Wait2]
 		bsr.w   sub_16860
 loc_169AE:
 		bsr.w   sub_16DF4
-		move.w  #$177,d0
+		move.w  #$177,d0        ; Want anything else?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		bne.s   loc_16946
@@ -9118,16 +9123,16 @@ loc_169C4:
 		moveq   #0,d0
 		move.w  -4(a6),d0
 		bsr.w   sub_16DAE
-		bne.s   loc_169DA
-		move.w  #$172,d0
+		bne.s   loc_169DA       
+		move.w  #$172,d0        ; You don't have enough money[Line]to buy that. Sorry.[Wait2]
 		bsr.w   sub_16860
 		bra.s   loc_169AE
 loc_169DA:
-		move.w  #$173,d0
+		move.w  #$173,d0        ; Who do you wish to have it?
 		bsr.w   sub_16860
-		move.w  #$C07F,((unk_FFC0B6-$1000000)).w
+		move.w  #$C07F,((word_FFC0B6-$1000000)).w
 		jsr     sub_20034
-		lea     ((unk_FFCB84-$1000000)).w,a5
+		lea     ((byte_FFCB84-$1000000)).w,a5
 		clr.w   d3
 loc_169F4:
 		move.w  -$A(a6),d2
@@ -9141,10 +9146,10 @@ loc_16A10:
 		bset    #6,(a5,d3.w)
 loc_16A16:
 		addq.w  #1,d3
-		cmp.w   ((unk_FFCB82-$1000000)).w,d3
+		cmp.w   ((word_FFCB82-$1000000)).w,d3
 		bcs.s   loc_169F4
 		bsr.w   sub_16E30
-		beq.s   loc_169A6
+		beq.s   loc_169A6       
 		move.w  d0,-8(a6)
 		move.w  #$300,d1
 		move.w  -$A(a6),d2
@@ -9152,7 +9157,7 @@ loc_16A16:
 		bcc.w   loc_16A54
 		beq.w   loc_16A54
 		move.w  -8(a6),((TEXT_NAME_INDEX-$1000000)).w
-		move.w  #$174,d0
+		move.w  #$174,d0        ; [Name] can't use this. Do you[Line]still want it?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		beq.w   loc_169C4
@@ -9162,7 +9167,7 @@ loc_16A54:
 		jsr     j_FindEmptyItemSlot
 		bcc.w   loc_16A80
 		move.w  -8(a6),((TEXT_NAME_INDEX-$1000000)).w
-		move.w  #$175,d0
+		move.w  #$175,d0        ; [Name]'s hands are full. How[Line]about someone else?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		bne.w   loc_169C4
@@ -9173,7 +9178,7 @@ loc_16A80:
 		move.w  -4(a6),d1
 		jsr     j_DecreaseGold
 		bsr.w   sub_16DCE
-		move.w  #$176,d0
+		move.w  #$176,d0        ; Here you go! Use it in good[Line]health, my friend.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_169AE
 loc_16AA2:
@@ -9181,7 +9186,7 @@ loc_16AA2:
 		st      -$12(a6)
 		bra.w   loc_16946
 loc_16AAE:
-		move.w  #$184,d0
+		move.w  #$184,d0        ; Repair whose item?
 		bsr.w   sub_16860
 		bsr.w   sub_16E48
 		beq.w   loc_16D6C
@@ -9200,47 +9205,47 @@ loc_16AAE:
 		move.w  -$C(a6),d1
 		btst    #6,(a0,d1.w)
 		bne.s   loc_16B18
-		move.w  #$186,d0
+		move.w  #$186,d0        ; Who are you trying to fool?[Line]That item's not damaged.[Wait2]
 		bsr.w   sub_16860
 loc_16B02:
-		move.w  #$18B,d0
+		move.w  #$18B,d0        ; Anything else?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		beq.w   loc_16D6C
 		bsr.w   sub_16DF4
-		bra.s   loc_16AAE
+		bra.s   loc_16AAE       
 loc_16B18:
 		move.w  -4(a6),d2
 		ext.l   d2
-		move.l  d2,((dword_FFF900-$1000000)).w
+		move.l  d2,((TEXT_NUMBER-$1000000)).w
 		bsr.w   sub_16DCE
-		move.w  #$185,d0
+		move.w  #$185,d0        ; That'll cost [Num] coins. OK?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		bne.w   loc_16B38
-		bra.s   loc_16B02
+		bra.s   loc_16B02       
 loc_16B38:
 		moveq   #0,d0
 		move.w  -4(a6),d0
 		bsr.w   sub_16DAE
 		bne.s   loc_16B4E
-		move.w  #$187,d0
+		move.w  #$187,d0        ; I'd like to repair it, but[Line]you seem to be a bit low on[Line]money. Sorry.[Wait2]
 		bsr.w   sub_16860
-		bra.s   loc_16B02
+		bra.s   loc_16B02       
 loc_16B4E:
 		move.w  -$A(a6),d1
 		jsr     j_GetItemType
 		btst    #$D,d2
-		beq.s   loc_16B78
+		beq.s   loc_16B78       
 		movea.l -$10(a6),a0
 		move.w  -$C(a6),d0
 		btst    #7,(a0,d0.w)
-		beq.s   loc_16B78
-		move.w  #$188,d0
+		beq.s   loc_16B78       
+		move.w  #$188,d0        ; Whoa! I don't repair cursed[Line]items! Nope, not me. I'm[Line]nobody's fool![Wait2]
 		bsr.w   sub_16860
-		bra.s   loc_16B02
+		bra.s   loc_16B02       
 loc_16B78:
-		move.w  #$189,d0
+		move.w  #$189,d0        ; OK. Just a minute.[Wait2]
 		bsr.w   sub_16860
 		trap    #SOUND_COMMAND
 		dc.w SFX_SWORDS_HIT
@@ -9274,7 +9279,7 @@ loc_16B78:
 		dc.w SFX_SWORDS_HIT
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
-		move.w  #$18A,d0
+		move.w  #$18A,d0        ; I have it right here. It's as[Line]good as new! Try not to[Line]damage it again, OK?[Wait2]
 		bsr.w   sub_16860
 		moveq   #0,d1
 		move.w  -4(a6),d1
@@ -9283,11 +9288,11 @@ loc_16B78:
 		movea.l -$10(a6),a0
 		move.w  -$C(a6),d0
 		bclr    #6,(a0,d0.w)
-		bra.w   loc_16B02
+		bra.w   loc_16B02       
 loc_16C0A:
-		dbf     d0,loc_16AAE
+		dbf     d0,loc_16AAE    
 loc_16C0E:
-		move.w  #$17A,d0
+		move.w  #$17A,d0        ; Let's see. Who wants to sell,[Line]and which item?
 		bsr.w   sub_16860
 		bsr.w   sub_16E48
 		beq.w   loc_16D6C
@@ -9301,45 +9306,45 @@ loc_16C0E:
 		move.w  d0,-$A(a6)
 		move.w  d0,d1
 		cmpi.w  #$12,d0
-		beq.w   loc_16D60
+		beq.w   loc_16D60       
 		cmpi.w  #$13,d0
-		beq.w   loc_16D60
+		beq.w   loc_16D60       
 		cmpi.w  #$14,d0
-		beq.w   loc_16D60
+		beq.w   loc_16D60       
 		cmpi.w  #$26,d0 
-		beq.w   loc_16D60
+		beq.w   loc_16D60       
 		cmpi.w  #$25,d0 
-		beq.w   loc_16D60
+		beq.w   loc_16D60       
 		cmpi.w  #$27,d0 
-		beq.w   loc_16D60
+		beq.w   loc_16D60       
 		jsr     j_GetItemPrice
 		move.l  d2,d0
 		add.l   d2,d2
 		add.l   d0,d2
 		lsr.l   #2,d2
 		move.w  d2,-4(a6)
-		move.l  d2,((dword_FFF900-$1000000)).w
+		move.l  d2,((TEXT_NUMBER-$1000000)).w
 		bsr.w   sub_16ED4
-		bne.s   loc_16C98
-		move.w  #$17B,d0
+		bne.s   loc_16C98       
+		move.w  #$17B,d0        ; I'll give you [Num] coins[Line]for it. OK?
 		bsr.w   sub_16860
 		bra.s   loc_16CA0
 loc_16C98:
-		move.w  #$17C,d0
+		move.w  #$17C,d0        ; Say, that's nice! How about[Line][Num] coins for it?
 		bsr.w   sub_16860
 loc_16CA0:
 		bsr.w   sub_16DCE
 		bsr.w   sub_16E7E
 		bne.w   loc_16CCC
-		move.w  #$17D,d0
+		move.w  #$17D,d0        ; Sorry we couldn't cut a deal.[Wait2]
 		bsr.w   sub_16860
 loc_16CB4:
 		bsr.w   sub_16DF4
-		move.w  #$182,d0
+		move.w  #$182,d0        ; Anything else to sell?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		beq.w   loc_16D6C
-		bra.w   loc_16C0E
+		bra.w   loc_16C0E       
 loc_16CCC:
 		move.w  -$A(a6),d1
 		jsr     j_GetItemType
@@ -9349,7 +9354,7 @@ loc_16CCC:
 		move.w  -$C(a6),d0
 		btst    #7,(a0,d0.w)
 		beq.s   loc_16CF6
-		move.w  #$183,d0
+		move.w  #$183,d0        ; Hey, wait a minute. I don't[Line]deal with cursed items! It's[Line]bad luck, you know.[Wait2]
 		bsr.w   sub_16860
 		bra.s   loc_16CB4
 loc_16CF6:
@@ -9368,36 +9373,36 @@ loc_16CF6:
 		bne.s   loc_16D42
 		tst.w   -$14(a6)
 		bne.s   loc_16D40
-		move.w  #$181,d0
+		move.w  #$181,d0        ; Thanks, I don't sell this[Line]type of item, but I know[Line]someone who does.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_16CB4
 loc_16D40:
-		bra.s   loc_16D54
+		bra.s   loc_16D54       
 loc_16D42:
 		tst.w   -$14(a6)
-		beq.s   loc_16D54
-		move.w  #$180,d0
+		beq.s   loc_16D54       
+		move.w  #$180,d0        ; Thanks, I don't sell this[Line]type of item, but I know[Line]someone who does.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_16CB4
 loc_16D54:
-		move.w  #$17F,d0
+		move.w  #$17F,d0        ; It's mine, all mine![Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_16CB4
 loc_16D60:
-		move.w  #$17E,d0
+		move.w  #$17E,d0        ; I'd like to help, but we[Line]don't deal with these.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_16CB4
 loc_16D6C:
 		bsr.w   sub_16DF4
-		move.w  #$16C,d0
+		move.w  #$16C,d0        ; Anything else?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
-		beq.w   loc_16D8C
-		move.w  #$16D,d0
+		beq.w   loc_16D8C       
+		move.w  #$16D,d0        ; What do you need, then?[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_1692C
 loc_16D8C:
-		move.w  #$16E,d0
+		move.w  #$16E,d0        ; Thank you. Do come again![Wait2]
 		bsr.w   sub_16860
 		jsr     (sub_30C).l
 		clr.w   -6(a6)
@@ -9407,7 +9412,7 @@ loc_16D8C:
 		movem.l (sp)+,d3-a5
 		rts
 
-	; End of function sub_168FE
+	; End of function ShopMenuActions
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9582,7 +9587,7 @@ sub_16ED4:
 		btst    #$F,d2
 		beq.s   loc_16F12
 		clr.w   d0
-		move.b  ((unk_FFF000-$1000000)).w,d0
+		move.b  ((byte_FFF000-$1000000)).w,d0
 		add.w   d0,d0
 		move.w  ShopOffsets(pc,d0.w),d0
 		lea     ShopData(pc), a0
@@ -9611,7 +9616,7 @@ loc_16F18:
 
 sub_16F1C:
 		clr.w   d0
-		move.b  ((unk_FFF000-$1000000)).w,d0
+		move.b  ((byte_FFF000-$1000000)).w,d0
 		add.w   d0,d0
 		move.w  ShopOffsets(pc,d0.w),d0
 		lea     ShopData(pc,d0.w),a0
@@ -9644,7 +9649,8 @@ ShopData:       incbin "data/stats/items/shopdata.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_17028:
+ChurchMenuActions:
+		
 		movem.l d3-a5,-(sp)
 		link    a6,#-$40
 		move.w  d1,-6(a6)
@@ -9653,20 +9659,20 @@ sub_17028:
 		clr.w   -2(a6)
 		tst.w   -6(a6)
 		bne.s   loc_1704E
-		move.w  #$18C,d0
+		move.w  #$18C,d0        ; Welcome, [Hero]![Line]I've been expecting you.[Wait2][Line]How can I help you[Line]and the Shining Force?[Wait2]
 		bsr.w   sub_16860
 loc_1704E:
 		jsr     (sub_30C).l
 		clr.w   -6(a6)
 		bsr.w   sub_16EAE
-		beq.w   loc_175BC
+		beq.w   loc_175BC       
 		dbf     d0,loc_170E6
 		jsr     sub_20034
-		move.w  #$190,d0
+		move.w  #$190,d0        ; Shall I make a record of your[Line]adventures thus far?
 		bsr.w   sub_16860
 		bsr.w   sub_16E92
 		bne.w   loc_17086
-		move.w  #$18D,d0
+		move.w  #$18D,d0        ; Remember that I'm always[Line]willing to record your deeds.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_175A8
 loc_17086:
@@ -9678,15 +9684,15 @@ loc_17086:
 		movem.l (sp)+,d0-a6
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_SAVE
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
 		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$191,d0
+		move.w  #$191,d0        ; There, my record of your[Line]exploits is complete.[Wait2]
 		bsr.w   sub_16860
-		move.w  #$192,d0
+		move.w  #$192,d0        ; Will you continue your[Line]journey?
 		bsr.w   sub_16860
 		bsr.w   sub_16E92
 		bne.w   loc_175A8
-		move.w  #$193,d0
+		move.w  #$193,d0        ; Yes, you should rest before[Line]continuing. Remember, a tired[Line]warrior is soon a dead one![Wait2]
 		bsr.w   sub_16860
 		bsr.w   sub_168D8
 		trap    #SOUND_COMMAND
@@ -9696,40 +9702,40 @@ loc_17086:
 loc_170E6:
 		dbf     d0,loc_17300
 		jsr     sub_20034
-		lea     ((unk_FFCB84-$1000000)).w,a5
-		move.w  #$194,d0
+		lea     ((byte_FFCB84-$1000000)).w,a5
+		move.w  #$194,d0        ; Well, let's just see who[Line]needs my help.[Wait2]
 		bsr.w   sub_16860
 		clr.w   -8(a6)
 		clr.b   -$16(a6)
 loc_17104:
 		move.w  -8(a6),d0
 		move.b  (a5,d0.w),d1
-		andi.b  #$3F,d1 
+		andi.b  #FORCE_MASK_ID_0,d1
 		move.b  d1,-$1C(a6)
 		move.b  -$1C(a6),d0
 		jsr     j_GetForceMemberStatus
-		btst    #0,d1
+		btst    #FORCE_STATUS_FLAG_POISON,d1
 		beq.w   loc_171B4
 		st      -$16(a6)
 		clr.w   ((TEXT_NAME_INDEX-$1000000)).w
 		move.b  -$1C(a6),((TEXT_NAME_INDEX+1-$1000000)).w
-		move.w  #$197,d0
+		move.w  #$197,d0        ; Oh, my![Line][Name] is poisoned![Wait2]
 		bsr.w   sub_16860
-		moveq   #$A,d0
-		move.l  d0,((dword_FFF900-$1000000)).w
-		move.w  #$199,d0
+		moveq   #CHURCH_CURE_COST_POISON,d0
+		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.w  #$199,d0        ; I can heal [Name],[Line]but it'll cost [Num] coins.[Line]Agreed?
 		bsr.w   sub_16860
 		bsr.w   sub_16DCE
 		bsr.w   sub_16E7E
 		bne.w   loc_17162
-		move.w  #$18D,d0
+		move.w  #$18D,d0        ; Remember that I'm always[Line]willing to record your deeds.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_171B4
 loc_17162:
-		moveq   #$A,d0
+		moveq   #CHURCH_CURE_COST_POISON,d0
 		bsr.w   sub_16DAE
 		bne.w   loc_17178
-		move.w  #$19A,d0
+		move.w  #$19A,d0        ; Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_171B4
 loc_17178:
@@ -9737,26 +9743,26 @@ loc_17178:
 		move.b  -$1C(a6),d0
 		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
 		jsr     j_GetForceMemberStatus
-		bclr    #0,d1
+		bclr    #FORCE_STATUS_FLAG_POISON,d1
 		jsr     j_SetForceMemberStatus
-		moveq   #$A,d1
+		moveq   #CHURCH_CURE_COST_POISON,d1
 		jsr     j_DecreaseGold
 		bsr.w   sub_16DCE
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_REVIVE
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
 		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$19B,d0
+		move.w  #$19B,d0        ; Done. [Name] is cured![Wait2]
 		bsr.w   sub_16860
 loc_171B4:
 		move.w  -8(a6),d0
 		addq.w  #1,d0
 		move.w  d0,-8(a6)
-		cmp.w   ((unk_FFCB82-$1000000)).w,d0
+		cmp.w   ((word_FFCB82-$1000000)).w,d0
 		bcs.w   loc_17104
 		tst.b   -$16(a6)
 		bne.s   loc_171D4
-		move.w  #$195,d0
+		move.w  #$195,d0        ; Hmmm...no one's poisoned.[Wait2]
 		bsr.w   sub_16860
 loc_171D4:
 		clr.w   -8(a6)
@@ -9764,32 +9770,32 @@ loc_171D4:
 loc_171DC:
 		move.w  -8(a6),d0
 		move.b  (a5,d0.w),d1
-		andi.b  #$3F,d1 
+		andi.b  #FORCE_MASK_ID_0,d1
 		move.b  d1,-$1C(a6)
 		move.b  d1,d0
 		jsr     j_GetForceMemberStatus
-		btst    #2,d1
+		btst    #FORCE_STATUS_FLAG_CURSE,d1
 		beq.w   loc_172DC
 		st      -$15(a6)
 		clr.w   ((TEXT_NAME_INDEX-$1000000)).w
 		move.b  -$1C(a6),((TEXT_NAME_INDEX+1-$1000000)).w
-		move.w  #$198,d0
+		move.w  #$198,d0        ; Oh, my![Line][Name] is cursed![Wait2]
 		bsr.w   sub_16860
-		moveq   #$14,d0
-		move.l  d0,((dword_FFF900-$1000000)).w
-		move.w  #$199,d0
+		moveq   #CHURCH_CURE_COST_CURSE,d0
+		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.w  #$199,d0        ; I can heal [Name],[Line]but it'll cost [Num] coins.[Line]Agreed?
 		bsr.w   sub_16860
 		bsr.w   sub_16DCE
 		bsr.w   sub_16E7E
 		bne.w   loc_17238
-		move.w  #$18D,d0
+		move.w  #$18D,d0        ; Remember that I'm always[Line]willing to record your deeds.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_172DC
 loc_17238:
-		moveq   #$14,d0
+		moveq   #CHURCH_CURE_COST_CURSE,d0
 		bsr.w   sub_16DAE
 		bne.w   loc_1724E
-		move.w  #$19A,d0
+		move.w  #$19A,d0        ; Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_172DC
 loc_1724E:
@@ -9797,55 +9803,55 @@ loc_1724E:
 		move.b  -$1C(a6),d0
 		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
 		jsr     j_GetForceMemberStatus
-		bclr    #2,d1
+		bclr    #FORCE_STATUS_FLAG_CURSE,d1
 		jsr     j_SetForceMemberStatus
-		move.w  #$100,d1
+		move.w  #ITEM_TYPE_MASK_WEAPON,d1
 		jsr     j_GetEquippedItem
 		bcs.s   loc_1728E
 		move.w  d2,d1
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEM_TYPE_FLAG_UNEQUIPPABLE,d2
 		beq.s   loc_1728E
 		jsr     j_GetForceItemsAddress
-		bclr    #7,(a0,d3.w)
+		bclr    #ITEM_FLAG_EQUIPPED,(a0,d3.w)
 loc_1728E:
-		move.w  #$200,d1
+		move.w  #ITEM_TYPE_MASK_RING,d1
 		jsr     j_GetEquippedItem
 		bcs.s   loc_172B4
 		move.w  d2,d1
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEM_TYPE_FLAG_UNEQUIPPABLE,d2
 		beq.s   loc_172B4
 		jsr     j_GetForceItemsAddress
-		bclr    #7,(a0,d3.w)
+		bclr    #ITEM_FLAG_EQUIPPED,(a0,d3.w)
 loc_172B4:
 		jsr     sub_20014
-		moveq   #$14,d1
+		moveq   #CHURCH_CURE_COST_CURSE,d1
 		jsr     j_DecreaseGold
 		bsr.w   sub_16DCE
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_REVIVE
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
 		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$19C,d0
+		move.w  #$19C,d0        ; Done. [Name] is cured![Wait2]
 		bsr.w   sub_16860
 loc_172DC:
 		move.w  -8(a6),d0
 		addq.w  #1,d0
 		move.w  d0,-8(a6)
-		cmp.w   ((unk_FFCB82-$1000000)).w,d0
+		cmp.w   ((word_FFCB82-$1000000)).w,d0
 		bcs.w   loc_171DC
 		tst.b   -$15(a6)
 		bne.s   loc_172FC
-		move.w  #$196,d0
+		move.w  #$196,d0        ; No one's cursed![Wait2]
 		bsr.w   sub_16860
 loc_172FC:
 		bra.w   loc_175A8
 loc_17300:
 		dbf     d0,loc_17410
 		jsr     sub_20034
-		lea     ((unk_FFCB84-$1000000)).w,a5
-		move.w  #$194,d0
+		lea     ((byte_FFCB84-$1000000)).w,a5
+		move.w  #$194,d0        ; Well, let's just see who[Line]needs my help.[Wait2]
 		bsr.w   sub_16860
 		clr.w   -8(a6)
 		clr.b   -$17(a6)
@@ -9859,7 +9865,7 @@ loc_1731E:
 		st      -$17(a6)
 		clr.w   ((TEXT_NAME_INDEX-$1000000)).w
 		move.b  -$1C(a6),((TEXT_NAME_INDEX+1-$1000000)).w
-		move.w  #$19E,d0
+		move.w  #$19E,d0        ; Oh, my! [Name] is in bad[Line]shape. I'll see if I can help.[Wait2]
 		bsr.w   sub_16860
 		clr.w   d0
 		move.b  -$1C(a6),d0
@@ -9867,19 +9873,19 @@ loc_1731E:
 		moveq   #0,d7
 		tst.b   (a0,d0.w)
 		beq.w   loc_17362
-		moveq   #$A,d7
+		moveq   #CHURCH_BASE_PROMOTION_LEVEL,d7
 loc_17362:
 		jsr     j_GetForceMemberLevel
 		add.w   d7,d1
-		mulu.w  #$A,d1
+		mulu.w  #CHURCH_RAISE_COST_PER_LEVEL,d1
 		move.w  d1,-4(a6)
-		move.l  d1,((dword_FFF900-$1000000)).w
-		move.w  #$19F,d0
+		move.l  d1,((TEXT_NUMBER-$1000000)).w
+		move.w  #$19F,d0        ; I can revive [Name], but it[Line]will cost [Num] coins.[Line]Agreed?
 		bsr.w   sub_16860
 		bsr.w   sub_16DCE
 		bsr.w   sub_16E7E
 		bne.w   loc_17396
-		move.w  #$18D,d0
+		move.w  #$18D,d0        ; Remember that I'm always[Line]willing to record your deeds.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_173EC
 loc_17396:
@@ -9887,7 +9893,7 @@ loc_17396:
 		move.w  -4(a6),d0
 		bsr.w   sub_16DAE
 		bne.w   loc_173B0
-		move.w  #$19A,d0
+		move.w  #$19A,d0        ; Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_173EC
 loc_173B0:
@@ -9902,25 +9908,25 @@ loc_173B0:
 		bsr.w   sub_16DCE
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_REVIVE
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
 		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$1A0,d0
+		move.w  #$1A0,d0        ; [Name] has revived![Wait2]
 		bsr.w   sub_16860
 loc_173EC:
 		move.w  -8(a6),d0
 		addq.w  #1,d0
 		move.w  d0,-8(a6)
-		cmp.w   ((unk_FFCB82-$1000000)).w,d0
+		cmp.w   ((word_FFCB82-$1000000)).w,d0
 		bcs.w   loc_1731E
 		tst.b   -$17(a6)
 		bne.s   loc_1740C
-		move.w  #$19D,d0
+		move.w  #$19D,d0        ; Hmm...everyone seems OK.[Wait2]
 		bsr.w   sub_16860
 loc_1740C:
 		bra.w   loc_175A8
 loc_17410:
 		jsr     sub_20034
-		lea     ((unk_FFCB84-$1000000)).w,a5
+		lea     ((byte_FFCB84-$1000000)).w,a5
 		clr.w   -8(a6)
 		clr.b   -$18(a6)
 loc_17422:
@@ -9928,54 +9934,54 @@ loc_17422:
 		move.b  (a5,d0.w),d0
 		sf      -$40(a6,d0.w)
 		move.b  d0,-$1C(a6)
-		cmpi.b  #$1D,d0
+		cmpi.b  #FORCE_ID_JOGURT,d0
 		beq.s   loc_17456
 		jsr     j_GetForceMemberLevel
-		cmpi.w  #$A,d1
+		cmpi.w  #CHURCH_BASE_PROMOTION_LEVEL,d1
 		blt.s   loc_17470
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		jsr     j_GetForceMemberClass
-		cmpi.w  #$D,d1
+		cmpi.w  #CLASS_ID_WRWF,d1
 		bgt.s   loc_17470
 loc_17456:
 		andi.w  #$FF,d0
 		st      -$40(a6,d0.w)
 		st      -$18(a6)
-		lea     ((unk_FFCB84-$1000000)).w,a0
+		lea     ((byte_FFCB84-$1000000)).w,a0
 		move.w  -8(a6),d0
 		bset    #6,(a0,d0.w)
 loc_17470:
 		addq.w  #1,-8(a6)
 		move.w  -8(a6),d0
-		cmp.w   ((unk_FFCB82-$1000000)).w,d0
+		cmp.w   ((word_FFCB82-$1000000)).w,d0
 		bcs.s   loc_17422
 		tst.b   -$18(a6)
-		bne.s   loc_17490
-		move.w  #$1A1,d0
+		bne.s   loc_17490       
+		move.w  #$1A1,d0        ; I'm sorry, but no one has[Line]earned a promotion.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_175A8
 loc_17490:
-		move.w  #$1A2,d0
+		move.w  #$1A2,d0        ; Does anyone want to be[Line]promoted?
 		bsr.w   sub_16860
-		move.w  #$C07D,((unk_FFC0B6-$1000000)).w
+		move.w  #$C07D,((word_FFC0B6-$1000000)).w
 		bsr.w   sub_168D8
 		movem.l d1-a6,-(sp)
 		jsr     sub_8040
 		cmpi.w  #$FFFF,d0
 		movem.l (sp)+,d1-a6
 		bne.s   loc_174C2
-		move.w  #$1A3,d0
+		move.w  #$1A3,d0        ; Changed your mind?[Line]
 		bsr.w   sub_16860
 		bra.w   loc_175A8
 loc_174C2:
-		andi.b  #$3F,d0 
+		andi.b  #FORCE_MASK_ID_0,d0
 		move.b  d0,-$1C(a6)
 		jsr     j_GetForceMemberHP
 		tst.w   d1
 		bne.s   loc_174E4
 		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
-		move.w  #$1A5,d0
+		move.w  #$1A5,d0        ; [Name] needs to be revived[Line]before being promoted.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_175A8
 loc_174E4:
@@ -9985,25 +9991,25 @@ loc_174E4:
 		move.b  -$1C(a6),d0
 		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
 		jsr     j_GetForceMemberClass
-		cmpi.w  #$D,d1
-		ble.s   loc_17510
+		cmpi.w  #CLASS_ID_WRWF,d1
+		ble.s   loc_17510       
 		move.w  d1,((word_FFF846-$1000000)).w
-		move.w  #$1A9,d0
+		move.w  #$1A9,d0        ; Hmm...[Line]I think [Name] should[Line]stay as [Class].[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_175A8
 loc_17510:
-		move.w  #$1A4,d0
+		move.w  #$1A4,d0        ; Hmm...[Name] needs some more[Line]training. Come back[Line]later.[Wait2]
 		bsr.w   sub_16860
 		bra.w   loc_175A8
 loc_1751C:
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
-		move.w  #$1A6,d0
+		move.w  #$1A6,d0        ; [Name] wants[Line]a promotion?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		bne.w   loc_17542
-		move.w  #$1A3,d0
+		move.w  #$1A3,d0        ; Changed your mind?[Line]
 		bsr.w   sub_16860
 		bra.w   loc_175A8
 loc_17542:
@@ -10012,34 +10018,34 @@ loc_17542:
 		move.w  d0,((word_FFF846-$1000000)).w
 		jsr     j_GetForceMemberClass
 		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
-		cmpi.b  #$1D,d0
+		cmpi.b  #FORCE_ID_JOGURT,d0
 		beq.s   loc_17562
 		jsr     j_Promote
 loc_17562:
 		jsr     j_GetForceMemberClass
-		move.w  d1,((unk_FFF848-$1000000)).w
-		move.w  #$1A7,d0
+		move.w  d1,((word_FFF848-$1000000)).w
+		move.w  #$1A7,d0        ; I hereby make a promotion.[Line]Now, [Class] [Name] shall[Line]be known as a [Class]![Wait2]
 		bsr.w   sub_16860
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_PROMOTION
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		movem.l d0-a6,-(sp)
 		jsr     loc_11D22
 		movem.l (sp)+,d0-a6
 		clr.w   ((TEXT_NAME_INDEX-$1000000)).w
 		move.b  -$1C(a6),((TEXT_NAME_INDEX+1-$1000000)).w
-		move.w  ((unk_FFF848-$1000000)).w,((word_FFF846-$1000000)).w
-		move.w  #$1A8,d0
+		move.w  ((word_FFF848-$1000000)).w,((word_FFF846-$1000000)).w
+		move.w  #$1A8,d0        ; Congratulations, [Name]![Wait2]
 		bsr.w   sub_16860
 loc_175A8:
 		bsr.w   sub_16DF4
-		move.w  #$18E,d0
+		move.w  #$18E,d0        ; Can I help in some other way?
 		bsr.w   sub_16860
 		bsr.w   sub_16E7E
 		bne.w   loc_1704E
 loc_175BC:
-		move.w  #$18F,d0
+		move.w  #$18F,d0        ; May the Powers of Light be[Line]always with you, [Hero]![Wait2]
 		bsr.w   sub_16860
 		jsr     (sub_30C).l
 		clr.w   -6(a6)
@@ -10049,7 +10055,7 @@ loc_175BC:
 		movem.l (sp)+,d3-a5
 		rts
 
-	; End of function sub_17028
+	; End of function ChurchMenuActions
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10088,7 +10094,7 @@ sub_175F2:
 		move.l  a5,d1
 		tst.w   d1
 		beq.s   loc_17648
-		lea     (unk_FF72EA).l,a4
+		lea     (byte_FF72EA).l,a4
 		moveq   #0,d1
 		lsr.w   #2,d0
 		bcc.s   loc_17640
@@ -10323,7 +10329,7 @@ loc_177DE:
 
 sub_177E6:
 		movea.l (dword_FFF006).l,a1
-		lea     (unk_FF72EA).l,a4
+		lea     (byte_FF72EA).l,a4
 loc_177F2:
 		clr.w   d0
 		moveq   #8,d4
@@ -10453,7 +10459,7 @@ loc_178BA:
 
 sub_178E0:
 		movea.l (dword_FFF006).l,a1
-		lea     (unk_FF72EA).l,a4
+		lea     (byte_FF72EA).l,a4
 loc_178EC:
 		clr.w   d0
 		moveq   #8,d4
@@ -10589,7 +10595,7 @@ loc_179C6:
 ; =============== S U B R O U T I N E =======================================
 
 sub_179E6:
-		lea     (unk_FF72EA).l,a1
+		lea     (byte_FF72EA).l,a1
 		clr.w   d0
 		move.b  (MAP_WIDTH_0).l,d0
 		add.w   d0,d0
@@ -10657,7 +10663,7 @@ loc_17A6E:
 loc_17A76:
 		subq.w  #2,d3
 loc_17A78:
-		lea     (unk_FF72EA).l,a0
+		lea     (byte_FF72EA).l,a0
 		movea.l a0,a1
 		add.w   d3,d0
 		adda.w  d0,a0
@@ -10720,9 +10726,9 @@ loc_17B08:
 	; End of function sub_17A2E
 
 
-; START OF FUNCTION CHUNK FOR sub_5B8C
+; =============== S U B R O U T I N E =======================================
 
-loc_17B10:
+sub_17B10:
 		movem.l d0-d4/a0-a1,-(sp)
 		moveq   #0,d4
 		move.b  d0,d4
@@ -10754,7 +10760,7 @@ loc_17B4E:
 loc_17B56:
 		subq.w  #2,d3
 loc_17B58:
-		lea     (unk_FF72EA).l,a0
+		lea     (byte_FF72EA).l,a0
 		movea.l a0,a1
 		add.w   d3,d0
 		adda.w  d0,a0
@@ -10785,7 +10791,7 @@ loc_17BB6:
 		movem.l (sp)+,d0-d4/a0-a1
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_5B8C
+	; End of function sub_17B10
 
 SpriteTextSounds:
 		incbin "data/scripting/spritetextsounds.bin"
@@ -10823,7 +10829,7 @@ sub_17C70:
 		movem.l d0-a6,-(sp)
 		moveq   #0,d0
 		moveq   #4,d1
-		lea     ((unk_FFF00A-$1000000)).w,a0
+		lea     ((byte_FFF00A-$1000000)).w,a0
 loc_17C7C:
 		move.l  d0,(a0)+
 		dbf     d1,loc_17C7C
@@ -11583,7 +11589,7 @@ loc_183D6:
 		jsr     (a5)
 		rts
 loc_183E6:
-		move.l  ((unk_FFF00A-$1000000)).w,d0
+		move.l  ((byte_FFF00A-$1000000)).w,d0
 		tst.b   d0
 		bne.s   loc_1844E
 		moveq   #3,d0
@@ -11640,7 +11646,7 @@ loc_18452:
 loc_18476:
 		moveq   #$A,d0
 		jsr     (a5)
-		st      ((unk_FFF00D-$1000000)).w
+		st      ((byte_FFF00D-$1000000)).w
 locret_1847E:
 		rts
 
@@ -11676,7 +11682,7 @@ loc_1849A:
 loc_184AA:
 		moveq   #5,d0
 		jsr     (a5)
-		st      ((unk_FFF00A-$1000000)).w
+		st      ((byte_FFF00A-$1000000)).w
 locret_184B2:
 		rts
 loc_184B4:
@@ -11693,7 +11699,7 @@ loc_184B4:
 loc_184CE:
 		moveq   #6,d0
 		jsr     (a5)
-		st      ((unk_FFF00B-$1000000)).w
+		st      ((byte_FFF00B-$1000000)).w
 locret_184D6:
 		rts
 loc_184D8:
@@ -11715,7 +11721,7 @@ loc_184EE:
 loc_184FE:
 		moveq   #7,d0
 		jsr     (a5)
-		st      ((unk_FFF00C-$1000000)).w
+		st      ((byte_FFF00C-$1000000)).w
 locret_18506:
 		rts
 loc_18508:
@@ -11729,13 +11735,13 @@ loc_18508:
 		jsr     (a5)
 		rts
 loc_18522:
-		tst.b   ((unk_FFF00E-$1000000)).w
+		tst.b   ((byte_FFF00E-$1000000)).w
 		bne.s   loc_1853A
 		moveq   #7,d0
 		jsr     (a5)
 		move.w  #$45,d0 
 		bsr.w   j_j_SetEventFlag
-		st      ((unk_FFF00E-$1000000)).w
+		st      ((byte_FFF00E-$1000000)).w
 		bra.s   locret_18548
 loc_1853A:
 		moveq   #$A,d0
@@ -11750,7 +11756,7 @@ loc_1854A:
 		bcs.s   loc_18574
 		cmpi.w  #$A,d1
 		bcc.s   loc_18574
-		tst.b   ((unk_FFF00E-$1000000)).w
+		tst.b   ((byte_FFF00E-$1000000)).w
 		beq.s   loc_1856C
 		move.w  d1,d0
 		moveq   #0,d1
@@ -11930,7 +11936,7 @@ sub_186E6:
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -11959,7 +11965,7 @@ loc_18740:
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12001,7 +12007,7 @@ loc_1878C:
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12120,7 +12126,7 @@ loc_1887A:
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12143,7 +12149,7 @@ loc_188D6:      moveq   #1,d0
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12215,7 +12221,7 @@ loc_1899C:      cmpi.w  #$10,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12465,7 +12471,7 @@ loc_18C52:      cmpi.w  #7,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12488,7 +12494,7 @@ loc_18CA2:      moveq   #1,d0
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12522,7 +12528,7 @@ loc_18D0C:      clr.w   d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12620,13 +12626,13 @@ loc_18E26:      move.w  #$476,d6
 		move.l  (sp)+,d0
 		cmpi.w  #8,d2
 		bne.s   loc_18E62
-		tst.b   ((unk_FFF00A-$1000000)).w
+		tst.b   ((byte_FFF00A-$1000000)).w
 		bne.s   loc_18E5C
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  #$49,d0 
 		bsr.w   j_j_SetEventFlag
-		st      ((unk_FFF00A-$1000000)).w
+		st      ((byte_FFF00A-$1000000)).w
 		rts
 		bra.s   loc_18E62
 loc_18E5C:      moveq   #6,d0
@@ -12702,7 +12708,7 @@ loc_18EFE:      cmpi.w  #$B,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12718,7 +12724,7 @@ loc_18F2E:      cmpi.w  #$E,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12757,7 +12763,7 @@ loc_18FA2:      cmpi.w  #$E,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12776,7 +12782,7 @@ loc_18FD2:      cmpi.w  #$14,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -12792,7 +12798,7 @@ loc_19008:      cmpi.w  #$B,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -13058,7 +13064,7 @@ loc_192F0:      moveq   #1,d0
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -13176,7 +13182,7 @@ loc_1944C:      bra.w   sub_18074
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -13235,7 +13241,7 @@ loc_194D0:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -13251,7 +13257,7 @@ loc_1951E:      cmpi.w  #$10,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -13265,7 +13271,7 @@ loc_1954E:      cmpi.w  #$14,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -13978,7 +13984,7 @@ loc_19D3A:      move.w  d6,-(sp)
 		jsr     (a5)
 		move.w  (sp)+,d6
 		rts
-		move.b  ((unk_FFF00A-$1000000)).w,d7
+		move.b  ((byte_FFF00A-$1000000)).w,d7
 		cmpi.b  #$FE,d1
 		beq.w   loc_1A454
 		cmpi.b  #$FD,d1
@@ -14000,7 +14006,7 @@ loc_19D78:      moveq   #$2F,d0
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -14172,7 +14178,7 @@ loc_19F40:      cmpi.w  #$14,d1
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		sf      ((unk_FFF00A-$1000000)).w
+		sf      ((byte_FFF00A-$1000000)).w
 		bra.s   locret_19F84
 loc_19F64:      move.w  #$544,d6
 		move.w  #$54,d0 
@@ -14461,7 +14467,7 @@ locret_1A23C:   rts
 loc_1A23E:      cmpi.w  #$16,d1
 		bne.s   loc_1A27C
 		move.w  #$55D,d6
-		tst.b   ((unk_FFF00B-$1000000)).w
+		tst.b   ((byte_FFF00B-$1000000)).w
 		bne.s   loc_1A276
 		moveq   #0,d0
 		jsr     (a5)
@@ -14474,8 +14480,8 @@ loc_1A260:      moveq   #2,d0
 		jsr     (a5)
 		move.w  #$4C,d0 
 		bsr.w   j_j_SetEventFlag
-		st      ((unk_FFF00A-$1000000)).w
-		st      ((unk_FFF00B-$1000000)).w
+		st      ((byte_FFF00A-$1000000)).w
+		st      ((byte_FFF00B-$1000000)).w
 loc_1A274:      bra.s   locret_1A27A
 loc_1A276:      moveq   #5,d0
 		jsr     (a5)
@@ -14899,7 +14905,7 @@ loc_1A6D4:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -14915,7 +14921,7 @@ loc_1A71C:      cmpi.w  #$E,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -14931,7 +14937,7 @@ loc_1A74C:      cmpi.w  #$F,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15032,7 +15038,7 @@ loc_1A852:      move.w  #$695,d6
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15048,7 +15054,7 @@ loc_1A89C:      cmpi.w  #$11,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15064,7 +15070,7 @@ loc_1A8CC:      cmpi.w  #$12,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15416,7 +15422,7 @@ loc_1AC98:      bra.w   sub_1808A
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15430,7 +15436,7 @@ loc_1ACD4:      cmpi.w  #$B,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15446,7 +15452,7 @@ loc_1ACFE:      cmpi.w  #$14,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15647,7 +15653,7 @@ loc_1AF22:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15752,7 +15758,7 @@ loc_1B030:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15768,7 +15774,7 @@ loc_1B076:      cmpi.w  #8,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15782,7 +15788,7 @@ loc_1B0A6:      cmpi.w  #$11,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15932,7 +15938,7 @@ loc_1B228:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -15946,7 +15952,7 @@ loc_1B26E:      cmpi.w  #5,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16118,7 +16124,7 @@ loc_1B42C:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16185,7 +16191,7 @@ loc_1B508:      cmpi.w  #7,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16197,7 +16203,7 @@ loc_1B54C:      moveq   #$F,d0
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16287,7 +16293,7 @@ loc_1B622:      cmpi.w  #0,d2
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16311,7 +16317,7 @@ loc_1B66A:      cmpi.w  #1,d2
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16348,7 +16354,7 @@ loc_1B6EA:      cmpi.b  #$FF,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16381,7 +16387,7 @@ loc_1B73C:      cmpi.w  #7,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16393,7 +16399,7 @@ loc_1B780:      moveq   #$F,d0
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16477,7 +16483,7 @@ loc_1B84A:      cmpi.w  #0,d2
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16501,7 +16507,7 @@ loc_1B892:      cmpi.w  #1,d2
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16633,7 +16639,7 @@ loc_1BA04:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16654,7 +16660,7 @@ loc_1BA48:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16667,7 +16673,7 @@ loc_1BA86:      cmpi.w  #2,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16681,7 +16687,7 @@ loc_1BAAE:      cmpi.w  #3,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16928,7 +16934,7 @@ loc_1BD66:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16941,7 +16947,7 @@ loc_1BD9C:      cmpi.w  #2,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -16955,7 +16961,7 @@ loc_1BDC4:      cmpi.w  #3,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -17086,7 +17092,7 @@ loc_1BF20:      move.w  #$7F8,d6
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -17105,7 +17111,7 @@ loc_1BF64:      cmpi.w  #3,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -17412,7 +17418,7 @@ loc_1C2AA:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -17430,7 +17436,7 @@ loc_1C2F4:      cmpi.w  #2,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -17444,7 +17450,7 @@ loc_1C328:      cmpi.w  #$C,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -18757,7 +18763,7 @@ loc_1D144:      move.w  d6,-(sp)
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -18775,7 +18781,7 @@ loc_1D18E:      cmpi.w  #2,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_168FE
+		bsr.w   ShopMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -18789,7 +18795,7 @@ loc_1D1C2:      cmpi.w  #4,d1
 		move.b  -1(a6),d2
 		lsl.w   #8,d2
 		move.b  -2(a6),d2
-		bsr.w   sub_17028
+		bsr.w   ChurchMenuActions
 		tst.w   d1
 		sne     -3(a6)
 		move.b  d2,-2(a6)
@@ -19015,7 +19021,7 @@ BattleChests:   incbin "data/battles/global/battlechests.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_1DA8E:
+PlayEnding:
 		trap    #SOUND_COMMAND
 		dc.w SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
@@ -19037,17 +19043,17 @@ sub_1DA8E:
 		move.w  #$8B03,d0
 		jsr     (j_SetVDPRegStatus).w
 		move.w  #0,d6
-		jsr     (sub_28C).w
+		jsr     (j_ClearVScrollStuff).w
 		move.w  #$100,d6
-		jsr     (sub_290).w
+		jsr     (j_ClearOtherVScrollStuff).w
 		jsr     (j_SetVIntParam3).w
-		lea     (unk_FFD000).l,a0
+		lea     (byte_FFD000).l,a0
 		move.w  #$3FF,d7
 loc_1DB04:
 		clr.l   (a0)+
 		dbf     d7,loc_1DB04
-		lea     (unk_FFD000).l,a0
-		lea     (loc_E000).l,a1
+		lea     (byte_FFD000).l,a0
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
 		jsr     (j_DMAFromRAMToVRAM).w
@@ -19062,7 +19068,7 @@ loc_1DB04:
 		moveq   #$E,d7
 loc_1DB4C:
 		movem.w d0/d7,-(sp)
-		move.b  d0,((unk_FFCBB3-$1000000)).w
+		move.b  d0,((byte_FFCBB3-$1000000)).w
 		clr.b   ((byte_FFB5BC-$1000000)).w
 		jsr     sub_203FC
 		move.w  d0,-(sp)
@@ -19070,8 +19076,8 @@ loc_1DB4C:
 		move.w  #$A,d0
 		jsr     (j_Sleep).l
 		move.w  (sp)+,d0
-		lea     (unk_FF0020).l,a0
-		lea     (unk_FF00A0).l,a1
+		lea     (PALETTE_2).l,a0
+		lea     (PALETTE_2_BIS).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -19091,7 +19097,7 @@ loc_1DB4C:
 		dbf     d7,loc_1DB4C
 		clr.b   ((DONT_SEND_SOUND_COMMANDS-$1000000)).w
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.b  #3,((unk_FF9C05-$1000000)).w
+		move.b  #3,((byte_FF9C05-$1000000)).w
 		jsr     (j_FadeOutToBlack).l
 		move.w  #$C8,d0 
 		jsr     (j_Sleep).l
@@ -19112,25 +19118,25 @@ loc_1DB4C:
 		move.w  #$8B03,d0
 		jsr     (j_SetVDPRegStatus).w
 		move.w  #0,d6
-		jsr     (sub_28C).w
+		jsr     (j_ClearVScrollStuff).w
 		move.w  #$100,d6
-		jsr     (sub_290).w
+		jsr     (j_ClearOtherVScrollStuff).w
 		jsr     (j_SetVIntParam3).w
-		movea.l (p_plt_Ending).l,a0
+		movea.l (p_EndingPalette).l,a0
 		lea     (PALETTE_1_BIS).l,a1
-		lea     (RAM_START).l,a2
+		lea     (PALETTE_1).l,a2
 		moveq   #$3F,d0 
 loc_1DC38:
 		move.w  (a0)+,(a1)+
 		move.w  #0,(a2)+
 		dbf     d0,loc_1DC38
-		lea     (unk_FFD000).l,a0
+		lea     (byte_FFD000).l,a0
 		move.w  #$3FF,d7
 loc_1DC4C:
 		clr.l   (a0)+
 		dbf     d7,loc_1DC4C
-		lea     (unk_FFD000).l,a0
-		lea     (loc_E000).l,a1
+		lea     (byte_FFD000).l,a0
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
 		jsr     (j_DMAFromRAMToVRAM).w
@@ -19138,51 +19144,51 @@ loc_1DC4C:
 		moveq   #$12,d1
 		jsr     sub_12402C
 		lea     (FF3000_LOADING_SPACE).l,a0
-		lea     (unk_2000).w,a1
+		lea     ($2000).w,a1
 		move.w  #$1800,d0
 		move.w  #2,d1
 		jsr     (j_DMAFromRAMToVRAM).w
-		lea     ((unk_FFC0C0-$1000000)).w,a0
+		lea     ((byte_FFC0C0-$1000000)).w,a0
 		lea     (PALETTE_1_BIS).l,a1
-		lea     (RAM_START).l,a2
+		lea     (PALETTE_1).l,a2
 		moveq   #7,d7
 loc_1DC9C:
 		move.l  (a0)+,d0
 		move.l  d0,(a1)+
 		move.l  d0,(a2)+
 		dbf     d7,loc_1DC9C
-		movea.l (p_MaxEndingGraphicsFrame1).l,a0
-		lea     (sub_8000).l,a1
+		movea.l (p_EndingTiles_Max1).l,a0
+		lea     ($8000).l,a1
 		move.w  #$900,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_AdamEndingGraphics).l,a0
+		movea.l (p_EndingTiles_Adam).l,a0
 		lea     ($9200).l,a1
 		move.w  #$400,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_FarmerEndingGraphics).l,a0
-		lea     (loc_9A00).l,a1
+		movea.l (p_EndingTiles_Farmer).l,a0
+		lea     ($9A00).l,a1
 		move.w  #$600,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		movea.l (p_TheEndGraphics).l,a0
-		lea     (loc_6000).w,a1
+		movea.l (p_EndingTiles_TheEnd).l,a0
+		lea     ($6000).w,a1
 		move.w  #$600,d0
 		move.w  #2,d1
 		jsr     (sub_294).l
-		lea     unk_1E37A(pc), a0
-		lea     (unk_FFD140).l,a1
+		lea     byte_1E37A(pc), a0
+		lea     (byte_FFD140).l,a1
 		move.w  #$300,d7
 		jsr     (j_CopyBytes).l
-		lea     (unk_FFD000).l,a0
-		lea     (loc_E000).l,a1
+		lea     (byte_FFD000).l,a0
+		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
 		jsr     (j_DMAFromRAMToVRAM).l
 		movem.l d7-a1,-(sp)
-		lea     unk_1E67A(pc), a0
-		lea     (unk_FF0D80).l,a1
+		lea     byte_1E67A(pc), a0
+		lea     (byte_FF0D80).l,a1
 		move.w  #$98,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -19212,9 +19218,9 @@ loc_1DD9C:
 		move.w  d7,-(sp)
 		move.w  (dword_FF0100).l,d6
 		subq.w  #1,d6
-		jsr     (sub_280).l
+		jsr     (j_ClearHScrollStuff).l
 		jsr     (j_SetVIntParam3).l
-		lea     (unk_FF0D86).l,a0
+		lea     (word_FF0D86).l,a0
 		moveq   #$12,d7
 loc_1DDBA:
 		subq.w  #2,(a0)
@@ -19236,24 +19242,24 @@ loc_1DDBA:
 		move.w  #$67,d0 
 		trap    #8
 		trap    #7
-		movea.l (p_MaxEndingGraphicsFrame2).l,a0
-		lea     (sub_8000).l,a1
+		movea.l (p_EndingTiles_Max2).l,a0
+		lea     ($8000).l,a1
 		move.w  #$900,d0
 		move.w  #2,d1
 		jsr     (sub_298).l
 		jsr     (j_SetVIntParam3).l
 		moveq   #3,d0
 		jsr     (j_Sleep).l
-		movea.l (p_MaxEndingGraphicsFrame3).l,a0
-		lea     (sub_8000).l,a1
+		movea.l (p_EndingTiles_Max3).l,a0
+		lea     ($8000).l,a1
 		move.w  #$900,d0
 		move.w  #2,d1
 		jsr     (sub_298).l
 		jsr     (j_SetVIntParam3).l
 		moveq   #$12,d0
 		jsr     (j_Sleep).l
-		movea.l (p_MaxEndingGraphicsFrame4).l,a0
-		lea     (sub_8000).l,a1
+		movea.l (p_EndingTiles_Max4).l,a0
+		lea     ($8000).l,a1
 		move.w  #$900,d0
 		move.w  #2,d1
 		jsr     (sub_298).l
@@ -19261,8 +19267,8 @@ loc_1DDBA:
 		moveq   #$5A,d0 
 		jsr     (j_Sleep).l
 		trap    #6
-		lea     unk_1E712(pc), a0
-		lea     (loc_EA40).l,a1
+		lea     byte_1E712(pc), a0
+		lea     ($EA40).l,a1
 		move.w  #$C0,d0 
 		move.w  #2,d1
 		jsr     (sub_278).l
@@ -19271,7 +19277,7 @@ loc_1DDBA:
 		jsr     (j_Sleep).l
 		move.b  #$B,(FADING_PALETTE_FLAGS).l
 		move.b  #5,(FADING_COUNTER_MAX).l
-		move.b  #2,(FADING_SETTING).l
+		move.b  #OUT_TO_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		moveq   #$5A,d0 
@@ -19312,7 +19318,7 @@ loc_1DDBA:
 		movea.l (p_Start).w,a0  
 		jmp     (a0)
 
-	; End of function sub_1DA8E
+	; End of function PlayEnding
 
 pt_IntroTiles:  dc.l IntroTile00        ; tiles ?
 		dc.l IntroTile01
@@ -19346,7 +19352,7 @@ IntroTile12:    incbin "data/graphics/introtiles/introtile12.bin"
 IntroTile13:    incbin "data/graphics/introtiles/introtile13.bin"
 IntroTile14:    incbin "data/graphics/introtiles/introtile14.bin"
 IntroTile15:    incbin "data/graphics/introtiles/introtile15.bin"
-unk_1E37A:      dc.b   1
+byte_1E37A:     dc.b 1
 		dc.b   0
 		dc.b   1
 		dc.b   4
@@ -20114,7 +20120,7 @@ unk_1E37A:      dc.b   1
 		dc.b $7B 
 		dc.b   2
 		dc.b $7F 
-unk_1E67A:      dc.b   0
+byte_1E67A:     dc.b 0
 		dc.b $A8 
 		dc.b  $F
 		dc.b $21 
@@ -20266,7 +20272,7 @@ unk_1E67A:      dc.b   0
 		dc.b $20
 		dc.b   0
 		dc.b $D8 
-unk_1E712:      dc.b   0
+byte_1E712:     dc.b 0
 		dc.b   0
 		dc.b   0
 		dc.b   0

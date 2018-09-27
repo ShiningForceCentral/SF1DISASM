@@ -4,25 +4,25 @@
 ; FREE SPACE : 161 bytes.
 
 
-p_pt_Sprites:   dc.l pt_MapSprites      ; misc graphic pointers
+p_pt_MapSprites:dc.l pt_MapSprites
 p_p_MapSprite156:
 		dc.l off_39BA8
 p_p_MapSprite304:
 		dc.l off_39E28
-		dc.l unk_38040          
-		dc.l unk_383A0
-		dc.l unk_38700
-		dc.l unk_38800
-		dc.l unk_38900
-		dc.l unk_38940
-		dc.l unk_38B40
-		dc.l unk_38CA0
-		dc.l unk_38E00
-		dc.l unk_39260
-		dc.l unk_38980
-		dc.l unk_38A60
-off_3803C:      dc.l unk_396C0
-unk_38040:      dc.b $55 ; Misc Uncompressed Graphics
+		dc.l byte_38040         
+		dc.l byte_383A0
+		dc.l byte_38700
+		dc.l byte_38800
+		dc.l byte_38900
+		dc.l byte_38940
+		dc.l byte_38B40
+		dc.l byte_38CA0
+		dc.l byte_38E00
+		dc.l byte_39260
+		dc.l byte_38980
+		dc.l byte_38A60
+off_3803C:      dc.l SpecialSprite_Jogurt1
+byte_38040:     dc.b $55                ; Misc Uncompressed Graphics
 		dc.b $CC 
 		dc.b $1B
 		dc.b $1B
@@ -886,7 +886,7 @@ unk_38040:      dc.b $55 ; Misc Uncompressed Graphics
 		dc.b $EE 
 		dc.b $C1 
 		dc.b $1C
-unk_383A0:      dc.b $55 
+byte_383A0:     dc.b $55
 		dc.b $CC 
 		dc.b $1B
 		dc.b $9B 
@@ -1750,7 +1750,7 @@ unk_383A0:      dc.b $55
 		dc.b $11
 		dc.b $11
 		dc.b $CC 
-unk_38700:      dc.b $ED 
+byte_38700:     dc.b $ED
 		dc.b $E7 
 		dc.b $88 
 		dc.b $EE 
@@ -2006,7 +2006,7 @@ unk_38700:      dc.b $ED
 		dc.b $E8 
 		dc.b $E8 
 		dc.b $EE 
-unk_38800:      dc.b $ED 
+byte_38800:     dc.b $ED
 		dc.b $E1 
 		dc.b $8E 
 		dc.b $88 
@@ -2262,7 +2262,7 @@ unk_38800:      dc.b $ED
 		dc.b $E8 
 		dc.b $EE 
 		dc.b $DE 
-unk_38900:      dc.b $EE 
+byte_38900:     dc.b $EE
 		dc.b $EE 
 		dc.b $EE 
 		dc.b $EE 
@@ -2326,7 +2326,7 @@ unk_38900:      dc.b $EE
 		dc.b $A5 
 		dc.b $E9 
 		dc.b $9F 
-unk_38940:      dc.b $EE 
+byte_38940:     dc.b $EE
 		dc.b $EE 
 		dc.b $EE 
 		dc.b $EF 
@@ -2390,7 +2390,7 @@ unk_38940:      dc.b $EE
 		dc.b $A5 
 		dc.b $E9 
 		dc.b $9F 
-unk_38980:      dc.b $B1 
+byte_38980:     dc.b $B1
 		dc.b $BC 
 		dc.b $BC 
 		dc.b $BC 
@@ -2614,7 +2614,7 @@ unk_38980:      dc.b $B1
 		dc.b $BB 
 		dc.b $BB 
 		dc.b $BB 
-unk_38A60:      dc.b $BC 
+byte_38A60:     dc.b $BC
 		dc.b $BC 
 		dc.b $1C
 		dc.b $B1 
@@ -2838,7 +2838,7 @@ unk_38A60:      dc.b $BC
 		dc.b $BB 
 		dc.b $BB 
 		dc.b $BB 
-unk_38B40:      dc.b $5F 
+byte_38B40:     dc.b $5F
 		dc.b $E5 
 		dc.b $DE 
 		dc.b $F5 
@@ -3190,7 +3190,7 @@ unk_38B40:      dc.b $5F
 		dc.b $E3 
 		dc.b $3F 
 		dc.b $EF 
-unk_38CA0:      dc.b $5F 
+byte_38CA0:     dc.b $5F
 		dc.b   5
 		dc.b $D0 
 		dc.b $F5 
@@ -3542,7 +3542,7 @@ unk_38CA0:      dc.b $5F
 		dc.b   3
 		dc.b $3F 
 		dc.b  $F
-unk_38E00:      dc.b $C1 
+byte_38E00:     dc.b $C1
 		dc.b $CB 
 		dc.b $1C
 		dc.b $BB 
@@ -4662,7 +4662,7 @@ unk_38E00:      dc.b $C1
 		dc.b $BB 
 		dc.b $BB 
 		dc.b $CC 
-unk_39260:      dc.b $BB 
+byte_39260:     dc.b $BB
 		dc.b $BC 
 		dc.b $CB 
 		dc.b $CB 
@@ -5782,622 +5782,8 @@ unk_39260:      dc.b $BB
 		dc.b $BB 
 		dc.b $BB 
 		dc.b $BC 
-unk_396C0:      dc.b   8
-		dc.b   8
-		dc.b $C0 
-		dc.b $56 
-		dc.b $3E 
-		dc.b $A0 
-		dc.b $87 
-		dc.b $62 
-		dc.b $FA 
-		dc.b $46 
-		dc.b $9A 
-		dc.b $C3 
-		dc.b $17
-		dc.b $CD 
-		dc.b $F1 
-		dc.b $4A 
-		dc.b $3E 
-		dc.b $9C 
-		dc.b $10
-		dc.b $3C 
-		dc.b $96 
-		dc.b $90 
-		dc.b $2D 
-		dc.b $FB 
-		dc.b  $F
-		dc.b   9
-		dc.b $C5 
-		dc.b $C6 
-		dc.b $EC 
-		dc.b $35 
-		dc.b $55 
-		dc.b   0
-		dc.b $8C 
-		dc.b $6D 
-		dc.b $51 
-		dc.b $8C 
-		dc.b $F4 
-		dc.b $3E 
-		dc.b $C3 
-		dc.b $1F
-		dc.b   3
-		dc.b   4
-		dc.b $BD 
-		dc.b $B2 
-		dc.b  $A
-		dc.b $1B
-		dc.b  $D
-		dc.b $D3 
-		dc.b $41 
-		dc.b $3C 
-		dc.b  $A
-		dc.b $CC 
-		dc.b $BD 
-		dc.b $87 
-		dc.b $8C 
-		dc.b $8E 
-		dc.b $EF 
-		dc.b $B8 
-		dc.b $35 
-		dc.b $F8 
-		dc.b  $B
-		dc.b $72 
-		dc.b $83 
-		dc.b $30 
-		dc.b $48 
-		dc.b $D8 
-		dc.b $7C 
-		dc.b $41 
-		dc.b $7D 
-		dc.b $E2 
-		dc.b   0
-		dc.b $C7 
-		dc.b $D6 
-		dc.b $65 
-		dc.b $AA 
-		dc.b $26 
-		dc.b $CD 
-		dc.b $CC 
-		dc.b   9
-		dc.b $BE 
-		dc.b $A0 
-		dc.b $57 
-		dc.b $68 
-		dc.b $2F 
-		dc.b $10
-		dc.b $41 
-		dc.b $23 
-		dc.b $87 
-		dc.b $88 
-		dc.b $13
-		dc.b $65 
-		dc.b $19
-		dc.b   1
-		dc.b  $B
-		dc.b $A7 
-		dc.b $17
-		dc.b $31 
-		dc.b $14
-		dc.b  $A
-		dc.b  $D
-		dc.b $55 
-		dc.b   1
-		dc.b $20
-		dc.b $D5 
-		dc.b $57 
-		dc.b $DD 
-		dc.b $F5 
-		dc.b $45 
-		dc.b $1E
-		dc.b $A0 
-		dc.b $2A 
-		dc.b $2E 
-		dc.b $31 
-		dc.b $91 
-		dc.b $37 
-		dc.b   4
-		dc.b $12
-		dc.b $73 
-		dc.b $16
-		dc.b $54 
-		dc.b $17
-		dc.b $8F 
-		dc.b $A8 
-		dc.b $23 
-		dc.b   1
-		dc.b $41 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b  $F
-		dc.b $82 
-		dc.b $4E 
-		dc.b $41 
-		dc.b $F3 
-		dc.b  $C
-		dc.b $38 
-		dc.b $61 
-		dc.b $B5 
-		dc.b $46 
-		dc.b $33 
-		dc.b $D0 
-		dc.b $FB 
-		dc.b  $C
-		dc.b $7C 
-		dc.b $17
-		dc.b $81 
-		dc.b $39 
-		dc.b $14
-		dc.b $4D 
-		dc.b $C6 
-		dc.b $E0 
-		dc.b $77 
-		dc.b $98 
-		dc.b $13
-		dc.b $98 
-		dc.b $ED 
-		dc.b   1
-		dc.b $C9 
-		dc.b $48 
-		dc.b $62 
-		dc.b $3B 
-		dc.b $19
-		dc.b $51 
-		dc.b $85 
-		dc.b $9A 
-		dc.b $60 
-		dc.b $9D 
-		dc.b $66 
-		dc.b $96 
-		dc.b $A2 
-		dc.b $6F 
-		dc.b $60 
-		dc.b $18
-		dc.b $9E 
-		dc.b $C6 
-		dc.b $58 
-		dc.b $81 
-		dc.b $A0 
-		dc.b $77 
-		dc.b $C0 
-		dc.b $3B 
-		dc.b $2C 
-		dc.b $70 
-		dc.b $4E 
-		dc.b $78 
-		dc.b $3F 
-		dc.b $BD 
-		dc.b $D5 
-		dc.b $1C
-		dc.b $B2 
-		dc.b $80 
-		dc.b $95 
-		dc.b $E8 
-		dc.b $F8 
-		dc.b $C1 
-		dc.b $AA 
-		dc.b $FB 
-		dc.b $BE 
-		dc.b $A8 
-		dc.b $16
-		dc.b   7
-		dc.b $CC 
-		dc.b $10
-		dc.b $81 
-		dc.b $58 
-		dc.b $86 
-		dc.b $7A 
-		dc.b $71 
-		dc.b $54 
-		dc.b  $A
-		dc.b $19
-		dc.b $1E
-		dc.b $E0 
-		dc.b $23 
-		dc.b $22 
-		dc.b $61 
-		dc.b $33 
-		dc.b $E3 
-		dc.b $EE 
-		dc.b $33 
-		dc.b   9
-		dc.b $97 
-		dc.b $18
-		dc.b $C8 
-		dc.b $9B 
-		dc.b $82 
-		dc.b   9
-		dc.b $38 
-		dc.b $85 
-		dc.b $4F 
-		dc.b $46 
-		dc.b $20
-		dc.b $9D 
-		dc.b $FF
-		dc.b $D0 
-		dc.b $3B 
-		dc.b $8C 
-		dc.b $7C 
-		dc.b $7C 
-		dc.b $43 
-		dc.b $E0 
-		dc.b $93 
-		dc.b $90 
-		dc.b  $D
-		dc.b $30 
-		dc.b $A4 
-		dc.b $51 
-		dc.b $37 
-		dc.b $1B
-		dc.b $81 
-		dc.b $5F 
-		dc.b $7B 
-		dc.b $2C 
-		dc.b  $E
-		dc.b $8E 
-		dc.b $1F
-		dc.b $60 
-		dc.b $1A
-		dc.b $14
-		dc.b $86 
-		dc.b $20
-		dc.b $41 
-		dc.b $3D 
-		dc.b $8C 
-		dc.b $B1 
-		dc.b   3
-		dc.b $88 
-		dc.b $19
-		dc.b $3D 
-		dc.b $1F
-		dc.b $68 
-		dc.b $F2 
-		dc.b  $C
-		dc.b $1A
-		dc.b $AF 
-		dc.b $81 
-		dc.b $58 
-		dc.b $FB 
-		dc.b   4
-		dc.b $3A 
-		dc.b   2
-		dc.b $2E 
-		dc.b $C9 
-		dc.b   5
-		dc.b  $C
-		dc.b $83 
-		dc.b $44 
-		dc.b $FC 
-		dc.b $31 
-		dc.b $F5 
-		dc.b $66 
-		dc.b   2
-		dc.b $67 
-		dc.b $7D 
-		dc.b $42 
-		dc.b $8E 
-		dc.b $AA 
-		dc.b   8
-		dc.b $74 
-		dc.b $7D 
-		dc.b $EA 
-		dc.b $56 
-		dc.b $F7 
-		dc.b $32 
-		dc.b $65 
-		dc.b $20
-		dc.b $41 
-		dc.b $13
-		dc.b $3E 
-		dc.b $80 
-		dc.b $CB 
-		dc.b   4
-		dc.b $8B 
-		dc.b $21 
-		dc.b $C6 
-		dc.b $5C 
-		dc.b $FB 
-		dc.b $84 
-		dc.b   9
-		dc.b $67 
-		dc.b $9D 
-		dc.b $55 
-		dc.b $55 
-		dc.b $55 
-		dc.b $40 
-		dc.b $39 
-		dc.b $7A 
-		dc.b   8
-		dc.b $2E 
-		dc.b $18
-		dc.b $30 
-		dc.b   9
-		dc.b $5F 
-		dc.b $56 
-		dc.b   2
-		dc.b $5E 
-		dc.b $E0 
-		dc.b $28 
-		dc.b $26 
-		dc.b $38 
-		dc.b   8
-		dc.b $3E 
-		dc.b $1F
-		dc.b $60 
-		dc.b $BC 
-		dc.b $52 
-		dc.b $78 
-		dc.b  $A
-		dc.b $CC 
-		dc.b $77 
-		dc.b  $D
-		dc.b $E9 
-		dc.b $4C 
-		dc.b $B5 
-		dc.b $5E 
-		dc.b $4F 
-		dc.b $80 
-		dc.b $93 
-		dc.b $B1 
-		dc.b $63 
-		dc.b  $D
-		dc.b $7D 
-		dc.b $47 
-		dc.b $CB 
-		dc.b $C3 
-		dc.b $C2 
-		dc.b $15
-		dc.b $86 
-		dc.b $1A
-		dc.b $A0 
-		dc.b $F8 
-		dc.b $FA 
-		dc.b $C3 
-		dc.b $7B 
-		dc.b $32 
-		dc.b $10
-		dc.b $35 
-		dc.b $7D 
-		dc.b $DF 
-		dc.b $54 
-		dc.b $9F 
-		dc.b $2E 
-		dc.b $90 
-		dc.b $11
-		dc.b $2D 
-		dc.b $50 
-		dc.b   8
-		dc.b $F0 
-		dc.b $63 
-		dc.b $83 
-		dc.b $EE 
-		dc.b $30 
-		dc.b $B2 
-		dc.b $2E 
-		dc.b $64 
-		dc.b $7D 
-		dc.b $94 
-		dc.b   8
-		dc.b $9E 
-		dc.b $A0 
-		dc.b $12
-		dc.b  $E
-		dc.b $AA 
-		dc.b $82 
-		dc.b $1D
-		dc.b $1F
-		dc.b $7A 
-		dc.b $92 
-		dc.b $76 
-		dc.b $A0 
-		dc.b $B9 
-		dc.b $80 
-		dc.b $7C 
-		dc.b $2C 
-		dc.b $80 
-		dc.b $9E 
-		dc.b $3A 
-		dc.b $B7 
-		dc.b $1F
-		dc.b $6E 
-		dc.b $A8 
-		dc.b $E5 
-		dc.b $BB 
-		dc.b $B0 
-		dc.b $68 
-		dc.b $E1 
-		dc.b $F6 
-		dc.b $AC 
-		dc.b $20
-		dc.b $81 
-		dc.b   4
-		dc.b $A4 
-		dc.b   2
-		dc.b $52 
-		dc.b $63 
-		dc.b $A0 
-		dc.b   8
-		dc.b $26 
-		dc.b $57 
-		dc.b $C3 
-		dc.b $E9 
-		dc.b   2
-		dc.b $43 
-		dc.b $C6 
-		dc.b   4
-		dc.b $8F 
-		dc.b $84 
-		dc.b $C0 
-		dc.b $54 
-		dc.b $2F 
-		dc.b $B0 
-		dc.b $67 
-		dc.b $7D 
-		dc.b $83 
-		dc.b $17
-		dc.b $40 
-		dc.b $8B 
-		dc.b $DB 
-		dc.b $24 
-		dc.b   4
-		dc.b $F9 
-		dc.b $24 
-		dc.b $C6 
-		dc.b $42 
-		dc.b $30 
-		dc.b $50 
-		dc.b $E1 
-		dc.b $F6 
-		dc.b   1
-		dc.b $71 
-		dc.b $9B 
-		dc.b $B8 
-		dc.b   4
-		dc.b $17
-		dc.b $E0 
-		dc.b $83 
-		dc.b $D5 
-		dc.b  $F
-		dc.b $B5 
-		dc.b $D4 
-		dc.b $31 
-		dc.b $C1 
-		dc.b $3B 
-		dc.b  $C
-		dc.b $74 
-		dc.b $D4 
-		dc.b $3E 
-		dc.b $9C 
-		dc.b $18
-		dc.b $81 
-		dc.b $B9 
-		dc.b $6A 
-		dc.b $81 
-		dc.b $58 
-		dc.b $53 
-		dc.b $A0 
-		dc.b $EE 
-		dc.b   6
-		dc.b $6F 
-		dc.b $A8 
-		dc.b $EE 
-		dc.b   7
-		dc.b $E0 
-		dc.b $28 
-		dc.b   0
-		dc.b $29 
-		dc.b $63 
-		dc.b $E9 
-		dc.b $C0 
-		dc.b $38 
-		dc.b $19
-		dc.b $1E
-		dc.b $18
-		dc.b $84 
-		dc.b $38 
-		dc.b $3E 
-		dc.b $EC 
-		dc.b $3C 
-		dc.b $D8 
-		dc.b $52 
-		dc.b $62 
-		dc.b  $D
-		dc.b $48 
-		dc.b $41 
-		dc.b   3
-		dc.b $BE 
-		dc.b $B3 
-		dc.b $2D 
-		dc.b $56 
-		dc.b   8
-		dc.b $E9 
-		dc.b   0
-		dc.b $F0 
-		dc.b $B5 
-		dc.b $43 
-		dc.b $7E 
-		dc.b $C3 
-		dc.b $C3 
-		dc.b $E3 
-		dc.b $77 
-		dc.b $D7 
-		dc.b $2E 
-		dc.b $20
-		dc.b $1D
-		dc.b $74 
-		dc.b $D6 
-		dc.b $C0 
-		dc.b $9F 
-		dc.b $53 
-		dc.b $BA 
-		dc.b $81 
-		dc.b   1
-		dc.b $EA 
-		dc.b $AA 
-		dc.b $80 
-		dc.b $52 
-		dc.b $7A 
-		dc.b $81 
-		dc.b $4F 
-		dc.b $C1 
-		dc.b $A7 
-		dc.b $AA 
-		dc.b $1F
-		dc.b $31 
-		dc.b $C1 
-		dc.b $3B 
-		dc.b  $C
-		dc.b $74 
-		dc.b $D4 
-		dc.b $3E 
-		dc.b   5
-		dc.b $A3 
-		dc.b $48 
-		dc.b $7C 
-		dc.b $41 
-		dc.b $28 
-		dc.b $6A 
-		dc.b $AA 
-		dc.b   5
-		dc.b $16
-		dc.b $A8 
-		dc.b   3
-		dc.b $70 
-		dc.b $E1 
-		dc.b $F6 
-		dc.b $AC 
-		dc.b $C3 
-		dc.b   9
-		dc.b $38 
-		dc.b $82 
-		dc.b  $E
-		dc.b $CA 
-		dc.b $41 
-		dc.b $30 
-		dc.b $A4 
-		dc.b $6C 
-		dc.b   2
-		dc.b $68 
-		dc.b $C8 
-		dc.b $F0 
-		dc.b $C4 
-		dc.b  $A
-		dc.b  $F
-		dc.b $84 
-		dc.b $C2 
-		dc.b $76 
-		dc.b   0
-		dc.b $82 
-		dc.b $F4 
-		dc.b   9
-		dc.b $90 
-		dc.b $82 
-		dc.b   7
-		dc.b $7C 
-		dc.b $23 
-		dc.b $81 
-		dc.b $30 
+SpecialSprite_Jogurt1:
+		incbin "data/graphics/specialsprites/specialsprite-jogurt1.bin"
 pt_MapSprites:  dc.l MapSprite000
 		dc.l MapSprite001
 		dc.l MapSprite002
