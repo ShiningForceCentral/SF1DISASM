@@ -29,18 +29,18 @@ PlayIntro:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		move.l  #sub_1305B4,(dword_FF0EF6).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$52,d0 
-		trap    #8
+		move.w  #$52,d0 ; "In ages long forgotten..."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #7
-		move.w  #$53,d0 
-		trap    #8
+		move.w  #$53,d0 ; "...Light fought Darkness for[Line]control of the world."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #7
-		move.w  #$54,d0 
-		trap    #8
+		move.w  #$54,d0 ; "Dark Dragon led the evil[Line]hordes of Darkness."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #6
@@ -78,13 +78,13 @@ loc_1300C4:
 		move.b  #2,((byte_FFF804-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$55,d0 
-		trap    #8
+		move.w  #$55,d0 ; "The Ancients fought back with[Line]the Powers of Light."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #7
-		move.w  #$56,d0 
-		trap    #8
+		move.w  #$56,d0 ; "Dark Dragon was defeated and[Line]cast into another dimension."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
 		bsr.w   sub_1304FE
 		trap    #6
@@ -107,8 +107,8 @@ loc_1300C4:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		move.l  #sub_13062A,(dword_FF0EF6).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$57,d0 
-		trap    #8
+		move.w  #$57,d0 ; "The Lord of Darkness vowed to[Line]return in 1,000 years."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
 		bsr.w   sub_1304FE
 		trap    #6
@@ -148,13 +148,13 @@ loc_1301F4:
 		move.b  #2,((byte_FFF804-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$58,d0 
-		trap    #8
+		move.w  #$58,d0 ; "Time passed, and Dark Dragon[Line]was forgotten by all."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #7
-		move.w  #$59,d0 
-		trap    #8
+		move.w  #$59,d0 ; "Ten centuries of peace ruled[Line]the land of Rune."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
 		bsr.w   sub_1304FE
 		trap    #6
@@ -193,23 +193,23 @@ loc_1301F4:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		move.l  #sub_130694,(dword_FF0EF6).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$5A,d0 
-		trap    #8
+		move.w  #$5A,d0 ; "Until the kingdom of Runefaust[Line]brought war and fear to Rune."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #7
-		move.w  #$5B,d0 
-		trap    #8
+		move.w  #$5B,d0 ; "Hordes of evil creatures[Line]ravaged every land."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #7
-		move.w  #$5C,d0 
-		trap    #8
+		move.w  #$5C,d0 ; "Here and there, strongholds[Line]of Good still held out..."
+		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
 		bsr.w   sub_1304FE
 		trap    #7
-		move.w  #$5D,d0 
-		trap    #8
+		move.w  #$5D,d0 ; "...awaiting a Hero who could[Line]wield the Powers of Light!"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
 		bsr.w   sub_1304FE
 		trap    #6

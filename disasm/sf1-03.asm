@@ -2022,8 +2022,8 @@ loc_111B6:
 loc_111BE:
 		jsr     (sub_304).l
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.w  #$1B0,d0
-		trap    #8
+		move.w  #$1B0,d0        ; "No one is in that direction.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_WaitForPlayerInput).l
 		jsr     (sub_30C).l
 		rts
@@ -4972,10 +4972,10 @@ sub_13828:
 		bsr.w   sub_10CFE
 		move.w  d2,d4
 		andi.w  #$3FF,d4
-		bne.w   loc_139B0
+		bne.w   loc_139B0       
 		movem.w d0,-(sp)
-		move.w  #$4D,d0 
-		trap    #8
+		move.w  #$4D,d0 ; "[Hero] opens[Line]the treasure chest![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_328).l
 		movem.w (sp)+,d0
 		ori.w   #1,d2
@@ -5022,21 +5022,21 @@ loc_13878:
 		clr.w   (TEXT_NAME_INDEX).l
 		clr.w   d0
 		jsr     j_FindEmptyItemSlot
-		bcs.s   loc_13908
+		bcs.s   loc_13908       
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_ITEM
-		move.w  #$48,d0 
-		trap    #8
+		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		movem.w d1,-(sp)
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		movem.w (sp)+,d1
 		bra.s   loc_13958
 loc_13908:
-		move.w  #$48,d0 
-		trap    #8
-		move.w  #$49,d0 
-		trap    #8
+		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
+		trap    #DISPLAY_MESSAGE
+		move.w  #$49,d0 ; "But can't carry it![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_1397E
 loc_13918:
 		lea     unk_139BE(pc), a0
@@ -5049,8 +5049,8 @@ loc_13918:
 		clr.w   (TEXT_NAME_INDEX).l
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_ITEM
-		move.w  #$4C,d0 
-		trap    #8
+		move.w  #$4C,d0 ; "[Name] gains [Num] coins.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		movem.w d1,-(sp)
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
@@ -5087,8 +5087,8 @@ loc_13996:
 		bset    d6,(a1,d4.w)
 		movem.w (sp)+,d0-d3
 loc_139B0:
-		move.w  #$4B,d0 
-		trap    #8
+		move.w  #$4B,d0 ; "Nothing is found.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_30C).l
 		rts
 
@@ -19196,23 +19196,23 @@ loc_1DC9C:
 		trap    #5
 		move.b  #2,(byte_FFF804).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$5E,d0 
-		trap    #8
+		move.w  #$5E,d0 ; "Well, hello there.[Delay2][Delay2][Line]You look like you're[Line]a long way from home.[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$5F,d0 
-		trap    #8
+		move.w  #$5F,d0 ; "We don't see many folk in[Line]full armor like that.[Delay2][Delay2][Delay2][Line]Quite a fancy getup![Delay2][Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$60,d0 
-		trap    #8
+		move.w  #$60,d0 ; "I have come a long way.[Delay2][Delay2][Delay2][Line]Longer than you can[Line]imagine.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$61,d0 
-		trap    #8
+		move.w  #$61,d0 ; "I must say you do look pretty[Line]tired and, well,[Delay2][Delay2][Line]your things have seen[Line]better days.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$62,d0 
-		trap    #8
+		move.w  #$62,d0 ; "I'm tired of wandering.[Delay2][Delay2][Line]I'm looking for a place to[Line]settle down and rest.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$63,d0 
-		trap    #8
+		move.w  #$63,d0 ; "Well, how about right here?[Delay2][Delay2][Line]Lend your hands to the fields[Line]of our village?[Delay2][Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		moveq   #$33,d7 
 loc_1DD9C:
 		move.w  d7,-(sp)
@@ -19230,17 +19230,17 @@ loc_1DDBA:
 		move.w  (sp)+,d7
 		dbf     d7,loc_1DD9C
 		trap    #7
-		move.w  #$64,d0 
-		trap    #8
+		move.w  #$64,d0 ; "That sounds like just what I[Line]need right now. [Delay2][Delay2][Delay2]I work hard[Line]and I'm a fast learner.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$65,d0 
-		trap    #8
+		move.w  #$65,d0 ; "Good! We've got a deal then.[Delay2][Delay2][Delay2][Line]Folks in the village will be[Line]excited to see a new face![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$66,d0 
-		trap    #8
+		move.w  #$66,d0 ; "I didn't catch your name.[Line]What do they call you?[Delay2][Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$67,d0 
-		trap    #8
+		move.w  #$67,d0 ; "Me? You can call me...[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		movea.l (p_EndingTiles_Max2).l,a0
 		lea     ($8000).l,a1

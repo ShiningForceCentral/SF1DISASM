@@ -1400,8 +1400,8 @@ sub_124EA0:
 		clr.w   d0
 		move.b  ((byte_FF9C05-$1000000)).w,d0
 		bne.s   loc_124EB0
-		move.w  #$1EA,d0
-		trap    #8
+		move.w  #$1EA,d0        ; "[Dict][Line]"
+		trap    #DISPLAY_MESSAGE
 		bra.s   locret_124ECA
 loc_124EB0:
 		moveq   #8,d1
@@ -10745,8 +10745,8 @@ loc_129012:     moveq   #$32,d0
 loc_129068:     moveq   #$E,d0
 		jsr     sub_802C
 		trap    #5
-		move.w  #$69,d0 
-		trap    #8
+		move.w  #$69,d0 ; "[Hero]![Line]Goblins! Runefaust[Line]must be up to something![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		jsr     sub_8094
@@ -10767,8 +10767,8 @@ loc_129068:     moveq   #$E,d0
 loc_1290C2:     moveq   #$C,d0
 		jsr     sub_802C
 		trap    #5
-		move.w  #$6A,d0 
-		trap    #8
+		move.w  #$6A,d0 ; "We can take them,[Line][Hero]![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		jsr     sub_8094
@@ -10787,8 +10787,8 @@ loc_1290C2:     moveq   #$C,d0
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_12911C:     trap    #5
-		move.w  #$6B,d0 
-		trap    #8
+		move.w  #$6B,d0 ; "Move it, vermin! Find the key[Line]to this blasted door![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -10797,8 +10797,8 @@ loc_12911C:     trap    #5
 		move.w  #1,d2
 		bsr.w   sub_12C2DC
 loc_12913C:     trap    #7
-		move.w  #$6C,d0 
-		trap    #8
+		move.w  #$6C,d0 ; "C'mon, we're almost in![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -10807,8 +10807,8 @@ loc_12913C:     trap    #7
 		move.w  #3,d2
 		bsr.w   sub_12C2DC
 loc_12915C:     trap    #7
-		move.w  #$6D,d0 
-		trap    #8
+		move.w  #$6D,d0 ; "Where is that blasted key?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -10817,8 +10817,8 @@ loc_12915C:     trap    #7
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12917C:     trap    #7
-		move.w  #$6E,d0 
-		trap    #8
+		move.w  #$6E,d0 ; "What? Blast it! Those fools[Line]from Guardiana are here![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8094
 		move.w  #0,d2
@@ -10861,8 +10861,8 @@ loc_1291C8:     trap    #SOUND_COMMAND
 		moveq   #$C,d6
 		jsr     sub_80AC
 		trap    #5
-		move.w  #$6F,d0 
-		trap    #8
+		move.w  #$6F,d0 ; "Earthquake![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		trap    #SOUND_COMMAND
 		dc.w SOUND_COMMAND_FADE_OUT
@@ -10888,8 +10888,8 @@ loc_12922E:     jsr     (j_WaitForVInt).l
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129286:     trap    #5
-		move.w  #$70,d0 
-		trap    #8
+		move.w  #$70,d0 ; "Attack, goblins and dwarves![Line]Strike a blow for the honor[Line]of Runefaust![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		rts
 loc_129292:     moveq   #$29,d0 
@@ -10897,8 +10897,8 @@ loc_129292:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$73,d0 
-		trap    #8
+		move.w  #$73,d0 ; "The earthquake blocked the[Line]road. Head north, but be[Line]ready for battle.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		jsr     sub_8094
@@ -10917,8 +10917,8 @@ loc_129292:     moveq   #$29,d0
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_1292F2:     trap    #5
-		move.w  #$74,d0 
-		trap    #8
+		move.w  #$74,d0 ; "No one enters Guardiana while[Line]we live! For Darksol![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8094
 		move.w  #$82,d2 
@@ -10936,8 +10936,8 @@ loc_1292F2:     trap    #5
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_12933E:     trap    #5
-		move.w  #$75,d0 
-		trap    #8
+		move.w  #$75,d0 ; "Death to Guardiana![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8094
 		move.w  #$83,d2 
@@ -10955,8 +10955,8 @@ loc_12933E:     trap    #5
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_12938A:     trap    #5
-		move.w  #$75,d0 
-		trap    #8
+		move.w  #$75,d0 ; "Death to Guardiana![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		rts
 loc_129396:     moveq   #$29,d0 
@@ -10964,8 +10964,8 @@ loc_129396:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$77,d0 
-		trap    #8
+		move.w  #$77,d0 ; "[Hero]! Enemies await[Line]you on the road to Alterone.[Line]Take all precautions![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -10992,8 +10992,8 @@ loc_1293B6:     move.w  #$1DF,d0
 loc_129410:     moveq   #$24,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$79,d0 
-		trap    #8
+		move.w  #$79,d0 ; "Lowly worms, I shall crush[Line]you beneath my heel. Attack,[Line]soldiers of Runefaust![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$81,d2 
@@ -11012,8 +11012,8 @@ loc_129440:     move.w  #$81,d2
 		move.w  #1,d2
 		bsr.w   sub_12C2DC
 loc_129458:     trap    #5
-		move.w  #$7A,d0 
-		trap    #8
+		move.w  #$7A,d0 ; "Lord Kane, Lord Darksol[Line]commands you to return to[Line]Runefaust immediately.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
@@ -11025,13 +11025,13 @@ loc_129458:     trap    #5
 loc_12947A:     moveq   #$24,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$7B,d0 
-		trap    #8
+		move.w  #$7B,d0 ; "Tell him I'm on my way.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		trap    #5
-		move.w  #$7C,d0 
-		trap    #8
+		move.w  #$7C,d0 ; "Yes, sir.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.w  #$81,d2 
 		bsr.w   sub_12BFB6
@@ -11057,8 +11057,8 @@ loc_1294C8:     move.w  #$80,d2
 loc_1294E0:     moveq   #$24,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$7D,d0 
-		trap    #8
+		move.w  #$7D,d0 ; "A shame I can't stay to watch[Line]you meet your doom! My troops[Line]can handle the likes of you.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -11081,8 +11081,8 @@ loc_129526:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$7F,d0 
-		trap    #8
+		move.w  #$7F,d0 ; "Our enemies seek to stop you[Line]from reaching Anri in[Line]Manarina. You must succeed![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11091,8 +11091,8 @@ loc_129546:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$81,d0 
-		trap    #8
+		move.w  #$81,d0 ; "Behold the dreaded Cavern of[Line]Darkness! You must defeat the[Line]monsters to gain the orb![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11119,8 +11119,8 @@ loc_129566:     move.w  #$1DF,d0
 loc_1295C0:     moveq   #$21,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$84,d0 
-		trap    #8
+		move.w  #$84,d0 ; "Well, [Hero], remember[Line]me? You'll soon wish you'd[Line]taken my advice in Alterone![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11129,8 +11129,8 @@ loc_1295C0:     moveq   #$21,d0
 		move.w  #3,d2
 		bsr.w   sub_12C2DC
 loc_1295E8:     trap    #7
-		move.w  #$85,d0 
-		trap    #8
+		move.w  #$85,d0 ; "Come, my pets! Look who's[Line]come to play with you. Why,[Line]it's the Shining Force![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11139,8 +11139,8 @@ loc_1295E8:     trap    #7
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_129608:     trap    #7
-		move.w  #$86,d0 
-		trap    #8
+		move.w  #$86,d0 ; "I leave you in good hands,[Line][Hero].[Wait2][Line]I have more vital matters[Line]to attend to right now![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -11182,8 +11182,8 @@ loc_12966E:     move.l  (dword_FF0EF6).l,-(sp)
 loc_12969A:     moveq   #$2F,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$89,d0 
-		trap    #8
+		move.w  #$89,d0 ; "Been praying, and well you[Line]might![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -11200,8 +11200,8 @@ loc_1296CA:     move.l  (sp)+,(dword_FF0EF6).l
 		moveq   #$28,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$8A,d0 
-		trap    #8
+		move.w  #$8A,d0 ; "You and your pitiful Shining[Line]Force cannot be saved by[Line]prayers! You won't escape![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11210,8 +11210,8 @@ loc_1296CA:     move.l  (sp)+,(dword_FF0EF6).l
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_129700:     trap    #7
-		move.w  #$8B,d0 
-		trap    #8
+		move.w  #$8B,d0 ; "How fitting that you perish[Line]in a former chapel of Light![Line][Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11220,8 +11220,8 @@ loc_129700:     trap    #7
 		move.w  #0,d2
 		bsr.w   sub_12C2DC
 loc_129720:     trap    #7
-		move.w  #$8C,d0 
-		trap    #8
+		move.w  #$8C,d0 ; "I leave you now in the care[Line]of my minions, who know well[Line]what to do with you....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11230,8 +11230,8 @@ loc_129720:     trap    #7
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_129740:     trap    #7
-		move.w  #$8D,d0 
-		trap    #8
+		move.w  #$8D,d0 ; "Undead! Dispose of these[Line]pests once and for all![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11281,8 +11281,8 @@ loc_1297E4:     move.w  #$83,d2
 		move.w  #1,d2
 		bsr.w   sub_12C2DC
 loc_1297FC:     trap    #5
-		move.w  #$8E,d0 
-		trap    #8
+		move.w  #$8E,d0 ; "Master, we have found it![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8094
 		move.w  #$82,d2 
@@ -11307,8 +11307,8 @@ loc_129848:     move.w  #$82,d2
 		move.w  #3,d2
 		bsr.w   sub_12C2DC
 loc_129860:     trap    #5
-		move.w  #$8F,d0 
-		trap    #8
+		move.w  #$8F,d0 ; "The Laser Eye! At last![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11317,8 +11317,8 @@ loc_129860:     trap    #5
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_129880:     trap    #7
-		move.w  #$90,d0 
-		trap    #8
+		move.w  #$90,d0 ; "This is the end of that[Line]cursed Shining Force![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11327,8 +11327,8 @@ loc_129880:     trap    #7
 		move.w  #3,d2
 		bsr.w   sub_12C2DC
 loc_1298A0:     trap    #7
-		move.w  #$91,d0 
-		trap    #8
+		move.w  #$91,d0 ; "Get rid of those men from[Line]Bustoke. They are of no[Line]further use to us.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.w  #$81,d2 
 		bsr.w   sub_12BFB6
@@ -11353,8 +11353,8 @@ loc_1298C2:     jsr     sub_8094
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129904:     trap    #5
-		move.w  #$92,d0 
-		trap    #8
+		move.w  #$92,d0 ; "Alert! Intruders![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
@@ -11379,8 +11379,8 @@ loc_129926:     jsr     sub_8094
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129968:     trap    #5
-		move.w  #$93,d0 
-		trap    #8
+		move.w  #$93,d0 ; "What? The Shining Force![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11397,8 +11397,8 @@ loc_129988:     move.w  #$82,d2
 		moveq   #0,d1
 		bsr.w   loc_12C0AE
 loc_1299A0:     trap    #7
-		move.w  #$94,d0 
-		trap    #8
+		move.w  #$94,d0 ; "Stop them! We must have time[Line]to remove the Laser Eye![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11414,8 +11414,8 @@ loc_1299C4:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$97,d0 
-		trap    #8
+		move.w  #$97,d0 ; "Look, they are trying to[Line]block our way to the bridge.[Line]Attack them, Shining Force![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11457,8 +11457,8 @@ loc_129A40:     jsr     sub_8094
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129A82:     trap    #5
-		move.w  #$99,d0 
-		trap    #8
+		move.w  #$99,d0 ; "Traitor! You've betrayed Lord[Line]Kane![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8094
 		move.w  #$80,d2 
@@ -11478,8 +11478,8 @@ loc_129A82:     trap    #5
 loc_129ACE:     moveq   #2,d0
 		jsr     sub_802C
 		trap    #5
-		move.w  #$9A,d0 
-		trap    #8
+		move.w  #$9A,d0 ; "I owe no allegiance to you or[Line]him, foul fiend that he is![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		jsr     sub_8094
@@ -11498,8 +11498,8 @@ loc_129ACE:     moveq   #2,d0
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129B28:     trap    #5
-		move.w  #$9B,d0 
-		trap    #8
+		move.w  #$9B,d0 ; "You are only a mercenary. You[Line]do what we pay you to do![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8094
 		move.w  #$80,d2 
@@ -11519,8 +11519,8 @@ loc_129B28:     trap    #5
 loc_129B74:     moveq   #2,d0
 		jsr     sub_802C
 		trap    #5
-		move.w  #$9C,d0 
-		trap    #8
+		move.w  #$9C,d0 ; "Here, I return your gold. I[Line]shall no longer follow your[Line]orders, toad![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		jsr     sub_8094
@@ -11539,8 +11539,8 @@ loc_129B74:     moveq   #2,d0
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129BCE:     trap    #5
-		move.w  #$9D,d0 
-		trap    #8
+		move.w  #$9D,d0 ; "If you are not with us, then[Line]you are against us![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.w  #$82,d2 
 		bsr.w   sub_12BFB6
@@ -11558,8 +11558,8 @@ loc_129BF0:     move.w  #$82,d2
 		move.w  #3,d2
 		bsr.w   sub_12C2DC
 loc_129C08:     trap    #5
-		move.w  #$9E,d0 
-		trap    #8
+		move.w  #$9E,d0 ; "I will have the pleasure of[Line]killing you myself![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.w  #2,((word_FFB7C6-$1000000)).w
 		move.w  #$82,d2 
@@ -11592,8 +11592,8 @@ loc_129C50:     move.w  #$80,d2
 loc_129C6C:     moveq   #2,d0
 		jsr     sub_802C
 		trap    #5
-		move.w  #$9F,d0 
-		trap    #8
+		move.w  #$9F,d0 ; "Vile fiend! Aiiiieeeee....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		trap    #SOUND_COMMAND
@@ -11622,8 +11622,8 @@ loc_129CC0:     move.w  #$80,d2
 		moveq   #$FFFFFFFF,d1
 		jsr     j_SetTargetID
 loc_129CD4:     trap    #5
-		move.w  #$A0,d0 
-		trap    #8
+		move.w  #$A0,d0 ; "Ha, ha! Thus fall all who[Line]dare to oppose the will of[Line]Darksol![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.l  (sp)+,(dword_FF0EF6).l
 		rts
@@ -11650,8 +11650,8 @@ loc_129CE6:     moveq   #$32,d0
 loc_129D3C:     moveq   #$1F,d0
 		jsr     sub_802C
 		trap    #5
-		move.w  #$A6,d0 
-		trap    #8
+		move.w  #$A6,d0 ; "The time for battle has come.[Line]For King Ramladu![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -11659,8 +11659,8 @@ loc_129D3C:     moveq   #$1F,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$A7,d0 
-		trap    #8
+		move.w  #$A7,d0 ; "General Elliott is said to be[Line]the finest swordsman in all[Line]of Rune.[Wait2][Line]Take care, [Hero]![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11669,8 +11669,8 @@ loc_129D74:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$AA,d0 
-		trap    #8
+		move.w  #$AA,d0 ; "[Hero], you must break[Line]through to reach the harbor.[Line]Be careful, but be quick![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11699,8 +11699,8 @@ loc_129DEA:     moveq   #$20,d0
 		moveq   #$71,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$AB,d0 
-		trap    #8
+		move.w  #$AB,d0 ; "At last we meet, [Hero].[Line]Soon you and your misfits[Line]will trouble us no longer![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -11708,8 +11708,8 @@ loc_129DEA:     moveq   #$20,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$AC,d0 
-		trap    #8
+		move.w  #$AC,d0 ; "Yes, that is Balbazak, a[Line]commander of the Runefaust[Line]army. You must destroy him![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11718,8 +11718,8 @@ loc_129E28:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B7,d0 
-		trap    #8
+		move.w  #$B7,d0 ; "The ship is surrounded by[Line]monsters, [Hero]![Line]Prepare to defend it![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$23,d0 
@@ -11748,8 +11748,8 @@ loc_129E68:     jsr     sub_8094
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129EAA:     trap    #5
-		move.w  #$BB,d0 
-		trap    #8
+		move.w  #$BB,d0 ; "I invoke a path before[Line]me....What?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11758,8 +11758,8 @@ loc_129EAA:     trap    #5
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_129ECA:     trap    #7
-		move.w  #$BC,d0 
-		trap    #8
+		move.w  #$BC,d0 ; "Shining Force! I was so[Line]close...so close! I shall[Line]destroy you all![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		rts
 loc_129ED6:     moveq   #$29,d0 
@@ -11767,8 +11767,8 @@ loc_129ED6:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$BE,d0 
-		trap    #8
+		move.w  #$BE,d0 ; "Here we go again. We were[Line]just about to land, too! Go[Line]get them![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$23,d0 
@@ -11790,16 +11790,16 @@ loc_129EFE:     jsr     sub_8094
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_129F40:     trap    #5
-		move.w  #$C0,d0 
-		trap    #8
+		move.w  #$C0,d0 ; "These Guardiana fools must be[Line]stopped. Kane's mission is[Line]vital. Attack![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$29,d0 
 		jsr     sub_802C
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$C1,d0 
-		trap    #8
+		move.w  #$C1,d0 ; "[Hero], you must quickly[Line]break through to Dragonia![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11821,8 +11821,8 @@ loc_129F6A:     jsr     sub_8094
 loc_129FAC:     moveq   #$24,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$C4,d0 
-		trap    #8
+		move.w  #$C4,d0 ; "Ha! I knew you couldn't hide[Line]in there forever! Come on[Line]out, little hero![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -11830,8 +11830,8 @@ loc_129FAC:     moveq   #$24,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$C5,d0 
-		trap    #8
+		move.w  #$C5,d0 ; "[Hero], be careful.[Line]Remember that Kane killed[Line]Varios![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11840,8 +11840,8 @@ loc_129FE4:     moveq   #$21,d0
 		moveq   #$72,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$C9,d0 
-		trap    #8
+		move.w  #$C9,d0 ; "Well, [Hero], we meet[Line]once more.  For the last time,[Line]I fear, as you will die here.[Wait2][Line]My minions shall take care of[Line]you, but if they fail, I await[Line]you in Demon Castle![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11868,8 +11868,8 @@ loc_12A004:     moveq   #$31,d0
 loc_12A05A:     moveq   #$21,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$CB,d0 
-		trap    #8
+		move.w  #$CB,d0 ; "Well, here's the little hero[Line]coming for my Sword of Light![Line]Take it, if you dare![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11878,8 +11878,8 @@ loc_12A05A:     moveq   #$21,d0
 		move.w  #0,d2
 		bsr.w   sub_12C2DC
 loc_12A082:     trap    #7
-		move.w  #$CC,d0 
-		trap    #8
+		move.w  #$CC,d0 ; "You'll never leave my castle,[Line]you pitiful fools![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -11888,8 +11888,8 @@ loc_12A082:     trap    #7
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A0A2:     trap    #7
-		move.w  #$CD,d0 
-		trap    #8
+		move.w  #$CD,d0 ; "This is as close as you'll[Line]ever come to the Sword of[Line]Light![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -11897,8 +11897,8 @@ loc_12A0A2:     trap    #7
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$CE,d0 
-		trap    #8
+		move.w  #$CE,d0 ; "[Hero], take great care.[Line]Mishaela is a powerful[Line]wizardess, a dangerous foe![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11907,8 +11907,8 @@ loc_12A0D2:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D1,d0 
-		trap    #8
+		move.w  #$D1,d0 ; "The Tower of the Ancients is[Line]to the east. Hurry, while[Line]there's still time![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11928,16 +11928,16 @@ loc_12A0F2:     jsr     sub_8094
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_12A134:     trap    #5
-		move.w  #$D3,d0 
-		trap    #8
+		move.w  #$D3,d0 ; "Stop them! Lord Darksol must[Line]not be disturbed![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$29,d0 
 		jsr     sub_802C
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D4,d0 
-		trap    #8
+		move.w  #$D4,d0 ; "We must get inside the tower![Line]Smash through these monsters[Line]quickly, [Hero]![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11946,8 +11946,8 @@ loc_12A15E:     moveq   #$22,d0
 		moveq   #$73,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D7,d0 
-		trap    #8
+		move.w  #$D7,d0 ; "Screech! Kill...kill....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11956,8 +11956,8 @@ loc_12A17E:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D9,d0 
-		trap    #8
+		move.w  #$D9,d0 ; "To the south is Runefaust.[Line]Their army approaches. You[Line]must fight your way in.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -11982,8 +11982,8 @@ loc_12A1E4:     moveq   #$23,d0
 		moveq   #$74,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$DB,d0 
-		trap    #8
+		move.w  #$DB,d0 ; "Long have I waited for[Line]this moment, [Hero]![Line]Prepare to meet your death.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -12011,8 +12011,8 @@ loc_12A230:     moveq   #$30,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$DF,d0 
-		trap    #8
+		move.w  #$DF,d0 ; "At last, [Hero]!  The[Line]Castle of the Ancients. The[Line]end is near, for good or ill![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #2,((word_FFB7C6-$1000000)).w
@@ -12052,8 +12052,8 @@ loc_12A2DA:     moveq   #$26,d0
 		moveq   #$76,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E0,d0 
-		trap    #8
+		move.w  #$E0,d0 ; "None shall pass Colossus,[Line]the eternal sentinel![Line]Leave now![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		clr.w   ((word_FFB7C6-$1000000)).w
@@ -12096,8 +12096,8 @@ loc_12A35C:     trap    #SOUND_COMMAND
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E1,d0 
-		trap    #8
+		move.w  #$E1,d0 ; "Colossus! I've heard of it[Line]in legends! [Hero]![Line]They are attacking![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -12177,8 +12177,8 @@ loc_12A422:     moveq   #$28,d0
 		moveq   #$6E,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E5,d0 
-		trap    #8
+		move.w  #$E5,d0 ; "Dark Dragon! Awake from your[Line]long sleep! The time has come[Line]for you to reclaim this land![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		lea     unk_12A388(pc), a0
@@ -12197,8 +12197,8 @@ loc_12A444:     clr.w   d0
 loc_12A462:     moveq   #$28,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$E6,d0 
-		trap    #8
+		move.w  #$E6,d0 ; "Awaken, Dark Dragon![Line]Something is wrong....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12207,8 +12207,8 @@ loc_12A462:     moveq   #$28,d0
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A48A:     trap    #7
-		move.w  #$E7,d0 
-		trap    #8
+		move.w  #$E7,d0 ; "[Hero]! Blast![Line]You have meddled for the last[Line]time! Kill them, my servants![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -12216,8 +12216,8 @@ loc_12A48A:     trap    #7
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E8,d0 
-		trap    #8
+		move.w  #$E8,d0 ; "[Hero]! You must stop[Line]Darksol before he completes[Line]his foul ceremony! Attack![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -12277,8 +12277,8 @@ loc_12A52A:     move.w  #$80,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A54E:     trap    #5
-		move.w  #$71,d0 
-		trap    #8
+		move.w  #$71,d0 ; "Fools...you have won here,[Line]but Lord Kane of Runefaust is[Line]even now attacking Guardiana![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12295,8 +12295,8 @@ loc_12A562:     move.w  #$80,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A586:     trap    #5
-		move.w  #$82,d0 
-		trap    #8
+		move.w  #$82,d0 ; "No! It cannot be! After all[Line]these centuries....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12305,8 +12305,8 @@ loc_12A598:     move.w  #$81,d2
 		bsr.w   sub_12BFD0
 		bne.w   locret_12BFCE
 		trap    #5
-		move.w  #$87,d0 
-		trap    #8
+		move.w  #$87,d0 ; "Fools! Light will never defeat[Line]the Darkness....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12322,8 +12322,8 @@ loc_12A5B6:     move.w  #$82,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A5DA:     trap    #5
-		move.w  #$95,d0 
-		trap    #8
+		move.w  #$95,d0 ; "You think you've won, but[Line]you've failed. The Laser Eye[Line]is ours now![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12339,8 +12339,8 @@ loc_12A5EC:     move.w  #$82,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A610:     trap    #5
-		move.w  #$A1,d0 
-		trap    #8
+		move.w  #$A1,d0 ; "You may have beaten us here,[Line]but General Elliott will stop[Line]you in Pao![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12358,8 +12358,8 @@ loc_12A622:     move.w  #$80,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A64E:     trap    #5
-		move.w  #$A8,d0 
-		trap    #8
+		move.w  #$A8,d0 ; "Perhaps you have the strength[Line]to rescue King Ramladu and[Line]Runefaust! Stop Darksol![Wait2][Line]Promise that you will free[Line]Runefaust, known as Protectora[Line]before Darksol came....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$FFFFFFFF,d2
@@ -12393,17 +12393,17 @@ loc_12A6AE:     move.w  #$80,d2
 		moveq   #$71,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$AD,d0 
-		trap    #8
+		move.w  #$AD,d0 ; "[Hero]! Take the ship,[Line]but please spare my life![Line]Please![Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_12A6D0:     jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		beq.s   loc_12A6E6
-		move.w  #$AE,d0 
-		trap    #8
+		beq.s   loc_12A6E6      
+		move.w  #$AE,d0 ; "You don't want to[Line]kill me, do you?[Line]Please let me go.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.s   loc_12A6D0
-loc_12A6E6:     move.w  #$AF,d0 
-		trap    #8
+loc_12A6E6:     move.w  #$AF,d0 ; "Thank you! Take the ship, go[Line]after Darksol![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$14,d0
@@ -12417,16 +12417,16 @@ loc_12A6E6:     move.w  #$AF,d0
 		moveq   #$6E,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B0,d0 
-		trap    #8
+		move.w  #$B0,d0 ; "Balbazak, you betrayed me![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$20,d0 
 		jsr     sub_802C
 		moveq   #$71,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B1,d0 
-		trap    #8
+		move.w  #$B1,d0 ; "No, no, please Darksol![Line]Leave me in peace![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		trap    #SOUND_COMMAND
@@ -12436,8 +12436,8 @@ loc_12A6E6:     move.w  #$AF,d0
 		moveq   #$6E,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B2,d0 
-		trap    #8
+		move.w  #$B2,d0 ; "You disgust me, Balbazak![Line]Leave you in peace? I will[Line]leave you in pieces![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$20,d0 
@@ -12445,8 +12445,8 @@ loc_12A6E6:     move.w  #$AF,d0
 		moveq   #$71,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B3,d0 
-		trap    #8
+		move.w  #$B3,d0 ; "Forgive me![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$28,d0 
@@ -12454,8 +12454,8 @@ loc_12A6E6:     move.w  #$AF,d0
 		moveq   #$6E,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B4,d0 
-		trap    #8
+		move.w  #$B4,d0 ; "Too late, worm! Receive your[Line]punishment for failure![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #SOUND_COMMAND
 		dc.w SFX_HIT
 		bsr.w   sub_128F98
@@ -12473,8 +12473,8 @@ loc_12A7D0:     moveq   #$20,d0
 		moveq   #$71,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B5,d0 
-		trap    #8
+		move.w  #$B5,d0 ; "I am dying, [Hero]....[Line]You must kill Darksol...[Line]free Runefaust....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$FFFFFFFF,d2
@@ -12492,8 +12492,8 @@ loc_12A7F8:     move.w  #$80,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A81C:     trap    #5
-		move.w  #$BD,d0 
-		trap    #8
+		move.w  #$BD,d0 ; "Arrghh...I was so close...the[Line]way to Metapha...almost[Line]ours....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12510,8 +12510,8 @@ loc_12A830:     move.w  #$80,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A854:     trap    #5
-		move.w  #$C2,d0 
-		trap    #8
+		move.w  #$C2,d0 ; "You'll never beat Kane,[Line]Shining Fools![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12529,8 +12529,8 @@ loc_12A866:     move.w  #$80,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A892:     trap    #5
-		move.w  #$C6,d0 
-		trap    #8
+		move.w  #$C6,d0 ; "Arrgh! My mask[Line]is...breaking![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_128F98
 		jsr     sub_8030
 		trap    #SOUND_COMMAND
@@ -12538,8 +12538,8 @@ loc_12A892:     trap    #5
 		moveq   #$25,d0 
 		jsr     sub_802C
 		trap    #7
-		move.w  #$C7,d0 
-		trap    #8
+		move.w  #$C7,d0 ; "Wh...where am I? I[Line]remember now. Darksol masked[Line]my face to control me....[Wait2][Line]What have I done?[Line]He even made me fight you![Line]Forgive me, [Hero]![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -12570,8 +12570,8 @@ loc_12A8EE:     move.w  #$80,d2
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12A91A:     trap    #5
-		move.w  #$CF,d0 
-		trap    #8
+		move.w  #$CF,d0 ; "Though you can take...my[Line]sword...you will never...stop[Line]Darksol.[Wait2][Line]Dark Dragon will be set[Line]free....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$FFFFFFFF,d2
@@ -12597,8 +12597,8 @@ loc_12A934:     move.w  #$80,d2
 		move.w  #1,(word_FF0C98).l
 		move.l  #$10F3F,(dword_FF0E30).l
 loc_12A982:     trap    #5
-		move.w  #$D5,d0 
-		trap    #8
+		move.w  #$D5,d0 ; "Lord Darksol...I have failed[Line]...they're coming...into the[Line]tower....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$FFFFFFFF,d2
 		bsr.w   sub_12C1BA
@@ -12611,8 +12611,8 @@ loc_12A994:     move.w  #$80,d2
 		moveq   #$73,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D8,d0 
-		trap    #8
+		move.w  #$D8,d0 ; "This unit...now ceases to[Line]function...mission incomplete[Line]...system failure....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$FFFFFFFF,d2
@@ -12633,8 +12633,8 @@ loc_12A9DC:     move.w  #$80,d2
 		moveq   #$74,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$DD,d0 
-		trap    #8
+		move.w  #$DD,d0 ; "I am dying...but my mind is[Line]once more my own. Darksol[Line]was controlling me.[Wait2][Line]You must stop Darksol![Line]If he frees Dark Dragon,[Line]all of Rune is doomed.[Wait2][Line]He has gone to the gate,[Line]to summon the castle from the[Line]depths of the sea. Go![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$FFFFFFFF,d2
@@ -12648,8 +12648,8 @@ loc_12AA0E:     move.w  #$80,d2
 		moveq   #$76,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E2,d0 
-		trap    #8
+		move.w  #$E2,d0 ; "Fools...Dark Dragon...will[Line]come...to destroy you....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$FFFFFFFF,d2
@@ -12663,16 +12663,16 @@ loc_12AA40:     move.w  #$80,d2
 		moveq   #$6E,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E9,d0 
-		trap    #8
+		move.w  #$E9,d0 ; "Dark Dragon! With my dying[Line]breath...I summon you....[Line]Arise, Dark Dragon![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_128F98
 		moveq   #$A,d0
 		jsr     (j_Sleep).l
 		bsr.w   sub_128F98
 		moveq   #$A,d0
 		jsr     (j_Sleep).l
-		move.w  #$1EA,d0
-		trap    #8
+		move.w  #$1EA,d0        ; "[Dict][Line]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -12681,10 +12681,10 @@ loc_12AA40:     move.w  #$80,d2
 		move.w  #0,d2
 		bsr.w   sub_12C2DC
 loc_12AA98:     trap    #7
-		move.w  #$EA,d0 
-		trap    #8
-		move.w  #$EB,d0 
-		trap    #8
+		move.w  #$EA,d0 ; "Yes! At last, you are[Line]awakening![Wait2]"
+		trap    #DISPLAY_MESSAGE
+		move.w  #$EB,d0 ; "I offer myself to you, Dark[Line]Dragon! Use my power to help[Line]you cast off your bonds.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -12726,8 +12726,8 @@ loc_12AAD6:     moveq   #$FFFFFF80,d2
 loc_12AB3A:     moveq   #$28,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$EC,d0 
-		trap    #8
+		move.w  #$EC,d0 ; "You are free once more! Let[Line]all of Rune tremble! I die[Line]fulfilled! Cringe fools![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -12825,8 +12825,8 @@ loc_12AC50:     jsr     (j_WaitForVInt).l
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$72,d0 
-		trap    #8
+		move.w  #$72,d0 ; "If that creature spoke truly,[Line]we must return to help defend[Line]Guardiana![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.b  #4,((byte_FF9C4C-$1000000)).w
@@ -12836,8 +12836,8 @@ loc_12AC8C:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$76,d0 
-		trap    #8
+		move.w  #$76,d0 ; "Well done, Shining Force![Line]Now, enter Guardiana and find[Line]out what's happened there![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -12846,8 +12846,8 @@ loc_12ACAC:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$78,d0 
-		trap    #8
+		move.w  #$78,d0 ; "Excellent! Kane will have to[Line]do better than that to stop[Line]you. On to Alterone![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -12856,8 +12856,8 @@ loc_12ACCC:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$7E,d0 
-		trap    #8
+		move.w  #$7E,d0 ; "[Hero], there's no time[Line]to lose. Kane must be found[Line]and stopped at all costs.[Wait2][Line]Find out all you can and[Line]be sure to talk to the king[Line]of Alterone![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$31,d0 
@@ -12871,8 +12871,8 @@ loc_12AD04:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$80,d0 
-		trap    #8
+		move.w  #$80,d0 ; "[Hero], now enter[Line]Manarina! We must inform[Line]Anri about Guardiana![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -12881,8 +12881,8 @@ loc_12AD24:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$83,d0 
-		trap    #8
+		move.w  #$83,d0 ; "[Hero], the Orb of Light[Line]must be within that chest.[Line]Take it quickly![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -12930,8 +12930,8 @@ loc_12ADD6:     move.w  #$80,d2
 		move.w  #$86,d3 
 		bsr.w   sub_12C2BE
 loc_12ADF2:     trap    #5
-		move.w  #$88,d0 
-		trap    #8
+		move.w  #$88,d0 ; "She...that evil woman...was[Line]going to take me to Runefaust,[Line]to feed me to a dragon![Wait2][Line]Thank you! I'm going home and[Line]I'm never leaving![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
@@ -12973,8 +12973,8 @@ loc_12AE6A:     moveq   #$63,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$96,d0 
-		trap    #8
+		move.w  #$96,d0 ; "[Hero], the Moon Stone[Line]lies inside the cavern.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #0,d1
@@ -12989,8 +12989,8 @@ loc_12AEA8:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$98,d0 
-		trap    #8
+		move.w  #$98,d0 ; "Head for the bridge. We need[Line]to get across quickly![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13025,8 +13025,8 @@ loc_12AEC8:     clr.w   ((word_FFB7C6-$1000000)).w
 loc_12AF42:     moveq   #2,d0
 		jsr     sub_802C
 		trap    #5
-		move.w  #$A2,d0 
-		trap    #8
+		move.w  #$A2,d0 ; "Whew! I thought I was a[Line]goner, but I caught a branch[Line]and just hung on.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$80,d2 
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -13045,8 +13045,8 @@ loc_12AF6E:     move.w  #$80,d2
 		move.w  #2,d3
 		bsr.w   sub_12C2BE
 loc_12AF8A:     trap    #7
-		move.w  #$A3,d0 
-		trap    #8
+		move.w  #$A3,d0 ; "A great battle! I don't know[Line]who you are, but I want to[Line]tag along![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		moveq   #2,d0
 		bsr.w   sub_12C446
@@ -13056,14 +13056,14 @@ loc_12AF8A:     trap    #7
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$A4,d0 
-		trap    #8
+		move.w  #$A4,d0 ; "A good job getting to that[Line]Laser Eye. Hurry on to Pao.[Line]Evil is afoot![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		trap    #5
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.w  #$166,d0
-		trap    #8
+		move.w  #$166,d0        ; "With the Laser Eye gone,[Line]the Shining Force heads toward[Line]the moving town of Pao.[Wait2][Line]Knowing that Runefaust is[Line]gathering its forces, our[Line]heroes hurried onward.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
@@ -13073,8 +13073,8 @@ loc_12AFD8:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$A9,d0 
-		trap    #8
+		move.w  #$A9,d0 ; "Elliott was a great warrior...[Line]too bad he was our enemy.[Wait2][Line]But look, the traveling town[Line]of Pao is coming up again![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		jsr     (j_FadeOutToBlack).l
@@ -13126,8 +13126,8 @@ loc_12B092:     moveq   #$28,d0
 		moveq   #$6E,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B6,d0 
-		trap    #8
+		move.w  #$B6,d0 ; "Take the ship, as that fool[Line]said. You will not survive[Line]the voyage! Ha, ha, ha![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.b  #$A,(FADING_SETTING).l
@@ -13138,8 +13138,8 @@ loc_12B092:     moveq   #$28,d0
 		jsr     (j_Sleep).l
 		trap    #5
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.w  #$167,d0
-		trap    #8
+		move.w  #$167,d0        ; "Thus did the Shining Force[Line]free Uranbatol and set sail[Line]for a land of legend....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
@@ -13149,8 +13149,8 @@ loc_12B0F2:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$B8,d0 
-		trap    #8
+		move.w  #$B8,d0 ; "The ship was damaged in the[Line]battle. We must repair it.[Line]That island over there....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.l  #$8034,(dword_FF0EF6).l
@@ -13198,8 +13198,8 @@ loc_12B19C:     move.w  #$80,d2
 loc_12B1B8:     moveq   #$2A,d0 
 		jsr     sub_802C
 		trap    #5
-		move.w  #$B9,d0 
-		trap    #8
+		move.w  #$B9,d0 ; "Thank you for destroying[Line]those monsters! My name is[Line]Shell of Waral.[Wait2][Line]You can repair your ship in[Line]Waral. Please follow me![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$80,d2 
@@ -13216,8 +13216,8 @@ loc_12B1EC:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$BA,d0 
-		trap    #8
+		move.w  #$BA,d0 ; "I've heard of Waral. We[Line]should be able to get the[Line]ship fixed there.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$23,d0 
@@ -13228,14 +13228,14 @@ loc_12B216:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$BF,d0 
-		trap    #8
+		move.w  #$BF,d0 ; "The ship's helm was destroyed[Line]in the battle. We're now[Line]adrift at sea![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		trap    #5
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.w  #$168,d0
-		trap    #8
+		move.w  #$168,d0        ; "The ship drifted off course,[Line]lost at sea. What will become[Line]of the Shining Force?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
@@ -13247,8 +13247,8 @@ loc_12B256:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$C3,d0 
-		trap    #8
+		move.w  #$C3,d0 ; "[Hero], you must[Line]stop Kane before he finds the[Line]Manual of the Seal. Onward![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13257,8 +13257,8 @@ loc_12B276:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$C8,d0 
-		trap    #8
+		move.w  #$C8,d0 ; "It seems that Darksol is[Line]behind all the evil afoot.[Line]Stop him and it all ends.[Wait2][Line]In any case, let's take[Line]another look at this village.[Wait2][Line]Check the shrine again....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$47,d0 
@@ -13273,8 +13273,8 @@ loc_12B2B0:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$CA,d0 
-		trap    #8
+		move.w  #$CA,d0 ; "Mishaela is said to possess[Line]the Sword of Light. You must[Line]enter her castle and get it![Wait2][Line]With that legendary weapon,[Line]you stand a much better[Line]chance against Darksol.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13285,8 +13285,8 @@ loc_12B2D0:     moveq   #$37,d0
 		jsr     (j_SetEventFlag).l
 		jsr     (sub_304).l
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.w  #$169,d0
-		trap    #8
+		move.w  #$169,d0        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_30C).l
 		bra.w   loc_12BF66
 loc_12B2FC:     moveq   #$29,d0 
@@ -13294,8 +13294,8 @@ loc_12B2FC:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D0,d0 
-		trap    #8
+		move.w  #$D0,d0 ; "With the Sword of Light you[Line]might be able to defeat[Line]Darksol. We shall see![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13304,8 +13304,8 @@ loc_12B31C:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D2,d0 
-		trap    #8
+		move.w  #$D2,d0 ; "Now, on to the Tower of the[Line]Ancients![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13314,8 +13314,8 @@ loc_12B33C:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$D6,d0 
-		trap    #8
+		move.w  #$D6,d0 ; "Get in there, quickly![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.b  #3,((CURRENT_MAP-$1000000)).w
@@ -13330,8 +13330,8 @@ loc_12B378:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$DA,d0 
-		trap    #8
+		move.w  #$DA,d0 ; "Now, [Hero], into[Line]Runefaust![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13340,8 +13340,8 @@ loc_12B398:     moveq   #$23,d0
 		moveq   #$74,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$DC,d0 
-		trap    #8
+		move.w  #$DC,d0 ; "Is that the best you can do?[Line]Well, meet my robots,[Line]weaklings![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.b  #1,((CURRENT_MAP-$1000000)).w
@@ -13387,8 +13387,8 @@ loc_12B470:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$DE,d0 
-		trap    #8
+		move.w  #$DE,d0 ; "[Hero]! Darksol has[Line]already entered the Castle of[Line]the Ancients.  You must hurry![Wait2][Line]I found a secret passage[Line]to the gate. It is in the[Line]entry hall of this castle.[Wait2][Line]Return to town and make[Line]your final preparations. Then[Line]take the passage.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13397,8 +13397,8 @@ loc_12B490:     moveq   #$29,d0
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E3,d0 
-		trap    #8
+		move.w  #$E3,d0 ; "You've destroyed Colossus![Line]But where is Darksol?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		trap    #SOUND_COMMAND
@@ -13458,8 +13458,8 @@ loc_12B54A:     jsr     (j_WaitForVInt).l
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$E4,d0 
-		trap    #8
+		move.w  #$E4,d0 ; "Use the staircase,[Line][Hero].[Line]Darksol must be up there![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		rts
@@ -13581,11 +13581,11 @@ loc_12B638:     moveq   #$27,d0
 		moveq   #$77,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$ED,d0 
-		trap    #8
+		move.w  #$ED,d0 ; "Nooooo! These puny creatures[Line]cannot defeat the Lord of[Line]Darkness![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$EE,d0 
-		trap    #8
+		move.w  #$EE,d0 ; "Never! I will not be banished[Line]again! The Powers of Darkness[Line]will sustain me![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.b  #1,(FADING_COUNTER_MAX).l
@@ -13638,14 +13638,14 @@ loc_12B716:     jsr     (j_FadeInFromWhite).l
 		bsr.w   loc_12C34E
 		trap    #5
 		trap    #7
-		move.w  #$EF,d0 
-		trap    #8
+		move.w  #$EF,d0 ; "Dark Dragon still lives![Line]Perhaps we cannot kill him![Line]There must be a way....[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$F0,d0 
-		trap    #8
+		move.w  #$F0,d0 ; "[Hero]! Dark Dragon[Line]must be sealed away once[Line]again. And only you can do it![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$F1,d0 
-		trap    #8
+		move.w  #$F1,d0 ; "Use the Chaos Breaker! Drive[Line]it through Dark Dragon![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$27,d0 
@@ -13653,8 +13653,8 @@ loc_12B716:     jsr     (j_FadeInFromWhite).l
 		moveq   #$77,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$F2,d0 
-		trap    #8
+		move.w  #$F2,d0 ; "Fools! Nothing you do can[Line]stop me! I am Dark Dragon,[Line]Darkness incarnate![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -13662,8 +13662,8 @@ loc_12B716:     jsr     (j_FadeInFromWhite).l
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$F3,d0 
-		trap    #8
+		move.w  #$F3,d0 ; "[Hero]! Stab him with[Line]the Chaos Breaker![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$1E,d0
@@ -13830,8 +13830,8 @@ loc_12B9CC:     jsr     (j_WaitForVInt).l
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$F5,d0 
-		trap    #8
+		move.w  #$F5,d0 ; "[Hero]! The Castle of the[Line]Ancients is sinking! Let's[Line]get out of here![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$F0,d7 
@@ -13840,16 +13840,16 @@ loc_12BA0E:     jsr     (j_WaitForVInt).l
 		dbne    d7,loc_12BA0E
 		trap    #5
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.w  #$F6,d0 
-		trap    #8
+		move.w  #$F6,d0 ; "But [Hero] cannot move![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$29,d0 
 		jsr     sub_802C
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$F7,d0 
-		trap    #8
+		move.w  #$F7,d0 ; "[Hero] is somehow bound[Line]to the Chaos Breaker![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$3C,((word_FFB7C4-$1000000)).w 
@@ -13860,8 +13860,8 @@ loc_12BA0E:     jsr     (j_WaitForVInt).l
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$F8,d0 
-		trap    #8
+		move.w  #$F8,d0 ; "[Hero]! Break free! We[Line]won't leave without you![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #$5A,((word_FFB7C4-$1000000)).w 
@@ -13872,8 +13872,8 @@ loc_12BA0E:     jsr     (j_WaitForVInt).l
 		clr.w   d1
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$F9,d0 
-		trap    #8
+		move.w  #$F9,d0 ; "I can't get free, but you[Line]won't die with me![Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #SOUND_COMMAND
 		dc.w SFX_SPELL_CAST
 		lea     (PALETTE_2).l,a0
@@ -13907,8 +13907,8 @@ loc_12BAD0:     move.l  #$EEE0EEE,(a0)+
 		moveq   #1,d1
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$FA,d0 
-		trap    #8
+		move.w  #$FA,d0 ; "[Hero] used his Egress[Line]magic to save us. But[Line]where is [Hero]?[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$E,d0
@@ -13916,8 +13916,8 @@ loc_12BAD0:     move.l  #$EEE0EEE,(a0)+
 		moveq   #$E,d1
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$FB,d0 
-		trap    #8
+		move.w  #$FB,d0 ; "That spell's supposed to[Line]get us all out. Why isn't[Line][Hero] here? Why, Nova?[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -13925,8 +13925,8 @@ loc_12BAD0:     move.l  #$EEE0EEE,(a0)+
 		moveq   #$39,d1 
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$FC,d0 
-		trap    #8
+		move.w  #$FC,d0 ; "I have no answers for you.[Line]Perhaps a great hero is[Line]needed to guard the seal.[Delay2][Line]Perhaps he must[Line]stand as an eternal vigil to[Line]prevent Dark Dragon's return.[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$E,d0
@@ -13934,8 +13934,8 @@ loc_12BAD0:     move.l  #$EEE0EEE,(a0)+
 		moveq   #$E,d1
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$FD,d0 
-		trap    #8
+		move.w  #$FD,d0 ; "But why did it have[Line]to be [Hero]? Any of us[Line]would have taken his place....[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		move.w  #1,d2
@@ -13950,8 +13950,8 @@ loc_12BB94:     moveq   #1,d0
 		moveq   #1,d1
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$FE,d0 
-		trap    #8
+		move.w  #$FE,d0 ; "I won't believe it![Line][Hero] will come back,[Line]I know it![Delay2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #1,d2
 		bsr.w   sub_12BFB6
 		tst.w   d0
@@ -13960,8 +13960,8 @@ loc_12BB94:     moveq   #1,d0
 		move.w  #0,d2
 		bsr.w   sub_12C2DC
 loc_12BBC2:     trap    #7
-		move.w  #$FF,d0
-		trap    #8
+		move.w  #$FF,d0         ; "Perhaps [Hero] will still[Line]come out. Wait, look at[Line]the castle![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #0,d1
@@ -14105,8 +14105,8 @@ loc_12BD96:     jsr     (j_WaitForVInt).l
 		moveq   #$E,d1
 		bsr.w   loc_12C34E
 		trap    #5
-		move.w  #$100,d0
-		trap    #8
+		move.w  #$100,d0        ; "No! It's gone...the castle...[Line]and [Hero] with it....[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		jsr     sub_8094
@@ -14130,8 +14130,8 @@ loc_12BE08:     trap    #SOUND_COMMAND
 		jsr     sub_802C
 		trap    #5
 		trap    #7
-		move.w  #$101,d0
-		trap    #8
+		move.w  #$101,d0        ; "That's it. He didn't escape.[Line]He's gone....[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #1,d0
@@ -14144,8 +14144,8 @@ loc_12BE08:     trap    #SOUND_COMMAND
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12BE46:     trap    #5
-		move.w  #$103,d0
-		trap    #8
+		move.w  #$103,d0        ; "I won't believe it....[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$29,d0 
@@ -14158,8 +14158,8 @@ loc_12BE46:     trap    #5
 		move.w  #2,d2
 		bsr.w   sub_12C2DC
 loc_12BE76:     trap    #5
-		move.w  #$102,d0
-		trap    #8
+		move.w  #$102,d0        ; "[Hero] has saved all of[Line]Rune. His sacrifice will be[Line]remembered forever.[Delay2][Line]And now, friends, it is[Line]time for us to begin the long[Line]journey home....[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8030
 		moveq   #$3C,d0 
@@ -14174,8 +14174,8 @@ loc_12BE76:     trap    #5
 		move.w  #3,d2
 		bsr.w   sub_12C2DC
 loc_12BEAE:     trap    #5
-		move.w  #$103,d0
-		trap    #8
+		move.w  #$103,d0        ; "I won't believe it....[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_8094
 		move.w  #1,d2
@@ -14197,8 +14197,8 @@ loc_12BEAE:     trap    #5
 loc_12BF04:     moveq   #$5A,d0 
 		jsr     (j_Sleep).l
 		trap    #5
-		move.w  #$104,d0
-		trap    #8
+		move.w  #$104,d0        ; "[Hero]!"
+		trap    #DISPLAY_MESSAGE
 		moveq   #2,d0
 		jsr     sub_80D8
 		move.w  #$78,d0 
@@ -14837,8 +14837,8 @@ sub_12C446:
 		jsr     (j_WaitForVInt).l
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_JOIN
-		move.w  #$397,d0
-		trap    #8
+		move.w  #$397,d0        ; "([Name] joins the[Line]Shining Force!)"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		movem.l (sp)+,d0-d1/d6

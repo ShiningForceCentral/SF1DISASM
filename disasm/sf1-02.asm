@@ -603,8 +603,8 @@ loc_8296:
 loc_82AE:
 		bsr.w   sub_AB2C
 		jsr     (sub_304).l
-		move.w  #$1B1,d0
-		trap    #8
+		move.w  #$1B1,d0        ; "[Hero] has been[Line]defeated...[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_30C).l
 		bsr.w   sub_8770
 		trap    #SOUND_COMMAND
@@ -701,8 +701,8 @@ loc_8366:
 		bsr.w   sub_830A
 		bsr.w   sub_AB2C
 		jsr     (sub_304).l
-		move.w  #$205,d0
-		trap    #8
+		move.w  #$205,d0        ; "[Name] appears![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_30C).l
 		movea.l (sp)+,a0
 		bra.s   loc_8366
@@ -4056,13 +4056,13 @@ loc_9ECC:
 		move.w  #$4B,((word_FFC0BE-$1000000)).w 
 		move.b  ((byte_FF9C4D-$1000000)).w,d0
 		cmp.b   ((CURRENT_MAP-$1000000)).w,d0
-		bne.s   loc_9EF8
-		move.w  #$1B3,d0
-		trap    #8
+		bne.s   loc_9EF8        
+		move.w  #$1B3,d0        ; "[Hero]! You've reached[Line]your destination, but some[Line]enemies remain.[Wait2][Line]Will you leave them?"
+		trap    #DISPLAY_MESSAGE
 		bra.s   loc_9EFE
 loc_9EF8:
-		move.w  #$1B2,d0
-		trap    #8
+		move.w  #$1B2,d0        ; "[Hero]! Do you really[Line]want to retreat from this[Line]battle?"
+		trap    #DISPLAY_MESSAGE
 loc_9EFE:
 		jsr     (j_YesNoChoiceBox).l
 		bsr.w   sub_E286
@@ -4357,19 +4357,19 @@ loc_A274:
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
 		trap    #5
 		clr.w   ((word_FFC0BE-$1000000)).w
-		move.w  #$1B5,d0
-		trap    #8
+		move.w  #$1B5,d0        ; "[Name] casts [Spell][Line]level [Num]!"
+		trap    #DISPLAY_MESSAGE
 		trap    #SOUND_COMMAND
 		dc.w SFX_SPELL_CAST
-		move.w  #$1EA,d0
-		trap    #8
+		move.w  #$1EA,d0        ; "[Dict][Line]"
+		trap    #DISPLAY_MESSAGE
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		beq.s   loc_A2CC
 		trap    #7
-		move.w  #$1D1,d0
-		trap    #8
-		move.w  #$1EA,d0
-		trap    #8
+		move.w  #$1D1,d0        ; "But nothing happens."
+		trap    #DISPLAY_MESSAGE
+		move.w  #$1EA,d0        ; "[Dict][Line]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		clr.w   d0
 		bsr.w   sub_AB9C

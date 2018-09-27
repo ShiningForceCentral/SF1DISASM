@@ -7248,10 +7248,10 @@ sub_3284:
 		jsr     sub_164014
 		jsr     (sub_304).l
 		move.w  #$45,((word_FFC0BE-$1000000)).w 
-		move.w  #$3B,d0 
-		trap    #8
-		move.w  #$3C,d0 
-		trap    #8
+		move.w  #$3B,d0 ; "Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]"
+		trap    #DISPLAY_MESSAGE
+		move.w  #$3C,d0 ; "Don't stay away too long,[Line]though. We need you here to[Line]lead the Shining Force![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_164018
 		bsr.w   sub_38E4
@@ -7281,30 +7281,30 @@ sub_32EC:
 		move.b  #1,((byte_FF9C05-$1000000)).w
 		jsr     (sub_304).l
 		move.w  #$45,((word_FFC0BE-$1000000)).w 
-		move.w  #$3E,d0 
-		trap    #8
+		move.w  #$3E,d0 ; "Swallowed by the murky brine,[Line]the Castle of the Ancients[Line]was lost forevermore.[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$3F,d0 
-		trap    #8
+		move.w  #$3F,d0 ; "The battle over and Rune[Line]saved, the warriors of the[Line]Shining Force returned home.[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$40,d0 
-		trap    #8
+		move.w  #$40,d0 ; "Led by Mae, Guardiana was[Line]rebuilt and Anri inherited[Line]the throne.[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$41,d0 
-		trap    #8
+		move.w  #$41,d0 ; "As for [Hero], he is[Line]believed to have perished at[Line]sea along with Dark Dragon.[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_164014
 		trap    #7
-		move.w  #$42,d0 
-		trap    #8
+		move.w  #$42,d0 ; "And that is the official[Line]ending. But you and I know[Line]differently, don't we?[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$43,d0 
-		trap    #8
+		move.w  #$43,d0 ; "Somewhere, evil stirs in a[Line]land that has need of a[Line]hero.[Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$44,d0 
-		trap    #8
+		move.w  #$44,d0 ; "And I know you'll be up to[Line]the challenge, [Hero]![Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$45,d0 
-		trap    #8
+		move.w  #$45,d0 ; "Well, goodbye for now. I have[Line]a feeling I'll be seeing you[Line]again.[Delay2][Delay2][Delay2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		moveq   #$3C,d0 
 		bsr.w   j_Sleep
@@ -7350,28 +7350,28 @@ loc_33CA:
 		clr.b   ((byte_FF9C05-$1000000)).w
 		tst.b   (P1_INPUT).l    
 		bne.s   loc_33EE
-		move.w  #$27,d0 
-		trap    #8
+		move.w  #$27,d0 ; "Wow! Dark Dragon, Ancients...[Line]Let's see now, what else does[Line]this old book say?[Wait2][Line]Hmmm. One thousand years[Line]have passed since they[Line]vanquished Dark Dragon.[Wait2][Line]And this book says[Line]Dark Dragon threatened to[Line]return right about now.[Wait2][Line]I bet anything that Dark[Line]Dragon is behind the evil[Line]hordes of Runefaust![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.b  #2,((byte_FF9C05-$1000000)).w
-		move.w  #$28,d0 
-		trap    #8
+		move.w  #$28,d0 ; "I need to tell someone about[Line]this! But who would listen to[Line]a kid like me?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_33EE:
 		move.b  #2,((byte_FF9C05-$1000000)).w
 		jsr     sub_164014
 		tst.b   (P1_INPUT).l    
-		bne.s   loc_340E
-		move.w  #$29,d0 
-		trap    #8
-		move.w  #$2A,d0 
-		trap    #8
+		bne.s   loc_340E        
+		move.w  #$29,d0 ; "Oh, hi! I didn't notice you[Line]there at first. Maybe you'll[Line]listen. Nobody else will.[Wait2]"
+		trap    #DISPLAY_MESSAGE
+		move.w  #$2A,d0 ; "This book tells of an ancient[Line]evil that threatened our land[Line]long ago--Dark Dragon![Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_340E:
-		move.w  #$2B,d0 
-		trap    #8
+		move.w  #$2B,d0 ; "I think Dark Dragon's coming[Line]back! Will you help us?[Line]C'mon, it'll be an adventure![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.s   loc_3422
 loc_3416:
 		jsr     sub_164014
-		move.w  #$39,d0 
-		trap    #8
+		move.w  #$39,d0 ; "Come on! Let's get on with[Line]your adventure!"
+		trap    #DISPLAY_MESSAGE
 loc_3422:
 		clr.w   d0
 		jsr     sub_164008
@@ -7393,16 +7393,16 @@ off_343A:       dc.w sub_3442-off_343A
 
 sub_3442:
 		jsr     (sub_328).l
-		move.w  #$3D,d0 
-		trap    #8
+		move.w  #$3D,d0 ; "Pick an adventure."
+		trap    #DISPLAY_MESSAGE
 		moveq   #1,d0
 		jsr     sub_164008
 		bmi.w   loc_3628
 		move.b  #2,((byte_FF9C05-$1000000)).w
 		move.w  d0,((word_FFC0B8-$1000000)).w
 		jsr     (sub_328).l
-		move.w  #$2C,d0 
-		trap    #8
+		move.w  #$2C,d0 ; "Say, what shall I call you?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_30C).l
 		jsr     j_InitGameSettings
 		clr.w   d0
@@ -7419,10 +7419,10 @@ loc_3492:
 		dbf     d7,loc_3492
 loc_34A6:
 		jsr     (sub_304).l
-		move.w  #$2D,d0 
-		trap    #8
-		move.w  #$2E,d0 
-		trap    #8
+		move.w  #$2D,d0 ; "Nice to meet you,[Line][Hero]! I'm Simone.[Wait2][Line]Come back often[Line]and tell me everything![Wait2]"
+		trap    #DISPLAY_MESSAGE
+		move.w  #$2E,d0 ; "You need to get going! Evil[Line]spreads farther across Rune[Line]with every passing day.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_34B8:
 		move.b  #1,((CURRENT_CHAPTER-$1000000)).w
 		jsr     sub_37EE(pc)
@@ -7446,11 +7446,11 @@ loc_34B8:
 
 sub_34EC:
 		jsr     (sub_328).l
-		move.w  #$2F,d0 
-		trap    #8
+		move.w  #$2F,d0 ; "Let's get going![Line]You're doing great so far![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_328).l
-		move.w  #$30,d0 
-		trap    #8
+		move.w  #$30,d0 ; "Which adventure would you[Line]like to continue?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		moveq   #2,d0
 		jsr     sub_164008
 		bmi.w   loc_3628
@@ -7459,8 +7459,8 @@ sub_34EC:
 		nop
 		move.b  #2,((byte_FF9C05-$1000000)).w
 		jsr     (sub_328).l
-		move.w  #$31,d0 
-		trap    #8
+		move.w  #$31,d0 ; "Good luck! And be sure to[Line]stop by to let me know how[Line]you're doing, OK?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		clr.l   (dword_FF0EF6).l
 		clr.b   ((byte_FFB5AC-$1000000)).w
 		trap    #SOUND_COMMAND
@@ -7476,16 +7476,16 @@ sub_34EC:
 
 sub_3542:
 		jsr     (sub_328).l
-		move.w  #$32,d0 
-		trap    #8
+		move.w  #$32,d0 ; "Really? Which adventure[Line]should I delete?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		moveq   #2,d0
 		jsr     sub_164008
 		bmi.w   loc_3416
 		movem.w d0,-(sp)
 		move.b  #2,((byte_FF9C05-$1000000)).w
 		jsr     (sub_328).l
-		move.w  #$33,d0 
-		trap    #8
+		move.w  #$33,d0 ; "Are you sure?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		tst.w   d0
 		movem.w (sp)+,d0
@@ -7493,8 +7493,8 @@ sub_3542:
 		move.w  d0,((word_FFC0B8-$1000000)).w
 		jsr     (sub_328).l
 		bsr.w   sub_3652
-		move.w  #$34,d0 
-		trap    #8
+		move.w  #$34,d0 ; "OK, it's done![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  ((word_FFC0B8-$1000000)).w,d0
 		addq.w  #1,d0
 		bclr    d0,(SAVE_FLAGS).l
@@ -7502,16 +7502,16 @@ sub_3542:
 		bra.w   loc_3416
 loc_35AA:
 		jsr     (sub_328).l
-		move.w  #$35,d0 
-		trap    #8
+		move.w  #$35,d0 ; "Which adventure do you wish[Line]to copy?"
+		trap    #DISPLAY_MESSAGE
 		moveq   #2,d0
 		jsr     sub_164008
 		bmi.w   loc_3628
 		movem.w d0,-(sp)
 		move.b  #2,((byte_FF9C05-$1000000)).w
 		jsr     (sub_328).l
-		move.w  #$36,d0 
-		trap    #8
+		move.w  #$36,d0 ; "Where do you wish to copy it[Line]to?"
+		trap    #DISPLAY_MESSAGE
 		moveq   #1,d0
 		jsr     sub_164008
 		movem.w (sp)+,d1
@@ -7529,20 +7529,20 @@ loc_35AA:
 		move.b  #2,((byte_FF9C05-$1000000)).w
 		jsr     (sub_328).l
 		bsr.w   sub_3652
-		move.w  #$37,d0 
-		trap    #8
+		move.w  #$37,d0 ; "Done![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_3416
 loc_3628:
 		move.b  #2,((byte_FF9C05-$1000000)).w
 		jsr     (sub_328).l
-		move.w  #$38,d0 
-		trap    #8
+		move.w  #$38,d0 ; "Change your mind? No problem![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_3416
 		jsr     (sub_304).l
-		move.w  #$3A,d0 
-		trap    #8
-		move.w  #$3B,d0 
-		trap    #8
+		move.w  #$3A,d0 ; "Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]"
+		trap    #DISPLAY_MESSAGE
+		move.w  #$3B,d0 ; "Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		rts
 
 	; End of function sub_3542
@@ -7623,8 +7623,8 @@ sub_3758:
 		jsr     (sub_304).l
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_CURSED_ITEM
-		move.w  #$3A,d0 
-		trap    #8
+		move.w  #$3A,d0 ; "Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bsr.w   j_WaitForInputFor3Seconds
 		jsr     (sub_30C).l
 		rts
@@ -8002,8 +8002,8 @@ sub_3B16:
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
 		move.w  #$4A,((word_FFC0BE-$1000000)).w 
-		move.w  #$30C,d0
-		trap    #8
+		move.w  #$30C,d0        ; "[Hero]? [Hero]?[Line]C'mon, kid, wake up![Line]I didn't hit you that hard.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		trap    #SOUND_COMMAND
 		dc.w SFX_SWORDS_HIT
@@ -8019,8 +8019,8 @@ sub_3B16:
 		jsr     (j_Sleep).l
 		trap    #SOUND_COMMAND
 		dc.w SFX_HIT
-		move.w  #$30D,d0
-		trap    #8
+		move.w  #$30D,d0        ; "Keep your guard up, kid.[Line]Those beasts of Runefaust[Line]will tear you to pieces![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP-$1000000)).w
@@ -8043,8 +8043,8 @@ sub_3B8E:
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$15D,d0
-		trap    #8
+		move.w  #$15D,d0        ; "[Hero] and the Shining[Line]Force followed Kane's trail[Line]to the town of Rindo....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
@@ -8067,8 +8067,8 @@ sub_3BD2:
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$15E,d0
-		trap    #8
+		move.w  #$15E,d0        ; "The Shining Force arrived in[Line]Bustoke, a town built into a[Line]mountainside.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP-$1000000)).w
@@ -8091,8 +8091,8 @@ sub_3C18:
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$15F,d0
-		trap    #8
+		move.w  #$15F,d0        ; "The Shining Force reached the[Line]Pao Prairie to discover that[Line]Pao was a town of wagons![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP-$1000000)).w
@@ -8115,8 +8115,8 @@ sub_3C5E:
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$160,d0
-		trap    #8
+		move.w  #$160,d0        ; "After a week at sea, sentries[Line]spotted a horde of monsters[Line]approaching the ship....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #2,((byte_FF9C86-$1000000)).w
@@ -8140,8 +8140,8 @@ sub_3CAA:
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$161,d0
-		trap    #8
+		move.w  #$161,d0        ; "The Shining Force finally[Line]reached the port of Rudo, far[Line]from Prompt.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		move.b  #3,((CURRENT_MAP-$1000000)).w
@@ -8164,8 +8164,8 @@ sub_3CF2:
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$162,d0
-		trap    #8
+		move.w  #$162,d0        ; "The Shining Force quickly[Line]reached Prompt, hoping[Line]that they had come in time.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		move.b  #4,((CURRENT_MAP-$1000000)).w
@@ -8188,8 +8188,8 @@ sub_3D3A:
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$163,d0
-		trap    #8
+		move.w  #$163,d0        ; "Runefaust at last! The long[Line]and perilous journey is near[Line]its end.[Wait2][Line]It is up to the Shining Force[Line]whether it ends as a[Line]triumph for Light or Darkness.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #2,((CURRENT_MAP-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
@@ -8216,8 +8216,8 @@ sub_3D80:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (sub_304).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$165,d0
-		trap    #8
+		move.w  #$165,d0        ; "[Hero] and the Shining[Line]Force head toward Bustoke.[Line]What awaits them there?[Wait2][Line]The legacy of the Ancients[Line]is still a mystery. Will[Line]they ever solve it?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		bra.w   loc_3DEC
 loc_3DBC:
@@ -8228,8 +8228,8 @@ loc_3DBC:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (sub_304).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$16A,d0
-		trap    #8
+		move.w  #$16A,d0        ; "The Shining Force is now in a[Line]desperate race against time.[Line]Dark Dragon is awakening![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 loc_3DEC:
 		trap    #SOUND_COMMAND
@@ -8309,8 +8309,8 @@ loc_3EC8:
 
 		dc.w MUSIC_SIMONE
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$46,d0 
-		trap    #8
+		move.w  #$46,d0 ; "Do you want to record your[Line]exploits so far?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		bne.s   loc_3F02
 		jsr     (sub_32C).l
@@ -10634,7 +10634,7 @@ loc_5296:
 loc_52FE:
 		movem.w d0,-(sp)
 		trap    #7
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		movem.w (sp)+,d0
 		bra.w   loc_5236
 
@@ -11058,17 +11058,17 @@ loc_5B00:
 		addq.l  #1,d1
 		move.l  d1,((TEXT_NUMBER-$1000000)).w
 		trap    #5
-		move.w  #$1B5,d0
-		trap    #8
+		move.w  #$1B5,d0        ; "[Name] casts [Spell][Line]level [Num]!"
+		trap    #DISPLAY_MESSAGE
 		trap    #SOUND_COMMAND
 		dc.w SFX_SPELL_CAST
-		move.w  #$1EA,d0
-		trap    #8
+		move.w  #$1EA,d0        ; "[Dict][Line]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		move.w  #$1D1,d0
-		trap    #8
-		move.w  #$1EA,d0
-		trap    #8
+		move.w  #$1D1,d0        ; "But nothing happens."
+		trap    #DISPLAY_MESSAGE
+		move.w  #$1EA,d0        ; "[Dict][Line]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		clr.w   d0
 		move.w  (sp)+,d1
@@ -11115,8 +11115,8 @@ sub_5B8C:
 		bsr.w   sub_617C
 loc_5B92:
 		jsr     (sub_328).l
-		move.w  #$1C,d0
-		trap    #8
+		move.w  #$1C,d0         ; "Use whose item?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8044
 		tst.w   d0
 		bmi.s   loc_5B58
@@ -11148,8 +11148,8 @@ loc_5B92:
 		moveq   #$31,d0 
 		bsr.w   SetEventFlag
 		trap    #7
-		move.w  #$21C,d0
-		trap    #8
+		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		move.b  #5,((byte_FF9C86-$1000000)).w
 		clr.b   ((byte_FFB538-$1000000)).w
@@ -11166,15 +11166,15 @@ loc_5C30:
 		cmpi.b  #2,d0
 		bne.w   loc_5C7E
 		trap    #7
-		move.w  #$1D,d0
-		trap    #8
+		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8040
 		tst.w   d0
 		bmi.w   loc_5B92
 		move.w  d0,-(sp)
 		trap    #7
-		move.w  #$21C,d0
-		trap    #8
+		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
 		bsr.w   FindBattleMember
@@ -11182,7 +11182,7 @@ loc_5C30:
 		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
 		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
 		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		trap    #6
 		rts
@@ -11192,15 +11192,15 @@ loc_5C7E:
 		cmpi.b  #9,d0
 		bgt.w   loc_5CE0
 		trap    #7
-		move.w  #$1D,d0
-		trap    #8
+		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8040
 		tst.w   d0
 		bmi.w   loc_5B92
 		movem.w d0,-(sp)
 		trap    #7
-		move.w  #$21C,d0
-		trap    #8
+		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
 		bsr.w   FindBattleMember
@@ -11210,7 +11210,7 @@ loc_5C7E:
 		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
 		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
 		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		trap    #6
 		jmp     j_ResetForceMemberStats
@@ -11223,8 +11223,8 @@ loc_5CE0:
 ; =============== S U B R O U T I N E =======================================
 
 sub_5CE6:
-		move.w  #$1EA,d0
-		trap    #8
+		move.w  #$1EA,d0        ; "[Dict][Line]"
+		trap    #DISPLAY_MESSAGE
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		clr.w   d1
 		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
@@ -11246,8 +11246,8 @@ nullsub_5CFC:
 sub_5CFE:
 		trap    #5
 		bsr.w   sub_617C
-		move.w  #$1F,d0
-		trap    #8
+		move.w  #$1F,d0         ; "Transfer whose item?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8044
 		move.w  d0,((word_FFB7C4-$1000000)).w
 		bmi.w   loc_5B58
@@ -11267,13 +11267,13 @@ sub_5CFE:
 		beq.s   loc_5D5C
 		jsr     sub_805C
 		trap    #7
-		move.w  #$21,d0 
-		trap    #8
+		move.w  #$21,d0 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_5E9A
 loc_5D5C:
 		trap    #7
-		move.w  #$20,d0 
-		trap    #8
+		move.w  #$20,d0 ; "Who gets the [Item]?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8060
 loc_5D6A:
 		jsr     sub_8064
@@ -11318,8 +11318,8 @@ loc_5DA0:
 		beq.s   loc_5E14
 		jsr     sub_805C
 		trap    #7
-		move.w  #$F,d0
-		trap    #8
+		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_5E9A
 loc_5E14:
 		move.w  ((word_FFB7C8-$1000000)).w,d0
@@ -11370,8 +11370,8 @@ loc_5E9A:
 sub_5EA0:
 		trap    #5
 		bsr.w   sub_617C
-		move.w  #$23,d0 
-		trap    #8
+		move.w  #$23,d0 ; "Who do you wish to equip?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8040
 		move.w  d0,((word_FFB7C4-$1000000)).w
 		bmi.w   loc_5B58
@@ -11384,8 +11384,8 @@ sub_5EA0:
 		jsr     j_LoadEquippableItems
 		bne.s   loc_5EE0
 		trap    #7
-		move.w  #$22,d0 
-		trap    #8
+		move.w  #$22,d0 ; "[Name] can't be[Line]equipped with anything![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		bra.s   loc_5F46
 loc_5EE0:
@@ -11431,8 +11431,8 @@ loc_5F46:
 sub_5F4C:
 		trap    #5
 		bsr.w   sub_617C
-		move.w  #$25,d0 
-		trap    #8
+		move.w  #$25,d0 ; "Discard whose item?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8044
 		tst.w   d0
 		bmi.w   loc_5B58
@@ -11452,8 +11452,8 @@ sub_5F4C:
 		beq.s   loc_5FAA
 		jsr     sub_805C
 		trap    #7
-		move.w  #$21,d0 
-		trap    #8
+		move.w  #$21,d0 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_5FD0
 loc_5FAA:
 		jsr     j_GetItemType
@@ -11465,8 +11465,8 @@ loc_5FAA:
 		bra.s   loc_5FD0
 loc_5FC8:
 		trap    #7
-		move.w  #$26,d0 
-		trap    #8
+		move.w  #$26,d0 ; "[Hero] keeps the[Line][Item].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_5FD0:
 		trap    #7
 		trap    #6
@@ -11479,8 +11479,8 @@ loc_5FD0:
 
 sub_5FD6:
 		trap    #7
-		move.w  #2,d0
-		trap    #8
+		move.w  #2,d0           ; "A change of heart, eh?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #6
 		rts
 
@@ -11508,8 +11508,8 @@ sub_5FF8:
 		jsr     sub_20014
 		bsr.s   sub_5FE2
 		trap    #5
-		move.w  #0,d0
-		trap    #8
+		move.w  #0,d0           ; "Well, [Hero],[Line]are you ready to[Line]face the enemy?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_6008:
 		trap    #6
 		clr.b   ((byte_FFB4CA-$1000000)).w
@@ -11520,8 +11520,8 @@ loc_600E:
 		bge.s   loc_6028
 		trap    #5
 loc_6020:
-		move.w  #3,d0
-		trap    #8
+		move.w  #3,d0           ; "If that is all, then go now,[Line]for the hordes of Runefaust[Line]are still on the attack![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		rts
 loc_6028:
 		clr.w   d0
@@ -11541,20 +11541,20 @@ off_6038:       dc.w sub_6068-off_6038
 ; START OF FUNCTION CHUNK FOR sub_60AE
 
 loc_6042:
-		move.w  #1,d0
-		trap    #8
+		move.w  #1,d0           ; "Anything else, [Hero]?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		bge.w   loc_6008
 		trap    #7
-		bra.s   loc_6020
+		bra.s   loc_6020        
 loc_605A:
 		bsr.s   sub_5FE2
 		trap    #7
-		move.w  #2,d0
-		trap    #8
+		move.w  #2,d0           ; "A change of heart, eh?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		bra.s   loc_6042
+		bra.s   loc_6042        
 
 ; END OF FUNCTION CHUNK FOR sub_60AE
 
@@ -11564,10 +11564,10 @@ loc_605A:
 sub_6068:
 		trap    #5
 		bsr.w   sub_6078
-		addi.w  #$2EE,d0
-		trap    #8
+		addi.w  #$2EE,d0        ; "A word of advice.[Line]Seek the hermit who lives by[Line]the Gate of the Ancients![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		bra.s   loc_6042
+		bra.s   loc_6042        
 
 	; End of function sub_6068
 
@@ -11619,14 +11619,14 @@ sub_60AE:
 loc_60B0:
 		jsr     sub_2003C
 		tst.w   ((word_FFCB82-$1000000)).w
-		bne.w   loc_60CA
-		move.w  #6,d0
-		trap    #8
+		bne.w   loc_60CA        
+		move.w  #6,d0           ; "[Hero], no one[Line]is waiting![Delay1]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
-		bra.w   loc_6042
+		bra.w   loc_6042        
 loc_60CA:
-		move.w  #4,d0
-		trap    #8
+		move.w  #4,d0           ; "Who do you wish to take?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		move.b  #$FF,((byte_FFC140-$1000000)).w
 		jsr     sub_8040
@@ -11638,16 +11638,16 @@ loc_60CA:
 		bne.s   loc_6112
 		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
 		trap    #7
-		move.w  #7,d0
-		trap    #8
+		move.w  #7,d0           ; "Are you sure? After all,[Line][Name] needs to[Line]be revived."
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		bmi.s   loc_60CA
+		bmi.s   loc_60CA        
 loc_6112:
 		trap    #7
-		move.w  #5,d0
-		trap    #8
+		move.w  #5,d0           ; "Who will you leave behind?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_20038
 		jsr     sub_8030
 		move.b  #$FF,((byte_FFC140-$1000000)).w
@@ -11657,8 +11657,8 @@ loc_6112:
 		bmi.w   loc_605A
 		bne.s   loc_614A
 		trap    #7
-		move.w  #$1A,d0
-		trap    #8
+		move.w  #$1A,d0         ; "Without you, [Hero], who[Line]will lead the Shining Force?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.s   loc_6112
 loc_614A:
 		move.w  ((word_FFB7C6-$1000000)).w,d0
@@ -11667,13 +11667,13 @@ loc_614A:
 		moveq   #$B,d1
 		jsr     j_JoinBattleParty
 		trap    #7
-		move.w  #8,d0
-		trap    #8
+		move.w  #8,d0           ; "Anyone else to replace?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		beq.w   loc_60B0
-		bra.w   loc_6042
+		bra.w   loc_6042        
 
 	; End of function sub_60AE
 
@@ -11714,8 +11714,8 @@ sub_61D0:
 		trap    #5
 		bsr.s   sub_617C
 loc_61D4:
-		move.w  #$18,d0
-		trap    #8
+		move.w  #$18,d0         ; "View whose status?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		jsr     sub_8040
 		move.w  d0,((word_FFB7C4-$1000000)).w
@@ -11741,13 +11741,13 @@ loc_61D4:
 		jsr     sub_8030
 		bsr.w   sub_5FE2
 		trap    #5
-		move.w  #$19,d0
-		trap    #8
+		move.w  #$19,d0         ; "Check someone else's status?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		beq.w   loc_61D4
-		bra.w   loc_6042
+		beq.w   loc_61D4        
+		bra.w   loc_6042        
 
 	; End of function sub_61D0
 
@@ -11778,8 +11778,8 @@ sub_6292:
 		bsr.w   sub_617C
 loc_6298:
 		jsr     (sub_328).l
-		move.w  #9,d0
-		trap    #8
+		move.w  #9,d0           ; "Use whose item?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		jsr     sub_8044
 		bsr.w   sub_5FE2
@@ -11796,16 +11796,16 @@ loc_6298:
 		cmpi.b  #2,d0
 		bne.w   loc_632A
 		trap    #7
-		move.w  #$1D,d0
-		trap    #8
+		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		jsr     sub_8040
 		tst.w   d0
 		bmi.s   loc_6298
 		move.w  d0,-(sp)
 		trap    #7
-		move.w  #$21C,d0
-		trap    #8
+		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
 		bsr.w   FindBattleMember
@@ -11813,7 +11813,7 @@ loc_6298:
 		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
 		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
 		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		bra.w   loc_6398
 
@@ -11824,20 +11824,20 @@ loc_6298:
 
 loc_632A:
 		cmpi.b  #5,d0
-		blt.w   loc_6392
+		blt.w   loc_6392        
 		cmpi.b  #9,d0
-		bgt.w   loc_6392
+		bgt.w   loc_6392        
 		trap    #7
-		move.w  #$1D,d0
-		trap    #8
+		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		jsr     sub_8040
 		tst.w   d0
 		bmi.w   loc_6298
 		movem.w d0,-(sp)
 		trap    #7
-		move.w  #$21C,d0
-		trap    #8
+		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
 		bsr.w   FindBattleMember
@@ -11847,22 +11847,22 @@ loc_632A:
 		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
 		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
 		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		jsr     j_ResetForceMemberStats
 		bra.s   loc_6398
 loc_6392:
-		move.w  #$B,d0
-		trap    #8
+		move.w  #$B,d0          ; "[Hero]! What are you[Line]trying to do with that?[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_6398:
 		trap    #7
-		move.w  #$C,d0
-		trap    #8
+		move.w  #$C,d0          ; "Any other item to use?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
 		beq.w   loc_6298
-		bra.w   loc_6042
+		bra.w   loc_6042        
 
 ; END OF FUNCTION CHUNK FOR sub_6292
 
@@ -11873,8 +11873,8 @@ sub_63B4:
 		trap    #5
 		bsr.w   sub_617C
 loc_63BA:
-		move.w  #$D,d0
-		trap    #8
+		move.w  #$D,d0          ; "Transfer whose item?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		jsr     sub_8044
 		bsr.w   sub_5FE2
@@ -11896,8 +11896,8 @@ loc_63BA:
 		beq.s   loc_641E
 		jsr     sub_805C
 		trap    #7
-		move.w  #$F,d0
-		trap    #8
+		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_656C
 
 	; End of function sub_63B4
@@ -11907,8 +11907,8 @@ loc_63BA:
 
 loc_641E:
 		trap    #7
-		move.w  #$10,d0
-		trap    #8
+		move.w  #$10,d0         ; "Now, who gets it?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		jsr     sub_8060
 loc_6432:
@@ -11956,8 +11956,8 @@ loc_646E:
 		beq.s   loc_64E6
 		jsr     sub_805C
 		trap    #7
-		move.w  #$F,d0
-		trap    #8
+		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_656C
 loc_64E6:
 		move.w  ((word_FFB7C8-$1000000)).w,d0
@@ -12005,15 +12005,15 @@ loc_6566:
 loc_656C:
 		trap    #7
 loc_656E:
-		move.w  #$11,d0
-		trap    #8
+		move.w  #$11,d0         ; "Anything else to transfer?"
+		trap    #DISPLAY_MESSAGE
 loc_6574:
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
 loc_6580:
-		beq.w   loc_63BA
-		bra.w   loc_6042
+		beq.w   loc_63BA        
+		bra.w   loc_6042        
 
 ; END OF FUNCTION CHUNK FOR sub_63B4
 
@@ -12024,8 +12024,8 @@ sub_6588:
 		trap    #5
 		bsr.w   sub_617C
 loc_658E:
-		move.w  #$12,d0
-		trap    #8
+		move.w  #$12,d0         ; "Who do you wish to equip?"
+		trap    #DISPLAY_MESSAGE
 		jsr     sub_8030
 		jsr     sub_8040
 		move.w  d0,((word_FFB7C4-$1000000)).w
@@ -12041,8 +12041,8 @@ loc_65B6:
 		bne.s   loc_65CE
 		bsr.w   sub_5FE2
 		trap    #7
-		move.w  #$1B,d0
-		trap    #8
+		move.w  #$1B,d0         ; "[Name] can't be[Line]equipped with anything![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		bra.s   loc_6630
 
@@ -12088,14 +12088,14 @@ loc_662C:
 loc_6630:
 		bsr.w   sub_5FE2
 		trap    #7
-		move.w  #$14,d0
-		trap    #8
+		move.w  #$14,d0         ; "Anyone else to equip?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		beq.w   loc_658E
+		beq.w   loc_658E        
 loc_664C:
-		bra.w   loc_6042
+		bra.w   loc_6042        
 
 ; END OF FUNCTION CHUNK FOR sub_6588
 
@@ -12107,8 +12107,8 @@ sub_6650:
 loc_6652:
 		bsr.w   sub_617C
 loc_6656:
-		move.w  #$15,d0
-		trap    #8
+		move.w  #$15,d0         ; "Discard whose item?"
+		trap    #DISPLAY_MESSAGE
 loc_665C:
 		jsr     sub_8030
 loc_6662:
@@ -12133,8 +12133,8 @@ loc_667E:
 		beq.s   loc_66B8
 		jsr     sub_805C
 		trap    #7
-		move.w  #$F,d0
-		trap    #8
+		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_66DE
 
 	; End of function sub_6650
@@ -12152,17 +12152,17 @@ loc_66B8:
 		bra.s   loc_66DE
 loc_66D6:
 		trap    #7
-		move.w  #$16,d0
-		trap    #8
+		move.w  #$16,d0         ; "[Hero]! It would be[Line]foolish to discard the[Line][Item].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_66DE:
 		trap    #7
-		move.w  #$17,d0
-		trap    #8
+		move.w  #$17,d0         ; "Anything else to discard?"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
-		beq.w   loc_6656
-		bra.w   loc_6042
+		beq.w   loc_6656        
+		bra.w   loc_6042        
 
 ; END OF FUNCTION CHUNK FOR sub_6650
 
@@ -12752,8 +12752,8 @@ loc_6B7C:
 		addq.w  #1,d0
 		dbf     d7,loc_6B66
 		trap    #5
-		move.w  #$1B0,d0
-		trap    #8
+		move.w  #$1B0,d0        ; "No one is in that direction.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_6B8A:
 		bsr.w   j_WaitForVInt
 		tst.b   (P1_INPUT).l    
@@ -12815,15 +12815,15 @@ loc_6C12:
 		move.w  d0,-(sp)
 		jsr     j_GetForceMemberHP
 		tst.w   d1
-		ble.s   loc_6C56
+		ble.s   loc_6C56        
 		andi.w  #$FF,d0
 		addi.w  #$105,d0
 		add.w   d2,d0
 		bra.s   loc_6C5A
 loc_6C56:
-		move.w  #$15C,d0
+		move.w  #$15C,d0        ; "....[Wait2]"
 loc_6C5A:
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		move.w  (sp)+,d0
 		jsr     sub_80D4
 		jsr     sub_8030
@@ -13062,8 +13062,8 @@ loc_6EF8:
 		bsr.w   sub_71A2
 		bsr.w   sub_6FA0
 		trap    #7
-		move.w  #$F,d0
-		trap    #8
+		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		jsr     sub_8088
 		bsr.w   loc_73B6
@@ -13080,8 +13080,8 @@ loc_6F3C:
 		move.w  d0,(TEXT_NAME_INDEX).l
 		bsr.w   sub_6FA0
 		trap    #7
-		move.w  #$13,d0
-		trap    #8
+		move.w  #$13,d0         ; "[Name] has been cursed....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		trap    #7
 		jsr     sub_8088
 		bsr.w   loc_73B6
@@ -14025,8 +14025,8 @@ sub_77A4:
 		bcs.w   loc_7872
 		trap    #SOUND_COMMAND
 		dc.w MUSIC_ITEM
-		move.w  #$48,d0 
-		trap    #8
+		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  ((word_FFB7C4-$1000000)).w,d0
@@ -14042,8 +14042,8 @@ sub_77A4:
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
 		jsr     (sub_304).l
-		move.w  #$169,d0
-		trap    #8
+		move.w  #$169,d0        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (sub_30C).l
 		movea.l (dword_FF0EFE).l,sp
 		jsr     (j_FadeOutToBlack).l
@@ -14059,10 +14059,10 @@ locret_7870:
 
 loc_7872:
 		movem.w d1-d2,-(sp)
-		move.w  #$48,d0 
-		trap    #8
-		move.w  #$49,d0 
-		trap    #8
+		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
+		trap    #DISPLAY_MESSAGE
+		move.w  #$49,d0 ; "But can't carry it![Wait2]"
+		trap    #DISPLAY_MESSAGE
 		movem.w (sp)+,d1-d2
 		jsr     sub_80C8
 
@@ -14082,8 +14082,8 @@ sub_788C:
 
 loc_7898:
 		jsr     (sub_304).l
-		move.w  #$4A,d0 
-		trap    #8
+		move.w  #$4A,d0 ; "The treasure chest is empty.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_78A4:
 		move.w  ((word_FFB7C4-$1000000)).w,d0
 		jsr     (j_SetEventFlag).l
@@ -14101,8 +14101,8 @@ loc_78B0:
 ; END OF FUNCTION CHUNK FOR sub_77A4
 
 		dc.w MUSIC_ITEM
-		move.w  #$4C,d0 
-		trap    #8
+		move.w  #$4C,d0 ; "[Name] gains [Num] coins.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		trap    #SOUND_COMMAND
 		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
@@ -14123,8 +14123,8 @@ loc_78F4:
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		beq.s   locret_7908
 		jsr     (sub_304).l
-		move.w  #$4B,d0 
-		trap    #8
+		move.w  #$4B,d0 ; "Nothing is found.[Wait2]"
+		trap    #DISPLAY_MESSAGE
 		bsr.s   sub_788C
 locret_7908:
 		rts

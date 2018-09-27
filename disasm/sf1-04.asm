@@ -11619,45 +11619,45 @@ ShowLevelUpMessages:
 		move.l  d1,(a0)
 		jsr     j_GetTargetID
 		cmpi.b  #$1D,d1
-		bne.s   loc_2489A
-		move.w  #$1F3,d0
-		trap    #8
+		bne.s   loc_2489A       
+		move.w  #$1F3,d0        ; "...[Wait2]It appears that [Name]'s[Line]level increases to [Num].[Line]"
+		trap    #DISPLAY_MESSAGE
 		bra.w   loc_2490A
 		bra.s   loc_248A0
 loc_2489A:
-		move.w  #$1EB,d0
-		trap    #8
+		move.w  #$1EB,d0        ; "[Name]'s level increases[Line]to [Num]![Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_248A0:
 		lea     ((STATS_TO_GAIN-$1000000)).w,a1
 		move.b  (a1)+,d1
 		beq.s   loc_248B0
 		move.l  d1,(a0)
-		move.w  #$1EC,d0
-		trap    #8
+		move.w  #$1EC,d0        ; "Attack level increases[Line]by [Num].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_248B0:
 		move.b  (a1)+,d1
 		beq.s   loc_248BC
 		move.l  d1,(a0)
-		move.w  #$1ED,d0
-		trap    #8
+		move.w  #$1ED,d0        ; "Defense level increases[Line]by [Num].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_248BC:
 		move.b  (a1)+,d1
 		beq.s   loc_248C8
 		move.l  d1,(a0)
-		move.w  #$1EE,d0
-		trap    #8
+		move.w  #$1EE,d0        ; "Speed increases by [Num].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_248C8:
 		move.b  (a1)+,d1
 		beq.s   loc_248D4
 		move.l  d1,(a0)
-		move.w  #$1EF,d0
-		trap    #8
+		move.w  #$1EF,d0        ; "Maximum hit points increases[Line]by [Num].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_248D4:
 		move.b  (a1)+,d1
 		beq.s   loc_248E0
 		move.l  d1,(a0)
-		move.w  #$1F0,d0
-		trap    #8
+		move.w  #$1F0,d0        ; "Maximum magic points[Line]increases by [Num].[Wait2]"
+		trap    #DISPLAY_MESSAGE
 loc_248E0:
 		addq.l  #1,a1
 loc_248E2:
@@ -11675,7 +11675,7 @@ loc_248E2:
 		beq.s   loc_24906
 		addq.w  #1,d0
 loc_24906:
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		bra.s   loc_248E2
 loc_2490A:
 		trap    #6
@@ -12332,7 +12332,7 @@ sub_24D9E:
 		move.w  ((word_FFA9D0-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
 		move.w  ((word_FFA9D2-$1000000)).w,((word_FFF846-$1000000)).w
 		move.l  ((dword_FFA9D4-$1000000)).w,((TEXT_NUMBER-$1000000)).w
-		trap    #8
+		trap    #DISPLAY_MESSAGE
 		move.l  (sp)+,d0
 		rts
 
