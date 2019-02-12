@@ -19,7 +19,13 @@ echo Assembling sound driver ...
 cd ../disasm/data/sound/
 ..\..\..\tools\asw\asw.exe ..\..\sounddriver.asm
 ..\..\..\tools\asw\p2bin.exe ..\..\sounddriver.p .\sounddriver.bin -k -r $0000-$1fff
-cd ../../
+cd musicbank0/
+..\..\..\..\tools\asw\asw.exe -x -E errors.log .\musicbank0.asm
+..\..\..\..\tools\asw\p2bin.exe .\musicbank0.p ..\musicbank0.bin -k -r $8000-$dfff
+cd ../musicbank1/
+..\..\..\..\tools\asw\asw.exe -x -E errors.log .\musicbank1.asm
+..\..\..\..\tools\asw\p2bin.exe .\musicbank1.p ..\musicbank1.bin -k -r $8ae0-$ffff
+cd ../../../
 echo Assembling game ...
 SET "buildname=sf1build-%today%-%hour%%minutes%%seconds%.bin"
 @"../tools/asm68k" /o ae- /p sf1.asm, "../build/%buildname%" > ../build/output.log
