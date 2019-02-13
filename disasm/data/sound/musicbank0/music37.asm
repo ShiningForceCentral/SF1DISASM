@@ -1,21 +1,21 @@
 
-; ASM FILE music05.asm :
-; 0x8040..0x827D : Music 05
-Music_5:        db 0
+; ASM FILE music37.asm :
+; 0x8040..0x827D : Music 37
+Music_37:       db 0
 		db 0
 		db 0
 		db 98h
-		dw Music_5_Channel_0
-		dw Music_5_Channel_1
-		dw Music_5_Channel_2
-		dw Music_5_Channel_3
-		dw Music_5_Channel_4
-		dw Music_5_Channel_5
-		dw Music_5_Channel_6
-		dw Music_5_Channel_7
-		dw Music_5_Channel_9
-		dw Music_5_Channel_9
-Music_5_Channel_0:
+		dw Music_37_Channel_0
+		dw Music_37_Channel_1
+		dw Music_37_Channel_2
+		dw Music_37_Channel_3
+		dw Music_37_Channel_4
+		dw Music_37_Channel_5
+		dw Music_37_Channel_6
+		dw Music_37_Channel_7
+		dw Music_37_Channel_9
+		dw Music_37_Channel_9
+Music_37_Channel_0:
 		  inst 39
 		  vol 0Bh
 		  setRelease 01h
@@ -36,7 +36,7 @@ Music_5_Channel_0:
 		  setRelease 01h
 		        note  B5
 		channel_end
-Music_5_Channel_1:
+Music_37_Channel_1:
 		  inst 4
 		  vol 0Eh
 		  setRelease 00h
@@ -179,7 +179,7 @@ Music_5_Channel_1:
 		        note  B3
 		        note  B3
 		channel_end
-Music_5_Channel_2:
+Music_37_Channel_2:
 		  inst 27
 		  vol 0Eh
 		  setRelease 01h
@@ -193,7 +193,7 @@ Music_5_Channel_2:
 		  setRelease 01h
 		        note  B3
 		channel_end
-Music_5_Channel_3:
+Music_37_Channel_3:
 		  inst 39
 		  vol 0Bh
 		  setRelease 01h
@@ -214,7 +214,7 @@ Music_5_Channel_3:
 		  setRelease 01h
 		        note  G5
 		channel_end
-Music_5_Channel_4:
+Music_37_Channel_4:
 		  inst 39
 		  vol 0Bh
 		  setRelease 01h
@@ -235,7 +235,7 @@ Music_5_Channel_4:
 		  setRelease 01h
 		        note  D5
 		channel_end
-Music_5_Channel_5:
+Music_37_Channel_5:
 		        sampleL 1,2
 		        sample  2
 		        sample  3
@@ -441,7 +441,7 @@ Music_5_Channel_5:
 		        sample  3
 		        sample  3
 		channel_end
-Music_5_Channel_6:
+Music_37_Channel_6:
 		  psgInst 0Ah
 		  setRelease 01h
 		  vibrato 04Ch
@@ -454,7 +454,7 @@ Music_5_Channel_6:
 		        psgNote  D3
 		  psgInst 00h
 		channel_end
-Music_5_Channel_7:
+Music_37_Channel_7:
 		  psgInst 0Ah
 		  setRelease 01h
 		  vibrato 04Ch
@@ -474,5 +474,5 @@ Music_5_Channel_7:
 		        psgNoteL Fs4,72
 		  psgInst 00h
 		channel_end
-Music_5_Channel_9:
+Music_37_Channel_9:
 		channel_end

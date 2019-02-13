@@ -1,21 +1,21 @@
 
-; ASM FILE music41.asm :
-; 0x9BC1..0xAFC6 : Music 41
-Music_41:       db 0
+; ASM FILE music09.asm :
+; 0x9BC1..0xAFC6 : Music 09
+Music_9:        db 0
 		db 0
 		db 0
 		db 0BAh
-		dw Music_41_Channel_0
-		dw Music_41_Channel_1
-		dw Music_41_Channel_2
-		dw Music_41_Channel_3
-		dw Music_41_Channel_4
-		dw Music_41_Channel_5
-		dw Music_41_Channel_6
-		dw Music_41_Channel_7
-		dw Music_41_Channel_9
-		dw Music_41_Channel_9
-Music_41_Channel_0:
+		dw Music_9_Channel_0
+		dw Music_9_Channel_1
+		dw Music_9_Channel_2
+		dw Music_9_Channel_3
+		dw Music_9_Channel_4
+		dw Music_9_Channel_5
+		dw Music_9_Channel_6
+		dw Music_9_Channel_7
+		dw Music_9_Channel_9
+		dw Music_9_Channel_9
+Music_9_Channel_0:
 		  inst 15
 		  vol 09h
 		  setRelease 01h
@@ -399,7 +399,7 @@ Music_41_Channel_0:
 		  vol 0Ah
 		  setRelease 01h
 		mainLoopEnd
-Music_41_Channel_1:
+Music_9_Channel_1:
 		  inst 3
 		  vol 0Bh
 		  setRelease 01h
@@ -750,7 +750,7 @@ Music_41_Channel_1:
 		        waitL 96
 		countedLoopEnd
 		mainLoopEnd
-Music_41_Channel_2:
+Music_9_Channel_2:
 		  inst 5
 		  vol 0Ch
 		  setRelease 01h
@@ -910,7 +910,7 @@ Music_41_Channel_2:
 		        noteL C4,12
 		        waitL 36
 		mainLoopEnd
-Music_41_Channel_3:
+Music_9_Channel_3:
 		  inst 4
 		  vol 0Ch
 		  setRelease 01h
@@ -1448,7 +1448,7 @@ Music_41_Channel_3:
 		        note  G3
 		        note  G3
 		mainLoopEnd
-Music_41_Channel_4:
+Music_9_Channel_4:
 		  inst 14
 		  vol 09h
 		  setRelease 01h
@@ -1725,7 +1725,7 @@ Music_41_Channel_4:
 		  vol 0Ah
 		  setRelease 01h
 		mainLoopEnd
-Music_41_Channel_5:
+Music_9_Channel_5:
 		mainLoopStart
 		countedLoopStart 14
 		        sampleL 1,12
@@ -1911,15 +1911,15 @@ Music_41_Channel_5:
 		        sampleL 1,12
 		        waitL 36
 		mainLoopEnd
-Music_41_Channel_6:
+Music_9_Channel_6:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 059h
 		mainLoopStart
 		countedLoopStart 2
-		        waitL 96
+		        waitL    96
 		countedLoopEnd
-		        waitL 51
+		        waitL    51
 		  psgInst 0Bh
 		  setRelease 00h
 		        psgNoteL C4,2
@@ -1935,11 +1935,11 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 17
+		        waitL    17
 		countedLoopStart 2
-		        waitL 96
+		        waitL    96
 		countedLoopEnd
-		        waitL 48
+		        waitL    48
 		  psgInst 0Bh
 		        psgNoteL C4,2
 		        psgNote  D4
@@ -1954,12 +1954,12 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 20
+		        waitL    20
 		  setRelease 01h
 		  psgInst 0Bh
 		        psgNoteL D3,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL As2,6
 		        psgNoteL As2,48
@@ -1981,12 +1981,12 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL D3,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL As2,6
 		        psgNoteL As2,48
@@ -2008,12 +2008,12 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL D4,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL As3,6
 		        psgNoteL As3,48
@@ -2035,7 +2035,7 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  setRelease 01h
 		  psgInst 0Bh
 		        psgNoteL C4,6
@@ -2055,7 +2055,7 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL D4,6
@@ -2076,11 +2076,11 @@ Music_41_Channel_6:
 		        psgNote  G5
 		        psgNoteL Gs5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		countedLoopStart 2
-		        waitL 96
+		        waitL    96
 		countedLoopEnd
-		        waitL 48
+		        waitL    48
 		  psgInst 0Ah
 		  setRelease 00h
 		        psgNoteL C4,2
@@ -2096,11 +2096,11 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 20
+		        waitL    20
 		countedLoopStart 2
-		        waitL 96
+		        waitL    96
 		countedLoopEnd
-		        waitL 50
+		        waitL    50
 		  psgInst 0Ah
 		  setRelease 00h
 		        psgNoteL C4,2
@@ -2116,12 +2116,12 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL D3,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL As2,6
 		        psgNoteL As2,48
@@ -2143,12 +2143,12 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL D3,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL As2,6
 		        psgNoteL As2,48
@@ -2170,12 +2170,12 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 00h
 		        psgNoteL D4,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL As3,6
 		        psgNoteL As3,48
@@ -2197,7 +2197,7 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL C4,6
@@ -2217,7 +2217,7 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL D4,6
@@ -2237,7 +2237,7 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 30
+		        waitL    30
 		  setRelease 01h
 		  psgInst 07Bh
 		        psgNoteL Ds4,6
@@ -2245,41 +2245,41 @@ Music_41_Channel_6:
 		        psgNoteL G4,48
 		        psgNoteL C4,36
 		  psgInst 00h
-		        waitL 6
+		        waitL    6
 		  psgInst 07Bh
 		        psgNote  C4
 		        psgNote  F4
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 07Bh
 		        psgNoteL D4,6
 		        psgNoteL D4,54
 		  psgInst 00h
-		        waitL 6
+		        waitL    6
 		  psgInst 07Bh
 		        psgNote  Ds4
 		        psgNote  F4
 		        psgNoteL G4,48
 		        psgNoteL C4,36
 		  psgInst 00h
-		        waitL 6
+		        waitL    6
 		  psgInst 07Bh
 		        psgNote  C4
 		        psgNote  D5
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 07Bh
 		        psgNoteL As4,6
 		        psgNoteL As4,54
 		  psgInst 00h
-		        waitL 6
+		        waitL    6
 		  psgInst 07Bh
 		        psgNote  G4
 		        psgNote  Gs4
 		        psgNoteL As4,48
 		        psgNoteL Ds4,36
 		  psgInst 00h
-		        waitL 6
+		        waitL    6
 		  psgInst 07Bh
 		        psgNote  Ds4
 		        psgNoteL As4,12
@@ -2289,14 +2289,14 @@ Music_41_Channel_6:
 		        psgNote  G4
 		        psgNoteL Gs4,54
 		  psgInst 00h
-		        waitL 6
+		        waitL    6
 		  psgInst 07Bh
 		        psgNote  G4
 		        psgNote  F4
 		        psgNoteL G4,96
 		        psgNoteL F4,78
 		  psgInst 00h
-		        waitL 6
+		        waitL    6
 		  psgInst 07Bh
 		        psgNote  E4
 		        psgNote  D4
@@ -2304,8 +2304,8 @@ Music_41_Channel_6:
 		        psgNote  F4
 		        psgNoteL G4,178
 		  psgInst 00h
-		        waitL 96
-		        waitL 50
+		        waitL    96
+		        waitL    50
 		  psgInst 0Bh
 		  setRelease 00h
 		        psgNoteL C4,2
@@ -2321,9 +2321,9 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 18
-		        waitL 96
-		        waitL 50
+		        waitL    18
+		        waitL    96
+		        waitL    50
 		  setRelease 00h
 		  psgInst 0Bh
 		        psgNoteL C4,2
@@ -2339,9 +2339,9 @@ Music_41_Channel_6:
 		        psgNote  F5
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 20
+		        waitL    20
 		countedLoopStart 2
-		        waitL 96
+		        waitL    96
 		countedLoopEnd
 		  setRelease 00h
 		  psgInst 0Bh
@@ -2369,9 +2369,9 @@ Music_41_Channel_6:
 		        psgNoteL C5,12
 		  psgInst 00h
 		countedLoopStart 2
-		        waitL 96
+		        waitL    96
 		countedLoopEnd
-		        waitL 68
+		        waitL    68
 		  psgInst 0Bh
 		  setRelease 00h
 		        psgNoteL G4,3
@@ -2388,7 +2388,7 @@ Music_41_Channel_6:
 		  setRelease 01h
 		        psgNoteL C6,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		        psgNoteL C6,6
 		  psgInst 00h
@@ -2406,12 +2406,12 @@ Music_41_Channel_6:
 		        psgNote  C6
 		        psgNoteL C6,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		countedLoopEnd
 		  psgInst 0Bh
 		        psgNoteL C6,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Bh
 		        psgNoteL C6,6
 		  psgInst 00h
@@ -2422,9 +2422,9 @@ Music_41_Channel_6:
 		        psgNote  C6
 		        psgNoteL C6,6
 		  psgInst 00h
-		        waitL 42
+		        waitL    42
 		mainLoopEnd
-Music_41_Channel_7:
+Music_9_Channel_7:
 		  setRelease 01h
 		  vibrato 059h
 		mainLoopStart
@@ -2877,7 +2877,7 @@ Music_41_Channel_7:
 		        psgNote  F3
 		        psgNoteL F3,6
 		  psgInst 00h
-		        waitL 34
+		        waitL    34
 		  shifting 010h
 		  setRelease 01h
 		  psgInst 078h
@@ -2885,29 +2885,29 @@ Music_41_Channel_7:
 		        psgNote  F4
 		        psgNoteL G4,48
 		        psgNoteL C4,36
-		        waitL 6
+		        waitL    6
 		        psgNote  C4
 		        psgNote  F4
-		        waitL 12
+		        waitL    12
 		        psgNoteL D4,6
 		        psgNoteL D4,54
-		        waitL 6
+		        waitL    6
 		        psgNote  Ds4
 		        psgNote  F4
 		        psgNoteL G4,48
 		        psgNoteL C4,36
-		        waitL 6
+		        waitL    6
 		        psgNote  C4
 		        psgNote  D5
-		        waitL 12
+		        waitL    12
 		        psgNoteL As4,6
 		        psgNoteL As4,54
-		        waitL 6
+		        waitL    6
 		        psgNote  G4
 		        psgNote  Gs4
 		        psgNoteL As4,48
 		        psgNoteL Ds4,36
-		        waitL 6
+		        waitL    6
 		        psgNote  Ds4
 		        psgNoteL As4,12
 		        psgNoteL Gs4,3
@@ -2915,12 +2915,12 @@ Music_41_Channel_7:
 		        psgNote  Gs4
 		        psgNote  G4
 		        psgNoteL Gs4,54
-		        waitL 6
+		        waitL    6
 		        psgNote  G4
 		        psgNote  F4
 		        psgNoteL G4,96
 		        psgNoteL F4,78
-		        waitL 6
+		        waitL    6
 		        psgNote  E4
 		        psgNote  D4
 		        psgNote  E4
@@ -3234,7 +3234,7 @@ Music_41_Channel_7:
 		        psgNote  G3
 		        psgNoteL G3,6
 		  psgInst 00h
-		        waitL 42
+		        waitL    42
 		mainLoopEnd
-Music_41_Channel_9:
+Music_9_Channel_9:
 		channel_end

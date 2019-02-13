@@ -1,21 +1,21 @@
 
-; ASM FILE music38.asm :
-; 0xDB97..0xE2F7 : Music 38
-Music_38:       db 0
+; ASM FILE music06.asm :
+; 0xDB97..0xE2F7 : Music 06
+Music_6:        db 0
 		db 0
 		db 0
 		db 0CAh
-		dw Music_38_Channel_0
-		dw Music_38_Channel_1
-		dw Music_38_Channel_2
-		dw Music_38_Channel_3
-		dw Music_38_Channel_4
-		dw Music_38_Channel_5
-		dw Music_38_Channel_6
-		dw Music_38_Channel_7
-		dw Music_38_Channel_9
-		dw Music_38_Channel_9
-Music_38_Channel_0:
+		dw Music_6_Channel_0
+		dw Music_6_Channel_1
+		dw Music_6_Channel_2
+		dw Music_6_Channel_3
+		dw Music_6_Channel_4
+		dw Music_6_Channel_5
+		dw Music_6_Channel_6
+		dw Music_6_Channel_7
+		dw Music_6_Channel_9
+		dw Music_6_Channel_9
+Music_6_Channel_0:
 		  inst 2
 		  setRelease 02h
 		  vibrato 020h
@@ -145,7 +145,7 @@ Music_38_Channel_0:
 		        waitL 12
 		        noteL F6,6
 		mainLoopEnd
-Music_38_Channel_1:
+Music_6_Channel_1:
 		  inst 4
 		  vol 0Fh
 		  setRelease 01h
@@ -248,7 +248,7 @@ Music_38_Channel_1:
 		        note  Ds3
 		        note  Ds3
 		mainLoopEnd
-Music_38_Channel_2:
+Music_6_Channel_2:
 		  inst 14
 		  vol 0Eh
 		  setRelease 01h
@@ -382,7 +382,7 @@ Music_38_Channel_2:
 		        note  Ds3
 		        wait
 		mainLoopEnd
-Music_38_Channel_3:
+Music_6_Channel_3:
 		  inst 2
 		  setRelease 02h
 		  vibrato 020h
@@ -512,7 +512,7 @@ Music_38_Channel_3:
 		        waitL 12
 		        noteL C6,6
 		mainLoopEnd
-Music_38_Channel_4:
+Music_6_Channel_4:
 		  inst 2
 		  setRelease 02h
 		  vibrato 020h
@@ -642,7 +642,7 @@ Music_38_Channel_4:
 		        waitL 12
 		        noteL As5,6
 		mainLoopEnd
-Music_38_Channel_5:
+Music_6_Channel_5:
 		        waitL 42
 		        sampleL 3,2
 		        sample  3
@@ -722,11 +722,11 @@ Music_38_Channel_5:
 		        sample  2
 		        sample  3
 		mainLoopEnd
-Music_38_Channel_6:
+Music_6_Channel_6:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 05Ah
-		        waitL 46
+		        waitL    46
 		  psgInst 0Ch
 		        psgNoteL Cs5,1
 		        psgNote  D5
@@ -734,7 +734,7 @@ Music_38_Channel_6:
 		        psgNote  E5
 		        psgNoteL F5,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Ch
 		        psgNoteL C5,1
 		        psgNote  Cs5
@@ -742,7 +742,7 @@ Music_38_Channel_6:
 		        psgNote  Ds5
 		        psgNoteL E5,6
 		  psgInst 00h
-		        waitL 38
+		        waitL    38
 		  psgInst 0Ch
 		        psgNoteL Cs5,1
 		        psgNote  D5
@@ -750,7 +750,7 @@ Music_38_Channel_6:
 		        psgNote  E5
 		        psgNoteL F5,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Ch
 		        psgNoteL C5,1
 		        psgNote  Cs5
@@ -758,13 +758,13 @@ Music_38_Channel_6:
 		        psgNote  Ds5
 		        psgNoteL E5,6
 		  psgInst 00h
-		        waitL 40
-		        waitL 48
+		        waitL    40
+		        waitL    48
 		        wait
 		  psgInst 0Dh
 		        psgNoteL D5,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL G5,6
 		  setRelease 00h
@@ -806,7 +806,7 @@ Music_38_Channel_6:
 		        psgNote  Gs5
 		        psgNote  G5
 		  psgInst 00h
-		        waitL 7
+		        waitL    7
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL E5,1
@@ -815,7 +815,7 @@ Music_38_Channel_6:
 		        psgNote  G5
 		        psgNoteL Gs5,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Bh
 		        psgNoteL As4,1
 		        psgNote  B4
@@ -823,7 +823,7 @@ Music_38_Channel_6:
 		        psgNote  Cs5
 		        psgNoteL D5,6
 		  psgInst 00h
-		        waitL 38
+		        waitL    38
 		  psgInst 0Bh
 		        psgNoteL E5,1
 		        psgNote  F5
@@ -831,7 +831,7 @@ Music_38_Channel_6:
 		        psgNote  G5
 		        psgNoteL Gs5,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Bh
 		        psgNoteL As4,1
 		        psgNote  B4
@@ -839,7 +839,7 @@ Music_38_Channel_6:
 		        psgNote  Cs5
 		        psgNoteL D5,6
 		  psgInst 00h
-		        waitL 38
+		        waitL    38
 		  psgInst 0Bh
 		  setRelease 00h
 		        psgNoteL E5,1
@@ -853,12 +853,12 @@ Music_38_Channel_6:
 		        psgNote  Gs5
 		        psgNote  As5
 		  psgInst 00h
-		        waitL 46
+		        waitL    46
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL D5,6
 		  setRelease 00h
@@ -899,7 +899,7 @@ Music_38_Channel_6:
 		        psgNoteL F5,2
 		        psgNoteL G5,6
 		  psgInst 00h
-		        waitL 17
+		        waitL    17
 		mainLoopStart
 		  psgInst 0Ch
 		  setRelease 01h
@@ -1057,11 +1057,11 @@ Music_38_Channel_6:
 		        psgNote  Ds3
 		        psgNote  As2
 		mainLoopEnd
-Music_38_Channel_7:
+Music_6_Channel_7:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 05Ah
-		        waitL 46
+		        waitL    46
 		  psgInst 0Ch
 		        psgNoteL E4,1
 		        psgNote  F4
@@ -1069,7 +1069,7 @@ Music_38_Channel_7:
 		        psgNote  G4
 		        psgNoteL Gs4,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Ch
 		        psgNoteL Ds4,1
 		        psgNote  E4
@@ -1077,7 +1077,7 @@ Music_38_Channel_7:
 		        psgNote  Fs4
 		        psgNoteL G4,6
 		  psgInst 00h
-		        waitL 38
+		        waitL    38
 		  psgInst 0Ch
 		        psgNoteL E4,1
 		        psgNote  F4
@@ -1085,7 +1085,7 @@ Music_38_Channel_7:
 		        psgNote  G4
 		        psgNoteL Gs4,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Ch
 		        psgNoteL Ds4,1
 		        psgNote  E4
@@ -1093,13 +1093,13 @@ Music_38_Channel_7:
 		        psgNote  Fs4
 		        psgNoteL G4,6
 		  psgInst 00h
-		        waitL 40
-		        waitL 48
+		        waitL    40
+		        waitL    48
 		        wait
 		  psgInst 0Bh
 		        psgNoteL B4,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL D5,6
 		        psgNoteL D5,4
@@ -1130,14 +1130,14 @@ Music_38_Channel_7:
 		        psgNote  Ds5
 		        psgNote  D5
 		        psgNote  Ds5
-		        waitL 6
+		        waitL    6
 		        psgNoteL Cs5,1
 		        psgNote  D5
 		        psgNote  Ds5
 		        psgNote  E5
 		        psgNoteL F5,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Ch
 		        psgNoteL G4,1
 		        psgNote  Gs4
@@ -1145,7 +1145,7 @@ Music_38_Channel_7:
 		        psgNote  As4
 		        psgNoteL B4,6
 		  psgInst 00h
-		        waitL 38
+		        waitL    38
 		  psgInst 0Ch
 		        psgNoteL Cs5,1
 		        psgNote  D5
@@ -1153,7 +1153,7 @@ Music_38_Channel_7:
 		        psgNote  E5
 		        psgNoteL F5,6
 		  psgInst 00h
-		        waitL 14
+		        waitL    14
 		  psgInst 0Ch
 		        psgNoteL G4,1
 		        psgNote  Gs4
@@ -1161,7 +1161,7 @@ Music_38_Channel_7:
 		        psgNote  As4
 		        psgNoteL B4,6
 		  psgInst 00h
-		        waitL 38
+		        waitL    38
 		  psgInst 0Bh
 		  setRelease 00h
 		        psgNoteL Cs5,1
@@ -1177,12 +1177,12 @@ Music_38_Channel_7:
 		        psgNote  Ds5
 		        psgNote  F5
 		  psgInst 00h
-		        waitL 46
+		        waitL    46
 		  psgInst 0Bh
 		  setRelease 01h
 		        psgNoteL D5,6
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 0Bh
 		        psgNoteL B4,6
 		  setRelease 00h
@@ -1217,7 +1217,7 @@ Music_38_Channel_7:
 		        psgNoteL A4,2
 		        psgNoteL B4,6
 		  psgInst 00h
-		        waitL 17
+		        waitL    17
 		mainLoopStart
 		  psgInst 0Ch
 		  setRelease 01h
@@ -1350,5 +1350,5 @@ Music_38_Channel_7:
 		        psgNote  G2
 		        psgNote  F2
 		mainLoopEnd
-Music_38_Channel_9:
+Music_6_Channel_9:
 		channel_end

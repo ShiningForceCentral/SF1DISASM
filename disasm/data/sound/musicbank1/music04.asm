@@ -1,21 +1,21 @@
 
-; ASM FILE music36.asm :
-; 0x8BDA..0x8E18 : Music 36
-Music_36:       db 0
+; ASM FILE music04.asm :
+; 0x8BDA..0x8E18 : Music 04
+Music_4:        db 0
 		db 0
 		db 0
 		db 0AAh
-		dw Music_36_Channel_0
-		dw Music_36_Channel_1
-		dw Music_36_Channel_2
-		dw Music_36_Channel_3
-		dw Music_36_Channel_4
-		dw Music_36_Channel_5
-		dw Music_36_Channel_6
-		dw Music_36_Channel_7
-		dw Music_36_Channel_9
-		dw Music_36_Channel_9
-Music_36_Channel_0:
+		dw Music_4_Channel_0
+		dw Music_4_Channel_1
+		dw Music_4_Channel_2
+		dw Music_4_Channel_3
+		dw Music_4_Channel_4
+		dw Music_4_Channel_5
+		dw Music_4_Channel_6
+		dw Music_4_Channel_7
+		dw Music_4_Channel_9
+		dw Music_4_Channel_9
+Music_4_Channel_0:
 		repeatSection1Start
 		  inst 60
 		  vol 0Ah
@@ -104,7 +104,7 @@ Music_36_Channel_0:
 		        noteL Ds7,12
 		        note  F7
 		mainLoopEnd
-Music_36_Channel_1:
+Music_4_Channel_1:
 		        waitL 24
 		  inst 60
 		  vol 09h
@@ -151,7 +151,7 @@ Music_36_Channel_1:
 		        noteL Gs6,25
 		        noteL G6,46
 		mainLoopEnd
-Music_36_Channel_2:
+Music_4_Channel_2:
 		        waitL 24
 		  inst 60
 		  vol 09h
@@ -196,7 +196,7 @@ Music_36_Channel_2:
 		        noteL C7,24
 		        noteL As6,45
 		mainLoopEnd
-Music_36_Channel_3:
+Music_4_Channel_3:
 		        waitL 24
 		  inst 60
 		  vol 09h
@@ -230,7 +230,7 @@ Music_36_Channel_3:
 		        note  Ds6
 		        noteL Ds6,48
 		mainLoopEnd
-Music_36_Channel_4:
+Music_4_Channel_4:
 		        waitL 1
 		  shifting 010h
 		  stereo 080h
@@ -321,11 +321,11 @@ Music_36_Channel_4:
 		        noteL Ds7,12
 		        note  F7
 		mainLoopEnd
-Music_36_Channel_5:
+Music_4_Channel_5:
 		channel_end
-Music_36_Channel_6:
+Music_4_Channel_6:
 		channel_end
-Music_36_Channel_7:
+Music_4_Channel_7:
 		channel_end
-Music_36_Channel_9:
+Music_4_Channel_9:
 		channel_end

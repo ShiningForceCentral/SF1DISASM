@@ -1,21 +1,21 @@
 
-; ASM FILE music33.asm :
-; 0xD980..0xDAC1 : Music 33
-Music_33:       db 0
+; ASM FILE music01.asm :
+; 0xD980..0xDAC1 : Music 01
+Music_1:        db 0
 		db 0
 		db 0
 		db 0BBh
-		dw Music_33_Channel_0
-		dw Music_33_Channel_1
-		dw Music_33_Channel_2
-		dw Music_33_Channel_3
-		dw Music_33_Channel_4
-		dw Music_33_Channel_5
-		dw Music_33_Channel_6
-		dw Music_33_Channel_7
-		dw Music_33_Channel_9
-		dw Music_33_Channel_9
-Music_33_Channel_0:
+		dw Music_1_Channel_0
+		dw Music_1_Channel_1
+		dw Music_1_Channel_2
+		dw Music_1_Channel_3
+		dw Music_1_Channel_4
+		dw Music_1_Channel_5
+		dw Music_1_Channel_6
+		dw Music_1_Channel_7
+		dw Music_1_Channel_9
+		dw Music_1_Channel_9
+Music_1_Channel_0:
 		  inst 44
 		  vol 0Ch
 		  setRelease 01h
@@ -38,7 +38,7 @@ Music_33_Channel_0:
 		        noteL E6,72
 		        waitL 24
 		channel_end
-Music_33_Channel_1:
+Music_1_Channel_1:
 		  inst 58
 		  vol 0Bh
 		  setRelease 01h
@@ -57,7 +57,7 @@ Music_33_Channel_1:
 		        noteL C5,72
 		        waitL 24
 		channel_end
-Music_33_Channel_2:
+Music_1_Channel_2:
 		  inst 58
 		  vol 0Fh
 		  setRelease 01h
@@ -92,7 +92,7 @@ Music_33_Channel_2:
 		        noteL C3,72
 		        waitL 24
 		channel_end
-Music_33_Channel_3:
+Music_1_Channel_3:
 		  inst 57
 		  vol 0Ah
 		  setRelease 01h
@@ -120,7 +120,7 @@ Music_33_Channel_3:
 		        noteL G6,68
 		        waitL 24
 		channel_end
-Music_33_Channel_4:
+Music_1_Channel_4:
 		  inst 58
 		  vol 0Bh
 		  setRelease 01h
@@ -139,19 +139,19 @@ Music_33_Channel_4:
 		        noteL E5,72
 		        waitL 24
 		channel_end
-Music_33_Channel_5:
+Music_1_Channel_5:
 		channel_end
-Music_33_Channel_6:
+Music_1_Channel_6:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 04Ch
-		        waitL 12
-		        waitL 48
+		        waitL    12
+		        waitL    48
 		        wait
 		        wait
 		        wait
 		channel_end
-Music_33_Channel_7:
+Music_1_Channel_7:
 		  psgInst 0Ah
 		  setRelease 01h
 		  vibrato 04Ch
@@ -179,7 +179,7 @@ Music_33_Channel_7:
 		        psgNote  A4
 		        psgNoteL G4,72
 		  psgInst 00h
-		        waitL 24
+		        waitL    24
 		channel_end
-Music_33_Channel_9:
+Music_1_Channel_9:
 		channel_end

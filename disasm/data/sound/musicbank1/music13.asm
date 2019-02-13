@@ -1,21 +1,21 @@
 
-; ASM FILE music45.asm :
-; 0xE2F7..0xE38C : Music 45
-Music_45:       db 0
+; ASM FILE music13.asm :
+; 0xE2F7..0xE38C : Music 13
+Music_13:       db 0
 		db 0
 		db 0
 		db 0B0h
-		dw Music_45_Channel_0
-		dw Music_45_Channel_1
-		dw Music_45_Channel_2
-		dw Music_45_Channel_3
-		dw Music_45_Channel_4
-		dw Music_45_Channel_5
-		dw Music_45_Channel_6
-		dw Music_45_Channel_7
-		dw Music_45_Channel_9
-		dw Music_45_Channel_9
-Music_45_Channel_0:
+		dw Music_13_Channel_0
+		dw Music_13_Channel_1
+		dw Music_13_Channel_2
+		dw Music_13_Channel_3
+		dw Music_13_Channel_4
+		dw Music_13_Channel_5
+		dw Music_13_Channel_6
+		dw Music_13_Channel_7
+		dw Music_13_Channel_9
+		dw Music_13_Channel_9
+Music_13_Channel_0:
 		  inst 60
 		  vol 0Bh
 		  setRelease 01h
@@ -29,7 +29,7 @@ Music_45_Channel_0:
 		        note  Ds6
 		        noteL Fs6,66
 		channel_end
-Music_45_Channel_1:
+Music_13_Channel_1:
 		  inst 1
 		  vol 0Eh
 		  setRelease 01h
@@ -41,7 +41,7 @@ Music_45_Channel_1:
 		        noteL B3,120
 		        waitL 0
 		channel_end
-Music_45_Channel_2:
+Music_13_Channel_2:
 		  inst 1
 		  vol 0Eh
 		  setRelease 01h
@@ -53,7 +53,7 @@ Music_45_Channel_2:
 		        noteL B2,120
 		        waitL 0
 		channel_end
-Music_45_Channel_3:
+Music_13_Channel_3:
 		  inst 1
 		  vol 0Eh
 		  setRelease 01h
@@ -65,7 +65,7 @@ Music_45_Channel_3:
 		        noteL B4,120
 		        waitL 0
 		channel_end
-Music_45_Channel_4:
+Music_13_Channel_4:
 		  inst 1
 		  vol 0Eh
 		  setRelease 01h
@@ -77,9 +77,9 @@ Music_45_Channel_4:
 		        noteL Fs4,120
 		        waitL 0
 		channel_end
-Music_45_Channel_5:
+Music_13_Channel_5:
 		channel_end
-Music_45_Channel_6:
+Music_13_Channel_6:
 		channel_end
-Music_45_Channel_7:
+Music_13_Channel_7:
 		channel_end

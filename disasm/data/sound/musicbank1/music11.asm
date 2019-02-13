@@ -1,21 +1,21 @@
 
-; ASM FILE music43.asm :
-; 0xD1AD..0xD6E5 : Music 43
-Music_43:       db 0
+; ASM FILE music11.asm :
+; 0xD1AD..0xD6E5 : Music 11
+Music_11:       db 0
 		db 0
 		db 0
 		db 0CBh
-		dw Music_43_Channel_0
-		dw Music_43_Channel_1
-		dw Music_43_Channel_2
-		dw Music_43_Channel_3
-		dw Music_43_Channel_4
-		dw Music_43_Channel_5
-		dw Music_43_Channel_6
-		dw Music_43_Channel_7
-		dw Music_43_Channel_9
-		dw Music_43_Channel_9
-Music_43_Channel_0:
+		dw Music_11_Channel_0
+		dw Music_11_Channel_1
+		dw Music_11_Channel_2
+		dw Music_11_Channel_3
+		dw Music_11_Channel_4
+		dw Music_11_Channel_5
+		dw Music_11_Channel_6
+		dw Music_11_Channel_7
+		dw Music_11_Channel_9
+		dw Music_11_Channel_9
+Music_11_Channel_0:
 		  inst 38
 		  vol 0Ah
 		  setRelease 01h
@@ -116,7 +116,7 @@ Music_43_Channel_0:
 		        wait
 		        wait
 		mainLoopEnd
-Music_43_Channel_1:
+Music_11_Channel_1:
 		  inst 38
 		  vol 08h
 		  setRelease 01h
@@ -191,7 +191,7 @@ Music_43_Channel_1:
 		  setRelease 01h
 		        note  E5
 		mainLoopEnd
-Music_43_Channel_2:
+Music_11_Channel_2:
 		  inst 38
 		  vol 0Dh
 		  setRelease 01h
@@ -247,7 +247,7 @@ Music_43_Channel_2:
 		  setRelease 01h
 		        note  Fs3
 		mainLoopEnd
-Music_43_Channel_3:
+Music_11_Channel_3:
 		mainLoopStart
 		        waitL 16
 		  inst 38
@@ -416,7 +416,7 @@ Music_43_Channel_3:
 		        note  Cs6
 		  vibrato 04Ch
 		mainLoopEnd
-Music_43_Channel_4:
+Music_11_Channel_4:
 		  inst 38
 		  vol 08h
 		  setRelease 01h
@@ -501,9 +501,9 @@ Music_43_Channel_4:
 		  setRelease 01h
 		        note  As5
 		mainLoopEnd
-Music_43_Channel_5:
+Music_11_Channel_5:
 		channel_end
-Music_43_Channel_6:
+Music_11_Channel_6:
 		  psgInst 09h
 		  setRelease 0Ch
 		  vibrato 04Ch
@@ -751,11 +751,11 @@ Music_43_Channel_6:
 		        psgNote  Cs3
 		        psgNote  As2
 		mainLoopEnd
-Music_43_Channel_7:
+Music_11_Channel_7:
 		  psgInst 00h
 		  setRelease 04h
 		  vibrato 04Ch
-		        waitL 8
+		        waitL    8
 		  psgInst 096h
 		mainLoopStart
 		        psgNoteL B2,16
@@ -1002,5 +1002,5 @@ Music_43_Channel_7:
 		        psgNote  Cs3
 		        psgNote  As2
 		mainLoopEnd
-Music_43_Channel_9:
+Music_11_Channel_9:
 		channel_end

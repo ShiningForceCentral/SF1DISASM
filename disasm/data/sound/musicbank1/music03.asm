@@ -1,21 +1,21 @@
 
-; ASM FILE music35.asm :
-; 0xC2F1..0xCBC2 : Music 35
-Music_35:       db 0
+; ASM FILE music03.asm :
+; 0xC2F1..0xCBC2 : Music 03
+Music_3:        db 0
 		db 0
 		db 0
 		db 0BAh
-		dw Music_35_Channel_0
-		dw Music_35_Channel_1
-		dw Music_35_Channel_2
-		dw Music_35_Channel_3
-		dw Music_35_Channel_4
-		dw Music_35_Channel_5
-		dw Music_35_Channel_6
-		dw Music_35_Channel_7
-		dw Music_35_Channel_9
-		dw Music_35_Channel_9
-Music_35_Channel_0:
+		dw Music_3_Channel_0
+		dw Music_3_Channel_1
+		dw Music_3_Channel_2
+		dw Music_3_Channel_3
+		dw Music_3_Channel_4
+		dw Music_3_Channel_5
+		dw Music_3_Channel_6
+		dw Music_3_Channel_7
+		dw Music_3_Channel_9
+		dw Music_3_Channel_9
+Music_3_Channel_0:
 		  inst 21
 		  vol 08h
 		  setRelease 01h
@@ -214,7 +214,7 @@ Music_35_Channel_0:
 		        wait
 		        waitL 12
 		mainLoopEnd
-Music_35_Channel_1:
+Music_3_Channel_1:
 		  inst 21
 		  vol 08h
 		  setRelease 01h
@@ -425,7 +425,7 @@ Music_35_Channel_1:
 		        wait
 		        waitL 12
 		mainLoopEnd
-Music_35_Channel_2:
+Music_3_Channel_2:
 		  inst 22
 		  vol 0Ah
 		  setRelease 01h
@@ -559,7 +559,7 @@ Music_35_Channel_2:
 		        wait
 		        waitL 12
 		mainLoopEnd
-Music_35_Channel_3:
+Music_3_Channel_3:
 		  inst 21
 		  vol 09h
 		  setRelease 01h
@@ -756,7 +756,7 @@ Music_35_Channel_3:
 		  vol 09h
 		        waitL 12
 		mainLoopEnd
-Music_35_Channel_4:
+Music_3_Channel_4:
 		  inst 21
 		  vol 09h
 		  setRelease 01h
@@ -962,9 +962,9 @@ Music_35_Channel_4:
 		        wait
 		        waitL 12
 		mainLoopEnd
-Music_35_Channel_5:
+Music_3_Channel_5:
 		channel_end
-Music_35_Channel_6:
+Music_3_Channel_6:
 		  psgInst 09h
 		  setRelease 01h
 		  vibrato 04Ch
@@ -1008,7 +1008,7 @@ Music_35_Channel_6:
 		        psgNote  E4
 		        psgNoteL D4,24
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 09h
 		        psgNoteL F4,6
 		        psgNote  E4
@@ -1098,7 +1098,7 @@ Music_35_Channel_6:
 		        psgNote  E4
 		        psgNoteL D4,24
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 09h
 		        psgNoteL F4,6
 		        psgNote  E4
@@ -1139,7 +1139,7 @@ Music_35_Channel_6:
 		        psgNoteL B3,12
 		        psgNoteL C4,23
 		  psgInst 00h
-		        waitL 13
+		        waitL    13
 		  psgInst 09h
 		        psgNoteL C4,12
 		        psgNoteL A4,18
@@ -1157,7 +1157,7 @@ Music_35_Channel_6:
 		        psgNote  F4
 		        psgNoteL G4,24
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 09h
 		        psgNoteL G4,6
 		        psgNote  Fs4
@@ -1206,7 +1206,7 @@ Music_35_Channel_6:
 		  psgInst 09h
 		        psgNote  C4
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 07h
 		        psgNoteL E3,48
 		        psgNoteL E3,36
@@ -1234,9 +1234,9 @@ Music_35_Channel_6:
 		        psgNote  Fs3
 		        psgNoteL G3,12
 		  psgInst 00h
-		        waitL 36
-		        waitL 48
-		        waitL 24
+		        waitL    36
+		        waitL    48
+		        waitL    24
 		  psgInst 07h
 		        psgNote  F3
 		        psgNoteL E3,6
@@ -1254,7 +1254,7 @@ Music_35_Channel_6:
 		        psgNote  G4
 		        psgNote  Fs4
 		mainLoopEnd
-Music_35_Channel_7:
+Music_3_Channel_7:
 		  psgInst 09h
 		  setRelease 01h
 		  vibrato 04Ch
@@ -1298,7 +1298,7 @@ Music_35_Channel_7:
 		        psgNote  C4
 		        psgNoteL B3,24
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 09h
 		        psgNoteL D4,6
 		        psgNote  Cs4
@@ -1388,7 +1388,7 @@ Music_35_Channel_7:
 		        psgNote  C4
 		        psgNoteL B3,24
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 09h
 		        psgNoteL D4,6
 		        psgNote  Cs4
@@ -1429,7 +1429,7 @@ Music_35_Channel_7:
 		        psgNoteL F3,12
 		        psgNoteL E3,24
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 09h
 		        psgNote  G3
 		        psgNoteL F4,18
@@ -1447,7 +1447,7 @@ Music_35_Channel_7:
 		        psgNote  D4
 		        psgNoteL B3,24
 		  psgInst 00h
-		        waitL 12
+		        waitL    12
 		  psgInst 09h
 		        psgNoteL E4,6
 		        psgNote  Ds4
@@ -1497,7 +1497,7 @@ Music_35_Channel_7:
 		        psgNote  E3
 		  psgInst 00h
 		        wait
-		        waitL 12
+		        waitL    12
 		  psgInst 07h
 		        psgNoteL G2,48
 		        psgNoteL As2,36
@@ -1530,9 +1530,9 @@ Music_35_Channel_7:
 		        psgNote  C3
 		        psgNoteL B2,12
 		  psgInst 00h
-		        waitL 36
-		        waitL 48
-		        waitL 24
+		        waitL    36
+		        waitL    48
+		        waitL    24
 		  psgInst 07h
 		        psgNote  B2
 		        psgNoteL C3,6
@@ -1550,5 +1550,5 @@ Music_35_Channel_7:
 		        psgNote  E4
 		        psgNote  Ds4
 		mainLoopEnd
-Music_35_Channel_9:
+Music_3_Channel_9:
 		channel_end

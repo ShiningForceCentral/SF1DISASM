@@ -1,6 +1,6 @@
 
-; ASM FILE music06.asm :
-; 0xAB56..0xCA2D : Music 06, 07, and 32 combined for optimization
+; ASM FILE music38.asm :
+; 0xAB56..0xCA2D : Music 38, 39, and 64 combined for optimization
 		db 0
 		db 0
 		db 0
@@ -10,11 +10,11 @@
 		dw byte_AB74
 		dw byte_AB77
 		dw byte_AB7A
-		dw Music_6_Channel_5
-		dw Music_6_Channel_6
-		dw Music_6_Channel_7
-		dw Music_6_Channel_9
-		dw Music_6_Channel_9
+		dw Music_38_Channel_5
+		dw Music_38_Channel_6
+		dw Music_38_Channel_7
+		dw Music_38_Channel_9
+		dw Music_38_Channel_9
 byte_AB6E:      db 0FFh
 		db 0
 		db 0
@@ -30,7 +30,7 @@ byte_AB77:      db 0FFh
 byte_AB7A:      db 0FFh
 		db 0
 		db 0
-Music_6_Channel_5:
+Music_38_Channel_5:
 		        waitL 24
 		countedLoopStart 3
 		        sampleL 1,15
@@ -687,7 +687,7 @@ Music_6_Channel_5:
 		        sample  3
 		        sample  3
 		channel_end
-Music_6_Channel_6:
+Music_38_Channel_6:
 		  psgInst 00h
 		  vibrato 04Ch
 		        waitL    24
@@ -1415,7 +1415,7 @@ Music_6_Channel_6:
 		  vibrato 050h
 		        psgNote  Fs5
 		channel_end
-Music_6_Channel_7:
+Music_38_Channel_7:
 		  psgInst 00h
 		  vibrato 04Ch
 		        waitL    24
@@ -2071,23 +2071,23 @@ Music_6_Channel_7:
 		        psgNoteL Fs2,72
 		  vibrato 04Ch
 		channel_end
-Music_6_Channel_9:
+Music_38_Channel_9:
 		channel_end
 		db 0
 		db 0
 		db 0
 		db 0C0h
-		dw Music_6_Channel_0
-		dw Music_6_Channel_1
-		dw Music_6_Channel_2
-		dw Music_6_Channel_3
-		dw Music_6_Channel_4
+		dw Music_38_Channel_0
+		dw Music_38_Channel_1
+		dw Music_38_Channel_2
+		dw Music_38_Channel_3
+		dw Music_38_Channel_4
 		dw byte_C77F
 		dw byte_C782
 		dw byte_C785
 		dw byte_C788
 		dw byte_C788
-Music_6_Channel_0:
+Music_38_Channel_0:
 		  inst 8
 		  vol 0Ah
 		  setRelease 01h
@@ -2630,7 +2630,7 @@ Music_6_Channel_0:
 		  vibrato 02Ch
 		        waitL 12
 		channel_end
-Music_6_Channel_1:
+Music_38_Channel_1:
 		  inst 4
 		  vol 0Bh
 		  setRelease 01h
@@ -3681,7 +3681,7 @@ Music_6_Channel_1:
 		        note  B4
 		        waitL 12
 		channel_end
-Music_6_Channel_2:
+Music_38_Channel_2:
 		  inst 27
 		  vol 0Bh
 		  setRelease 01h
@@ -4077,7 +4077,7 @@ Music_6_Channel_2:
 		        noteL B3,72
 		        waitL 12
 		channel_end
-Music_6_Channel_3:
+Music_38_Channel_3:
 		  inst 8
 		  vol 0Ah
 		  setRelease 01h
@@ -4543,7 +4543,7 @@ Music_6_Channel_3:
 		        noteL Ds6,72
 		        waitL 12
 		channel_end
-Music_6_Channel_4:
+Music_38_Channel_4:
 		  inst 8
 		  vol 0Ah
 		  setRelease 01h
@@ -4886,21 +4886,21 @@ byte_C785:      db 0FFh
 byte_C788:      db 0FFh
 		db 0
 		db 0
-Music_7:        db 0
+Music_39:       db 0
 		db 0
 		db 0
 		db 0BDh
-		dw Music_7_Channel_0
-		dw Music_7_Channel_1
-		dw Music_7_Channel_2
-		dw Music_7_Channel_3
-		dw Music_7_Channel_4
-		dw Music_7_Channel_5
-		dw Music_7_Channel_6
-		dw Music_7_Channel_7
-		dw Music_7_Channel_8
-		dw Music_7_Channel_9
-Music_7_Channel_0:
+		dw Music_39_Channel_0
+		dw Music_39_Channel_1
+		dw Music_39_Channel_2
+		dw Music_39_Channel_3
+		dw Music_39_Channel_4
+		dw Music_39_Channel_5
+		dw Music_39_Channel_6
+		dw Music_39_Channel_7
+		dw Music_39_Channel_8
+		dw Music_39_Channel_9
+Music_39_Channel_0:
 		        waitL 48
 		        waitL 144
 		        wait
@@ -4959,7 +4959,7 @@ Music_7_Channel_0:
 		        wait
 		        wait
 		channel_end
-Music_7_Channel_1:
+Music_39_Channel_1:
 		        waitL 48
 		  inst 2
 		  stereo 040h
@@ -5020,7 +5020,7 @@ Music_7_Channel_1:
 		        noteL C4,144
 		        wait
 		channel_end
-Music_7_Channel_2:
+Music_39_Channel_2:
 		        waitL 48
 		  inst 2
 		  vol 0Ch
@@ -5046,7 +5046,7 @@ Music_7_Channel_2:
 		        note  C3
 		        wait
 		channel_end
-Music_7_Channel_3:
+Music_39_Channel_3:
 		        waitL 48
 		        waitL 144
 		        wait
@@ -5101,7 +5101,7 @@ Music_7_Channel_3:
 		        note  C6
 		        wait
 		channel_end
-Music_7_Channel_4:
+Music_39_Channel_4:
 		        waitL 48
 		  inst 2
 		  stereo 080h
@@ -5162,9 +5162,9 @@ Music_7_Channel_4:
 		        noteL E5,144
 		        wait
 		channel_end
-Music_7_Channel_5:
+Music_39_Channel_5:
 		channel_end
-Music_7_Channel_6:
+Music_39_Channel_6:
 		  setRelease 01h
 		  vibrato 05Ch
 		  psgInst 00h
@@ -5238,7 +5238,7 @@ Music_7_Channel_6:
 		  psgInst 00h
 		        waitL    142
 		channel_end
-Music_7_Channel_7:
+Music_39_Channel_7:
 		  setRelease 01h
 		  vibrato 05Fh
 		  psgInst 0Ah
@@ -5291,7 +5291,7 @@ Music_7_Channel_7:
 		        wait
 		        wait
 		channel_end
-Music_7_Channel_8:
+Music_39_Channel_8:
 		  psgInst 00h
 		  shifting 010h
 		        waitL    6
@@ -5346,7 +5346,7 @@ Music_7_Channel_8:
 		  psgInst 00h
 		        wait
 		        wait
-Music_7_Channel_9:
+Music_39_Channel_9:
 		channel_end
 		db 0F0h
 		db 0
@@ -5360,33 +5360,33 @@ Music_7_Channel_9:
 		db 0C9h
 		db 0EEh
 		db 0C9h
-Music_32:       db 0
+Music_64:       db 0
 		db 0
 		db 0
 		db 0C8h
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-		dw Music_32_Channel_9
-Music_32_Channel_9:
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+		dw Music_64_Channel_9
+Music_64_Channel_9:
 		channel_end
-Music_6:        db 0
+Music_38:       db 0
 		db 0
 		db 0
 		db 0BCh
-		dw Music_6_Channel_0
-		dw Music_6_Channel_1
-		dw Music_6_Channel_2
-		dw Music_6_Channel_3
-		dw Music_6_Channel_4
-		dw Music_6_Channel_5
-		dw Music_6_Channel_6
-		dw Music_6_Channel_7
-		dw Music_6_Channel_9
-		dw Music_6_Channel_9
+		dw Music_38_Channel_0
+		dw Music_38_Channel_1
+		dw Music_38_Channel_2
+		dw Music_38_Channel_3
+		dw Music_38_Channel_4
+		dw Music_38_Channel_5
+		dw Music_38_Channel_6
+		dw Music_38_Channel_7
+		dw Music_38_Channel_9
+		dw Music_38_Channel_9

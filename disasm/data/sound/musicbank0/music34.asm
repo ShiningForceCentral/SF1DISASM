@@ -1,21 +1,21 @@
 
-; ASM FILE music02.asm :
-; 0x9528..0x9788 : Music 02
-Music_2:        db 0
+; ASM FILE music34.asm :
+; 0x9528..0x9788 : Music 34
+Music_34:       db 0
 		db 0
 		db 0
 		db 0C8h
-		dw Music_2_Channel_0
-		dw Music_2_Channel_1
-		dw Music_2_Channel_2
-		dw Music_2_Channel_3
-		dw Music_2_Channel_4
-		dw Music_2_Channel_5
-		dw Music_2_Channel_6
-		dw Music_2_Channel_7
-		dw Music_2_Channel_9
-		dw Music_2_Channel_9
-Music_2_Channel_0:
+		dw Music_34_Channel_0
+		dw Music_34_Channel_1
+		dw Music_34_Channel_2
+		dw Music_34_Channel_3
+		dw Music_34_Channel_4
+		dw Music_34_Channel_5
+		dw Music_34_Channel_6
+		dw Music_34_Channel_7
+		dw Music_34_Channel_9
+		dw Music_34_Channel_9
+Music_34_Channel_0:
 		        waitL 12
 		mainLoopStart
 		  setRelease 01h
@@ -66,7 +66,7 @@ Music_2_Channel_0:
 		        noteL D6,168
 		        waitL 24
 		mainLoopEnd
-Music_2_Channel_1:
+Music_34_Channel_1:
 		  inst 26
 		  vol 0Ch
 		  setRelease 01h
@@ -99,7 +99,7 @@ Music_2_Channel_1:
 		        note  G4
 		        note  Gs4
 		mainLoopEnd
-Music_2_Channel_2:
+Music_34_Channel_2:
 		  inst 25
 		  vol 0Ch
 		  setRelease 01h
@@ -132,7 +132,7 @@ Music_2_Channel_2:
 		        note  F3
 		        note  Fs3
 		mainLoopEnd
-Music_2_Channel_3:
+Music_34_Channel_3:
 		        waitL 12
 		mainLoopStart
 		  setRelease 01h
@@ -183,7 +183,7 @@ Music_2_Channel_3:
 		        noteL G5,168
 		        waitL 24
 		mainLoopEnd
-Music_2_Channel_4:
+Music_34_Channel_4:
 		        waitL 12
 		mainLoopStart
 		  setRelease 01h
@@ -234,7 +234,7 @@ Music_2_Channel_4:
 		        noteL F5,168
 		        waitL 24
 		mainLoopEnd
-Music_2_Channel_5:
+Music_34_Channel_5:
 		        waitL 12
 		mainLoopStart
 		        sampleL 1,36
@@ -299,7 +299,7 @@ Music_2_Channel_5:
 		        sampleL 1,24
 		        sample  1
 		mainLoopEnd
-Music_2_Channel_6:
+Music_34_Channel_6:
 		  setRelease 00h
 		  vibrato 04Ah
 		  psgInst 00h
@@ -341,7 +341,7 @@ Music_2_Channel_6:
 		        psgNote  F5
 		        psgNoteL Ds5,12
 		mainLoopEnd
-Music_2_Channel_7:
+Music_34_Channel_7:
 		  setRelease 00h
 		  vibrato 04Ah
 		  psgInst 07Ch
@@ -394,5 +394,5 @@ Music_2_Channel_7:
 		        psgNote  As4
 		        psgNoteL Gs4,12
 		mainLoopEnd
-Music_2_Channel_9:
+Music_34_Channel_9:
 		channel_end

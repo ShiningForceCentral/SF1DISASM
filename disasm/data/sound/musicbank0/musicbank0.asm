@@ -6,42 +6,42 @@
    include "..\musicenums.asm"
    org 08000h
 
-		; File Name   : D:\gendev\ShiningForceCentral\SF1RE-musicbanks\SF1RE\disasm\sound\musicbank0.bin
-		dw Music_1
-		dw Music_2
-		dw Music_3
-		dw Music_4
-		dw Music_5
-		dw Music_6
-		dw Music_7
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		dw Music_32
-		include "music05.asm"		; Music 05
-		include "music01.asm"		; Music 01
-		include "music02.asm"		; Music 02
-		include "music03.asm"		; Music 03
-		include "music04.asm"		; Music 04
-		include "music06.asm"		; Music 06, 07, and 32 combined for optimization
+		; File Name   : D:\gendev\ShiningForceCentral\SF1RE\disasm\sound\musicbank0.bin
+		dw Music_33
+		dw Music_34
+		dw Music_35
+		dw Music_36
+		dw Music_37
+		dw Music_38
+		dw Music_39
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		dw Music_64
+		include "music37.asm"		; Music 37
+		include "music33.asm"		; Music 33
+		include "music34.asm"		; Music 34
+		include "music35.asm"		; Music 35
+		include "music36.asm"		; Music 36
+		include "music38.asm"		; Music 38, 39, and 64 combined for optimization

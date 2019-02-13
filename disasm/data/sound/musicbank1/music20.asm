@@ -1,21 +1,21 @@
 
-; ASM FILE music52.asm :
-; 0xF1FB..0xF2E7 : Music 52
-Music_52:       db 0
+; ASM FILE music20.asm :
+; 0xF1FB..0xF2E7 : Music 20
+Music_20:       db 0
 		db 0B0h
 		db 1
 		db 0C6h
-		dw Music_52_Channel_0
-		dw Music_52_Channel_1
-		dw Music_52_Channel_2
-		dw Music_52_Channel_3
-		dw Music_52_Channel_4
-		dw Music_52_Channel_5
-		dw Music_52_Channel_6
-		dw Music_52_Channel_7
-		dw Music_52_Channel_9
-		dw Music_52_Channel_9
-Music_52_Channel_0:
+		dw Music_20_Channel_0
+		dw Music_20_Channel_1
+		dw Music_20_Channel_2
+		dw Music_20_Channel_3
+		dw Music_20_Channel_4
+		dw Music_20_Channel_5
+		dw Music_20_Channel_6
+		dw Music_20_Channel_7
+		dw Music_20_Channel_9
+		dw Music_20_Channel_9
+Music_20_Channel_0:
 		  inst 6
 		  vol 09h
 		  setRelease 01h
@@ -33,7 +33,7 @@ Music_52_Channel_0:
 		        note  B4
 		        noteL G4,64
 		channel_end
-Music_52_Channel_1:
+Music_20_Channel_1:
 		  inst 15
 		  vol 00h
 		  sustain
@@ -47,7 +47,7 @@ Music_52_Channel_1:
 		  setRelease 01h
 		        note  B3
 		channel_end
-Music_52_Channel_2:
+Music_20_Channel_2:
 		  inst 5
 		  vol 0Eh
 		  setRelease 01h
@@ -59,7 +59,7 @@ Music_52_Channel_2:
 		  setRelease 01h
 		        note  G3
 		channel_end
-Music_52_Channel_3:
+Music_20_Channel_3:
 		  inst 16
 		  vol 0Ch
 		  setRelease 01h
@@ -72,7 +72,7 @@ Music_52_Channel_3:
 		  setRelease 01h
 		        note  Fs4
 		channel_end
-Music_52_Channel_4:
+Music_20_Channel_4:
 		  stereo 040h
 		  inst 16
 		  vol 0Ch
@@ -86,9 +86,9 @@ Music_52_Channel_4:
 		  setRelease 01h
 		        note  Cs4
 		channel_end
-Music_52_Channel_5:
+Music_20_Channel_5:
 		channel_end
-Music_52_Channel_6:
+Music_20_Channel_6:
 		  setRelease 01h
 		  vibrato 05Ch
 		  psgInst 0Bh
@@ -109,11 +109,11 @@ Music_52_Channel_6:
 		        psgNote  Fs5
 		  psgInst 00h
 		channel_end
-Music_52_Channel_7:
+Music_20_Channel_7:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 04Ch
-		        waitL 144
+		        waitL    144
 		        wait
 		  psgInst 0Bh
 		        psgNoteL Fs3,8
@@ -154,5 +154,5 @@ Music_52_Channel_7:
 		        psgNote  G3
 		  psgInst 00h
 		channel_end
-Music_52_Channel_9:
+Music_20_Channel_9:
 		channel_end

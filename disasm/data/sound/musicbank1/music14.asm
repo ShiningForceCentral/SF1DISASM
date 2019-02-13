@@ -1,21 +1,21 @@
 
-; ASM FILE music46.asm :
-; 0xD7D1..0xD8A4 : Music 46
-Music_46:       db 0
+; ASM FILE music14.asm :
+; 0xD7D1..0xD8A4 : Music 14
+Music_14:       db 0
 		db 0
 		db 0
 		db 0CCh
-		dw Music_46_Channel_0
-		dw Music_46_Channel_1
-		dw Music_46_Channel_2
-		dw Music_46_Channel_3
-		dw Music_46_Channel_4
-		dw Music_46_Channel_5
-		dw Music_46_Channel_6
-		dw Music_46_Channel_7
-		dw Music_46_Channel_9
-		dw Music_46_Channel_9
-Music_46_Channel_0:
+		dw Music_14_Channel_0
+		dw Music_14_Channel_1
+		dw Music_14_Channel_2
+		dw Music_14_Channel_3
+		dw Music_14_Channel_4
+		dw Music_14_Channel_5
+		dw Music_14_Channel_6
+		dw Music_14_Channel_7
+		dw Music_14_Channel_9
+		dw Music_14_Channel_9
+Music_14_Channel_0:
 		  inst 60
 		  vol 09h
 		  setRelease 01h
@@ -34,7 +34,7 @@ Music_46_Channel_0:
 		        noteL E7,144
 		        waitL 24
 		channel_end
-Music_46_Channel_1:
+Music_14_Channel_1:
 		  inst 11
 		  vol 09h
 		  sustain
@@ -47,7 +47,7 @@ Music_46_Channel_1:
 		        note  E5
 		        waitL 24
 		channel_end
-Music_46_Channel_2:
+Music_14_Channel_2:
 		  inst 12
 		  vol 0Eh
 		  sustain
@@ -60,7 +60,7 @@ Music_46_Channel_2:
 		        note  C3
 		        waitL 24
 		channel_end
-Music_46_Channel_3:
+Music_14_Channel_3:
 		  inst 11
 		  vol 09h
 		  sustain
@@ -73,7 +73,7 @@ Music_46_Channel_3:
 		        note  C6
 		        waitL 24
 		channel_end
-Music_46_Channel_4:
+Music_14_Channel_4:
 		  inst 11
 		  vol 09h
 		  sustain
@@ -86,14 +86,14 @@ Music_46_Channel_4:
 		        note  G5
 		        waitL 24
 		channel_end
-Music_46_Channel_5:
+Music_14_Channel_5:
 		channel_end
-Music_46_Channel_6:
+Music_14_Channel_6:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 05Ch
-		        waitL 144
-		        waitL 48
+		        waitL    144
+		        waitL    48
 		  psgInst 0Ah
 		        psgNoteL F5,16
 		        psgNote  E5
@@ -104,11 +104,11 @@ Music_46_Channel_6:
 		        psgNoteL E5,144
 		  psgInst 00h
 		channel_end
-Music_46_Channel_7:
+Music_14_Channel_7:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 05Ch
-		        waitL 144
+		        waitL    144
 		  psgInst 0Ah
 		        psgNoteL F3,16
 		        psgNote  E3
@@ -124,5 +124,5 @@ Music_46_Channel_7:
 		        psgNoteL G3,144
 		  psgInst 00h
 		channel_end
-Music_46_Channel_9:
+Music_14_Channel_9:
 		channel_end

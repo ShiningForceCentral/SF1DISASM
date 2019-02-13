@@ -1,21 +1,21 @@
 
-; ASM FILE music01.asm :
-; 0x827D..0x9528 : Music 01
-Music_1:        db 0
+; ASM FILE music33.asm :
+; 0x827D..0x9528 : Music 33
+Music_33:       db 0
 		db 0
 		db 0
 		db 0BFh
-		dw Music_1_Channel_0
-		dw Music_1_Channel_1
-		dw Music_1_Channel_2
-		dw Music_1_Channel_3
-		dw Music_1_Channel_4
-		dw Music_1_Channel_5
-		dw Music_1_Channel_6
-		dw Music_1_Channel_7
-		dw Music_1_Channel_9
-		dw Music_1_Channel_9
-Music_1_Channel_0:
+		dw Music_33_Channel_0
+		dw Music_33_Channel_1
+		dw Music_33_Channel_2
+		dw Music_33_Channel_3
+		dw Music_33_Channel_4
+		dw Music_33_Channel_5
+		dw Music_33_Channel_6
+		dw Music_33_Channel_7
+		dw Music_33_Channel_9
+		dw Music_33_Channel_9
+Music_33_Channel_0:
 		  inst 13
 		  vol 0Bh
 		  setRelease 01h
@@ -100,7 +100,7 @@ Music_1_Channel_0:
 		        note  F5
 		        note  Cs6
 		mainLoopEnd
-Music_1_Channel_1:
+Music_33_Channel_1:
 		        waitL 36
 		  inst 4
 		  vol 0Eh
@@ -187,7 +187,7 @@ Music_1_Channel_1:
 		        note  C4
 		        note  C4
 		mainLoopEnd
-Music_1_Channel_2:
+Music_33_Channel_2:
 		        waitL 36
 		  inst 5
 		  vol 0Eh
@@ -398,7 +398,7 @@ Music_1_Channel_2:
 		        waitL 36
 		        noteL C4,24
 		mainLoopEnd
-Music_1_Channel_3:
+Music_33_Channel_3:
 		        waitL 36
 		  inst 13
 		  vol 0Bh
@@ -1015,7 +1015,7 @@ Music_1_Channel_3:
 		        noteL F5,3
 		        waitL 9
 		mainLoopEnd
-Music_1_Channel_4:
+Music_33_Channel_4:
 		        waitL 36
 		  inst 13
 		  vol 0Bh
@@ -1632,7 +1632,7 @@ Music_1_Channel_4:
 		        noteL Gs4,3
 		        waitL 9
 		mainLoopEnd
-Music_1_Channel_5:
+Music_33_Channel_5:
 		        waitL 34
 		        sampleL 3,2
 		mainLoopStart
@@ -1662,7 +1662,7 @@ Music_1_Channel_5:
 		        sampleL 3,4
 		        sampleL 3,2
 		mainLoopEnd
-Music_1_Channel_6:
+Music_33_Channel_6:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 04Ch
@@ -1755,7 +1755,7 @@ Music_1_Channel_6:
 		        wait
 		        wait
 		mainLoopEnd
-Music_1_Channel_7:
+Music_33_Channel_7:
 		  psgInst 00h
 		  setRelease 01h
 		  vibrato 04Ch
@@ -2706,5 +2706,5 @@ Music_1_Channel_7:
 		  psgInst 00h
 		        wait
 		mainLoopEnd
-Music_1_Channel_9:
+Music_33_Channel_9:
 		channel_end

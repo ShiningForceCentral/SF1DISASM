@@ -1,21 +1,21 @@
 
-; ASM FILE music42.asm :
-; 0xCBC2..0xD1AD : Music 42
-Music_42:       db 0
+; ASM FILE music10.asm :
+; 0xCBC2..0xD1AD : Music 10
+Music_10:       db 0
 		db 0
 		db 0
 		db 0BAh
-		dw Music_42_Channel_0
-		dw Music_42_Channel_1
-		dw Music_42_Channel_2
-		dw Music_42_Channel_3
-		dw Music_42_Channel_4
-		dw Music_42_Channel_5
-		dw Music_42_Channel_6
-		dw Music_42_Channel_7
-		dw Music_42_Channel_9
-		dw Music_42_Channel_9
-Music_42_Channel_0:
+		dw Music_10_Channel_0
+		dw Music_10_Channel_1
+		dw Music_10_Channel_2
+		dw Music_10_Channel_3
+		dw Music_10_Channel_4
+		dw Music_10_Channel_5
+		dw Music_10_Channel_6
+		dw Music_10_Channel_7
+		dw Music_10_Channel_9
+		dw Music_10_Channel_9
+Music_10_Channel_0:
 		  inst 15
 		  vol 09h
 		  setRelease 01h
@@ -95,7 +95,7 @@ Music_42_Channel_0:
 		        note  D7
 		        noteL Cs7,192
 		mainLoopEnd
-Music_42_Channel_1:
+Music_10_Channel_1:
 		  inst 4
 		  vol 0Eh
 		  setRelease 01h
@@ -228,7 +228,7 @@ Music_42_Channel_1:
 		        note  Fs3
 		        note  Fs3
 		mainLoopEnd
-Music_42_Channel_2:
+Music_10_Channel_2:
 		  inst 27
 		  vol 0Ah
 		  setRelease 01h
@@ -436,7 +436,7 @@ Music_42_Channel_2:
 		        note  Fs3
 		        note  Fs3
 		mainLoopEnd
-Music_42_Channel_3:
+Music_10_Channel_3:
 		  inst 15
 		  vol 09h
 		  setRelease 01h
@@ -544,7 +544,7 @@ Music_42_Channel_3:
 		        note  As6
 		        wait
 		mainLoopEnd
-Music_42_Channel_4:
+Music_10_Channel_4:
 		mainLoopStart
 		  inst 15
 		  vol 09h
@@ -649,7 +649,7 @@ Music_42_Channel_4:
 		        note  E6
 		        wait
 		mainLoopEnd
-Music_42_Channel_5:
+Music_10_Channel_5:
 		mainLoopStart
 		countedLoopStart 10
 		        sampleL 1,24
@@ -708,12 +708,12 @@ Music_42_Channel_5:
 		        sample  1
 		countedLoopEnd
 		mainLoopEnd
-Music_42_Channel_6:
+Music_10_Channel_6:
 		  psgInst 00h
 		  setRelease 00h
 		  vibrato 04Ch
 		mainLoopStart
-		        waitL 96
+		        waitL    96
 		        wait
 		        wait
 		        wait
@@ -733,7 +733,7 @@ Music_42_Channel_6:
 		        wait
 		        wait
 		        wait
-		        waitL 72
+		        waitL    72
 		  psgInst 09h
 		        psgNoteL A3,3
 		        psgNote  D4
@@ -745,7 +745,7 @@ Music_42_Channel_6:
 		        psgNote  Fs5
 		        psgNote  Fs5
 		  psgInst 00h
-		        waitL 69
+		        waitL    69
 		  psgInst 09h
 		        psgNoteL G3,3
 		        psgNote  A3
@@ -757,7 +757,7 @@ Music_42_Channel_6:
 		        psgNote  D5
 		        psgNote  D5
 		  psgInst 00h
-		        waitL 69
+		        waitL    69
 		  psgInst 09h
 		        psgNoteL E3,2
 		        psgNote  G3
@@ -770,8 +770,8 @@ Music_42_Channel_6:
 		        psgNote  B4
 		        psgNoteL D5,6
 		  psgInst 00h
-		        waitL 96
-		        waitL 50
+		        waitL    96
+		        waitL    50
 		  psgInst 09h
 		        psgNoteL Fs3,3
 		        psgNote  Gs3
@@ -790,15 +790,15 @@ Music_42_Channel_6:
 		        psgNoteL Fs5,4
 		  psgInst 00h
 		mainLoopEnd
-Music_42_Channel_7:
+Music_10_Channel_7:
 		  psgInst 00h
 		  setRelease 00h
 		  vibrato 04Ch
 		mainLoopStart
-		        waitL 96
+		        waitL    96
 		        wait
 		        wait
-		        waitL 48
+		        waitL    48
 		  psgInst 0Ah
 		        psgNoteL Fs4,4
 		        psgNote  G4
@@ -813,10 +813,10 @@ Music_42_Channel_7:
 		        psgNote  Fs3
 		        psgNote  G3
 		  psgInst 00h
-		        waitL 96
+		        waitL    96
 		        wait
 		        wait
-		        waitL 48
+		        waitL    48
 		  psgInst 0Ah
 		        psgNoteL Fs4,3
 		        psgNoteL Gs4,2
@@ -830,8 +830,8 @@ Music_42_Channel_7:
 		        psgNoteL As5,2
 		        psgNoteL B5,6
 		  psgInst 00h
-		        waitL 17
-		        waitL 96
+		        waitL    17
+		        waitL    96
 		        wait
 		  setRelease 02h
 		  psgInst 0Ah
@@ -843,7 +843,7 @@ Music_42_Channel_7:
 		        psgNoteL A4,8
 		        psgNoteL G4,24
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		  setRelease 00h
 		        psgNote  G4
@@ -856,8 +856,8 @@ Music_42_Channel_7:
 		        psgNoteL Fs4,48
 		  psgInst 00h
 		        wait
-		        waitL 96
-		        waitL 72
+		        waitL    96
+		        waitL    72
 		  psgInst 0Ah
 		        psgNoteL Fs4,2
 		        psgNote  Gs4
@@ -871,7 +871,7 @@ Music_42_Channel_7:
 		        psgNoteL As5,6
 		        psgNote  B5
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Ah
 		        psgNoteL B4,3
 		        psgNote  Cs5
@@ -883,7 +883,7 @@ Music_42_Channel_7:
 		        psgNote  B5
 		        psgNoteL Cs6,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		  psgInst 0Ah
 		        psgNoteL B4,2
 		        psgNote  Cs5
@@ -895,11 +895,11 @@ Music_42_Channel_7:
 		        psgNote  B5
 		        psgNote  Cs6
 		  psgInst 00h
-		        waitL 96
+		        waitL    96
 		        wait
 		        wait
 		        wait
-		        waitL 48
+		        waitL    48
 		  psgInst 0Ah
 		        psgNoteL A4,3
 		        psgNote  B4
@@ -918,7 +918,7 @@ Music_42_Channel_7:
 		        psgNote  Cs4
 		        psgNote  D4
 		  psgInst 00h
-		        waitL 48
+		        waitL    48
 		  psgInst 0Ah
 		        psgNoteL D5,3
 		        psgNote  E5
@@ -937,7 +937,7 @@ Music_42_Channel_7:
 		        psgNote  Cs4
 		        psgNote  D4
 		  psgInst 00h
-		        waitL 48
+		        waitL    48
 		  psgInst 0Ah
 		        psgNoteL Fs3,4
 		        psgNote  G3
@@ -959,47 +959,47 @@ Music_42_Channel_7:
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 43
+		        waitL    43
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 3
+		        waitL    3
 		  psgInst 0Ah
 		        psgNoteL Cs5,5
 		  psgInst 00h
-		        waitL 19
+		        waitL    19
 		  psgInst 0Ah
 		        psgNoteL Cs4,2
 		        psgNote  D4
@@ -1013,7 +1013,7 @@ Music_42_Channel_7:
 		        psgNoteL E5,2
 		        psgNoteL Fs5,6
 		  psgInst 00h
-		        waitL 18
+		        waitL    18
 		mainLoopEnd
-Music_42_Channel_9:
+Music_10_Channel_9:
 		channel_end

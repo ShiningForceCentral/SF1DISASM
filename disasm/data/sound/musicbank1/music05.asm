@@ -1,21 +1,21 @@
 
-; ASM FILE music37.asm :
-; 0x8E18..0x9077 : Music 37
-Music_37:       db 0
+; ASM FILE music05.asm :
+; 0x8E18..0x9077 : Music 05
+Music_5:        db 0
 		db 0
 		db 0
 		db 0C2h
-		dw Music_37_Channel_0
-		dw Music_37_Channel_1
-		dw Music_37_Channel_2
-		dw Music_37_Channel_3
-		dw Music_37_Channel_4
-		dw Music_37_Channel_5
-		dw Music_37_Channel_6
-		dw Music_37_Channel_7
-		dw Music_37_Channel_9
-		dw Music_37_Channel_9
-Music_37_Channel_0:
+		dw Music_5_Channel_0
+		dw Music_5_Channel_1
+		dw Music_5_Channel_2
+		dw Music_5_Channel_3
+		dw Music_5_Channel_4
+		dw Music_5_Channel_5
+		dw Music_5_Channel_6
+		dw Music_5_Channel_7
+		dw Music_5_Channel_9
+		dw Music_5_Channel_9
+Music_5_Channel_0:
 		  inst 60
 		  vol 0Ah
 		  setRelease 08h
@@ -100,7 +100,7 @@ Music_37_Channel_0:
 		        noteL Ds7,18
 		        note  F7
 		mainLoopEnd
-Music_37_Channel_1:
+Music_5_Channel_1:
 		  inst 0
 		  vol 0Ah
 		  setRelease 01h
@@ -150,7 +150,7 @@ Music_37_Channel_1:
 		        note  Ds5
 		        wait
 		mainLoopEnd
-Music_37_Channel_2:
+Music_5_Channel_2:
 		        waitL 36
 		  inst 0
 		  vol 0Ah
@@ -202,7 +202,7 @@ Music_37_Channel_2:
 		        note  G4
 		        wait
 		mainLoopEnd
-Music_37_Channel_3:
+Music_5_Channel_3:
 		        waitL 36
 		  inst 2
 		  vol 0Ah
@@ -267,7 +267,7 @@ Music_37_Channel_3:
 		        note  Ds4
 		        wait
 		mainLoopEnd
-Music_37_Channel_4:
+Music_5_Channel_4:
 		        waitL 36
 		  inst 45
 		  vol 0Fh
@@ -303,22 +303,22 @@ Music_37_Channel_4:
 		        note  Ds3
 		        wait
 		mainLoopEnd
-Music_37_Channel_5:
+Music_5_Channel_5:
 		channel_end
-Music_37_Channel_6:
+Music_5_Channel_6:
 		  psgInst 00h
 		  vibrato 05Ch
 		  setRelease 01h
-		        waitL 36
+		        waitL    36
 		mainLoopStart
-		        waitL 108
+		        waitL    108
 		        wait
 		        wait
 		        wait
 		        wait
 		        wait
 		        wait
-		        waitL 72
+		        waitL    72
 		  psgInst 07Bh
 		        psgNoteL Ds4,18
 		        psgNote  F4
@@ -361,21 +361,21 @@ Music_37_Channel_6:
 		  psgInst 00h
 		        wait
 		mainLoopEnd
-Music_37_Channel_7:
-		        waitL 12
+Music_5_Channel_7:
+		        waitL    12
 		  psgInst 00h
 		  vibrato 05Ch
 		  setRelease 01h
-		        waitL 36
+		        waitL    36
 		mainLoopStart
-		        waitL 108
+		        waitL    108
 		        wait
 		        wait
 		        wait
 		        wait
 		        wait
 		        wait
-		        waitL 72
+		        waitL    72
 		  psgInst 079h
 		        psgNoteL Ds4,18
 		        psgNote  F4
@@ -418,5 +418,5 @@ Music_37_Channel_7:
 		  psgInst 00h
 		        wait
 		mainLoopEnd
-Music_37_Channel_9:
+Music_5_Channel_9:
 		channel_end

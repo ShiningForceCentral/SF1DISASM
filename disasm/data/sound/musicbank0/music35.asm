@@ -1,21 +1,21 @@
 
-; ASM FILE music03.asm :
-; 0x9788..0x9A5A : Music 03
-Music_3:        db 0
+; ASM FILE music35.asm :
+; 0x9788..0x9A5A : Music 35
+Music_35:       db 0
 		db 0
 		db 0
 		db 0C4h
-		dw Music_3_Channel_0
-		dw Music_3_Channel_1
-		dw Music_3_Channel_2
-		dw Music_3_Channel_3
-		dw Music_3_Channel_4
-		dw Music_3_Channel_5
-		dw Music_3_Channel_6
-		dw Music_3_Channel_7
-		dw Music_3_Channel_9
-		dw Music_3_Channel_9
-Music_3_Channel_0:
+		dw Music_35_Channel_0
+		dw Music_35_Channel_1
+		dw Music_35_Channel_2
+		dw Music_35_Channel_3
+		dw Music_35_Channel_4
+		dw Music_35_Channel_5
+		dw Music_35_Channel_6
+		dw Music_35_Channel_7
+		dw Music_35_Channel_9
+		dw Music_35_Channel_9
+Music_35_Channel_0:
 		  inst 13
 		  vol 0Ch
 		  setRelease 01h
@@ -40,7 +40,7 @@ Music_3_Channel_0:
 		        noteL Fs6,96
 		        waitL 12
 		channel_end
-Music_3_Channel_1:
+Music_35_Channel_1:
 		  inst 4
 		  vol 09h
 		  setRelease 01h
@@ -135,7 +135,7 @@ Music_3_Channel_1:
 		        note  B4
 		        waitL 12
 		channel_end
-Music_3_Channel_2:
+Music_35_Channel_2:
 		  inst 27
 		  vol 0Eh
 		  setRelease 01h
@@ -160,7 +160,7 @@ Music_3_Channel_2:
 		        noteL B3,96
 		        waitL 12
 		channel_end
-Music_3_Channel_3:
+Music_35_Channel_3:
 		  inst 13
 		  vol 0Bh
 		  setRelease 01h
@@ -182,7 +182,7 @@ Music_3_Channel_3:
 		        noteL Cs6,96
 		        waitL 12
 		channel_end
-Music_3_Channel_4:
+Music_35_Channel_4:
 		  inst 13
 		  vol 0Bh
 		  setRelease 01h
@@ -204,7 +204,7 @@ Music_3_Channel_4:
 		        noteL B5,96
 		        waitL 12
 		channel_end
-Music_3_Channel_5:
+Music_35_Channel_5:
 		        sampleL 3,2
 		        sample  3
 		        sample  3
@@ -429,7 +429,7 @@ Music_3_Channel_5:
 		        sample  3
 		        sample  3
 		channel_end
-Music_3_Channel_6:
+Music_35_Channel_6:
 		  psgInst 0Ch
 		  setRelease 00h
 		  vibrato 04Ch
@@ -481,7 +481,7 @@ Music_3_Channel_6:
 		        psgNoteL Cs3,96
 		  psgInst 00h
 		channel_end
-Music_3_Channel_7:
+Music_35_Channel_7:
 		  psgInst 00h
 		  setRelease 00h
 		  vibrato 04Ch
@@ -525,5 +525,5 @@ Music_3_Channel_7:
 		  setRelease 01h
 		        psgNoteL Fs2,96
 		  psgInst 00h
-Music_3_Channel_9:
+Music_35_Channel_9:
 		channel_end
