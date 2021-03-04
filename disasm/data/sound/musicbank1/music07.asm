@@ -172,7 +172,7 @@ Music_7_Channel_3:
 		        waitL 40
 		  inst 2
 		  vol 08h
-		countedLoopStart 4294967107
+		dw 03F8h			; unknown command
 		  vibrato 02Ah
 		mainLoopStart
 		countedLoopStart 1
@@ -232,7 +232,7 @@ Music_7_Channel_4:
 		        waitL 40
 		  inst 2
 		  vol 08h
-		countedLoopStart 4294967107
+		dw 03F8h			; unknown command
 		  vibrato 02Ah
 		mainLoopStart
 		countedLoopStart 3
