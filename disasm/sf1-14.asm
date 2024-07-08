@@ -11,67 +11,67 @@ p_pt_TextBanks: dc.l pt_TextBanks
 PlayIntro:
 		jmp     *+4(pc)
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_13162E
-		clr.b   ((byte_FF9C05-$1000000)).w
+		bsr.w   InitDisplay_Intro
+		clr.b   ((MESSAGE_SPEED-$1000000)).w
 		movea.l (p_IntroPalette_Scene1).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
-		movea.l (off_124078).l,a0
+		movea.l (p_IntroTiles_SpeckOfLight).l,a0
 		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		trap    #5
 		move.b  #2,((byte_FFF804-$1000000)).w
 		move.w  #5,((word_FFB7C6-$1000000)).w
-		clr.w   ((word_FFB7C4-$1000000)).w
+		clr.w   ((CURRENT_OBJECT-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
-		move.l  #sub_1305B4,(dword_FF0EF6).l
+		move.l  #sub_1305B4,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$52,d0 ; "In ages long forgotten..."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #7
 		move.w  #$53,d0 ; "...Light fought Darkness for[Line]control of the world."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #7
 		move.w  #$54,d0 ; "Dark Dragon led the evil[Line]hordes of Darkness."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		move.w  #5,((word_FFB7C6-$1000000)).w
-		move.w  #$10,((word_FFB7C4-$1000000)).w
+		move.w  #$10,((CURRENT_OBJECT-$1000000)).w
 		move.w  #$19,d0
-		bsr.w   sub_1304FE
-		clr.l   (dword_FF0EF6).l
+		bsr.w   CheckSkipToTitleScreen
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToWhite).l
-		lea     (PALETTE_1_BIS).l,a0
+		lea     (PALETTE_1_BASE).l,a0
 		moveq   #$1F,d7
 loc_1300C4:
 		move.l  #$EEE0EEE,(a0)+
 		dbf     d7,loc_1300C4
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_13162E
+		bsr.w   InitDisplay_Intro
 		bsr.w   sub_1316A8
 		movea.l (p_IntroTiles_Scene1_1).l,a0
 		lea     ($2000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroTiles_Scene1_2).l,a0
 		lea     ($3800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroPalette_Scene1).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
 		trap    #5
@@ -81,67 +81,67 @@ loc_1300C4:
 		move.w  #$55,d0 ; "The Ancients fought back with[Line]the Powers of Light."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #7
 		move.w  #$56,d0 ; "Dark Dragon was defeated and[Line]cast into another dimension."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_13162E
+		bsr.w   InitDisplay_Intro
 		movea.l (p_IntroPalette_Scene2).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		movea.l (p_IntroTiles_Scene2).l,a0
 		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		trap    #5
 		move.b  #2,((byte_FFF804-$1000000)).w
 		move.w  #5,((word_FFB7C6-$1000000)).w
-		clr.w   ((word_FFB7C4-$1000000)).w
+		clr.w   ((CURRENT_OBJECT-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
-		move.l  #sub_13062A,(dword_FF0EF6).l
+		move.l  #sub_13062A,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$57,d0 ; "The Lord of Darkness vowed to[Line]return in 1,000 years."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		move.w  #$19,d0
-		bsr.w   sub_1304FE
-		clr.l   (dword_FF0EF6).l
+		bsr.w   CheckSkipToTitleScreen
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToWhite).l
-		lea     (PALETTE_1_BIS).l,a0
+		lea     (PALETTE_1_BASE).l,a0
 		moveq   #$1F,d7
 loc_1301F4:
 		move.l  #$EEE0EEE,(a0)+
 		dbf     d7,loc_1301F4
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_13162E
+		bsr.w   InitDisplay_Intro
 		bsr.w   sub_1316A8
 		movea.l (p_IntroTiles_Scene3_1).l,a0
-		lea     (unk_2000).w,a1
+		lea     ($2000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroTiles_Scene3_2).l,a0
 		lea     ($3800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroPalette_Scene1).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
 		movea.l (p_IntroPalette_Scene3).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		trap    #5
@@ -151,105 +151,103 @@ loc_1301F4:
 		move.w  #$58,d0 ; "Time passed, and Dark Dragon[Line]was forgotten by all."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #7
 		move.w  #$59,d0 ; "Ten centuries of peace ruled[Line]the land of Rune."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_13162E
+		bsr.w   InitDisplay_Intro
 		bsr.w   sub_1316D8
 		movea.l (p_IntroTiles_Scene4_1).l,a0
-		lea     (unk_2000).w,a1
+		lea     ($2000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroTiles_Scene4_2).l,a0
 		lea     ($3800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroTiles_Scene4_BG1).l,a0
 		lea     ($6000).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroTiles_Scene4_BG2).l,a0
 		lea     ($7800).w,a1
 		move.w  #$C00,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		movea.l (p_IntroPalette_Scene4).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		trap    #5
 		move.b  #2,((byte_FFF804-$1000000)).w
 		move.w  #$1E,((word_FFB7C6-$1000000)).w
-		clr.w   ((word_FFB7C4-$1000000)).w
+		clr.w   ((CURRENT_OBJECT-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
-		move.l  #sub_130694,(dword_FF0EF6).l
+		move.l  #sub_130694,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$5A,d0 ; "Until the kingdom of Runefaust[Line]brought war and fear to Rune."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #7
 		move.w  #$5B,d0 ; "Hordes of evil creatures[Line]ravaged every land."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #7
 		move.w  #$5C,d0 ; "Here and there, strongholds[Line]of Good still held out..."
 		trap    #DISPLAY_MESSAGE
 		move.w  #$B4,d0 
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #7
 		move.w  #$5D,d0 ; "...awaiting a Hero who could[Line]wield the Powers of Light!"
 		trap    #DISPLAY_MESSAGE
 		move.w  #$168,d0
-		bsr.w   sub_1304FE
+		bsr.w   CheckSkipToTitleScreen
 		trap    #6
-		clr.l   (dword_FF0EF6).l
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
+		sndCom  SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		move.w  #$3C,d0 
-		bsr.w   sub_1304FE
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_TITLE
+		bsr.w   CheckSkipToTitleScreen
+		sndCom  MUSIC_TITLE
 		move.w  #$5A,d0 
-		bsr.w   sub_1304FE
-		move.w  #$280,((word_FFB7C4-$1000000)).w
-loc_1303C4:
+		bsr.w   CheckSkipToTitleScreen
+		move.w  #$280,((CURRENT_OBJECT-$1000000)).w
+TitleScreen:
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_13162E
+		bsr.w   InitDisplay_Intro
 		movea.l (p_TitleScreenLayout).l,a0
-		lea     (byte_FFD000).l,a1
+		lea     (PLANE_A_MAP_LAYOUT).l,a1
 		move.w  #$700,d7
 		jsr     (j_CopyBytes).l
 		movea.l (p_TitleScreenLayout).l,a0
 		lea     ($E000).l,a1
 		move.w  #$380,d0
 		move.w  #2,d1
-		jsr     (j_DMAFromRAMToVRAM).l
+		jsr     (j_ApplyImmediateVramDma).l
 		movea.l (p_TitleScreenPalette).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		movea.l (p_TitleScreenTiles).l,a0
 		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
-		move.l  #sub_130706,(dword_FF0EF6).l
+		move.l  #sub_130706,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		move.w  #$5A0,d0
-		bsr.w   loc_130536
+		bsr.w   sub_130536
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		movea.w #$2700,sp
@@ -257,25 +255,25 @@ loc_1303C4:
 		movea.l (p_Start).w,a0  
 		jmp     (a0)
 
-	; End of function PlayIntro
+    ; End of function PlayIntro
 
-wl_PressStartButton:
-		incbin "data/graphics/specialscreens/titlescreen/wl-pressstartbutton.bin"
-		bsr.w   sub_13162E
+PressStartButtonLayout:
+		incbin "data/graphics/specialscreens/titlescreen/pressstartbuttonlayout.bin"
+		bsr.w   InitDisplay_Intro
 		movea.l (p_TitleScreenLayout).l,a0
 		lea     ($E000).l,a1
 		move.w  #$380,d0
 		move.w  #2,d1
-		jsr     (j_DMAFromRAMToVRAM).l
+		jsr     (j_ApplyImmediateVramDma).l
 		movea.l (p_TitleScreenPalette).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		movea.l (p_TitleScreenTiles).l,a0
 		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$32,d0 
@@ -286,37 +284,43 @@ wl_PressStartButton:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_1304FE:
-		btst    #INPUT_A_START_BIT,(P1_INPUT).l
+; Wait D0 frames while checking for start button input
+
+CheckSkipToTitleScreen:
+		
+		btst    #INPUT_BIT_START,(P1_INPUT).l
 		beq.s   loc_13052A
-		clr.l   (dword_FF0EF6).l
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
+		sndCom  SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		movem.l (sp)+,d7
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_TITLE
-		move.w  #$50,((word_FFB7C4-$1000000)).w 
-		bra.w   loc_1303C4
+		sndCom  MUSIC_TITLE
+		move.w  #$50,((CURRENT_OBJECT-$1000000)).w 
+		bra.w   TitleScreen
 loc_13052A:
 		jsr     (j_WaitForVInt).l
-		dbf     d0,sub_1304FE
+		dbf     d0,CheckSkipToTitleScreen
 		rts
-loc_130536:
-		btst    #INPUT_A_START_BIT,(P1_INPUT).l
+
+    ; End of function CheckSkipToTitleScreen
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_130536:
+		btst    #INPUT_BIT_START,(P1_INPUT).l
 		beq.s   loc_130556
-		clr.l   (dword_FF0EF6).l
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
+		sndCom  SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		movem.l (sp)+,d7
 		rts
 loc_130556:
 		jsr     (j_WaitForVInt).l
-		dbf     d0,loc_130536
+		dbf     d0,sub_130536
 		rts
 
-	; End of function sub_1304FE
+    ; End of function sub_130536
 
 byte_130562:    dc.b 0
 		dc.b 1
@@ -366,16 +370,16 @@ off_130580:     dc.l byte_130740
 
 sub_1305B4:
 		subq.w  #1,((word_FFB7C6-$1000000)).w
-		bne.s   locret_1305F6
+		bne.s   return_1305F6
 		move.w  #5,((word_FFB7C6-$1000000)).w
 loc_1305C0:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.b  byte_130562(pc,d0.w),d0
 		bpl.s   loc_1305D2
-		subi.w  #$E,((word_FFB7C4-$1000000)).w
+		subi.w  #$E,((CURRENT_OBJECT-$1000000)).w
 		bra.s   loc_1305C0
 loc_1305D2:
-		addq.w  #1,((word_FFB7C4-$1000000)).w
+		addq.w  #1,((CURRENT_OBJECT-$1000000)).w
 		lsl.w   #2,d0
 		movea.l off_130580(pc,d0.w),a0
 		move.w  (a0)+,d0
@@ -384,13 +388,13 @@ loc_1305D2:
 		andi.w  #$3F3F,d2
 		move.w  #$100C,d1
 		sub.w   d2,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		bsr.w   sub_13066E
-locret_1305F6:
+return_1305F6:
 		
 		rts
 
-	; End of function sub_1305B4
+    ; End of function sub_1305B4
 
 byte_1305F8:    dc.b 0
 		dc.b 3
@@ -429,16 +433,16 @@ off_130612:     dc.l byte_13100A
 
 sub_13062A:
 		subq.w  #1,((word_FFB7C6-$1000000)).w
-		bne.s   locret_13066C
+		bne.s   return_13066C
 		move.w  #$F,((word_FFB7C6-$1000000)).w
 loc_130636:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.b  byte_1305F8(pc,d0.w),d0
 		bpl.s   loc_130648
-		subi.w  #$10,((word_FFB7C4-$1000000)).w
+		subi.w  #$10,((CURRENT_OBJECT-$1000000)).w
 		bra.s   loc_130636
 loc_130648:
-		addq.w  #1,((word_FFB7C4-$1000000)).w
+		addq.w  #1,((CURRENT_OBJECT-$1000000)).w
 		lsl.w   #2,d0
 		movea.l off_130612(pc,d0.w),a0
 		move.w  (a0)+,d0
@@ -447,13 +451,13 @@ loc_130648:
 		andi.w  #$3F3F,d2
 		move.w  #$100A,d1
 		sub.w   d2,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		bsr.w   sub_13066E
-locret_13066C:
+return_13066C:
 		
 		rts
 
-	; End of function sub_13062A
+    ; End of function sub_13062A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -461,12 +465,12 @@ locret_13066C:
 sub_13066E:
 		lea     ($E000).l,a1
 		move.w  #$780,d0
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		moveq   #2,d1
-		jsr     (sub_278).l
-		jmp     (j_SetVIntParam3).l
+		jsr     (j_ApplyVIntVramDma).l
+		jmp     (j_EnableDmaQueueProcessing).l
 
-	; End of function sub_13066E
+    ; End of function sub_13066E
 
 byte_13068C:    dc.b 0
 		dc.b 1
@@ -482,7 +486,7 @@ byte_13068C:    dc.b 0
 sub_130694:
 		lea     (word_FF031E).l,a0
 		moveq   #3,d6
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		subq.w  #1,d7
 		add.w   d7,(a0)
 		lea     (dword_FF01A0).l,a0
@@ -490,56 +494,56 @@ sub_130694:
 loc_1306B0:
 		move.l  4(a0),(a0)+
 		dbf     d7,loc_1306B0
-		jsr     (j_StoreVDPCommands).l
-		jsr     (j_SetVIntParam3).l
+		jsr     (j_UpdateVdpHScrollData).l
+		jsr     (j_EnableDmaQueueProcessing).l
 		subq.w  #1,((word_FFB7C6-$1000000)).w
-		bne.s   locret_130704
+		bne.s   return_130704
 		move.w  #$19,((word_FFB7C6-$1000000)).w
 loc_1306D0:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.b  byte_13068C(pc,d0.w),d0
 		bpl.s   loc_1306E0
-		subq.w  #4,((word_FFB7C4-$1000000)).w
+		subq.w  #4,((CURRENT_OBJECT-$1000000)).w
 		bra.s   loc_1306D0
 loc_1306E0:
-		addq.w  #1,((word_FFB7C4-$1000000)).w
+		addq.w  #1,((CURRENT_OBJECT-$1000000)).w
 		movea.l (p_IntroPalette_Scene4).l,a0
 		lsl.w   #5,d0
 		adda.w  d0,a0
-		lea     (PALETTE_1).l,a1
+		lea     (PALETTE_1_CURRENT).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
-		jsr     (j_StoreVDPCommandster).l
-locret_130704:
+		jsr     (j_ApplyVIntCramDma).l
+return_130704:
 		
 		rts
 
-	; End of function sub_130694
+    ; End of function sub_130694
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_130706:
-		subq.w  #1,((word_FFB7C4-$1000000)).w
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		subq.w  #1,((CURRENT_OBJECT-$1000000)).w
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		bne.s   loc_130722
 		jsr     sub_80DC
 		bsr.w   sub_13066E
-		move.w  #$28,((word_FFB7C4-$1000000)).w 
+		move.w  #$28,((CURRENT_OBJECT-$1000000)).w 
 		rts
 loc_130722:
 		cmpi.w  #$14,d0
-		bne.s   locret_13073E
-		lea     wl_PressStartButton(pc), a0
+		bne.s   return_13073E
+		lea     PressStartButtonLayout(pc), a0
 		move.w  #$1201,d0
 		move.w  #$711,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		bsr.w   sub_13066E
-locret_13073E:
+return_13073E:
 		
 		rts
 
-	; End of function sub_130706
+    ; End of function sub_130706
 
 byte_130740:    dc.b 4
 		dc.b   4
@@ -4366,38 +4370,39 @@ byte_131528:    dc.b $A
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_13162E:
+InitDisplay_Intro:
+		
 		jsr     (j_DisableDisplayAndInterrupts).l
 		moveq   #$3F,d0 
 		jsr     (j_InitSprites).l
 		jsr     (sub_324).l
-		move.w  #$8C00,d0
-		jsr     (j_SetVDPRegStatus).w
-		move.w  #$9010,d0
-		jsr     (j_SetVDPRegStatus).w
-		move.w  #$8238,d0
-		jsr     (j_SetVDPRegStatus).w
-		move.w  #$8407,d0
-		jsr     (j_SetVDPRegStatus).w
-		move.w  #$8B03,d0
-		jsr     (j_SetVDPRegStatus).w
+		move.w  #$8C00,d0       ; H32 cell mode, no interlace
+		jsr     (j_SetVdpReg).w
+		move.w  #$9010,d0       ; scroll size : V64 cell, H32 cell
+		jsr     (j_SetVdpReg).w
+		move.w  #$8238,d0       ; scroll A table VRAM address : E000
+		jsr     (j_SetVdpReg).w
+		move.w  #$8407,d0       ; scroll B table VRAM address : E000
+		jsr     (j_SetVdpReg).w
+		move.w  #$8B03,d0       ; disable external interrupt, scanline H scroll
+		jsr     (j_SetVdpReg).w
 		move.w  #0,d6
-		jsr     (j_ClearVScrollStuff).w
+		jsr     (j_UpdateForegroundVScrollData).w
 		move.w  #$100,d6
-		jsr     (j_ClearOtherVScrollStuff).w
-		jsr     (j_SetVIntParam3).w
-		lea     (byte_FFD000).l,a0
+		jsr     (j_UpdateBackgroundVScrollData).w
+		jsr     (j_EnableDmaQueueProcessing).w
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		move.w  #$3FF,d7
 loc_131688:
 		clr.l   (a0)+
 		dbf     d7,loc_131688
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
-		jmp     (j_DMAFromRAMToVRAM).l
+		jmp     (j_ApplyImmediateVramDma).l
 
-	; End of function sub_13162E
+    ; End of function InitDisplay_Intro
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4407,13 +4412,13 @@ sub_1316A8:
 		lea     (byte_FFD140).l,a1
 		move.w  #$300,d7
 		jsr     (j_CopyBytes).l
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
-		jmp     (j_DMAFromRAMToVRAM).l
+		jmp     (j_ApplyImmediateVramDma).l
 
-	; End of function sub_1316A8
+    ; End of function sub_1316A8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4427,13 +4432,13 @@ sub_1316D8:
 		lea     (byte_FFD940).l,a1
 		move.w  #$300,d7
 		jsr     (j_CopyBytes).l
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
-		jmp     (j_DMAFromRAMToVRAM).l
+		jmp     (j_ApplyImmediateVramDma).l
 
-	; End of function sub_1316D8
+    ; End of function sub_1316D8
 
 byte_13171C:    dc.b 3
 		dc.b   0
@@ -5221,4 +5226,4 @@ pt_TextBanks:   dc.l TextBank00
 		dc.l TextBank06
 		dc.l TextBank07
 		dc.l TextBank08
-		dcb.b $56D6,$FF
+byte_13E92A:    dcb.b $56D6,$FF

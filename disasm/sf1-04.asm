@@ -1,17 +1,17 @@
 
 ; GAME SECTION 04 :
-; 
+; Stats engine, ...
 ; FREE SPACE : 123 bytes.
 
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_InitGameSettings:
+j_InitializeNewGame:
 		
-		jmp     InitGameSettings(pc)
+		jmp     InitializeNewGame(pc)
 
-	; End of function j_InitGameSettings
+    ; End of function j_InitializeNewGame
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -19,16 +19,16 @@ j_InitGameSettings:
 sub_20004:
 		jmp     sub_21B80(pc)
 
-	; End of function sub_20004
+    ; End of function sub_20004
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadBattleStats:
+j_LoadCombatantData:
 		
-		jmp     LoadBattleStats(pc)
+		jmp     LoadCombatantData(pc)
 
-	; End of function j_LoadBattleStats
+    ; End of function j_LoadCombatantData
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -36,7 +36,7 @@ j_LoadBattleStats:
 sub_2000C:
 		jmp     sub_21BF6(pc)
 
-	; End of function sub_2000C
+    ; End of function sub_2000C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -44,15 +44,16 @@ sub_2000C:
 sub_20010:
 		jmp     sub_21DBC(pc)
 
-	; End of function sub_20010
+    ; End of function sub_20010
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20014:
-		jmp     sub_22026(pc)
+j_ResetCombatants:
+		
+		jmp     ResetCombatants(pc)
 
-	; End of function sub_20014
+    ; End of function j_ResetCombatants
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -61,7 +62,7 @@ j_JoinBattleParty:
 		
 		jmp     JoinBattleParty(pc)
 
-	; End of function j_JoinBattleParty
+    ; End of function j_JoinBattleParty
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -70,7 +71,7 @@ j_LeaveBattleParty:
 		
 		jmp     LeaveBattleParty(pc)
 
-	; End of function j_LeaveBattleParty
+    ; End of function j_LeaveBattleParty
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -78,7 +79,7 @@ j_LeaveBattleParty:
 sub_20020:
 		jmp     sub_21ED8(pc)
 
-	; End of function sub_20020
+    ; End of function sub_20020
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -86,7 +87,7 @@ sub_20020:
 sub_20024:
 		jmp     sub_21F16(pc)
 
-	; End of function sub_20024
+    ; End of function sub_20024
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -94,7 +95,7 @@ sub_20024:
 sub_20028:
 		jmp     sub_21F64(pc)
 
-	; End of function sub_20028
+    ; End of function sub_20028
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -102,32 +103,35 @@ sub_20028:
 j_JoinForce:
 		jmp     JoinForce(pc)   
 
-	; End of function j_JoinForce
+    ; End of function j_JoinForce
 
-		jmp     IsInForce_0(pc) 
-
-; =============== S U B R O U T I N E =======================================
-
-sub_20034:
-		jmp     sub_2209A(pc)
-
-	; End of function sub_20034
-
+j_dup_IsInForce:jmp     dup_IsInForce(pc)
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20038:
-		jmp     sub_220A4(pc)
+j_PopulateForceMembersList:
+		
+		jmp     PopulateForceMembersList(pc)
 
-	; End of function sub_20038
+    ; End of function j_PopulateForceMembersList
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2003C:
-		jmp     sub_220AE(pc)
+j_PopulateBattlePartyMembersList:
+		
+		jmp     PopulateBattlePartyMembersList(pc)
 
-	; End of function sub_2003C
+    ; End of function j_PopulateBattlePartyMembersList
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_PopulateReservePartyMembersList:
+		
+		jmp     PopulateReservePartyMembersList(pc)
+
+    ; End of function j_PopulateReservePartyMembersList
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -135,420 +139,417 @@ sub_2003C:
 sub_20040:
 		jmp     sub_2204C(pc)
 
-	; End of function sub_20040
+    ; End of function sub_20040
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20044:
-		jmp     sub_22220(pc)
-
-	; End of function sub_20044
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetTargetPosition:
+j_RefillWholeForceHP:
 		
-		jmp     GetTargetPosition(pc)
+		jmp     RefillWholeForceHP(pc)
 
-	; End of function j_GetTargetPosition
+    ; End of function j_RefillWholeForceHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetStatusCounter:
+j_GetCombatantPosition:
 		
-		jmp     GetStatusCounter(pc)
+		jmp     GetCombatantPosition(pc)
 
-	; End of function j_GetStatusCounter
+    ; End of function j_GetCombatantPosition
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadClassName:
+j_GetStatusEffectCounter:
 		
-		jmp     LoadClassName(pc)
+		jmp     GetStatusEffectCounter(pc)
 
-	; End of function j_LoadClassName
+    ; End of function j_GetStatusEffectCounter
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetTargetID:
+j_GetDisplayedNameAddress:
 		
-		jmp     GetTargetID(pc) 
+		jmp     GetDisplayedNameAddress(pc)
 
-	; End of function j_GetTargetID
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetTargetX:
-		jmp     GetTargetX(pc)  
-
-	; End of function j_GetTargetX
+    ; End of function j_GetDisplayedNameAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetTargetY:
-		jmp     GetTargetY(pc)  
+j_GetEntity:
+		jmp     GetEntity(pc)   
 
-	; End of function j_GetTargetY
+    ; End of function j_GetEntity
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetTargetATT:
+j_GetCombatantX:
 		
-		jmp     GetTargetATT(pc)
+		jmp     GetCombatantX(pc)
 
-	; End of function j_GetTargetATT
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetTargetDEF:
-		
-		jmp     GetTargetDEF(pc)
-
-	; End of function j_GetTargetDEF
+    ; End of function j_GetCombatantX
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetTargetAGI:
+j_GetCombatantY:
 		
-		jmp     GetTargetAGI(pc)
+		jmp     GetCombatantY(pc)
 
-	; End of function j_GetTargetAGI
+    ; End of function j_GetCombatantY
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetTargetMOVE:
+j_GetModifiedAttack:
 		
-		jmp     GetTargetMOVE(pc)
+		jmp     GetModifiedAttack(pc)
 
-	; End of function j_GetTargetMOVE
+    ; End of function j_GetModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetTargetCRIT:
+j_GetModifiedDefense:
 		
-		jmp     GetTargetCRIT(pc)
+		jmp     GetModifiedDefense(pc)
 
-	; End of function j_GetTargetCRIT
+    ; End of function j_GetModifiedDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetTargetDoubleAttack:
+j_GetModifiedAgility:
 		
-		jmp     GetTargetDoubleAttack(pc)
+		jmp     GetModifiedAgility(pc)
 
-	; End of function j_GetTargetDoubleAttack
+    ; End of function j_GetModifiedAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberClass:
+j_GetModifiedMove:
 		
-		jmp     GetForceMemberClass(pc)
+		jmp     GetModifiedMove(pc)
 
-	; End of function j_GetForceMemberClass
+    ; End of function j_GetModifiedMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberLevel:
+j_GetModifiedCritical:
 		
-		jmp     GetForceMemberLevel(pc)
+		jmp     GetModifiedCritical(pc)
 
-	; End of function j_GetForceMemberLevel
+    ; End of function j_GetModifiedCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberATT:
+j_GetModifiedDoubleAttackMode:
 		
-		jmp     GetForceMemberATT(pc)
+		jmp     GetModifiedDoubleAttackMode(pc)
 
-	; End of function j_GetForceMemberATT
+    ; End of function j_GetModifiedDoubleAttackMode
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberDEF:
-		
-		jmp     GetForceMemberDEF(pc)
+j_GetClass:
+		jmp     GetClass(pc)    
 
-	; End of function j_GetForceMemberDEF
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetForceMemberAGI:
-		
-		jmp     GetForceMemberAGI(pc)
-
-	; End of function j_GetForceMemberAGI
-
-j_GetForceMemberMOVE:
-		jmp     GetForceMemberMOVE(pc)
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetForceMemberCRIT:
-		
-		jmp     GetForceMemberCRIT(pc)
-
-	; End of function j_GetForceMemberCRIT
+    ; End of function j_GetClass
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberEXP:
-		
-		jmp     GetForceMemberEXP(pc)
+j_GetLevel:
+		jmp     GetLevel(pc)    
 
-	; End of function j_GetForceMemberEXP
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetForceMemberMaxHP:
-		
-		jmp     GetForceMemberMaxHP(pc)
-
-	; End of function j_GetForceMemberMaxHP
+    ; End of function j_GetLevel
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberHP:
+j_GetBaseAttack:
 		
-		jmp     GetForceMemberHP(pc)
+		jmp     GetBaseAttack(pc)
 
-	; End of function j_GetForceMemberHP
+    ; End of function j_GetBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberMaxMP:
+j_GetBaseDefense:
 		
-		jmp     GetForceMemberMaxMP(pc)
+		jmp     GetBaseDefense(pc)
 
-	; End of function j_GetForceMemberMaxMP
+    ; End of function j_GetBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberMP:
+j_GetBaseAgility:
 		
-		jmp     GetForceMemberMP(pc)
+		jmp     GetBaseAgility(pc)
 
-	; End of function j_GetForceMemberMP
+    ; End of function j_GetBaseAgility
+
+j_GetBaseMove:  jmp     GetBaseMove(pc) 
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetBaseCritical:
+		
+		jmp     GetBaseCritical(pc)
+
+    ; End of function j_GetBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceMemberStatus:
+j_GetExperience:
 		
-		jmp     GetForceMemberStatus(pc)
+		jmp     GetExperience(pc)
 
-	; End of function j_GetForceMemberStatus
+    ; End of function j_GetExperience
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetClassFromForceID:
-		
-		jmp     GetClassFromForceID(pc)
+j_GetMaxHP:
+		jmp     GetMaxHP(pc)    
 
-	; End of function j_GetClassFromForceID
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetLevelFromForceID:
-		
-		jmp     GetLevelFromForceID(pc)
-
-	; End of function j_GetLevelFromForceID
+    ; End of function j_GetMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetATTFromForceID:
+j_GetCurrentHP:
 		
-		jmp     GetATTFromForceID(pc)
+		jmp     GetCurrentHP(pc)
 
-	; End of function j_GetATTFromForceID
+    ; End of function j_GetCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetDEFFromForceID:
-		
-		jmp     GetDEFFromForceID(pc)
+j_GetMaxMP:
+		jmp     GetMaxMP(pc)    
 
-	; End of function j_GetDEFFromForceID
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetAGIFromForceID:
-		
-		jmp     GetAGIFromForceID(pc)
-
-	; End of function j_GetAGIFromForceID
+    ; End of function j_GetMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetMOVEFromForceID:
+j_GetCurrentMP:
 		
-		jmp     GetMOVEFromForceID(pc)
+		jmp     GetCurrentMP(pc)
 
-	; End of function j_GetMOVEFromForceID
+    ; End of function j_GetCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetCRITFromForceID:
+j_GetStatusEffects:
 		
-		jmp     GetCRITFromForceID(pc)
+		jmp     GetStatusEffects(pc)
 
-	; End of function j_GetCRITFromForceID
+    ; End of function j_GetStatusEffects
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetEXPFromForceID:
+j_GetClassForCombatant:
 		
-		jmp     GetEXPFromForceID(pc)
+		jmp     GetClassForCombatant(pc)
 
-	; End of function j_GetEXPFromForceID
+    ; End of function j_GetClassForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetStatusFromForceID:
+j_GetLevelForCombatant:
 		
-		jmp     GetStatusFromForceID(pc)
+		jmp     GetLevelForCombatant(pc)
 
-	; End of function j_GetStatusFromForceID
+    ; End of function j_GetLevelForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetMaxHPFromForceID:
+j_GetBaseAttackForCombatant:
 		
-		jmp     GetMaxHPFromForceID(pc)
+		jmp     GetBaseAttackForCombatant(pc)
 
-	; End of function j_GetMaxHPFromForceID
+    ; End of function j_GetBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetHPFromForceID:
+j_GetBaseDefenseForCombatant:
 		
-		jmp     GetHPFromForceID(pc)
+		jmp     GetBaseDefenseForCombatant(pc)
 
-	; End of function j_GetHPFromForceID
+    ; End of function j_GetBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetMaxMPFromForceID:
+j_GetBaseAgilityForCombatant:
 		
-		jmp     GetMaxMPFromForceID(pc)
+		jmp     GetBaseAgilityForCombatant(pc)
 
-	; End of function j_GetMaxMPFromForceID
+    ; End of function j_GetBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetMPFromForceID:
+j_GetBaseMoveForCombatant:
 		
-		jmp     GetMPFromForceID(pc)
+		jmp     GetBaseMoveForCombatant(pc)
 
-	; End of function j_GetMPFromForceID
+    ; End of function j_GetBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceStatsAddress:
+j_GetBaseCriticalForCombatant:
 		
-		jmp     GetForceStatsAddress(pc)
+		jmp     GetBaseCriticalForCombatant(pc)
 
-	; End of function j_GetForceStatsAddress
+    ; End of function j_GetBaseCriticalForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceItemsAddress:
+j_GetExperienceForCombatant:
 		
-		jmp     GetForceItemsAddress(pc)
+		jmp     GetExperienceForCombatant(pc)
 
-	; End of function j_GetForceItemsAddress
+    ; End of function j_GetExperienceForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceSpellsAddress:
+j_GetStatusEffectsForCombatant:
 		
-		jmp     GetForceSpellsAddress(pc)
+		jmp     GetStatusEffectsForCombatant(pc)
 
-	; End of function j_GetForceSpellsAddress
+    ; End of function j_GetStatusEffectsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceStatsFromForceID:
+j_GetMaxHpForCombatant:
 		
-		jmp     GetForceStatsFromForceID(pc)
+		jmp     GetMaxHpForCombatant(pc)
 
-	; End of function j_GetForceStatsFromForceID
+    ; End of function j_GetMaxHpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceItemsFromForceID:
+j_GetCurrentHpForCombatant:
 		
-		jmp     GetForceItemsFromForceID(pc)
+		jmp     GetCurrentHpForCombatant(pc)
 
-	; End of function j_GetForceItemsFromForceID
+    ; End of function j_GetCurrentHpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetForceSpellsFromForceID:
+j_GetMaxMpForCombatant:
 		
-		jmp     GetForceSpellsFromForceID(pc)
+		jmp     GetMaxMpForCombatant(pc)
 
-	; End of function j_GetForceSpellsFromForceID
+    ; End of function j_GetMaxMpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetPosition:
+j_GetCurrentMpForCombatant:
 		
-		jmp     SetTargetPosition(pc)
+		jmp     GetCurrentMpForCombatant(pc)
 
-	; End of function j_SetTargetPosition
+    ; End of function j_GetCurrentMpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetStatus:
+j_GetEntityStatsAddress:
 		
-		jmp     SetTargetStatus(pc)
+		jmp     GetEntityStatsAddress(pc)
 
-	; End of function j_SetTargetStatus
+    ; End of function j_GetEntityStatsAddress
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetEntityItemsAddress:
+		
+		jmp     GetEntityItemsAddress(pc)
+
+    ; End of function j_GetEntityItemsAddress
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetCharacterSpellsAddress:
+		
+		jmp     GetCharacterSpellsAddress(pc)
+
+    ; End of function j_GetCharacterSpellsAddress
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetEntityStatsAddressForCombatant:
+		
+		jmp     GetEntityStatsAddressForCombatant(pc)
+
+    ; End of function j_GetEntityStatsAddressForCombatant
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetEntityItemsAddressForCombatant:
+		
+		jmp     GetEntityItemsAddressForCombatant(pc)
+
+    ; End of function j_GetEntityItemsAddressForCombatant
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetEntitySpellsAddressForCombatant:
+		
+		jmp     GetEntitySpellsAddressForCombatant(pc)
+
+    ; End of function j_GetEntitySpellsAddressForCombatant
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_SetCombatantPosition:
+		
+		jmp     SetCombatantPosition(pc)
+
+    ; End of function j_SetCombatantPosition
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_SetStatusEffectCounter:
+		
+		jmp     SetStatusEffectCounter(pc)
+
+    ; End of function j_SetStatusEffectCounter
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -557,752 +558,749 @@ j_LoadForceMemberName:
 		
 		jmp     LoadForceMemberName(pc)
 
-	; End of function j_LoadForceMemberName
+    ; End of function j_LoadForceMemberName
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetID:
+j_SetEntityIndex:
 		
-		jmp     SetTargetID(pc) 
+		jmp     SetEntityIndex(pc)
 
-	; End of function j_SetTargetID
+    ; End of function j_SetEntityIndex
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetX:
-		jmp     SetTargetX(pc)  
+j_SetCombatantX:
+		
+		jmp     SetCombatantX(pc)
 
-	; End of function j_SetTargetX
+    ; End of function j_SetCombatantX
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetY:
-		jmp     SetTargetY(pc)  
+j_SetCombatantY:
+		
+		jmp     SetCombatantY(pc)
 
-	; End of function j_SetTargetY
+    ; End of function j_SetCombatantY
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetATT:
+j_SetModifiedAttack:
 		
-		jmp     SetTargetATT(pc)
+		jmp     SetModifiedAttack(pc)
 
-	; End of function j_SetTargetATT
+    ; End of function j_SetModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetDEF:
+j_SetModifiedDefense:
 		
-		jmp     SetTargetDEF(pc)
+		jmp     SetModifiedDefense(pc)
 
-	; End of function j_SetTargetDEF
+    ; End of function j_SetModifiedDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetAGI:
+j_SetModifiedAgility:
 		
-		jmp     SetTargetAGI(pc)
+		jmp     SetModifiedAgility(pc)
 
-	; End of function j_SetTargetAGI
+    ; End of function j_SetModifiedAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetMOVE:
+j_SetModifiedMove:
 		
-		jmp     SetTargetMOVE(pc)
+		jmp     SetModifiedMove(pc)
 
-	; End of function j_SetTargetMOVE
+    ; End of function j_SetModifiedMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetCRIT:
+j_SetModifiedCritical:
 		
-		jmp     SetTargetCRIT(pc)
+		jmp     SetModifiedCritical(pc)
 
-	; End of function j_SetTargetCRIT
+    ; End of function j_SetModifiedCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetTargetDoubleAttack:
+j_SetModifiedDoubleAttackMode:
 		
-		jmp     SetTargetDoubleAttack(pc)
+		jmp     SetModifiedDoubleAttackMode(pc)
 
-	; End of function j_SetTargetDoubleAttack
+    ; End of function j_SetModifiedDoubleAttackMode
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberClass:
-		
-		jmp     SetForceMemberClass(pc)
+j_SetClass:
+		jmp     SetClass(pc)    
 
-	; End of function j_SetForceMemberClass
+    ; End of function j_SetClass
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberLevel:
-		
-		jmp     SetForceMemberLevel(pc)
+j_SetLevel:
+		jmp     SetLevel(pc)    
 
-	; End of function j_SetForceMemberLevel
+    ; End of function j_SetLevel
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberATT:
+j_SetBaseAttack:
 		
-		jmp     SetForceMemberATT(pc)
+		jmp     SetBaseAttack(pc)
 
-	; End of function j_SetForceMemberATT
+    ; End of function j_SetBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberDEF:
+j_SetBaseDefense:
 		
-		jmp     SetForceMemberDEF(pc)
+		jmp     SetBaseDefense(pc)
 
-	; End of function j_SetForceMemberDEF
+    ; End of function j_SetBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberAGI:
+j_SetBaseAgility:
 		
-		jmp     SetForceMemberAGI(pc)
+		jmp     SetBaseAgility(pc)
 
-	; End of function j_SetForceMemberAGI
+    ; End of function j_SetBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberMOVE:
+j_SetBaseMove:
 		
-		jmp     SetForceMemberMOVE(pc)
+		jmp     SetBaseMove(pc) 
 
-	; End of function j_SetForceMemberMOVE
+    ; End of function j_SetBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberCRIT:
+j_SetBaseCritical:
 		
-		jmp     SetForceMemberCRIT(pc)
+		jmp     SetBaseCritical(pc)
 
-	; End of function j_SetForceMemberCRIT
+    ; End of function j_SetBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberEXP:
+j_SetExperience:
 		
-		jmp     SetForceMemberEXP(pc)
+		jmp     SetExperience(pc)
 
-	; End of function j_SetForceMemberEXP
+    ; End of function j_SetExperience
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberMaxHP:
-		
-		jmp     SetForceMemberMaxHP(pc)
+j_SetMaxHP:
+		jmp     SetMaxHP(pc)    
 
-	; End of function j_SetForceMemberMaxHP
+    ; End of function j_SetMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberHP:
+j_SetCurrentHP:
 		
-		jmp     SetForceMemberHP(pc)
+		jmp     SetCurrentHP(pc)
 
-	; End of function j_SetForceMemberHP
+    ; End of function j_SetCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberMaxMP:
-		
-		jmp     SetForceMemberMaxMP(pc)
+j_SetMaxMP:
+		jmp     SetMaxMP(pc)    
 
-	; End of function j_SetForceMemberMaxMP
+    ; End of function j_SetMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberMP:
+j_SetCurrentMP:
 		
-		jmp     SetForceMemberMP(pc)
+		jmp     SetCurrentMP(pc)
 
-	; End of function j_SetForceMemberMP
+    ; End of function j_SetCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetForceMemberStatus:
+j_SetStatusEffects:
 		
-		jmp     SetForceMemberStatus(pc)
+		jmp     SetStatusEffects(pc)
 
-	; End of function j_SetForceMemberStatus
+    ; End of function j_SetStatusEffects
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetClassFromForceID:
+j_SetClassForCombatant:
 		
-		jmp     SetClassFromForceID(pc)
+		jmp     SetClassForCombatant(pc)
 
-	; End of function j_SetClassFromForceID
+    ; End of function j_SetClassForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetLevelFromForceID:
+j_SetLevelForCombatant:
 		
-		jmp     SetLevelFromForceID(pc)
+		jmp     SetLevelForCombatant(pc)
 
-	; End of function j_SetLevelFromForceID
+    ; End of function j_SetLevelForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetATTFromForceID:
+j_SetBaseAttackForCombatant:
 		
-		jmp     SetATTFromForceID(pc)
+		jmp     SetBaseAttackForCombatant(pc)
 
-	; End of function j_SetATTFromForceID
+    ; End of function j_SetBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetDEFFromForceID:
+j_SetBaseDefenseForCombatant:
 		
-		jmp     SetDEFFromForceID(pc)
+		jmp     SetBaseDefenseForCombatant(pc)
 
-	; End of function j_SetDEFFromForceID
+    ; End of function j_SetBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetAGIFromForceID:
+j_SetBaseAgilityForCombatant:
 		
-		jmp     SetAGIFromForceID(pc)
+		jmp     SetBaseAgilityForCombatant(pc)
 
-	; End of function j_SetAGIFromForceID
+    ; End of function j_SetBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetMOVEFromForceID:
+j_SetBaseMoveForCombatant:
 		
-		jmp     SetMOVEFromForceID(pc)
+		jmp     SetBaseMoveForCombatant(pc)
 
-	; End of function j_SetMOVEFromForceID
+    ; End of function j_SetBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetCRITFromForceID:
+j_SetBaseCriticalForCombatant:
 		
-		jmp     SetCRITFromForceID(pc)
+		jmp     SetBaseCriticalForCombatant(pc)
 
-	; End of function j_SetCRITFromForceID
+    ; End of function j_SetBaseCriticalForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetEXPFromForceID:
+j_SetExperienceForCombatant:
 		
-		jmp     SetEXPFromForceID(pc)
+		jmp     SetExperienceForCombatant(pc)
 
-	; End of function j_SetEXPFromForceID
+    ; End of function j_SetExperienceForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetMaxHPFromForceID:
+j_SetMaxHPforCombatant:
 		
-		jmp     SetMaxHPFromForceID(pc)
+		jmp     SetMaxHPforCombatant(pc)
 
-	; End of function j_SetMaxHPFromForceID
+    ; End of function j_SetMaxHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetHPFromForceID:
+j_SetCurrentHPforCombatant:
 		
-		jmp     SetHPFromForceID(pc)
+		jmp     SetCurrentHPforCombatant(pc)
 
-	; End of function j_SetHPFromForceID
+    ; End of function j_SetCurrentHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetMaxMPFromForceID:
+j_SetMaxMPforCombatant:
 		
-		jmp     SetMaxMPFromForceID(pc)
+		jmp     SetMaxMPforCombatant(pc)
 
-	; End of function j_SetMaxMPFromForceID
+    ; End of function j_SetMaxMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetMPFromForceID:
+j_SetCurrentMPforCombatant:
 		
-		jmp     SetMPFromForceID(pc)
+		jmp     SetCurrentMPforCombatant(pc)
 
-	; End of function j_SetMPFromForceID
+    ; End of function j_SetCurrentMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetStatusFromForceID:
+j_SetStatusEffectsForCombatant:
 		
-		jmp     SetStatusFromForceID(pc)
+		jmp     SetStatusEffectsForCombatant(pc)
 
-	; End of function j_SetStatusFromForceID
+    ; End of function j_SetStatusEffectsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberEXP:
+j_IncreaseExperience:
 		
-		jmp     IncreaseForceMemberEXP(pc)
+		jmp     IncreaseExperience(pc)
 
-	; End of function j_IncreaseForceMemberEXP
+    ; End of function j_IncreaseExperience
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberMP:
+j_IncreaseCurrentMP:
 		
-		jmp     IncreaseForceMemberMP(pc)
+		jmp     IncreaseCurrentMP(pc)
 
-	; End of function j_IncreaseForceMemberMP
+    ; End of function j_IncreaseCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseTargetATT:
+j_IncreaseModifiedAttack:
 		
-		jmp     IncreaseTargetATT(pc)
+		jmp     IncreaseModifiedAttack(pc)
 
-	; End of function j_IncreaseTargetATT
+    ; End of function j_IncreaseModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseTargetDEF:
+j_IncreaseModifiedDefense:
 		
-		jmp     IncreaseTargetDEF(pc)
+		jmp     IncreaseModifiedDefense(pc)
 
-	; End of function j_IncreaseTargetDEF
+    ; End of function j_IncreaseModifiedDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseTargetAGI:
+j_IncreaseModifiedAgility:
 		
-		jmp     IncreaseTargetAGI(pc)
+		jmp     IncreaseModifiedAgility(pc)
 
-	; End of function j_IncreaseTargetAGI
+    ; End of function j_IncreaseModifiedAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseTargetMOVE:
+j_IncreaseModifiedMove:
 		
-		jmp     IncreaseTargetMOVE(pc)
+		jmp     IncreaseModifiedMove(pc)
 
-	; End of function j_IncreaseTargetMOVE
+    ; End of function j_IncreaseModifiedMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseTargetCRIT:
+j_IncreaseModifiedCritical:
 		
-		jmp     IncreaseTargetCRIT(pc)
+		jmp     IncreaseModifiedCritical(pc)
 
-	; End of function j_IncreaseTargetCRIT
+    ; End of function j_IncreaseModifiedCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberLevel:
+j_IncreaseLevel:
 		
-		jmp     IncreaseForceMemberLevel(pc)
+		jmp     IncreaseLevel(pc)
 
-	; End of function j_IncreaseForceMemberLevel
+    ; End of function j_IncreaseLevel
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberATT:
+j_IncreaseBaseAttack:
 		
-		jmp     IncreaseForceMemberATT(pc)
+		jmp     IncreaseBaseAttack(pc)
 
-	; End of function j_IncreaseForceMemberATT
+    ; End of function j_IncreaseBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberDEF:
+j_IncreaseBaseDefense:
 		
-		jmp     IncreaseForceMemberDEF(pc)
+		jmp     IncreaseBaseDefense(pc)
 
-	; End of function j_IncreaseForceMemberDEF
+    ; End of function j_IncreaseBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberAGI:
+j_IncreaseBaseAgility:
 		
-		jmp     IncreaseForceMemberAGI(pc)
+		jmp     IncreaseBaseAgility(pc)
 
-	; End of function j_IncreaseForceMemberAGI
+    ; End of function j_IncreaseBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberMOVE:
+j_IncreaseBaseMove:
 		
-		jmp     IncreaseForceMemberMOVE(pc)
+		jmp     IncreaseBaseMove(pc)
 
-	; End of function j_IncreaseForceMemberMOVE
+    ; End of function j_IncreaseBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberCRIT:
+j_IncreaseBaseCritical:
 		
-		jmp     IncreaseForceMemberCRIT(pc)
+		jmp     IncreaseBaseCritical(pc)
 
-	; End of function j_IncreaseForceMemberCRIT
+    ; End of function j_IncreaseBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberMaxHP:
+j_IncreaseMaxHP:
 		
-		jmp     IncreaseForceMemberMaxHP(pc)
+		jmp     IncreaseMaxHP(pc)
 
-	; End of function j_IncreaseForceMemberMaxHP
+    ; End of function j_IncreaseMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberHP:
+j_IncreaseCurrentHP:
 		
-		jmp     IncreaseForceMemberHP(pc)
+		jmp     IncreaseCurrentHP(pc)
 
-	; End of function j_IncreaseForceMemberHP
+    ; End of function j_IncreaseCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseForceMemberMaxMP:
+j_IncreaseMaxMP:
 		
-		jmp     IncreaseForceMemberMaxMP(pc)
+		jmp     IncreaseMaxMP(pc)
 
-	; End of function j_IncreaseForceMemberMaxMP
+    ; End of function j_IncreaseMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseLevelFromForceID:
+j_IncreaseLevelForCombatant:
 		
-		jmp     IncreaseLevelFromForceID(pc)
+		jmp     IncreaseLevelForCombatant(pc)
 
-	; End of function j_IncreaseLevelFromForceID
+    ; End of function j_IncreaseLevelForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseATTFromForceID:
+j_IncreaseBaseAttackForCombatant:
 		
-		jmp     IncreaseATTFromForceID(pc)
+		jmp     IncreaseBaseAttackForCombatant(pc)
 
-	; End of function j_IncreaseATTFromForceID
+    ; End of function j_IncreaseBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseDEFFromForceID:
+j_IncreaseBaseDefenseForCombatant:
 		
-		jmp     IncreaseDEFFromForceID(pc)
+		jmp     IncreaseBaseDefenseForCombatant(pc)
 
-	; End of function j_IncreaseDEFFromForceID
+    ; End of function j_IncreaseBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseAGIFromForceID:
+j_IncreaseBaseAgilityForCombatant:
 		
-		jmp     IncreaseAGIFromForceID(pc)
+		jmp     IncreaseBaseAgilityForCombatant(pc)
 
-	; End of function j_IncreaseAGIFromForceID
+    ; End of function j_IncreaseBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseMOVEFromForceID:
+j_IncreaseBaseMoveForCombatant:
 		
-		jmp     IncreaseMOVEFromForceID(pc)
+		jmp     IncreaseBaseMoveForCombatant(pc)
 
-	; End of function j_IncreaseMOVEFromForceID
+    ; End of function j_IncreaseBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseCRITFromForceID:
+j_IncreaseBaseCriticalForCombatant:
 		
-		jmp     IncreaseCRITFromForceID(pc)
+		jmp     IncreaseBaseCriticalForCombatant(pc)
 
-	; End of function j_IncreaseCRITFromForceID
+    ; End of function j_IncreaseBaseCriticalForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseEXPFromForceID:
+j_IncreaseExperienceForCombatant:
 		
-		jmp     IncreaseEXPFromForceID(pc)
+		jmp     IncreaseExperienceForCombatant(pc)
 
-	; End of function j_IncreaseEXPFromForceID
+    ; End of function j_IncreaseExperienceForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseMaxHPFromForceID:
+j_IncreaseMaxHPforCombatant:
 		
-		jmp     IncreaseMaxHPFromForceID(pc)
+		jmp     IncreaseMaxHPforCombatant(pc)
 
-	; End of function j_IncreaseMaxHPFromForceID
+    ; End of function j_IncreaseMaxHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseHPFromForceID:
+j_IncreaseCurrentHPforCombatant:
 		
-		jmp     IncreaseHPFromForceID(pc)
+		jmp     IncreaseCurrentHPforCombatant(pc)
 
-	; End of function j_IncreaseHPFromForceID
+    ; End of function j_IncreaseCurrentHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseMaxMPFromForceID:
+j_IncreaseMaxMPforCombatant:
 		
-		jmp     IncreaseMaxMPFromForceID(pc)
+		jmp     IncreaseMaxMPforCombatant(pc)
 
-	; End of function j_IncreaseMaxMPFromForceID
+    ; End of function j_IncreaseMaxMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseMPFromForceID:
+j_IncreaseCurrentMPforCombatant:
 		
-		jmp     IncreaseMPFromForceID(pc)
+		jmp     IncreaseCurrentMPforCombatant(pc)
 
-	; End of function j_IncreaseMPFromForceID
+    ; End of function j_IncreaseCurrentMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseTargetATT:
+j_DecreaseModifiedAttack:
 		
-		jmp     DecreaseTargetATT(pc)
+		jmp     DecreaseModifiedAttack(pc)
 
-	; End of function j_DecreaseTargetATT
+    ; End of function j_DecreaseModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseTargetDEF:
+j_DecreaseModifiedDefense:
 		
-		jmp     DecreaseTargetDEF(pc)
+		jmp     DecreaseModifiedDefense(pc)
 
-	; End of function j_DecreaseTargetDEF
+    ; End of function j_DecreaseModifiedDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseTargetAGI:
+j_DecreaseModifiedAgility:
 		
-		jmp     DecreaseTargetAGI(pc)
+		jmp     DecreaseModifiedAgility(pc)
 
-	; End of function j_DecreaseTargetAGI
+    ; End of function j_DecreaseModifiedAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseTargetMOVE:
+j_DecreaseModifiedMove:
 		
-		jmp     DecreaseTargetMOVE(pc)
+		jmp     DecreaseModifiedMove(pc)
 
-	; End of function j_DecreaseTargetMOVE
+    ; End of function j_DecreaseModifiedMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberMaxHP:
+j_DecreaseMaxHP:
 		
-		jmp     DecreaseForceMemberMaxHP(pc)
+		jmp     DecreaseMaxHP(pc)
 
-	; End of function j_DecreaseForceMemberMaxHP
+    ; End of function j_DecreaseMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberMaxMP:
+j_DecreaseMaxMP:
 		
-		jmp     DecreaseForceMemberMaxMP(pc)
+		jmp     DecreaseMaxMP(pc)
 
-	; End of function j_DecreaseForceMemberMaxMP
+    ; End of function j_DecreaseMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberATT:
+j_DecreaseBaseAttack:
 		
-		jmp     DecreaseForceMemberATT(pc)
+		jmp     DecreaseBaseAttack(pc)
 
-	; End of function j_DecreaseForceMemberATT
+    ; End of function j_DecreaseBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberDEF:
+j_DecreaseBaseDefense:
 		
-		jmp     DecreaseForceMemberDEF(pc)
+		jmp     DecreaseBaseDefense(pc)
 
-	; End of function j_DecreaseForceMemberDEF
+    ; End of function j_DecreaseBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberAGI:
+j_DecreaseBaseAgility:
 		
-		jmp     DecreaseForceMemberAGI(pc)
+		jmp     DecreaseBaseAgility(pc)
 
-	; End of function j_DecreaseForceMemberAGI
+    ; End of function j_DecreaseBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberMOVE:
+j_DecreaseBaseMove:
 		
-		jmp     DecreaseForceMemberMOVE(pc)
+		jmp     DecreaseBaseMove(pc)
 
-	; End of function j_DecreaseForceMemberMOVE
+    ; End of function j_DecreaseBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberHP:
+j_DecreaseCurrentHP:
 		
-		jmp     DecreaseForceMemberHP(pc)
+		jmp     DecreaseCurrentHP(pc)
 
-	; End of function j_DecreaseForceMemberHP
+    ; End of function j_DecreaseCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseForceMemberMP:
+j_DecreaseCurrentMP:
 		
-		jmp     DecreaseForceMemberMP(pc)
+		jmp     DecreaseCurrentMP(pc)
 
-	; End of function j_DecreaseForceMemberMP
+    ; End of function j_DecreaseCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseMaxHPFromForceID:
+j_DecreaseMaxHPforCombatant:
 		
-		jmp     DecreaseMaxHPFromForceID(pc)
+		jmp     DecreaseMaxHPforCombatant(pc)
 
-	; End of function j_DecreaseMaxHPFromForceID
+    ; End of function j_DecreaseMaxHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseMaxMPFromForceID:
+j_DecreaseMaxMPforCombatant:
 		
-		jmp     DecreaseMaxMPFromForceID(pc)
+		jmp     DecreaseMaxMPforCombatant(pc)
 
-	; End of function j_DecreaseMaxMPFromForceID
+    ; End of function j_DecreaseMaxMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseATTFromForceID:
+j_DecreaseBaseAttackForCombatant:
 		
-		jmp     DecreaseATTFromForceID(pc)
+		jmp     DecreaseBaseAttackForCombatant(pc)
 
-	; End of function j_DecreaseATTFromForceID
+    ; End of function j_DecreaseBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseDEFFromForceID:
+j_DecreaseBaseDefenseForCombatant:
 		
-		jmp     DecreaseDEFFromForceID(pc)
+		jmp     DecreaseBaseDefenseForCombatant(pc)
 
-	; End of function j_DecreaseDEFFromForceID
+    ; End of function j_DecreaseBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseAGIFromForceID:
+j_DecreaseBaseAgilityForCombatant:
 		
-		jmp     DecreaseAGIFromForceID(pc)
+		jmp     DecreaseBaseAgilityForCombatant(pc)
 
-	; End of function j_DecreaseAGIFromForceID
+    ; End of function j_DecreaseBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseMOVEFromForceID:
+j_DecreaseBaseMoveForCombatant:
 		
-		jmp     DecreaseMOVEFromForceID(pc)
+		jmp     DecreaseBaseMoveForCombatant(pc)
 
-	; End of function j_DecreaseMOVEFromForceID
+    ; End of function j_DecreaseBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseHPFromForceID:
+j_DecreaseCurrentHPforCombatant:
 		
-		jmp     DecreaseHPFromForceID(pc)
+		jmp     DecreaseCurrentHPforCombatant(pc)
 
-	; End of function j_DecreaseHPFromForceID
+    ; End of function j_DecreaseCurrentHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseMPFromForceID:
+j_DecreaseCurrentMPforCombatant:
 		
-		jmp     DecreaseMPFromForceID(pc)
+		jmp     DecreaseCurrentMPforCombatant(pc)
 
-	; End of function j_DecreaseMPFromForceID
+    ; End of function j_DecreaseCurrentMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_FindEmptyItemSlot:
-		
-		jmp     FindEmptyItemSlot(pc)
+j_GiveItem:
+		jmp     GiveItem(pc)    
 
-	; End of function j_FindEmptyItemSlot
+    ; End of function j_GiveItem
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1310,16 +1308,16 @@ j_FindEmptyItemSlot:
 j_RemoveItem:
 		jmp     RemoveItem(pc)  
 
-	; End of function j_RemoveItem
+    ; End of function j_RemoveItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_CountEmptyItemSlots:
+j_CountOccupiedItemSlots:
 		
-		jmp     CountEmptyItemSlots(pc)
+		jmp     CountOccupiedItemSlots(pc)
 
-	; End of function j_CountEmptyItemSlots
+    ; End of function j_CountOccupiedItemSlots
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1327,43 +1325,43 @@ j_CountEmptyItemSlots:
 j_BreakItem:
 		jmp     BreakItem(pc)   
 
-	; End of function j_BreakItem
+    ; End of function j_BreakItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_FindEmptyItemSlotFromTargetID:
+j_GiveItemForCombatant:
 		
-		jmp     FindEmptyItemSlotFromTargetID(pc)
+		jmp     GiveItemForCombatant(pc)
 
-	; End of function j_FindEmptyItemSlotFromTargetID
+    ; End of function j_GiveItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_RemoveItemFromTargetID:
+j_RemoveItemForCombatant:
 		
-		jmp     RemoveItemFromTargetID(pc)
+		jmp     RemoveItemForCombatant(pc)
 
-	; End of function j_RemoveItemFromTargetID
+    ; End of function j_RemoveItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_CountEmptyItemSlotsFromTargetID:
+j_CountOccupiedItemSlotsForCombatant:
 		
-		jmp     CountEmptyItemSlotsFromTargetID(pc)
+		jmp     CountOccupiedItemSlotsForCombatant(pc)
 
-	; End of function j_CountEmptyItemSlotsFromTargetID
+    ; End of function j_CountOccupiedItemSlotsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_BreakItemFromTargetID:
+j_BreakItemForCombatant:
 		
-		jmp     BreakItemFromTargetID(pc)
+		jmp     BreakItemForCombatant(pc)
 
-	; End of function j_BreakItemFromTargetID
+    ; End of function j_BreakItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1372,7 +1370,7 @@ j_GetItemType:
 		
 		jmp     GetItemType(pc) 
 
-	; End of function j_GetItemType
+    ; End of function j_GetItemType
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1381,60 +1379,61 @@ j_GetItemPrice:
 		
 		jmp     GetItemPrice(pc)
 
-	; End of function j_GetItemPrice
+    ; End of function j_GetItemPrice
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20274:
-		jmp     sub_22EB6(pc)   
-
-	; End of function sub_20274
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetEquippedItemFromForceID:
+j_GetEquippedWeaponIndex:
 		
-		jmp     GetEquippedItemFromForceID(pc)
+		jmp     GetEquippedWeaponIndex(pc)
 
-	; End of function j_GetEquippedItemFromForceID
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_EquipItemFromForceID:
-		
-		jmp     EquipItemFromForceID(pc)
-
-	; End of function j_EquipItemFromForceID
+    ; End of function j_GetEquippedWeaponIndex
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadEquippableItemsFromForceID:
+j_GetEquippedItemForCombatant:
 		
-		jmp     LoadEquippableItemsFromForceID(pc)
+		jmp     GetEquippedItemForCombatant(pc)
 
-	; End of function j_LoadEquippableItemsFromForceID
+    ; End of function j_GetEquippedItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IsItemEquippableFromForceID:
+j_EquipItemForCombatant:
 		
-		jmp     IsItemEquippableFromForceID(pc)
+		jmp     EquipItemForCombatant(pc)
 
-	; End of function j_IsItemEquippableFromForceID
+    ; End of function j_EquipItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IsItemUnequippableFromForceID:
+j_LoadEquippableItemsForCombatant:
 		
-		jmp     IsItemUnequippableFromForceID(pc)
+		jmp     LoadEquippableItemsForCombatant(pc)
 
-	; End of function j_IsItemUnequippableFromForceID
+    ; End of function j_LoadEquippableItemsForCombatant
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_IsItemEquippableForCombatant:
+		
+		jmp     IsItemEquippableForCombatant(pc)
+
+    ; End of function j_IsItemEquippableForCombatant
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetItemsCurseSettingsForCombatant:
+		
+		jmp     GetItemsCurseSettingsForCombatant(pc)
+
+    ; End of function j_GetItemsCurseSettingsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1443,7 +1442,7 @@ j_GetEquippedItem:
 		
 		jmp     GetEquippedItem(pc)
 
-	; End of function j_GetEquippedItem
+    ; End of function j_GetEquippedItem
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1451,7 +1450,7 @@ j_GetEquippedItem:
 j_EquipItem:
 		jmp     EquipItem(pc)   
 
-	; End of function j_EquipItem
+    ; End of function j_EquipItem
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1460,7 +1459,7 @@ j_LoadEquippableItems:
 		
 		jmp     LoadEquippableItems(pc)
 
-	; End of function j_LoadEquippableItems
+    ; End of function j_LoadEquippableItems
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1469,25 +1468,25 @@ j_IsItemEquippable:
 		
 		jmp     IsItemEquippable(pc)
 
-	; End of function j_IsItemEquippable
+    ; End of function j_IsItemEquippable
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IsItemUnequippable:
+j_GetItemsCurseSettings:
 		
-		jmp     IsItemUnequippable(pc)
+		jmp     GetItemsCurseSettings(pc)
 
-	; End of function j_IsItemUnequippable
+    ; End of function j_GetItemsCurseSettings
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IsEnemyAndHasItemToDrop:
+j_FindItemToDrop:
 		
-		jmp     IsEnemyAndHasItemToDrop(pc)
+		jmp     FindItemToDrop(pc)
 
-	; End of function j_IsEnemyAndHasItemToDrop
+    ; End of function j_FindItemToDrop
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1495,63 +1494,69 @@ j_IsEnemyAndHasItemToDrop:
 j_GetMPCost:
 		jmp     GetMPCost(pc)   
 
-	; End of function j_GetMPCost
+    ; End of function j_GetMPCost
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_202A8:
-		jmp     sub_2307A(pc)   
+j_FindTargetableSpaces:
+		
+		jmp     FindTargetableSpaces(pc)
 
-	; End of function sub_202A8
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_202AC:
-		jmp     sub_230F2(pc)   
-
-	; End of function sub_202AC
+    ; End of function j_FindTargetableSpaces
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_202B0:
-		jmp     sub_23160(pc)   
+j_FindTargetsWithinArea:
+		
+		jmp     FindTargetsWithinArea(pc)
 
-	; End of function sub_202B0
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_202B4:
-		jmp     sub_2337A(pc)   
-
-	; End of function sub_202B4
+    ; End of function j_FindTargetsWithinArea
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_202B8:
-		jmp     sub_233E6(pc)   
+j_JumpToRangeOrEquipEffect:
+		
+		jmp     JumpToRangeOrEquipEffect(pc)
 
-	; End of function sub_202B8
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_202BC:
-		jmp     sub_235A8(pc)   
-
-	; End of function sub_202BC
+    ; End of function j_JumpToRangeOrEquipEffect
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_202C0:
-		jmp     sub_23566(pc)   
+j_IncreaseStatOnItemUse:
+		
+		jmp     IncreaseStatOnItemUse(pc)
 
-	; End of function sub_202C0
+    ; End of function j_IncreaseStatOnItemUse
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_CurePoison:
+		jmp     CurePoison(pc)  
+
+    ; End of function j_CurePoison
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_FindTargetableSpacesForAttack:
+		
+		jmp     FindTargetableSpacesForAttack(pc)
+
+    ; End of function j_FindTargetableSpacesForAttack
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_CreateMovementGrid:
+		
+		jmp     CreateMovementGrid(pc)
+
+    ; End of function j_CreateMovementGrid
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1559,31 +1564,33 @@ sub_202C0:
 j_UseItem:
 		jmp     UseItem(pc)     
 
-	; End of function j_UseItem
+    ; End of function j_UseItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_202C8:
-		jmp     sub_236A6(pc)   
+j_FindTargetableSpacesForSpell:
+		
+		jmp     FindTargetableSpacesForSpell(pc)
 
-	; End of function sub_202C8
+    ; End of function j_FindTargetableSpacesForSpell
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_202CC:
-		jmp     sub_23752(pc)
+		jmp     sub_23752(pc)   
 
-	; End of function sub_202CC
+    ; End of function sub_202CC
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_202D0:
-		jmp     sub_23772(pc)   
+j_MakeMoveEverywhereGrid:
+		
+		jmp     MakeMoveEverywhereGrid(pc)
 
-	; End of function sub_202D0
+    ; End of function j_MakeMoveEverywhereGrid
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1591,50 +1598,52 @@ sub_202D0:
 sub_202D4:
 		jmp     sub_237CA(pc)
 
-	; End of function sub_202D4
+    ; End of function sub_202D4
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_202D8:
-		jmp     sub_237FA(pc)
-
-	; End of function sub_202D8
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_202DC:
-		jmp     sub_236F0(pc)   
-
-	; End of function sub_202DC
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetItemName:
+j_PopulateTargetsList:
 		
-		jmp     GetItemName(pc)
+		jmp     PopulateTargetsList(pc)
 
-	; End of function j_GetItemName
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetClassName:
-		
-		jmp     GetClassName(pc)
-
-	; End of function j_GetClassName
+    ; End of function j_PopulateTargetsList
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetSpellName:
+j_SetupBattleaction:
 		
-		jmp     GetSpellName(pc)
+		jmp     SetupBattleaction(pc)
 
-	; End of function j_GetSpellName
+    ; End of function j_SetupBattleaction
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetItemNameAddress:
+		
+		jmp     GetItemNameAddress(pc)
+
+    ; End of function j_GetItemNameAddress
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetClassNameAddress:
+		
+		jmp     GetClassNameAddress(pc)
+
+    ; End of function j_GetClassNameAddress
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetSpellNameAddress:
+		
+		jmp     GetSpellNameAddress(pc)
+
+    ; End of function j_GetSpellNameAddress
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1643,7 +1652,7 @@ j_GetMoveCostEntryAddress:
 		
 		jmp     GetMoveCostEntryAddress(pc)
 
-	; End of function j_GetMoveCostEntryAddress
+    ; End of function j_GetMoveCostEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1652,7 +1661,7 @@ j_GetLandEffectEntryAddress:
 		
 		jmp     GetLandEffectEntryAddress(pc)
 
-	; End of function j_GetLandEffectEntryAddress
+    ; End of function j_GetLandEffectEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1661,7 +1670,7 @@ j_GetResistance:
 		
 		jmp     GetResistance(pc)
 
-	; End of function j_GetResistance
+    ; End of function j_GetResistance
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1669,41 +1678,43 @@ j_GetResistance:
 sub_202F8:
 		jmp     sub_2397C(pc)   
 
-	; End of function sub_202F8
+    ; End of function sub_202F8
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetClassDoubleAttack:
+j_GetBaseDoubleAttackMode:
 		
-		jmp     GetClassDoubleAttack(pc)
+		jmp     GetBaseDoubleAttackMode(pc)
 
-	; End of function j_GetClassDoubleAttack
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_20300:
-		jmp     sub_239D2(pc)   
-
-	; End of function sub_20300
+    ; End of function j_GetBaseDoubleAttackMode
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20304:
-		jmp     sub_239DE(pc)   
-
-	; End of function sub_20304
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetMapSpriteFromForceID:
+j_GetPortraitForCombatant:
 		
-		jmp     GetMapSpriteFromForceID(pc)
+		jmp     GetPortraitForCombatant(pc)
 
-	; End of function j_GetMapSpriteFromForceID
+    ; End of function j_GetPortraitForCombatant
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetPortrait:
+		
+		jmp     GetPortrait(pc) 
+
+    ; End of function j_GetPortrait
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_GetMapSpriteForCombatant:
+		
+		jmp     GetMapSpriteForCombatant(pc)
+
+    ; End of function j_GetMapSpriteForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1712,31 +1723,34 @@ j_GetMapSprite:
 		
 		jmp     GetMapSprite(pc)
 
-	; End of function j_GetMapSprite
+    ; End of function j_GetMapSprite
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20310:
-		jmp     sub_23AD6(pc)
+j_GetBattleSpritePaletteAndAnimationIndexes:
+		
+		jmp     GetBattleSpritePaletteAndAnimationIndexes(pc)
 
-	; End of function sub_20310
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_20314:
-		jmp     sub_23AF0(pc)
-
-	; End of function sub_20314
+    ; End of function j_GetBattleSpritePaletteAndAnimationIndexes
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20318:
-		jmp     sub_23B00(pc)
+j_LoadBattlespriteDataWithWeapon:
+		
+		jmp     LoadBattlespriteDataWithWeapon(pc)
 
-	; End of function sub_20318
+    ; End of function j_LoadBattlespriteDataWithWeapon
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_LoadBattlespriteDataWithoutWeapon:
+		
+		jmp     LoadBattlespriteDataWithoutWeapon(pc)
+
+    ; End of function j_LoadBattlespriteDataWithoutWeapon
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1744,7 +1758,7 @@ sub_20318:
 sub_2031C:
 		jmp     sub_23B12(pc)
 
-	; End of function sub_2031C
+    ; End of function sub_2031C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1752,25 +1766,25 @@ sub_2031C:
 sub_20320:
 		jmp     sub_23C88(pc)
 
-	; End of function sub_20320
+    ; End of function sub_20320
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetLandEffectAtTargetPosition:
+j_GetLandEffectForCombatant:
 		
-		jmp     GetLandEffectAtTargetPosition(pc)
+		jmp     GetLandEffectForCombatant(pc)
 
-	; End of function j_GetLandEffectAtTargetPosition
+    ; End of function j_GetLandEffectForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetLandEffectAtCoord:
+j_GetLandEffectAtPosition:
 		
-		jmp     GetLandEffectAtCoord(pc)
+		jmp     GetLandEffectAtPosition(pc)
 
-	; End of function j_GetLandEffectAtCoord
+    ; End of function j_GetLandEffectAtPosition
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1778,15 +1792,16 @@ j_GetLandEffectAtCoord:
 sub_2032C:
 		jmp     sub_2466C(pc)
 
-	; End of function sub_2032C
+    ; End of function sub_2032C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20330:
-		jmp     sub_2468E(pc)
+j_GetTerrainBackgrounds:
+		
+		jmp     GetTerrainBackgrounds(pc)
 
-	; End of function sub_20330
+    ; End of function j_GetTerrainBackgrounds
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1794,7 +1809,7 @@ sub_20330:
 j_LevelUp:
 		jmp     LevelUp(pc)
 
-	; End of function j_LevelUp
+    ; End of function j_LevelUp
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1803,7 +1818,7 @@ j_IncreaseStatsOnLevelUp:
 		
 		jmp     IncreaseStatsOnLevelUp(pc)
 
-	; End of function j_IncreaseStatsOnLevelUp
+    ; End of function j_IncreaseStatsOnLevelUp
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1811,7 +1826,7 @@ j_IncreaseStatsOnLevelUp:
 j_Promote:
 		jmp     Promote(pc)     
 
-	; End of function j_Promote
+    ; End of function j_Promote
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1819,15 +1834,16 @@ j_Promote:
 j_IsAsleep:
 		jmp     IsAsleep(pc)    
 
-	; End of function j_IsAsleep
+    ; End of function j_IsAsleep
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_20344:
-		jmp     sub_24BF2(pc)   
+j_HandleAfterTurnStatusEffects:
+		
+		jmp     HandleAfterTurnStatusEffects(pc)
 
-	; End of function sub_20344
+    ; End of function j_HandleAfterTurnStatusEffects
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1836,7 +1852,7 @@ j_ResetForceMemberStats:
 		
 		jmp     ResetForceMemberStats(pc)
 
-	; End of function j_ResetForceMemberStats
+    ; End of function j_ResetForceMemberStats
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1844,7 +1860,7 @@ j_ResetForceMemberStats:
 j_GetGold:
 		jmp     GetGold(pc)     
 
-	; End of function j_GetGold
+    ; End of function j_GetGold
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1852,7 +1868,7 @@ j_GetGold:
 j_SetGold:
 		jmp     SetGold(pc)     
 
-	; End of function j_SetGold
+    ; End of function j_SetGold
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1861,7 +1877,7 @@ j_IncreaseGold:
 		
 		jmp     IncreaseGold(pc)
 
-	; End of function j_IncreaseGold
+    ; End of function j_IncreaseGold
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1870,34 +1886,34 @@ j_DecreaseGold:
 		
 		jmp     DecreaseGold(pc)
 
-	; End of function j_DecreaseGold
+    ; End of function j_DecreaseGold
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_IncreaseDealsItemStock:
+j_IncrementDealsStock:
 		
-		jmp     IncreaseDealsItemStock(pc)
+		jmp     IncrementDealsStock(pc)
 
-	; End of function j_IncreaseDealsItemStock
+    ; End of function j_IncrementDealsStock
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DecreaseDealsItemStock:
+j_DecrementDealsStock:
 		
-		jmp     DecreaseDealsItemStock(pc)
+		jmp     DecrementDealsStock(pc)
 
-	; End of function j_DecreaseDealsItemStock
+    ; End of function j_DecrementDealsStock
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetDealsStockList:
+j_LoadDealsInventory:
 		
-		jmp     GetDealsStockList(pc)
+		jmp     LoadDealsInventory(pc)
 
-	; End of function j_GetDealsStockList
+    ; End of function j_LoadDealsInventory
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1906,7 +1922,7 @@ j_IsItemInDealsOrHeldByForce:
 		
 		jmp     IsItemInDealsOrHeldByForce(pc)
 
-	; End of function j_IsItemInDealsOrHeldByForce
+    ; End of function j_IsItemInDealsOrHeldByForce
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1915,7 +1931,7 @@ j_IsItemHeldByCharacter:
 		
 		jmp     IsItemHeldByCharacter(pc)
 
-	; End of function j_IsItemHeldByCharacter
+    ; End of function j_IsItemHeldByCharacter
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1924,120 +1940,125 @@ j_IsItemHeldByForce:
 		
 		jmp     IsItemHeldByForce(pc)
 
-	; End of function j_IsItemHeldByForce
+    ; End of function j_IsItemHeldByForce
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadATTFromForceID:
+j_LoadBaseAttack:
 		
-		jmp     LoadATTFromForceID(pc)
+		jmp     LoadBaseAttack(pc)
 
-	; End of function j_LoadATTFromForceID
+    ; End of function j_LoadBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadDEFFromForceID:
+j_LoadBaseDefense:
 		
-		jmp     LoadDEFFromForceID(pc)
+		jmp     LoadBaseDefense(pc)
 
-	; End of function j_LoadDEFFromForceID
+    ; End of function j_LoadBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadAGIFromForceID:
+j_LoadBaseAgility:
 		
-		jmp     LoadAGIFromForceID(pc)
+		jmp     LoadBaseAgility(pc)
 
-	; End of function j_LoadAGIFromForceID
+    ; End of function j_LoadBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadMOVEFromForceID:
+j_LoadBaseMove:
 		
-		jmp     LoadMOVEFromForceID(pc)
+		jmp     LoadBaseMove(pc)
 
-	; End of function j_LoadMOVEFromForceID
+    ; End of function j_LoadBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_LoadCRITFromForceID:
+j_LoadBaseCritical:
 		
-		jmp     LoadCRITFromForceID(pc)
+		jmp     LoadBaseCritical(pc)
 
-	; End of function j_LoadCRITFromForceID
+    ; End of function j_LoadBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
 j_RefillHP:
-		jmp     RefillHP(pc)
+		jmp     RefillHP(pc)    
 
-	; End of function j_RefillHP
+    ; End of function j_RefillHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
 j_RefillMP:
-		jmp     RefillMP(pc)
+		jmp     RefillMP(pc)    
 
-	; End of function j_RefillMP
+    ; End of function j_RefillMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_RefillHPFromTargetID:
+j_RefillHPforCombatant:
 		
-		jmp     RefillHPFromTargetID(pc)
+		jmp     RefillHPforCombatant(pc)
 
-	; End of function j_RefillHPFromTargetID
+    ; End of function j_RefillHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_RefillMPFromTargetID:
+j_RefillMPforCombatant:
 		
-		jmp     RefillMPFromTargetID(pc)
+		jmp     RefillMPforCombatant(pc)
 
-	; End of function j_RefillMPFromTargetID
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_20398:
-		jmp     sub_24FC4(pc)   
-
-	; End of function sub_20398
+    ; End of function j_RefillMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2039C:
-		jmp     sub_24FCE(pc)
+j_ClearPassabilityFlags:
+		
+		jmp     ClearPassabilityFlags(pc)
 
-	; End of function sub_2039C
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_203A0:
-		jmp     sub_24FE6(pc)   
-
-	; End of function sub_203A0
+    ; End of function j_ClearPassabilityFlags
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_203A4:
-		jmp     sub_250DA(pc)   
+j_ClearTableAtFFA8C0:
+		
+		jmp     ClearTableAtFFA8C0(pc)
 
-	; End of function sub_203A4
+    ; End of function j_ClearTableAtFFA8C0
 
-p_CharacterData:dc.l CharacterData
+
+; =============== S U B R O U T I N E =======================================
+
+j_InitializeBattleMap:
+		
+		jmp     InitializeBattleMap(pc)
+
+    ; End of function j_InitializeBattleMap
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_ClearTerrainAtOccupiedSquares:
+		
+		jmp     ClearTerrainAtOccupiedSpaces(pc)
+
+    ; End of function j_ClearTerrainAtOccupiedSquares
+
+p_InitialForceMembersData:
+		dc.l InitialForceData
 p_BattleSpriteData:
 		dc.l BattleSpriteData
 p_ItemNames:    dc.l ItemNames
@@ -2059,122 +2080,177 @@ p_EnemyAnimationData:
 p_TerrainData:  dc.l TerrainData
 off_203E4:      dc.l byte_26BF2
 p_GrowthCurves: dc.l GrowthCurves
-p_StatGrowths:  dc.l StatGrowths
-p_PromotedStatGrowths:
-		dc.l PromotedStatGrowths
+p_UnpromotedGrowths:
+		dc.l UnpromotedGrowths
+p_PromotedGrowths:
+		dc.l PromotedGrowths
 p_SpellLearningData:
 		dc.l SpellLearningData
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_203F8:
-		jmp     sub_26E16(pc)   
+j_LoadEndingCreditsForce:
+		
+		jmp     LoadEndingCreditsForce(pc)
 
-	; End of function sub_203F8
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_203FC:
-		jmp     sub_26E7E(pc)   
-
-	; End of function sub_203FC
+    ; End of function j_LoadEndingCreditsForce
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_InitBattle:
-		jmp     InitBattle(pc)
+j_WriteEndingCreditsBattlesceneScript:
+		
+		jmp     WriteEndingCreditsBattlesceneScript(pc)
 
-	; End of function j_InitBattle
+    ; End of function j_WriteEndingCreditsBattlesceneScript
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute distance to reachable squares given D1=Y,D2=X, calls 20432
+j_InitializeBattleData:
+		
+		jmp     InitializeBattleData(pc)
 
-sub_20404:
-		bsr.w   sub_20506       
-		bsr.w   sub_2053E       
-loc_2040C:
+    ; End of function j_InitializeBattleData
+
+
+; =============== S U B R O U T I N E =======================================
+
+; In: A0 = move cost entry address
+
+MakeEffectiveMoveCosts:
+		
+		bsr.w   LoadMoveCosts   
+		bsr.w   BlockSpacesOccupiedByOpponents
+
+    ; End of function MakeEffectiveMoveCosts
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Setup registers to calculate and load total move costs to table at $FFA8C0
+; 
+; In: D1 = moving combatant's Y
+;     D2 = moving combatant's X
+;     D3 = moving combatant's modified move * 2 (i.e., move points)
+
+PopulateTotalMoveCosts:
+		
 		movem.l d1/a0,-(sp)
-		lea     ((byte_FFA4C0-$1000000)).w,a0
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
-		add.w   d2,d1
-		adda.w  d1,a0
+		add.w   d2,d1           ; D1 = moving combatant's position converted to offset
+		adda.w  d1,a0           ; A0 = passability flags entry address
 		moveq   #$FFFFFFFF,d1
-		jsr     sub_20398
-		jsr     sub_2039C
-		bsr.s   sub_20432       
+		jsr     j_ClearPassabilityFlags
+		jsr     j_ClearTableAtFFA8C0
+		bsr.s   CalculateTotalMoveCosts
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function sub_20404
+    ; End of function PopulateTotalMoveCosts
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute distance to reachable squares given A0 offset
+; Calculate total move costs to reachable spaces, load to table at $FFA8C0
+; 
+; In: A0 = passability flags entry address
+;     D3 = moving combatant's modified move * 2 (i.e., move points)
 
-sub_20432:
+CalculateTotalMoveCosts:
+		
 		movem.l d0-d5/a0-a1,-(sp)
-		lea     sub_204F6(pc), a1
+		lea     bt_204F6(pc), a1
 		clr.w   d0
 		clr.w   d1
-		clr.b   $400(a0)
+		clr.b   OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0)
+						; clear total move cost at starting position
 		move.w  ((MAP_WIDTH-$1000000)).w,d4
 loc_20446:
 		suba.w  d4,a0
-		add.b   $1D40(a0),d0
-		sub.b   $1D40(a0),d3
-		bcs.s   loc_20464
-		cmp.b   $400(a0),d0
-		bcc.s   loc_20464
-		move.b  d0,$400(a0)
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+						; D0 = cost to move one space up
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
+						; D3 = remaining move points
+		bcs.s   sub_20464       ; branch if not enough move points
+		cmp.b   OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0),d0
+		bcc.s   sub_20464
+		move.b  d0,OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0)
 		move.b  #0,(a0)
 		bra.w   loc_20446
-loc_20464:
-		sub.b   $1D40(a0),d0
-		add.b   $1D40(a0),d3
+
+    ; End of function CalculateTotalMoveCosts
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_20464:
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
 		adda.w  d4,a0
 		adda.w  d4,a0
-		add.b   $1D40(a0),d0
-		sub.b   $1D40(a0),d3
-		bcs.s   loc_2048C
-		cmp.b   $400(a0),d0
-		bcc.s   loc_2048C
-		move.b  d0,$400(a0)
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+						; D0 = cost to move one space down
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
+						; D3 = remaining move points
+		bcs.s   sub_2048C       ; branch if not enough move points
+		cmp.b   OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0),d0
+		bcc.s   sub_2048C
+		move.b  d0,OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0)
 		move.b  #4,(a0)
 		bra.w   loc_20446
-loc_2048C:
-		sub.b   $1D40(a0),d0
-		add.b   $1D40(a0),d3
+
+    ; End of function sub_20464
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_2048C:
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
 		suba.w  d4,a0
 		subq.l  #1,a0
-		add.b   $1D40(a0),d0
-		sub.b   $1D40(a0),d3
-		bcs.s   loc_204B4
-		cmp.b   $400(a0),d0
-		bcc.s   loc_204B4
-		move.b  d0,$400(a0)
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+						; D0 = cost to move one space left
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
+						; D3 = remaining move points
+		bcs.s   sub_204B4       ; branch if not enough move points
+		cmp.b   OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0),d0
+		bcc.s   sub_204B4
+		move.b  d0,OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0)
 		move.b  #$C,(a0)
 		bra.w   loc_20446
-loc_204B4:
-		sub.b   $1D40(a0),d0
-		add.b   $1D40(a0),d3
+
+    ; End of function sub_2048C
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_204B4:
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
 		addq.l  #1,a0
 		addq.l  #1,a0
-		add.b   $1D40(a0),d0
-		sub.b   $1D40(a0),d3
-		bcs.s   loc_204DC
-		cmp.b   $400(a0),d0
-		bcc.s   loc_204DC
-		move.b  d0,$400(a0)
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+						; D0 = cost to move one space right
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
+						; D3 = remaining move points
+		bcs.s   sub_204DC       ; branch if not enough move points
+		cmp.b   OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0),d0
+		bcc.s   sub_204DC
+		move.b  d0,OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0)
 		move.b  #8,(a0)
 		bra.w   loc_20446
-loc_204DC:
-		sub.b   $1D40(a0),d0
-		add.b   $1D40(a0),d3
+
+    ; End of function sub_204B4
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_204DC:
+		sub.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d0
+		add.b   OFFSET_PASSABILITY_FLAGS_TO_MOVE_COSTS(a0),d3
 		subq.l  #1,a0
 		tst.b   d0
 		beq.s   loc_204F0
@@ -2184,46 +2260,19 @@ loc_204F0:
 		movem.l (sp)+,d0-d5/a0-a1
 		rts
 
-	; End of function sub_20432
+    ; End of function sub_204DC
 
-
-; =============== S U B R O U T I N E =======================================
-
-sub_204F6:
-		bra.w   loc_20464
-
-	; End of function sub_204F6
-
+bt_204F6:       bra.w   sub_20464       ; related to move costs calculation
+		bra.w   sub_2048C
+		bra.w   sub_204DC
+		bra.w   sub_204B4
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_204FA:
-		bra.w   loc_2048C
+; Load move costs table given entry at A0, mapped to current terrain data
 
-	; End of function sub_204FA
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_204FE:
-		bra.w   loc_204DC
-
-	; End of function sub_204FE
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_20502:
-		bra.w   loc_204B4
-
-	; End of function sub_20502
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Load Terrain Data to RAM (xACC0)
-
-sub_20506:
+LoadMoveCosts:
+		
 		movem.l d0-d2/a1-a2,-(sp)
 		lea     ((TERRAIN_DATA-$1000000)).w,a1
 		movea.l (p_TerrainData).l,a2
@@ -2233,105 +2282,108 @@ loc_2051A:
 		move.b  (a1),d1
 		andi.w  #$FF,d1
 		asl.w   #2,d1
-		move.b  (a2,d1.w),d1
+		move.b  (a2,d1.w),d1    ; D1 = terrain type
 		andi.w  #$FF,d1
 		move.b  (a0,d1.w),d2
-		move.b  d2,$1540(a1)    ; offset to movement cost by square table (0xFFC200)
+		move.b  d2,OFFSET_CURRENT_TERRAIN_DATA_TO_MOVE_COSTS(a1)
 		addq.l  #1,a1
 		dbf     d0,loc_2051A
 		movem.l (sp)+,d0-d2/a1-a2
 		rts
 
-	; End of function sub_20506
+    ; End of function LoadMoveCosts
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear occupied squares from valid targets (bits 0 and 1 of D4 determine if enemy and force should be cleared respectively)
+; Block spaces occupied by opponents (bits 0 and 1 of D4 determine if enemies or force members should be blocked, respectively)
 
-sub_2053E:
+BlockSpacesOccupiedByOpponents:
+		
 		movem.l d0-d3/a0,-(sp)
-		lea     ((byte_FFC200-$1000000)).w,a0
-		move.w  #$1F,d0
+		lea     ((MOVE_COSTS-$1000000)).w,a0
+		move.w  #COMBATANT_ENTRIES_COUNTER,d0
 loc_2054A:
-		jsr     j_GetTargetID
-		cmpi.b  #$FF,d1
+		jsr     j_GetEntity
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d1
 		beq.s   loc_2057A
 		tst.b   d1
-		bge.s   loc_20562
+		bge.s   loc_20562       ; branch if force member
 		btst    #1,d4
-		beq.s   loc_2057A
+		beq.s   loc_2057A       ; skip if not tasked to block spaces occupied by force members
 		bra.s   loc_20568
 loc_20562:
 		btst    #0,d4
-		beq.s   loc_2057A
+		beq.s   loc_2057A       ; skip if not tasked to block spaces occupied by enemies
 loc_20568:
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1
-		move.b  #$FF,(a0,d1.w)
+		move.b  #$FF,(a0,d1.w)  ; make space at combatant position impassable
 loc_2057A:
 		dbf     d0,loc_2054A
 		movem.l (sp)+,d0-d3/a0
 		rts
 
-	; End of function sub_2053E
+    ; End of function BlockSpacesOccupiedByOpponents
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Prepare to compute move cost of character D0, loads class and terrain data
+; Setup registers to make effective move costs table for combatant D0
 
-sub_20584:
+SetupEffectiveMoveCosts:
+		
 		movem.l d1-d4/a0,-(sp)
 		jsr     j_GetMoveCostEntryAddress
 loc_2058E:
-		jsr     j_GetTargetPosition
-		bsr.w   sub_20404       
+		jsr     j_GetCombatantPosition
+		bsr.w   MakeEffectiveMoveCosts
 		movem.l (sp)+,d1-d4/a0
 		rts
 
-	; End of function sub_20584
+    ; End of function SetupEffectiveMoveCosts
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Similar to 20584 but from land effect data instead of class
+; Setup registers to make targeting move costs table
 
-sub_2059E:
+SetupTargetingMoveCosts:
+		
 		movem.l d1-d4/a0,-(sp)
 		movea.l (p_MoveCostData).l,a0
 		clr.w   d4
 		bra.s   loc_2058E
 
-	; End of function sub_2059E
+    ; End of function SetupTargetingMoveCosts
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Wrapper for 205B2 and 205DE
-
-sub_205AC:
-		bsr.s   sub_205B2       
-		bsr.s   sub_205DE       
+MakeEffectivePassabilityFlags:
+		
+		bsr.s   InitPassabilityFlags
+		bsr.s   ClearAllowedToStayAtFlags
 		rts
 
-	; End of function sub_205AC
+    ; End of function MakeEffectivePassabilityFlags
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Mark all squares that within move range as passable and stoppable
+; Initialize all spaces within move range as "allowed to pass through" and "allowed to stay at"
 
-sub_205B2:
+InitPassabilityFlags:
+		
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     ((byte_FFA4C0-$1000000)).w,a0
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		movea.l (p_TerrainData).l,a1
 		move.w  #$3FF,d0
 loc_205C4:
 		clr.b   (a0)
-		cmpi.b  #$FF,$400(a0)
-		beq.s   loc_205D2
+		cmpi.b  #$FF,OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a0)
+		beq.s   loc_205D2       ; branch if space is outside move range
 		ori.b   #3,(a0)
 loc_205D2:
 		addq.l  #1,a0
@@ -2339,75 +2391,77 @@ loc_205D2:
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function sub_205B2
+    ; End of function InitPassabilityFlags
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear stoppable flag of all occupied squares
+; Clear "allowed to stay at" in passability flags table for all occupied spaces
 
-sub_205DE:
+ClearAllowedToStayAtFlags:
+		
 		movem.l d0-d2/a0-a1,-(sp)
-		lea     ((word_FFA8C0-$1000000)).w,a0
-		lea     ((byte_FFA4C0-$1000000)).w,a1
-		move.w  #$1F,d0
+		lea     ((TABLE_AT_FFA8C0-$1000000)).w,a0
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a1
+		move.w  #COMBATANT_ENTRIES_COUNTER,d0
 loc_205EE:
-		jsr     j_GetTargetID
-		cmpi.b  #$FF,d1
-		beq.s   loc_20612
-		jsr     j_GetTargetPosition
+		jsr     j_GetEntity
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d1
+		beq.s   loc_20612       ; skip if combatant slot is empty
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
-		add.w   d2,d1
+		add.w   d2,d1           ; D1 = combatant's position converted to offset
 		tst.b   (a0,d1.w)
-		beq.s   loc_20612
-		bclr    #1,(a1,d1.w)
+		beq.s   loc_20612       ; skip if position is our own
+		bclr    #1,(a1,d1.w)    ; clear "allowed to stay at" flag at this position
 loc_20612:
 		dbf     d0,loc_205EE
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
 
-	; End of function sub_205DE
+    ; End of function ClearAllowedToStayAtFlags
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set only squares with distance A to B as passable (A and B on stack)
+; Mark spaces within distances D2 to D1 as passable
 
-sub_2061C:
+MakeTargetingGrid:
+		
 		movem.l d0-d3/a0-a1,-(sp)
-		cmpi.b  #$80,d1
+		cmpi.b  #SPECIAL_RANGE_LASER_EYE,d1
 		bne.s   loc_2062E
-		bsr.w   sub_207BC       
+		bsr.w   LoadLaserEyeTargetGrid
 		bra.w   loc_2068C
 loc_2062E:
-		cmpi.b  #$81,d1
+		cmpi.b  #SPECIAL_RANGE_TORCH_EYE,d1
 		bne.s   loc_2063C
-		bsr.w   sub_20802       
+		bsr.w   MakeTorchEyeTargetGrid
 		bra.w   loc_2068C
 loc_2063C:
-		cmpi.b  #$82,d1
+		cmpi.b  #SPECIAL_RANGE_UNUSED,d1
 		bne.s   loc_2064A
-		bsr.w   sub_20822       
+		bsr.w   MakeSpecialTargetGrid
 		bra.w   loc_2068C
 loc_2064A:
-		lea     ((byte_FFA4C0-$1000000)).w,a0
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		movea.l a0,a1
-		movem.w d1-d2,-(sp)
-		jsr     j_GetTargetPosition
+		movem.w d1-d2,-(sp)     ; -> push max and min distances
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
-		add.w   d2,d1           ; convert target position to offset into map square flags table
-		adda.w  d1,a0
-		movem.w (sp)+,d1-d2
+		add.w   d2,d1           ; D1 = combatant's position converted to offset
+		adda.w  d1,a0           ; A0 = passability flags entry address
+		movem.w (sp)+,d1-d2     ; D1,D2 <- pull max and min distances
 		move.w  d1,d3
 		andi.w  #$7F,d1 
 		move.w  #$3FF,d0
 loc_20670:
 		clr.b   (a1)
-		cmp.b   $400(a1),d1
+		cmp.b   OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a1),d1
 		bcs.s   loc_20686
-		cmp.b   $400(a1),d2
+		cmp.b   OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0(a1),d2
 		bhi.s   loc_20686
-		bsr.s   sub_20692
+		bsr.s   sub_20692       
 		bcs.s   loc_20686
 		bset    #0,(a1)
 loc_20686:
@@ -2417,18 +2471,21 @@ loc_2068C:
 		movem.l (sp)+,d0-d3/a0-a1
 		rts
 
-	; End of function sub_2061C
+    ; End of function MakeTargetingGrid
 
 
 ; =============== S U B R O U T I N E =======================================
 
+; In: A1 = current position into passability flags table
+
 sub_20692:
 		movem.l d0-d3/a2-a4,-(sp)
 		move.l  a1,d1
-		sub.l   a0,d1           ; D1 = offset of currently evaluated map square
+		sub.l   a0,d1           ; D1 = offset to currently evaluated space
 		move.w  ((MAP_WIDTH-$1000000)).w,d3
 		lea     word_206DC(pc), a2
-		lea     $800(a0),a3     ; A3 = terrain data
+		lea     OFFSET_PASSABILITY_FLAGS_TO_CURRENT_TERRAIN_DATA(a0),a3
+						; A3 = current terrain data entry address
 		move.w  #$1B,d0
 loc_206AA:
 		move.w  2(a2),d2
@@ -2451,7 +2508,7 @@ loc_206D6:
 		movem.l (sp)+,d0-d3/a2-a4
 		rts
 
-	; End of function sub_20692
+    ; End of function sub_20692
 
 word_206DC:     dc.w 0                  ; Table of XY offsets, two bytes each X,Y
 		dc.w $FFFD
@@ -2568,46 +2625,50 @@ word_206DC:     dc.w 0                  ; Table of XY offsets, two bytes each X,
 
 ; =============== S U B R O U T I N E =======================================
 
-; Reset Tile Flags and load from 207CA
+; Get Laser Eye's predefined target grid address, load to passability flags table
 
-sub_207BC:
+LoadLaserEyeTargetGrid:
+		
 		move.l  a0,-(sp)
-		lea     TileFlags(pc), a0
-		bsr.w   sub_2510A       
+		lea     LaserEyeTargetGrid(pc), a0
+		bsr.w   LoadPredefinedTargetGrid
 		movea.l (sp)+,a0
 		rts
 
-	; End of function sub_207BC
+    ; End of function LoadLaserEyeTargetGrid
 
-TileFlags:      incbin "data/maps/global/tileflags.bin"
+LaserEyeTargetGrid:
+		incbin "data/stats/ranges/lasereyetargetgrid.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear tile flags of tile under member D0
+; Make Torch Eye's special target grid, clear space occupied by combatant D0
 
-sub_20802:
+MakeTorchEyeTargetGrid:
+		
 		movem.l d1-d2/a0,-(sp)
-		bsr.s   sub_20822       
-		jsr     j_GetTargetPosition
+		bsr.s   MakeSpecialTargetGrid
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1
-		lea     ((byte_FFA4C0-$1000000)).w,a0
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		clr.b   (a0,d1.w)
 		movem.l (sp)+,d1-d2/a0
 		rts
 
-	; End of function sub_20802
+    ; End of function MakeTorchEyeTargetGrid
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear tile flags and then mark all tiles within 2 of member D0 as passable?
+; Clear passability flags, mark all spaces within 2 of combatant D0 as targetable
 
-sub_20822:
+MakeSpecialTargetGrid:
+		
 		movem.l d1-d3/a0,-(sp)
 		moveq   #0,d1
-		jsr     sub_20398
-		lea     ((byte_FFA4C0-$1000000)).w,a0
+		jsr     j_ClearPassabilityFlags
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		move.w  ((MAP_HEIGHT-$1000000)).w,d1
 		subq.w  #1,d1
 		blt.s   loc_20862
@@ -2616,7 +2677,7 @@ loc_2083A:
 		subq.w  #1,d2
 		blt.s   loc_2085E
 loc_20842:
-		bsr.w   GetDistanceToTarget
+		bsr.w   CalculateDistanceToTarget
 		cmpi.w  #2,d7
 		bgt.s   loc_2085A
 		move.w  d1,d3
@@ -2631,19 +2692,19 @@ loc_20862:
 		movem.l (sp)+,d1-d3/a0
 		rts
 
-	; End of function sub_20822
+    ; End of function MakeSpecialTargetGrid
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute distance up to 3 of tiles around D1,D2
+; Calculate distance up to 3 of tiles around D2,D1
 
 sub_20868:
 		movem.l d0-d3/a0-a1,-(sp)
-		lea     ((byte_FFC200-$1000000)).w,a0
+		lea     ((MOVE_COSTS-$1000000)).w,a0
 		clr.w   d0
 		move.w  ((MAP_WIDTH-$1000000)).w,d3
-		lea     ((byte_FFA4C0-$1000000)).w,a1
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a1
 		mulu.w  d3,d1
 		add.w   d2,d1
 loc_2087E:
@@ -2691,81 +2752,85 @@ loc_208D4:
 		movem.l (sp)+,d0-d3/a0-a1
 		rts
 
-	; End of function sub_20868
+    ; End of function sub_20868
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute movement cost to all tiles for member D0
+; Make total move costs table for enemy combatant D0
+; 
+; In: D3 = 
 
-sub_208DE:
+CreateTotalMoveCosts:
+		
 		movem.l d1-d4/a0,-(sp)
 		jsr     j_GetMoveCostEntryAddress
-		bsr.w   sub_20506       
+		bsr.w   LoadMoveCosts   
 		tst.w   d3
 		bge.s   loc_208F6
 		moveq   #1,d4
-		bsr.w   sub_2053E       
+		bsr.w   BlockSpacesOccupiedByOpponents
 loc_208F6:
 		andi.w  #$7FFF,d3
 		beq.s   loc_20900
-		bsr.w   sub_2091A       
+		bsr.w   BlockAllOccupiedSpaces
 loc_20900:
-		jsr     j_GetTargetMOVE
+		jsr     j_GetModifiedMove
 		move.w  d1,d3
-		add.w   d3,d3
-		jsr     j_GetTargetPosition
-		bsr.w   loc_2040C
+		add.w   d3,d3           ; D3 = moving combatant's modified move * 2 (i.e., move points)
+		jsr     j_GetCombatantPosition
+		bsr.w   PopulateTotalMoveCosts
 		movem.l (sp)+,d1-d4/a0
 		rts
 
-	; End of function sub_208DE
+    ; End of function CreateTotalMoveCosts
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Mark all occupied squares as unreachable
+; In: D3 = 
 
-sub_2091A:
+BlockAllOccupiedSpaces:
+		
 		movem.l d0-d2/d5-a0,-(sp)
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		move.b  d0,d5
 		move.w  ((MAP_WIDTH-$1000000)).w,d5
-		lea     ((byte_FFC200-$1000000)).w,a0
-		moveq   #$1F,d0
-loc_20930:
+		lea     ((MOVE_COSTS-$1000000)).w,a0
+		moveq   #COMBATANT_ENTRIES_COUNTER,d0
+@Loop:
 		move.w  d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.w  d1,d6
 		move.w  (sp)+,d1
-		cmpi.b  #$FF,d6
-		beq.s   loc_20970
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d6
+		beq.s   @Next           ; go to next combatant if entry is unoccupied
 		cmp.b   d6,d5
-		beq.s   loc_20970
-		cmpi.b  #$FF,d6
-		beq.s   loc_20970
+		beq.s   @Next
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d6
+		beq.s   @Next           ; go to next combatant if entry is unoccupied (again!)
 		tst.b   d6
-		bge.s   loc_20970
-		bsr.s   GetDistanceToTarget
+		bge.s   @Next           ; go to next combatant if entity is a force member
+		bsr.s   CalculateDistanceToTarget
 		cmp.w   d3,d7
-		bcs.s   loc_20970
+		bcs.s   @Next
 		movem.w d1-d2,-(sp)
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1
 		move.b  #$FF,(a0,d1.w)
 		movem.w (sp)+,d1-d2
-loc_20970:
-		dbf     d0,loc_20930
+@Next:
+		dbf     d0,@Loop
 		movem.l (sp)+,d0-d2/d5-a0
 		rts
 
-	; End of function sub_2091A
+    ; End of function BlockAllOccupiedSpaces
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Computes distance (DX+DY) of two points stored in D1,D2 and D5,D6 and returns as D7
+; Calculate distance measured in spaces between positions D2,D1 and D6,D5 -> D7
 
 CalculateDistance:
 		
@@ -2783,63 +2848,65 @@ loc_2098A:
 		movem.w (sp)+,d1-d2
 		rts
 
-	; End of function CalculateDistance
+    ; End of function CalculateDistance
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Computes distance between D1,D2 and member D0 and returns as D7
+; Calculate distance between combatant D0 and position D2,D1 -> D7
 
-GetDistanceToTarget:
+CalculateDistanceToTarget:
 		
 		movem.w d5-d6,-(sp)
 		move.w  d2,d6
 		move.w  d1,d5
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		bsr.w   CalculateDistance
 		move.w  d6,d2
 		move.w  d5,d1
 		movem.w (sp)+,d5-d6
 		rts
 
-	; End of function GetDistanceToTarget
+    ; End of function CalculateDistanceToTarget
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get distance between members D0 and D1 -> D7
+; Calculate distance between combatants D0 and D1 -> D7
 
-GetDistanceBetweenTargets:
+CalculateDistanceBetweenCombatants:
 		
 		movem.w d1-d3,-(sp)
 		move.w  d0,d3
 		move.w  d1,d0
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		move.w  d3,d0
-		bsr.w   GetDistanceToTarget
+		bsr.w   CalculateDistanceToTarget
 		movem.w (sp)+,d1-d3
 		rts
 
-	; End of function GetDistanceBetweenTargets
+    ; End of function CalculateDistanceBetweenCombatants
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Find member at D1,D2 and store in D0
+; Check if space at position D2,D1 is occupied by a combatant
+; 
+; CCR: carry-bit set if true
 
-FindTargetAtPosition:
+IsSpaceOccupied:
 		
 		movem.l d0-d4,-(sp)
 		clr.w   d4
-		move.b  d2,d4
+		move.b  d2,d4           ; D4 = X
 		clr.w   d3
-		move.b  d1,d3
-		moveq   #$1F,d0
+		move.b  d1,d3           ; D3 = Y
+		moveq   #COMBATANT_ENTRIES_COUNTER,d0
 loc_209D8:
-		jsr     j_GetTargetID
-		cmpi.b  #$FF,d1
+		jsr     j_GetEntity
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d1
 		beq.s   loc_209F8
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		cmp.w   d4,d2
 		bne.s   loc_209F8
 		cmp.w   d3,d1
@@ -2853,90 +2920,212 @@ loc_209FE:
 		movem.l (sp)+,d0-d4
 		rts
 
-	; End of function FindTargetAtPosition
+    ; End of function IsSpaceOccupied
 
-EffectData:     incbin "data/stats/effects/effectdata.bin"
+tbl_EffectData: incbin "data/stats/effects/effect00.bin"
+		dc.w effect_PhysicalAttack-StartBattleaction
+		incbin "data/stats/effects/effect01.bin"
+		dc.w effect_DoomBlade-StartBattleaction
+		incbin "data/stats/effects/effect02.bin"
+		dc.w effect_PhysicalAttack-StartBattleaction
+		incbin "data/stats/effects/effect03.bin"
+		dc.w effect_AbsorbMp-StartBattleaction
+		incbin "data/stats/effects/effect04.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect05.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect06.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect07.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect08.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect09.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect10.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect11.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect12.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect13.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect14.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect15.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect16.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect17.bin"
+		dc.w EffectRoutine_Antidote-StartBattleaction
+		incbin "data/stats/effects/effect18.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect19.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect20.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect21.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect22.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect23.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect24.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect25.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect26.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect27.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect28.bin"
+		dc.w effect_Detox-StartBattleaction
+		incbin "data/stats/effects/effect29.bin"
+		dc.w effect_Detox-StartBattleaction
+		incbin "data/stats/effects/effect30.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect31.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect32.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect33.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect34.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect35.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect36.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect37.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect38.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect39.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect40.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect41.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect42.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect43.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect44.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect45.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect46.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect47.bin"
+		dc.w effect_MagicAttack-StartBattleaction
+		incbin "data/stats/effects/effect48.bin"
+		dc.w effect_Desoul-StartBattleaction
+		incbin "data/stats/effects/effect49.bin"
+		dc.w effect_Desoul-StartBattleaction
+		incbin "data/stats/effects/effect50.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect51.bin"
+		dc.w EffectRoutine_Heal-StartBattleaction
+		incbin "data/stats/effects/effect52.bin"
+		dc.w effect_InflictStatusNullifiableByShield-StartBattleaction
+		incbin "data/stats/effects/effect53.bin"
+		dc.w effect_IncreaseStat-StartBattleaction
+		incbin "data/stats/effects/effect54.bin"
+		dc.w effect_IncreaseStat-StartBattleaction
+		incbin "data/stats/effects/effect55.bin"
+		dc.w effect_IncreaseStat-StartBattleaction
+		incbin "data/stats/effects/effect56.bin"
+		dc.w effect_IncreaseStat-StartBattleaction
+		incbin "data/stats/effects/effect57.bin"
+		dc.w effect_IncreaseStat-StartBattleaction
+		incbin "data/stats/effects/effect58.bin"
+		dc.w effect_UnnullifiableMagicAttack-StartBattleaction
 
 ; =============== S U B R O U T I N E =======================================
 
-; Effect Handler (calls 20C1C)
+; Effect Handler (calls 20C1C) -- Laser Eye range routine
 
-sub_20BDC:
+DetermineLaserEyeAction:
+		
 		movem.l d1-d2/a0,-(sp)
-		move.b  ((byte_FF9C7E-$1000000)).w,d2
+		move.b  ((LASER_EYE_COUNTDOWN-$1000000)).w,d2
 		cmpi.b  #5,d2
-		blt.s   loc_20BF4
-		bsr.w   sub_20C1C       
-		clr.b   ((byte_FF9C7E-$1000000)).w
-		bra.s   loc_20C16
-loc_20BF4:
+		blt.s   @Countdown
+		bsr.w   StartBattleaction
+		clr.b   ((LASER_EYE_COUNTDOWN-$1000000)).w
+		bra.s   @Done
+@Countdown:
 		moveq   #$FFFFFFFF,d1
-		bsr.w   sub_21520       
-		lea     ((MESSAGE_INDEX-$1000000)).w,a0
+		bsr.w   LoadBattlesceneActors
+		lea     ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,a0
 		andi.w  #$FF,d2
 		addi.w  #$206,d2
 		move.w  d2,(a0)
-		bsr.w   sub_215FC       
-		bsr.s   sub_20C40       
+		bsr.w   CopyBattlesceneData
+		bsr.s   InitializeBattlesceneAftermath
 		bsr.w   sub_21620       
-		addq.b  #1,((byte_FF9C7E-$1000000)).w
-loc_20C16:
+		addq.b  #1,((LASER_EYE_COUNTDOWN-$1000000)).w
+@Done:
 		movem.l (sp)+,d1-d2/a0
 		rts
 
-	; End of function sub_20BDC
+    ; End of function DetermineLaserEyeAction
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Effect Code Routine
+; In: d5.b = battleaction index
 
-sub_20C1C:
+StartBattleaction:
+		
 		movem.l d5/a0-a2,-(sp)
-		bsr.s   sub_20C40       
-		lea     EffectData(pc), a0
+		bsr.s   InitializeBattlesceneAftermath
+		lea     tbl_EffectData(pc), a0
 		andi.w  #$FF,d5
 		asl.w   #3,d5
 		adda.w  d5,a0
-		move.w  6(a0),d5
-		lea     sub_20C1C(pc,d5.w),a1
-		bsr.w   sub_21754
+		move.w  EFFECTDEF_OFFSET_ROUTINE(a0),d5
+		lea     StartBattleaction(pc,d5.w),a1
+		bsr.w   ExecuteBattleaction
 		movem.l (sp)+,d5/a0-a2
 		rts
 
-	; End of function sub_20C1C
+    ; End of function StartBattleaction
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Reset Effect Values
+; Clear experience, coins, and dropped items values.
 
-sub_20C40:
-		clr.w   ((EXP_TO_GAIN-$1000000)).w
+InitializeBattlesceneAftermath:
+		
+		clr.w   ((EXPERIENCE_TO_GAIN-$1000000)).w
 		clr.w   ((COINS_TO_GAIN-$1000000)).w
-		move.w  #$FFFF,((DROP_ITEM_FLAG-$1000000)).w
+		move.w  #$FFFF,((ITEM_DROPPED_FLAG-$1000000)).w
 		rts
 
-	; End of function sub_20C40
+    ; End of function InitializeBattlesceneAftermath
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Heal Effect Routine
+; In: A0 = effect data address
+;     D0 = caster index
+;     D1 = target index
 
-ActionEffect_Heal:
+EffectRoutine_Heal:
 		
 		movem.l d2-d3,-(sp)
 		bsr.w   IsSpellNullified
 		bcs.s   loc_20CAA
 		movem.w d0-d1,-(sp)
 		move.w  d1,d0
-		jsr     j_GetMaxHPFromForceID
+		jsr     j_GetMaxHpForCombatant
 		move.w  d1,d2
-		jsr     j_GetHPFromForceID
+		jsr     j_GetCurrentHpForCombatant
 		sub.w   d1,d2
 		movem.w (sp)+,d0-d1
-		move.b  3(a0),d3
+		move.b  EFFECTDEF_OFFSET_POWER(a0),d3
 		cmpi.b  #$FF,d3
 		bne.s   loc_20C82
 		move.w  d2,d3
@@ -2949,247 +3138,256 @@ loc_20C88:
 		bge.s   loc_20C8E
 		move.w  d2,d3
 loc_20C8E:
-		move.w  #1,((word_FFA9DE-$1000000)).w
-		move.w  d3,((word_FFA9D8-$1000000)).w
-		move.w  #$1C6,((MESSAGE_INDEX-$1000000)).w
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
+		move.w  #1,((EFFECT_REACTION-$1000000)).w
+		move.w  d3,((EFFECT_HP_CHANGE-$1000000)).w
+		move.w  #$1C6,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] regains [Num] hit[Line]points."
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
 		ext.l   d3
-		move.l  d3,((MESSAGE_ARG_NUMBER-$1000000)).w
-		bsr.s   CalculateHealEXP
+		move.l  d3,((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w
+		bsr.s   CalculateHealingExperience
 loc_20CAA:
 		movem.l (sp)+,d2-d3
 		rts
 
-	; End of function ActionEffect_Heal
+    ; End of function EffectRoutine_Heal
 
 
 ; =============== S U B R O U T I N E =======================================
 
-CalculateHealEXP:
+CalculateHealingExperience:
 		
 		movem.l d0-d3,-(sp)
-		bsr.s   IsHealer        
-		bne.s   loc_20CDA
+		bsr.s   IsHealerClass   
+		bne.s   loc_20CDA       ; skip if caster is not a healer class
 		move.w  d1,d0
-		jsr     j_GetMaxHPFromForceID
+		jsr     j_GetMaxHpForCombatant
 		tst.w   d3
-		beq.s   loc_20CDA
-		muls.w  #$14,d3
+		beq.s   loc_20CDA       ; skip if healing amount is 0
+		muls.w  #20,d3          ; max EXP per target = 20
 		divs.w  d1,d3
 		addq.w  #1,d3
-		cmpi.w  #$A,d3
+		cmpi.w  #10,d3
 		bge.s   loc_20CD6
-		move.w  #$A,d3
+		move.w  #10,d3
 loc_20CD6:
-		add.w   d3,((EXP_TO_GAIN-$1000000)).w
+		add.w   d3,((EXPERIENCE_TO_GAIN-$1000000)).w
 loc_20CDA:
-		bsr.s   CapEXPToGain    
+		bsr.s   CapExperienceToGain
 		movem.l (sp)+,d0-d3
 		rts
 
-	; End of function CalculateHealEXP
+    ; End of function CalculateHealingExperience
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if healer class
+; Check if caster D0 is a healer class -> CCR zero-bit set if true
 
-IsHealer:
+IsHealerClass:
+		
 		movem.l d1,-(sp)
-		jsr     j_GetClassFromForceID
-		cmpi.b  #CLASS_ID_HEAL,d1
-		beq.s   loc_20D02
-		cmpi.b  #CLASS_ID_VICR,d1
-		beq.s   loc_20D02
-		cmpi.b  #CLASS_ID_MONK,d1
-		beq.s   loc_20D02
-		cmpi.b  #CLASS_ID_MSMK,d1
-loc_20D02:
+		jsr     j_GetClassForCombatant
+		cmpi.b  #CLASS_HEAL,d1
+		beq.s   @Done
+		cmpi.b  #CLASS_VICR,d1
+		beq.s   @Done
+		cmpi.b  #CLASS_MONK,d1
+		beq.s   @Done
+		cmpi.b  #CLASS_MSMK,d1
+@Done:
 		movem.l (sp)+,d1
 		rts
 
-	; End of function IsHealer
+    ; End of function IsHealerClass
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Cap EXP at 48
-
-CapEXPToGain:
-		cmpi.w  #$30,((EXP_TO_GAIN-$1000000)).w 
-		bcs.s   locret_20D16
-		move.w  #$30,((EXP_TO_GAIN-$1000000)).w 
-locret_20D16:
+CapExperienceToGain:
+		
+		cmpi.w  #48,((EXPERIENCE_TO_GAIN-$1000000)).w
+		bcs.s   @Return
+		move.w  #48,((EXPERIENCE_TO_GAIN-$1000000)).w
+@Return:
 		rts
 
-	; End of function CapEXPToGain
+    ; End of function CapExperienceToGain
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Antidote/Detox effect routine
-
-ActionEffect_Antidote:
+EffectRoutine_Antidote:
 		
 		movem.l d2-d3,-(sp)
 		bra.s   loc_20D28       
-ActionEffect_Detox:
-		
+
+    ; End of function EffectRoutine_Antidote
+
+
+; =============== S U B R O U T I N E =======================================
+
+effect_Detox:
 		movem.l d2-d3,-(sp)
 		bsr.w   IsSpellNullified
 		bcs.s   loc_20D76
 loc_20D28:
-		move.w  ((word_FFA9DC-$1000000)).w,d3
+		move.w  ((EFFECT_STATUS_CHANGE-$1000000)).w,d3
 						; Cure poison
-		tst.b   2(a0)
+		tst.b   EFFECTDEF_OFFSET_STATUS(a0)
 		bne.s   loc_20D3E
-		andi.w  #$FFFE,((word_FFA9DC-$1000000)).w
-		move.w  #$1C8,d2
+		andi.w  #STATUSEFFECT_COUNTER_SLEEP|STATUSEFFECT_COUNTER_CURSE|STATUSEFFECT_COUNTER_JOGURT|STATUSEFFECT_COUNTER_MUDDLE|STATUSEFFECT_COUNTER_DISPEL|STATUSEFFECT_COUNTER_QUICK|STATUSEFFECT_COUNTER_SLOW|STATUSEFFECT_COUNTER_BOOST|STATUSEFFECT_COUNTER_SHIELD,((EFFECT_STATUS_CHANGE-$1000000)).w
+		move.w  #$1C8,d2        ; "All traces of poison are[Line]purged from [Name]."
 		bra.s   loc_20D48
 loc_20D3E:
-		andi.w  #$F300,((word_FFA9DC-$1000000)).w
-		move.w  #$1C9,d2
+		andi.w  #STATUSEFFECT_COUNTER_QUICK|STATUSEFFECT_COUNTER_BOOST|STATUSEFFECT_COUNTER_SHIELD,((EFFECT_STATUS_CHANGE-$1000000)).w
+		move.w  #$1C9,d2        ; "[Name] recovers."
 loc_20D48:
-		cmp.w   ((word_FFA9DC-$1000000)).w,d3
+		cmp.w   ((EFFECT_STATUS_CHANGE-$1000000)).w,d3
 		bne.s   loc_20D52
-		move.w  #$1D1,d2
+		move.w  #$1D1,d2        ; "But nothing happens."
 loc_20D52:
-		bsr.s   IsHealer        
+		bsr.s   IsHealerClass   
 		bne.s   loc_20D68
-		cmp.w   ((word_FFA9DC-$1000000)).w,d3
+		cmp.w   ((EFFECT_STATUS_CHANGE-$1000000)).w,d3
 		bne.s   loc_20D62
-		addq.w  #1,((EXP_TO_GAIN-$1000000)).w
+		addq.w  #1,((EXPERIENCE_TO_GAIN-$1000000)).w
 		bra.s   loc_20D68
 loc_20D62:
-		addi.w  #$A,((EXP_TO_GAIN-$1000000)).w
+		addi.w  #10,((EXPERIENCE_TO_GAIN-$1000000)).w
 loc_20D68:
-		move.w  #1,((word_FFA9DE-$1000000)).w
-		move.w  d2,((MESSAGE_INDEX-$1000000)).w
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
+		move.w  #1,((EFFECT_REACTION-$1000000)).w
+		move.w  d2,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
 loc_20D76:
 		movem.l (sp)+,d2-d3
 		rts
 
-	; End of function ActionEffect_Antidote
+    ; End of function effect_Detox
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Physical attack routine
-
-ActionEffect_PhysicalAttack:
+effect_PhysicalAttack:
 		
 		movem.l d2-d7,-(sp)
 		bsr.w   IsEnemy         
-		blt.s   loc_20D8E
-		move.w  #$1BB,((MESSAGE_INDEX-$1000000)).w
+		blt.s   loc_20D8E       
+		move.w  #$1BB,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "Inflicts [Num] points of damage on[Line]the [Name]."
 		bra.s   loc_20D94
 loc_20D8E:
-		move.w  #$1BC,((MESSAGE_INDEX-$1000000)).w
+		move.w  #$1BC,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] suffers [Num][Line]points of damage."
 loc_20D94:
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
-		bsr.w   CheckEvasion    
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
+		bsr.w   DetermineEvade  
 		bcs.s   loc_20DE2
 		clr.w   ((DAMAGE_MULTIPLIER-$1000000)).w
-		tst.b   ((byte_FFCBC6-$1000000)).w
+		tst.b   ((DEBUG_SPECIAL_ATTACK-$1000000)).w
 		beq.s   loc_20DB4
-		move.b  ((byte_FFCBC6-$1000000)).w,((byte_FFCB67-$1000000)).w
-		move.b  #$64,((byte_FFCB66-$1000000)).w 
+		move.b  ((DEBUG_SPECIAL_ATTACK-$1000000)).w,((SPECIAL_ATTACK_INDEX-$1000000)).w
+		move.b  #100,((SPECIAL_ATTACK_PERCENT-$1000000)).w
 loc_20DB4:
-		move.b  2(a0),d2
-		bsr.w   UpdateRandomSeed0To100
-		cmp.b   ((byte_FFCB66-$1000000)).w,d7
+		move.b  EFFECTDEF_OFFSET_ELEMENT(a0),d2
+		bsr.w   GenerateRandomNumber0To99
+		cmp.b   ((SPECIAL_ATTACK_PERCENT-$1000000)).w,d7
 		bge.s   loc_20DC8
-		bsr.w   sub_2130E       
+		bsr.w   JumpToSpecialAttackRoutine
 		bra.s   loc_20DCC
 loc_20DC8:
 		bsr.w   CalculateDamage 
 loc_20DCC:
-		bsr.w   sub_20DF4       
+		bsr.w   HandleTargetDefeat
 		ext.l   d3
 		beq.s   loc_20DE2
-		move.l  d3,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.l  d3,((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w
 		neg.w   d3
-		move.w  d3,((word_FFA9D8-$1000000)).w
-		clr.w   ((word_FFA9DE-$1000000)).w
+		move.w  d3,((EFFECT_HP_CHANGE-$1000000)).w
+		clr.w   ((EFFECT_REACTION-$1000000)).w
 loc_20DE2:
-		tst.w   ((EXP_TO_GAIN-$1000000)).w
+		tst.w   ((EXPERIENCE_TO_GAIN-$1000000)).w
 		bne.s   loc_20DEE
-		move.w  #1,((EXP_TO_GAIN-$1000000)).w
+		move.w  #1,((EXPERIENCE_TO_GAIN-$1000000)).w
 loc_20DEE:
 		movem.l (sp)+,d2-d7
 		rts
 
-	; End of function ActionEffect_PhysicalAttack
+    ; End of function effect_PhysicalAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Death Routine
+; In: D3 = calculated damage
 
-sub_20DF4:
+HandleTargetDefeat:
+		
 		movem.l d0-d6,-(sp)
 		move.w  ((word_FFCB58-$1000000)).w,d4
 		add.w   d3,((word_FFCB58-$1000000)).w
 		movem.w d0-d1,-(sp)
 		move.b  d1,d0
-		jsr     j_GetMaxHPFromForceID
+		jsr     j_GetMaxHpForCombatant
 		move.w  d1,d5
-		jsr     j_GetHPFromForceID
+		jsr     j_GetCurrentHpForCombatant
 		move.w  d1,d6
 		movem.w (sp)+,d0-d1
-		bsr.s   sub_20E6A       
-		bsr.w   sub_219E6       
+		bsr.s   CalculateKillExperience
+		bsr.w   CheckFatalDamage
 		bgt.s   loc_20E38
-		add.w   d2,((EXP_TO_GAIN-$1000000)).w
+		add.w   d2,((EXPERIENCE_TO_GAIN-$1000000)).w
 		move.w  d6,d3
 		sub.w   d4,d3
 		bsr.w   LoadCoinsToGain 
 		bsr.w   LoadItemToDrop  
-		bsr.w   sub_214A8       
-		bsr.s   sub_20E4A       
+		bsr.w   DetermineDarkDragonFinisher
+		bsr.s   LoadDeathMessage
 loc_20E38:
 		muls.w  d3,d2
 		divs.w  d5,d2
-		add.w   d2,((EXP_TO_GAIN-$1000000)).w
-		bsr.w   CapEXPToGain    
+		add.w   d2,((EXPERIENCE_TO_GAIN-$1000000)).w
+		bsr.w   CapExperienceToGain
 		movem.l (sp)+,d0-d6
 		rts
 
-	; End of function sub_20DF4
+    ; End of function HandleTargetDefeat
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get death message depending on if force or enemy
+; Load death message depending on if target is force or enemy
 
-sub_20E4A:
+LoadDeathMessage:
+		
 		move.l  d0,-(sp)
 		move.w  d1,d0
 		bsr.w   IsEnemy         
-		blt.s   loc_20E5C
-		move.w  #$1C3,((word_FFA9EA-$1000000)).w
+		blt.s   loc_20E5C       
+		move.w  #$1C3,((BATTLE_MESSAGE_INDEX_2-$1000000)).w
+						; "[Name] can fight[Line]no longer."
 		bra.s   loc_20E62
 loc_20E5C:
-		move.w  #$1C2,((word_FFA9EA-$1000000)).w
+		move.w  #$1C2,((BATTLE_MESSAGE_INDEX_2-$1000000)).w
+						; "[Name] is defeated!"
 loc_20E62:
-		move.w  d1,((word_FFA9EC-$1000000)).w
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_2-$1000000)).w
 		move.l  (sp)+,d0
 		rts
 
-	; End of function sub_20E4A
+    ; End of function LoadDeathMessage
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get experience for killing enemy based on level difference
+; Get experience for killing enemy based on level difference -> D2
 
-sub_20E6A:
+CalculateKillExperience:
+		
 		move.l  d1,-(sp)
 		bsr.w   CalculateLevelDifference
-		cmpi.w  #$FFFD,d1
+		cmpi.w  #-3,d1
 		bge.s   loc_20E7A
-		moveq   #$FFFFFFFD,d1
+		moveq   #-3,d1
 		bra.s   loc_20E82
 loc_20E7A:
 		cmpi.w  #5,d1
@@ -3197,16 +3395,17 @@ loc_20E7A:
 		moveq   #5,d1
 loc_20E82:
 		clr.w   d2
-		move.b  ExperienceTable(pc,d1.w),d2
+		move.b  table_KillExperienceGains(pc,d1.w),d2
 		move.l  (sp)+,d1
 		rts
 
-	; End of function sub_20E6A
+    ; End of function CalculateKillExperience
 
 		dc.b 48
 		dc.b 32
 		dc.b 24
-ExperienceTable:dc.b 16
+table_KillExperienceGains:
+		dc.b 16
 		dc.b 10
 		dc.b 6
 		dc.b 4
@@ -3224,7 +3423,7 @@ LoadCoinsToGain:
 		move.b  d1,d0
 		bsr.w   IsEnemy         
 		bge.s   loc_20EB4
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.b  d1,d0
 		bsr.w   GetEnemyEntryAddress
 		move.w  (a1),d0
@@ -3233,214 +3432,277 @@ loc_20EB4:
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function LoadCoinsToGain
+    ; End of function LoadCoinsToGain
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Give Jogurt ring if Jogurt kills enemy and hasn't been given
+; Give Jogurt Ring if Jogurt kills an enemy and it hasn't been given yet
 
 LoadItemToDrop:
 		
 		movem.l d0-d2,-(sp)
 		clr.w   d2
 		move.b  d1,d2
-		jsr     j_GetTargetID
-		cmpi.b  #FORCE_ID_JOGURT,d1
+		jsr     j_GetEntity
+		cmpi.b  #JOGURT,d1
 		bne.s   loc_20EDE
-		move.w  #ITEM_ID_YOGURT_RING,d1
+		move.w  #YOGURT_RING,d1
 		jsr     j_IsItemInDealsOrHeldByForce
 		bcc.s   loc_20EDE
 		move.w  d0,d2
 		bra.s   loc_20EE8
 loc_20EDE:
 		move.b  d2,d0
-		jsr     j_IsEnemyAndHasItemToDrop
+		jsr     j_FindItemToDrop
 		blt.s   loc_20EF0
 loc_20EE8:
-		move.w  d2,((DROP_ITEM_FLAG-$1000000)).w
+		move.w  d2,((ITEM_DROPPED_FLAG-$1000000)).w
 		move.w  d1,((ITEM_TO_DROP-$1000000)).w
 loc_20EF0:
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function LoadItemToDrop
+    ; End of function LoadItemToDrop
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Doom Blade Effect Routine
-
-sub_20EF6:
+effect_DoomBlade:
+		
 		movem.l d2-d7,-(sp)
-		bsr.w   CheckEvasion    
+		bsr.w   DetermineEvade  
 		bcs.w   loc_20DE2
 		clr.w   ((DAMAGE_MULTIPLIER-$1000000)).w
-		move.b  2(a0),d2
-		bsr.w   sub_21340       
+		move.b  EFFECTDEF_OFFSET_ELEMENT(a0),d2
+		bsr.w   specialAttack_InstantDeath
 		bra.w   loc_20DCC
-ActionEffect_PhysElemAttack:
+
+    ; End of function effect_DoomBlade
+
+
+; =============== S U B R O U T I N E =======================================
+
+effect_UnnullifiableMagicAttack:
 		
-		movem.l d2-d7,-(sp)     ; Physical Elemental Attack Header (Calls 20F26)
-		bra.w   loc_20F26       
-ActionEffect_MagElemAttack:
+		movem.l d2-d7,-(sp)
+		bra.w   loc_20F26
+
+    ; End of function effect_UnnullifiableMagicAttack
+
+
+; =============== S U B R O U T I N E =======================================
+
+effect_MagicAttack:
 		
-		movem.l d2-d7,-(sp)     ; Magical Elemental Attack Header (Calls 20F26)
+		movem.l d2-d7,-(sp)
 		bsr.w   IsSpellNullified
 		bcs.w   loc_20DE2
 loc_20F26:
-		bsr.w   IsEnemy         ; Elemental Attack Routine
-		blt.s   loc_20F34
-		move.w  #$1BB,((MESSAGE_INDEX-$1000000)).w
-		bra.s   loc_20F3A
+		bsr.w   IsEnemy         
+		blt.s   loc_20F34       
+		move.w  #$1BB,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "Inflicts [Num] points of damage on[Line]the [Name]."
+		bra.s   loc_20F3A       
 loc_20F34:
-		move.w  #$1BC,((MESSAGE_INDEX-$1000000)).w
+		move.w  #$1BC,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] suffers [Num][Line]points of damage."
 loc_20F3A:
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
+						; load target's name index
 		clr.w   ((DAMAGE_MULTIPLIER-$1000000)).w
-		move.b  2(a0),d2
+		move.b  EFFECTDEF_OFFSET_ELEMENT(a0),d2
 		andi.b  #7,d2
 		clr.w   d3
-		move.b  3(a0),d3
+		move.b  EFFECTDEF_OFFSET_POWER(a0),d3
 		bsr.w   ApplyDamageSpread
-		bsr.w   ApplyElemResist 
-		move.b  2(a0),d4
+		bsr.w   ApplyResistance 
+		move.b  EFFECTDEF_OFFSET_ELEMENT(a0),d4
 		andi.w  #$18,d4
 		asr.w   #2,d4
-		move.w  ElemAttackCritPercents(pc,d4.w),d4
-		bsr.w   UpdateRandomSeed0To100
+		move.w  table_MagicChanceToCriticalPercents(pc,d4.w),d4
+		bsr.w   GenerateRandomNumber0To99
 		cmp.w   d4,d7
 		bcc.s   loc_20F74
 		move.w  #3,((DAMAGE_MULTIPLIER-$1000000)).w
 loc_20F74:
-		bsr.w   CheckCriticalHit
+		bsr.w   ApplyCriticalDamage
 		bra.w   loc_20DCC
-ElemAttackCritPercents:
-		
+
+    ; End of function effect_MagicAttack
+
+table_MagicChanceToCriticalPercents:
 		dc.w 3
 		dc.w 4
 		dc.w 6
-ActionEffect_PhysStatus:
+
+; =============== S U B R O U T I N E =======================================
+
+EffectRoutine_InflictStatus:
 		
-		movem.l d2-d7,-(sp)     ; Physical Status Effect Header (Calls 20F94)
+		movem.l d2-d7,-(sp)
 		bra.s   loc_20F94       
-ActionEffect_MagStatus:
+
+    ; End of function EffectRoutine_InflictStatus
+
+
+; =============== S U B R O U T I N E =======================================
+
+effect_InflictStatusNullifiableByShield:
 		
-		movem.l d2-d7,-(sp)     ; Magical Status Effect Header (Calls 20F26)
+		movem.l d2-d7,-(sp)
 		bsr.w   IsSpellNullified
 		bcs.w   loc_20DE2
 loc_20F94:
-		clr.w   d2              ; Status Effect Routine
-		cmpi.b  #6,2(a0)
+		clr.w   d2              ; default to "Blaze" resistance
+		cmpi.b  #STATUSEFFECT_SLEEP,EFFECTDEF_OFFSET_STATUS(a0)
 		bne.s   loc_20FA0
-		moveq   #3,d2
+		moveq   #CLASS_RESISTANCE_SLEEP_AND_DESOUL,d2
 loc_20FA0:
-		tst.b   3(a0)
+		tst.b   EFFECTDEF_OFFSET_CAN_FAIL(a0)
 		beq.s   loc_20FB0
-		bsr.w   CheckStatusFailure
+		bsr.w   DetermineEffectFailure
 		bcc.s   loc_20FB0
-		bsr.s   sub_20FBA       
+		bsr.s   LoadEffectFailureMessage
 		bra.s   loc_20FB6
 loc_20FB0:
-		move.b  2(a0),d2
-		bsr.s   sub_20FD4       
+		move.b  EFFECTDEF_OFFSET_STATUS(a0),d2
+		bsr.s   LoadEffectSuccessMessage
 loc_20FB6:
 		bra.w   loc_20DE2
 
-	; End of function sub_20EF6
+    ; End of function effect_InflictStatusNullifiableByShield
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Spell Failure Message
-
-sub_20FBA:
+LoadEffectFailureMessage:
+		
 		move.w  d0,-(sp)
-		tst.w   ((word_FFCB5A-$1000000)).w
-		beq.s   loc_20FC8
-		move.w  #$1C4,d0
+		tst.w   ((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w
+		beq.s   loc_20FC8       
+		move.w  #$1C4,d0        ; "But the spell doesn't work."
 		bra.s   loc_20FCC
 loc_20FC8:
-		move.w  #$1D1,d0
+		move.w  #$1D1,d0        ; "But nothing happens."
 loc_20FCC:
-		move.w  d0,((MESSAGE_INDEX-$1000000)).w
+		move.w  d0,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
 		move.w  (sp)+,d0
 		rts
 
-	; End of function sub_20FBA
+    ; End of function LoadEffectFailureMessage
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Status Effect Message
+; In: D1 = target index
+;     D2 = status effect index
 
-sub_20FD4:
+LoadEffectSuccessMessage:
+		
 		movem.l d0/d2/d4/a0,-(sp)
 		clr.w   d4
 		move.b  d2,d4
 		asl.w   #2,d4
-		lea     StatusEffectMsgNumbers(pc,d4.w),a0
+		lea     table_StatusEffectMessageParameters(pc,d4.w),a0
 		clr.w   d0
 		move.b  d1,d0
 		move.b  (a0)+,d4
 		ext.w   d4
 		blt.s   loc_20FF0
-		addi.w  #$1D7,d4
+		addi.w  #$1D7,d4        ; "[Name]'s speed increases[Line]by [Num]. Defense level[Line]increases by [Num]."
 loc_20FF0:
-		move.w  d4,((word_FFA9EA-$1000000)).w
-		move.w  d0,((word_FFA9EC-$1000000)).w
+		move.w  d4,((BATTLE_MESSAGE_INDEX_2-$1000000)).w
+		move.w  d0,((BATTLE_MESSAGE_ARG_NAME_2-$1000000)).w
 		moveq   #0,d4
 		move.b  (a0)+,d4
-		move.l  d4,((dword_FFA9F0-$1000000)).w
+		move.l  d4,((BATTLE_MESSAGE_ARG_NUMBER_2-$1000000)).w
 		move.w  (a0),d4
-		or.w    d4,((word_FFA9DC-$1000000)).w
+		or.w    d4,((EFFECT_STATUS_CHANGE-$1000000)).w
 		movem.l (sp)+,d0/d2/d4/a0
 		rts
 
-	; End of function sub_20FD4
+    ; End of function LoadEffectSuccessMessage
 
-StatusEffectMsgNumbers:
-		incbin "data/stats/effects/statuseffectmsgnumbers.bin"
+table_StatusEffectMessageParameters:
+		; 4 bytes per entry : 
+		dc.b 0                  ; Quick
+		dc.b 10
+		dc.w STATUSEFFECT_COUNTER_QUICK
+		dc.b 1                  ; Slow
+		dc.b 10
+		dc.w STATUSEFFECT_COUNTER_SLOW
+		dc.b 2                  ; Boost
+		dc.b 15
+		dc.w STATUSEFFECT_COUNTER_BOOST
+		dc.b 3                  ; Dispel
+		dc.b 0
+		dc.w STATUSEFFECT_COUNTER_DISPEL
+		dc.b 4                  ; Shield
+		dc.b 0
+		dc.w STATUSEFFECT_COUNTER_SHIELD
+		dc.b 5                  ; Muddle
+		dc.b 0
+		dc.w STATUSEFFECT_COUNTER_MUDDLE
+		dc.b 6                  ; Sleep
+		dc.b 0
+		dc.w STATUSEFFECT_COUNTER_SLEEP
+		dc.b 7                  ; Poison
+		dc.b 0
+		dc.w STATUSEFFECT_COUNTER_POISON
+		dc.b 8                  ; Curse
+		dc.b 0
+		dc.w STATUSEFFECT_COUNTER_CURSE
+		dc.b 9                  ; Jogurt
+		dc.b 0
+		dc.w STATUSEFFECT_COUNTER_JOGURT
 
 ; =============== S U B R O U T I N E =======================================
 
-; Desoul Routine
-
-ActionEffect_Desoul:
+effect_Desoul:
 		
 		movem.l d2-d7,-(sp)
 		bsr.w   IsSpellNullified
 		bcs.w   loc_20DE2
 		bsr.w   IsEnemy         
-		blt.s   loc_2104E
-		move.w  #$1CA,((MESSAGE_INDEX-$1000000)).w
+		blt.s   loc_2104E       
+		move.w  #$1CA,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] can no longer fight."
 		bra.s   loc_21054
 loc_2104E:
-		move.w  #$1CB,((MESSAGE_INDEX-$1000000)).w
+		move.w  #$1CB,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] can no longer fight."
 loc_21054:
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
-		bsr.w   sub_212FA       
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
+		bsr.w   IsVulnerableToInstantDeath
 		beq.w   loc_21068
-		moveq   #3,d2
-		bsr.w   CheckStatusFailure
-		bcc.s   loc_21070
+		moveq   #CLASS_RESISTANCE_SLEEP_AND_DESOUL,d2
+		bsr.w   DetermineEffectFailure
+		bcc.s   loc_21070       
 loc_21068:
-		bsr.w   sub_20FBA       
+		bsr.w   LoadEffectFailureMessage
 		bra.w   loc_20DE2
 loc_21070:
-		move.w  #$3E7,d3
+		move.w  #999,d3         ; inflict 999 points of damage
 		bra.w   loc_20DCC
-ActionEffect_StealMP:
+
+    ; End of function effect_Desoul
+
+
+; =============== S U B R O U T I N E =======================================
+
+effect_AbsorbMp:
 		
-		movem.l d6-d7,-(sp)     ; Demon Rod Routine
-		move.w  #$1D5,((word_FFA9CE-$1000000)).w
-		move.w  ((word_FFCB62-$1000000)).w,d6
-		move.w  d6,((word_FFA9D0-$1000000)).w
+		movem.l d6-d7,-(sp)
+		move.w  #$1D5,((AFTER_TURN_MESSAGE_INDEX-$1000000)).w
+						; "The [Item] makes a[Line]strange sound."
+		move.w  ((SELECTED_ITEM_ENTRY-$1000000)).w,d6
+		move.w  d6,((AFTER_TURN_MESSAGE_ARG_NAME_1-$1000000)).w
 		movem.w d0-d1,-(sp)
 		move.b  d1,d0
-		jsr     j_GetMPFromForceID
+		jsr     j_GetCurrentMpForCombatant
 		move.w  #3,d6
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		addq.w  #2,d7
 		cmp.w   d1,d7
 		ble.s   loc_210A8
@@ -3450,108 +3712,116 @@ loc_210A8:
 		movem.w (sp)+,d0-d1
 		tst.l   d7
 		beq.s   loc_210C6
-		move.w  #$1D6,((MESSAGE_INDEX-$1000000)).w
+		move.w  #$1D6,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] loses [Num] magic[Line]points."
 		andi.w  #$FF,d0
-		move.w  d0,((MESSAGE_ARG_NAME-$1000000)).w
-		move.l  d7,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  d0,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
+		move.l  d7,((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w
 		bra.s   loc_210CA
 loc_210C6:
-		bsr.w   sub_20FBA       
+		bsr.w   LoadEffectFailureMessage
 loc_210CA:
 		add.b   d7,((byte_FFCB6C-$1000000)).w
 		neg.w   d7
-		move.w  d7,((word_FFA9DA-$1000000)).w
+		move.w  d7,((EFFECT_MP_CHANGE-$1000000)).w
 		movem.l (sp)+,d6-d7
 		rts
-ActionEffect_IncreaseStat:
-		
-		movem.l d0-d1,-(sp)     ; Stat Increase Effect
-		move.b  d1,d0
-		clr.w   d1
-		move.b  2(a0),d1
-		bsr.w   sub_2337A       
-		movem.l (sp)+,d0-d1
-		rts
 
-	; End of function ActionEffect_Desoul
+    ; End of function effect_AbsorbMp
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Calculate physical damage D3
+effect_IncreaseStat:
+		
+		movem.l d0-d1,-(sp)
+		move.b  d1,d0
+		clr.w   d1
+		move.b  2(a0),d1
+		bsr.w   IncreaseStatOnItemUse
+		movem.l (sp)+,d0-d1
+		rts
+
+    ; End of function effect_IncreaseStat
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Calculate physical attack damage -> D3
 
 CalculateDamage:
 		
 		movem.l d0-d1,-(sp)
 		move.w  d1,-(sp)
-		jsr     j_GetTargetATT
-		move.w  d1,d3           ; get ATK to D3
+		jsr     j_GetModifiedAttack
+		move.w  d1,d3           ; D3 = attacker's Attack
 		move.w  (sp)+,d1
 		move.w  d0,-(sp)
-		move.b  d1,d0           ; change to defender
-		jsr     j_GetTargetDEF
-		sub.w   d1,d3           ; subtract DEF from ATK
+		move.b  d1,d0           ; D0 = defender index
+		jsr     j_GetModifiedDefense
+		sub.w   d1,d3           ; D3 = (Defense - Attack)
 		move.w  (sp)+,d0
 		bsr.w   ApplyLandEffect 
-		bsr.w   ApplyElemResist 
-		bsr.s   CheckCriticalHit
+		bsr.w   ApplyResistance 
+		bsr.s   ApplyCriticalDamage
 		bsr.s   ApplyDamageSpread
 		tst.w   d3
-		bgt.s   loc_21122
-		move.w  #1,d3
-loc_21122:
+		bgt.s   @Continue
+		move.w  #1,d3           ; minimum 1 point of damage
+@Continue:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function CalculateDamage
+    ; End of function CalculateDamage
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check for critical
+; Determine critical hit, apply damage multiplier -> D3
 
-CheckCriticalHit:
+ApplyCriticalDamage:
 		
 		movem.l d1/d7,-(sp)
-		jsr     j_GetTargetCRIT
-		bsr.w   UpdateRandomSeed0To100
+		jsr     j_GetModifiedCritical
+		bsr.w   GenerateRandomNumber0To99
 		cmp.w   d1,d7
-		bge.s   loc_21140
+		bge.s   @Failure
 		move.w  #4,((DAMAGE_MULTIPLIER-$1000000)).w
-loc_21140:
+@Failure:
 		move.w  ((DAMAGE_MULTIPLIER-$1000000)).w,d1
-		beq.s   loc_2114C
+		beq.s   @Skip           ; skip if damage multiplier = 0
 		muls.w  d1,d3
 		asr.w   #1,d3
-		bsr.s   sub_21152       
-loc_2114C:
+		bsr.s   LoadCriticalHitMessage
+@Skip:
 		movem.l (sp)+,d1/d7
 		rts
 
-	; End of function CheckCriticalHit
+    ; End of function ApplyCriticalDamage
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Prepare critical message
-
-sub_21152:
+LoadCriticalHitMessage:
+		
 		bsr.w   IsEnemy         
-		blt.s   loc_21166
+		blt.s   @Enemy
 		move.w  #$3E,((word_FFA9CC-$1000000)).w 
-		move.w  #$1BF,((MESSAGE_INDEX-$1000000)).w
-		bra.s   loc_21172
-loc_21166:
+		move.w  #$1BF,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "A deadly attack inflicts[Line][Num] points of damage[Line]on [Name]."
+		bra.s   @Continue
+@Enemy:
 		move.w  #$3E,((word_FFA9CC-$1000000)).w 
-		move.w  #$1C0,((MESSAGE_INDEX-$1000000)).w
-loc_21172:
-		tst.b   ((byte_FFCBB2-$1000000)).w
-		bne.s   locret_2117E
-		move.b  #3,((byte_FFCBB2-$1000000)).w
-locret_2117E:
+		move.w  #$1C0,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "A stunning attack! [Name][Line]suffers [Num] points[Line]of damage."
+@Continue:
+		tst.b   ((BATTLE_ANIMATION_TYPE-$1000000)).w
+		bne.s   @Return
+		move.b  #3,((BATTLE_ANIMATION_TYPE-$1000000)).w
+@Return:
 		rts
 
-	; End of function sub_21152
+    ; End of function LoadCriticalHitMessage
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3561,19 +3831,19 @@ locret_2117E:
 ApplyDamageSpread:
 		
 		movem.l d5-d7,-(sp)
-		moveq   #$15,d6
-		jsr     (j_UpdateRandomSeed).l
+		moveq   #21,d6
+		jsr     (j_GenerateRandomNumber).l
 		move.w  d7,d5
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		add.w   d5,d7
 		asr.w   #1,d7
-		addi.w  #$50,d7 
+		addi.w  #80,d7
 		muls.w  d7,d3
-		divs.w  #$64,d3 
+		divs.w  #100,d3
 		movem.l (sp)+,d5-d7
 		rts
 
-	; End of function ApplyDamageSpread
+    ; End of function ApplyDamageSpread
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3584,40 +3854,40 @@ ApplyLandEffect:
 		
 		movem.l d0-d2/a0,-(sp)
 		move.b  d1,d0           ; land effect bug! should move defender index to D1 before calling
-		jsr     j_GetLandEffectAtTargetPosition
-		move.w  #$64,d2 
+		jsr     j_GetLandEffectForCombatant
+		move.w  #100,d2
 		sub.w   d1,d2           ; subtract LE from 100 and use as %
 		muls.w  d2,d3
-		divs.w  #$64,d3 
+		divs.w  #100,d3
 		movem.l (sp)+,d0-d2/a0
 		rts
 
-	; End of function ApplyLandEffect
+    ; End of function ApplyLandEffect
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Apply elemental resistance D2 to damage D3
+; Apply resistance to element D2 unto damage D3
 
-ApplyElemResist:
+ApplyResistance:
 		
 		move.l  d2,-(sp)
-		cmpi.b  #7,d2
+		cmpi.b  #ELEMENT_NONE,d2
 		bne.s   loc_211D2
 		clr.w   d2
 		bra.s   loc_211D4
 loc_211D2:
-		bsr.s   GetTargetResistance
+		bsr.s   GetTargetCombatantResistance
 loc_211D4:
-		move.b  ElemResistPercents(pc,d2.w),d2
+		move.b  table_DamageResistancePercents(pc,d2.w),d2
 		muls.w  d2,d3
-		divs.w  #$64,d3 
+		divs.w  #100,d3
 		move.l  (sp)+,d2
 		rts
 
-	; End of function ApplyElemResist
+    ; End of function ApplyResistance
 
-ElemResistPercents:
+table_DamageResistancePercents:
 		dc.b 100
 		dc.b 75
 		dc.b 50
@@ -3625,9 +3895,9 @@ ElemResistPercents:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get battle member D1 resistance flags D2 -> D2
+; Get combatant D1 resistance to element D2 -> D2
 
-GetTargetResistance:
+GetTargetCombatantResistance:
 		
 		movem.l d0-d1,-(sp)
 		move.b  d1,d0
@@ -3637,142 +3907,160 @@ GetTargetResistance:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function GetTargetResistance
+    ; End of function GetTargetCombatantResistance
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if spell nullified by barrier
+; Check if spell is nullified by magic curtain
 
 IsSpellNullified:
 		
 		movem.l d0-d1,-(sp)
-		tst.w   ((word_FFCB5A-$1000000)).w
-		beq.s   loc_2121E
+		tst.w   ((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w
+		beq.s   loc_2121E       ; skip if spell costs 0 MP to cast
 		move.b  d1,d0
-		jsr     j_GetStatusFromForceID
-		andi.w  #FORCE_STATUS_MASK_SHIELD,d1
+		jsr     j_GetStatusEffectsForCombatant
+		andi.w  #STATUSEFFECT_COUNTER_SHIELD,d1
 		beq.s   loc_2121E
-		move.w  #$1C5,((MESSAGE_INDEX-$1000000)).w
+		move.w  #$1C5,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "But the spell is nullified by[Line]the magic curtain."
 		ori     #1,ccr
 loc_2121E:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function IsSpellNullified
+    ; End of function IsSpellNullified
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Evasion check
+; Determine whether targeted combatant D1 evades the attack
+; 
+;       In: D0 = attacker index
+;           D1 = target index
+; 
+;       Out: CCR carry-bit set when successful
 
-CheckEvasion:
+DetermineEvade:
+		
 		movem.l d1-d3/d7,-(sp)
 		bsr.s   IsAbleToEvade   
-		bcc.s   loc_21260
+		bcc.s   @Failure
 		clr.w   d3
-		move.b  d1,d3
-		move.w  #7,d2
-		bsr.s   GetTargetResistance
-		move.b  EvasionPercents(pc,d2.w),d2
-		bne.s   loc_2124C
-		moveq   #$19,d2
-		jsr     j_GetStatusFromForceID
-		btst    #4,d1
-		bne.s   loc_2124C
-		moveq   #3,d2
-loc_2124C:
-		bsr.s   UpdateRandomSeed0To100
+		move.b  d1,d3           ; d3.b = copy of target index
+		move.w  #CLASS_RESISTANCE_EVASION,d2
+		bsr.s   GetTargetCombatantResistance
+		move.b  table_ChanceToEvadePercents(pc,d2.w),d2
+						; get percent chance to evade according to resistance setting, and continue if != 0
+		bne.s   @Continue
+		moveq   #25,d2          ; 25% chance to evade if attacker is muddled
+		jsr     j_GetStatusEffectsForCombatant
+		btst    #STATUSEFFECT_BIT_MUDDLE,d1
+						; BUG : This instruction is causing the chance to evade when attacker is muddled to be applied only every other turn
+                ;andi.w  #STATUSEFFECT_COUNTER_MUDDLE,d1    ; <- suggested fix to the aforementioned bug
+                
+		bne.s   @Continue
+		moveq   #3,d2           ; 3% chance to evade under normal circumstances
+@Continue:
+		bsr.s   GenerateRandomNumber0To99
 		cmp.b   d2,d7
-		bge.s   loc_21260
-		move.w  #$1BE,((MESSAGE_INDEX-$1000000)).w
-		move.w  d3,((MESSAGE_ARG_NAME-$1000000)).w
+		bge.s   @Failure        ; branch if failed the evade roll
+		move.w  #$1BE,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] quickly evades."
+		move.w  d3,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
 		ori     #1,ccr
-loc_21260:
+@Failure:
 		movem.l (sp)+,d1-d3/d7
 		rts
 
-	; End of function CheckEvasion
+    ; End of function DetermineEvade
 
-EvasionPercents:dc.b 0
+table_ChanceToEvadePercents:
+		dc.b 0
 		dc.b 25
 		dc.b 50
 		dc.b 0
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if asleep and laser eye or dark dragon
+; Check if combatant D1 is able to evade attacks -> CCR carry-bit set if true
 
 IsAbleToEvade:
 		
 		movem.l d0-d1/a0,-(sp)
 		move.b  d1,d0
-		jsr     j_GetStatusFromForceID
-		btst    #FORCE_STATUS_FLAG_SLEEP,d1
-		bne.s   loc_2129E
-		jsr     j_GetClassFromForceID
-		lea     UnableToEvadeClasses(pc), a0
-loc_21286:
+		jsr     j_GetStatusEffectsForCombatant
+		btst    #STATUSEFFECT_BIT_SLEEP,d1
+		bne.s   @NotAbleToEvade ; unable to evade when sleeping
+		jsr     j_GetClassForCombatant
+		lea     table_UnableToEvadeClasses(pc), a0
+@Loop:
 		move.b  (a0)+,d0
 		cmpi.b  #$FF,d0
-		beq.s   loc_21294
+		beq.s   @Break          ; break out of loop when end of table is reached
 		cmp.b   d0,d1
-		beq.s   loc_2129E
-		bra.s   loc_21286
-loc_21294:
+		beq.s   @NotAbleToEvade
+		bra.s   @Loop
+@Break:
 		ori     #1,ccr
-loc_21298:
+@Done:
 		movem.l (sp)+,d0-d1/a0
 		rts
-loc_2129E:
+@NotAbleToEvade:
+		
 		tst.w   d0
-		bra.s   loc_21298
+		bra.s   @Done
 
-	; End of function IsAbleToEvade
+    ; End of function IsAbleToEvade
 
-UnableToEvadeClasses:
-		dc.b CLASS_ID_LASER_EYE
-		dc.b CLASS_ID_DARK_DRAGON
-		dc.b CLASS_ID_DARK_DRAGON_0
-		dc.b $FF
+table_UnableToEvadeClasses:
+		; List of class indexes which are unable to evade physical attacks, $FF terminated
+		dc.b CLASS_LASER_EYE
+		dc.b CLASS_DARK_DRAGON_1
+		dc.b CLASS_DARK_DRAGON_2
+		dc.b -1
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get random number 0 to 100, returned in D7
+; Generate random number 0 to 99, returned in d7.w
 
-UpdateRandomSeed0To100:
+GenerateRandomNumber0To99:
 		
 		move.l  d6,-(sp)
-		move.w  #$64,d6 
-		jsr     (j_UpdateRandomSeed).l
+		move.w  #100,d6
+		jsr     (j_GenerateRandomNumber).l
 		move.l  (sp)+,d6
 		rts
 
-	; End of function UpdateRandomSeed0To100
+    ; End of function GenerateRandomNumber0To99
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check for status effect failure
+; In: D1 = target index
+;     D2 = resistance index
+; 
+; Out: CCR: carry-bit clear if successful
 
-CheckStatusFailure:
+DetermineEffectFailure:
 		
 		movem.l d0-d2/d7,-(sp)
-		tst.b   ((byte_FFCBC9-$1000000)).w
-		bne.s   loc_212D4
-		bsr.w   GetTargetResistance
-		move.b  StatusResistPercents(pc,d2.w),d2
-		muls.w  #$25,d2 
-		divs.w  #$64,d2 
-		bsr.s   UpdateRandomSeed0To100
+		tst.b   ((DEBUG_EFFECT_FAILURE-$1000000)).w
+		bne.s   @Skip
+		bsr.w   GetTargetCombatantResistance
+		move.b  table_StatusEffectResistancePercents(pc,d2.w),d2
+		muls.w  #37,d2
+		divs.w  #100,d2
+		bsr.s   GenerateRandomNumber0To99
 		cmp.w   d7,d2
-loc_212D4:
+@Skip:
 		movem.l (sp)+,d0-d2/d7
 		rts
 
-	; End of function CheckStatusFailure
+    ; End of function DetermineEffectFailure
 
-StatusResistPercents:
+table_StatusEffectResistancePercents:
 		dc.b 100
 		dc.b 50
 		dc.b 0
@@ -3780,14 +4068,14 @@ StatusResistPercents:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get difference between target level
+; Get level difference between attacker D0 and target D1 -> D1
 
 CalculateLevelDifference:
 		
 		movem.w d0/d2,-(sp)
 		move.w  d1,-(sp)
 		bsr.w   CalculateEffectiveLevel
-		move.w  d1,d2
+		move.w  d1,d2           ; D2 = attacker's effective level
 		move.w  (sp)+,d0
 		bsr.w   CalculateEffectiveLevel
 		sub.w   d1,d2
@@ -3795,78 +4083,81 @@ CalculateLevelDifference:
 		movem.w (sp)+,d0/d2
 		rts
 
-	; End of function CalculateLevelDifference
+    ; End of function CalculateLevelDifference
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Sleep/Death resistance
+; Check if combatant D1 is vulnerable to instant death attacks
 
-sub_212FA:
+IsVulnerableToInstantDeath:
+		
 		movem.w d2,-(sp)
-		moveq   #CLASS_RESIST_SLEEP_AND_DESOUL,d2
-		bsr.w   GetTargetResistance
-		move.b  StatusResistPercents(pc,d2.w),d2
+		moveq   #CLASS_RESISTANCE_SLEEP_AND_DESOUL,d2
+		bsr.w   GetTargetCombatantResistance
+		move.b  table_StatusEffectResistancePercents(pc,d2.w),d2
 		movem.w (sp)+,d2
 		rts
 
-	; End of function sub_212FA
+    ; End of function IsVulnerableToInstantDeath
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Special Attack Routine
-
-sub_2130E:
+JumpToSpecialAttackRoutine:
+		
 		clr.w   d3
-		move.b  ((byte_FFCB67-$1000000)).w,d3
+		move.b  ((SPECIAL_ATTACK_INDEX-$1000000)).w,d3
 		asl.w   #2,d3
-		jsr     sub_2131C(pc,d3.w)
+		jsr     bt_SpecialAttacks(pc,d3.w)
 		rts
 
-	; End of function sub_2130E
+    ; End of function JumpToSpecialAttackRoutine
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2131C:
-		bra.w   sub_2138C       
-		bra.w   sub_213B2
-		bra.w   loc_213BA       
-		bra.w   sub_21424       
-		bra.w   sub_21424       
-		bra.w   sub_21460       
-		bra.w   sub_21484       
-		bra.w   sub_21484       
+bt_SpecialAttacks:
+		
+		bra.w   specialAttack_150PercentCritical
+
+    ; End of function bt_SpecialAttacks
+
+		bra.w   specialAttack_200PercentCritical
+		bra.w   specialAttack_DemonSmile
+		bra.w   specialAttack_OminousIncantation
+		bra.w   specialAttack_OminousIncantation
+		bra.w   specialAttack_InflictPoison
+		bra.w   specialAttack_InflictSleep
+		bra.w   specialAttack_InflictSleep
 		bra.w   *+4
 
-	; End of function sub_2131C
-
-
 ; =============== S U B R O U T I N E =======================================
 
-; Doom Blade Special Attack Routine (6% death, or go back to normal attack)
-
-sub_21340:
+specialAttack_InstantDeath:
+		
 		movem.l d2/d7,-(sp)
 		bsr.w   IsEnemy         
-		blt.s   loc_21352
-		move.w  #$1BB,((MESSAGE_INDEX-$1000000)).w
+		blt.s   loc_21352       
+		move.w  #$1BB,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "Inflicts [Num] points of damage on[Line]the [Name]."
 		bra.s   loc_21358
 loc_21352:
-		move.w  #$1BC,((MESSAGE_INDEX-$1000000)).w
+		move.w  #$1BC,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] suffers [Num][Line]points of damage."
 loc_21358:
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
-		bsr.w   sub_212FA       
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
+		bsr.w   IsVulnerableToInstantDeath
 		beq.s   loc_21382
-		tst.b   ((byte_FFCBC6-$1000000)).w
-		bne.s   loc_21372
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #6,d7
+		tst.b   ((DEBUG_SPECIAL_ATTACK-$1000000)).w
+		bne.s   loc_21372       
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #6,d7           ; 6% death, or go back to normal attack
 		bge.s   loc_21382
 loc_21372:
-		move.w  #$1D4,((MESSAGE_INDEX-$1000000)).w
-		move.w  #$63,d3 
+		move.w  #$1D4,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Name] is killed with a[Line]single blow."
+		move.w  #99,d3
 		clr.b   ((byte_FFCB6B-$1000000)).w
 		bra.s   loc_21386
 loc_21382:
@@ -3875,46 +4166,53 @@ loc_21386:
 		movem.l (sp)+,d2/d7
 		rts
 
-	; End of function sub_21340
+    ; End of function specialAttack_InstantDeath
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Enemy Physical Attack
-
-sub_2138C:
+specialAttack_150PercentCritical:
+		
 		move.l  d7,-(sp)
 		move.b  #3,d3
 loc_21392:
-		tst.b   ((byte_FFCBC6-$1000000)).w
+		tst.b   ((DEBUG_SPECIAL_ATTACK-$1000000)).w
 		bne.s   loc_213A2
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #$19,d7
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #25,d7          ; 25% chance to score critical hit
 		bge.s   loc_213AA
 loc_213A2:
 		move.w  d3,((DAMAGE_MULTIPLIER-$1000000)).w
-		bsr.w   sub_21152       
+		bsr.w   LoadCriticalHitMessage
 loc_213AA:
 		bsr.w   CalculateDamage 
 		move.l  (sp)+,d7
 		rts
 
-	; End of function sub_2138C
+    ; End of function specialAttack_150PercentCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_213B2:
-		move.l  d7,-(sp)        ; Enemy Physical Attack w/double damage crit
+specialAttack_200PercentCritical:
+		
+		move.l  d7,-(sp)
 		move.b  #4,d3
 		bra.s   loc_21392
-loc_213BA:
-		movem.l d6-d7,-(sp)     ; MP Steal Special Attack, 25% crit
+
+    ; End of function specialAttack_200PercentCritical
+
+
+; =============== S U B R O U T I N E =======================================
+
+specialAttack_DemonSmile:
+		
+		movem.l d6-d7,-(sp)
 		movem.w d0-d1,-(sp)
 		move.b  d1,d0
-		jsr     j_GetMPFromForceID
+		jsr     j_GetCurrentMpForCombatant
 		moveq   #6,d6
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		addq.w  #5,d7
 		cmp.w   d1,d7
 		ble.s   loc_213DA
@@ -3923,205 +4221,210 @@ loc_213DA:
 		ext.l   d7
 		movem.w (sp)+,d0-d1
 		move.w  #$3F,((word_FFA9CC-$1000000)).w 
-		move.w  #$1CF,((word_FFA9CE-$1000000)).w
+		move.w  #$1CF,((AFTER_TURN_MESSAGE_INDEX-$1000000)).w
+						; "[Name] uses the Demon's[Line]Smile!"
 		andi.w  #$FF,d0
-		move.w  d0,((word_FFA9D0-$1000000)).w
+		move.w  d0,((AFTER_TURN_MESSAGE_ARG_NAME_1-$1000000)).w
 		tst.l   d7
-		beq.s   loc_2140C
-		move.w  #$1D0,((MESSAGE_INDEX-$1000000)).w
+		beq.s   loc_2140C       
+		move.w  #$1D0,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Num] magic points are[Line]stolen from [Name]."
 		andi.w  #$FF,d1
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
-		move.l  d7,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
+		move.l  d7,((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w
 		bra.s   loc_21412
 loc_2140C:
-		move.w  #$1D1,((MESSAGE_INDEX-$1000000)).w
+		move.w  #$1D1,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "But nothing happens."
 loc_21412:
 		add.b   d7,((byte_FFCB6C-$1000000)).w
 		neg.w   d7
-		move.w  d7,((word_FFA9DA-$1000000)).w
+		move.w  d7,((EFFECT_MP_CHANGE-$1000000)).w
 		clr.w   d3
 		movem.l (sp)+,d6-d7
 		rts
 
-	; End of function sub_213B2
+    ; End of function specialAttack_DemonSmile
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; HP Steal Special Attack
-
-sub_21424:
+specialAttack_OminousIncantation:
+		
 		movem.l d6-d7,-(sp)
 		move.w  #8,d6
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		addq.w  #8,d7
 		ext.l   d7
 		move.w  #$3F,((word_FFA9CC-$1000000)).w 
-		move.w  #$1D2,((word_FFA9CE-$1000000)).w
+		move.w  #$1D2,((AFTER_TURN_MESSAGE_INDEX-$1000000)).w
+						; "[Name] whispers an[Line]ominous incantation!"
 		andi.w  #$FF,d0
-		move.w  d0,((word_FFA9D0-$1000000)).w
-		move.w  #$1D3,((MESSAGE_INDEX-$1000000)).w
-		move.w  d1,((MESSAGE_ARG_NAME-$1000000)).w
-		move.l  d7,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  d0,((AFTER_TURN_MESSAGE_ARG_NAME_1-$1000000)).w
+		move.w  #$1D3,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+						; "[Num] hit points are stolen[Line]from [Name]."
+		move.w  d1,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
+		move.l  d7,((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w
 		move.w  d7,d3
 		movem.l (sp)+,d6-d7
 		rts
 
-	; End of function sub_21424
+    ; End of function specialAttack_OminousIncantation
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Poison Causing Special Attack
-
-sub_21460:
+specialAttack_InflictPoison:
+		
 		movem.l d2/d7,-(sp)
 		bsr.w   CalculateDamage 
-		tst.b   ((byte_FFCBC6-$1000000)).w
+		tst.b   ((DEBUG_SPECIAL_ATTACK-$1000000)).w
 		bne.s   loc_21478
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #$19,d7
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #25,d7          ; 25% chance to inflict poison
 		bge.s   loc_2147E
 loc_21478:
-		moveq   #7,d2
-		bsr.w   sub_20FD4       
+		moveq   #STATUSEFFECT_POISON,d2
+		bsr.w   LoadEffectSuccessMessage
 loc_2147E:
 		movem.l (sp)+,d2/d7
 		rts
 
-	; End of function sub_21460
+    ; End of function specialAttack_InflictPoison
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sleep Causing Special Attack
-
-sub_21484:
+specialAttack_InflictSleep:
+		
 		movem.l d2/d7,-(sp)
 		bsr.w   CalculateDamage 
-		tst.b   ((byte_FFCBC6-$1000000)).w
+		tst.b   ((DEBUG_SPECIAL_ATTACK-$1000000)).w
 		bne.s   loc_2149C
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #$19,d7
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #25,d7          ; 25% chance to inflict sleep
 		bge.s   loc_214A2
 loc_2149C:
-		moveq   #6,d2
-		bsr.w   sub_20FD4       
+		moveq   #STATUSEFFECT_SLEEP,d2
+		bsr.w   LoadEffectSuccessMessage
 loc_214A2:
 		movem.l (sp)+,d2/d7
 		rts
 
-	; End of function sub_21484
+    ; End of function specialAttack_InflictSleep
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Special animation if Max kills last Dark Dragon head with Chaos Breaker
+; Perform a special animation if Max kills the last Dark Dragon head with the Chaos Breaker.
 
-sub_214A8:
+DetermineDarkDragonFinisher:
+		
 		movem.l d0-d4,-(sp)
 		move.b  d1,d4
-		jsr     j_GetClassFromForceID
-		cmpi.b  #$10,d1
+		jsr     j_GetClassForCombatant
+		cmpi.b  #CLASS_HERO,d1
 		bne.s   loc_2151A
-		move.w  #$100,d1
-		jsr     j_GetEquippedItemFromForceID
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		jsr     j_GetEquippedItemForCombatant
 		bcs.s   loc_2151A
-		cmpi.b  #$27,d2 
+		cmpi.b  #CHAOS_BREAKER,d2
 		bne.s   loc_2151A
 		move.b  d4,d0
-		jsr     j_GetClassFromForceID
-		cmpi.b  #$5B,d1 
+		jsr     j_GetClassForCombatant
+		cmpi.b  #CLASS_DARK_DRAGON_1,d1
 		beq.s   loc_214E0
-		cmpi.b  #$68,d1 
+		cmpi.b  #CLASS_DARK_DRAGON_2,d1
 		bne.s   loc_2151A
 loc_214E0:
 		clr.w   d2
-		move.b  #$80,d0
-		jsr     j_GetForceMemberHP
+		move.b  #128,d0
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		beq.s   loc_214F2
 		addq.w  #1,d2
 loc_214F2:
 		addq.b  #1,d0
-		jsr     j_GetForceMemberHP
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		beq.s   loc_21500
 		addq.w  #1,d2
 loc_21500:
 		addq.b  #1,d0
-		jsr     j_GetForceMemberHP
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		beq.s   loc_2150E
 		addq.w  #1,d2
 loc_2150E:
 		cmpi.b  #1,d2
 		bgt.s   loc_2151A
-		move.b  #4,((byte_FFCBB2-$1000000)).w
+		move.b  #4,((BATTLE_ANIMATION_TYPE-$1000000)).w
 loc_2151A:
 		movem.l (sp)+,d0-d4
 		rts
 
-	; End of function sub_214A8
+    ; End of function DetermineDarkDragonFinisher
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Setup attack animation members
+; In: D0 = caster index
+;     D1 = target index
 
-sub_21520:
+LoadBattlesceneActors:
+		
 		movem.l d0-d2,-(sp)
-		lea     (byte_FFBC8E).l,a2
+		lea     (BATTLE_SCENE_ACTORS).l,a2
 		move.w  d1,d2
-		jsr     j_GetTargetID
-		tst.b   d1
-		bge.s   loc_21538
-		exg     d0,d2
-loc_21538:
+		jsr     j_GetEntity
+		tst.b   d1              ; is caster a force member?
+		bge.s   @ForceMember
+		exg     d0,d2           ; exchange caster and target indexes if caster is an enemy
+@ForceMember:
 		clr.w   (a2)+
 		move.w  d2,(a2)+
 		move.w  d0,(a2)+
-		move.b  d0,((BATTLESCENE_ALLY-$1000000)).w
-		move.b  d2,((BATTLESCENE_ENEMY-$1000000)).w
+		move.b  d0,((BATTLE_SCENE_ALLY-$1000000)).w
+		move.b  d2,((BATTLE_SCENE_ENEMY-$1000000)).w
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function sub_21520
+    ; End of function LoadBattlesceneActors
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add battle animation member
+; Add battlescene member
 
 sub_2154C:
 		movem.w d0-d1,-(sp)
 		clr.w   d0
 		move.b  d1,d0
-		jsr     j_GetTargetID
-		tst.b   d1
-		bge.s   loc_2156A
+		jsr     j_GetEntity
+		tst.b   d1              ; is force member?
+		bge.s   @ForceMember
 		move.w  #8,(a2)+
 		move.w  d0,(a2)+
-		move.b  d0,((BATTLESCENE_ENEMY-$1000000)).w
-		bra.s   loc_21574
-loc_2156A:
+		move.b  d0,((BATTLE_SCENE_ENEMY-$1000000)).w
+		bra.s   @Done
+@ForceMember:
 		move.w  #7,(a2)+
 		move.w  d0,(a2)+
-		move.b  d0,((BATTLESCENE_ALLY-$1000000)).w
-loc_21574:
+		move.b  d0,((BATTLE_SCENE_ALLY-$1000000)).w
+@Done:
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function sub_2154C
+    ; End of function sub_2154C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add battle animation target
+; Add battlescene target
 
 sub_2157A:
 		movem.w d0-d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
 		bge.s   loc_21592
 		move.w  #2,(a2)+
@@ -4136,12 +4439,12 @@ loc_2159A:
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function sub_2157A
+    ; End of function sub_2157A
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Setup battle animation data
+; Setup battlescene data
 
 sub_215A0:
 		move.w  d0,-(sp)
@@ -4150,14 +4453,14 @@ sub_215A0:
 		move.w  (sp)+,d0
 		rts
 
-	; End of function sub_215A0
+    ; End of function sub_215A0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_215AA:
 		movem.w d0-d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
 		bge.s   loc_215BE
 		move.w  #4,(a2)+
@@ -4168,32 +4471,33 @@ loc_215C2:
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function sub_215AA
+    ; End of function sub_215AA
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Setup battle animation data
+; Setup battlescene data
 
-sub_215C8:
+WriteBattlesceneCommand:
+		
 		movem.w d0-d1,-(sp)
 		andi.w  #$FF,d0
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
 		bge.s   loc_215E0
 		move.w  #$A,(a2)+
-		bra.s   loc_215E4
+		bra.s   loc_215E4       
 loc_215E0:
 		move.w  #9,(a2)+
 loc_215E4:
-		move.w  d3,(a2)+
-		move.w  d4,(a2)+
-		move.w  d5,(a2)+
-		move.w  d6,(a2)+
+		move.w  d3,(a2)+        ; HP change
+		move.w  d4,(a2)+        ; MP change
+		move.w  d5,(a2)+        ; status effects change
+		move.w  d6,(a2)+        ; command flags
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function sub_215C8
+    ; End of function WriteBattlesceneCommand
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4203,33 +4507,37 @@ loc_215E4:
 sub_215F2:
 		move.w  d0,-(sp)
 		move.w  d1,d0
-		bsr.s   sub_215C8       
+		bsr.s   WriteBattlesceneCommand
 		move.w  (sp)+,d0
 		rts
 
-	; End of function sub_215F2
+    ; End of function sub_215F2
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Copy battle animation data
+; Copy battlescene data
+; 
+; In: A0 = source
+;     A2 = destination
 
-sub_215FC:
+CopyBattlesceneData:
+		
 		move.l  a0,-(sp)
 		move.w  #$F,(a2)+
-		move.w  (a0)+,(a2)+
-		move.w  (a0)+,(a2)+
-		move.w  (a0)+,(a2)+
-		move.l  (a0)+,(a2)+
+		move.w  (a0)+,(a2)+     ; message index
+		move.w  (a0)+,(a2)+     ; actor index
+		move.w  (a0)+,(a2)+     ; item or spell index
+		move.l  (a0)+,(a2)+     ; spell level
 		movea.l (sp)+,a0
 		rts
 
-	; End of function sub_215FC
+    ; End of function CopyBattlesceneData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Copy battle animation data 2
+; Copy battlescene data 2
 
 sub_2160E:
 		move.l  a0,-(sp)
@@ -4241,7 +4549,7 @@ sub_2160E:
 		movea.l (sp)+,a0
 		rts
 
-	; End of function sub_2160E
+    ; End of function sub_2160E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4251,31 +4559,32 @@ sub_2160E:
 sub_21620:
 		move.w  #$D,(a2)+
 		move.w  #$E,(a2)+
-		bsr.s   sub_21640       
+		bsr.s   EndBattleaction 
 		move.w  #$B,(a2)+
-		move.w  ((EXP_TO_GAIN-$1000000)).w,(a2)+
+		move.w  ((EXPERIENCE_TO_GAIN-$1000000)).w,(a2)+
 		move.w  #$C,(a2)+
 		move.w  #$11,(a2)+
 		move.w  #$FFFF,(a2)+
 		rts
 
-	; End of function sub_21620
+    ; End of function sub_21620
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; End of battle action (award money, break items, give exp, drop item)
 
-sub_21640:
+EndBattleaction:
+		
 		movem.l d0-d3/d7-a0,-(sp)
 		andi.w  #$FF,d0
-		move.w  ((word_FFCB60-$1000000)).w,d3
+		move.w  ((SELECTED_ITEM_SLOT-$1000000)).w,d3
 		blt.s   loc_216C4
 		movea.l (p_ItemTypes).l,a0
-		move.w  ((word_FFCB62-$1000000)).w,d1
-		btst    #6,d1
+		move.w  ((SELECTED_ITEM_ENTRY-$1000000)).w,d1
+		btst    #ITEMENTRY_BIT_BROKEN,d1
 		beq.s   loc_21678
-		andi.w  #$3F,d1 
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 		addi.w  #$1FA,d2
@@ -4286,22 +4595,22 @@ sub_21640:
 		bra.s   loc_21684
 loc_21678:
 		jsr     j_GetItemType
-		btst    #$C,d2
+		btst    #ITEMTYPE_BIT_CONSUMABLE,d2
 		beq.s   loc_2168E
 loc_21684:
 		move.w  d3,d1
-		jsr     j_RemoveItemFromTargetID
+		jsr     j_RemoveItemForCombatant
 		bra.s   loc_216C4
 loc_2168E:
-		btst    #$E,d2
+		btst    #ITEMTYPE_BIT_CHANCE_TO_CRACK,d2
 		beq.s   loc_216C4
-		tst.b   ((byte_FFCBC8-$1000000)).w
+		tst.b   ((DEBUG_CRACK_ITEM-$1000000)).w
 		bne.s   loc_216A4
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #$19,d7
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #25,d7
 		bge.s   loc_216C4
 loc_216A4:
-		andi.w  #$3F,d1 
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 		addi.w  #$1F4,d2
@@ -4310,10 +4619,10 @@ loc_216A4:
 		move.w  d1,(a2)+
 		addq.l  #6,a2
 		move.w  d3,d1
-		jsr     j_BreakItemFromTargetID
+		jsr     j_BreakItemForCombatant
 loc_216C4:
 		moveq   #0,d1
-		move.w  ((EXP_TO_GAIN-$1000000)).w,d1
+		move.w  ((EXPERIENCE_TO_GAIN-$1000000)).w,d1
 		beq.s   loc_216DA
 		move.w  #$F,(a2)+
 		move.w  #$200,(a2)+
@@ -4330,12 +4639,12 @@ loc_216DA:
 		move.l  d1,(a2)+
 		jsr     j_IncreaseGold
 loc_216F4:
-		move.w  ((DROP_ITEM_FLAG-$1000000)).w,d2
+		move.w  ((ITEM_DROPPED_FLAG-$1000000)).w,d2
 		blt.s   loc_2173E
 		move.w  ((ITEM_TO_DROP-$1000000)).w,d1
-		jsr     j_FindEmptyItemSlotFromTargetID
+		jsr     j_GiveItemForCombatant
 		bcc.s   loc_2170E
-		jsr     j_IncreaseDealsItemStock
+		jsr     j_IncrementDealsStock
 		bra.s   loc_2173E
 loc_2170E:
 		cmpi.b  #$3A,d1 
@@ -4360,111 +4669,122 @@ loc_2173E:
 		movem.l (sp)+,d0-d3/d7-a0
 		rts
 
-	; End of function sub_21640
+    ; End of function EndBattleaction
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Add empty battle action
 
-sub_21744:
+NullBattleaction:
+		
 		move.l  a0,-(sp)
-		lea     (byte_FFBC8E).l,a2
+		lea     (BATTLE_SCENE_ACTORS).l,a2
 		move.w  #$FFFF,(a2)+
 		movea.l (sp)+,a0
 		rts
 
-	; End of function sub_21744
+    ; End of function NullBattleaction
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_21754:
+; Battle action effect handler
+; 
+; In: D0 = actor index
+;     A0 = effect entry address
+;     A1 = pointer to effect routine
+
+ExecuteBattleaction:
+		
+		        module
 		movem.l d0-d6/a3-a4,-(sp)
 		andi.w  #$FF,d0
-		lea     ((byte_FFA946-$1000000)).w,a3
-		bsr.w   sub_21934       
-		move.w  d1,((word_FFCB6E-$1000000)).w
-		bsr.w   sub_21520       
-		jsr     j_IsItemUnequippableFromForceID
-		move.b  d1,((byte_FFCB6A-$1000000)).w
-		bsr.w   sub_21A4E       
+		lea     ((TARGETS_LIST-$1000000)).w,a3
+		bsr.w   IsTargetOpponent
+		move.w  d1,((OPPONENT_TARGET_INDEX-$1000000)).w
+		bsr.w   LoadBattlesceneActors
+		jsr     j_GetItemsCurseSettingsForCombatant
+		move.b  d1,((CURSED_ITEMS_SETTINGS-$1000000)).w
+		bsr.w   DetermineCurseParalysis
 		bcs.w   loc_218A8
-		bsr.w   sub_219FC       
+		bsr.w   CheckDispel     
 		bcc.s   loc_2178E
-		move.w  #$1BA,((word_FFCB70-$1000000)).w
+		move.w  #$1BA,((BATTLESCENE_MESSAGE_INDEX-$1000000)).w
+						; "[Name] casts [Spell][Line]level [Num]![Line]But the spell fails."
 		bra.w   loc_218A8
 loc_2178E:
 		clr.w   d3
-		move.b  4(a0),d3
+		move.b  EFFECTDEF_OFFSET_MESSAGE(a0),d3
 		bge.s   loc_2179A
-		move.b  ((MESSAGE_OFFSET-$1000000)).w,d3
+		move.b  ((BATTLE_MESSAGE_OFFSET-$1000000)).w,d3
 loc_2179A:
 		andi.w  #$FF,d3
-		addi.w  #$1B4,d3
-		move.w  d3,((word_FFCB70-$1000000)).w
-		move.w  d0,((word_FFCB72-$1000000)).w
+		addi.w  #$1B4,d3        ; "[Name] attacks!"
+		move.w  d3,((BATTLESCENE_MESSAGE_INDEX-$1000000)).w
+		move.w  d0,((BATTLESCENE_ACTOR_INDEX-$1000000)).w
 		move.l  a0,-(sp)
-		lea     ((word_FFCB70-$1000000)).w,a0
-		bsr.w   sub_215FC       
+		lea     ((BATTLESCENE_MESSAGE_INDEX-$1000000)).w,a0
+		bsr.w   CopyBattlesceneData
 		movea.l (sp)+,a0
 		move.b  (a0),d3
-		bge.s   loc_217D6
+		bge.s   @CheckMpCost    ; branch if battle message >= 0
 		cmpi.b  #$FF,d3
 		bne.s   loc_217C6
 		ext.w   d3
 		move.w  d3,d4
 		bra.s   loc_217CE
 loc_217C6:
-		bsr.w   sub_219D0
-		move.b  1(a0),d4
+		bsr.w   LoadBattlespriteData
+		move.b  EFFECTDEF_OFFSET_ANIM(a0),d4
 loc_217CE:
-		bsr.w   sub_21A3E
+		bsr.w   MirrorSpellAnimationIfEnemy
 		bsr.w   sub_2157A       
-loc_217D6:
-		move.w  ((word_FFCB5A-$1000000)).w,d4
-		beq.s   loc_217EE
+@CheckMpCost:
+		move.w  ((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w,d4
+		beq.s   @CheckOpponent
 		clr.w   d3
 		neg.w   d4
-		jsr     j_GetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
 		move.w  d1,d5
 		moveq   #$FFFFFFFF,d6
-		bsr.w   sub_215C8       
-loc_217EE:
-		move.w  ((word_FFCB6E-$1000000)).w,d1
-		bge.s   loc_21802
+		bsr.w   WriteBattlesceneCommand
+@CheckOpponent:
+		
+		move.w  ((OPPONENT_TARGET_INDEX-$1000000)).w,d1
+		bge.s   loc_21802       ; continue if target is an opponent
 		move.w  (a3)+,d1
 		blt.w   loc_218A8
 		cmp.w   d0,d1
 		beq.s   loc_21802
 		bsr.w   sub_2154C       
 loc_21802:
-		bsr.w   sub_2195E       
+		bsr.w   DetermineDoubleAttack
 loc_21806:
-		bsr.w   sub_218D4
+		bsr.w   sub_218D4       
 loc_2180A:
-		bsr.w   sub_218EE
-		jsr     (a1)
+		bsr.w   sub_218EE       
+		jsr     (a1)            ; jump to effect routine
 		move.l  a0,-(sp)
-		lea     ((word_FFA9CE-$1000000)).w,a0
+		lea     ((AFTER_TURN_MESSAGE_INDEX-$1000000)).w,a0
 		cmpi.w  #$FFFF,(a0)
 		beq.s   loc_21820
-		bsr.w   sub_215FC       
+		bsr.w   CopyBattlesceneData
 loc_21820:
 		movea.l (sp)+,a0
 		move.w  ((word_FFA9CA-$1000000)).w,d3
 		blt.s   loc_2183E
-		bsr.w   sub_219D0
+		bsr.w   LoadBattlespriteData
 		move.w  ((word_FFA9CC-$1000000)).w,d4
 		bsr.w   sub_2157A       
 		tst.b   ((byte_FFCB6B-$1000000)).w
 		bne.s   loc_2183E
 		bsr.w   sub_215AA
 loc_2183E:
-		move.w  ((word_FFA9D8-$1000000)).w,d3
-		move.w  ((word_FFA9DA-$1000000)).w,d4
-		move.w  ((word_FFA9DC-$1000000)).w,d5
-		move.w  ((word_FFA9DE-$1000000)).w,d6
+		move.w  ((EFFECT_HP_CHANGE-$1000000)).w,d3
+		move.w  ((EFFECT_MP_CHANGE-$1000000)).w,d4
+		move.w  ((EFFECT_STATUS_CHANGE-$1000000)).w,d5
+		move.w  ((EFFECT_REACTION-$1000000)).w,d6
 		bsr.w   sub_215F2       
 		tst.w   ((word_FFA9CA-$1000000)).w
 		blt.s   loc_21862
@@ -4473,12 +4793,12 @@ loc_2183E:
 		bsr.w   sub_215AA
 loc_21862:
 		move.l  a0,-(sp)
-		lea     ((MESSAGE_INDEX-$1000000)).w,a0
+		lea     ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,a0
 		cmpi.w  #$FFFF,(a0)
 		beq.s   loc_21872
-		bsr.w   sub_215FC       
+		bsr.w   CopyBattlesceneData
 loc_21872:
-		lea     ((word_FFA9EA-$1000000)).w,a0
+		lea     ((BATTLE_MESSAGE_INDEX_2-$1000000)).w,a0
 		cmpi.w  #$FFFF,(a0)
 		beq.s   loc_21880
 		bsr.w   sub_2160E       
@@ -4498,37 +4818,42 @@ loc_21890:
 		bra.w   loc_21806
 loc_218A8:
 		bsr.w   sub_21A1C
-		bsr.w   sub_21A80
-		bsr.w   nullsub_3
+		bsr.w   DetermineCurseDamage
+		bsr.w   nullsub_21AC8
 		bsr.w   sub_21ACA
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
 		bge.s   loc_218CA
-		clr.w   ((EXP_TO_GAIN-$1000000)).w
+		clr.w   ((EXPERIENCE_TO_GAIN-$1000000)).w
 		clr.w   ((COINS_TO_GAIN-$1000000)).w
 loc_218CA:
 		bsr.w   sub_21620       
 		movem.l (sp)+,d0-d6/a3-a4
 		rts
+        modend
 
-	; End of function sub_21754
+    ; End of function ExecuteBattleaction
 
 
 ; =============== S U B R O U T I N E =======================================
+
+; Initialize amount of damage to inflict and status effects change
 
 sub_218D4:
 		clr.w   ((word_FFCB58-$1000000)).w
 		movem.w d0-d1,-(sp)
 		move.b  d1,d0
-		jsr     j_GetStatusFromForceID
-		move.w  d1,((word_FFA9DC-$1000000)).w
+		jsr     j_GetStatusEffectsForCombatant
+		move.w  d1,((EFFECT_STATUS_CHANGE-$1000000)).w
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function sub_218D4
+    ; End of function sub_218D4
 
 
 ; =============== S U B R O U T I N E =======================================
+
+; Initialize battle action data
 
 sub_218EE:
 		movem.l d0-d1/a0-a1,-(sp)
@@ -4546,73 +4871,76 @@ loc_21906:
 		move.w  d0,(a1)+
 		move.b  d0,((byte_FFCB6B-$1000000)).w
 		clr.b   ((byte_FFCB6C-$1000000)).w
-		lea     ((word_FFA9D8-$1000000)).w,a1
+		lea     ((EFFECT_HP_CHANGE-$1000000)).w,a1
 		clr.w   (a1)+
 		clr.w   (a1)+
 		addq.l  #2,a1
 		moveq   #$FFFFFFFF,d1
 		move.w  d1,(a1)+
 		move.w  d1,(a1)+
-		move.w  d1,((MESSAGE_INDEX-$1000000)).w
-		move.w  d1,((word_FFA9EA-$1000000)).w
+		move.w  d1,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
+		move.w  d1,((BATTLE_MESSAGE_INDEX_2-$1000000)).w
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function sub_218EE
+    ; End of function sub_218EE
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if battle member (D0) and battle member (A3) are on different team, if so load to D1
+; Check if target is an opponent, get its combatant index -> D1 if true, else D1 = $FFFF
+; 
+; In: A3 = target table entry address
+;     D0 = caster index
 
-sub_21934:
+IsTargetOpponent:
+		
 		movem.w d0/d2,-(sp)
-		jsr     j_GetTargetID
-		move.w  d1,d2
+		jsr     j_GetEntity
+		move.w  d1,d2           ; D2 = caster's entity index
 		move.w  (a3),d0
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		eor.w   d2,d1
-		btst    #7,d1
-		bne.s   loc_21956
+		btst    #ENTITYENTRY_BIT_ENEMY,d1
+		bne.s   @Opponent
 		move.w  #$FFFF,d1
-		bra.s   loc_21958
-loc_21956:
+		bra.s   @Done
+@Opponent:
 		move.w  (a3)+,d1
-loc_21958:
+@Done:
 		movem.w (sp)+,d0/d2
 		rts
 
-	; End of function sub_21934
+    ; End of function IsTargetOpponent
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check for double attack
-
-sub_2195E:
+DetermineDoubleAttack:
+		
 		movem.l d1-d2/d7,-(sp)
-		tst.b   ((byte_FFCBC7-$1000000)).w
+		tst.b   ((DEBUG_DOUBLE_ATTACK-$1000000)).w
 		bne.s   loc_219A6
 		moveq   #1,d2
-		tst.b   ((MESSAGE_OFFSET-$1000000)).w
+		tst.b   ((BATTLE_MESSAGE_OFFSET-$1000000)).w
 		bne.s   loc_219A8
-		jsr     j_GetTargetDoubleAttack
-		cmpi.w  #1,d1
+		jsr     j_GetModifiedDoubleAttackMode
+		cmpi.w  #DOUBLE_ATTACK_MODE_NEVER,d1
 		beq.s   loc_219A8
-		cmpi.w  #2,d1
+		cmpi.w  #DOUBLE_ATTACK_MODE_HIGH,d1
 		bne.s   loc_2198C
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #$27,d7 
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #39,d7
 		bra.s   loc_219A8
 loc_2198C:
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.w   d1
 		beq.s   loc_219B2
-		cmpi.b  #$1C,d1
+		cmpi.b  #HANZOU,d1
 		beq.s   loc_219B2
 		moveq   #7,d1
 loc_2199E:
-		bsr.w   UpdateRandomSeed0To100
+		bsr.w   GenerateRandomNumber0To99
 		cmp.w   d1,d7
 		bcc.s   loc_219A8
 loc_219A6:
@@ -4628,7 +4956,7 @@ loc_219B2:
 		addq.w  #7,d1
 		bra.s   loc_2199E
 
-	; End of function sub_2195E
+    ; End of function DetermineDoubleAttack
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4636,76 +4964,80 @@ loc_219B2:
 ; Attack cleanup - clear item dropped, set to single attack if first will kill enemy
 
 sub_219C0:
-		clr.b   ((byte_FFCBC6-$1000000)).w
-		bsr.s   sub_219E6       
-		bgt.s   locret_219CE
+		clr.b   ((DEBUG_SPECIAL_ATTACK-$1000000)).w
+		bsr.s   CheckFatalDamage
+		bgt.s   @Return
 		move.w  #1,((NUMBER_OF_ATTACKS-$1000000)).w
-locret_219CE:
+@Return:
 		rts
 
-	; End of function sub_219C0
+    ; End of function sub_219C0
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_219D0:
+LoadBattlespriteData:
+		
 		andi.w  #1,d3
 		bne.s   loc_219DE
-		jsr     sub_20314
-		bra.s   locret_219E4
+		jsr     j_LoadBattlespriteDataWithWeapon
+		bra.s   return_219E4
 loc_219DE:
-		jsr     sub_20318
-locret_219E4:
+		jsr     j_LoadBattlespriteDataWithoutWeapon
+return_219E4:
 		rts
 
-	; End of function sub_219D0
+    ; End of function LoadBattlespriteData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if damage will kill target
+; Check if damage will defeat target
 
-sub_219E6:
+CheckFatalDamage:
+		
 		movem.w d0-d1,-(sp)
 		move.w  d1,d0
-		jsr     j_GetHPFromForceID
+		jsr     j_GetCurrentHpForCombatant
 		cmp.w   ((word_FFCB58-$1000000)).w,d1
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function sub_219E6
+    ; End of function CheckFatalDamage
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check for dispel status
+; Check if caster is under dispel status
+; 
+; Out: CCR = Carry-bit set if true
 
-sub_219FC:
+CheckDispel:
 		movem.w d1,-(sp)
-		tst.w   ((word_FFCB5A-$1000000)).w
-		beq.s   loc_21A16
-		jsr     j_GetStatusFromForceID
-		andi.w  #$C0,d1 
-		beq.s   loc_21A16
+		tst.w   ((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w
+		beq.s   @Skip
+		jsr     j_GetStatusEffectsForCombatant
+		andi.w  #STATUSEFFECT_COUNTER_DISPEL,d1
+		beq.s   @Skip
 		ori     #1,ccr
-loc_21A16:
+@Skip:
 		movem.w (sp)+,d1
 		rts
 
-	; End of function sub_219FC
+    ; End of function CheckDispel
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_21A1C:
 		move.w  d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
 		bge.s   loc_21A2E
-		cmp.b   ((BATTLESCENE_ENEMY-$1000000)).w,d0
+		cmp.b   ((BATTLE_SCENE_ENEMY-$1000000)).w,d0
 		bra.s   loc_21A32
 loc_21A2E:
-		cmp.b   ((BATTLESCENE_ALLY-$1000000)).w,d0
+		cmp.b   ((BATTLE_SCENE_ALLY-$1000000)).w,d0
 loc_21A32:
 		beq.s   loc_21A3A
 		move.w  d0,d1
@@ -4714,87 +5046,91 @@ loc_21A3A:
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_21A1C
+    ; End of function sub_21A1C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_21A3E:
+MirrorSpellAnimationIfEnemy:
+		
 		ext.w   d4
-		blt.s   locret_21A4C
+		blt.s   @Return
 		bsr.w   IsEnemy         
-		bge.s   locret_21A4C
+		bge.s   @Return
 		eori.w  #1,d4
-locret_21A4C:
+@Return:
 		rts
 
-	; End of function sub_21A3E
+    ; End of function MirrorSpellAnimationIfEnemy
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Apply chance of curse
+; Carry-bit set if paralysis occurs
 
-sub_21A4E:
+DetermineCurseParalysis:
+		
 		movem.l d7,-(sp)
-		move.b  ((byte_FFCB6A-$1000000)).w,d7
+		move.b  ((CURSED_ITEMS_SETTINGS-$1000000)).w,d7
 		btst    #0,d7
-		beq.s   loc_21A7A
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #$19,d7
-		bcc.s   loc_21A7A
-		move.w  #$1E8,d7
+		beq.s   @Skip
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #25,d7          ; 25% chance to be paralyzed
+		bcc.s   @Skip
+		move.w  #$1E8,d7        ; "A curse! [Name]'s body[Line]suddenly goes numb."
 		move.w  #$F,(a2)+
 		move.w  d7,(a2)+
 		move.w  d0,(a2)+
 		move.w  d0,(a2)+
 		addq.l  #4,a2
 		ori     #1,ccr
-loc_21A7A:
+@Skip:
 		movem.l (sp)+,d7
 		rts
 
-	; End of function sub_21A4E
+    ; End of function DetermineCurseParalysis
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_21A80:
+DetermineCurseDamage:
+		
 		movem.l d1/d3-d7,-(sp)
-		btst    #1,((byte_FFCB6A-$1000000)).w
-		beq.s   loc_21AC2
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.w  #$32,d7 
-		bcc.s   loc_21AC2
-		move.w  ((word_FFA9D8-$1000000)).w,d3
-		bge.s   loc_21AC2
-		asr.w   #3,d3
+		btst    #1,((CURSED_ITEMS_SETTINGS-$1000000)).w
+		beq.s   @Skip
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.w  #50,d7          ; 50% chance to receive curse damage
+		bcc.s   @Skip
+		move.w  ((EFFECT_HP_CHANGE-$1000000)).w,d3
+		bge.s   @Skip
+		asr.w   #3,d3           ; curse damage = inflicted damage divided by 8
 		clr.w   d4
-		jsr     j_GetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
 		move.w  d1,d5
 		clr.w   d6
-		bsr.w   sub_215C8       
+		bsr.w   WriteBattlesceneCommand
 		neg.w   d3
 		ext.l   d3
-		move.w  #$1E9,d7
+		move.w  #$1E9,d7        ; "A curse! [Name] suffers[Line][Num] points of damage."
 		move.w  #$F,(a2)+
 		move.w  d7,(a2)+
 		move.w  d0,(a2)+
 		move.w  d0,(a2)+
 		move.l  d3,(a2)+
-loc_21AC2:
+@Skip:
 		movem.l (sp)+,d1/d3-d7
 		rts
 
-	; End of function sub_21A80
+    ; End of function DetermineCurseDamage
 
 
 ; =============== S U B R O U T I N E =======================================
 
-nullsub_3:
+nullsub_21AC8:
+		
 		rts
 
-	; End of function nullsub_3
+    ; End of function nullsub_21AC8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4805,79 +5141,91 @@ sub_21ACA:
 		beq.s   loc_21AE8
 		clr.w   d3
 		ext.w   d4
-		jsr     j_GetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
 		move.w  d1,d5
 		move.w  #1,d6
-		bsr.w   sub_215C8       
+		bsr.w   WriteBattlesceneCommand
 loc_21AE8:
 		movem.l (sp)+,d1/d3-d7
 		rts
 
-	; End of function sub_21ACA
+    ; End of function sub_21ACA
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Game init routine
-
-InitGameSettings:
+InitializeNewGame:
 		
-		move.b  #2,((byte_FF9C05-$1000000)).w
-		clr.b   ((byte_FF9C06-$1000000)).w
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
+		clr.b   ((DISPLAY_BATTLE_MESSAGES_TOGGLE-$1000000)).w
 		lea     ((EVENT_FLAGS-$1000000)).w,a0
-		move.w  #$3F,d0 
-loc_21B00:
+		move.w  #EVENT_FLAGS_COUNTER,d0
+@ClearEventFlags_Loop:
+		
 		clr.b   (a0)+
-		dbf     d0,loc_21B00
+		dbf     d0,@ClearEventFlags_Loop
+                
 		lea     ((DEALS_ITEMS-$1000000)).w,a0
-		move.w  #$1F,d0
-loc_21B0E:
+		move.w  #DEALS_ITEMS_BYTES_COUNTER,d0
+@ClearDealsItems_Loop:
+		
 		clr.b   (a0)+
-		dbf     d0,loc_21B0E
+		dbf     d0,@ClearDealsItems_Loop
+                
 		clr.l   ((CURRENT_GOLD-$1000000)).w
-		movea.l (p_CharacterData).l,a0
-		lea     ((CURRENT_FORCE_DATA-$1000000)).w,a1
-		move.w  #$4D7,d0
-loc_21B26:
+		movea.l (p_InitialForceMembersData).l,a0
+		lea     ((FORCE_MEMBERS_DATA-$1000000)).w,a1
+		move.w  #FORCE_MEMBERS_DATA_BYTES_COUNTER,d0
+@InitForceMembersData_Loop:
+		
 		move.b  (a0)+,(a1)+
-		dbf     d0,loc_21B26
+		dbf     d0,@InitForceMembersData_Loop
+                
 		lea     ((PROMOTED_AT_LEVELS-$1000000)).w,a0
-		move.w  #$1E,d0
-loc_21B34:
+		move.w  #FORCE_MEMBERS_COUNTER,d0
+@ClearPromotedAtLevels_Loop:
+		
 		clr.b   (a0)+
-		dbf     d0,loc_21B34
-		moveq   #$1C,d0
-loc_21B3C:
-		jsr     j_GetForceMemberLevel
+		dbf     d0,@ClearPromotedAtLevels_Loop
+                
+		moveq   #REGULAR_FORCE_MEMBERS_COUNTER,d0
+@LevelUpRegularForce_Loop:
+		
+		jsr     j_GetLevel
 		move.w  d1,d2
 		clr.w   d1
-		jsr     j_SetForceMemberLevel
+		jsr     j_SetLevel
 		subq.w  #1,d2
-loc_21B4E:
+@IncreaseStatsOnLevelUp_Loop:
+		
 		jsr     j_IncreaseStatsOnLevelUp
-		dbf     d2,loc_21B4E
+		dbf     d2,@IncreaseStatsOnLevelUp_Loop
+                
 		jsr     j_RefillHP
 		jsr     j_RefillMP
-		dbf     d0,loc_21B3C
-		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
+		dbf     d0,@LevelUpRegularForce_Loop
+                
+		lea     ((BATTLE_PARTY_MEMBERS-$1000000)).w,a0
 		move.w  #BATTLE_PARTY_SLOTS_COUNTER,d0
-loc_21B70:
-		move.b  #$FF,(a0)+
-		dbf     d0,loc_21B70
+@EmptyBattleParty_Loop:
+		
+		move.b  #EMPTY_BATTLE_PARTY_SLOT,(a0)+
+		dbf     d0,@EmptyBattleParty_Loop
+                
 		clr.w   d0
 		bsr.w   JoinForce       
 		rts
 
-	; End of function InitGameSettings
+    ; End of function InitializeNewGame
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_21B80:
 		movem.l d0-d2/a0-a1,-(sp)
-		bsr.s   sub_21BDC       
-		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
-		movea.l ((dword_FFC61A-$1000000)).w,a1
+		bsr.s   ClearCombatantData
+		lea     ((BATTLE_PARTY_MEMBERS-$1000000)).w,a0
+		movea.l ((FORCE_POSITIONS_POINTER-$1000000)).w,a1
 		move.b  (a1)+,d0
 loc_21B90:
 		beq.s   loc_21BA0
@@ -4888,7 +5236,7 @@ loc_21B90:
 		subq.b  #1,d0
 		bra.s   loc_21B90
 loc_21BA0:
-		bsr.s   sub_21BCC
+		bsr.s   GetEnemyPositionsPointer
 		beq.s   loc_21BBE
 		lea     ((byte_FFA476-$1000000)).w,a0
 		move.b  #$80,d1
@@ -4902,41 +5250,44 @@ loc_21BAE:
 		subq.b  #1,d0
 		bra.s   loc_21BAE
 loc_21BBE:
-		clr.b   ((byte_FF9C7E-$1000000)).w
-		clr.b   ((AI_REGIONS_TRIGGERED-$1000000)).w
+		clr.b   ((LASER_EYE_COUNTDOWN-$1000000)).w
+		clr.b   ((TRIGGERED_AI_REGIONS-$1000000)).w
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
 
-	; End of function sub_21B80
+    ; End of function sub_21B80
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_21BCC:
+; Get enemy positions pointer -> A1
+
+GetEnemyPositionsPointer:
+		
 		movem.l d0,-(sp)
-		movea.l ((dword_FFC61E-$1000000)).w,a1
+		movea.l ((ENEMY_POSITIONS_POINTER-$1000000)).w,a1
 		move.l  a1,d0
 		movem.l (sp)+,d0
 		rts
 
-	; End of function sub_21BCC
+    ; End of function GetEnemyPositionsPointer
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear battle member table
-
-sub_21BDC:
+ClearCombatantData:
+		
 		movem.l d0/a0,-(sp)
-		lea     ((BATTLE_STATS-$1000000)).w,a0
-		move.w  #$1FF,d0
-loc_21BE8:
-		move.b  #$FF,(a0)+
-		dbf     d0,loc_21BE8
+		lea     ((COMBATANT_DATA-$1000000)).w,a0
+		move.w  #511,d0
+@Loop:
+		move.b  #-1,(a0)+
+		dbf     d0,@Loop
+                
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function sub_21BDC
+    ; End of function ClearCombatantData
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4952,14 +5303,14 @@ loc_21C06:
 		movem.l (sp)+,d0/a0-a1
 		rts
 
-	; End of function sub_21BF6
+    ; End of function sub_21BF6
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_21C0C:
 		movem.l d0-d2,-(sp)
-		bsr.w   sub_21BCC
+		bsr.w   GetEnemyPositionsPointer
 		beq.w   loc_21C60
 		move.w  d1,d2
 		andi.w  #$7F,d2 
@@ -4975,7 +5326,7 @@ loc_21C38:
 		movem.l d1-d2/a1,-(sp)
 		move.b  (a1)+,d2
 		move.b  (a1),d1
-		bsr.w   FindTargetAtPosition
+		bsr.w   IsSpaceOccupied 
 		movem.l (sp)+,d1-d2/a1
 		bcs.s   loc_21C60
 		lea     ((byte_FFA476-$1000000)).w,a0
@@ -4990,11 +5341,11 @@ loc_21C5A:
 loc_21C60:
 		move.b  d1,d0
 		clr.w   d1
-		jsr     j_SetForceMemberHP
+		jsr     j_SetCurrentHP
 		ori     #1,ccr
 		bra.s   loc_21C5A
 
-	; End of function sub_21C0C
+    ; End of function sub_21C0C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5004,7 +5355,7 @@ sub_21C70:
 		move.b  d1,d3
 		bra.s   loc_21C8A
 
-	; End of function sub_21C70
+    ; End of function sub_21C70
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5013,211 +5364,221 @@ sub_21C78:
 		movem.l d0-d1/d3,-(sp)
 		move.b  d1,d3
 		move.b  d1,d0
-		jsr     j_GetForceMemberHP
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		beq.s   loc_21C96
 loc_21C8A:
-		bsr.w   sub_21CCE       
+		bsr.w   FindEmptyCombatantSlot
 		bcs.s   loc_21C96
 		move.b  d3,d1
-		bsr.s   sub_21C9C       
+		bsr.s   PopulateCombatantSlot
 		tst.w   d0
 loc_21C96:
 		movem.l (sp)+,d0-d1/d3
 		rts
 
-	; End of function sub_21C78
+    ; End of function sub_21C78
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add character/enemy D1 to battle member table slot D0, copy stats
+; Populate combatant slot D0 with force member D1, and place them at coordinates A1
 
-sub_21C9C:
+PopulateCombatantSlot:
+		
 		movem.l d1-d2/a1,-(sp)
 		move.w  d1,-(sp)
-		jsr     j_SetTargetID
-		bsr.w   LoadBattleStats 
-		move.b  (a1)+,d2
-		move.b  (a1)+,d1
-		jsr     j_SetTargetPosition
+		jsr     j_SetEntityIndex
+		bsr.w   LoadCombatantData
+		move.b  (a1)+,d2        ; X
+		move.b  (a1)+,d1        ; Y
+		jsr     j_SetCombatantPosition
 		move.w  (sp)+,d1
 		tst.b   d1
-		bge.s   loc_21CC8
+		bge.s   @Skip           ; skip if combatant is a force member
+                
 		lea     ((byte_FFA496-$1000000)).w,a1
-		andi.w  #$7F,d1 
+		andi.w  #COMBATANT_INDEX_MASK,d1
 		clr.b   (a1,d1.w)
-loc_21CC8:
+@Skip:
 		movem.l (sp)+,d1-d2/a1
 		rts
 
-	; End of function sub_21C9C
+    ; End of function PopulateCombatantSlot
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Find empty slot in battle data table
+; Find first empty combatant slot -> D0
+; 
+; CCR: carry-bit set if not found
 
-sub_21CCE:
+FindEmptyCombatantSlot:
+		
 		movem.w d1,-(sp)
 		clr.w   d0
 loc_21CD4:
-		jsr     j_GetTargetID
-		cmpi.b  #$FF,d1
+		jsr     j_GetEntity
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d1
 		beq.s   loc_21CEC
 		addq.w  #1,d0
-		cmpi.b  #$20,d0 
+		cmpi.b  #COMBATANT_ENTRIES_NUMBER,d0
 		bne.s   loc_21CD4
 		ori     #1,ccr
 loc_21CEC:
 		movem.w (sp)+,d1
 		rts
 
-	; End of function sub_21CCE
+    ; End of function FindEmptyCombatantSlot
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load member into battle data table
+; Load combatant D0 data
 
-LoadBattleStats:
+LoadCombatantData:
 		
 		movem.l d1-d2/d4-d6/a0-a1,-(sp)
-		jsr     j_LoadATTFromForceID
-		jsr     j_LoadDEFFromForceID
-		jsr     j_LoadAGIFromForceID
-		jsr     j_LoadMOVEFromForceID
-		jsr     j_LoadCRITFromForceID
-		jsr     j_GetClassDoubleAttack
-		jsr     j_SetTargetDoubleAttack
-		jsr     j_GetForceItemsFromForceID
-		moveq   #FORCE_ITEM_SLOTS_COUNTER,d2
-loc_21D28:
+		jsr     j_LoadBaseAttack
+		jsr     j_LoadBaseDefense
+		jsr     j_LoadBaseAgility
+		jsr     j_LoadBaseMove
+		jsr     j_LoadBaseCritical
+		jsr     j_GetBaseDoubleAttackMode
+		jsr     j_SetModifiedDoubleAttackMode
+		jsr     j_GetEntityItemsAddressForCombatant
+		moveq   #ITEM_SLOTS_COUNTER,d2
+@ApplyEquipOnStats_Loop:
+		
 		move.b  (a0),d1
-		cmpi.b  #$FF,d1
-		beq.s   loc_21D48
-		btst    #ITEM_FLAG_EQUIPPED,d1
-		beq.s   loc_21D48
+		cmpi.b  #EMPTY_ITEM_SLOT,d1
+		beq.s   @NextItem
+		btst    #ITEMENTRY_BIT_EQUIPPED,d1
+		beq.s   @NextItem
 		bsr.w   GetItemEntryAddress
-		move.b  ITEM_OFFSET_EQUIP_EFFECT(a1),d4
-		move.b  ITEM_OFFSET_EQUIP_VALUE(a1),d5
-		jsr     sub_202B0
-loc_21D48:
+		move.b  ITEMDEF_OFFSET_EQUIP_EFFECT(a1),d4
+		move.b  ITEMDEF_OFFSET_EQUIP_EFFECT_VALUE(a1),d5
+		jsr     j_JumpToRangeOrEquipEffect
+@NextItem:
 		addq.l  #1,a0
-		dbf     d2,loc_21D28
-		bsr.s   ApplyStatusOnStats
+		dbf     d2,@ApplyEquipOnStats_Loop
+                
+		bsr.s   ApplyStatusEffectsOnStats
 		movem.l (sp)+,d1-d2/d4-d6/a0-a1
 		rts
 
-	; End of function LoadBattleStats
+    ; End of function LoadCombatantData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-ApplyStatusOnStats:
+ApplyStatusEffectsOnStats:
 		
 		movem.l d0-d3,-(sp)
-		moveq   #FORCE_STATUS_FLAG_QUICK,d1
-		jsr     j_GetStatusCounter
+		moveq   #STATUSEFFECT_BIT_QUICK,d1
+		jsr     j_GetStatusEffectCounter
 		beq.s   loc_21D74
-		moveq   #$A,d1
-		jsr     j_IncreaseTargetAGI
-		moveq   #$A,d1
-		jsr     j_IncreaseTargetDEF
+		moveq   #10,d1
+		jsr     j_IncreaseModifiedAgility
+		moveq   #10,d1
+		jsr     j_IncreaseModifiedDefense
 loc_21D74:
-		moveq   #FORCE_STATUS_FLAG_SLOW,d1
-		jsr     j_GetStatusCounter
+		moveq   #STATUSEFFECT_BIT_SLOW,d1
+		jsr     j_GetStatusEffectCounter
 		beq.s   loc_21D8E
-		moveq   #$A,d1
-		jsr     j_DecreaseTargetAGI
-		moveq   #$A,d1
-		jsr     j_DecreaseTargetDEF
+		moveq   #10,d1
+		jsr     j_DecreaseModifiedAgility
+		moveq   #10,d1
+		jsr     j_DecreaseModifiedDefense
 loc_21D8E:
-		moveq   #FORCE_STATUS_FLAG_BOOST,d1
-		jsr     j_GetStatusCounter
+		moveq   #STATUSEFFECT_BIT_BOOST,d1
+		jsr     j_GetStatusEffectCounter
 		beq.s   loc_21DA0
-		moveq   #$F,d1
-		jsr     j_IncreaseTargetATT
+		moveq   #15,d1
+		jsr     j_IncreaseModifiedAttack
 loc_21DA0:
 		movem.l (sp)+,d0-d3
 		rts
 
-	; End of function ApplyStatusOnStats
+    ; End of function ApplyStatusEffectsOnStats
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_21DA6:
+LoadCombatantDataForForceMember:
+		
 		movem.w d0,-(sp)
-		bsr.w   FindTarget      
+		bsr.w   FindCombatantEntry
 		bne.s   loc_21DB6
-		jsr     j_LoadBattleStats
+		jsr     j_LoadCombatantData
 loc_21DB6:
 		movem.w (sp)+,d0
 		rts
 
-	; End of function sub_21DA6
+    ; End of function LoadCombatantDataForForceMember
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_21DBC:
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     ((CURRENT_ENEMY_DATA-$1000000)).w,a0
+		lea     ((ENEMY_DATA-$1000000)).w,a0
 		move.w  #$4FF,d0
 loc_21DC8:
 		move.b  #$FF,(a0)+
 		dbf     d0,loc_21DC8
-		bsr.w   sub_21BCC
+                
+		bsr.w   GetEnemyPositionsPointer
 		beq.s   loc_21DEC
 		move.b  #$80,d0
 		move.b  (a1),d1
 loc_21DDC:
 		beq.s   loc_21DE8
-		bsr.w   sub_21DF2
+		bsr.w   LoadEnemyStats
 		addq.b  #1,d0
 		subq.b  #1,d1
 		bra.s   loc_21DDC
 loc_21DE8:
-		bsr.w   sub_22232       
+		bsr.w   SetForceLeaderStatsInBattleTestMode
 loc_21DEC:
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function sub_21DBC
+    ; End of function sub_21DBC
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_21DF2:
+LoadEnemyStats:
+		
 		movem.l d0-d1/a0-a3,-(sp)
 		bsr.w   GetEnemyEntryAddress
 		bcs.w   loc_21EA0
 		movea.l a0,a2
 		movea.l a1,a3
-		move.b  ENEMY_OFFSET_CLASS_ID(a3),d1
-		jsr     j_SetForceMemberClass
+		move.b  ENEMY_OFFSET_CLASS(a3),d1
+		jsr     j_SetClass
 		move.b  ENEMY_OFFSET_LEVEL(a3),d1
-		jsr     j_SetForceMemberLevel
-		move.b  ENEMY_OFFSET_ATT(a3),d1
-		jsr     j_SetForceMemberATT
-		move.b  ENEMY_OFFSET_DEF(a3),d1
-		jsr     j_SetForceMemberDEF
-		move.b  ENEMY_OFFSET_AGI(a3),d1
-		jsr     j_SetForceMemberAGI
+		jsr     j_SetLevel
+		move.b  ENEMY_OFFSET_ATTACK(a3),d1
+		jsr     j_SetBaseAttack
+		move.b  ENEMY_OFFSET_DEFENSE(a3),d1
+		jsr     j_SetBaseDefense
+		move.b  ENEMY_OFFSET_AGILITY(a3),d1
+		jsr     j_SetBaseAgility
 		move.b  ENEMY_OFFSET_MOVE(a3),d1
-		jsr     j_SetForceMemberMOVE
+		jsr     j_SetBaseMove
 		move.w  ENEMY_OFFSET_HP(a3),d1
-		jsr     j_SetForceMemberMaxHP
+		jsr     j_SetMaxHP
 		move.b  ENEMY_OFFSET_MP(a3),d1
-		jsr     j_SetForceMemberMaxMP
+		jsr     j_SetMaxMP
 		clr.w   d1
-		jsr     j_SetForceMemberCRIT
-		jsr     j_SetForceMemberStatus
+		jsr     j_SetBaseCritical
+		jsr     j_SetStatusEffects
 		jsr     j_RefillHP
 		jsr     j_RefillMP
 		bsr.w   sub_21EA6
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		move.l  #$FFFFFFFF,(a0)
 		move.b  1(a2),d1
 		move.b  d1,(a0)+
@@ -5226,7 +5587,7 @@ sub_21DF2:
 		move.b  2(a2),d1
 		move.b  d1,(a0)
 loc_21E8E:
-		jsr     j_GetForceSpellsAddress
+		jsr     j_GetCharacterSpellsAddress
 		move.l  #$FFFFFFFF,(a0)
 		move.b  3(a2),d1
 		move.b  d1,(a0)
@@ -5234,22 +5595,22 @@ loc_21EA0:
 		movem.l (sp)+,d0-d1/a0-a3
 		rts
 
-	; End of function sub_21DF2
+    ; End of function LoadEnemyStats
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_21EA6:
 		movem.l d0-d1/a0-a1,-(sp)
-		jsr     j_GetForceStatsAddress
+		jsr     j_GetEntityStatsAddress
 		movea.l a0,a1
 		move.w  #9,d1
 loc_21EB6:
 		clr.b   (a0)+
 		dbf     d1,loc_21EB6
-		move.b  ENEMY_OFFSET_B(a3),d1
+		move.b  ENEMY_OFFSET_11(a3),d1
 		movea.l ((dword_FFC612-$1000000)).w,a0
-		bsr.w   sub_238CC       
+		bsr.w   GetVariableLengthEntryAddress
 		beq.s   loc_21ED2
 		subq.w  #1,d1
 loc_21ECC:
@@ -5259,27 +5620,27 @@ loc_21ED2:
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function sub_21EA6
+    ; End of function sub_21EA6
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_21ED8:
 		movem.l d0-d2/a0-a1,-(sp)
-		bsr.w   sub_21BCC
+		bsr.w   GetEnemyPositionsPointer
 		beq.w   loc_21F10
-		lea     ((byte_FFA3B6-$1000000)).w,a0
+		lea     ((SAVED_BATTLE_DATA-$1000000)).w,a0
 		move.b  #$80,d0
 		move.b  (a1),d2
 loc_21EEE:
 		beq.s   loc_21F10
 		move.w  (a0)+,d1
-		jsr     j_SetForceMemberHP
+		jsr     j_SetCurrentHP
 		move.b  (a0)+,d1
-		jsr     j_SetForceMemberMP
+		jsr     j_SetCurrentMP
 		addq.l  #1,a0
 		move.w  (a0)+,d1
-		jsr     j_SetForceMemberStatus
+		jsr     j_SetStatusEffects
 		addq.b  #1,d0
 		subq.b  #1,d2
 		bra.s   loc_21EEE
@@ -5287,31 +5648,32 @@ loc_21F10:
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
 
-	; End of function sub_21ED8
+    ; End of function sub_21ED8
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_21F16:
 		movem.l d0-d2/a0-a1,-(sp)
-		bsr.w   sub_21BCC
+		bsr.w   GetEnemyPositionsPointer
 		beq.w   loc_21F5E
-		lea     ((byte_FFA3B6-$1000000)).w,a0
-		move.w  #$BF,d0 
+		lea     ((SAVED_BATTLE_DATA-$1000000)).w,a0
+		move.w  #191,d0
 loc_21F2A:
-		move.b  #$FF,(a0)+
+		move.b  #-1,(a0)+
 		dbf     d0,loc_21F2A
-		lea     ((byte_FFA3B6-$1000000)).w,a0
-		move.b  #$80,d0
+                
+		lea     ((SAVED_BATTLE_DATA-$1000000)).w,a0
+		move.b  #128,d0
 		move.b  (a1),d2
 loc_21F3C:
 		beq.s   loc_21F5E
-		jsr     j_GetForceMemberHP
+		jsr     j_GetCurrentHP
 		move.w  d1,(a0)+
-		jsr     j_GetForceMemberMP
+		jsr     j_GetCurrentMP
 		move.b  d1,(a0)+
 		addq.l  #1,a0
-		jsr     j_GetForceMemberStatus
+		jsr     j_GetStatusEffects
 		move.w  d1,(a0)+
 		addq.b  #1,d0
 		subq.b  #1,d2
@@ -5320,7 +5682,7 @@ loc_21F5E:
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
 
-	; End of function sub_21F16
+    ; End of function sub_21F16
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5336,14 +5698,14 @@ loc_21F72:
 		lea     ((byte_FFA8C2-$1000000)).w,a0
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.s   loc_21FDE
-		bsr.w   sub_21BCC
+		bsr.w   GetEnemyPositionsPointer
 		beq.s   loc_21FDE
 		move.b  #$80,d0
 		move.b  (a1)+,d1
 loc_21F8A:
 		beq.s   loc_21FDE
 		movem.w d1,-(sp)
-		jsr     j_GetForceMemberHP
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		movem.w (sp)+,d1
 		bgt.s   loc_21FD6
@@ -5353,12 +5715,12 @@ loc_21F8A:
 		movem.l (sp)+,d1/a0-a1
 		bcs.s   loc_21FD6
 		movem.w d0,-(sp)
-		bsr.w   sub_21CCE       
+		bsr.w   FindEmptyCombatantSlot
 		move.w  d0,d2
 		movem.w (sp)+,d0
 		bcs.s   loc_21FD6
 		movem.w d1,-(sp)
-		bsr.w   sub_21DF2
+		bsr.w   LoadEnemyStats
 		move.b  d0,d1
 		bsr.w   sub_21BF6
 		movem.w (sp)+,d1
@@ -5372,32 +5734,32 @@ loc_21FD6:
 		bra.s   loc_21F8A
 loc_21FDE:
 		st      (a0)
-		move.w  d3,((word_FFA8C0-$1000000)).w
-		jsr     RegenHP(pc)
+		move.w  d3,((TABLE_AT_FFA8C0-$1000000)).w
+		jsr     RegenerateHP(pc)
 		nop
 		movem.l (sp)+,d0-d3/a0-a1
 		rts
 
-	; End of function sub_21F64
+    ; End of function sub_21F64
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Gets address of enemy's data (D1) into monster data table if enemy exists
+; Get enemy D0 (from enemies list) entry address -> A1 if they exists, carry-bit set if not
 
 GetEnemyEntryAddress:
 		
 		movem.l d0-d1,-(sp)
-		movea.l ((dword_FFC616-$1000000)).w,a0
+		movea.l ((ENEMIES_LIST_POINTER-$1000000)).w,a0
 		move.l  a0,d1
 		beq.s   loc_2201C
-		andi.w  #FORCE_MASK_ID,d0
+		andi.w  #FORCEMEMBERENTRY_MASK_INDEX_0,d0
 		asl.w   #2,d0
 		adda.w  d0,a0
 		move.b  (a0),d1
 		cmpi.b  #$FF,d1
 		beq.s   loc_2201C
-		movea.l ((dword_FFC60E-$1000000)).w,a1
+		movea.l ((ENEMY_DATA_POINTER-$1000000)).w,a1
 		andi.w  #$FF,d1
 		asl.w   #4,d1
 		adda.w  d1,a1
@@ -5409,38 +5771,40 @@ loc_22020:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function GetEnemyEntryAddress
+    ; End of function GetEnemyEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_22026:
+ResetCombatants:
+		
 		movem.l d0-d1/a1,-(sp)
-		bsr.w   sub_21BDC       
-		lea     unk_2204A(pc), a1
-		moveq   #$1E,d0
-loc_22034:
+		bsr.w   ClearCombatantData
+		lea     byte_2204A(pc), a1
+		moveq   #FORCE_MEMBERS_COUNTER,d0
+@Loop:
 		bsr.w   IsInForce       
-		beq.s   loc_22040
+		beq.s   @Next
 		move.w  d0,d1
-		bsr.w   sub_21C9C       
-loc_22040:
-		dbf     d0,loc_22034
+		bsr.w   PopulateCombatantSlot
+@Next:
+		dbf     d0,@Loop
+                
 		movem.l (sp)+,d0-d1/a1
 		rts
 
-	; End of function sub_22026
+    ; End of function ResetCombatants
 
-unk_2204A:      dc.b $FF
+byte_2204A:     dc.b $FF
 		dc.b $FF
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2204C:
 		movem.l d1/a0-a1,-(sp)
-		lea     unk_2204A(pc), a1
+		lea     byte_2204A(pc), a1
 		bsr.w   sub_22090
-		lea     ((byte_FFCB84-$1000000)).w,a0
+		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a0
 loc_2205C:
 		move.b  (a0)+,d1
 		blt.s   loc_22066
@@ -5450,30 +5814,32 @@ loc_22066:
 		movem.l (sp)+,d1/a0-a1
 		rts
 
-	; End of function sub_2204C
+    ; End of function sub_2204C
 
 
-; START OF FUNCTION CHUNK FOR sub_22090
+; =============== S U B R O U T I N E =======================================
 
-loc_2206C:
-		lea     ((byte_FFCB84-$1000000)).w,a0
+RefreshMembersList:
+		
+		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a0
 		clr.w   d1
 		clr.w   d0
-loc_22074:
+@Loop:
 		jsr     (a1)
-		beq.s   loc_2207C
-		move.b  d0,(a0)+
-		addq.w  #1,d1
-loc_2207C:
+		beq.s   @Skip
+		move.b  d0,(a0)+        ; add member to list
+		addq.w  #1,d1           ; increment list length
+@Skip:
 		addq.w  #1,d0
-		cmpi.w  #$1F,d0
-		bcs.s   loc_22074
-		move.w  d1,((word_FFCB82-$1000000)).w
+		cmpi.w  #FORCE_MEMBERS_NUMBER,d0
+		bcs.s   @Loop
+                
+		move.w  d1,((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w
 		st      (a0)
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_22090
+    ; End of function RefreshMembersList
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5481,44 +5847,47 @@ loc_2207C:
 sub_22090:
 		movem.l d0-d1/a0-a1,-(sp)
 		lea     sub_22100(pc), a1
-		bra.s   loc_2206C
+		bra.s   RefreshMembersList
 
-	; End of function sub_22090
+    ; End of function sub_22090
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2209A:
+PopulateForceMembersList:
+		
 		movem.l d0-d1/a0-a1,-(sp)
 		lea     IsInForce(pc), a1
-		bra.s   loc_2206C
+		bra.s   RefreshMembersList
 
-	; End of function sub_2209A
+    ; End of function PopulateForceMembersList
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_220A4:
+PopulateBattlePartyMembersList:
+		
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     sub_220C8(pc), a1
-		bra.s   loc_2206C
+		lea     IsInForceAndBattleParty(pc), a1
+		bra.s   RefreshMembersList
 
-	; End of function sub_220A4
+    ; End of function PopulateBattlePartyMembersList
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_220AE:
+PopulateReservePartyMembersList:
+		
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     sub_220F4(pc), a1
-		bra.s   loc_2206C
+		lea     IsInForceAndReserveParty(pc), a1
+		bra.s   RefreshMembersList
 
-	; End of function sub_220AE
+    ; End of function PopulateReservePartyMembersList
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Checks if member D0 is in force
+; Check if force member D0 has joined -> CCR zero-bit cleared if true
 
 IsInForce:
 		movem.l d1,-(sp)
@@ -5527,149 +5896,160 @@ IsInForce:
 		movem.l (sp)+,d1
 		rts
 
-	; End of function IsInForce
+    ; End of function IsInForce
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_220C8:
+; Check if force member D0 has joined and is in battle party
+; 
+;     Out: D1 = 0 if not in battle party, 1 otherwise
+;          CCR zero-bit set if member has not joined, cleared otherwise
+
+IsInForceAndBattleParty:
+		
 		bsr.s   IsInForce       
-		beq.s   locret_220CE
-		bsr.s   sub_220D0
-locret_220CE:
+		beq.s   @Return         ; return if member has not joined
+		bsr.s   IsInBattleParty 
+@Return:
 		rts
 
-	; End of function sub_220C8
+    ; End of function IsInForceAndBattleParty
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_220D0:
+; Check if force member D0 is in battle party -> D1 = 0 if false, 1 if true
+
+IsInBattleParty:
+		
 		movem.l d1/a0,-(sp)
-		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
+		lea     ((BATTLE_PARTY_MEMBERS-$1000000)).w,a0
 		moveq   #BATTLE_PARTY_SLOTS_COUNTER,d1
-loc_220DA:
-		cmpi.b  #$FF,(a0)
-		beq.s   loc_220EE
+@Loop:
+		cmpi.b  #EMPTY_BATTLE_PARTY_SLOT,(a0)
+		beq.s   @Break
 		cmp.b   (a0)+,d0
-		bne.s   loc_220E8
+		bne.s   @Next
 		moveq   #1,d1
-		bra.s   loc_220EE
-loc_220E8:
-		dbf     d1,loc_220DA
+		bra.s   @Break
+@Next:
+		dbf     d1,@Loop
 		clr.w   d1
-loc_220EE:
+@Break:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function sub_220D0
+    ; End of function IsInBattleParty
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_220F4:
+IsInForceAndReserveParty:
+		
 		bsr.s   IsInForce       
-		beq.s   locret_220FE
-		bsr.s   sub_220D0
+		beq.s   @Return
+		bsr.s   IsInBattleParty 
 		eori    #4,ccr
-locret_220FE:
+@Return:
 		rts
 
-	; End of function sub_220F4
+    ; End of function IsInForceAndReserveParty
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_22100:
 		movem.l d0,-(sp)
-		bsr.w   FindTarget      
+		bsr.w   FindCombatantEntry
 		movem.l (sp)+,d0
 		rts
 
-	; End of function sub_22100
+    ; End of function sub_22100
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D0 to current force
+; Add force member D0 to battle party
 
 JoinBattleParty:
 		
 		movem.l d1/a0,-(sp)
-		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
-loc_22116:
+		lea     ((BATTLE_PARTY_MEMBERS-$1000000)).w,a0
+@FindEmptyBattleSlot_Loop:
+		
 		cmp.b   (a0),d0
-		beq.s   loc_2212C
-		cmpi.b  #$FF,(a0)
-		bne.s   loc_22126
+		beq.s   @Break
+		cmpi.b  #EMPTY_BATTLE_PARTY_SLOT,(a0)
+		bne.s   @Next
 		move.b  d0,(a0)
-		bsr.s   SortActiveForceMembers
-		bra.s   loc_2212C
-loc_22126:
+		bsr.s   SortBattlePartyMembers
+		bra.s   @Break
+@Next:
 		addq.l  #1,a0
-		dbf     d1,loc_22116
-loc_2212C:
+		dbf     d1,@FindEmptyBattleSlot_Loop
+@Break:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function JoinBattleParty
+    ; End of function JoinBattleParty
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Remove D0 from current force
+; Remove force member D0 from battle party
 
 LeaveBattleParty:
 		
 		movem.l d1/a0,-(sp)
-		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
+		lea     ((BATTLE_PARTY_MEMBERS-$1000000)).w,a0
 		moveq   #BATTLE_PARTY_SLOTS_COUNTER,d1
-loc_2213C:
-		cmpi.b  #$FF,(a0)
-		beq.s   loc_22152
+@Loop:
+		cmpi.b  #EMPTY_BATTLE_PARTY_SLOT,(a0)
+		beq.s   @Break
 		cmp.b   (a0),d0
-		bne.s   loc_2214C
+		bne.s   @Next
 		st      (a0)
-		bsr.s   SortActiveForceMembers
-		bra.s   loc_22152
-loc_2214C:
+		bsr.s   SortBattlePartyMembers
+		bra.s   @Break
+@Next:
 		addq.l  #1,a0
-		dbf     d1,loc_2213C
-loc_22152:
+		dbf     d1,@Loop
+@Break:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function LeaveBattleParty
+    ; End of function LeaveBattleParty
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get empty slot in current force to D2
+; Get first empty slot in battle party -> D2
 
-GetEmptyActiveForceSlot:
+GetEmptyBattlePartySlot:
 		
 		movem.l d1/a0,-(sp)
-		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
+		lea     ((BATTLE_PARTY_MEMBERS-$1000000)).w,a0
 		clr.w   d2
 		moveq   #BATTLE_PARTY_SLOTS_COUNTER,d1
-loc_22164:
-		cmpi.b  #$FF,(a0)+
-		beq.s   loc_22170
+@Loop:
+		cmpi.b  #EMPTY_BATTLE_PARTY_SLOT,(a0)+
+		beq.s   @Break
 		addq.w  #1,d2
-		dbf     d1,loc_22164
-loc_22170:
+		dbf     d1,@Loop
+@Break:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function GetEmptyActiveForceSlot
+    ; End of function GetEmptyBattlePartySlot
 
 
 ; =============== S U B R O U T I N E =======================================
 
-SortActiveForceMembers:
+SortBattlePartyMembers:
 		
 		movem.l d0-d3/a0,-(sp)
-		lea     ((ACTIVE_FORCE_MEMBERS-$1000000)).w,a0
+		lea     ((BATTLE_PARTY_MEMBERS-$1000000)).w,a0
 		moveq   #BATTLE_PARTY_SLOTS_COUNTER,d0
 loc_22180:
 		ble.s   loc_221A8
@@ -5693,7 +6073,7 @@ loc_221A8:
 		movem.l (sp)+,d0-d3/a0
 		rts
 
-	; End of function SortActiveForceMembers
+    ; End of function SortBattlePartyMembers
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5702,1574 +6082,1577 @@ loc_221A8:
 
 JoinForce:
 		movem.l d1-d2,-(sp)
-		bsr.s   IsInForce_0     
+		bsr.s   dup_IsInForce   
 		bne.s   loc_221CE
 		move.l  ((FORCE_MEMBER_FLAGS-$1000000)).w,d1
 		bset    d0,d1
 		move.l  d1,((FORCE_MEMBER_FLAGS-$1000000)).w
-		bsr.w   GetEmptyActiveForceSlot
-		cmpi.w  #BATTLE_PARTY_MAX_SIZE,d2
+		bsr.w   GetEmptyBattlePartySlot
+		cmpi.w  #BATTLE_PARTY_SLOTS_NUMBER,d2
 		bge.s   loc_221CE
 		bsr.w   JoinBattleParty 
 loc_221CE:
 		movem.l (sp)+,d1-d2
 		rts
 
-	; End of function JoinForce
+    ; End of function JoinForce
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Checks if member D0 is in force
+; Check if force member D0 has joined (duplicate)
 
-IsInForce_0:
+dup_IsInForce:
+		
 		movem.l d1,-(sp)
 		move.l  ((FORCE_MEMBER_FLAGS-$1000000)).w,d1
 		btst    d0,d1
 		movem.l (sp)+,d1
 		rts
 
-	; End of function IsInForce_0
+    ; End of function dup_IsInForce
 
 
 ; =============== S U B R O U T I N E =======================================
 
-RegenHP:
+RegenerateHP:
 		movem.l d0-d2/a0,-(sp)
-		moveq   #COM_ENTRIES_COUNTER,d2
-loc_221EA:
+		moveq   #COMBATANT_ENTRIES_COUNTER,d2
+@Loop:
 		move.b  d2,d0
-		bsr.w   GetForceMemberID
-		cmpi.b  #$FF,d1
-		beq.s   loc_22216
-		jsr     j_GetForceMemberClass
+		bsr.w   alt_GetEntity   
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d1
+		beq.s   @Skip           ; skip if combatant entry is unpopulated
+		jsr     j_GetClass
 		bsr.w   GetClassEntryAddress
-		btst    #CLASS_FLAG_REGEN_HP,CLASS_OFFSET_SETTINGS(a0)
-		beq.s   loc_22216
-		jsr     j_GetForceMemberMaxHP
-		asr.w   #2,d1
-		jsr     j_IncreaseForceMemberHP
-loc_22216:
-		dbf     d2,loc_221EA
+		btst    #CLASS_PROPERTY_HP_REGEN_TOGGLE,CLASSDEF_OFFSET_PROPERTIES(a0)
+		beq.s   @Skip           ; skip if class is not set to regenerate HP
+		jsr     j_GetMaxHP
+		asr.w   #2,d1           ; D1 = max HP divided by 4
+		jsr     j_IncreaseCurrentHP
+@Skip:
+		dbf     d2,@Loop
 		movem.l (sp)+,d0-d2/a0
 		rts
 
-	; End of function RegenHP
+    ; End of function RegenerateHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_22220:
+RefillWholeForceHp:
+		
 		move.w  d0,-(sp)
-		moveq   #$1E,d0
-loc_22224:
+		moveq   #FORCE_MEMBERS_COUNTER,d0
+@Loop:
 		jsr     j_RefillHP
-		dbf     d0,loc_22224
+		dbf     d0,@Loop
+                
 		move.w  (sp)+,d0
 		rts
 
-	; End of function sub_22220
+    ; End of function RefillWholeForceHp
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set Max's stats in battle test mode
-
-sub_22232:
+SetForceLeaderStatsInBattleTestMode:
+		
 		movem.l d0-d1/a0,-(sp)
 		btst    #6,((byte_FF9C52-$1000000)).w
-		bne.s   loc_22292
+		bne.s   @Skip
 		clr.w   d0
-		move.w  #$7D0,d1
-		jsr     j_SetForceMemberMaxHP
+		move.w  #2000,d1
+		jsr     j_SetMaxHP
 		jsr     j_RefillHP
-		move.w  #$62,d1 
-		jsr     j_SetForceMemberMaxMP
+		move.w  #98,d1
+		jsr     j_SetMaxMP
 		jsr     j_RefillMP
-		jsr     j_SetForceMemberAGI
-		jsr     j_SetForceMemberMOVE
-		jsr     j_LoadBattleStats
-		jsr     j_GetForceItemsAddress
-		move.b  #ITEM_ID_KINDAN_NOHAKO,2(a0)
-		jsr     j_GetForceSpellsAddress
+		jsr     j_SetBaseAgility
+		jsr     j_SetBaseMove
+		jsr     j_LoadCombatantData
+		jsr     j_GetEntityItemsAddress
+		move.b  #KINDAN_NOHAKO,2(a0)
+		jsr     j_GetCharacterSpellsAddress
 		addq.l  #1,a0
-		move.b  #$C9,(a0)+
-		move.b  #$CA,(a0)+
-		move.b  #$CB,(a0)+
-loc_22292:
+		move.b  #SPELL_BLAZE|LV_4,(a0)+
+		move.b  #SPELL_FREEZE|LV_4,(a0)+
+		move.b  #SPELL_BOLT|LV_4,(a0)+
+@Skip:
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function sub_22232
+    ; End of function SetForceLeaderStatsInBattleTestMode
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get battle member (D0) ID to D1 if member exists, else D1=FFFF
+; Get combatant D0 entity index -> D1 if they exist, else D1 = $FFFF
 
-GetTargetID:
+GetEntity:
 		movem.l d0/d2/a0,-(sp)
 		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_222AA
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  (a0),d1
 		ext.w   d1
-loc_222AA:
+@Skip:
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetTargetID
+    ; End of function GetEntity
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get battle member (D0) X to D1 if member exists, else D1=FFFF
+; Get combatant D0 X -> D1 if they exist, else D1 = $FFFF
 
-GetTargetX:
-		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_222C4
-		move.b  COM_OFFSET_X(a0),d1
-		ext.w   d1
-loc_222C4:
-		movem.l (sp)+,d0/d2/a0
-		rts
-
-	; End of function GetTargetX
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Get battle member (D0) Y to D1 if member exists, else D1=FFFF
-
-GetTargetY:
-		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_222DE
-		move.b  COM_OFFSET_Y(a0),d1
-		ext.w   d1
-loc_222DE:
-		movem.l (sp)+,d0/d2/a0
-		rts
-
-	; End of function GetTargetY
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Get battle member (D0) attack to D1 if member exists, else D1=FFFF
-
-GetTargetATT:
-		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_222F8
-		move.b  COM_OFFSET_ATT(a0),d1
-		ext.w   d1
-loc_222F8:
-		movem.l (sp)+,d0/d2/a0
-		rts
-
-	; End of function GetTargetATT
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Get battle member (D0) defense to D1 if member exists, else D1=FFFF
-
-GetTargetDEF:
-		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_22312
-		move.b  COM_OFFSET_DEF(a0),d1
-		ext.w   d1
-loc_22312:
-		movem.l (sp)+,d0/d2/a0
-		rts
-
-	; End of function GetTargetDEF
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Get battle member (D0) agility to D1 if member exists, else D1=FFFF
-
-GetTargetAGI:
-		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_2232C
-		move.b  COM_OFFSET_AGI(a0),d1
-		ext.w   d1
-loc_2232C:
-		movem.l (sp)+,d0/d2/a0
-		rts
-
-	; End of function GetTargetAGI
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Get battle member (D0) move to D1 if member exists, else D1=FFFF
-
-GetTargetMOVE:
+GetCombatantX:
 		
 		movem.l d0/d2/a0,-(sp)
 		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_22346
-		move.b  COM_OFFSET_MOVE(a0),d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_X(a0),d1
 		ext.w   d1
-loc_22346:
+@Skip:
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetTargetMOVE
+    ; End of function GetCombatantX
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get battle member (D0) crit to D1 if member exists, else D1=FFFF
+; Get combatant D0 Y -> D1 if they exist, else D1 = $FFFF
 
-GetTargetCRIT:
+GetCombatantY:
 		
 		movem.l d0/d2/a0,-(sp)
 		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_22360
-		move.b  COM_OFFSET_CRIT(a0),d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_Y(a0),d1
 		ext.w   d1
-loc_22360:
+@Skip:
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetTargetCRIT
+    ; End of function GetCombatantY
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get battle member (D0) double attack setting to D1 if member exists, else D1=FFFF
+; Get combatant D0 modified attack -> D1 if they exist, else D1 = $FFFF
 
-GetTargetDoubleAttack:
+GetModifiedAttack:
 		
 		movem.l d0/d2/a0,-(sp)
 		move.w  #$FFFF,d1
-		bsr.w   GetTargetEntryAddress
-		beq.s   loc_2237A
-		move.b  COM_OFFSET_DOUBLE_ATK(a0),d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_MODIFIED_ATTACK(a0),d1
 		ext.w   d1
-loc_2237A:
+@Skip:
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetTargetDoubleAttack
+    ; End of function GetModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get position of member D0 -> X to D2, Y to D1
+; Get combatant D0 modified defense -> D1 if they exist, else D1 = $FFFF
 
-GetTargetPosition:
+GetModifiedDefense:
 		
-		jsr     j_GetTargetX
+		movem.l d0/d2/a0,-(sp)
+		move.w  #$FFFF,d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_MODIFIED_DEFENSE(a0),d1
+		ext.w   d1
+@Skip:
+		movem.l (sp)+,d0/d2/a0
+		rts
+
+    ; End of function GetModifiedDefense
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Get combatant D0 modified agility -> D1 if they exist, else D1 = $FFFF
+
+GetModifiedAgility:
+		
+		movem.l d0/d2/a0,-(sp)
+		move.w  #$FFFF,d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_MODIFIED_AGILITY(a0),d1
+		ext.w   d1
+@Skip:
+		movem.l (sp)+,d0/d2/a0
+		rts
+
+    ; End of function GetModifiedAgility
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Get combatant D0 modified move -> D1 if they exist, else D1 = $FFFF
+
+GetModifiedMove:
+		
+		movem.l d0/d2/a0,-(sp)
+		move.w  #$FFFF,d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_MODIFIED_MOVE(a0),d1
+		ext.w   d1
+@Skip:
+		movem.l (sp)+,d0/d2/a0
+		rts
+
+    ; End of function GetModifiedMove
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Get combatant D0 modified critical -> D1 if they exist, else D1 = $FFFF
+
+GetModifiedCritical:
+		
+		movem.l d0/d2/a0,-(sp)
+		move.w  #$FFFF,d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_MODIFIED_CRITICAL(a0),d1
+		ext.w   d1
+@Skip:
+		movem.l (sp)+,d0/d2/a0
+		rts
+
+    ; End of function GetModifiedCritical
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Get combatant D0 modified double attack mode -> D1 if they exist, else D1 = $FFFF
+
+GetModifiedDoubleAttackMode:
+		
+		movem.l d0/d2/a0,-(sp)
+		move.w  #$FFFF,d1
+		bsr.w   GetCombatantEntryAddress
+		beq.s   @Skip           ; skip if combatant slot is empty
+		move.b  COMBATANT_OFFSET_MODIFIED_DOUBLE_ATTACK_MODE(a0),d1
+		ext.w   d1
+@Skip:
+		movem.l (sp)+,d0/d2/a0
+		rts
+
+    ; End of function GetModifiedDoubleAttackMode
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Get combatant D0 position X,Y -> D2,D1
+
+GetCombatantPosition:
+		
+		jsr     j_GetCombatantX
 		move.w  d1,d2
-		jsr     j_GetTargetY
+		jsr     j_GetCombatantY
 		rts
 
-	; End of function GetTargetPosition
+    ; End of function GetCombatantPosition
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get section D1 of force member status (calls 2250E)
+; Get force member's status effect counter D1 for combatant D0 -> D2
 
-GetStatusCounter:
+GetStatusEffectCounter:
 		
 		exg     d1,d2
-		bsr.w   GetStatusFromForceID
+		bsr.w   GetStatusEffectsForCombatant
 		exg     d1,d2
 		lsr.w   d1,d2
-		andi.w  #3,d2
+		andi.w  #STATUSEFFECT_MASK_COUNTER,d2
 		rts
 
-	; End of function GetStatusCounter
+    ; End of function GetStatusEffectCounter
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) Class to D1
+; Get force member D0 class index -> D1
 
-GetForceMemberClass:
-		
+GetClass:
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_CLASS_ID(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_CLASS(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberClass
+    ; End of function GetClass
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) level to D1
+; Get force member D0 level -> D1
 
-GetForceMemberLevel:
-		
+GetLevel:
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
+		bsr.w   GetEntityEntryAddress
 		move.b  FORCE_OFFSET_LEVEL(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberLevel
+    ; End of function GetLevel
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) attack to D1
+; Get force member D0 base attack -> D1
 
-GetForceMemberATT:
+GetBaseAttack:
 		
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_ATT(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_BASE_ATTACK(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberATT
+    ; End of function GetBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) defense to D1
+; Get force member D0 base defense -> D1
 
-GetForceMemberDEF:
+GetBaseDefense:
 		
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_DEF(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_BASE_DEFENSE(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberDEF
+    ; End of function GetBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) agility to D1
+; Get force member D0 base agility -> D1
 
-GetForceMemberAGI:
+GetBaseAgility:
 		
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_AGI(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_BASE_AGILITY(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberAGI
+    ; End of function GetBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) move to D1
+; Get force member D0 base move -> D1
 
-GetForceMemberMOVE:
-		
+GetBaseMove:
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_MOVE(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_BASE_MOVE(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberMOVE
+    ; End of function GetBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) crit to D1
+; Get force member D0 base critical -> D1
 
-GetForceMemberCRIT:
+GetBaseCritical:
 		
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_CRIT(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_BASE_CRITICAL(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberCRIT
+    ; End of function GetBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) EXP to D1
+; Get force member D0 experience -> D1
 
-GetForceMemberEXP:
+GetExperience:
 		
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_EXP(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_EXPERIENCE(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberEXP
+    ; End of function GetExperience
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) Max HP to D1
+; Get force member D0 max HP -> D1
 
-GetForceMemberMaxHP:
-		
+GetMaxHP:
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.w  FORCE_OFFSET_HP_MAX(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.w  FORCE_OFFSET_MAXIMUM_HP(a0),d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberMaxHP
+    ; End of function GetMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) HP to D1
+; Get force member D0 current HP -> D1
 
-GetForceMemberHP:
-		
+GetCurrentHP:
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.w  FORCE_OFFSET_HP_CURRENT(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.w  FORCE_OFFSET_CURRENT_HP(a0),d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberHP
+    ; End of function GetCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) Max MP to D1
+; Get force member D0 max MP -> D1
 
-GetForceMemberMaxMP:
-		
+GetMaxMP:
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_MP_MAX(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_MAXIMUM_MP(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberMaxMP
+    ; End of function GetMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) MP to D1
+; Get force member D0 current MP -> D1
 
-GetForceMemberMP:
-		
+GetCurrentMP:
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  FORCE_OFFSET_MP_CURRENT(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.b  FORCE_OFFSET_CURRENT_MP(a0),d1
 		ext.w   d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberMP
+    ; End of function GetCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get force member (D0) status to D1
+; Get force member D0 status effects -> D1
 
-GetForceMemberStatus:
+GetStatusEffects:
 		
 		movem.l d0/d2/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.w  FORCE_OFFSET_FLAGS_STATUS(a0),d1
+		bsr.w   GetEntityEntryAddress
+		move.w  FORCE_OFFSET_STATUS_EFFECTS(a0),d1
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function GetForceMemberStatus
+    ; End of function GetStatusEffects
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get class by force index D0 -> D1
+; Get force member's class index for combatant D0 -> D1
 
-GetClassFromForceID:
+GetClassForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberClass
+		bsr.w   alt_GetEntity   
+		bsr.w   GetClass        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetClassFromForceID
+    ; End of function GetClassForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get level by force index
+; Get force member's level for combatant D0 -> D1
 
-GetLevelFromForceID:
+GetLevelForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberLevel
+		bsr.w   alt_GetEntity   
+		bsr.w   GetLevel        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetLevelFromForceID
+    ; End of function GetLevelForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get ATT by force index
+; Get force member's base attack for combatant D0 -> D1
 
-GetATTFromForceID:
+GetBaseAttackForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberATT
+		bsr.w   alt_GetEntity   
+		bsr.w   GetBaseAttack   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetATTFromForceID
+    ; End of function GetBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get DEF by force index
+; Get force member's base defense for combatant D0 -> D1
 
-GetDEFFromForceID:
+GetBaseDefenseForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberDEF
+		bsr.w   alt_GetEntity   
+		bsr.w   GetBaseDefense  
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetDEFFromForceID
+    ; End of function GetBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get AGI by force index
+; Get force member's base agility for combatant D0 -> D1
 
-GetAGIFromForceID:
+GetBaseAgilityForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberAGI
+		bsr.w   alt_GetEntity   
+		bsr.w   GetBaseAgility  
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetAGIFromForceID
+    ; End of function GetBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get MOVE by force index
+; Get force member's base move for combatant D0 -> D1
 
-GetMOVEFromForceID:
+GetBaseMoveForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberMOVE
+		bsr.w   alt_GetEntity   
+		bsr.w   GetBaseMove     
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetMOVEFromForceID
+    ; End of function GetBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get CRIT by force index
+; Get force member's base critical for combatant D0 -> D1
 
-GetCRITFromForceID:
+GetBaseCriticalForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberCRIT
+		bsr.w   alt_GetEntity   
+		bsr.w   GetBaseCritical 
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetCRITFromForceID
+    ; End of function GetBaseCriticalForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get EXP by force index
+; Get force member's experience for combatant D0 -> D1
 
-GetEXPFromForceID:
+GetExperienceForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberEXP
+		bsr.w   alt_GetEntity   
+		bsr.w   GetExperience   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetEXPFromForceID
+    ; End of function GetExperienceForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get status by force index
+; Get force member's status effects for combatant D0 -> D1
 
-GetStatusFromForceID:
+GetStatusEffectsForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberStatus
+		bsr.w   alt_GetEntity   
+		bsr.w   GetStatusEffects
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetStatusFromForceID
+    ; End of function GetStatusEffectsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get max HP by force index
+; Get entity's max HP for combatant D0 -> D1
 
-GetMaxHPFromForceID:
+GetMaxHpForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberMaxHP
+		bsr.w   alt_GetEntity   
+		bsr.w   GetMaxHP        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetMaxHPFromForceID
+    ; End of function GetMaxHpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get HP by force index
+; Get entity's current HP for combatant D0 -> D1
 
-GetHPFromForceID:
+GetCurrentHpForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberHP
+		bsr.w   alt_GetEntity   
+		bsr.w   GetCurrentHP    
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetHPFromForceID
+    ; End of function GetCurrentHpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get max MP by force index
+; Get entity's max MP from combatant D0 -> D1
 
-GetMaxMPFromForceID:
+GetMaxMpForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberMaxMP
+		bsr.w   alt_GetEntity   
+		bsr.w   GetMaxMP        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetMaxMPFromForceID
+    ; End of function GetMaxMpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get MP by force index
+; Get entity's current MP for combatant D0 -> D1
 
-GetMPFromForceID:
+GetCurrentMpForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceMemberMP
+		bsr.w   alt_GetEntity   
+		bsr.w   GetCurrentMP    
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetMPFromForceID
+    ; End of function GetCurrentMpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Address from 225F2 + 0 (Stats) of force member
+; Get entity D0 stats address -> A0
 
-GetForceStatsAddress:
+GetEntityStatsAddress:
 		
 		movem.l d0/d2,-(sp)
-		bsr.w   GetForceEntryAddress
+		bsr.w   GetEntityEntryAddress
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function GetForceStatsAddress
+    ; End of function GetEntityStatsAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Address from 225F2 + x1A (Items) of force member
+; Get entity D0 items address -> A0
 
-GetForceItemsAddress:
+GetEntityItemsAddress:
 		
 		movem.l d0/d2,-(sp)
-		bsr.w   GetForceEntryAddress
+		bsr.w   GetEntityEntryAddress
 		adda.w  #FORCE_OFFSET_ITEMS,a0
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function GetForceItemsAddress
+    ; End of function GetEntityItemsAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Address from 225F2 + x1E (Spells) of force member
+; Get entity D0 spells address -> A0
 
-GetForceSpellsAddress:
+GetCharacterSpellsAddress:
 		
 		movem.l d0/d2,-(sp)
-		bsr.w   GetForceEntryAddress
+		bsr.w   GetEntityEntryAddress
 		adda.w  #FORCE_OFFSET_SPELLS,a0
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function GetForceSpellsAddress
+    ; End of function GetCharacterSpellsAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Address from 225F2 + 0 (Stats) by force index
+; Get entity stats address for combatant D0 -> A0
 
-GetForceStatsFromForceID:
+GetEntityStatsAddressForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceStatsAddress
+		bsr.w   alt_GetEntity   
+		bsr.w   GetEntityStatsAddress
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetForceStatsFromForceID
+    ; End of function GetEntityStatsAddressForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Address from 225F2 + x1A (Items) by force index
+; Get entity's items address for combatant D0 -> A0
 
-GetForceItemsFromForceID:
+GetEntityItemsAddressForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceItemsAddress
+		bsr.w   alt_GetEntity   
+		bsr.w   GetEntityItemsAddress
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetForceItemsFromForceID
+    ; End of function GetEntityItemsAddressForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get Address from 225F2 + x1E (Spells) by force index
+; Get entity spells address for combatant D0 -> A0
 
-GetForceSpellsFromForceID:
+GetEntitySpellsAddressForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   GetForceSpellsAddress
+		bsr.w   alt_GetEntity   
+		bsr.w   GetCharacterSpellsAddress
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetForceSpellsFromForceID
+    ; End of function GetEntitySpellsAddressForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get ID of force member
+; Get combatant D0 entity index -> D0 (alternate implementation)
 
-GetForceMemberID:
+alt_GetEntity:
 		
 		move.l  a0,-(sp)
 		andi.w  #$FF,d0
 		asl.w   #4,d0
-		lea     ((BATTLE_STATS-$1000000)).w,a0
+		lea     ((COMBATANT_DATA-$1000000)).w,a0
 		move.b  (a0,d0.w),d0
 		movea.l (sp)+,a0
 		rts
 
-	; End of function GetForceMemberID
+    ; End of function alt_GetEntity
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get ram address ot stats matching ID D1
+; Find force member D0 combatant entry address -> A0
 
-FindTarget:
+FindCombatantEntry:
+		
 		movem.l d1/a0,-(sp)
 		move.b  d0,d1
-		moveq   #COM_ENTRIES_COUNTER,d0
-		bsr.s   GetTargetEntryAddress
-		moveq   #COM_ENTRIES_COUNTER,d0
-loc_225D0:
+		moveq   #COMBATANT_ENTRIES_COUNTER,d0
+		bsr.s   GetCombatantEntryAddress
+		moveq   #COMBATANT_ENTRIES_COUNTER,d0
+@Loop:
 		cmp.b   (a0),d1
-		suba.w  #COM_ENTRY_SIZE,a0
-		dbeq    d0,loc_225D0
+		suba.w  #COMBATANT_ENTRY_SIZE,a0
+		dbeq    d0,@Loop
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function FindTarget
+    ; End of function FindCombatantEntry
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get ram address of target's stats
+; Get combatant D0 entry address -> A0 (CCR zero-bit set if slot is empty)
 
-GetTargetEntryAddress:
+GetCombatantEntryAddress:
 		
 		andi.w  #$FF,d0
 		asl.w   #4,d0
-		lea     ((BATTLE_STATS-$1000000)).w,a0
+		lea     ((COMBATANT_DATA-$1000000)).w,a0
 		adda.w  d0,a0
-		cmpi.b  #$FF,(a0)
+		cmpi.b  #EMPTY_COMBATANT_SLOT,(a0)
 		rts
 
-	; End of function GetTargetEntryAddress
+    ; End of function GetCombatantEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get ram address of force member's stats
+; Get entity (force member or enemy) D0 data entry address -> A0
 
-GetForceEntryAddress:
+GetEntityEntryAddress:
 		
 		tst.b   d0
-		bpl.s   loc_22600
-		andi.b  #FORCE_MASK_ID,d0
-		lea     ((CURRENT_ENEMY_DATA-$1000000)).w,a0
-		bra.s   loc_22604
-loc_22600:
-		lea     ((CURRENT_FORCE_DATA-$1000000)).w,a0
-loc_22604:
+		bpl.s   @ForceMember
+		andi.b  #FORCEMEMBERENTRY_MASK_INDEX_0,d0
+		lea     ((ENEMY_DATA-$1000000)).w,a0
+		bra.s   @Continue
+@ForceMember:
+		lea     ((FORCE_MEMBERS_DATA-$1000000)).w,a0
+@Continue:
 		andi.w  #$FF,d0
 		mulu.w  #FORCE_ENTRY_SIZE,d0
 		adda.w  d0,a0
 		rts
 
-	; End of function GetForceEntryAddress
+    ; End of function GetEntityEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Test battle member ID to see if force or enemy
+; Check if combatant D0 is an enemy -> CCR negative-bit set if true
 
 IsEnemy:
 		movem.w d1,-(sp)
-		bsr.w   GetTargetID     
+		bsr.w   GetEntity       
 		tst.b   d1
 		movem.w (sp)+,d1
 		rts
 
-	; End of function IsEnemy
+    ; End of function IsEnemy
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load class name of battle member to A1
+; Get combatant D0 displayed name address (load class name if enemy)
+; 
+; Out: A0 = name address for combatant
+;      D1 = name length for combatant
 
-LoadClassName:
+GetDisplayedNameAddress:
 		
 		movem.l d0/d2/a1,-(sp)
-		move.w  #$A,d1
-		bsr.w   GetForceStatsFromForceID
+		move.w  #FORCE_NAME_LENGTH,d1
+		bsr.w   GetEntityStatsAddressForCombatant
 		tst.b   (a0)
 		bne.s   loc_2264E
-		bsr.w   GetClassFromForceID
-		jsr     j_GetClassName
+		bsr.w   GetClassForCombatant
+		jsr     j_GetClassNameAddress
 		move.w  d1,d2
-		lea     ((CLASS_NAME-$1000000)).w,a1
+		lea     ((DISPLAYED_EMEMY_NAME-$1000000)).w,a1
 		subq.w  #1,d2
 loc_22642:
 		move.b  (a0)+,(a1)+
 		dbf     d2,loc_22642
 		clr.b   (a1)
-		lea     ((CLASS_NAME-$1000000)).w,a0
+		lea     ((DISPLAYED_EMEMY_NAME-$1000000)).w,a0
 loc_2264E:
 		movem.l (sp)+,d0/d2/a1
 		rts
 
-	; End of function LoadClassName
+    ; End of function GetDisplayedNameAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set battle member (D0) ID to D1
+; Set D1 -> combatant D0 entity index
 
-SetTargetID:
+SetEntityIndex:
+		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
+		bsr.w   GetCombatantEntryAddress
 		move.b  d1,(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetTargetID
+    ; End of function SetEntityIndex
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set battle member (D0) X to D1
+; Set D1 -> combatant D0 X
 
-SetTargetX:
-		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_X(a0)
-		movem.l (sp)+,d0/a0
-		rts
-
-	; End of function SetTargetX
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Set battle member (D0) Y to D1
-
-SetTargetY:
-		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_Y(a0)
-		movem.l (sp)+,d0/a0
-		rts
-
-	; End of function SetTargetY
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Set battle member (D0) attack to D1
-
-SetTargetATT:
-		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_ATT(a0)
-		movem.l (sp)+,d0/a0
-		rts
-
-	; End of function SetTargetATT
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Set battle member (D0) defense to D1
-
-SetTargetDEF:
-		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_DEF(a0)
-		movem.l (sp)+,d0/a0
-		rts
-
-	; End of function SetTargetDEF
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Set battle member (D0) agility to D1
-
-SetTargetAGI:
-		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_AGI(a0)
-		movem.l (sp)+,d0/a0
-		rts
-
-	; End of function SetTargetAGI
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Set battle member (D0) move to D1
-
-SetTargetMOVE:
+SetCombatantX:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_MOVE(a0)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_X(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetTargetMOVE
+    ; End of function SetCombatantX
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set battle member (D0) crit to D1
+; Set D1 -> combatant D0 Y
 
-SetTargetCRIT:
+SetCombatantY:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_CRIT(a0)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_Y(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetTargetCRIT
+    ; End of function SetCombatantY
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set battle member (D0) double attack setting to D1
+; Set D1 -> combatant D0 modified attack
 
-SetTargetDoubleAttack:
+SetModifiedAttack:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetTargetEntryAddress
-		move.b  d1,COM_OFFSET_DOUBLE_ATK(a0)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_MODIFIED_ATTACK(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetTargetDoubleAttack
+    ; End of function SetModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set battle member (D0) X to D2, Y to D1
+; Set D1 -> combatant D0 modified defense
 
-SetTargetPosition:
+SetModifiedDefense:
+		
+		movem.l d0/a0,-(sp)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_MODIFIED_DEFENSE(a0)
+		movem.l (sp)+,d0/a0
+		rts
+
+    ; End of function SetModifiedDefense
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Set D1 -> combatant D0 modified agility
+
+SetModifiedAgility:
+		
+		movem.l d0/a0,-(sp)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_MODIFIED_AGILITY(a0)
+		movem.l (sp)+,d0/a0
+		rts
+
+    ; End of function SetModifiedAgility
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Set D1 -> combatant D0 modified move
+
+SetModifiedMove:
+		
+		movem.l d0/a0,-(sp)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_MODIFIED_MOVE(a0)
+		movem.l (sp)+,d0/a0
+		rts
+
+    ; End of function SetModifiedMove
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Set D1 -> combatant D0 modified critical
+
+SetModifiedCritical:
+		
+		movem.l d0/a0,-(sp)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_MODIFIED_CRITICAL(a0)
+		movem.l (sp)+,d0/a0
+		rts
+
+    ; End of function SetModifiedCritical
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Set D1 -> combatant D0 modified double attack mode
+
+SetModifiedDoubleAttackMode:
+		
+		movem.l d0/a0,-(sp)
+		bsr.w   GetCombatantEntryAddress
+		move.b  d1,COMBATANT_OFFSET_MODIFIED_DOUBLE_ATTACK_MODE(a0)
+		movem.l (sp)+,d0/a0
+		rts
+
+    ; End of function SetModifiedDoubleAttackMode
+
+
+; =============== S U B R O U T I N E =======================================
+
+; Set Y = D1, X = D2 -> combatant D0 position
+
+SetCombatantPosition:
 		
 		move.w  d1,-(sp)
-		jsr     j_SetTargetY
+		jsr     j_SetCombatantY
 		move.w  d2,d1
-		jsr     j_SetTargetX
+		jsr     j_SetCombatantX
 		move.w  (sp)+,d1
 		rts
 
-	; End of function SetTargetPosition
+    ; End of function SetCombatantPosition
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set battle member (D0) Status section D1 to D2
+; Set D2 -> force member's status effect counter D1 for combatant D0
 
-SetTargetStatus:
+SetStatusEffectCounter:
 		
 		movem.l d2-d3,-(sp)
 		move.w  d1,d3
-		jsr     j_GetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
 		ror.w   d3,d1
 		andi.w  #3,d2
 		andi.w  #$FFFC,d1
 		or.w    d2,d1
 		rol.w   d3,d1
-		bsr.w   SetStatusFromForceID
+		bsr.w   SetStatusEffectsForCombatant
 		movem.l (sp)+,d2-d3
 		rts
 
-	; End of function SetTargetStatus
+    ; End of function SetStatusEffectCounter
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) class to D1
+; Set D1 -> force member D0 class index
 
-SetForceMemberClass:
-		
+SetClass:
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_CLASS_ID(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_CLASS(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberClass
+    ; End of function SetClass
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) level to D1
+; Set D1 -> force member D0 level
 
-SetForceMemberLevel:
-		
+SetLevel:
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
+		bsr.w   GetEntityEntryAddress
 		move.b  d1,FORCE_OFFSET_LEVEL(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberLevel
+    ; End of function SetLevel
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) attack to D1
+; Set D1 -> force member D0 base attack
 
-SetForceMemberATT:
+SetBaseAttack:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_ATT(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_BASE_ATTACK(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberATT
+    ; End of function SetBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) defense to D1
+; Set D1 -> force member D0 base defense
 
-SetForceMemberDEF:
+SetBaseDefense:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_DEF(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_BASE_DEFENSE(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberDEF
+    ; End of function SetBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) agility to D1
+; Set D1 -> force member D0 base agility
 
-SetForceMemberAGI:
+SetBaseAgility:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_AGI(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_BASE_AGILITY(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberAGI
+    ; End of function SetBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) move to D1
+; Set D1 -> force member D0 base move
 
-SetForceMemberMOVE:
-		
+SetBaseMove:
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_MOVE(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_BASE_MOVE(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberMOVE
+    ; End of function SetBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) crit to D1
+; Set D1 -> force member D0 base critical
 
-SetForceMemberCRIT:
+SetBaseCritical:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_CRIT(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_BASE_CRITICAL(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberCRIT
+    ; End of function SetBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) EXP to D1
+; Set D1 -> force member D0 experience
 
-SetForceMemberEXP:
+SetExperience:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_EXP(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_EXPERIENCE(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberEXP
+    ; End of function SetExperience
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) Max HP to D1
+; Set D1 -> force member D0 max HP
 
-SetForceMemberMaxHP:
-		
+SetMaxHP:
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.w  d1,FORCE_OFFSET_HP_MAX(a0)
+		bsr.w   GetEntityEntryAddress
+		move.w  d1,FORCE_OFFSET_MAXIMUM_HP(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberMaxHP
+    ; End of function SetMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) HP to D1
+; Set D1 -> force member D0 current HP
 
-SetForceMemberHP:
-		
+SetCurrentHP:
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.w  d1,FORCE_OFFSET_HP_CURRENT(a0)
+		bsr.w   GetEntityEntryAddress
+		move.w  d1,FORCE_OFFSET_CURRENT_HP(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberHP
+    ; End of function SetCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) Max MP to D1
+; Set D1 -> force member D0 max MP
 
-SetForceMemberMaxMP:
-		
+SetMaxMP:
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_MP_MAX(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_MAXIMUM_MP(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberMaxMP
+    ; End of function SetMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) MP to D1
+; Set D1 -> force member D0 current MP
 
-SetForceMemberMP:
-		
+SetCurrentMP:
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.b  d1,FORCE_OFFSET_MP_CURRENT(a0)
+		bsr.w   GetEntityEntryAddress
+		move.b  d1,FORCE_OFFSET_CURRENT_MP(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberMP
+    ; End of function SetCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set force member (D0) Status to D1
+; Set D1 -> force member D0 status effects
 
-SetForceMemberStatus:
+SetStatusEffects:
 		
 		movem.l d0/a0,-(sp)
-		bsr.w   GetForceEntryAddress
-		move.w  d1,FORCE_OFFSET_FLAGS_STATUS(a0)
+		bsr.w   GetEntityEntryAddress
+		move.w  d1,FORCE_OFFSET_STATUS_EFFECTS(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function SetForceMemberStatus
+    ; End of function SetStatusEffects
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set class by force index
+; Set D1 -> force member's class index for combatant D0
 
-SetClassFromForceID:
+SetClassForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberClass
+		bsr.w   alt_GetEntity   
+		bsr.w   SetClass        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetClassFromForceID
+    ; End of function SetClassForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set level by force index
+; Set D1 -> force member's level for combatant D0
 
-SetLevelFromForceID:
+SetLevelForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberLevel
+		bsr.w   alt_GetEntity   
+		bsr.w   SetLevel        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetLevelFromForceID
+    ; End of function SetLevelForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set ATT by force index
+; Set D1 -> force member's base attack for combatant D0
 
-SetATTFromForceID:
+SetBaseAttackForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberATT
+		bsr.w   alt_GetEntity   
+		bsr.w   SetBaseAttack   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetATTFromForceID
+    ; End of function SetBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set DEF by force index
+; Set D1 -> force member's base defense for combatant D0
 
-SetDEFFromForceID:
+SetBaseDefenseForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberDEF
+		bsr.w   alt_GetEntity   
+		bsr.w   SetBaseDefense  
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetDEFFromForceID
+    ; End of function SetBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set AGI by force index
+; Set D1 -> force member's base agility for combatant D0
 
-SetAGIFromForceID:
+SetBaseAgilityForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberAGI
+		bsr.w   alt_GetEntity   
+		bsr.w   SetBaseAgility  
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetAGIFromForceID
+    ; End of function SetBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set MOVE by force index
+; Set D1 -> force member's base move for combatant D0
 
-SetMOVEFromForceID:
+SetBaseMoveForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberMOVE
+		bsr.w   alt_GetEntity   
+		bsr.w   SetBaseMove     
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetMOVEFromForceID
+    ; End of function SetBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set CRIT by force index
+; Set D1 -> force member's base critical for combatant D0
 
-SetCRITFromForceID:
+SetBaseCriticalForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberCRIT
+		bsr.w   alt_GetEntity   
+		bsr.w   SetBaseCritical 
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetCRITFromForceID
+    ; End of function SetBaseCriticalForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set EXP by force index
+; Set D1 -> force member's experience for combatant D0
 
-SetEXPFromForceID:
+SetExperienceForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberEXP
+		bsr.w   alt_GetEntity   
+		bsr.w   SetExperience   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetEXPFromForceID
+    ; End of function SetExperienceForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set max HP by force index
+; Set D1 -> force member's max HP for combatant D0
 
-SetMaxHPFromForceID:
+SetMaxHPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberMaxHP
+		bsr.w   alt_GetEntity   
+		bsr.w   SetMaxHP        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetMaxHPFromForceID
+    ; End of function SetMaxHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set HP by force index
+; Set D1 -> force member's current HP for combatant D0
 
-SetHPFromForceID:
+SetCurrentHPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberHP
+		bsr.w   alt_GetEntity   
+		bsr.w   SetCurrentHP    
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetHPFromForceID
+    ; End of function SetCurrentHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set max MP by force index
+; Set D1 -> force member's max MP for combatant D0
 
-SetMaxMPFromForceID:
+SetMaxMPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberMaxMP
+		bsr.w   alt_GetEntity   
+		bsr.w   SetMaxMP        
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetMaxMPFromForceID
+    ; End of function SetMaxMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set MP by force index
+; Set D1 -> force member's current MP for combatant D0
 
-SetMPFromForceID:
+SetCurrentMPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberMP
+		bsr.w   alt_GetEntity   
+		bsr.w   SetCurrentMP    
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetMPFromForceID
+    ; End of function SetCurrentMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set status by force index
+; Set D1 -> force member's status effects for combatant D0
 
-SetStatusFromForceID:
+SetStatusEffectsForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   SetForceMemberStatus
+		bsr.w   alt_GetEntity   
+		bsr.w   SetStatusEffects
 		move.w  (sp)+,d0
 		rts
 
-	; End of function SetStatusFromForceID
+    ; End of function SetStatusEffectsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load member name from A0 into stats table
+; Load force member name from A0 into stats table
 
 LoadForceMemberName:
 		
 		movem.l d0/a1,-(sp)
 		movea.l a0,a1
-		jsr     j_GetForceStatsAddress
-		moveq   #FORCE_NAME_COUNTER,d0
-loc_228DA:
+		jsr     j_GetEntityStatsAddress
+		moveq   #FORCE_MEMBER_NAME_COUNTER,d0
+@Loop:
 		move.b  (a1)+,(a0)+
-		dbf     d0,loc_228DA
+		dbf     d0,@Loop
 		movem.l (sp)+,d0/a1
 		rts
 
-	; End of function LoadForceMemberName
+    ; End of function LoadForceMemberName
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to battle member (D0) attack, capping at 99
+; Add D1 to combatant D0 modified attack, capping at 99
 
-IncreaseTargetATT:
+IncreaseModifiedAttack:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetTargetATT    
+		bsr.w   GetModifiedAttack
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_228FC
 		clr.w   d1
 		bra.s   loc_22906
 loc_228FC:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22906
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22906:
-		bsr.w   SetTargetATT    
+		bsr.w   SetModifiedAttack
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseTargetATT
+    ; End of function IncreaseModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to battle member (D0) defense, capping at 99
+; Add D1 to combatant D0 modified defense, capping at 99
 
-IncreaseTargetDEF:
+IncreaseModifiedDefense:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetTargetDEF    
+		bsr.w   GetModifiedDefense
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22926
 		clr.w   d1
 		bra.s   loc_22930
 loc_22926:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22930
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22930:
-		bsr.w   SetTargetDEF    
+		bsr.w   SetModifiedDefense
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseTargetDEF
+    ; End of function IncreaseModifiedDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to battle member (D0) agility, capping at 99
+; Add D1 to combatant D0 modified agility, capping at 99
 
-IncreaseTargetAGI:
+IncreaseModifiedAgility:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetTargetAGI    
+		bsr.w   GetModifiedAgility
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22950
 		clr.w   d1
 		bra.s   loc_2295A
 loc_22950:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_2295A
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_2295A:
-		bsr.w   SetTargetAGI    
+		bsr.w   SetModifiedAgility
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseTargetAGI
+    ; End of function IncreaseModifiedAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to battle member (D0) move, capping at 9
+; Add D1 to combatant D0 modified move, capping at 9
 
-IncreaseTargetMOVE:
+IncreaseModifiedMove:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetTargetMOVE   
+		bsr.w   GetModifiedMove 
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_2297A
@@ -7280,158 +7663,158 @@ loc_2297A:
 		ble.s   loc_22984
 		move.w  #9,d1
 loc_22984:
-		bsr.w   SetTargetMOVE   
+		bsr.w   SetModifiedMove 
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseTargetMOVE
+    ; End of function IncreaseModifiedMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to battle member (D0) crit, capping at 99
+; Add D1 to combatant D0 modified critical, capping at 99
 
-IncreaseTargetCRIT:
+IncreaseModifiedCritical:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetTargetCRIT   
+		bsr.w   GetModifiedCritical
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_229A4
 		clr.w   d1
 		bra.s   loc_229AE
 loc_229A4:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_229AE
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_229AE:
-		bsr.w   SetTargetCRIT   
+		bsr.w   SetModifiedCritical
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseTargetCRIT
+    ; End of function IncreaseModifiedCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) level, capping at 99
+; Add D1 to force member D0 level, capping at 99
 
-IncreaseForceMemberLevel:
+IncreaseLevel:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberLevel
+		bsr.w   GetLevel        
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_229CE
 		clr.w   d1
 		bra.s   loc_229D8
 loc_229CE:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_229D8
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_229D8:
-		bsr.w   SetForceMemberLevel
+		bsr.w   SetLevel        
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberLevel
+    ; End of function IncreaseLevel
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) attack, capping at 99
+; Add D1 to force member D0 base attack, capping at 99
 
-IncreaseForceMemberATT:
+IncreaseBaseAttack:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberATT
+		bsr.w   GetBaseAttack   
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_229F8
 		clr.w   d1
 		bra.s   loc_22A02
 loc_229F8:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22A02
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22A02:
-		bsr.w   SetForceMemberATT
+		bsr.w   SetBaseAttack   
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberATT
+    ; End of function IncreaseBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) defense, capping at 99
+; Add D1 to force member D0 base defense, capping at 99
 
-IncreaseForceMemberDEF:
+IncreaseBaseDefense:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberDEF
+		bsr.w   GetBaseDefense  
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22A22
 		clr.w   d1
 		bra.s   loc_22A2C
 loc_22A22:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22A2C
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22A2C:
-		bsr.w   SetForceMemberDEF
+		bsr.w   SetBaseDefense  
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberDEF
+    ; End of function IncreaseBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) agility, capping at 99
+; Add D1 to force member D0 base agility, capping at 99
 
-IncreaseForceMemberAGI:
+IncreaseBaseAgility:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberAGI
+		bsr.w   GetBaseAgility  
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22A4C
 		clr.w   d1
 		bra.s   loc_22A56
 loc_22A4C:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22A56
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22A56:
-		bsr.w   SetForceMemberAGI
+		bsr.w   SetBaseAgility  
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberAGI
+    ; End of function IncreaseBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) move, capping at 9
+; Add D1 to force member D0 base move, capping at 9
 
-IncreaseForceMemberMOVE:
+IncreaseBaseMove:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberMOVE
+		bsr.w   GetBaseMove     
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22A76
@@ -7442,77 +7825,77 @@ loc_22A76:
 		ble.s   loc_22A80
 		move.w  #9,d1
 loc_22A80:
-		bsr.w   SetForceMemberMOVE
+		bsr.w   SetBaseMove     
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberMOVE
+    ; End of function IncreaseBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) crit, capping at 99
+; Add D1 to force member D0 base critical, capping at 99
 
-IncreaseForceMemberCRIT:
+IncreaseBaseCritical:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberCRIT
+		bsr.w   GetBaseCritical 
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22AA0
 		clr.w   d1
 		bra.s   loc_22AAA
 loc_22AA0:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22AAA
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22AAA:
-		bsr.w   SetForceMemberCRIT
+		bsr.w   SetBaseCritical 
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberCRIT
+    ; End of function IncreaseBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) Max HP, capping at 99
+; Add D1 to force member D0 max HP, capping at 99
 
-IncreaseForceMemberMaxHP:
+IncreaseMaxHP:
 		
 		movem.l d0/d2,-(sp)
 		move.w  d1,d2
-		bsr.w   GetForceMemberMaxHP
+		bsr.w   GetMaxHP        
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22AC8
 		clr.w   d1
 		bra.s   loc_22AD2
 loc_22AC8:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22AD2
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22AD2:
-		bsr.w   SetForceMemberMaxHP
+		bsr.w   SetMaxHP        
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberMaxHP
+    ; End of function IncreaseMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) HP, capping at Max HP
+; Add D1 to force member D0 current HP, capping at max HP
 
-IncreaseForceMemberHP:
+IncreaseCurrentHP:
 		
 		movem.l d2-d3,-(sp)
 		move.w  d1,d2
-		bsr.w   GetForceMemberMaxHP
+		bsr.w   GetMaxHP        
 		move.w  d1,d3
-		bsr.w   GetForceMemberHP
+		bsr.w   GetCurrentHP    
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22AF6
@@ -7523,219 +7906,219 @@ loc_22AF6:
 		ble.s   loc_22AFC
 		move.w  d3,d1
 loc_22AFC:
-		bsr.w   SetForceMemberHP
+		bsr.w   SetCurrentHP    
 		movem.l (sp)+,d2-d3
 		rts
 
-	; End of function IncreaseForceMemberHP
+    ; End of function IncreaseCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) Max MP, capping at 99
+; Add D1 to force member D0 max MP, capping at 99
 
-IncreaseForceMemberMaxMP:
+IncreaseMaxMP:
 		
 		movem.l d0/d2,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberMaxMP
+		bsr.w   GetMaxMP        
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22B1C
 		clr.w   d1
 		bra.s   loc_22B26
 loc_22B1C:
-		cmpi.w  #$63,d1 
+		cmpi.w  #99,d1
 		ble.s   loc_22B26
-		move.w  #$63,d1 
+		move.w  #99,d1
 loc_22B26:
-		bsr.w   SetForceMemberMaxMP
+		bsr.w   SetMaxMP        
 		movem.l (sp)+,d0/d2
 		rts
 
-	; End of function IncreaseForceMemberMaxMP
+    ; End of function IncreaseMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to level by force index
+; Add D1 to force member's level for combatant D0
 
-IncreaseLevelFromForceID:
+IncreaseLevelForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberLevel
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseLevel   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseLevelFromForceID
+    ; End of function IncreaseLevelForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to attack by force index
+; Add D1 to force member's base attack for combatant D0
 
-IncreaseATTFromForceID:
+IncreaseBaseAttackForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberATT
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseBaseAttack
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseATTFromForceID
+    ; End of function IncreaseBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to defense by force index
+; Add D1 to force member's base defense for combatant D0
 
-IncreaseDEFFromForceID:
+IncreaseBaseDefenseForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberDEF
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseBaseDefense
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseDEFFromForceID
+    ; End of function IncreaseBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to agility by force index
+; Add D1 to force member's base agility for combatant D0
 
-IncreaseAGIFromForceID:
+IncreaseBaseAgilityForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberAGI
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseBaseAgility
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseAGIFromForceID
+    ; End of function IncreaseBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to move by force index
+; Add D1 to force member's base move for combatant D0
 
-IncreaseMOVEFromForceID:
+IncreaseBaseMoveForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberMOVE
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseBaseMove
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseMOVEFromForceID
+    ; End of function IncreaseBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to crit by force index
+; Add D1 to force member's base critical for combatant D0
 
-IncreaseCRITFromForceID:
+IncreaseBaseCriticalForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberCRIT
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseBaseCritical
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseCRITFromForceID
+    ; End of function IncreaseBaseCriticalForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to experience by force index
+; Add D1 to force member's experience for combatant D0
 
-IncreaseEXPFromForceID:
+IncreaseExperienceForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberEXP
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseExperience
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseEXPFromForceID
+    ; End of function IncreaseExperienceForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to max HP by force index
+; Add D1 to force member's max HP for combatant D0
 
-IncreaseMaxHPFromForceID:
+IncreaseMaxHPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberMaxHP
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseMaxHP   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseMaxHPFromForceID
+    ; End of function IncreaseMaxHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to current HP by force index
+; Add D1 to force member's current HP for combatant D0
 
-IncreaseHPFromForceID:
+IncreaseCurrentHPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberHP
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseCurrentHP
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseHPFromForceID
+    ; End of function IncreaseCurrentHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to max MP by force index
+; Add D1 to force member's max MP for combatant D0
 
-IncreaseMaxMPFromForceID:
+IncreaseMaxMPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberMaxMP
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseMaxMP   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseMaxMPFromForceID
+    ; End of function IncreaseMaxMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to current MP by force index
+; Add D1 to force member's current MP for combatant D0
 
-IncreaseMPFromForceID:
+IncreaseCurrentMPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IncreaseForceMemberMP
+		bsr.w   alt_GetEntity   
+		bsr.w   IncreaseCurrentMP
 		move.w  (sp)+,d0
 		rts
 
-	; End of function IncreaseMPFromForceID
+    ; End of function IncreaseCurrentMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) MP, capping at Max MP
+; Add D1 to force member D0 current MP, capping at max MP
 
-IncreaseForceMemberMP:
+IncreaseCurrentMP:
 		
 		movem.w d2-d3,-(sp)
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberMP
-		cmpi.w  #$63,d1 
-		bgt.s   loc_22BFA
+		bsr.w   GetCurrentMP    
+		cmpi.w  #99,d1
+		bgt.s   loc_22BFA       ; skip if current MP > 99
 		move.w  d1,-(sp)
-		bsr.w   GetForceMemberMaxMP
+		bsr.w   GetMaxMP        
 		move.w  d1,d3
 		move.w  (sp)+,d1
 		add.w   d2,d1
@@ -7748,29 +8131,29 @@ loc_22BF0:
 		ble.s   loc_22BF6
 		move.w  d3,d1
 loc_22BF6:
-		bsr.w   SetForceMemberMP
+		bsr.w   SetCurrentMP    
 loc_22BFA:
 		movem.w (sp)+,d2-d3
 		rts
 
-	; End of function IncreaseForceMemberMP
+    ; End of function IncreaseCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to force member (D0) EXP, capping at 99 if at max level
+; Add D1 to force member D0 experience, capping at 99 if at level cap
 
-IncreaseForceMemberEXP:
+IncreaseExperience:
 		
 		movem.l d0/d2-d3,-(sp)
-		moveq   #$64,d3 
-		bsr.s   IsForceMemberAtMaxLevel
+		moveq   #100,d3
+		bsr.s   IsAtLevelCap    
 		bcc.s   loc_22C0C
-		moveq   #$63,d3 
+		moveq   #99,d3
 loc_22C0C:
 		move.b  d1,d2
 		ext.w   d2
-		bsr.w   GetForceMemberEXP
+		bsr.w   GetExperience   
 		add.w   d2,d1
 		tst.w   d1
 		bge.s   loc_22C1E
@@ -7781,27 +8164,28 @@ loc_22C1E:
 		ble.s   loc_22C24
 		move.w  d3,d1
 loc_22C24:
-		bsr.w   SetForceMemberEXP
+		bsr.w   SetExperience   
 		movem.l (sp)+,d0/d2-d3
 		rts
 
-	; End of function IncreaseForceMemberEXP
+    ; End of function IncreaseExperience
 
 
 ; =============== S U B R O U T I N E =======================================
 
-IsForceMemberAtMaxLevel:
-		
+; Check if force member D0 has reached the level cap -> CCR carry-bit set if true
+
+IsAtLevelCap:
 		movem.l d1-d2,-(sp)
 		tst.b   d0
 		blt.s   loc_22C50
-		moveq   #FORCE_LEVEL_CAP,d2
-		jsr     j_GetForceMemberClass
-		cmpi.w  #CLASS_ID_SMR,d1
+		moveq   #FORCE_LEVEL_CAP_UNPROMOTED,d2
+		jsr     j_GetClass
+		cmpi.w  #PROMOTED_CLASSES_START,d1
 		bcs.s   loc_22C46
 		moveq   #FORCE_LEVEL_CAP_PROMOTED,d2
 loc_22C46:
-		jsr     j_GetForceMemberLevel
+		jsr     j_GetLevel
 		cmp.w   d2,d1
 		blt.s   loc_22C56
 loc_22C50:
@@ -7813,297 +8197,298 @@ loc_22C58:
 		movem.l (sp)+,d1-d2
 		rts
 
-	; End of function IsForceMemberAtMaxLevel
+    ; End of function IsAtLevelCap
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from battle member (D0) attack
+; Subtract D1 from combatant D0 modified attack
 
-DecreaseTargetATT:
+DecreaseModifiedAttack:
 		
 		neg.b   d1
-		bsr.w   IncreaseTargetATT
+		bsr.w   IncreaseModifiedAttack
 		rts
 
-	; End of function DecreaseTargetATT
+    ; End of function DecreaseModifiedAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from battle member (D0) defense
+; Subtract D1 from combatant D0 modified defense
 
-DecreaseTargetDEF:
+DecreaseModifiedDefense:
 		
 		neg.b   d1
-		bsr.w   IncreaseTargetDEF
+		bsr.w   IncreaseModifiedDefense
 		rts
 
-	; End of function DecreaseTargetDEF
+    ; End of function DecreaseModifiedDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from battle member (D0) agility
+; Subtract D1 from combatant D0 modified agility
 
-DecreaseTargetAGI:
+DecreaseModifiedAgility:
 		
 		neg.b   d1
-		bsr.w   IncreaseTargetAGI
+		bsr.w   IncreaseModifiedAgility
 		rts
 
-	; End of function DecreaseTargetAGI
+    ; End of function DecreaseModifiedAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from battle member (D0) move
+; Subtract D1 from combatant D0 modified move
 
-DecreaseTargetMOVE:
+DecreaseModifiedMove:
 		
 		neg.b   d1
-		bsr.w   IncreaseTargetMOVE
+		bsr.w   IncreaseModifiedMove
 		rts
 
-	; End of function DecreaseTargetMOVE
+    ; End of function DecreaseModifiedMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) Max HP
+; Subtract D1 from force member D0 max HP
 
-DecreaseForceMemberMaxHP:
+DecreaseMaxHP:
 		
 		neg.w   d1
-		bsr.w   IncreaseForceMemberMaxHP
+		bsr.w   IncreaseMaxHP   
 		rts
 
-	; End of function DecreaseForceMemberMaxHP
+    ; End of function DecreaseMaxHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) Max MP
+; Subtract D1 from force member D0 max MP
 
-DecreaseForceMemberMaxMP:
+DecreaseMaxMP:
 		
 		neg.b   d1
-		bsr.w   IncreaseForceMemberMaxMP
+		bsr.w   IncreaseMaxMP   
 		rts
 
-	; End of function DecreaseForceMemberMaxMP
+    ; End of function DecreaseMaxMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) attack
+; Subtract D1 from force member D0 base attack
 
-DecreaseForceMemberATT:
+DecreaseBaseAttack:
 		
 		neg.b   d1
-		bsr.w   IncreaseForceMemberATT
+		bsr.w   IncreaseBaseAttack
 		rts
 
-	; End of function DecreaseForceMemberATT
+    ; End of function DecreaseBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) defense
+; Subtract D1 from force member D0 base defense
 
-DecreaseForceMemberDEF:
+DecreaseBaseDefense:
 		
 		neg.b   d1
-		bsr.w   IncreaseForceMemberDEF
+		bsr.w   IncreaseBaseDefense
 		rts
 
-	; End of function DecreaseForceMemberDEF
+    ; End of function DecreaseBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) agility
+; Subtract D1 from force member D0 base agility
 
-DecreaseForceMemberAGI:
+DecreaseBaseAgility:
 		
 		neg.b   d1
-		bsr.w   IncreaseForceMemberAGI
+		bsr.w   IncreaseBaseAgility
 		rts
 
-	; End of function DecreaseForceMemberAGI
+    ; End of function DecreaseBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) move
+; Subtract D1 from force member D0 base move
 
-DecreaseForceMemberMOVE:
+DecreaseBaseMove:
 		
 		neg.b   d1
-		bsr.w   IncreaseForceMemberMOVE
+		bsr.w   IncreaseBaseMove
 		rts
 
-	; End of function DecreaseForceMemberMOVE
+    ; End of function DecreaseBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) HP
+; Subtract D1 from force member D0 current HP
 
-DecreaseForceMemberHP:
+DecreaseCurrentHP:
 		
 		neg.w   d1
-		bsr.w   IncreaseForceMemberHP
+		bsr.w   IncreaseCurrentHP
 		rts
 
-	; End of function DecreaseForceMemberHP
+    ; End of function DecreaseCurrentHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from force member (D0) MP
+; Subtract D1 from force member D0 current MP
 
-DecreaseForceMemberMP:
+DecreaseCurrentMP:
 		
 		neg.b   d1
-		bsr.w   IncreaseForceMemberMP
+		bsr.w   IncreaseCurrentMP
 		rts
 
-	; End of function DecreaseForceMemberMP
+    ; End of function DecreaseCurrentMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from max HP by force index
+; Subtract D1 from force member's max HP for combatant D0
 
-DecreaseMaxHPFromForceID:
+DecreaseMaxHPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberMaxHP
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseMaxHP   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseMaxHPFromForceID
+    ; End of function DecreaseMaxHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from max MP by force index
+; Subtract D1 from force member's max MP for combatant D0
 
-DecreaseMaxMPFromForceID:
+DecreaseMaxMPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberMaxMP
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseMaxMP   
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseMaxMPFromForceID
+    ; End of function DecreaseMaxMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from attack by force index
+; Subtract D1 from force member's base attack for combatant D0
 
-DecreaseATTFromForceID:
+DecreaseBaseAttackForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberATT
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseBaseAttack
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseATTFromForceID
+    ; End of function DecreaseBaseAttackForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from defense by force index
+; Subtract D1 from force member's base defense for combatant D0
 
-DecreaseDEFFromForceID:
+DecreaseBaseDefenseForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberDEF
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseBaseDefense
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseDEFFromForceID
+    ; End of function DecreaseBaseDefenseForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from agility by force index
+; Subtract D1 from force member's base agility for combatant D0
 
-DecreaseAGIFromForceID:
+DecreaseBaseAgilityForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberAGI
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseBaseAgility
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseAGIFromForceID
+    ; End of function DecreaseBaseAgilityForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from move by force index
+; Subtract D1 from force member's base move for combatant D0
 
-DecreaseMOVEFromForceID:
+DecreaseBaseMoveForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberMOVE
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseBaseMove
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseMOVEFromForceID
+    ; End of function DecreaseBaseMoveForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from current HP by force index
+; Subtract D1 from force member's current HP for combatant D0
 
-DecreaseHPFromForceID:
+DecreaseCurrentHPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberHP
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseCurrentHP
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseHPFromForceID
+    ; End of function DecreaseCurrentHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from current MP by force index
+; Subtract D1 from force member's current MP for combatant D0
 
-DecreaseMPFromForceID:
+DecreaseCurrentMPforCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   DecreaseForceMemberMP
+		bsr.w   alt_GetEntity   
+		bsr.w   DecreaseCurrentMP
 		move.w  (sp)+,d0
 		rts
 
-	; End of function DecreaseMPFromForceID
+    ; End of function DecreaseCurrentMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Find first empty item slot of member (D0), and give D1 if available
+; Move item D1 to force member D0 first empty item slot if available
+; 
+; CCR: carry-bit set if empty item slot not found
 
-FindEmptyItemSlot:
-		
+GiveItem:
 		movem.l d0-d1/a0,-(sp)
-		andi.b  #$7F,d1 
-		jsr     j_GetForceItemsAddress
-		moveq   #3,d0
+		andi.b  #ITEMENTRY_MASK_INDEX_AND_BROKEN_BIT,d1
+		jsr     j_GetEntityItemsAddress
+		moveq   #ITEM_SLOTS_COUNTER,d0
 loc_22D3E:
-		cmpi.b  #$FF,(a0)
+		cmpi.b  #EMPTY_ITEM_SLOT,(a0)
 		bne.s   loc_22D48
 		move.b  d1,(a0)
 		bra.s   loc_22D52
@@ -8115,34 +8500,36 @@ loc_22D52:
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function FindEmptyItemSlot
+    ; End of function GiveItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Find first empty item slot to D1 by force index
+; Move item D1 to force member's first empty item slot for combatant D0 if available
+; 
+; CCR: carry-bit set if empty item slot not found
 
-FindEmptyItemSlotFromTargetID:
+GiveItemForCombatant:
 		
 		movem.w d0-d2,-(sp)
 		move.b  d1,d2
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.b  d1,d0
 		move.b  d2,d1
-		bsr.s   FindEmptyItemSlot
+		bsr.s   GiveItem        
 		movem.w (sp)+,d0-d2
 		rts
 
-	; End of function FindEmptyItemSlotFromTargetID
+    ; End of function GiveItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Remove Item D1 from member D0 and rotate remaining down
+; Empty force member D0 item slot D1 and rotate remaining down
 
 RemoveItem:
 		movem.l d0-d1/a0,-(sp)
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		andi.w  #$FF,d1
 loc_22D7E:
 		cmpi.w  #3,d1
@@ -8151,180 +8538,190 @@ loc_22D7E:
 		addq.w  #1,d1
 		bra.s   loc_22D7E
 loc_22D8E:
-		move.b  #$FF,3(a0)
-		bsr.w   sub_21DA6
+		move.b  #EMPTY_ITEM_SLOT,3(a0)
+		bsr.w   LoadCombatantDataForForceMember
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function RemoveItem
+    ; End of function RemoveItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Remove Item D1 by force index
+; Empty force member's item slot D1 for combatant D0 and rotate remaining down
 
-RemoveItemFromTargetID:
+RemoveItemForCombatant:
 		
 		movem.w d0-d2,-(sp)
 		move.b  d1,d2
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.b  d1,d0
 		move.b  d2,d1
 		bsr.s   RemoveItem      
 		movem.w (sp)+,d0-d2
 		rts
 
-	; End of function RemoveItemFromTargetID
+    ; End of function RemoveItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Count empty item slots of member (D0) to D1
+; Count force member D0 empty item slots -> D1
+; 
+;       CCR carry-bit set if all slots are occupied
 
-CountEmptyItemSlots:
+CountOccupiedItemSlots:
 		
 		movem.l d0/a0,-(sp)
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d1
-		moveq   #3,d0
-loc_22DC4:
-		cmpi.b  #$FF,(a0)+
-		bne.s   loc_22DCE
+		moveq   #ITEM_SLOTS_COUNTER,d0
+@Loop:
+		cmpi.b  #EMPTY_ITEM_SLOT,(a0)+
+		bne.s   @IncrementOccupiedItemSlotsCounter
 		tst.w   d0
-		bra.s   loc_22DD8
-loc_22DCE:
+		bra.s   @Break
+@IncrementOccupiedItemSlotsCounter:
+		
 		addq.w  #1,d1
-		dbf     d0,loc_22DC4
+		dbf     d0,@Loop
 		ori     #1,ccr
-loc_22DD8:
+@Break:
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function CountEmptyItemSlots
+    ; End of function CountOccupiedItemSlots
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Count empty item slots to D1 by force index
+; Count force member's empty item slots for combatant D0 -> D1
 
-CountEmptyItemSlotsFromTargetID:
+CountOccupiedItemSlotsForCombatant:
 		
 		movem.w d0,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.b  d1,d0
-		bsr.s   CountEmptyItemSlots
+		bsr.s   CountOccupiedItemSlots
 		movem.w (sp)+,d0
 		rts
 
-	; End of function CountEmptyItemSlotsFromTargetID
+    ; End of function CountOccupiedItemSlotsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Break Item D1 of member D0
+; Break force member D0 item in slot D1
 
 BreakItem:
 		movem.l d1/a0,-(sp)
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		andi.w  #$FF,d1
-		bset    #6,(a0,d1.w)
+		bset    #ITEMENTRY_BIT_BROKEN,(a0,d1.w)
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function BreakItem
+    ; End of function BreakItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Break Item D1 by force index
+; Break force member's item in slot D1 for combatant D0
 
-BreakItemFromTargetID:
+BreakItemForCombatant:
 		
 		movem.w d0-d2,-(sp)
 		move.b  d1,d2
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.b  d1,d0
 		move.b  d2,d1
 		bsr.s   BreakItem       
 		movem.w (sp)+,d0-d2
 		rts
 
-	; End of function BreakItemFromTargetID
+    ; End of function BreakItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get equipped item matching flags D1 by force index D0 -> D2
+; Get item and slot indexes of a given type currently equipped by combatant
+; 
+;     In: D0 = force member index
+;         D1 = item type mask
+; 
+;     Out: D2 = item index
+;          D3 = item slot index
+;          CCR carry-bit set if no equipped item found
 
-GetEquippedItemFromForceID:
+GetEquippedItemForCombatant:
 		
 		movem.w d0,-(sp)
-		bsr.w   GetForceMemberID
+		bsr.w   alt_GetEntity   
 		bsr.w   GetEquippedItem 
 		movem.w (sp)+,d0
 		rts
 
-	; End of function GetEquippedItemFromForceID
+    ; End of function GetEquippedItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Equip item D2 by force index
+; Equip force member with item in slot D2 for combatant D0
 
-EquipItemFromForceID:
+EquipItemForCombatant:
 		
 		movem.w d0,-(sp)
-		bsr.w   GetForceMemberID
+		bsr.w   alt_GetEntity   
 		bsr.w   EquipItem       
 		movem.w (sp)+,d0
 		rts
 
-	; End of function EquipItemFromForceID
+    ; End of function EquipItemForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load list of equippable items by force index
+; Load table of equippable items for combatant D0
 
-LoadEquippableItemsFromForceID:
+LoadEquippableItemsForCombatant:
 		
 		movem.w d0,-(sp)
-		bsr.w   GetForceMemberID
+		bsr.w   alt_GetEntity   
 		bsr.w   LoadEquippableItems
 		movem.w (sp)+,d0
 		rts
 
-	; End of function LoadEquippableItemsFromForceID
+    ; End of function LoadEquippableItemsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if item D2 can be equipped by force index
+; Check if item D2 type D1 can be equipped for combatant D0
 
-IsItemEquippableFromForceID:
+IsItemEquippableForCombatant:
 		
 		movem.w d0,-(sp)
-		bsr.w   GetForceMemberID
+		bsr.w   alt_GetEntity   
 		bsr.w   IsItemEquippable
 		movem.w (sp)+,d0
 		rts
 
-	; End of function IsItemEquippableFromForceID
+    ; End of function IsItemEquippableForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if can't unequip by force index
+; Check if force member is allowed to unequip for combatant D0
 
-IsItemUnequippableFromForceID:
+GetItemsCurseSettingsForCombatant:
 		
 		movem.w d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.w   IsItemUnequippable
+		bsr.w   alt_GetEntity   
+		bsr.w   GetItemsCurseSettings
 		movem.w (sp)+,d0
 		rts
 
-	; End of function IsItemUnequippableFromForceID
+    ; End of function GetItemsCurseSettingsForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8334,34 +8731,35 @@ IsItemUnequippableFromForceID:
 GetItemEntryAddress:
 		
 		move.w  d1,-(sp)
-		andi.w  #ITEM_MASK_ID,d1
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
 		asl.w   #4,d1
 		movea.l (p_ItemData).l,a1
 		adda.w  d1,a1
 		move.w  (sp)+,d1
 		rts
 
-	; End of function GetItemEntryAddress
+    ; End of function GetItemEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get word-sized type flags of item D1 -> D2
+; Get item D1 word-sized type flags -> D2
 
 GetItemType:
 		move.l  a1,-(sp)
-		cmpi.b  #$FF,d1
-		bne.s   loc_22E9E
+		cmpi.b  #EMPTY_ITEM_SLOT,d1
+		bne.s   @OccupiedItemSlot
 		clr.w   d2
-		bra.s   loc_22EA4
-loc_22E9E:
+		bra.s   @Continue
+@OccupiedItemSlot:
+		
 		bsr.s   GetItemEntryAddress
-		move.w  ITEM_OFFSET_FLAGS_TYPE(a1),d2
-loc_22EA4:
+		move.w  ITEMDEF_OFFSET_TYPE(a1),d2
+@Continue:
 		movea.l (sp)+,a1
 		rts
 
-	; End of function GetItemType
+    ; End of function GetItemType
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8372,107 +8770,116 @@ GetItemPrice:
 		move.l  a1,-(sp)
 		bsr.s   GetItemEntryAddress
 		moveq   #0,d2
-		move.w  ITEM_OFFSET_PRICE(a1),d2
+		move.w  ITEMDEF_OFFSET_PRICE(a1),d2
 		movea.l (sp)+,a1
 		rts
 
-	; End of function GetItemPrice
+    ; End of function GetItemPrice
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Prepare RAM Offsets for attack effect
+; Out: d2.w, d3.w
 
-sub_22EB6:
+GetEquippedWeaponIndex:
+		
 		move.w  ((word_FFCBAC-$1000000)).w,d2
-		move.w  ((word_FFCBAE-$1000000)).w,d3
+		move.w  ((EQUIPPED_WEAPON_INDEX-$1000000)).w,d3
 		rts
 
-	; End of function sub_22EB6
+    ; End of function GetEquippedWeaponIndex
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get equipped item matching flags D1 of force member D0 -> D2
+; Get item and slot indexes of a given type currently equipped by entity
+; 
+;     In: D0 = entity index
+;         D1 = item type mask
+; 
+;     Out: D2 = item entry
+;          D3 = item slot index
+;          CCR carry-bit set if no equipped item found
 
 GetEquippedItem:
 		
 		movem.l d1/d4/a0,-(sp)
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		move.w  d1,d4
-		move.w  #FORCE_ITEM_SLOTS_COUNTER,d3
-loc_22ED0:
+		move.w  #ITEM_SLOTS_COUNTER,d3
+@Loop:
 		move.b  (a0,d3.w),d1
-		cmpi.b  #$FF,d1
-		beq.s   loc_22EE6
-		btst    #ITEM_FLAG_EQUIPPED,d1
-		beq.s   loc_22EE6
+		cmpi.b  #EMPTY_ITEM_SLOT,d1
+		beq.s   @Next
+		btst    #ITEMENTRY_BIT_EQUIPPED,d1
+		beq.s   @Next
 		bsr.s   GetItemType     
 		and.w   d4,d2
-		bne.s   loc_22EF2
-loc_22EE6:
-		dbf     d3,loc_22ED0
+		bne.s   @GetItemIndex
+@Next:
+		dbf     d3,@Loop
 		move.w  d3,d2
 		ori     #1,ccr
-		bra.s   loc_22EF8
-loc_22EF2:
+		bra.s   @Continue
+@GetItemIndex:
+		
 		move.b  d1,d2
-		andi.w  #ITEM_MASK_ID,d2
-loc_22EF8:
+		andi.w  #ITEMENTRY_MASK_INDEX,d2
+@Continue:
 		movem.l (sp)+,d1/d4/a0
 		rts
 
-	; End of function GetEquippedItem
+    ; End of function GetEquippedItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Equip item D2 on character D0, unequip old item
+; Equip force member D0 with item type D1 in slot D2, unequip old item
 
 EquipItem:
 		movem.l d0-d4/a0,-(sp)
 		clr.w   d4
 		move.b  d2,d4
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		bsr.w   GetEquippedItem 
 		bcs.s   loc_22F18
-		andi.b  #ITEM_MASK_ID_AND_CURSED_FLAG,(a0,d3.w)
+		andi.b  #ITEMENTRY_MASK_INDEX_AND_BROKEN_BIT,(a0,d3.w)
 						; unequip old item
 loc_22F18:
-		cmpi.w  #FORCE_ITEM_SLOTS_NUMBER,d4
+		cmpi.w  #ITEM_SLOTS_NUMBER,d4
 		bcc.s   loc_22F24
-		ori.b   #ITEM_MASK_EQUIPPED_FLAG,(a0,d4.w)
+		ori.b   #ITEMENTRY_MASK_EQUIPPED_BIT,(a0,d4.w)
 loc_22F24:
-		bsr.w   FindTarget      
+		bsr.w   FindCombatantEntry
 		bne.s   loc_22F30
-		jsr     j_LoadBattleStats
+		jsr     j_LoadCombatantData
 loc_22F30:
 		movem.l (sp)+,d0-d4/a0
 		rts
 
-	; End of function EquipItem
+    ; End of function EquipItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load list of equippable items on character D0
+; Load table of items equippable by force member D0
 
 LoadEquippableItems:
 		
 		movem.l d0-d4/a0-a1,-(sp)
 		lea     ((byte_FFA8C2-$1000000)).w,a1
-		moveq   #$FFFFFFFF,d3
+		moveq   #-1,d3
 		move.l  d3,(a1)+
 		move.l  d3,(a1)+
 		move.l  d3,(a1)+
 		move.l  d3,(a1)+
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d3
 		lea     ((byte_FFA8C2-$1000000)).w,a1
 		clr.w   d4
 loc_22F56:
 		move.b  (a0)+,d2
-		cmpi.b  #$FF,d2
+		cmpi.b  #-1,d2
 		beq.s   loc_22F70
 		bsr.s   IsItemEquippable
 		bcs.s   loc_22F68
@@ -8481,32 +8888,34 @@ loc_22F56:
 		move.w  d2,(a1)+
 loc_22F68:
 		addq.w  #1,d4
-		cmpi.w  #FORCE_ITEM_SLOTS_NUMBER,d4
+		cmpi.w  #ITEM_SLOTS_NUMBER,d4
 		bcs.s   loc_22F56
 loc_22F70:
-		move.w  d3,((word_FFA8C0-$1000000)).w
+		move.w  d3,((TABLE_AT_FFA8C0-$1000000)).w
 		movem.l (sp)+,d0-d4/a0-a1
 		rts
 
-	; End of function LoadEquippableItems
+    ; End of function LoadEquippableItems
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if item D2 can be equipped by character D0
+; Check if item D2 type D1 can be equipped by force member D0
+; 
+;       Out: CCR carry-bit set if false
 
 IsItemEquippable:
 		
 		movem.l d1-d3/a1,-(sp)
 		exg     d1,d2
 		bsr.w   GetItemEntryAddress
-		move.w  ITEM_OFFSET_FLAGS_TYPE(a1),d3
+		move.w  ITEMDEF_OFFSET_TYPE(a1),d3
 		and.w   d2,d3
 		beq.s   loc_22FA0
-		jsr     j_GetForceMemberClass
-		move.l  (a1),d3
+		jsr     j_GetClass
+		move.l  (a1),d3         ; D3 = item equip flags
 		btst    d1,d3
-		beq.s   loc_22F9E
+		beq.s   loc_22F9E       ; branch if item cannot be equipped
 loc_22F98:
 		movem.l (sp)+,d1-d3/a1
 		rts
@@ -8516,97 +8925,99 @@ loc_22FA0:
 		ori     #1,ccr
 		bra.s   loc_22F98
 
-	; End of function IsItemEquippable
+    ; End of function IsItemEquippable
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if character D0 can't unequip
+; Get curse settings for all items equipped by entity D0 -> D1
 
-IsItemUnequippable:
+GetItemsCurseSettings:
 		
 		movem.w d2-d4,-(sp)
 		clr.w   d4
-		jsr     j_GetForceMemberStatus
-		btst    #2,d1
-		beq.s   loc_22FD0
-		move.w  #$100,d1
-		bsr.w   sub_22FD8       
-		move.w  #$200,d1
-		bsr.w   sub_22FD8       
+		jsr     j_GetStatusEffects
+		btst    #STATUSEFFECT_BIT_CURSE,d1
+		beq.s   @Skip           ; skip if entity is not cursed
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		bsr.w   GetItemCurseSetting
+		move.w  #ITEMTYPE_MASK_RING,d1
+		bsr.w   GetItemCurseSetting
 		tst.w   d4
-		bne.s   loc_22FD0
+		bne.s   @Skip
 		bset    #7,d4
-loc_22FD0:
+@Skip:
 		move.w  d4,d1
 		movem.w (sp)+,d2-d4
 		rts
 
-	; End of function IsItemUnequippable
+    ; End of function GetItemsCurseSettings
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Item D2 can't be unequipped
+; Get curse setting of item type D1 currently equipped by entity D0 -> D4
 
-sub_22FD8:
+GetItemCurseSetting:
+		
 		bsr.w   GetEquippedItem 
-		bcs.s   locret_22FF0
+		bcs.s   @Return         ; return if item of given type is not equipped
 		move.b  d2,d1
 		bsr.w   GetItemType     
-		btst    #$D,d2
-		beq.s   locret_22FF0
-		andi.w  #1,d2
-		bset    d2,d4
-locret_22FF0:
+		btst    #ITEMTYPE_BIT_CURSED,d2
+		beq.s   @Return         ; return if item is not cursed
+		andi.w  #ITEMTYPE_MASK_CURSE_SETTING,d2
+		bset    d2,d4           ; bit 0 set = chance to paralyze, bit 1 set = chance to inflict damage back to attacker
+@Return:
 		rts
 
-	; End of function sub_22FD8
+    ; End of function GetItemCurseSetting
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if battle member is an enemy and has items to drop
+; Find enemy combatant D0 item index to drop -> D1 if it exists, else D1 = $FFFF
 
-IsEnemyAndHasItemToDrop:
+FindItemToDrop:
 		
 		movem.l d0/d2-d3/a0-a1,-(sp)
-		bsr.w   GetForceMemberID
-		cmpi.b  #$FF,d0
-		beq.s   loc_23030
+		bsr.w   alt_GetEntity   
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d0
+		beq.s   @Skip           ; skip if combatant entry is unoccupied
 		tst.b   d0
-		bge.s   loc_23030
-		jsr     j_GetForceItemsAddress
-		move.w  #FORCE_ITEM_SLOTS_COUNTER,d1
-loc_2300E:
+		bge.s   @Skip           ; skip if force member
+		jsr     j_GetEntityItemsAddress
+		move.w  #ITEM_SLOTS_COUNTER,d1
+@Loop:
 		move.b  (a0)+,d2
-		cmpi.b  #$FF,d2
-		beq.s   loc_23030
-		andi.w  #ITEM_MASK_ID,d2
-		lea     ItemDrops(pc), a1
-loc_2301E:
+		cmpi.b  #EMPTY_ITEM_SLOT,d2
+		beq.s   @Skip           ; skip if item slot is empty
+		andi.w  #ITEMENTRY_MASK_INDEX,d2
+		lea     tbl_ItemsToDrop(pc), a1
+@FindItem:
 		move.b  (a1)+,d3
-		blt.s   loc_23030
+		blt.s   @Skip           ; skip if reached end of list
 		cmp.b   d2,d3
-		bne.s   loc_2302A
+		bne.s   @Next
 		move.w  d2,d1
-		bra.s   loc_23034
-loc_2302A:
-		bra.s   loc_2301E
-		dbf     d1,loc_2300E
-loc_23030:
+		bra.s   @ItemFound
+@Next:
+		bra.s   @FindItem
+		dbf     d1,@Loop
+@Skip:
 		move.w  #$FFFF,d1
-loc_23034:
+@ItemFound:
 		movem.l (sp)+,d0/d2-d3/a0-a1
 		rts
 
-	; End of function IsEnemyAndHasItemToDrop
+    ; End of function FindItemToDrop
 
-ItemDrops:      dc.b ITEM_ID_DOOM_BLADE
-		dc.b ITEM_ID_HEAT_AXE
-		dc.b ITEM_ID_ATLAS
-		dc.b ITEM_ID_DEMON_ROD
-		dc.b ITEM_ID_YOGURT_RING
+tbl_ItemsToDrop:; List of item indexes to be dropped by enemies, $FF terminated
+		dc.b DOOM_BLADE
+		dc.b HEAT_AXE
+		dc.b ATLAS
+		dc.b DEMON_ROD
+		dc.b YOGURT_RING
 		dc.b $FF
 
 ; =============== S U B R O U T I N E =======================================
@@ -8624,7 +9035,7 @@ GetSpellEntryAddress:
 		move.w  (sp)+,d1
 		rts
 
-	; End of function GetSpellEntryAddress
+    ; End of function GetSpellEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8639,7 +9050,7 @@ GetMPCost:
 		movem.l (sp)+,d1/a1
 		rts
 
-	; End of function GetMPCost
+    ; End of function GetMPCost
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8649,116 +9060,122 @@ GetMPCost:
 GetRangeEntryAddress:
 		
 		move.w  d4,-(sp)
-		lea     RangeData(pc), a1
+		lea     tbl_RangeData(pc), a1
 		andi.w  #$FF,d4
 		asl.w   #3,d4
 		adda.w  d4,a1
 		move.w  (sp)+,d4
 		rts
 
-	; End of function GetRangeEntryAddress
+    ; End of function GetRangeEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Find targetable squares from range D4
+; Find targetable spaces from range D4
 
-sub_2307A:
+FindTargetableSpaces:
+		
 		movem.l d0-d4/a0-a1,-(sp)
 		cmpi.b  #$FF,d4
 		beq.s   loc_230DA
 		bsr.s   GetRangeEntryAddress
 		clr.w   d1
-		jsr     sub_20398
-		clr.b   ((byte_FFC600-$1000000)).w
+		jsr     j_ClearPassabilityFlags
+		clr.b   ((TARGETING_GROUP_BITFIELD-$1000000)).w
 		move.b  RANGE_OFFSET_GROUP(a1),d4
 		beq.w   loc_230D4
-		moveq   #3,d3
+		moveq   #3,d3           ; max range cap
 		clr.w   d4
-		bsr.w   sub_2059E       
+		bsr.w   SetupTargetingMoveCosts
 		move.b  RANGE_OFFSET_GROUP(a1),d1
 		andi.b  #RANGE_GROUP_MASK_TARGETS,d1
-		move.b  d1,((byte_FFC600-$1000000)).w
-		move.b  (a1),d1         ; D1 = max range
-		move.b  RANGE_OFFSET_MIN(a1),d2
-		bsr.w   sub_2061C       
+		move.b  d1,((TARGETING_GROUP_BITFIELD-$1000000)).w
+		move.b  (a1),d1         ; D1 = max distance
+		move.b  RANGE_OFFSET_MIN_DISTANCE(a1),d2
+		bsr.w   MakeTargetingGrid
 		clr.w   d1
 		move.b  RANGE_OFFSET_AREA(a1),d1
 		bge.s   loc_230CA
 		andi.w  #$7F,d1 
-		lea     AreaCursors_0(pc), a1
+		lea     tbl_AreaCursors_2(pc), a1
 		bra.s   loc_230CE
 loc_230CA:
-		lea     AreaCursors(pc), a1
+		lea     tbl_AreaCursors_1(pc), a1
 loc_230CE:
-		move.b  (a1,d1.w),((byte_FFB4C7-$1000000)).w
+		move.b  (a1,d1.w),((AREA_CURSOR_INDEX-$1000000)).w
 loc_230D4:
 		movem.l (sp)+,d0-d4/a0-a1
 		rts
 loc_230DA:
-		clr.b   ((byte_FFC600-$1000000)).w
+		clr.b   ((TARGETING_GROUP_BITFIELD-$1000000)).w
 		clr.b   d1
-		jsr     sub_20398
-		clr.b   ((byte_FFB4C7-$1000000)).w
+		jsr     j_ClearPassabilityFlags
+		clr.b   ((AREA_CURSOR_INDEX-$1000000)).w
 		bra.s   loc_230D4
 
-	; End of function sub_2307A
+    ; End of function FindTargetableSpaces
 
-AreaCursors:    dc.b 0                  ; Area Cursors
-		dc.b $11
-		dc.b $12
-AreaCursors_0:  dc.b 0
+tbl_AreaCursors_1:
 		dc.b 0
-		dc.b $12
+		dc.b 17
+		dc.b 18
+tbl_AreaCursors_2:
+		dc.b 0
+		dc.b 0
+		dc.b 18
 
 ; =============== S U B R O U T I N E =======================================
 
-; Like 2307A?
+; In: D0 = caster index
+;     D1 = target index
+;     D4 = range index
 
-sub_230F2:
+FindTargetsWithinArea:
+		
 		movem.l d0-d4/a1,-(sp)
-		cmpi.b  #$FF,d4
-		beq.s   loc_2312E
+		cmpi.b  #255,d4
+		beq.s   @Skip           ; skip if range index = 255
 		movem.w d0-d1/d4,-(sp)
 		move.b  d1,d0
 		moveq   #3,d3
 		clr.w   d4
-		bsr.w   sub_2059E       
+		bsr.w   SetupTargetingMoveCosts
 		movem.w (sp)+,d0-d1/d4
 		bsr.w   GetRangeEntryAddress
-		move.b  3(a1),d4
+		move.b  RANGE_OFFSET_GROUP(a1),d4
 		bsr.s   GetAdjustedGroupFlags
-		move.b  d4,((byte_FFC600-$1000000)).w
+		move.b  d4,((TARGETING_GROUP_BITFIELD-$1000000)).w
 		move.b  d1,d0
-		move.b  2(a1),d1
+		move.b  RANGE_OFFSET_AREA(a1),d1
 		clr.b   d2
-		bsr.w   sub_2061C       
-loc_23128:
+		bsr.w   MakeTargetingGrid
+@Continue:
 		movem.l (sp)+,d0-d4/a1
 		rts
-loc_2312E:
-		jsr     sub_20398
-		bra.s   loc_23128
+@Skip:
+		jsr     j_ClearPassabilityFlags
+		bra.s   @Continue
 
-	; End of function sub_230F2
+    ; End of function FindTargetsWithinArea
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if caster D0 is enemy and adjust group flags D4 accordingly
+; Check if casting combatant D0 is an enemy and adjust group flags D4 accordingly
 
 GetAdjustedGroupFlags:
 		
 		move.w  d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
-		bge.s   loc_23144
+		bge.s   @Skip           ; skip if combatant is a force member
 		bsr.s   AdjustGroupFlags
-loc_23144:
+@Skip:
 		move.w  (sp)+,d1
 		rts
 
-	; End of function GetAdjustedGroupFlags
+    ; End of function GetAdjustedGroupFlags
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8769,404 +9186,480 @@ AdjustGroupFlags:
 		move.w  d4,d5
 		andi.w  #RANGE_GROUP_MASK_ALL,d4
 		andi.w  #RANGE_GROUP_MASK_TARGETS,d5
-		or.b    AdjustedGroupFlags(pc,d5.w),d4
+		or.b    tbl_AdjustedGroupFlags(pc,d5.w),d4
 		move.w  (sp)+,d5
 		rts
 
-	; End of function AdjustGroupFlags
+    ; End of function AdjustGroupFlags
 
-AdjustedGroupFlags:
-		dc.b 0
-		dc.b 2
-		dc.b 1
-		dc.b 3
+tbl_AdjustedGroupFlags:
+		dc.b RANGE_TARGETS_NONE
+		dc.b RANGE_TARGETS_FOES
+		dc.b RANGE_TARGETS_FRIENDS
+		dc.b RANGE_TARGETS_FRIENDS_AND_FOES
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Jump to range/equip effect routine
 
-sub_23160:
+JumpToRangeOrEquipEffect:
+		
 		movem.l d4/a1,-(sp)
-		cmpi.b  #$FF,d4
-		beq.s   loc_23172
+		cmpi.b  #255,d4
+		beq.s   @Skip           ; skip if range or equip effect index = 255
 		bsr.w   GetRangeEntryAddress
 		jsr     RANGE_OFFSET_ROUTINE(a1)
-loc_23172:
+@Skip:
 		movem.l (sp)+,d4/a1
 		rts
 
-	; End of function sub_23160
+    ; End of function JumpToRangeOrEquipEffect
 
-RangeData:      incbin "data/stats/ranges/rangedata.bin"
+tbl_RangeData:  incbin "data/stats/ranges/range00.bin"
+		bra.w   EquipEffect_IncreaseAttack
+		incbin "data/stats/ranges/range01.bin"
+		bra.w   EquipEffect_IncreaseDefense
+		incbin "data/stats/ranges/range02.bin"
+		bra.w   EquipEffect_IncreaseAgility
+		incbin "data/stats/ranges/range03.bin"
+		bra.w   EquipEffect_IncreaseMove
+		incbin "data/stats/ranges/range04.bin"
+		bra.w   EquipEffect_IncreaseAttackSetCritical
+		incbin "data/stats/ranges/range05.bin"
+		bra.w   EquipEffect_IncreaseAttackAndDefense
+		incbin "data/stats/ranges/range06.bin"
+		bra.w   EquipEffect_SetJogurtStatus
+		incbin "data/stats/ranges/range07.bin"
+		bra.w   nullsub_23378
+		incbin "data/stats/ranges/range08.bin"
+		bra.w   sub_23450       
+		incbin "data/stats/ranges/range09.bin"
+		bra.w   sub_2345E       
+		incbin "data/stats/ranges/range10.bin"
+		bra.w   sub_2346C       
+		incbin "data/stats/ranges/range11.bin"
+		bra.w   sub_2347A       
+		incbin "data/stats/ranges/range12.bin"
+		bra.w   sub_23488       
+		incbin "data/stats/ranges/range13.bin"
+		bra.w   sub_23496       
+		incbin "data/stats/ranges/range14.bin"
+		bra.w   sub_234A4       
+		incbin "data/stats/ranges/range15.bin"
+		bra.w   nullsub_23378
+		incbin "data/stats/ranges/range16.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range17.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range18.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range19.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range20.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range21.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range22.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range23.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range24.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range25.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range26.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range27.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range28.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range29.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range30.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range31.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range32.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range33.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range34.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range35.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range36.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range37.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range38.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range39.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range40.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range41.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range42.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range43.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range44.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range45.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range46.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range47.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range48.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range49.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range50.bin"
+		bra.w   sub_23524
+		incbin "data/stats/ranges/range51.bin"
+		bra.w   nullsub_23378
+		incbin "data/stats/ranges/range52.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range53.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range54.bin"
+		bra.w   DetermineLaserEyeAction
+		incbin "data/stats/ranges/range55.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range56.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range57.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range58.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range59.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range60.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range61.bin"
+		bra.w   KindanNoHako    
+		incbin "data/stats/ranges/range62.bin"
+		bra.w   StartBattleaction
+		incbin "data/stats/ranges/range63.bin"
+		bra.w   StartBattleaction
+
+; =============== S U B R O U T I N E =======================================
+
+nullsub_23378:
+		
 		rts
+
+    ; End of function nullsub_23378
+
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Stat increasing item routine
+; 
+;       In: D0 = character index
+;           D1 = stat index
 
-sub_2337A:
+IncreaseStatOnItemUse:
+		
 		movem.l d1-d4/d6-a0,-(sp)
 		move.w  d1,d2
-		addi.w  #$20B,d2
-		move.w  d2,((MESSAGE_INDEX-$1000000)).w
+		addi.w  #$20B,d2        ; "[Name]'s attack level[Line]increases by [Num].[Wait2]"
+		move.w  d2,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
 		clr.w   d2
 		move.b  d0,d2
-		move.w  d2,((MESSAGE_ARG_NAME-$1000000)).w
+		move.w  d2,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
 		moveq   #2,d6
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		addq.w  #1,d7
 		move.w  d7,d2
 		move.w  d1,d3
 		asl.w   #2,d3
-		jsr     j_GetATTFromForceID_0(pc,d3.w)
+		jsr     bt_GetBaseStatForCombatant(pc,d3.w)
 		exg     d1,d2
-		jsr     j_IncreaseATTFromForceID_0(pc,d3.w)
+		jsr     bt_IncreaseBaseStatForCombatant(pc,d3.w)
 		sub.w   d2,d1
 		ext.l   d1
-		move.l  d1,((MESSAGE_ARG_NUMBER-$1000000)).w
-		jsr     j_LoadBattleStats
+		move.l  d1,((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w
+		jsr     j_LoadCombatantData
 		movem.l (sp)+,d1-d4/d6-a0
 		rts
 
-	; End of function sub_2337A
+    ; End of function IncreaseStatOnItemUse
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetATTFromForceID_0:
+bt_GetBaseStatForCombatant:
 		
-		bra.w   GetATTFromForceID
+		bra.w   GetBaseAttackForCombatant
+		bra.w   GetBaseDefenseForCombatant
+		bra.w   GetBaseAgilityForCombatant
+		bra.w   GetBaseMoveForCombatant
+		bra.w   GetMaxHpForCombatant
 
-	; End of function j_GetATTFromForceID_0
+    ; End of function bt_GetBaseStatForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetDEFFromForceID_0:
+bt_IncreaseBaseStatForCombatant:
 		
-		bra.w   GetDEFFromForceID
+		bra.w   IncreaseBaseAttackForCombatant
+		bra.w   IncreaseBaseDefenseForCombatant
+		bra.w   IncreaseBaseAgilityForCombatant
+		bra.w   IncreaseBaseMoveForCombatant
+		bra.w   IncreaseMaxHPforCombatant
 
-	; End of function j_GetDEFFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetAGIFromForceID_0:
-		
-		bra.w   GetAGIFromForceID
-
-	; End of function j_GetAGIFromForceID_0
+    ; End of function bt_IncreaseBaseStatForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_GetMOVEFromForceID_0:
-		
-		bra.w   GetMOVEFromForceID
+; Cure poison of combatant D0
 
-	; End of function j_GetMOVEFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetMaxHPFromForceID_0:
-		
-		bra.w   GetMaxHPFromForceID
-
-	; End of function j_GetMaxHPFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_IncreaseATTFromForceID_0:
-		
-		bra.w   IncreaseATTFromForceID
-
-	; End of function j_IncreaseATTFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_IncreaseDEFFromForceID_0:
-		
-		bra.w   IncreaseDEFFromForceID
-
-	; End of function j_IncreaseDEFFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_IncreaseAGIFromForceID_0:
-		
-		bra.w   IncreaseAGIFromForceID
-
-	; End of function j_IncreaseAGIFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_IncreaseMOVEFromForceID_0:
-		
-		bra.w   IncreaseMOVEFromForceID
-
-	; End of function j_IncreaseMOVEFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_IncreaseMaxHPFromForceID_0:
-		
-		bra.w   IncreaseMaxHPFromForceID
-
-	; End of function j_IncreaseMaxHPFromForceID_0
-
-
-; =============== S U B R O U T I N E =======================================
-
-; Cure poison of character D0
-
-sub_233E6:
+CurePoison:
 		movem.l d1-d2,-(sp)
-		jsr     j_GetStatusFromForceID
-		bclr    #0,d1
-		beq.s   loc_233FC
-		move.w  #$1C8,d2
+		jsr     j_GetStatusEffectsForCombatant
+		bclr    #STATUSEFFECT_BIT_POISON,d1
+		beq.s   loc_233FC       
+		move.w  #$1C8,d2        ; "All traces of poison are[Line]purged from [Name]."
 		bra.s   loc_23400
 loc_233FC:
-		move.w  #$1D1,d2
+		move.w  #$1D1,d2        ; "But nothing happens."
 loc_23400:
-		jsr     j_SetStatusFromForceID
-		move.w  d2,((MESSAGE_INDEX-$1000000)).w
+		jsr     j_SetStatusEffectsForCombatant
+		move.w  d2,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
 		clr.w   d2
 		move.b  d0,d2
-		move.w  d2,((MESSAGE_ARG_NAME-$1000000)).w
+		move.w  d2,((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w
 		movem.l (sp)+,d1-d2
 		rts
 
-	; End of function sub_233E6
+    ; End of function CurePoison
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to battle member (D0) attack
+; Add D5 to combatant D0 modified attack
 
-EquipEffect_IncreaseATT:
+EquipEffect_IncreaseAttack:
 		
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseTargetATT
+		jsr     j_IncreaseModifiedAttack
 		move.w  (sp)+,d1
 		rts
 
-	; End of function EquipEffect_IncreaseATT
+    ; End of function EquipEffect_IncreaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to battle member (D0) defense
+; Add D5 to combatant D0 modified defense
 
-EquipEffect_IncreaseDEF:
+EquipEffect_IncreaseDefense:
 		
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseTargetDEF
+		jsr     j_IncreaseModifiedDefense
 		move.w  (sp)+,d1
 		rts
 
-	; End of function EquipEffect_IncreaseDEF
+    ; End of function EquipEffect_IncreaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to battle member (D0) agility
+; Add D5 to combatant D0 modified agility
 
-EquipEffect_IncreaseAGI:
+EquipEffect_IncreaseAgility:
 		
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseTargetAGI
+		jsr     j_IncreaseModifiedAgility
 		move.w  (sp)+,d1
 		rts
 
-	; End of function EquipEffect_IncreaseAGI
+    ; End of function EquipEffect_IncreaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to battle member (D0) move
+; Add D5 to combatant D0 modified move
 
-EquipEffect_IncreaseMOVE:
+EquipEffect_IncreaseMove:
 		
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseTargetMOVE
+		jsr     j_IncreaseModifiedMove
 		move.w  (sp)+,d1
 		rts
 
-	; End of function EquipEffect_IncreaseMOVE
+    ; End of function EquipEffect_IncreaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to force member (D0) HP
+; Add D5 to force member D0 current HP (not functional)
 
 sub_23450:
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseForceMemberHP
+		jsr     j_IncreaseCurrentHP
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_23450
+    ; End of function sub_23450
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to force member (D0) MP
+; Add D5 to force member D0 current MP (not functional)
 
 sub_2345E:
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseForceMemberMP
+		jsr     j_IncreaseCurrentMP
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_2345E
+    ; End of function sub_2345E
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to force member (D0) Max HP
+; Add D5 to force member D0 max HP (not functional)
 
 sub_2346C:
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseForceMemberMaxHP
+		jsr     j_IncreaseMaxHP
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_2346C
+    ; End of function sub_2346C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to force member (D0) attack
+; Add D5 to force member D0 base attack (not functional)
 
 sub_2347A:
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseForceMemberATT
+		jsr     j_IncreaseBaseAttack
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_2347A
+    ; End of function sub_2347A
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to force member (D0) defense
+; Add D5 to force member D0 base defense (not functional)
 
 sub_23488:
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseForceMemberDEF
+		jsr     j_IncreaseBaseDefense
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_23488
+    ; End of function sub_23488
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to force member (D0) agility
+; Add D5 to force member D0 base agility (not functional)
 
 sub_23496:
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseForceMemberAGI
+		jsr     j_IncreaseBaseAgility
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_23496
+    ; End of function sub_23496
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to force member (D0) move
+; Add D5 to force member D0 base move (not functional)
 
 sub_234A4:
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseForceMemberMOVE
+		jsr     j_IncreaseBaseMove
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_234A4
+    ; End of function sub_234A4
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to battle member (D0) attack, set crit to 13
+; Add D5 to combatant D0 modified attack, set modified critical to 13
 
-EquipEffect_IncreaseATTAndSetCRIT:
+EquipEffect_IncreaseAttackSetCritical:
 		
 		move.w  d1,-(sp)
 		move.b  d5,d1
-		jsr     j_IncreaseTargetATT
-		move.b  #$D,d1
-		jsr     j_SetTargetCRIT
+		jsr     j_IncreaseModifiedAttack
+		move.b  #13,d1
+		jsr     j_SetModifiedCritical
 		move.w  (sp)+,d1
 		rts
 
-	; End of function EquipEffect_IncreaseATTAndSetCRIT
+    ; End of function EquipEffect_IncreaseAttackSetCritical
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D5 to battle member (D0) attack, set double attack setting to High
+; Add 4 to combatant D0 modified attack and 8 to modified defense
 
-EquipEffect_IncreaseATTAndDEF:
+EquipEffect_IncreaseAttackAndDefense:
 		
 		movem.l d1/d5/a0,-(sp)
 		lea     byte_234EE(pc), a0
 		andi.w  #$FF,d5
 		adda.w  d5,a0
 		move.b  (a0)+,d1
-		jsr     j_IncreaseTargetATT
+		jsr     j_IncreaseModifiedAttack
 		move.b  (a0),d1
-		jsr     j_IncreaseTargetDEF
+		jsr     j_IncreaseModifiedDefense
 		movem.l (sp)+,d1/d5/a0
 		rts
 byte_234EE:
 		dc.b 4
 		dc.b 8
-EquipEffect_IncreaseATTAndSetDouble:
+EquipEffect_IncreaseAttackSetDoubleAttackMode:
 		
-		movem.l d1,-(sp)
+		movem.l d1,-(sp)        ; Add D5 to combatant D0 modified attack, set modified double attack mode to "high"
 		move.b  d5,d1
-		jsr     j_IncreaseTargetATT
-		moveq   #2,d1
-		jsr     j_SetTargetDoubleAttack
+		jsr     j_IncreaseModifiedAttack
+		moveq   #DOUBLE_ATTACK_MODE_HIGH,d1
+		jsr     j_SetModifiedDoubleAttackMode
 		movem.l (sp)+,d1
 		rts
 
-	; End of function EquipEffect_IncreaseATTAndDEF
+    ; End of function EquipEffect_IncreaseAttackAndDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set Jogurt status to battle member (D0)
+; Set Jogurt status effect to combatant D0
 
 EquipEffect_SetJogurtStatus:
 		
 		movem.l d1,-(sp)
-		jsr     j_GetStatusFromForceID
-		bset    #FORCE_STATUS_FLAG_JOGURT,d1
-		jsr     j_SetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
+		bset    #STATUSEFFECT_BIT_JOGURT,d1
+		jsr     j_SetStatusEffectsForCombatant
 		movem.l (sp)+,d1
 		rts
 
-	; End of function EquipEffect_SetJogurtStatus
+    ; End of function EquipEffect_SetJogurtStatus
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9174,132 +9667,141 @@ EquipEffect_SetJogurtStatus:
 sub_23524:
 		jmp     sub_124018
 
-	; End of function sub_23524
+    ; End of function sub_23524
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Level Up Party (Kindan NoHako)
 
-sub_2352A:
+KindanNoHako:
 		movem.l d0-d3/a0,-(sp)
-		bsr.w   sub_21744       
-		moveq   #$1E,d2
+		bsr.w   NullBattleaction
+		moveq   #FORCE_MEMBERS_COUNTER,d2
 loc_23534:
 		move.b  d2,d0
-		jsr     j_GetForceMemberLevel
-		move.w  #$12,d3
+		jsr     j_GetLevel
+		move.w  #18,d3
 		sub.w   d1,d3
-		bsr.w   FindTarget      
+		bsr.w   FindCombatantEntry
 		bne.s   loc_23550
 loc_23548:
-		bsr.w   IncreaseStatsFromForceID
+		bsr.w   IncreaseStatsOnLevelUpForCombatant
 		dbf     d3,loc_23548
 loc_23550:
-		jsr     j_RefillHPFromTargetID
-		jsr     j_RefillMPFromTargetID
+		jsr     j_RefillHPforCombatant
+		jsr     j_RefillMPforCombatant
 		dbf     d2,loc_23534
 		movem.l (sp)+,d0-d3/a0
 		rts
 
-	; End of function sub_2352A
+    ; End of function KindanNoHako
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute movable area, everywhere if above 9 MOVE
+; Make movement area grid for combatant D0
 
-sub_23566:
+CreateMovementGrid:
+		
 		movem.l d0-d4/a0,-(sp)
-		jsr     j_GetTargetMOVE
+		jsr     j_GetModifiedMove
 		cmpi.w  #9,d1
 		ble.s   loc_2357C
-		bsr.w   sub_23772       
+		bsr.w   MakeMoveEverywhereGrid
 		bra.s   loc_2358E
 loc_2357C:
 		move.w  d1,d3
-		bsr.s   IsForceOrEnemy  
+		bsr.s   IsForceMemberOrEnemy
 		jsr     j_GetMoveCostEntryAddress
-		bsr.w   sub_20584       
-		bsr.w   sub_205AC       
+		bsr.w   SetupEffectiveMoveCosts
+		bsr.w   MakeEffectivePassabilityFlags
 loc_2358E:
 		movem.l (sp)+,d0-d4/a0
 		rts
 
-	; End of function sub_23566
+    ; End of function CreateMovementGrid
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if battle member D0 is force or enemy and return in D4
+; Check if combatant D0 is force member or enemy, return in D4 (1 = enemy, 2 = force)
 
-IsForceOrEnemy:
+IsForceMemberOrEnemy:
 		
 		move.w  d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		moveq   #2,d4
 		tst.b   d1
-		bge.s   loc_235A4
+		bge.s   @ForceMember
 		moveq   #1,d4
-loc_235A4:
+@ForceMember:
 		move.w  (sp)+,d1
 		rts
 
-	; End of function IsForceOrEnemy
+    ; End of function IsForceMemberOrEnemy
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get effect, range and targetable squares for attack
+; Find targetable spaces for "attack" battle action
 
-sub_235A8:
+FindTargetableSpacesForAttack:
+		
 		movem.l d4-d5,-(sp)
-		bsr.s   sub_235BA       
-		jsr     sub_202A8
+		bsr.s   Battleaction_Attack
+		jsr     j_FindTargetableSpaces
 		movem.l (sp)+,d4-d5
 		rts
 
-	; End of function sub_235A8
+    ; End of function FindTargetableSpacesForAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Prepare effect,range etc for attack
+; Prepare to attack (get attack range and effect, check for special attack)
+; 
+; Out: D4 = attack range index
+;      D5 = attack effect index
 
-sub_235BA:
+Battleaction_Attack:
+		
 		movem.l d1-d3/a0-a1,-(sp)
-		tst.b   ((byte_FFCB3E-$1000000)).w
-		beq.s   loc_235D2
-		clr.b   ((byte_FFCB66-$1000000)).w
-		move.b  ((RANGE_TO_USE-$1000000)).w,d4
-		move.b  ((EFFECT_TO_USE-$1000000)).w,d5
-		bra.s   loc_23614
-loc_235D2:
-		jsr     j_GetClassFromForceID
+		tst.b   ((CURRENT_ATTACK_TYPE-$1000000)).w
+		beq.s   @RegularAttack
+		clr.b   ((SPECIAL_ATTACK_PERCENT-$1000000)).w
+		move.b  ((CURRENT_RANGE-$1000000)).w,d4
+		move.b  ((CURRENT_EFFECT-$1000000)).w,d5
+		bra.s   @Skip           ; skip if not a regular attack
+@RegularAttack:
+		
+		jsr     j_GetClassForCombatant
 		bsr.w   GetClassEntryAddress
-		move.w  #ITEM_TYPE_MASK_WEAPON,d1
-		jsr     j_GetEquippedItemFromForceID
-		bcc.s   loc_235F2
-		move.b  CLASS_OFFSET_UNARMED_RANGE(a0),d4
-		move.b  CLASS_OFFSET_UNARMED_EFFECT(a0),d5
-		bra.s   loc_23600
-loc_235F2:
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		jsr     j_GetEquippedItemForCombatant
+		bcc.s   @AttackWithEquippedWeapon
+		move.b  CLASSDEF_OFFSET_UNARMED_RANGE(a0),d4
+		move.b  CLASSDEF_OFFSET_UNARMED_EFFECT(a0),d5
+		bra.s   @UnarmedAttack
+@AttackWithEquippedWeapon:
+		
 		move.b  d2,d1
 		bsr.w   GetItemEntryAddress
-		move.b  ITEM_OFFSET_ATK_RANGE(a1),d4
-		move.b  ITEM_OFFSET_ATK_EFFECT(a1),d5
-loc_23600:
-		move.b  CLASS_OFFSET_SETTINGS(a0),d1
-		andi.w  #CLASS_MASK_SP_ATK_CHANCE,d1
-		move.b  SpecialAttackPercents(pc,d1.w),((byte_FFCB66-$1000000)).w
-		move.b  CLASS_OFFSET_SP_ATK_TYPE(a0),((byte_FFCB67-$1000000)).w
-loc_23614:
+		move.b  ITEMDEF_OFFSET_ATTACK_RANGE(a1),d4
+		move.b  ITEMDEF_OFFSET_ATTACK_EFFECT(a1),d5
+@UnarmedAttack:
+		
+		move.b  CLASSDEF_OFFSET_PROPERTIES(a0),d1
+		andi.w  #CLASS_PROPERTY_MASK_SPECIAL_ATTACK_CHANCE,d1
+		move.b  tbl_SpecialAttackPercents(pc,d1.w),((SPECIAL_ATTACK_PERCENT-$1000000)).w
+		move.b  CLASSDEF_OFFSET_SPECIAL_ATTACK_INDEX(a0),((SPECIAL_ATTACK_INDEX-$1000000)).w
+@Skip:
 		movem.l (sp)+,d1-d3/a0-a1
 		rts
 
-	; End of function sub_235BA
+    ; End of function Battleaction_Attack
 
-SpecialAttackPercents:
+tbl_SpecialAttackPercents:
 		dc.b 0
 		dc.b 25
 		dc.b 50
@@ -9307,225 +9809,228 @@ SpecialAttackPercents:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Use item D1
+; Use item D1 in battle
 
 UseItem:
 		movem.l d1-d2/d4-d5,-(sp)
 		jsr     j_GetItemType
-		btst    #$A,d2
-		beq.s   loc_23648
+		btst    #ITEMTYPE_BIT_USABLE,d2
+		beq.s   @NotUsable      
 		move.b  d1,d2
-		move.w  #$400,d1
-		jsr     j_IsItemEquippableFromForceID
-		bcs.s   loc_23646
+		move.w  #ITEMTYPE_MASK_USABLE,d1
+		jsr     j_IsItemEquippableForCombatant
+		bcs.s   @CheckEquipFlags
 		move.b  d2,d1
 		bsr.w   GetItemUseRangeAndEffect
 		clr.b   d1
-		bra.s   loc_23650
-loc_23646:
-		bne.s   loc_2364C
-loc_23648:
-		moveq   #1,d1
-		bra.s   loc_2364E
-loc_2364C:
-		moveq   #2,d1
-loc_2364E:
+		bra.s   @Done
+@CheckEquipFlags:
+		
+		bne.s   @CannotBeUsedByCurrentActor
+						; branch if item has at least one equip flag set
+@NotUsable:
+		moveq   #1,d1           ; item is either not usable, or not a piece of equipment
+		bra.s   @Continue
+@CannotBeUsedByCurrentActor:
+		
+		moveq   #2,d1           ; item is piece of equipment, but cannot be equipped by current actor
+@Continue:
 		moveq   #$FFFFFFFF,d4
-loc_23650:
-		move.b  d1,((byte_FFCB7E-$1000000)).w
-		jsr     sub_202A8
+@Done:
+		move.b  d1,((CANNOT_USE_ITEM_FLAG-$1000000)).w
+		jsr     j_FindTargetableSpaces
 		movem.l (sp)+,d1-d2/d4-d5
 		rts
 
-	; End of function UseItem
+    ; End of function UseItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get use range and effect of item D1
+; Get item D1 use range and effect indexes -> D4 = range, D5 = effect
 
 GetItemUseRangeAndEffect:
 		
 		movem.l d1/a1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((ITEM_OR_SPELL_BEING_USED-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		move.w  d1,((BATTLESCENE_ITEM_OR_SPELL_INDEX-$1000000)).w
 		bsr.w   GetItemEntryAddress
-		move.b  8(a1),d4
-		cmpi.b  #$FF,d4
-		beq.s   loc_2367E
-		move.b  9(a1),d5
-loc_2367E:
+		move.b  ITEMDEF_OFFSET_USE_RANGE(a1),d4
+		cmpi.b  #255,d4         ; skip if range index = 255
+		beq.s   @Skip
+		move.b  ITEMDEF_OFFSET_USE_EFFECT(a1),d5
+@Skip:
 		movem.l (sp)+,d1/a1
 		rts
 
-	; End of function GetItemUseRangeAndEffect
+    ; End of function GetItemUseRangeAndEffect
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Select item D1 of character D0
+; Prepare to use item slot D1 from combatant D0 (load item index and slot number)
+; 
+; Out: D4 = range index
+;      D5 = effect index
 
-sub_23684:
+Battleaction_UseItem:
+		
 		movem.l d1/a0,-(sp)
-		jsr     j_GetForceItemsFromForceID
+		jsr     j_GetEntityItemsAddressForCombatant
 		andi.w  #$FF,d1
-		move.w  d1,((word_FFCB60-$1000000)).w
+		move.w  d1,((SELECTED_ITEM_SLOT-$1000000)).w
 		move.b  (a0,d1.w),d1
-		move.w  d1,((word_FFCB62-$1000000)).w
+		move.w  d1,((SELECTED_ITEM_ENTRY-$1000000)).w
 		bsr.s   GetItemUseRangeAndEffect
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function sub_23684
+    ; End of function Battleaction_UseItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get effect, range and targetable squares for current spell
+; Find targetable spaces for the "cast spell" battleaction.
 
-sub_236A6:
+FindTargetableSpacesForSpell:
+		
 		movem.l d4-d5,-(sp)
-		bsr.s   sub_236B8       
-		jsr     sub_202A8
+		bsr.s   Battleaction_CastSpell
+		jsr     j_FindTargetableSpaces
 		movem.l (sp)+,d4-d5
 		rts
 
-	; End of function sub_236A6
+    ; End of function FindTargetableSpacesForSpell
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Prepare effect,range of spell
+; Prepare to cast spell D1 (load index, level and MP cost)
+; 
+; Out: D4 = spell range index
+;      D5 = spell effect index
 
-sub_236B8:
+Battleaction_CastSpell:
+		
 		movem.l d2/a1,-(sp)
 		move.b  d1,d2
-		andi.w  #SPELL_MASK_ID,d2
-		move.w  d2,((ITEM_OR_SPELL_BEING_USED-$1000000)).w
+		andi.w  #SPELLENTRY_MASK_INDEX,d2
+		move.w  d2,((BATTLESCENE_ITEM_OR_SPELL_INDEX-$1000000)).w
 		move.b  d1,d2
-		andi.l  #SPELL_MASK_LEVEL,d2
+		andi.l  #SPELLENTRY_MASK_LEVEL,d2
 		asr.l   #6,d2
 		addq.l  #1,d2
-		move.l  d2,((dword_FFCB76-$1000000)).w
+		move.l  d2,((BATTLESCENE_SPELL_LEVEL-$1000000)).w
 		bsr.w   GetSpellEntryAddress
 		clr.w   d4
 		move.b  SPELL_OFFSET_MP_COST(a1),d4
-		move.w  d4,((word_FFCB5A-$1000000)).w
-		move.b  (a1),d4
+		move.w  d4,((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w
+		move.b  (a1),d4         ; D4 = range index
 		move.b  SPELL_OFFSET_EFFECT(a1),d5
 		movem.l (sp)+,d2/a1
 		rts
 
-	; End of function sub_236B8
+    ; End of function Battleaction_CastSpell
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get effect, range and targetable squares for current action
+; Get effect, range and targetable spaces for current battleaction.
 
-sub_236F0:
+SetupBattleaction:
+		
 		movem.l d0-d5/a0,-(sp)
-		lea     ((byte_FFB51A-$1000000)).w,a0
+		lea     ((CASTER_INDEX-$1000000)).w,a0
 		clr.w   d2
-		move.b  1(a0),d2
+		move.b  BATTLE_ACTION_OFFSET_TYPE(a0),d2
 		cmpi.b  #3,d2
-		bcc.s   loc_23740
-		move.b  d2,((MESSAGE_OFFSET-$1000000)).w
-		clr.w   ((word_FFCB5A-$1000000)).w
-		move.w  #$FFFF,((word_FFCB60-$1000000)).w
-		clr.b   ((byte_FFCB66-$1000000)).w
-		move.b  (a0),d0
-		move.b  2(a0),d1
+		bcc.s   @Skip           ; skip if battleaction type >= 3
+		move.b  d2,((BATTLE_MESSAGE_OFFSET-$1000000)).w
+		clr.w   ((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w
+		move.w  #$FFFF,((SELECTED_ITEM_SLOT-$1000000)).w
+		clr.b   ((SPECIAL_ATTACK_PERCENT-$1000000)).w
+		move.b  (a0),d0         ; D0 = caster index
+		move.b  BATTLE_ACTION_OFFSET_SPELL_INDEX(a0),d1
 		asl.w   #2,d2
-		jsr     sub_23746(pc,d2.w)
-		cmpi.b  #$FF,d4
-		beq.s   loc_23740
-		move.b  (a0),d0
-		move.b  3(a0),d1
-		jsr     sub_202AC
-		jsr     sub_202D8
-		jsr     sub_202B0
-loc_23740:
+		jsr     bt_Battleactions(pc,d2.w)
+		cmpi.b  #255,d4         ; skip if range index = 255
+		beq.s   @Skip
+		move.b  (a0),d0         ; D0 = caster index
+		move.b  BATTLE_ACTION_OFFSET_TARGET_INDEX(a0),d1
+		jsr     j_FindTargetsWithinArea
+		jsr     j_PopulateTargetsList
+		jsr     j_JumpToRangeOrEquipEffect
+@Skip:
 		movem.l (sp)+,d0-d5/a0
 		rts
 
-	; End of function sub_236F0
+    ; End of function SetupBattleaction
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23746:
-		bra.w   sub_235BA       
+bt_Battleactions:
+		
+		bra.w   Battleaction_Attack
+		bra.w   Battleaction_CastSpell
+		bra.w   Battleaction_UseItem
 
-	; End of function sub_23746
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_2374A:
-		bra.w   sub_236B8       
-
-	; End of function sub_2374A
+    ; End of function bt_Battleactions
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2374E:
-		bra.w   sub_23684       
-
-	; End of function sub_2374E
-
-
-; =============== S U B R O U T I N E =======================================
+; hardcoded "GIVE" item menu action range (?)
 
 sub_23752:
 		movem.l d0-d4/a0,-(sp)
 		moveq   #1,d3
 		clr.w   d4
-		bsr.w   sub_2059E       
+		bsr.w   SetupTargetingMoveCosts
 		moveq   #1,d1
 		move.w  d1,d2
-		move.b  #1,((byte_FFC600-$1000000)).w
-		bsr.w   sub_2061C       
+		move.b  #1,((TARGETING_GROUP_BITFIELD-$1000000)).w
+		bsr.w   MakeTargetingGrid
 		movem.l (sp)+,d0-d4/a0
 		rts
 
-	; End of function sub_23752
+    ; End of function sub_23752
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute movable area based on class and terrain
+; Make movement area grid for combatant D0 when modified move is greater than 9 (i.e., force leader in battle test mode)
 
-sub_23772:
+MakeMoveEverywhereGrid:
+		
 		movem.l d1-d2/a0-a1,-(sp)
 		jsr     j_GetMoveCostEntryAddress
-		bsr.w   sub_20506       
-		lea     ((byte_FFC200-$1000000)).w,a0
-		lea     ((word_FFA8C0-$1000000)).w,a1
+		bsr.w   LoadMoveCosts   
+		lea     ((MOVE_COSTS-$1000000)).w,a0
+		lea     ((TABLE_AT_FFA8C0-$1000000)).w,a1
 		move.w  #$3FF,d1
 loc_2378C:
-		move.b  (a0)+,(a1)+
-		dbf     d1,loc_2378C
-		jsr     j_GetTargetPosition
+		move.b  (a0)+,(a1)+     ; copy move costs table to table at $FFA8C0
+		dbf     d1,loc_2378C    
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
-		add.w   d2,d1
-		lea     ((word_FFA8C0-$1000000)).w,a0
-		clr.b   (a0,d1.w)
-		bsr.w   sub_205AC       
+		add.w   d2,d1           ; D1 = moving combatant's position converted to offset
+		lea     ((TABLE_AT_FFA8C0-$1000000)).w,a0
+		clr.b   (a0,d1.w)       ; clear move cost at moving combatant's starting position
+		bsr.w   MakeEffectivePassabilityFlags
 		lea     ((TERRAIN_DATA-$1000000)).w,a0
 		move.w  #$3FF,d1
 loc_237B2:
 		cmpi.b  #$D,(a0)
 		bne.s   loc_237BE
-		bset    #2,-$800(a0)
+		bset    #2,-OFFSET_PASSABILITY_FLAGS_TO_CURRENT_TERRAIN_DATA(a0)
 loc_237BE:
 		addq.l  #1,a0
 		dbf     d1,loc_237B2
 		movem.l (sp)+,d1-d2/a0-a1
 		rts
 
-	; End of function sub_23772
+    ; End of function MakeMoveEverywhereGrid
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9534,60 +10039,63 @@ sub_237CA:
 		movem.l d1-d4/a0,-(sp)
 		jsr     j_GetMoveCostEntryAddress
 		move.w  d1,-(sp)
-		jsr     j_GetTargetMOVE
+		jsr     j_GetModifiedMove
 		move.w  d1,d3
 		move.w  (sp)+,d1
 		addq.w  #3,d3
-		bsr.w   IsForceOrEnemy  
-		bsr.w   sub_20404       
-		jsr     j_GetTargetPosition
+		bsr.w   IsForceMemberOrEnemy
+		bsr.w   MakeEffectiveMoveCosts
+		jsr     j_GetCombatantPosition
 		bsr.w   sub_20868       
 		movem.l (sp)+,d1-d4/a0
 		rts
 
-	; End of function sub_237CA
+    ; End of function sub_237CA
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_237FA:
+PopulateTargetsList:
+		
 		movem.l d0-d5/a0-a2,-(sp)
-		lea     ((byte_FFA4C0-$1000000)).w,a0
-		move.b  ((byte_FFC600-$1000000)).w,d3
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
+		move.b  ((TARGETING_GROUP_BITFIELD-$1000000)).w,d3
 		clr.w   d4
 		lea     ((byte_FFA8C2-$1000000)).w,a1
-		lea     ((byte_FFA946-$1000000)).w,a2
-		moveq   #$1F,d0
+						; target positions
+		lea     ((TARGETS_LIST-$1000000)).w,a2
+		moveq   #COMBATANT_ENTRIES_COUNTER,d0
 loc_23812:
-		jsr     j_GetTargetID
-		cmpi.b  #$FF,d1
+		jsr     j_GetEntity
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d1
 		beq.s   loc_2385A
 		tst.b   d1
-		bge.s   loc_2382A
+		bge.s   loc_2382A       ; branch if force member
 		btst    #1,d3
-		beq.s   loc_2385A
+		beq.s   loc_2385A       ; branch if not tasked to target enemies
 		bra.s   loc_23830
 loc_2382A:
 		btst    #0,d3
-		beq.s   loc_2385A
+		beq.s   loc_2385A       ; branch if not tasked to target force members
 loc_23830:
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		move.w  d1,d5
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d5
-		add.w   d2,d5
+		add.w   d2,d5           ; D5 = combatant's position converted to offset
 		btst    #2,d3
-		bne.s   loc_2384C
+		bne.s   loc_2384C       ; branch if tasked to target all
 		btst    #0,(a0,d5.w)
 		beq.s   loc_2385A
 loc_2384C:
 		bset    #1,(a0,d5.w)
 		addq.w  #1,d4
-		move.w  d2,(a1)+
-		move.w  d1,(a1)+
-		move.w  d0,(a2)+
+		move.w  d2,(a1)+        ; load target X
+		move.w  d1,(a1)+        ; load target Y
+		move.w  d0,(a2)+        ; load target index
 loc_2385A:
 		dbf     d0,loc_23812
-		move.w  d4,((word_FFA8C0-$1000000)).w
+		move.w  d4,((TABLE_AT_FFA8C0-$1000000)).w
+						; load target list length
 		moveq   #$FFFFFFFF,d4
 		move.w  d4,(a1)+
 		move.w  d4,(a2)+
@@ -9595,7 +10103,7 @@ loc_2385A:
 		bsr.s   sub_23870
 		rts
 
-	; End of function sub_237FA
+    ; End of function PopulateTargetsList
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9603,8 +10111,8 @@ loc_2385A:
 sub_23870:
 		movem.l d0-d2/a0-a3,-(sp)
 		lea     ((byte_FFA8C2-$1000000)).w,a0
-		lea     ((byte_FFA946-$1000000)).w,a1
-		move.w  ((word_FFA8C0-$1000000)).w,d0
+		lea     ((TARGETS_LIST-$1000000)).w,a1
+		move.w  ((TABLE_AT_FFA8C0-$1000000)).w,d0
 		subq.w  #1,d0
 loc_23882:
 		ble.s   loc_238BC
@@ -9640,23 +10148,33 @@ loc_238BC:
 		movem.l (sp)+,d0-d2/a0-a3
 		rts
 
-	; End of function sub_23870
+    ; End of function sub_23870
 
 
 ; =============== S U B R O U T I N E =======================================
 
-GetItemName:
-		andi.b  #ITEM_MASK_ID,d1
+; Get item D1 name address and length
+; 
+; Out: A0 = item name address
+;      D1 = item name length
+
+GetItemNameAddress:
+		
+		andi.b  #ITEMENTRY_MASK_INDEX,d1
 		movea.l (p_ItemNames).l,a0
 
-	; End of function GetItemName
+    ; End of function GetItemNameAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get D1th entry from table which is stored with length values, return in D1
+; Get D1th entry address from table which is stored with length values
+; 
+; Out: A0 = entry address
+;      D1 = entry length
 
-sub_238CC:
+GetVariableLengthEntryAddress:
+		
 		movem.w d0,-(sp)
 		clr.w   d0
 		tst.b   d1
@@ -9672,39 +10190,46 @@ loc_238E0:
 		movem.w (sp)+,d0
 		rts
 
-	; End of function sub_238CC
+    ; End of function GetVariableLengthEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get name of spell D1
+; Get spell D1 name address and length
+; 
+; Out: A0 = spell name address
+;      D1 = spell name length
 
-GetSpellName:
-		andi.b  #SPELL_MASK_ID,d1
+GetSpellNameAddress:
+		
+		andi.b  #SPELLENTRY_MASK_INDEX,d1
 		movea.l (p_SpellNames).l,a0
-		bra.s   sub_238CC       
+		bra.s   GetVariableLengthEntryAddress
 
-	; End of function GetSpellName
+    ; End of function GetSpellNameAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get name of class D1
+; Get class D1 name address and length
+; 
+; Out: A0 = class name address
+;      D1 = class name length
 
-GetClassName:
+GetClassNameAddress:
+		
 		movea.l (p_ClassNames).l,a0
-		bra.s   sub_238CC       
+		bra.s   GetVariableLengthEntryAddress
 
-	; End of function GetClassName
+    ; End of function GetClassNameAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load data from 238CC into A1
-
-sub_238FE:
+LoadVariableLengthEntry:
+		
 		movem.l d1/a0,-(sp)
-		bsr.s   sub_238CC       
+		bsr.s   GetVariableLengthEntryAddress
 		beq.s   loc_2390E
 		subq.w  #1,d1
 loc_23908:
@@ -9714,12 +10239,12 @@ loc_2390E:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function sub_238FE
+    ; End of function LoadVariableLengthEntry
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get address of class D1 entry -> A0
+; Get class D1 entry address -> A0
 
 GetClassEntryAddress:
 		
@@ -9731,24 +10256,24 @@ GetClassEntryAddress:
 		move.w  (sp)+,d1
 		rts
 
-	; End of function GetClassEntryAddress
+    ; End of function GetClassEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get offset into Move Cost Table based on class of member D0
+; Get combatant D0 move cost entry address -> A0
 
 GetMoveCostEntryAddress:
 		
 		movea.l (p_MoveCostData).l,a0
 		bra.s   loc_23936
 
-	; End of function GetMoveCostEntryAddress
+    ; End of function GetMoveCostEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get offset into Land Effect Table based on class of member D0
+; Get combatant D0 land effect entry address -> A0
 
 GetLandEffectEntryAddress:
 		
@@ -9756,9 +10281,9 @@ GetLandEffectEntryAddress:
 loc_23936:
 		movem.l d1/a1,-(sp)
 		movea.l a0,a1
-		jsr     j_GetClassFromForceID
+		jsr     j_GetClassForCombatant
 		bsr.s   GetClassEntryAddress
-		move.b  (a0),d1
+		move.b  (a0),d1         ; D1 = move type index
 		andi.w  #$FF,d1
 		asl.w   #4,d1
 		movea.l a1,a0
@@ -9766,21 +10291,21 @@ loc_23936:
 		movem.l (sp)+,d1/a1
 		rts
 
-	; End of function GetLandEffectEntryAddress
+    ; End of function GetLandEffectEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get resistance D2
+; Get combatant D0 resistance to element D1 -> D2
 
 GetResistance:
 		
 		movem.l d1/a0,-(sp)
 		move.b  d1,d2
-		jsr     j_GetClassFromForceID
+		jsr     j_GetClassForCombatant
 		bsr.s   GetClassEntryAddress
 		move.b  d2,d1
-		move.w  CLASS_OFFSET_RESISTANCES(a0),d2
+		move.w  CLASSDEF_OFFSET_RESISTANCES(a0),d2
 		andi.b  #7,d1
 		ror.w   d1,d2
 		ror.w   d1,d2
@@ -9788,442 +10313,505 @@ GetResistance:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function GetResistance
+    ; End of function GetResistance
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get class special bit 5
+; Get combatant D0 special bit 6 from class (unused)
 
 sub_2397C:
 		move.l  a0,-(sp)
-		jsr     j_GetClassFromForceID
+		jsr     j_GetClassForCombatant
 		bsr.w   GetClassEntryAddress
-		move.b  CLASS_OFFSET_SETTINGS(a0),d1
+		move.b  CLASSDEF_OFFSET_PROPERTIES(a0),d1
 		andi.w  #$40,d1 
 		asr.w   #6,d1
 		addq.w  #1,d1
 		movea.l (sp)+,a0
 		rts
 
-	; End of function sub_2397C
+    ; End of function sub_2397C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get class special bits 3+4
+; Get combatant D0 base double attack mode from class -> D1
 
-GetClassDoubleAttack:
+GetBaseDoubleAttackMode:
 		
 		move.l  a0,-(sp)
-		jsr     j_GetClassFromForceID
+		jsr     j_GetClassForCombatant
 		bsr.w   GetClassEntryAddress
-		move.b  CLASS_OFFSET_SETTINGS(a0),d1
-		andi.w  #$C,d1
+		move.b  CLASSDEF_OFFSET_PROPERTIES(a0),d1
+		andi.w  #CLASS_PROPERTY_MASK_DOUBLE_ATTACK_MODE,d1
 		asr.w   #2,d1
 		movea.l (sp)+,a0
 		rts
 
-	; End of function GetClassDoubleAttack
+    ; End of function GetBaseDoubleAttackMode
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if flying
+; Check if combatant D0 has flying or hovering move type
 
-sub_239B2:
+IsFlyingOrHovering:
+		
 		movem.l d1/a0,-(sp)
-		jsr     j_GetClassFromForceID
+		jsr     j_GetClassForCombatant
 		bsr.w   GetClassEntryAddress
 		move.b  (a0),d1
-		cmpi.b  #6,d1
-		beq.s   loc_239CC
-		cmpi.b  #7,d1
-loc_239CC:
+		cmpi.b  #MOVE_TYPE_FLYING,d1
+		beq.s   @IsFlying
+		cmpi.b  #MOVE_TYPE_HOVERING,d1
+@IsFlying:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function sub_239B2
+    ; End of function IsFlyingOrHovering
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get portrait by force index
+; Get entity's portrait index for combatant D0 -> D1
 
-sub_239D2:
+GetPortraitForCombatant:
+		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.s   sub_239DE       
+		bsr.w   alt_GetEntity   
+		bsr.s   GetPortrait     
 		move.w  (sp)+,d0
 		rts
 
-	; End of function sub_239D2
+    ; End of function GetPortraitForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get portrait (checks for jogurt and promoted)
+; Get entity D0 portrait index -> D1 (check if changed into jogurt or promoted)
 
-sub_239DE:
+GetPortrait:
 		movem.l a0-a1,-(sp)
 		tst.b   d0
-		bge.s   loc_239F2
+		bge.s   @ForceMember
+		                
 		bsr.w   GetEnemyEntryAddress
-		move.b  $F(a1),d1
+		move.b  ENEMY_OFFSET_PORTRAIT(a1),d1
 		ext.w   d1
-		bra.s   loc_23A18
-loc_239F2:
-		cmpi.b  #$1E,d0
-		bne.s   loc_239FE
-		move.w  #$29,d1 
-		bra.s   loc_23A18
-loc_239FE:
-		bsr.w   IsChangedIntoJogurt
-		beq.s   loc_23A0A
-		move.w  #$1D,d1
-		bra.s   loc_23A18
-loc_23A0A:
+		bra.s   @Done
+@ForceMember:
+		cmpi.b  #NOVA,d0
+		bne.s   @CheckIfChangedIntoJogurt
+		move.w  #PORTRAIT_NOVA,d1
+		bra.s   @Done
+@CheckIfChangedIntoJogurt:
+		
+		bsr.w   IsEntityChangedIntoJogurt
+		beq.s   @CheckIfPromoted
+		move.w  #PORTRAIT_JOGURT,d1
+		bra.s   @Done
+@CheckIfPromoted:
+		
 		clr.w   d1
 		move.b  d0,d1
 		bsr.w   IsPromoted      
-		beq.s   loc_23A18
-		move.b  PromotedPortraits(pc,d1.w),d1
-loc_23A18:
+		beq.s   @Done
+		move.b  table_PromotedPortraits(pc,d1.w),d1
+@Done:
 		movem.l (sp)+,a0-a1
 		rts
 
-	; End of function sub_239DE
+    ; End of function GetPortrait
 
-PromotedPortraits:
-		incbin "data/stats/allies/promotedportraits.bin"
+table_PromotedPortraits:
+		; Portraits used by force members after they have been promoted
+		dc.b PORTRAIT_MAX_HERO
+		dc.b PORTRAIT_MAE
+		dc.b PORTRAIT_PELLE
+		dc.b PORTRAIT_KEN
+		dc.b PORTRAIT_VANKAR
+		dc.b PORTRAIT_EARNEST
+		dc.b PORTRAIT_ARTHUR
+		dc.b PORTRAIT_GORT
+		dc.b PORTRAIT_LUKE
+		dc.b PORTRAIT_GUNTZ
+		dc.b PORTRAIT_ANRI
+		dc.b PORTRAIT_ALEF
+		dc.b PORTRAIT_TAO
+		dc.b PORTRAIT_DOMINGO
+		dc.b PORTRAIT_LOWE
+		dc.b PORTRAIT_KHRIS
+		dc.b PORTRAIT_TORASU
+		dc.b PORTRAIT_GONG
+		dc.b PORTRAIT_DIANE
+		dc.b PORTRAIT_HANS
+		dc.b PORTRAIT_LYLE
+		dc.b PORTRAIT_AMON
+		dc.b PORTRAIT_BALBAROY
+		dc.b PORTRAIT_KOKICHI
+		dc.b PORTRAIT_BLEU_GRDR
+		dc.b PORTRAIT_ADAM_CYBG
+		dc.b PORTRAIT_ZYLO
+		dc.b PORTRAIT_MUSASHI
+		dc.b PORTRAIT_HANZOU
+		dc.b PORTRAIT_JOGURT
+		dc.b PORTRAIT_VARIOS
+		dc.b PORTRAIT_NONE
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get map sprite by force index
+; Get entity's map sprite index for combatant D0 -> D1
 
-GetMapSpriteFromForceID:
+GetMapSpriteForCombatant:
 		
 		move.w  d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.s   GetMapSprite    
+		bsr.w   alt_GetEntity   
+		bsr.s   GetMapsprite    
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetMapSpriteFromForceID
+    ; End of function GetMapSpriteForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get map sprite of battle member (D0), Checks Jogurt change, adds 30 if promoted
+; Get entity D0 map sprite index -> D1
+; 
+;     - Check if changed into Jogurt
+;     - Apply outfits if applicable
+;     - Add 30 to index if promoted
 
-GetMapSprite:
+GetMapsprite:
 		movem.l d0/a0-a1,-(sp)
 		cmpi.b  #$FF,d0
-		beq.s   loc_23A8E
+		beq.s   @Done
 		tst.b   d0
-		bge.s   loc_23A64
+		bge.s   @ForceMember
+		                
 		bsr.w   GetEnemyEntryAddress
 		clr.w   d1
-		move.b  ENEMY_OFFSET_MAP_SPRITE(a1),d1
-		bra.s   loc_23A8E
-loc_23A64:
-		cmpi.b  #FORCE_ID_NOVA,d0
-		bne.s   loc_23A70
-		move.w  #MAP_SPRITE_ID_NOVA,d1
-		bra.s   loc_23A8E
-loc_23A70:
-		bsr.w   IsChangedIntoJogurt
-		beq.s   loc_23A7C
-		move.w  #MAP_SPRITE_ID_JOGURT,d1
-		bra.s   loc_23A8E
-loc_23A7C:
-		bsr.s   ApplyOutfitToMapSprite
-		bcc.s   loc_23A8E
+		move.b  ENEMY_OFFSET_MAPSPRITE(a1),d1
+		bra.s   @Done
+@ForceMember:
+		cmpi.b  #NOVA,d0
+		bne.s   @isChangedIntoJogurt
+		move.w  #MAPSPRITE_NOVA,d1
+		bra.s   @Done
+@isChangedIntoJogurt:
+		
+		bsr.w   IsEntityChangedIntoJogurt
+		beq.s   @ApplyOutfits
+		move.w  #MAPSPRITE_JOGURT_1,d1
+		bra.s   @Done
+@ApplyOutfits:
+		
+		bsr.s   ApplyOutfitItems
+		bcc.s   @Done
 		clr.w   d1
 		move.b  d0,d1
 		bsr.w   IsPromoted      
-		beq.s   loc_23A8E
-		addi.w  #MAP_SPRITE_ID_MAX_HERO,d1
-loc_23A8E:
+		beq.s   @Done
+		addi.w  #PROMOTED_MAPSPRITES_START,d1
+@Done:
 		movem.l (sp)+,d0/a0-a1
 		rts
 
-	; End of function GetMapSprite
+    ; End of function GetMapsprite
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Apply outfits to map sprite
+; Apply outfit items -> D1 = new map sprite index
 
-ApplyOutfitToMapSprite:
+ApplyOutfitItems:
 		
 		movem.l d2-d5/a0-a1,-(sp)
-		lea     OutfitItems(pc), a1
-loc_23A9C:
+		lea     tbl_OutfitItems(pc), a1
+@FindForceMember:
+		
 		cmp.b   (a1)+,d0
-		bcs.s   loc_23AC4
-		beq.s   loc_23AA6
+		bcs.s   @Skip
+		beq.s   @Found
 		addq.l  #2,a1
-		bra.s   loc_23A9C
-loc_23AA6:
-		jsr     j_GetForceItemsAddress
-		moveq   #FORCE_ITEM_SLOTS_COUNTER,d1
-loc_23AAE:
+		bra.s   @FindForceMember
+@Found:
+		jsr     j_GetEntityItemsAddress
+		moveq   #ITEM_SLOTS_COUNTER,d1
+@Loop:
 		move.b  (a0)+,d2
-		andi.b  #ITEM_MASK_ID,d2
+		andi.b  #ITEMENTRY_MASK_INDEX,d2
 		cmp.b   (a1),d2
-		bne.s   loc_23AC0
+		bne.s   @NextItemSlot
 		clr.w   d1
 		move.b  1(a1),d1
-		bra.s   loc_23AC8
-loc_23AC0:
-		dbf     d1,loc_23AAE
-loc_23AC4:
+		bra.s   @Done
+@NextItemSlot:
+		
+		dbf     d1,@Loop
+@Skip:
 		ori     #1,ccr
-loc_23AC8:
+@Done:
 		movem.l (sp)+,d2-d5/a0-a1
 		rts
 
-	; End of function ApplyOutfitToMapSprite
+    ; End of function ApplyOutfitItems
 
-OutfitItems:    dc.b FORCE_ID_ANRI
-		dc.b ITEM_ID_KITUI_HUKU
-		dc.b MAP_SPRITE_ID_ANRI_OUTFIT
-		dc.b FORCE_ID_TAO
-		dc.b ITEM_ID_SUGOI_MIZUGI
-		dc.b MAP_SPRITE_ID_TAO_OUTFIT
+tbl_OutfitItems:; 3 bytes per entry, $FF terminated
+		dc.b ANRI
+		dc.b KITUI_HUKU
+		dc.b MAPSPRITE_ANRI_OUTFIT
+		dc.b TAO
+		dc.b SUGOI_MIZUGI
+		dc.b MAPSPRITE_TAO_OUTFIT
 		dc.b $FF
 		dc.b $FF
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23AD6:
-		bsr.w   sub_23B24       
-		bsr.w   sub_23B86
-		bsr.w   sub_23BEC
-		move.w  ((word_FFCBA6-$1000000)).w,d1
-		move.w  ((word_FFCBA8-$1000000)).w,d2
-		move.w  ((word_FFCBAA-$1000000)).w,d3
+GetBattleSpritePaletteAndAnimationIndexes:
+		
+		bsr.w   LoadBattlespriteAndPaletteIndexes
+		bsr.w   LoadWeaponSpriteIndex
+		bsr.w   LoadBattleAnimationIndex
+		move.w  ((BATTLESCENE_SPRITE_INDEX-$1000000)).w,d1
+		move.w  ((BATTLESCENE_PALETTE_INDEX-$1000000)).w,d2
+		move.w  ((BATTLESCENE_ANIMATION_INDEX-$1000000)).w,d3
 		rts
 
-	; End of function sub_23AD6
+    ; End of function GetBattleSpritePaletteAndAnimationIndexes
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23AF0:
-		bsr.s   sub_23B24       
-		bsr.w   sub_23B86
-		bsr.w   sub_23BEC
-		move.w  ((word_FFCBAA-$1000000)).w,d3
+LoadBattlespriteDataWithWeapon:
+		
+		bsr.s   LoadBattlespriteAndPaletteIndexes
+		bsr.w   LoadWeaponSpriteIndex
+		bsr.w   LoadBattleAnimationIndex
+		move.w  ((BATTLESCENE_ANIMATION_INDEX-$1000000)).w,d3
 		rts
 
-	; End of function sub_23AF0
+    ; End of function LoadBattlespriteDataWithWeapon
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23B00:
-		bsr.s   sub_23B24       
-		move.w  #$81,((word_FFCBB0-$1000000)).w 
-		bsr.w   sub_23BEC
-		move.w  ((word_FFCBAA-$1000000)).w,d3
+LoadBattlespriteDataWithoutWeapon:
+		
+		bsr.s   LoadBattlespriteAndPaletteIndexes
+		move.w  #129,((WEAPON_SPRITE_INDEX-$1000000)).w
+		bsr.w   LoadBattleAnimationIndex
+		move.w  ((BATTLESCENE_ANIMATION_INDEX-$1000000)).w,d3
 		rts
 
-	; End of function sub_23B00
+    ; End of function LoadBattlespriteDataWithoutWeapon
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_23B12:
-		bsr.s   sub_23B24       
-		move.w  #$82,((word_FFCBB0-$1000000)).w 
-		bsr.w   sub_23BEC
-		move.w  ((word_FFCBAA-$1000000)).w,d3
+		bsr.s   LoadBattlespriteAndPaletteIndexes
+		move.w  #130,((WEAPON_SPRITE_INDEX-$1000000)).w
+		bsr.w   LoadBattleAnimationIndex
+		move.w  ((BATTLESCENE_ANIMATION_INDEX-$1000000)).w,d3
 		rts
 
-	; End of function sub_23B12
+    ; End of function sub_23B12
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load battle sprite and palette IDs in RAM
+; Load battle sprite and palette indexes in RAM
 
-sub_23B24:
+LoadBattlespriteAndPaletteIndexes:
+		
 		movem.l d0-d2/a0-a1,-(sp)
-		moveq   #$FFFFFFFF,d1
-		move.w  d1,((word_FFCBA6-$1000000)).w
-		move.w  d1,((word_FFCBA8-$1000000)).w
-		bsr.w   GetForceMemberID
-		cmpi.b  #$FF,d0
-		beq.s   loc_23B80
+		moveq   #-1,d1
+		move.w  d1,((BATTLESCENE_SPRITE_INDEX-$1000000)).w
+		move.w  d1,((BATTLESCENE_PALETTE_INDEX-$1000000)).w
+		bsr.w   alt_GetEntity   
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d0
+		beq.s   @Skip           ; skip if combatant entry is unpopulated
 		clr.w   d1
 		clr.w   d2
 		tst.b   d0
-		bge.s   loc_23B52
+		bge.s   @ForceMember
+		                
 		bsr.w   GetEnemyEntryAddress
-		lea     ENEMY_OFFSET_BATTLE_SPRITE(a1),a0
-		move.b  (a0)+,d1
-		move.b  (a0),d2
-		bra.s   loc_23B78
-loc_23B52:
-		bsr.w   IsChangedIntoJogurt
-		beq.s   loc_23B60
-		move.w  #BATTLE_SPRITE_ID_JOGURT,d1
+		lea     ENEMY_OFFSET_BATTLESPRITE(a1),a0
+		move.b  (a0)+,d1        ; D1 = battle sprite index
+		move.b  (a0),d2         ; D2 = battle sprite palette index
+		bra.s   @Load
+@ForceMember:
+		bsr.w   IsEntityChangedIntoJogurt
+		beq.s   @GetBattlespriteData
+		move.w  #BATTLESPRITE_JOGURT,d1
 		clr.w   d2
-		bra.s   loc_23B78
-loc_23B60:
+		bra.s   @Load
+@GetBattlespriteData:
+		
 		movea.l (p_BattleSpriteData).l,a0
 		adda.w  d0,a0
 		adda.w  d0,a0
 		move.b  (a0)+,d1
 		move.b  (a0),d2
 		bsr.w   IsPromoted      
-		beq.s   loc_23B78
-		addi.w  #BATTLE_SPRITE_ID_MAX_HERO,d1
-loc_23B78:
-		move.w  d1,((word_FFCBA6-$1000000)).w
-		move.w  d2,((word_FFCBA8-$1000000)).w
-loc_23B80:
+		beq.s   @Load
+		addi.w  #PROMOTED_BATTLESPRITES_START,d1
+@Load:
+		move.w  d1,((BATTLESCENE_SPRITE_INDEX-$1000000)).w
+		move.w  d2,((BATTLESCENE_PALETTE_INDEX-$1000000)).w
+@Skip:
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
 
-	; End of function sub_23B24
+    ; End of function LoadBattlespriteAndPaletteIndexes
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23B86:
+LoadWeaponSpriteIndex:
+		
 		movem.l d1-d3/a0,-(sp)
-		move.w  #$FFFF,((word_FFCBAE-$1000000)).w
-		move.w  #$80,((word_FFCBB0-$1000000)).w 
-		bsr.w   sub_23C5C
-		bne.s   loc_23BE6
-		bsr.w   sub_23C2E
+		move.w  #$FFFF,((EQUIPPED_WEAPON_INDEX-$1000000)).w
+		move.w  #128,((WEAPON_SPRITE_INDEX-$1000000)).w
+		bsr.w   IsCombatantChangedIntoJogurt
+		bne.s   @Skip           ; skip if changed into Jogurt
+		bsr.w   GetAnimationDataAddress
 		move.b  (a0),d1
-		beq.s   loc_23BB0
-		cmp.b   ((byte_FFCBB2-$1000000)).w,d1
-		bne.s   loc_23BB0
-		move.w  #$82,((word_FFCBB0-$1000000)).w 
-loc_23BB0:
+		beq.s   @Continue
+		cmp.b   ((BATTLE_ANIMATION_TYPE-$1000000)).w,d1
+		bne.s   @Continue
+		move.w  #130,((WEAPON_SPRITE_INDEX-$1000000)).w
+@Continue:
 		bsr.w   IsEnemy         
-		blt.s   loc_23BE6
-		move.w  #$100,d1
-		jsr     j_GetEquippedItemFromForceID
-		bcs.s   loc_23BE6
+		blt.s   @Skip           ; skip if enemy
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		jsr     j_GetEquippedItemForCombatant
+		bcs.s   @Skip           ; skip if no equipped item found
 		movea.l (p_WeaponSpriteData).l,a0
-		andi.w  #$3F,d2 
-		move.w  d2,((word_FFCBAE-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d2
+		move.w  d2,((EQUIPPED_WEAPON_INDEX-$1000000)).w
 		sub.b   (a0)+,d2
-		bcs.s   loc_23BE6
+		bcs.s   @Skip
 		clr.w   d1
 		move.b  (a0,d2.w),d1
-		cmpi.w  #$80,((word_FFCBB0-$1000000)).w 
-		bne.s   loc_23BE6
-		move.w  d1,((word_FFCBB0-$1000000)).w
-loc_23BE6:
+		cmpi.w  #128,((WEAPON_SPRITE_INDEX-$1000000)).w
+		bne.s   @Skip
+		move.w  d1,((WEAPON_SPRITE_INDEX-$1000000)).w
+@Skip:
 		movem.l (sp)+,d1-d3/a0
 		rts
 
-	; End of function sub_23B86
+    ; End of function LoadWeaponSpriteIndex
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23BEC:
+LoadBattleAnimationIndex:
+		
 		movem.l d1-d2/a0,-(sp)
 		move.w  #$FFFF,d1
-		move.w  d1,((word_FFCBAA-$1000000)).w
+		move.w  d1,((BATTLESCENE_ANIMATION_INDEX-$1000000)).w
 		move.w  d1,((word_FFCBAC-$1000000)).w
-		bsr.s   sub_23C2E
+		bsr.s   GetAnimationDataAddress
 		addq.l  #1,a0
-		move.w  ((word_FFCBB0-$1000000)).w,d2
-loc_23C04:
+		move.w  ((WEAPON_SPRITE_INDEX-$1000000)).w,d2
+FindWeaponSprite_Loop:
+		
 		move.b  (a0)+,d1
 		cmpi.b  #$FF,d1
-		beq.s   loc_23C28
+		beq.s   @End            ; reached end of table
 		cmp.b   d2,d1
-		beq.s   loc_23C18
+		beq.s   @Found
 		adda.l  #2,a0
-		bra.s   loc_23C04
-loc_23C18:
+		bra.s   FindWeaponSprite_Loop
+@Found:
 		move.b  (a0)+,d1
 		ext.w   d1
-		move.w  d1,((word_FFCBAA-$1000000)).w
+		move.w  d1,((BATTLESCENE_ANIMATION_INDEX-$1000000)).w
 		move.b  (a0),d1
 		ext.w   d1
 		move.w  d1,((word_FFCBAC-$1000000)).w
-loc_23C28:
+@End:
 		movem.l (sp)+,d1-d2/a0
 		rts
 
-	; End of function sub_23BEC
+    ; End of function LoadBattleAnimationIndex
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23C2E:
+; Get address of animation data for battle sprite -> A0
+
+GetAnimationDataAddress:
+		
 		movem.w d1-d2,-(sp)
-		move.w  ((word_FFCBA6-$1000000)).w,d2
+		move.w  ((BATTLESCENE_SPRITE_INDEX-$1000000)).w,d2
 		add.w   d2,d2
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
-		bge.s   loc_23C4A
+		bge.s   @ForceMember
+		                
 		movea.l (p_EnemyAnimationData).l,a0
-		bra.s   loc_23C50
-loc_23C4A:
+		bra.s   @Continue
+@ForceMember:
 		movea.l (p_ForceAnimationData).l,a0
-loc_23C50:
+@Continue:
 		move.w  (a0,d2.w),d2
 		adda.w  d2,a0
 		movem.w (sp)+,d1-d2
 		rts
 
-	; End of function sub_23C2E
+    ; End of function GetAnimationDataAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_23C5C:
+; Check if combatant D0 is under Jogurt status effect -> CCR zero-bit cleared if true
+
+IsCombatantChangedIntoJogurt:
+		
 		movem.l d0,-(sp)
-		bsr.w   GetForceMemberID
-		bsr.s   IsChangedIntoJogurt
+		bsr.w   alt_GetEntity   
+		bsr.s   IsEntityChangedIntoJogurt
 		movem.l (sp)+,d0
 		rts
 
-	; End of function sub_23C5C
+    ; End of function IsCombatantChangedIntoJogurt
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if character D0 is under Jogurt status effect
+; Check if entity D0 is under Jogurt status effect -> CCR zero-bit cleared if true
 
-IsChangedIntoJogurt:
+IsEntityChangedIntoJogurt:
 		
 		movem.l d1,-(sp)
 		tst.b   d0
-		blt.s   loc_23C80
-		jsr     j_GetForceMemberStatus
-		btst    #FORCE_STATUS_FLAG_JOGURT,d1
-		bra.s   loc_23C82
-loc_23C80:
+		blt.s   @Enemy
+		jsr     j_GetStatusEffects
+		btst    #STATUSEFFECT_BIT_JOGURT,d1
+		bra.s   @Done
+@Enemy:
 		clr.w   d1
-loc_23C82:
+@Done:
 		movem.l (sp)+,d1
 		rts
 
-	; End of function IsChangedIntoJogurt
+    ; End of function IsEntityChangedIntoJogurt
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_23C88:
 		movem.l d7-a2,-(sp)
-		bsr.w   sub_23F6E       
-		bcc.s   loc_23C96
-		bsr.w   sub_2414C
-loc_23C96:
-		lea     ((byte_FFB51A-$1000000)).w,a1
+		bsr.w   DetermineAiAction
+		bcc.s   @Continue       ; continue if not regular attack
+		bsr.w   LoadRegularAttackData
+@Continue:
+		lea     ((CASTER_INDEX-$1000000)).w,a1
 		move.b  d0,(a1)+
 		bsr.w   sub_2425C       
 		bsr.w   sub_24292
@@ -10234,17 +10822,23 @@ loc_23C96:
 		movem.l (sp)+,d7-a2
 		rts
 
-	; End of function sub_23C88
+    ; End of function sub_23C88
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_23CB6:
-		bra.w   loc_23CC6
-		bra.w   loc_23CDA
-		bra.w   loc_23D1A
-		bra.w   loc_23D32
-loc_23CC6:
+		bra.w   sub_23CC6
+		bra.w   sub_23CDA
+		bra.w   sub_23D1A
+		bra.w   sub_23D32
+
+    ; End of function sub_23CB6
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_23CC6:
 		move.w  d1,-(sp)
 		moveq   #$FFFFFFFF,d1
 		move.b  d1,((byte_FFCB28-$1000000)).w
@@ -10253,12 +10847,12 @@ loc_23CC6:
 		move.w  (sp)+,d1
 		rts
 
-	; End of function sub_23CB6
+    ; End of function sub_23CC6
 
 
-; START OF FUNCTION CHUNK FOR sub_23CB6
+; =============== S U B R O U T I N E =======================================
 
-loc_23CDA:
+sub_23CDA:
 		movem.l d0-d4/d7-a0,-(sp)
 		moveq   #$FFFFFFFF,d1
 		bsr.w   sub_24306
@@ -10272,18 +10866,24 @@ loc_23CDA:
 loc_23CF6:
 		bsr.w   sub_23EFA
 		bne.s   loc_23D0C
-		bsr.w   sub_2414C
+		bsr.w   LoadRegularAttackData
 		bsr.w   sub_23EFA
 		bne.s   loc_23D0C
 		move.b  #3,(a1)
-		bra.s   locret_23D18
+		bra.s   return_23D18
 loc_23D0C:
-		move.b  ((byte_FFCB3F-$1000000)).w,(a1)+
-		move.b  ((ITEM_OR_SPELL_TO_USE-$1000000)).w,(a1)+
+		move.b  ((CURRENT_BATTLEACTION_TYPE-$1000000)).w,(a1)+
+		move.b  ((CURRENT_ITEM_OR_SPELL-$1000000)).w,(a1)+
 		move.b  ((byte_FFA947-$1000000)).w,(a1)
-locret_23D18:
+return_23D18:
 		rts
-loc_23D1A:
+
+    ; End of function sub_23CDA
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_23D1A:
 		movem.l d1/d7-a0,-(sp)
 		moveq   #$FFFFFFFF,d1
 		bsr.w   sub_24306
@@ -10292,13 +10892,19 @@ loc_23D1A:
 		bsr.w   sub_241A2
 		movem.l (sp)+,d1/d7-a0
 		bra.s   loc_23CF6
-loc_23D32:
+
+    ; End of function sub_23D1A
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_23D32:
 		movem.l d1-d4/a0,-(sp)
 		clr.w   d1
 		move.b  (a0),d1
 		adda.w  d1,a0
 		st      ((byte_FFCB28-$1000000)).w
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		move.w  d2,((word_FFCB38-$1000000)).w
 		move.w  d1,((word_FFCB3A-$1000000)).w
 		bsr.w   sub_242EC
@@ -10314,7 +10920,7 @@ loc_23D5A:
 		bne.s   loc_23D82
 		cmpi.b  #$FF,d1
 		bne.s   loc_23D7A
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		bra.s   loc_23D82
 loc_23D7A:
 		ext.w   d1
@@ -10334,7 +10940,7 @@ loc_23D94:
 		movem.l (sp)+,d1-d4/a0
 		bra.w   loc_23CF6
 
-; END OF FUNCTION CHUNK FOR sub_23CB6
+    ; End of function sub_23D32
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10342,7 +10948,7 @@ loc_23D94:
 sub_23D9C:
 		movem.l d3-d6,-(sp)
 		move.w  d3,d4
-		bsr.w   GetDistanceToTarget
+		bsr.w   CalculateDistanceToTarget
 		cmp.w   d4,d7
 		bge.s   loc_23DAE
 		bsr.w   sub_23E9A
@@ -10351,7 +10957,7 @@ loc_23DAE:
 		clr.w   d3
 		bsr.s   sub_23DDE
 		beq.w   loc_23DD8
-		bsr.w   GetDistanceToTarget
+		bsr.w   CalculateDistanceToTarget
 		move.w  d7,d3
 		asr.w   #1,d3
 		bsr.s   sub_23DDE
@@ -10367,7 +10973,7 @@ loc_23DD8:
 		movem.l (sp)+,d3-d6
 		rts
 
-	; End of function sub_23D9C
+    ; End of function sub_23D9C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10382,7 +10988,7 @@ loc_23DE8:
 		cmp.w   d6,d4
 		rts
 
-	; End of function sub_23DDE
+    ; End of function sub_23DDE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10390,18 +10996,18 @@ loc_23DE8:
 sub_23DEC:
 		movem.l d0-d6/a0-a2,-(sp)
 		move.w  d4,((word_FFCB3C-$1000000)).w
-		bsr.w   sub_208DE       
+		bsr.w   CreateTotalMoveCosts
 		bsr.w   sub_20868       
 		move.w  d2,d6
 		move.w  d1,d5
-		jsr     j_GetTargetMOVE
+		jsr     j_GetModifiedMove
 		move.w  d1,d3
 		moveq   #1,d4
-		bsr.w   sub_20584       
-		bsr.w   sub_205AC       
+		bsr.w   SetupEffectiveMoveCosts
+		bsr.w   MakeEffectivePassabilityFlags
 		lea     ((byte_FFCB28-$1000000)).w,a0
-		lea     ((byte_FFA4C0-$1000000)).w,a1
-		jsr     j_GetTargetPosition
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a1
+		jsr     j_GetCombatantPosition
 		move.w  ((MAP_WIDTH-$1000000)).w,d3
 		mulu.w  d3,d1
 		add.w   d2,d1
@@ -10449,7 +11055,7 @@ loc_23E7A:
 		movem.l (sp)+,d0-d6/a0-a2
 		rts
 
-	; End of function sub_23DEC
+    ; End of function sub_23DEC
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10461,7 +11067,7 @@ sub_23E8E:
 		bsr.w   CalculateDistance
 		rts
 
-	; End of function sub_23E8E
+    ; End of function sub_23E8E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10470,10 +11076,10 @@ sub_23E9A:
 		movem.l d3/d5-d6/a0-a1,-(sp)
 		move.w  d1,d5
 		move.w  d2,d6
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		jsr     j_GetMoveCostEntryAddress
-		bsr.w   sub_20506       
-		lea     ((byte_FFC200-$1000000)).w,a1
+		bsr.w   LoadMoveCosts   
+		lea     ((MOVE_COSTS-$1000000)).w,a1
 		move.w  ((MAP_WIDTH-$1000000)).w,d4
 		addq.w  #1,d2
 		bsr.s   sub_23EE2
@@ -10497,344 +11103,377 @@ loc_23EDC:
 		movem.l (sp)+,d3/d5-d6/a0-a1
 		rts
 
-	; End of function sub_23E9A
+    ; End of function sub_23E9A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_23EE2:
-		bsr.w   FindTargetAtPosition
-		bcs.s   locret_23EF8
+		bsr.w   IsSpaceOccupied 
+		bcs.s   @Return
 		move.w  d1,d3
 		mulu.w  d4,d3
 		add.w   d2,d3
 		tst.b   (a1,d3.w)
-		bge.s   locret_23EF8
+		bge.s   @Return
 		ori     #1,ccr
-locret_23EF8:
+@Return:
 		rts
 
-	; End of function sub_23EE2
+    ; End of function sub_23EE2
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_23EFA:
 		movem.l d1-d2/a3,-(sp)
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		movem.w d1-d2,-(sp)
 		move.w  ((word_FFCB38-$1000000)).w,d2
 		move.w  ((word_FFCB3A-$1000000)).w,d1
-		jsr     j_SetTargetPosition
-		move.b  ((byte_FFCB3F-$1000000)).w,d1
-		cmpi.b  #1,d1
+		jsr     j_SetCombatantPosition
+		move.b  ((CURRENT_BATTLEACTION_TYPE-$1000000)).w,d1
+		cmpi.b  #BATTLE_ACTION_TYPE_CAST_SPELL,d1
 		bne.s   loc_23F30
-		move.b  ((ITEM_OR_SPELL_TO_USE-$1000000)).w,d1
-		jsr     sub_202C8
-		movea.l ((PRIORITY_ROUTINE_POINTER-$1000000)).w,a3
+		move.b  ((CURRENT_ITEM_OR_SPELL-$1000000)).w,d1
+		jsr     j_FindTargetableSpacesForSpell
+		movea.l ((PRIORITY_ROUTINE_ADDRESS-$1000000)).w,a3
 		bra.s   loc_23F50
 loc_23F30:
-		cmpi.b  #2,d1
+		cmpi.b  #BATTLE_ACTION_TYPE_USE_ITEM,d1
 		bne.s   loc_23F46
-		move.b  ((ITEM_OR_SPELL_TO_USE-$1000000)).w,d1
+		move.b  ((CURRENT_ITEM_OR_SPELL-$1000000)).w,d1
 		jsr     j_UseItem
-		movea.l ((PRIORITY_ROUTINE_POINTER-$1000000)).w,a3
+		movea.l ((PRIORITY_ROUTINE_ADDRESS-$1000000)).w,a3
 		bra.s   loc_23F50
 loc_23F46:
-		jsr     sub_202BC
-		lea     sub_24378(pc), a3
+		jsr     j_FindTargetableSpacesForAttack
+		lea     priority_ClassDistanceHealth(pc), a3
 loc_23F50:
-		bsr.w   sub_24324
+		bsr.w   sub_24324       
 		bcc.s   loc_23F5A
-		clr.w   ((word_FFA8C0-$1000000)).w
+		clr.w   ((TABLE_AT_FFA8C0-$1000000)).w
 loc_23F5A:
 		movem.w (sp)+,d1-d2
-		jsr     j_SetTargetPosition
-		tst.w   ((word_FFA8C0-$1000000)).w
+		jsr     j_SetCombatantPosition
+		tst.w   ((TABLE_AT_FFA8C0-$1000000)).w
 		movem.l (sp)+,d1-d2/a3
 		rts
 
-	; End of function sub_23EFA
+    ; End of function sub_23EFA
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check action type
+; Determine AI action -> CCR carry-bit set if regular attack
 
-sub_23F6E:
+DetermineAiAction:
+		
 		movem.l d1-d2/d7-a0,-(sp)
-		jsr     j_GetClassFromForceID
+		jsr     j_GetClassForCombatant
 		bsr.w   GetClassEntryAddress
-		move.b  CLASS_OFFSET_SETTINGS(a0),d2
-		andi.w  #CLASS_MASK_AI_ACTION_CHANCE,d2
+		move.b  CLASSDEF_OFFSET_PROPERTIES(a0),d2
+		andi.w  #CLASS_PROPERTY_MASK_AI_ACTION_CHANCE,d2
 		asr.w   #4,d2
-		move.b  AIActionPercents(pc,d2.w),d2
-		bsr.w   UpdateRandomSeed0To100
+		move.b  tbl_AiActionPercents(pc,d2.w),d2
+		bsr.w   GenerateRandomNumber0To99
 		cmp.b   d2,d7
-		bcc.s   loc_23FFC
-		move.b  CLASS_OFFSET_ACTION_TYPE(a0),d2
-		cmpi.b  #$FF,d2
-		beq.s   loc_23FFC
-		cmpi.b  #CLASS_AI_ACTION_CAST_SPELL,d2
-		bne.s   loc_23FA8
-		bsr.w   sub_2401C       
-		bra.s   loc_23FF6
-loc_23FA8:
-		cmpi.b  #CLASS_AI_ACTION_USE_ITEM_0,d2
-		bne.s   loc_23FB6
-		clr.w   d2
-		bsr.w   sub_240E8       
-		bra.s   loc_23FF6
-loc_23FB6:
-		cmpi.b  #CLASS_AI_ACTION_USE_ITEM_1,d2
-		bne.s   loc_23FC4
-		moveq   #1,d2
-		bsr.w   sub_240E8       
-		bra.s   loc_23FF6
-loc_23FC4:
-		cmpi.b  #CLASS_AI_ACTION_DARK_DRAGON,d2
-		bne.s   loc_23FD0
-		bsr.w   sub_240BC       
-		bra.s   loc_23FF6
-loc_23FD0:
-		move.b  #1,((byte_FFCB3E-$1000000)).w
-		move.b  #2,((byte_FFCBB2-$1000000)).w
+		bcc.s   @RegularAttack
+		move.b  CLASSDEF_OFFSET_AI_ACTION(a0),d2
+		cmpi.b  #AI_ACTION_REGULAR_ATTACK,d2
+		beq.s   @RegularAttack
+		                
+		cmpi.b  #AI_ACTION_CAST_SPELL,d2
+		bne.s   @CheckUseItemSlot0
+		bsr.w   AiAction_CastSpell
+		bra.s   @Done
+@CheckUseItemSlot0:
+		
+		cmpi.b  #AI_ACTION_USE_ITEM_SLOT_0,d2
+		bne.s   @CheckUseItemSlot1
+		clr.w   d2              ; use item in slot 0
+		bsr.w   AiAction_UseItem
+		bra.s   @Done
+@CheckUseItemSlot1:
+		
+		cmpi.b  #AI_ACTION_USE_ITEM_SLOT_1,d2
+		bne.s   @CheckDarkDragon
+		moveq   #1,d2           ; use item in slot 1
+		bsr.w   AiAction_UseItem
+		bra.s   @Done
+@CheckDarkDragon:
+		
+		cmpi.b  #AI_ACTION_DARK_DRAGON,d2
+		bne.s   @SpecialAttack
+		bsr.w   AiAction_DarkDragon
+		bra.s   @Done
+@SpecialAttack:
+		
+		move.b  #1,((CURRENT_ATTACK_TYPE-$1000000)).w
+		move.b  #2,((BATTLE_ANIMATION_TYPE-$1000000)).w
 		ext.w   d2
 		add.w   d2,d2
-		lea     SpecialAttackData(pc,d2.w),a0
-		move.b  (a0)+,d4
-		move.b  d4,((RANGE_TO_USE-$1000000)).w
-		bsr.w   sub_24170       
-		move.b  (a0),((EFFECT_TO_USE-$1000000)).w
-		clr.b   ((byte_FFCB3F-$1000000)).w
-loc_23FF6:
+		lea     tbl_SpecialAiActionDefs(pc,d2.w),a0
+		move.b  (a0)+,d4        ; D4 = range index
+		move.b  d4,((CURRENT_RANGE-$1000000)).w
+		bsr.w   LoadRangeData   
+		move.b  (a0),((CURRENT_EFFECT-$1000000)).w
+		clr.b   ((CURRENT_BATTLEACTION_TYPE-$1000000)).w
+@Done:
 		movem.l (sp)+,d1-d2/d7-a0
 		rts
-loc_23FFC:
+@RegularAttack:
+		
 		ori     #1,ccr
-		bra.s   loc_23FF6
+		bra.s   @Done
 
-	; End of function sub_23F6E
+    ; End of function DetermineAiAction
 
-AIActionPercents:
+tbl_AiActionPercents:
 		dc.b 100
 		dc.b 25
 		dc.b 50
 		dc.b 75
-SpecialAttackData:
-		dc.b $35
-		dc.b 4
-		dc.b $35
-		dc.b 5
-		dc.b $35
-		dc.b 6
-		dc.b $35
-		dc.b 7
-		dc.b $35
-		dc.b 8
-		dc.b $35
-		dc.b 9
-		dc.b $35
-		dc.b $A
-		dc.b $37
-		dc.b $B
-		dc.b $13
-		dc.b $C
-		dc.b $38
-		dc.b $D
-		dc.b $39
-		dc.b $3A
+                
+tbl_SpecialAiActionDefs:
+		; Special AI action definitions table -- 2 bytes per entry : 
+		dc.b RANGE_BREATH
+		dc.b EFFECT_FIRE_BREATH_1
+		dc.b RANGE_BREATH
+		dc.b EFFECT_FIRE_BREATH_2
+		dc.b RANGE_BREATH
+		dc.b EFFECT_FIRE_BREATH_3
+		dc.b RANGE_BREATH
+		dc.b EFFECT_ICE_BREATH_1
+		dc.b RANGE_BREATH
+		dc.b EFFECT_ICE_BREATH_2
+		dc.b RANGE_BREATH
+		dc.b EFFECT_ICE_BREATH_3
+		dc.b RANGE_BREATH
+		dc.b EFFECT_ELECTRIC_BREATH
+		dc.b RANGE_MACHINE_GUN
+		dc.b EFFECT_MACHINE_GUN
+		dc.b RANGE_SPEAR_AND_LASER
+		dc.b EFFECT_LASER
+		dc.b RANGE_DEMON_BLAZE_1
+		dc.b EFFECT_DEMON_BLAZE_1
+		dc.b RANGE_DEMON_BLAZE_2
+		dc.b EFFECT_DEMON_BLAZE_2
 
 ; =============== S U B R O U T I N E =======================================
 
-; Cast spell AI
+; Cast spell AI -> CCR carry-bit set if unable to proceed
 
-sub_2401C:
+AiAction_CastSpell:
+		
 		movem.l d1-d4/a0-a1,-(sp)
-		jsr     j_GetForceSpellsFromForceID
-		cmpi.b  #$FF,(a0)
-		beq.w   loc_2405C
-		jsr     j_GetMPFromForceID
+		jsr     j_GetEntitySpellsAddressForCombatant
+		cmpi.b  #EMPTY_SPELL_SLOT,(a0)
+		beq.w   @RegularAttack  ; skip if spell slot is empty
+		jsr     j_GetCurrentMpForCombatant
 		move.w  d1,d3           ; D3 = caster's current MP
 		move.b  (a0),d1         ; D1 = spell index
 		move.b  d1,d4
-		andi.w  #SPELL_MASK_LEVEL,d4
+		andi.w  #SPELLENTRY_MASK_LEVEL,d4
 		asr.w   #6,d4           ; D4 = spell level counter
-loc_24040:
+@Loop:
 		jsr     j_GetMPCost
 		cmp.w   d2,d3
-		bge.s   loc_24054
+		bge.s   @Break          ; break out of loop if current MP is sufficient to cast spell at level being currently evaluated
 		subi.b  #$40,d1 ; get previous level spell index
-		dbf     d4,loc_24040
-		bra.s   loc_2405C
-loc_24054:
-		bsr.s   sub_24062       
-loc_24056:
+		dbf     d4,@Loop
+                
+		bra.s   @RegularAttack  ; fall back to regular attack if unable to cast
+@Break:
+		bsr.s   LoadAiSpellcastData
+@Done:
 		movem.l (sp)+,d1-d4/a0-a1
 		rts
-loc_2405C:
+@RegularAttack:
+		
 		ori     #1,ccr
-		bra.s   loc_24056
+		bra.s   @Done
 
-	; End of function sub_2401C
+    ; End of function AiAction_CastSpell
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Caster AI : prepare to cast spell D1
 
-sub_24062:
+LoadAiSpellcastData:
+		
 		movem.l d1/d4/a0-a1,-(sp)
 		bsr.w   GetSpellEntryAddress
 		move.b  (a1),d4
-		move.b  d4,((RANGE_TO_USE-$1000000)).w
-		bsr.w   sub_24170       
-		move.b  SPELL_OFFSET_EFFECT(a1),((EFFECT_TO_USE-$1000000)).w
-		move.b  #1,((byte_FFCB3F-$1000000)).w
-		move.b  d1,((ITEM_OR_SPELL_TO_USE-$1000000)).w
-		andi.w  #SPELL_MASK_ID,d1
+		move.b  d4,((CURRENT_RANGE-$1000000)).w
+		bsr.w   LoadRangeData   
+		move.b  SPELL_OFFSET_EFFECT(a1),((CURRENT_EFFECT-$1000000)).w
+		move.b  #1,((CURRENT_BATTLEACTION_TYPE-$1000000)).w
+		move.b  d1,((CURRENT_ITEM_OR_SPELL-$1000000)).w
+		andi.w  #SPELLENTRY_MASK_INDEX,d1
 		add.w   d1,d1
-		lea     PriorityRoutineOffsets(pc,d1.w),a0
+		lea     rp_PriorityRoutine_Heal(pc,d1.w),a0
 		move.w  (a0),d1
 		adda.w  d1,a0
-		move.l  a0,((PRIORITY_ROUTINE_POINTER-$1000000)).w
+		move.l  a0,((PRIORITY_ROUTINE_ADDRESS-$1000000)).w
 		movem.l (sp)+,d1/d4/a0-a1
 		rts
 
-	; End of function sub_24062
+    ; End of function LoadAiSpellcastData
 
-PriorityRoutineOffsets:
-		dc.w $47A
-		dc.w $478
-		dc.w $476
-		dc.w $49C
-		dc.w $4AC
-		dc.w $49E
-		dc.w $4AE
-		dc.w $4A0
-		dc.w $4B0
-		dc.w $2CA
-		dc.w $2C8
-		dc.w $2C6
-		dc.w $2C4
-		dc.w $460
-		dc.w $45E
-		dc.w $2BE
+rp_PriorityRoutine_Heal:
+		dc.w PriorityRoutine_LowHealth-rp_PriorityRoutine_Heal
+rp_PriorityRoutine_Aura:
+		dc.w PriorityRoutine_LowHealth-rp_PriorityRoutine_Aura
+rp_PriorityRoutine_Detox:
+		dc.w PriorityRoutine_LowHealth-rp_PriorityRoutine_Detox
+rp_PriorityRoutine_Quick:
+		dc.w PriorityRoutine_NotQuickened-rp_PriorityRoutine_Quick
+rp_PriorityRoutine_Slow:
+		dc.w PriorityRoutine_NotSlowed-rp_PriorityRoutine_Slow
+rp_PriorityRoutine_Boost:
+		dc.w PriorityRoutine_NotBoosted-rp_PriorityRoutine_Boost
+rp_PriorityRoutine_Dispel:
+		dc.w PriorityRoutine_NotDispelled-rp_PriorityRoutine_Dispel
+rp_PriorityRoutine_Shield:
+		dc.w PriorityRoutine_NotShielded-rp_PriorityRoutine_Shield
+rp_PriorityRoutine_Muddle:
+		dc.w PriorityRoutine_NotMuddled-rp_PriorityRoutine_Muddle
+rp_PriorityRoutine_Blaze:
+		dc.w priority_ClassDistanceHealth-rp_PriorityRoutine_Blaze
+rp_PriorityRoutine_Freeze:
+		dc.w priority_ClassDistanceHealth-rp_PriorityRoutine_Freeze
+rp_PriorityRoutine_Bolt:
+		dc.w priority_ClassDistanceHealth-rp_PriorityRoutine_Bolt
+rp_PriorityRoutine_Desoul:
+		dc.w priority_ClassDistanceHealth-rp_PriorityRoutine_Desoul
+rp_PriorityRoutine_Egress:
+		dc.w PriorityRoutine_LowHealth-rp_PriorityRoutine_Egress
+rp_PriorityRoutine_dummy:
+		dc.w PriorityRoutine_LowHealth-rp_PriorityRoutine_dummy
+rp_PriorityRoutine_Sleep:
+		dc.w priority_ClassDistanceHealth-rp_PriorityRoutine_Sleep
 
 ; =============== S U B R O U T I N E =======================================
 
-; Dark Dragon AI
-
-sub_240BC:
+AiAction_DarkDragon:
+		
 		movem.l d1/d7-a0,-(sp)
-		bsr.w   UpdateRandomSeed0To100
-		lea     DarkDragonAIData(pc), a0
-loc_240C8:
+		bsr.w   GenerateRandomNumber0To99
+		lea     tbl_DarkDragonSpells(pc), a0
+@Loop:
 		sub.b   (a0)+,d7
-		bcs.s   loc_240D0
+		bcs.s   @Break
 		addq.l  #1,a0
-		bra.s   loc_240C8
-loc_240D0:
+		bra.s   @Loop
+@Break:
 		move.b  (a0),d1
-		bsr.w   sub_24062       
+		bsr.w   LoadAiSpellcastData
 		movem.l (sp)+,d1/d7-a0
 		rts
 
-	; End of function sub_240BC
+    ; End of function AiAction_DarkDragon
 
-DarkDragonAIData:
-		dc.b $19
-		dc.b SPELL_ID_BLAZE_3
+tbl_DarkDragonSpells:
+		; Spells available to Dark Dragon's side heads, 2 bytes per entry : 
 		dc.b 25
-		dc.b SPELL_ID_BOLT_2
+		dc.b SPELL_BLAZE|LV_3
 		dc.b 25
-		dc.b SPELL_ID_FREEZE_2
+		dc.b SPELL_BOLT|LV_2
+		dc.b 25
+		dc.b SPELL_FREEZE|LV_2
 		dc.b 12
-		dc.b SPELL_ID_DESOUL_2
+		dc.b SPELL_DESOUL|LV_2
 		dc.b 12
-		dc.b SPELL_ID_BOLT_4
+		dc.b SPELL_BOLT|LV_4
 		dc.b 100
-		dc.b SPELL_ID_BLAZE_4
+		dc.b SPELL_BLAZE|LV_4
 
 ; =============== S U B R O U T I N E =======================================
 
-; Use item AI
+; Use item AI -> CCR carry-bit set if unable to proceed
 
-sub_240E8:
+AiAction_UseItem:
+		
 		movem.l d1-d2/d4/a0-a1,-(sp)
-		move.b  d2,((ITEM_OR_SPELL_TO_USE-$1000000)).w
-		jsr     j_GetForceItemsFromForceID
-		move.b  (a0,d2.w),d1    ; D1 = item in slot # D2
-		cmpi.b  #$FF,d1
-		beq.s   loc_24146
+		move.b  d2,((CURRENT_ITEM_OR_SPELL-$1000000)).w
+		jsr     j_GetEntityItemsAddressForCombatant
+		move.b  (a0,d2.w),d1    ; D1 = item index in slot number D2
+		cmpi.b  #EMPTY_ITEM_SLOT,d1
+		beq.s   @RegularAttack  ; fall back to regular attack if item slot is empty
 		jsr     j_GetItemType
-		btst    #ITEM_TYPE_FLAG_USABLE,d2
-		beq.s   loc_24146
+		btst    #ITEMTYPE_BIT_USABLE,d2
+		beq.s   @RegularAttack  ; fall back to regular attack if item is not usable
 		bsr.w   GetItemEntryAddress
-		move.b  ITEM_OFFSET_USE_RANGE(a1),d4
-		move.b  d4,((RANGE_TO_USE-$1000000)).w
-		bsr.s   sub_24170       
-		move.b  ITEM_OFFSET_USE_EFFECT(a1),((EFFECT_TO_USE-$1000000)).w
+		move.b  ITEMDEF_OFFSET_USE_RANGE(a1),d4
+		move.b  d4,((CURRENT_RANGE-$1000000)).w
+		bsr.s   LoadRangeData   
+		move.b  ITEMDEF_OFFSET_USE_EFFECT(a1),((CURRENT_EFFECT-$1000000)).w
 		bsr.w   GetRangeEntryAddress
-		btst    #RANGE_GROUP_FLAG_ALLIES,RANGE_OFFSET_GROUP(a1)
-		beq.s   loc_24132
-		lea     sub_24516(pc), a1
-		bra.s   loc_24136
-loc_24132:
-		lea     sub_24378(pc), a1
-loc_24136:
-		move.l  a1,((PRIORITY_ROUTINE_POINTER-$1000000)).w
-		move.b  #2,((byte_FFCB3F-$1000000)).w
-loc_24140:
+		btst    #RANGE_GROUP_FLAG_FRIENDS,RANGE_OFFSET_GROUP(a1)
+		beq.s   @TargetingFoes
+		lea     PriorityRoutine_LowHealth(pc), a1
+		bra.s   @Continue
+@TargetingFoes:
+		
+		lea     priority_ClassDistanceHealth(pc), a1
+@Continue:
+		move.l  a1,((PRIORITY_ROUTINE_ADDRESS-$1000000)).w
+		move.b  #2,((CURRENT_BATTLEACTION_TYPE-$1000000)).w
+@Done:
 		movem.l (sp)+,d1-d2/d4/a0-a1
 		rts
-loc_24146:
+@RegularAttack:
+		
 		ori     #1,ccr
-		bra.s   loc_24140
+		bra.s   @Done
 
-	; End of function sub_240E8
+    ; End of function AiAction_UseItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2414C:
+LoadRegularAttackData:
+		
 		movem.l d4-d5,-(sp)
-		clr.b   ((byte_FFCB3E-$1000000)).w
-		clr.b   ((byte_FFCBB2-$1000000)).w
-		bsr.w   sub_235BA       
-		move.b  d4,((RANGE_TO_USE-$1000000)).w
-		move.b  d5,((EFFECT_TO_USE-$1000000)).w
-		bsr.s   sub_24170       
-		clr.b   ((byte_FFCB3F-$1000000)).w
+		clr.b   ((CURRENT_ATTACK_TYPE-$1000000)).w
+		clr.b   ((BATTLE_ANIMATION_TYPE-$1000000)).w
+		bsr.w   Battleaction_Attack
+		move.b  d4,((CURRENT_RANGE-$1000000)).w
+		move.b  d5,((CURRENT_EFFECT-$1000000)).w
+		bsr.s   LoadRangeData   
+		clr.b   ((CURRENT_BATTLEACTION_TYPE-$1000000)).w
 		movem.l (sp)+,d4-d5
 		rts
 
-	; End of function sub_2414C
+    ; End of function LoadRegularAttackData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load range data
+; Load range D4 data
 
-sub_24170:
+LoadRangeData:
+		
 		movem.l d4/a1,-(sp)
 		bsr.w   GetRangeEntryAddress
 		clr.w   d4
 		move.b  (a1),d4
-		cmpi.b  #4,d4
-		bcs.s   loc_24184
+		cmpi.b  #4,d4           ; max distance must lower than 4
+		bcs.s   @Continue
 		moveq   #1,d4
-loc_24184:
-		move.w  d4,((word_FFCB46-$1000000)).w
-		move.b  RANGE_OFFSET_MIN(a1),d4
-		move.w  d4,((word_FFCB48-$1000000)).w
+@Continue:
+		move.w  d4,((CURRENT_RANGE_MAX_DISTANCE-$1000000)).w
+		move.b  RANGE_OFFSET_MIN_DISTANCE(a1),d4
+		move.w  d4,((CURRENT_RANGE_MIN_DISTANCE-$1000000)).w
 		move.b  RANGE_OFFSET_GROUP(a1),d4
 		bsr.w   GetAdjustedGroupFlags
-		move.b  d4,((byte_FFCB44-$1000000)).w
+		move.b  d4,((TARGETING_RANGE_BITFIELD-$1000000)).w
 		movem.l (sp)+,d4/a1
 		rts
 
-	; End of function sub_24170
+    ; End of function LoadRangeData
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10845,7 +11484,7 @@ sub_241A2:
 		bne.s   loc_241B0
 		bsr.w   sub_241CA
 loc_241B0:
-		move.w  ((byte_FFA946-$1000000)).w,d1
+		move.w  ((TARGETS_LIST-$1000000)).w,d1
 		cmpi.b  #$FF,d1
 		beq.s   loc_241C0
 		bsr.w   sub_24220
@@ -10856,34 +11495,34 @@ loc_241C4:
 		movem.w (sp)+,d1
 		rts
 
-	; End of function sub_241A2
+    ; End of function sub_241A2
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_241CA:
 		movem.l d0-d4,-(sp)
-		jsr     j_GetTargetMOVE
+		jsr     j_GetModifiedMove
 		move.w  d1,d3
 		add.w   d3,d3
 		clr.w   d4
-		bsr.w   sub_20584       
-		bsr.w   sub_205AC       
+		bsr.w   SetupEffectiveMoveCosts
+		bsr.w   MakeEffectivePassabilityFlags
 		move.b  -2(a0),d1
 		bsr.w   sub_241F8
-		lea     sub_24378(pc), a3
-		bsr.w   sub_24324
+		lea     priority_ClassDistanceHealth(pc), a3
+		bsr.w   sub_24324       
 		movem.l (sp)+,d0-d4
 		rts
 
-	; End of function sub_241CA
+    ; End of function sub_241CA
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_241F8:
 		movem.l d0/d2/a0-a1,-(sp)
-		lea     ($FFFFB0C0).w,a0
+		lea     ((byte_FFB0C0-$1000000)).w,a0
 		lea     -$C00(a0),a1
 		clr.w   d2
 		move.w  #$3FF,d0
@@ -10898,7 +11537,7 @@ loc_24214:
 		movem.l (sp)+,d0/d2/a0-a1
 		rts
 
-	; End of function sub_241F8
+    ; End of function sub_241F8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10907,14 +11546,14 @@ sub_24220:
 		movem.l d0-d4,-(sp)
 		move.b  d0,d4
 		move.b  d1,d0
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		move.b  d4,d0
-		move.w  ((word_FFCB46-$1000000)).w,d3
+		move.w  ((CURRENT_RANGE_MAX_DISTANCE-$1000000)).w,d3
 		bsr.w   sub_23D9C
 		movem.l (sp)+,d0-d4
 		rts
 
-	; End of function sub_24220
+    ; End of function sub_24220
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10922,13 +11561,13 @@ sub_24220:
 sub_2423E:
 		movem.w d1-d2,-(sp)
 		move.b  #$FF,((byte_FFCB28-$1000000)).w
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		move.w  d2,((word_FFCB38-$1000000)).w
 		move.w  d1,((word_FFCB3A-$1000000)).w
 		movem.w (sp)+,d1-d2
 		rts
 
-	; End of function sub_2423E
+    ; End of function sub_2423E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10939,33 +11578,33 @@ sub_2425C:
 		movem.l d0-d3/a0,-(sp)
 		clr.b   d3
 		lea     ((byte_FFB0C0-$1000000)).w,a0
-		moveq   #COM_ENTRIES_COUNTER,d0
+		moveq   #COMBATANT_ENTRIES_COUNTER,d0
 loc_24268:
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		tst.b   d1
 		blt.s   loc_24284       ; branch if enemy
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1
 		move.b  (a0,d1.w),d2
 		bset    d2,d3
 loc_24284:
 		dbf     d0,loc_24268
-		move.b  d3,((AI_REGIONS_TRIGGERED-$1000000)).w
+		move.b  d3,((TRIGGERED_AI_REGIONS-$1000000)).w
 		movem.l (sp)+,d0-d3/a0
 		rts
 
-	; End of function sub_2425C
+    ; End of function sub_2425C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_24292:
 		movem.l d1-d3,-(sp)
-		movea.l ((dword_FFC622-$1000000)).w,a0
+		movea.l ((ENEMY_BEHAVIORS_POINTER-$1000000)).w,a0
 		move.l  a0,d2
 		beq.w   loc_242E6
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		andi.w  #$7F,d1 
 loc_242AA:
 		clr.w   d2
@@ -10983,7 +11622,7 @@ loc_242C4:
 		tst.w   d2
 loc_242C8:
 		beq.w   loc_242E6
-		move.b  ((AI_REGIONS_TRIGGERED-$1000000)).w,d3
+		move.b  ((TRIGGERED_AI_REGIONS-$1000000)).w,d3
 		and.b   (a0),d3
 		bne.s   loc_242DA
 		addq.l  #4,a0
@@ -11000,14 +11639,14 @@ loc_242E6:
 		move.w  #$FFFF,d7
 		bra.s   loc_242E0
 
-	; End of function sub_24292
+    ; End of function sub_24292
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_242EC:
 		move.l  a0,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		andi.w  #$7F,d1 
 		lea     ((byte_FFA496-$1000000)).w,a0
 		move.b  (a0,d1.w),d1
@@ -11015,7 +11654,7 @@ sub_242EC:
 		movea.l (sp)+,a0
 		rts
 
-	; End of function sub_242EC
+    ; End of function sub_242EC
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11023,23 +11662,25 @@ sub_242EC:
 sub_24306:
 		movem.l d2/a0,-(sp)
 		move.b  d1,d2
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		andi.w  #$7F,d1 
 		lea     ((byte_FFA496-$1000000)).w,a0
 		move.b  d2,(a0,d1.w)
 		movem.l (sp)+,d2/a0
 		rts
 
-	; End of function sub_24306
+    ; End of function sub_24306
 
 
 ; =============== S U B R O U T I N E =======================================
 
+; In: A3 = priority routine address
+
 sub_24324:
 		movem.l d1/d6/a0-a2,-(sp)
-		move.b  ((byte_FFCB44-$1000000)).w,((byte_FFC600-$1000000)).w
-		jsr     sub_202D8
-		lea     ($FFFFA8C2).w,a0
+		move.b  ((TARGETING_RANGE_BITFIELD-$1000000)).w,((TARGETING_GROUP_BITFIELD-$1000000)).w
+		jsr     j_PopulateTargetsList
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 		lea     $84(a0),a1
 		lea     $C6(a0),a2
 		move.w  -2(a0),d1
@@ -11054,8 +11695,8 @@ loc_24348:
 		bsr.w   sub_245A2
 		tst.w   ((TARGET_PRIORITY_TABLE-$1000000)).w
 		beq.s   loc_24372
-		move.w  ((byte_FFA946-$1000000)).w,d1
-		bsr.w   GetDistanceBetweenTargets
+		move.w  ((TARGETS_LIST-$1000000)).w,d1
+		bsr.w   CalculateDistanceBetweenCombatants
 		tst.w   d0
 loc_2436C:
 		movem.l (sp)+,d1/d6/a0-a2
@@ -11064,28 +11705,34 @@ loc_24372:
 		ori     #1,ccr
 		bra.s   loc_2436C
 
-	; End of function sub_24324
+    ; End of function sub_24324
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_24378:
+priority_ClassDistanceHealth:
+		
 		clr.w   d6
-		bsr.s   sub_24386
-		bsr.w   sub_244CA
-		bsr.w   sub_244F0
+		bsr.s   ApplyClassToTargetPriority
+		bsr.w   ApplyDistanceToTargetPriority
+		bsr.w   ApplyHealthToTargetPriority
 		rts
 
-	; End of function sub_24378
+    ; End of function priority_ClassDistanceHealth
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_24386:
+; Apply class to target priority -> d6.w
+; 
+; 2 points per class priority value.
+
+ApplyClassToTargetPriority:
+		
 		movem.l d0-d1/a0,-(sp)
-		lea     AITargetPriority(pc), a0
+		lea     table_ClassTargetPriorities(pc), a0
 		move.w  (a1),d0
-		jsr     j_GetClassFromForceID
+		jsr     j_GetClassForCombatant
 		move.b  (a0,d1.w),d1
 		andi.w  #$FF,d1
 		muls.w  #2,d1
@@ -11093,21 +11740,313 @@ sub_24386:
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function sub_24386
+    ; End of function ApplyClassToTargetPriority
 
-AITargetPriority:
-		incbin "data/stats/classes/aitargetpriority.bin"
+table_ClassTargetPriorities:
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 75
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 75
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 25
+		dc.b 75
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 75
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 0
+		dc.b 75
+		dc.b 0
+		dc.b 0
+		dc.b 75
+		dc.b 75
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 75
+		dc.b 0
+		dc.b 0
+		dc.b 75
+		dc.b 75
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 75
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 75
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 75
+		dc.b 25
+		dc.b 100
+		dc.b 100
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 100
+		dc.b 100
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 75
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 25
+		dc.b 100
+		dc.b 100
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 100
+		dc.b 100
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 75
+		dc.b 25
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 100
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 100
+		dc.b 100
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 75
+		dc.b 75
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 100
+		dc.b 25
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 75
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 0
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 25
+		dc.b 100
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 100
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_244CA:
+; Apply distance to target priority -> d6.w
+; 
+; Starts at 400 points for adjacent targets, -40 points per distance greater than 1 space.
+
+ApplyDistanceToTargetPriority:
+		
 		movem.l d1-d2/a0,-(sp)
 		move.w  (a0)+,d2
 		move.w  (a0),d1
-		bsr.w   GetDistanceToTarget
-		move.w  #$64,d1 
+		bsr.w   CalculateDistanceToTarget
+		move.w  #100,d1
 		subq.w  #1,d7
-		muls.w  #$A,d7
+		muls.w  #10,d7
 		sub.w   d7,d1
 		ble.s   loc_244EA
 		muls.w  #4,d1
@@ -11116,99 +12055,107 @@ loc_244EA:
 		movem.l (sp)+,d1-d2/a0
 		rts
 
-	; End of function sub_244CA
+    ; End of function ApplyDistanceToTargetPriority
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_244F0:
+ApplyHealthToTargetPriority:
+		
 		movem.l d0-d2,-(sp)
 		move.w  (a1),d0
-		jsr     j_GetMaxHPFromForceID
+		jsr     j_GetMaxHpForCombatant
 		move.w  d1,d2
-		jsr     j_GetHPFromForceID
-		muls.w  #$64,d1 
+		jsr     j_GetCurrentHpForCombatant
+		muls.w  #100,d1
 		divs.w  d2,d1
 		muls.w  #1,d1
 		add.w   d1,d6
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function sub_244F0
+    ; End of function ApplyHealthToTargetPriority
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_24516:
+PriorityRoutine_LowHealth:
+		
 		movem.l d0-d2,-(sp)
 		move.w  (a1),d0
-		jsr     j_GetMaxHPFromForceID
+		jsr     j_GetMaxHpForCombatant
 		move.w  d1,d2
-		jsr     j_GetHPFromForceID
+		jsr     j_GetCurrentHpForCombatant
 		move.w  d2,-(sp)
 		sub.w   d1,d2
-		muls.w  #$64,d2 
+		muls.w  #100,d2
 		move.w  (sp)+,d1
 		divs.w  d1,d2
 		move.w  d2,d6
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function sub_24516
+    ; End of function PriorityRoutine_LowHealth
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2453E:
-		move.w  #$300,d6
+PriorityRoutine_NotQuickened:
+		
+		move.w  #STATUSEFFECT_COUNTER_QUICK,d6
 		bra.s   sub_24562
 
-	; End of function sub_2453E
+    ; End of function PriorityRoutine_NotQuickened
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_24544:
-		move.w  #$3000,d6
+PriorityRoutine_NotBoosted:
+		
+		move.w  #STATUSEFFECT_COUNTER_BOOST,d6
 		bra.s   sub_24562
 
-	; End of function sub_24544
+    ; End of function PriorityRoutine_NotBoosted
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2454A:
-		move.w  #$C000,d6
+PriorityRoutine_NotShielded:
+		
+		move.w  #STATUSEFFECT_COUNTER_SHIELD,d6
 		bra.s   sub_24562
 
-	; End of function sub_2454A
+    ; End of function PriorityRoutine_NotShielded
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_24550:
-		move.w  #$C00,d6
+PriorityRoutine_NotSlowed:
+		
+		move.w  #STATUSEFFECT_COUNTER_SLOW,d6
 		bra.s   sub_24580
 
-	; End of function sub_24550
+    ; End of function PriorityRoutine_NotSlowed
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_24556:
-		move.w  #$C0,d6 
+PriorityRoutine_NotDispelled:
+		
+		move.w  #STATUSEFFECT_COUNTER_DISPEL,d6
 		bra.s   sub_24580
 
-	; End of function sub_24556
+    ; End of function PriorityRoutine_NotDispelled
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2455C:
-		move.w  #$30,d6 
+PriorityRoutine_NotMuddled:
+		
+		move.w  #STATUSEFFECT_COUNTER_MUDDLE,d6
 		bra.s   sub_24580
 
-	; End of function sub_2455C
+    ; End of function PriorityRoutine_NotMuddled
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11216,18 +12163,18 @@ sub_2455C:
 sub_24562:
 		movem.l d0-d1,-(sp)
 		move.w  (a1),d0
-		jsr     j_GetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
 		and.w   d6,d1
 		beq.s   loc_24576
 		clr.w   d6
 		bra.s   loc_2457A
 loc_24576:
-		move.w  #$64,d6 
+		move.w  #100,d6
 loc_2457A:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function sub_24562
+    ; End of function sub_24562
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11236,26 +12183,26 @@ sub_24580:
 		movem.l d0-d2,-(sp)
 		move.b  d0,d2
 		move.w  (a1),d0
-		jsr     j_GetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
 		and.w   d6,d1
 		beq.s   loc_24596
 		clr.w   d6
 		bra.s   loc_2459C
 loc_24596:
 		move.b  d2,d0
-		bsr.w   sub_24378
+		bsr.w   priority_ClassDistanceHealth
 loc_2459C:
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function sub_24580
+    ; End of function sub_24580
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_245A2:
 		movem.l d0-d2/a0-a5,-(sp)
-		lea     ($FFFFA8C2).w,a0
+		lea     ((byte_FFA8C2-$1000000)).w,a0
 		lea     $84(a0),a1
 		lea     $C6(a0),a2
 		move.w  -2(a0),d0
@@ -11296,32 +12243,32 @@ loc_24602:
 		movem.l (sp)+,d0-d2/a0-a5
 		rts
 
-	; End of function sub_245A2
+    ; End of function sub_245A2
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get land effect % of tile under battle member D0 -> D1
+; Get land effect of space occupied by combatant D0 -> D1
 
-GetLandEffectAtTargetPosition:
+GetLandEffectForCombatant:
 		
 		move.w  d2,-(sp)
-		jsr     j_GetTargetPosition
-		bsr.s   GetLandEffectAtCoord
+		jsr     j_GetCombatantPosition
+		bsr.s   GetLandEffectAtPosition
 		move.w  (sp)+,d2
 		rts
 
-	; End of function GetLandEffectAtTargetPosition
+    ; End of function GetLandEffectForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get land effect % of tile (X D2, Y D1) -> D1
+; Get land effect of space at position D2,D1 -> D1
 
-GetLandEffectAtCoord:
+GetLandEffectAtPosition:
 		
 		movem.l d2/a1,-(sp)
-		bsr.s   GetTerrainAtCoordAddress
+		bsr.s   GetTerrainEntryAddress
 		movea.l a0,a1
 		move.b  (a1),d1
 		jsr     j_GetLandEffectEntryAddress
@@ -11330,19 +12277,19 @@ GetLandEffectAtCoord:
 		move.b  (a0,d1.w),d2
 		move.b  1(a1),d1
 		movea.l (off_203E4).l,a0
-		bsr.w   sub_238CC       
+		bsr.w   GetVariableLengthEntryAddress
 		move.w  d2,d1
 		movem.l (sp)+,d2/a1
 		rts
 
-	; End of function GetLandEffectAtCoord
+    ; End of function GetLandEffectAtPosition
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get address of terrain under tile (X D2, Y D1) -> A0
+; Get terrain entry address of space at position D2,D1 -> A0
 
-GetTerrainAtCoordAddress:
+GetTerrainEntryAddress:
 		
 		movem.w d1-d2,-(sp)
 		lea     ((TERRAIN_DATA-$1000000)).w,a0
@@ -11356,35 +12303,38 @@ GetTerrainAtCoordAddress:
 		movem.w (sp)+,d1-d2
 		rts
 
-	; End of function GetTerrainAtCoordAddress
+    ; End of function GetTerrainEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2466C:
 		movem.l d2/a0,-(sp)
-		bsr.w   sub_239B2       
+		bsr.w   IsFlyingOrHovering
 		bne.s   loc_2467A
 		clr.w   d1
 		bra.s   loc_24688
 loc_2467A:
-		jsr     j_GetTargetPosition
-		bsr.s   GetTerrainAtCoordAddress
+		jsr     j_GetCombatantPosition
+		bsr.s   GetTerrainEntryAddress
 		move.b  3(a0),d1
 		ext.w   d1
 loc_24688:
 		movem.l (sp)+,d2/a0
 		rts
 
-	; End of function sub_2466C
+    ; End of function sub_2466C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2468E:
+; Get background layers for terrain -> D0, D1
+
+GetTerrainBackgrounds:
+		
 		movem.l d2/a0,-(sp)
-		jsr     j_GetTargetPosition
-		bsr.s   GetTerrainAtCoordAddress
+		jsr     j_GetCombatantPosition
+		bsr.s   GetTerrainEntryAddress
 		move.w  #$FFFF,d0
 		move.b  2(a0),d1
 		ext.w   d1
@@ -11396,7 +12346,7 @@ sub_2468E:
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		cmpi.b  #9,d0
 		bcc.s   loc_246C0
-		move.b  byte_246D3(pc,d0.w),d0
+		move.b  byte_246D4-1(pc,d0.w),d0
 		bra.s   loc_246C8
 loc_246C0:
 		move.b  ((byte_FFCBB3-$1000000)).w,d0
@@ -11407,63 +12357,61 @@ loc_246CA:
 		andi.w  #$7F,d1 
 loc_246CE:
 		movem.l (sp)+,d2/a0
-		dc.b $4E 
-byte_246D3:
-		dc.b $75
+		rts
 
-	; End of function sub_2468E
+    ; End of function GetTerrainBackgrounds
 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
+byte_246D4:     dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
 		dc.b $FF
-		dc.b   0
-		dc.b   0
+		dc.b 0
+		dc.b 0
 byte_246DB:     dc.b 8
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   8
-		dc.b   8
-		dc.b   8
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 8
+		dc.b 8
+		dc.b 8
 		dc.b $FF
 
 ; =============== S U B R O U T I N E =======================================
 
 LevelUp:
-		bsr.s   IncreaseStatsFromForceID
-		bcs.s   locret_246F6
-		bsr.w   ShowLevelUpMessages
+		bsr.s   IncreaseStatsOnLevelUpForCombatant
+		bcs.s   @Return
+		bsr.w   DisplayLevelUpMessages
 		tst.b   d0
-locret_246F6:
+@Return:
 		rts
 
-	; End of function LevelUp
+    ; End of function LevelUp
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Increase stats on level up by force index
 
-IncreaseStatsFromForceID:
+IncreaseStatsOnLevelUpForCombatant:
 		
 		movem.w d0,-(sp)
-		bsr.w   GetForceMemberID
+		bsr.w   alt_GetEntity   
 		bsr.s   IncreaseStatsOnLevelUp
 		movem.w (sp)+,d0
 		rts
 
-	; End of function IncreaseStatsFromForceID
+    ; End of function IncreaseStatsOnLevelUpForCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11473,80 +12421,80 @@ IncreaseStatsFromForceID:
 IncreaseStatsOnLevelUp:
 		
 		movem.l d0-d4/a0,-(sp)
-		bsr.w   IsForceMemberAtMaxLevel
+		bsr.w   IsAtLevelCap    
 		bcs.w   loc_247EA       ; if so, exit
-		cmpi.b  #FORCE_ID_JOGURT,d0
+		cmpi.b  #JOGURT,d0
 		beq.s   loc_24722       ; if force member is Jogurt, skip
 		moveq   #1,d1           ; otherwise add 1 to level
-		jsr     j_IncreaseForceMemberLevel
+		jsr     j_IncreaseLevel
 loc_24722:
 		clr.w   d1              ; set EXP to 0
-		jsr     j_SetForceMemberEXP
-		jsr     j_GetForceMemberLevel
+		jsr     j_SetExperience
+		jsr     j_GetLevel
 		move.w  d1,d3           ; get new level, save to D3
 		clr.w   d4
 		lea     ((STATS_TO_GAIN-$1000000)).w,a0
-		jsr     j_GetForceMemberATT
+		jsr     j_GetBaseAttack
 		move.w  d1,d2           ; get current Attack to D2
 		move.w  d4,d1
 		bsr.w   CalculateTotalStatGrowth
 		bsr.w   CalculateStatGain
 		move.b  d2,(a0)+        ; store difference for message box
-		jsr     j_SetForceMemberATT
+		jsr     j_SetBaseAttack
 		addq.w  #1,d4
-		jsr     j_GetForceMemberDEF
+		jsr     j_GetBaseDefense
 		move.w  d1,d2
 		move.w  d4,d1
 		bsr.w   CalculateTotalStatGrowth
 		bsr.w   CalculateStatGain
 		move.b  d2,(a0)+
-		jsr     j_SetForceMemberDEF
+		jsr     j_SetBaseDefense
 		addq.w  #1,d4
-		jsr     j_GetForceMemberAGI
+		jsr     j_GetBaseAgility
 		move.w  d1,d2
 		move.w  d4,d1
 		bsr.w   CalculateTotalStatGrowth
 		bsr.w   CalculateStatGain
 		move.b  d2,(a0)+
-		jsr     j_SetForceMemberAGI
+		jsr     j_SetBaseAgility
 		addq.w  #1,d4
-		jsr     j_GetForceMemberMaxHP
+		jsr     j_GetMaxHP
 		move.w  d1,d2
 		move.w  d4,d1
 		bsr.w   CalculateTotalStatGrowth
 		bsr.w   CalculateStatGain
 		move.b  d2,(a0)+
-		jsr     j_SetForceMemberMaxHP
+		jsr     j_SetMaxHP
 		addq.w  #1,d4
-		jsr     j_GetForceMemberMaxMP
+		jsr     j_GetMaxMP
 		move.w  d1,d2
 		move.w  d4,d1
 		bsr.w   CalculateTotalStatGrowth
 		bsr.w   CalculateStatGain
 		move.b  d2,(a0)+
-		jsr     j_SetForceMemberMaxMP
+		jsr     j_SetMaxMP
 		addq.w  #1,d4
-		jsr     j_GetForceMemberCRIT
+		jsr     j_GetBaseCritical
 		move.w  d1,d2
 		move.w  d4,d1
 		bsr.w   CalculateTotalStatGrowth
 		bsr.w   CalculateStatGain
 		move.b  d2,(a0)+
-		jsr     j_SetForceMemberCRIT
+		jsr     j_SetBaseCritical
 		addq.w  #1,d4
 		bsr.w   LearnSpell      
-		bsr.w   sub_21DA6
+		bsr.w   LoadCombatantDataForForceMember
 		tst.b   d0
 loc_247EA:
 		movem.l (sp)+,d0-d4/a0
 		rts
 
-	; End of function IncreaseStatsOnLevelUp
+    ; End of function IncreaseStatsOnLevelUp
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Calculate maximum increase of stat given target D1, current D2 and level D3
+; Calculate maximum increase of stat given target D1, current D2 and level D3 -> D2
 
 CalculateStatGain:
 		
@@ -11556,37 +12504,39 @@ CalculateStatGain:
 		clr.w   d2
 		bra.s   loc_2484C       ; if so, just end
 loc_247FC:
-		cmpi.w  #FORCE_PROJECTION_LEVEL,d3
-						; check if level > 20
+		cmpi.w  #GROWTH_PROJECTION_LEVEL,d3
+						; check if level <= 20
 		ble.s   loc_2481A
-		cmpi.w  #FORCE_STAT_CAP,d2; check if stat > 99
+		cmpi.w  #FORCE_STAT_CAP,d2; check if stat >= 99
 		bge.s   loc_2481A
+		                
 		move.w  d2,d1           ; set target stat to current value
-		moveq   #4,d6           ; get random number from 0-4
-		jsr     (j_UpdateRandomSeed).l
+		moveq   #4,d6           ; get random number in the range 0-3
+		jsr     (j_GenerateRandomNumber).l
 		tst.w   d7
-		bne.s   loc_24818       ; if zero add one to target (20% chance of increasing target by 1)
-		addq.w  #1,d1
+		bne.s   loc_24818
+		addq.w  #1,d1           ; if zero add one to target (1/4 chance of increasing target by 1)
 loc_24818:
 		bra.s   loc_24846
 loc_2481A:
 		move.w  d1,d6
-		asr.w   #2,d6           ; increase target stat randomly, anywhere from 0 to 25% of target or 5, whichever is lower
+		asr.w   #2,d6           ; increase target stat randomly, anywhere from 0 to 25% of target or 4, whichever is lower
 		cmpi.w  #5,d6
 		ble.s   loc_24826
 		moveq   #5,d6
 loc_24826:
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		add.w   d7,d1
-		jsr     (j_UpdateRandomSeed).l; do it again but substract
+		jsr     (j_GenerateRandomNumber).l
+						; do it again but substract
 		sub.w   d7,d1
 		cmpi.w  #FORCE_STAT_CAP,d1; cap target at 99
 		ble.s   loc_24840       
 		move.w  #FORCE_STAT_CAP,d1
 loc_24840:
-		cmp.w   d2,d1           ; take max of current and target
+		cmp.w   d2,d1           ; keep highest of current (D2) and target (D1)
 		bge.s   loc_24846
-		move.w  d2,d1           ; get difference to D2
+		move.w  d2,d1
 loc_24846:
 		move.w  d1,d7
 		sub.w   d2,d7
@@ -11595,14 +12545,12 @@ loc_2484C:
 		movem.l (sp)+,d6-d7
 		rts
 
-	; End of function CalculateStatGain
+    ; End of function CalculateStatGain
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Show level up messages
-
-ShowLevelUpMessages:
+DisplayLevelUpMessages:
 		
 		movem.l d0-d2/a0-a1,-(sp)
 		movem.l d0-a6,-(sp)
@@ -11610,15 +12558,15 @@ ShowLevelUpMessages:
 		jsr     sub_124020
 		movem.l (sp)+,d0-a6
 		trap    #5
-		lea     ((TEXT_NAME_INDEX-$1000000)).w,a0
+		lea     ((MESSAGE_ARG_NAME_1-$1000000)).w,a0
 		move.w  d0,(a0)+
 		move.w  d0,(a0)
-		lea     ((TEXT_NUMBER-$1000000)).w,a0
+		lea     ((MESSAGE_ARG_NUMBER-$1000000)).w,a0
 		moveq   #0,d1
-		jsr     j_GetLevelFromForceID
+		jsr     j_GetLevelForCombatant
 		move.l  d1,(a0)
-		jsr     j_GetTargetID
-		cmpi.b  #$1D,d1
+		jsr     j_GetEntity
+		cmpi.b  #JOGURT,d1
 		bne.s   loc_2489A       
 		move.w  #$1F3,d0        ; "...[Wait2]It appears that [Name]'s[Line]level increases to [Num].[Line]"
 		trap    #DISPLAY_MESSAGE
@@ -11665,11 +12613,11 @@ loc_248E2:
 		cmpi.b  #$FF,d1
 		beq.s   loc_2490A
 		move.b  d1,d2
-		andi.w  #$3F,d2 
-		move.w  d2,((TEXT_NAME_INDEX-$1000000)).w
+		andi.w  #SPELLENTRY_MASK_INDEX,d2
+		move.w  d2,((MESSAGE_ARG_NAME_1-$1000000)).w
 		asr.l   #6,d1
 		addq.l  #1,d1
-		move.w  #$1F1,d0
+		move.w  #$1F1,d0        ; "And learns a new[Line][Spell] spell.[Wait2]"
 		move.l  d1,(a0)
 		cmpi.b  #1,d1
 		beq.s   loc_24906
@@ -11682,177 +12630,176 @@ loc_2490A:
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
 
-	; End of function ShowLevelUpMessages
+    ; End of function DisplayLevelUpMessages
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Promote Character (Save Level Promoted to A16A table, add 16 to class)
+; Promote force member D0 (save level promoted at to $FFA16A table, add 16 to class index)
 
 Promote:
 		movem.l d0-d2,-(sp)
-		jsr     j_GetForceMemberLevel
+		jsr     j_GetLevel
 		andi.w  #$FF,d0
 		lea     ((PROMOTED_AT_LEVELS-$1000000)).w,a0
 		move.b  d1,(a0,d0.w)
-		jsr     j_GetForceMemberClass
-		addi.w  #$10,d1
-		jsr     j_SetForceMemberClass
+		jsr     j_GetClass
+		addi.w  #16,d1
+		jsr     j_SetClass
 		clr.w   d2
 		move.w  d2,d1
-		bsr.w   CalculatePromotedBaseStats
-		jsr     j_SetForceMemberATT
+		bsr.w   CalculateInitialStatValue
+		jsr     j_SetBaseAttack
 		addq.w  #1,d2
 		move.w  d2,d1
-		bsr.w   CalculatePromotedBaseStats
-		jsr     j_SetForceMemberDEF
+		bsr.w   CalculateInitialStatValue
+		jsr     j_SetBaseDefense
 		addq.w  #1,d2
 		move.w  d2,d1
-		bsr.w   CalculatePromotedBaseStats
-		jsr     j_SetForceMemberAGI
+		bsr.w   CalculateInitialStatValue
+		jsr     j_SetBaseAgility
 		addq.w  #1,d2
 		move.w  d2,d1
-		bsr.w   CalculatePromotedBaseStats
-		jsr     j_SetForceMemberMaxHP
+		bsr.w   CalculateInitialStatValue
+		jsr     j_SetMaxHP
 		addq.w  #1,d2
 		move.w  d2,d1
-		bsr.w   CalculatePromotedBaseStats
-		jsr     j_SetForceMemberMaxMP
+		bsr.w   CalculateInitialStatValue
+		jsr     j_SetMaxMP
 		addq.w  #1,d2
 		move.w  d2,d1
-		bsr.w   CalculatePromotedBaseStats
-		jsr     j_SetForceMemberCRIT
+		bsr.w   CalculateInitialStatValue
+		jsr     j_SetBaseCritical
 		addq.w  #1,d2
+		                
 		moveq   #1,d1
-		jsr     j_SetForceMemberLevel
+		jsr     j_SetLevel
 		clr.w   d1
-		jsr     j_SetForceMemberEXP
-		jsr     j_GetForceMemberHP
+		jsr     j_SetExperience
+		jsr     j_GetCurrentHP
 		move.w  d1,d2
-		jsr     j_GetForceMemberMaxHP
+		jsr     j_GetMaxHP
 		cmp.w   d2,d1
 		bge.s   loc_249B6
-		jsr     j_SetForceMemberHP
+		jsr     j_SetCurrentHP
 loc_249B6:
-		jsr     j_GetForceMemberMP
+		jsr     j_GetCurrentMP
 		move.w  d1,d2
-		jsr     j_GetForceMemberMaxMP
+		jsr     j_GetMaxMP
 		cmp.w   d2,d1
 		bge.s   loc_249CE
-		jsr     j_SetForceMemberMP
+		jsr     j_SetCurrentMP
 loc_249CE:
-		bsr.w   sub_21DA6
+		bsr.w   LoadCombatantDataForForceMember
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function Promote
+    ; End of function Promote
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute total stat growth D1 for character D0
+; Calculate force member D0 total growth for stat D1 -> D1
 
 CalculateTotalStatGrowth:
 		
 		movem.l d2-d4/a0,-(sp)
-		bsr.w   GetStatGrowthAddress
-		move.b  (a0,d1.w),d2    ; get stat growth value
-		bsr.s   MapGrowthToStatOffset
-		bsr.s   CalculatePromotedBaseStats
-		move.w  d1,d4           ; get stat growth from current level
-		jsr     j_GetForceMemberLevel
+		bsr.w   GetGrowthEntryAddress
+		move.b  (a0,d1.w),d2    ; D2 = stat D1 growth value
+		bsr.s   MapStatToForceEntryOffset
+		bsr.s   CalculateInitialStatValue
+		move.w  d1,d4           ; D4 = stat D1 base value
+		jsr     j_GetLevel
 		bsr.w   CalculateGrowthTarget
 		add.w   d4,d1
 		movem.l (sp)+,d2-d4/a0
 		rts
 
-	; End of function CalculateTotalStatGrowth
+    ; End of function CalculateTotalStatGrowth
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Calculate contribution of prepromoted levels to stat growth D1 for character D0
+; Calculate force member D0 initial stat D1 value, factoring in promoted at level -> D1
 
-CalculatePromotedBaseStats:
+CalculateInitialStatValue:
 		
 		movem.l d2-d4/a0,-(sp)
-		bsr.w   GetBaseStatGrowthAddress
-		move.b  (a0,d1.w),d2    ; get unpromoted stat growth
-		bsr.s   MapGrowthToStatOffset
-		bsr.w   GetCharacterEntryAddress
+		bsr.w   GetUnpromotedGrowthEntryAddress
+		move.b  (a0,d1.w),d2    ; D2 = stat D1 unpromoted growth value
+		bsr.s   MapStatToForceEntryOffset
+		bsr.w   GetInitialForceEntryAddress
 		clr.w   d4
-		move.b  (a0,d3.w),d4    ; get starting stat value
+		move.b  (a0,d3.w),d4    ; D4 = stat D1 unpromoted initial value
 		bsr.w   GetPromotedAtLevel
 		beq.s   loc_24A26       ; if not promoted, skip
 		bsr.s   CalculateGrowthTarget
-		add.w   d1,d4           ; take 85% of growth value and add to base stat
-		muls.w  #$55,d4 
-		divs.w  #$64,d4 
+		add.w   d1,d4           ; add growth target to initial value
+		muls.w  #85,d4          ; and multiply by 0.85
+		divs.w  #100,d4
 loc_24A26:
 		move.w  d4,d1
 		movem.l (sp)+,d2-d4/a0
 		rts
 
-	; End of function CalculatePromotedBaseStats
+    ; End of function CalculateInitialStatValue
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Maps stat growth D1 to stat offset D3
+; Map stat D1 to force entry offset -> D3
 
-MapGrowthToStatOffset:
+MapStatToForceEntryOffset:
 		
 		move.w  d1,d3
 		asl.w   #1,d3
-		move.w  StatOffsets(pc,d3.w),d3; get address into char data of corresponding stat
+		move.w  StatOffsets(pc,d3.w),d3; get address of corresponding stat into force data
 		rts
 
-	; End of function MapGrowthToStatOffset
+    ; End of function MapStatToForceEntryOffset
 
-StatOffsets:    dc.w FORCE_OFFSET_ATT
-		dc.w FORCE_OFFSET_DEF
-		dc.w FORCE_OFFSET_AGI
-		dc.w FORCE_OFFSET_HP_MAX_LO_BYTE
-		dc.w FORCE_OFFSET_MP_MAX
-		dc.w FORCE_OFFSET_CRIT
+StatOffsets:    dc.w FORCE_OFFSET_BASE_ATTACK
+		dc.w FORCE_OFFSET_BASE_DEFENSE
+		dc.w FORCE_OFFSET_BASE_AGILITY
+		dc.w FORCE_OFFSET_MAXIMUM_HP_LOW_BYTE
+		dc.w FORCE_OFFSET_MAXIMUM_MP
+		dc.w FORCE_OFFSET_BASE_CRITICAL
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute growth target value based on level D1 and growth value D2
+; Calculate growth target value based on level D1 and growth value D2 -> D1
 
 CalculateGrowthTarget:
 		
 		move.l  d2,-(sp)
 		bsr.s   CalculateGrowthPercent
-		andi.w  #STAT_GROWTH_MASK_VALUE,d2
-						; multiply curve % by growth to get target value
+		andi.w  #GROWTH_MASK_VALUE,d2; multiply curve % by growth to get target value
 		muls.w  d2,d1
-		divs.w  #$64,d1 
+		divs.w  #100,d1
 		move.l  (sp)+,d2
 		rts
 
-	; End of function CalculateGrowthTarget
+    ; End of function CalculateGrowthTarget
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Compute growth percent based on level D1 and growth value D2
+; Calculate growth percent based on level D1 and growth curve D2 -> D1
 
 CalculateGrowthPercent:
 		
 		movem.l d2-d5/a0,-(sp)
-		cmpi.w  #FORCE_PROJECTION_LEVEL,d1
-						; check if level < 20
-		ble.s   loc_24A66       
-		move.w  #$64,d1 ; set to 100% growth
-		bra.s   loc_24A9C
+		cmpi.w  #GROWTH_PROJECTION_LEVEL,d1
+		ble.s   loc_24A66       ; continue if level <= 20
+		move.w  #100,d1
+		bra.s   loc_24A9C       ; else, return 100%
 loc_24A66:
-		andi.w  #STAT_GROWTH_MASK_CURVE,d2
+		andi.w  #GROWTH_MASK_CURVE_INDEX,d2
 						; find growth curve
 		asr.w   #5,d2
-		movea.l (p_GrowthCurves).l,a0; get address of growth curve values
-		move.w  (a0,d2.w),d2
-		lea     (a0,d2.w),a0
+		movea.l (p_GrowthCurves).l,a0
+		move.w  (a0,d2.w),d2    ; D2 = offset to curve entry
+		lea     (a0,d2.w),a0    ; A0 = curve entry address
 		moveq   #1,d2           ; find break point in curve
 		clr.b   d3
 loc_24A7E:
@@ -11876,59 +12823,62 @@ loc_24A9C:
 		movem.l (sp)+,d2-d5/a0
 		rts
 
-	; End of function CalculateGrowthPercent
+    ; End of function CalculateGrowthPercent
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get stat growth address based on if promoted
+; Get force member D0 growth entry address based on if promoted -> A0
 
-GetStatGrowthAddress:
+GetGrowthEntryAddress:
 		
 		bsr.s   IsPromoted      
-		beq.s   GetBaseStatGrowthAddress; if 0, not promoted
-		movea.l (p_PromotedStatGrowths).l,a0
+		beq.s   GetUnpromotedGrowthEntryAddress
+						; branch if not promoted
+		movea.l (p_PromotedGrowths).l,a0
 		bra.s   loc_24AB4
 
-	; End of function GetStatGrowthAddress
+    ; End of function GetGrowthEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-GetBaseStatGrowthAddress:
+; Get force member D0 unpromoted growth entry address -> A0
+
+GetUnpromotedGrowthEntryAddress:
 		
-		movea.l (p_StatGrowths).l,a0
+		movea.l (p_UnpromotedGrowths).l,a0
 loc_24AB4:
 		move.l  d0,-(sp)
-		andi.w  #$FF,d0         ; index into stat growth table to find char's data
+		andi.w  #$FF,d0         ; index into growth table to find member's entry
 		mulu.w  #6,d0
 		adda.w  d0,a0
 		move.l  (sp)+,d0
 		rts
 
-	; End of function GetBaseStatGrowthAddress
+    ; End of function GetUnpromotedGrowthEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get address of character's initial data
+; Get force member D0 initial data entry address -> A0
 
-GetCharacterEntryAddress:
+GetInitialForceEntryAddress:
 		
 		move.w  d0,-(sp)
-		movea.l (p_CharacterData).l,a0
+		movea.l (p_InitialForceMembersData).l,a0
 		andi.w  #$FF,d0
 		mulu.w  #$28,d0 
 		adda.w  d0,a0
 		move.w  (sp)+,d0
 		rts
 
-	; End of function GetCharacterEntryAddress
+    ; End of function GetInitialForceEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if force member is promoted
+; Check if force member D0 is promoted
 
 IsPromoted:
 		movem.w d1,-(sp)
@@ -11936,12 +12886,12 @@ IsPromoted:
 		movem.w (sp)+,d1
 		rts
 
-	; End of function IsPromoted
+    ; End of function IsPromoted
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Gets level character promoted at (0 if not promoted)
+; Get force member D0 promoted at level -> D1 (0 if not promoted)
 
 GetPromotedAtLevel:
 		
@@ -11953,7 +12903,7 @@ GetPromotedAtLevel:
 		movem.l (sp)+,d0/a1
 		rts
 
-	; End of function GetPromotedAtLevel
+    ; End of function GetPromotedAtLevel
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11962,7 +12912,7 @@ GetPromotedAtLevel:
 
 LearnSpell:
 		movem.l d1-d3/a0-a1,-(sp)
-		lea     ((byte_FFA9FA-$1000000)).w,a1
+		lea     ((SPELLS_TO_LEARN-$1000000)).w,a1
 		bsr.w   GetSpellLearningEntryAddress
 		bcs.s   loc_24B26
 		bsr.w   CalculateTotalLevel
@@ -11984,7 +12934,7 @@ loc_24B26:
 		movem.l (sp)+,d1-d3/a0-a1
 		rts
 
-	; End of function LearnSpell
+    ; End of function LearnSpell
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11994,14 +12944,14 @@ loc_24B26:
 AddSpell:
 		movem.l d2-d4/a0,-(sp)
 		move.b  d1,d2
-		andi.b  #$3F,d2 
-		jsr     j_GetForceSpellsAddress
+		andi.b  #SPELLENTRY_MASK_INDEX,d2
+		jsr     j_GetCharacterSpellsAddress
 		moveq   #3,d3
 loc_24B42:
 		move.b  (a0),d4
 		cmpi.b  #$FF,d4
 		beq.s   loc_24B5A
-		andi.b  #$3F,d4 
+		andi.b  #SPELLENTRY_MASK_INDEX,d4
 		cmp.b   d2,d4
 		beq.s   loc_24B5A
 		addq.l  #1,a0
@@ -12013,7 +12963,7 @@ loc_24B5C:
 		movem.l (sp)+,d2-d4/a0
 		rts
 
-	; End of function AddSpell
+    ; End of function AddSpell
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12041,50 +12991,50 @@ loc_24B86:
 		ori     #1,ccr
 		bra.s   loc_24B80
 
-	; End of function GetSpellLearningEntryAddress
+    ; End of function GetSpellLearningEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get total level of character D0 (Level + Promoted at Level)
+; Get total level of character D0 (current level + level promoted at) -> D1
 
 CalculateTotalLevel:
 		
 		movem.l d0/d2/a0,-(sp)
-		jsr     j_GetForceMemberLevel
+		jsr     j_GetLevel
 		lea     ((PROMOTED_AT_LEVELS-$1000000)).w,a0
 		andi.w  #$FF,d0
 		move.b  (a0,d0.w),d2
-		ble.s   loc_24BA6
+		ble.s   @Done
 		add.b   d2,d1
-loc_24BA6:
+@Done:
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function CalculateTotalLevel
+    ; End of function CalculateTotalLevel
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get level of character D0 (+10 if promoted)
+; Get level of character D0 (+10 if promoted) -> D1
 
 CalculateEffectiveLevel:
 		
 		move.w  d2,-(sp)
-		jsr     j_GetLevelFromForceID
+		jsr     j_GetLevelForCombatant
 		move.w  d1,d2
-		jsr     j_GetClassFromForceID
-		cmpi.w  #CLASS_ID_SMR,d1
-		bcs.s   loc_24BCC
-		cmpi.w  #CLASS_ID_YGRT,d1
-		bcc.s   loc_24BCC
-		addi.w  #$A,d2
-loc_24BCC:
+		jsr     j_GetClassForCombatant
+		cmpi.w  #PROMOTED_CLASSES_START,d1
+		bcs.s   @Skip
+		cmpi.w  #CLASS_YGRT,d1
+		bcc.s   @Skip
+		addi.w  #10,d2
+@Skip:
 		move.w  d2,d1
 		move.w  (sp)+,d2
 		rts
 
-	; End of function CalculateEffectiveLevel
+    ; End of function CalculateEffectiveLevel
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12094,149 +13044,151 @@ loc_24BCC:
 IsAsleep:
 		movem.l d0-d1,-(sp)
 		clr.b   ((IS_ASLEEP_FLAG-$1000000)).w
-		jsr     j_GetStatusFromForceID
-		btst    #FORCE_STATUS_FLAG_SLEEP,d1
-		beq.s   loc_24BEC
+		jsr     j_GetStatusEffectsForCombatant
+		btst    #STATUSEFFECT_BIT_SLEEP,d1
+		beq.s   @Done
 		move.b  #1,((IS_ASLEEP_FLAG-$1000000)).w
-loc_24BEC:
+@Done:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function IsAsleep
+    ; End of function IsAsleep
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Buff/Boost Type Statuses Routine
-
-sub_24BF2:
+HandleAfterTurnStatusEffects:
+		
 		movem.l d0-d5/a0,-(sp)
 		moveq   #0,d3
-		bsr.w   sub_24CBA       
-		bsr.w   sub_24CEE       
-		lea     byte_24C99(pc), a0
-		moveq   #5,d2
+		bsr.w   HandlePoison
+		bsr.w   HandleSleep
+		lea     tbl_StatusEffectBits(pc), a0
+		moveq   #STATUSEFFECT_COUNTERS_COUNTER,d2
 loc_24C06:
 		move.b  (a0)+,d1
-		bsr.w   DecrementStatusCounter
+		bsr.w   DecrementStatusEffectCounter
 		addq.l  #1,a0
 		dbf     d2,loc_24C06
+                
 		tst.l   d3
 		beq.w   loc_24C92
 		bsr.w   sub_24CA6       
 		trap    #5
 		andi.w  #$FF,d0
-		move.w  d0,((word_FFA9D0-$1000000)).w
-		btst    #$1F,d3
+		move.w  d0,((AFTER_TURN_MESSAGE_ARG_NAME_1-$1000000)).w
+		btst    #31,d3
 		beq.s   loc_24C3E
-		move.w  #$1CD,((word_FFA9CE-$1000000)).w
-		move.l  #2,((dword_FFA9D4-$1000000)).w
-		bsr.w   sub_24D9E       
+		move.w  #$1CD,((AFTER_TURN_MESSAGE_INDEX-$1000000)).w
+						; "The poison in [Name]'s[Line]body inflicts [Num] points of[Line]damage.[Wait2]"
+		move.l  #2,((AFTER_TURN_MESSAGE_ARG_NUMBER-$1000000)).w
+		bsr.w   DisplayAfterTurnMessage
 loc_24C3E:
-		btst    #$1E,d3
+		btst    #30,d3
 		beq.s   loc_24C50
-		move.w  #$1CE,((word_FFA9CE-$1000000)).w
-		bsr.w   sub_24D9E       
+		move.w  #$1CE,((AFTER_TURN_MESSAGE_INDEX-$1000000)).w
+						; "[Name] can no longer fight.[Wait2]"
+		bsr.w   DisplayAfterTurnMessage
 		bra.s   loc_24C8A
 loc_24C50:
-		btst    #$1D,d3
+		btst    #29,d3
 		beq.s   loc_24C60
-		move.w  #$1CC,((word_FFA9CE-$1000000)).w
-		bsr.w   sub_24D9E       
+		move.w  #$1CC,((AFTER_TURN_MESSAGE_INDEX-$1000000)).w
+						; "[Name] is asleep.[Wait2]"
+		bsr.w   DisplayAfterTurnMessage
 loc_24C60:
-		move.w  d0,((word_FFA9D2-$1000000)).w
-		lea     byte_24C98(pc), a0
+		move.w  d0,((AFTER_TURN_MESSAGE_ARG_NAME_2-$1000000)).w
+		lea     tbl_StatusEffectSpells(pc), a0
 		clr.w   d4
-		move.w  #$1E1,d0
+		move.w  #$1E1,d0        ; "The [Spell] spell ends. Speed[Line]and defense levels[Line]return to normal.[Wait2]"
 		moveq   #6,d2
 loc_24C70:
 		move.b  (a0)+,d4
-		move.w  d4,((word_FFA9D0-$1000000)).w
+		move.w  d4,((AFTER_TURN_MESSAGE_ARG_NAME_1-$1000000)).w
 		move.b  (a0)+,d4
 		btst    d4,d3
 		beq.s   loc_24C84
-		move.w  d0,((word_FFA9CE-$1000000)).w
-		bsr.w   sub_24D9E       
+		move.w  d0,((AFTER_TURN_MESSAGE_INDEX-$1000000)).w
+		bsr.w   DisplayAfterTurnMessage
 loc_24C84:
 		addq.w  #1,d0
 		dbf     d2,loc_24C70
 loc_24C8A:
-		trap    #6
-		jsr     sub_8094
+		trap    #CLOSE_MESSAGE_WINDOW
+		jsr     j_LoadCursorTiles
 loc_24C92:
 		movem.l (sp)+,d0-d5/a0
 		rts
 
-	; End of function sub_24BF2
+    ; End of function HandleAfterTurnStatusEffects
 
-byte_24C98:     dc.b 3                  ; Buff/Boost Type Statuses Status Table 2 Bytes Per (Number, Status Bit Index)
-byte_24C99:     dc.b 8
-		dc.b 4
-		dc.b $A
-		dc.b 5
-		dc.b $C
-		dc.b 6
-		dc.b 6
-		dc.b 7
-		dc.b $E
-		dc.b 8
-		dc.b 4
-		dc.b $F
-		dc.b 1
+tbl_StatusEffectSpells:
+		; Status effect spells table : 7 entries, 2 bytes per entry
+		dc.b SPELL_QUICK|LV_1
+tbl_StatusEffectBits:
+		dc.b STATUSEFFECT_BIT_QUICK
+		dc.b SPELL_SLOW|LV_1
+		dc.b STATUSEFFECT_BIT_SLOW
+		dc.b SPELL_BOOST|LV_1
+		dc.b STATUSEFFECT_BIT_BOOST
+		dc.b SPELL_DISPEL|LV_1
+		dc.b STATUSEFFECT_BIT_DISPEL
+		dc.b SPELL_SHIELD|LV_1
+		dc.b STATUSEFFECT_BIT_SHIELD
+		dc.b SPELL_MUDDLE|LV_1
+		dc.b STATUSEFFECT_BIT_MUDDLE
+		dc.b SPELL_SLEEP|LV_1
+		dc.b STATUSEFFECT_BIT_SLEEP
 
 ; =============== S U B R O U T I N E =======================================
 
-; Status Helper, sets RAM Bits for messages?
+; related to the battle cursor
 
 sub_24CA6:
-		move.w  #1,(word_FF0C98).l
-		move.l  #$10F3F,(dword_FF0E30).l
+		move.w  #1,(SPRITE_03_PROPERTIES).l
+		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 		rts
 
-	; End of function sub_24CA6
+    ; End of function sub_24CA6
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Poison Routine
-
-sub_24CBA:
+HandlePoison:
 		movem.l d0-d1,-(sp)
 		clr.b   ((IS_POISONED_FLAG-$1000000)).w
-		jsr     j_GetStatusFromForceID
-		btst    #FORCE_STATUS_FLAG_POISON,d1
+		jsr     j_GetStatusEffectsForCombatant
+		btst    #STATUSEFFECT_BIT_POISON,d1
 		beq.s   loc_24CE8
-		bset    #$1F,d3
+		bset    #31,d3
 		moveq   #2,d1           ; inflict 2 points of damage
-		jsr     j_DecreaseHPFromForceID
+		jsr     j_DecreaseCurrentHPforCombatant
 		tst.w   d1
 		bne.s   loc_24CE8
-		bset    #$1E,d3
+		bset    #30,d3
 		move.b  #1,((IS_POISONED_FLAG-$1000000)).w
 loc_24CE8:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function sub_24CBA
+    ; End of function HandlePoison
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sleep Routine
-
-sub_24CEE:
+HandleSleep:
 		movem.l d0-d1,-(sp)
-		moveq   #FORCE_STATUS_FLAG_SLEEP,d1
-		bsr.w   ClearStatusBitRandomly
-		jsr     j_GetStatusFromForceID
-		btst    #FORCE_STATUS_FLAG_SLEEP,d1
+		moveq   #STATUSEFFECT_BIT_SLEEP,d1
+		bsr.w   TerminateStatusEffectRandomly
+		jsr     j_GetStatusEffectsForCombatant
+		btst    #STATUSEFFECT_BIT_SLEEP,d1
 		beq.s   loc_24D08
-		bset    #$1D,d3
+		bset    #29,d3
 loc_24D08:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function sub_24CEE
+    ; End of function HandleSleep
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12246,12 +13198,12 @@ loc_24D08:
 ResetForceMemberStats:
 		
 		movem.l d0-d1,-(sp)
-		moveq   #$1E,d0
+		moveq   #FORCE_MEMBERS_COUNTER,d0
 loc_24D14:
-		jsr     j_GetForceMemberStatus
-		andi.w  #5,d1
-		jsr     j_SetForceMemberStatus
-		jsr     j_GetForceMemberHP
+		jsr     j_GetStatusEffects
+		andi.w  #STATUSEFFECT_COUNTER_POISON|STATUSEFFECT_COUNTER_CURSE,d1
+		jsr     j_SetStatusEffects
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		beq.s   loc_24D34
 		jsr     j_RefillHP
@@ -12261,21 +13213,20 @@ loc_24D34:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function ResetForceMemberStats
+    ; End of function ResetForceMemberStats
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Decrement Status D1 counter, check for end
+; Decrement counter for status effect D1, with chance to end it early
 
-DecrementStatusCounter:
+DecrementStatusEffectCounter:
 		
 		movem.l d2/d7,-(sp)
-		jsr     j_GetStatusCounter
+		jsr     j_GetStatusEffectCounter
 		beq.s   loc_24D6A
-		bsr.w   UpdateRandomSeed0To100
-		cmp.b   EndStatusPercents(pc,d2.w),d7
-						; Chance to end status, indexed by turn counter
+		bsr.w   GenerateRandomNumber0To99
+		cmp.b   table_StatusEffectEndingPercents(pc,d2.w),d7
 		bge.s   loc_24D5E
 		clr.w   d2
 		bra.s   loc_24D60
@@ -12285,14 +13236,15 @@ loc_24D60:
 		bne.s   loc_24D64
 		bset    d1,d3
 loc_24D64:
-		jsr     j_SetTargetStatus
+		jsr     j_SetStatusEffectCounter
 loc_24D6A:
 		movem.l (sp)+,d2/d7
 		rts
 
-	; End of function DecrementStatusCounter
+    ; End of function DecrementStatusEffectCounter
 
-EndStatusPercents:
+table_StatusEffectEndingPercents:
+		; Chances to end status effect early, indexed by counter
 		dc.b 100
 		dc.b 100
 		dc.b 33
@@ -12300,70 +13252,69 @@ EndStatusPercents:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear Status bit D1, 50% of the time
+; Clear status effect bit D1, 50% of the time
 
-ClearStatusBitRandomly:
+TerminateStatusEffectRandomly:
 		
 		movem.l d2/d7,-(sp)
 		move.w  d1,d2
-		jsr     j_GetStatusFromForceID
+		jsr     j_GetStatusEffectsForCombatant
 		btst    d2,d1
 		beq.s   loc_24D98
-		bsr.w   UpdateRandomSeed0To100
-		cmpi.b  #$32,d7 
+		bsr.w   GenerateRandomNumber0To99
+		cmpi.b  #50,d7
 		bge.s   loc_24D98
 		bclr    d2,d1
-		jsr     j_SetStatusFromForceID
+		jsr     j_SetStatusEffectsForCombatant
 		bset    d2,d3
 loc_24D98:
 		movem.l (sp)+,d2/d7
 		rts
 
-	; End of function ClearStatusBitRandomly
+    ; End of function TerminateStatusEffectRandomly
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Status Message Handler
-
-sub_24D9E:
+DisplayAfterTurnMessage:
+		
 		move.l  d0,-(sp)
-		move.w  ((word_FFA9CE-$1000000)).w,d0
-		move.w  ((word_FFA9D0-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
-		move.w  ((word_FFA9D2-$1000000)).w,((word_FFF846-$1000000)).w
-		move.l  ((dword_FFA9D4-$1000000)).w,((TEXT_NUMBER-$1000000)).w
+		move.w  ((AFTER_TURN_MESSAGE_INDEX-$1000000)).w,d0
+		move.w  ((AFTER_TURN_MESSAGE_ARG_NAME_1-$1000000)).w,((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.w  ((AFTER_TURN_MESSAGE_ARG_NAME_2-$1000000)).w,((MESSAGE_ARG_NAME_2-$1000000)).w
+		move.l  ((AFTER_TURN_MESSAGE_ARG_NUMBER-$1000000)).w,((MESSAGE_ARG_NUMBER-$1000000)).w
 		trap    #DISPLAY_MESSAGE
 		move.l  (sp)+,d0
 		rts
 
-	; End of function sub_24D9E
+    ; End of function DisplayAfterTurnMessage
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get money to D1
+; Get current gold -> D1
 
 GetGold:
 		move.l  (CURRENT_GOLD).l,d1
 		rts
 
-	; End of function GetGold
+    ; End of function GetGold
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set money to D1
+; Set D1 -> current gold
 
 SetGold:
 		move.l  d1,(CURRENT_GOLD).l
 		rts
 
-	; End of function SetGold
+    ; End of function SetGold
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add D1 to money, cap at 999999
+; Add D1 to current gold, cap at 999999
 
 IncreaseGold:
 		add.l   (CURRENT_GOLD).l,d1
@@ -12374,12 +13325,12 @@ loc_24DE0:
 		move.l  d1,(CURRENT_GOLD).l
 		rts
 
-	; End of function IncreaseGold
+    ; End of function IncreaseGold
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub D1 from money, cap at 0
+; Sub D1 from current gold, cap at 0
 
 DecreaseGold:
 		sub.l   d1,(CURRENT_GOLD).l
@@ -12389,57 +13340,57 @@ loc_24DF6:
 		move.l  (CURRENT_GOLD).l,d1
 		rts
 
-	; End of function DecreaseGold
+    ; End of function DecreaseGold
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Add 1 to deals stock of item (D1)
+; Add 1 to deals stock for item D1
 
-IncreaseDealsItemStock:
+IncrementDealsStock:
 		
 		move.w  d2,-(sp)
 		jsr     j_GetItemType
-		btst    #$F,d2
+		btst    #ITEMTYPE_BIT_RARE,d2
 		beq.s   loc_24E18
-		bsr.s   GetDealsItemStock
+		bsr.s   GetDealsStock   
 		addq.w  #1,d2
-		cmpi.w  #$10,d2
+		cmpi.w  #16,d2
 		bcc.s   loc_24E18
-		bsr.s   SetDealsItemStock
+		bsr.s   SetDealsStock   
 loc_24E18:
 		move.w  (sp)+,d2
 		rts
 
-	; End of function IncreaseDealsItemStock
+    ; End of function IncrementDealsStock
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Sub 1 from deals stock of item (D1)
+; Sub 1 from deals stock for item D1
 
-DecreaseDealsItemStock:
+DecrementDealsStock:
 		
 		move.w  d2,-(sp)
-		bsr.s   GetDealsItemStock
+		bsr.s   GetDealsStock   
 		subq.w  #1,d2
 		bcs.s   loc_24E26
-		bsr.s   SetDealsItemStock
+		bsr.s   SetDealsStock   
 loc_24E26:
 		move.w  (sp)+,d2
 		rts
 
-	; End of function DecreaseDealsItemStock
+    ; End of function DecrementDealsStock
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get deals stock of item (D1) to D2
+; Get stock of item D1 currently in deals -> D2
 
-GetDealsItemStock:
+GetDealsStock:
 		
 		movem.l d1/a0,-(sp)
-		bsr.s   GetDealsItemEntryAddress
+		bsr.s   GetDealsStockEntryAddress
 		bcs.s   loc_24E38
 		move.b  (a0),d2
 		asr.w   #4,d2
@@ -12451,18 +13402,18 @@ loc_24E3A:
 		movem.l (sp)+,d1/a0
 		rts
 
-	; End of function GetDealsItemStock
+    ; End of function GetDealsStock
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set deals stock of item (D1) to D2
+; Set D2 -> stock of item D1 currently in deals
 
-SetDealsItemStock:
+SetDealsStock:
 		
 		movem.l d1-d2/a0,-(sp)
 		andi.w  #$F,d2
-		bsr.s   GetDealsItemEntryAddress
+		bsr.s   GetDealsStockEntryAddress
 		bcs.s   loc_24E58
 		asl.b   #4,d2
 		andi.b  #$F,(a0)
@@ -12474,84 +13425,87 @@ loc_24E5C:
 		movem.l (sp)+,d1-d2/a0
 		rts
 
-	; End of function SetDealsItemStock
+    ; End of function SetDealsStock
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get address into deals table from item id (D1)
+; Get item D1 deals stock entry address -> A0
 
-GetDealsItemEntryAddress:
+GetDealsStockEntryAddress:
 		
 		lea     (DEALS_ITEMS).l,a0
-		andi.w  #ITEM_MASK_ID,d1
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
 		asr.w   #1,d1
 		adda.w  d1,a0
 		rts
 
-	; End of function GetDealsItemEntryAddress
+    ; End of function GetDealsStockEntryAddress
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get list of all items in deal stock
+; Load items currently in deals into shop inventory
+; 
+; In: A0 = shop data address
+;     D0 = shop type (0: weapon shop, 1: item shop)
 
-GetDealsStockList:
+LoadDealsInventory:
 		
 		movem.l d0-d3/a0-a1/a3,-(sp)
 		clr.w   d3
-		lea     (word_FFA8C0).l,a3
+		lea     (TABLE_AT_FFA8C0).l,a3; shop inventory
 		clr.w   d1
 loc_24E82:
 		jsr     j_GetItemType
 		tst.b   d0
-		bne.s   loc_24E94
-		btst    #8,d2
-		beq.s   loc_24EB0
+		bne.s   loc_24E94       ; branch if item shop
+		btst    #ITEMTYPE_BIT_WEAPON,d2
+		beq.s   loc_24EB0       ; weapon shop : branch if item not a weapon
 		bra.s   loc_24E9A
 loc_24E94:
-		btst    #8,d2
-		bne.s   loc_24EB0
+		btst    #ITEMTYPE_BIT_WEAPON,d2
+		bne.s   loc_24EB0       ; item shop : branch if item is a weapon
 loc_24E9A:
 		movea.l a0,a1
 loc_24E9C:
 		move.b  (a1)+,d2
-		blt.s   loc_24EA6
+		blt.s   loc_24EA6       ; branch out upon reaching end of shop data
 		cmp.b   d2,d1
-		beq.s   loc_24EB0
+		beq.s   loc_24EB0       ; skip displaying item in deals if regularly for sale
 		bra.s   loc_24E9C
 loc_24EA6:
-		bsr.w   GetDealsItemStock
-		beq.s   loc_24EB0
+		bsr.w   GetDealsStock   
+		beq.s   loc_24EB0       ; branch if no item in stock
 		addq.w  #1,d3
 		move.w  d1,(a3)+
 loc_24EB0:
 		addq.w  #1,d1
-		cmpi.w  #$3F,d1 
+		cmpi.w  #NOTHING_ITEM,d1
 		bne.s   loc_24E82
-		move.w  d3,(word_FFA93E).l
+		move.w  d3,(SHOP_INVENTORY_LENGTH).l
 		movem.l (sp)+,d0-d3/a0-a1/a3
 		rts
 
-	; End of function GetDealsStockList
+    ; End of function LoadDealsInventory
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Check if item D1 not in deal stock and held by any character
+; Check if item D1 not in deals stock or held by any character
 
 IsItemInDealsOrHeldByForce:
 		
 		movem.l d0-d1,-(sp)
-		andi.w  #ITEM_MASK_ID,d1
-		bsr.w   GetDealsItemStock
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		bsr.w   GetDealsStock   
 		bne.s   loc_24ED4
 		bsr.s   IsItemHeldByForce
 loc_24ED4:
 		movem.l (sp)+,d0-d1
 		rts
 
-	; End of function IsItemInDealsOrHeldByForce
+    ; End of function IsItemInDealsOrHeldByForce
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12561,11 +13515,11 @@ loc_24ED4:
 IsItemHeldByCharacter:
 		
 		movem.l d1-d3/a0,-(sp)
-		jsr     j_GetForceItemsAddress
-		moveq   #FORCE_ITEM_SLOTS_COUNTER,d2
+		jsr     j_GetEntityItemsAddress
+		moveq   #ITEM_SLOTS_COUNTER,d2
 loc_24EE6:
 		move.b  (a0)+,d3
-		andi.w  #ITEM_MASK_ID,d3
+		andi.w  #ITEMENTRY_MASK_INDEX,d3
 		cmp.b   d1,d3
 		beq.s   loc_24EF8
 		dbf     d2,loc_24EE6
@@ -12574,7 +13528,7 @@ loc_24EF8:
 		movem.l (sp)+,d1-d3/a0
 		rts
 
-	; End of function IsItemHeldByCharacter
+    ; End of function IsItemHeldByCharacter
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12584,8 +13538,8 @@ loc_24EF8:
 IsItemHeldByForce:
 		
 		movem.l d1-d3/a0,-(sp)
-		andi.w  #ITEM_MASK_ID,d1
-		moveq   #FORCE_ENTRIES_COUNTER,d0
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		moveq   #FORCE_MEMBERS_COUNTER,d0
 loc_24F08:
 		bsr.s   IsItemHeldByCharacter
 		bcc.s   loc_24F14
@@ -12595,157 +13549,160 @@ loc_24F14:
 		movem.l (sp)+,d1-d3/a0
 		rts
 
-	; End of function IsItemHeldByForce
+    ; End of function IsItemHeldByForce
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load force member attack to battle stats table
+; Load force member's base attack to combatant D0 entry
 
-LoadATTFromForceID:
+LoadBaseAttack:
 		
 		move.l  d1,-(sp)
-		jsr     j_GetATTFromForceID
-		jsr     j_SetTargetATT
+		jsr     j_GetBaseAttackForCombatant
+		jsr     j_SetModifiedAttack
 		move.l  (sp)+,d1
 		rts
 
-	; End of function LoadATTFromForceID
+    ; End of function LoadBaseAttack
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load force member defense to battle stats table
+; Load force member's base defense to combatant D0 entry
 
-LoadDEFFromForceID:
+LoadBaseDefense:
 		
 		move.l  d1,-(sp)
-		jsr     j_GetDEFFromForceID
-		jsr     j_SetTargetDEF
+		jsr     j_GetBaseDefenseForCombatant
+		jsr     j_SetModifiedDefense
 		move.l  (sp)+,d1
 		rts
 
-	; End of function LoadDEFFromForceID
+    ; End of function LoadBaseDefense
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load force member agility to battle stats table
+; Load force member's base agility to combatant D0 entry
 
-LoadAGIFromForceID:
+LoadBaseAgility:
 		
 		move.l  d1,-(sp)
-		jsr     j_GetAGIFromForceID
-		jsr     j_SetTargetAGI
+		jsr     j_GetBaseAgilityForCombatant
+		jsr     j_SetModifiedAgility
 		move.l  (sp)+,d1
 		rts
 
-	; End of function LoadAGIFromForceID
+    ; End of function LoadBaseAgility
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load force member move to battle stats table
+; Load force member's base move to combatant D0 entry
 
-LoadMOVEFromForceID:
-		
+LoadBaseMove:
 		move.l  d1,-(sp)
-		jsr     j_GetMOVEFromForceID
-		jsr     j_SetTargetMOVE
+		jsr     j_GetBaseMoveForCombatant
+		jsr     j_SetModifiedMove
 		move.l  (sp)+,d1
 		rts
 
-	; End of function LoadMOVEFromForceID
+    ; End of function LoadBaseMove
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load force member crit to battle stats table
+; Load force member's base critical to combatant D0 entry
 
-LoadCRITFromForceID:
+LoadBaseCritical:
 		
 		move.l  d1,-(sp)
-		jsr     j_GetCRITFromForceID
-		jsr     j_SetTargetCRIT
+		jsr     j_GetBaseCriticalForCombatant
+		jsr     j_SetModifiedCritical
 		move.l  (sp)+,d1
 		rts
 
-	; End of function LoadCRITFromForceID
+    ; End of function LoadBaseCritical
 
 
 ; =============== S U B R O U T I N E =======================================
+
+; Refill force member D0 HP
 
 RefillHP:
 		move.l  d1,-(sp)
-		jsr     j_GetForceMemberMaxHP
-		jsr     j_SetForceMemberHP
+		jsr     j_GetMaxHP
+		jsr     j_SetCurrentHP
 		move.l  (sp)+,d1
 		rts
 
-	; End of function RefillHP
+    ; End of function RefillHP
 
 
 ; =============== S U B R O U T I N E =======================================
+
+; Refill force member D0 MP
 
 RefillMP:
 		move.l  d1,-(sp)
-		jsr     j_GetForceMemberMaxMP
-		jsr     j_SetForceMemberMP
+		jsr     j_GetMaxMP
+		jsr     j_SetCurrentMP
 		move.l  (sp)+,d1
 		rts
 
-	; End of function RefillMP
+    ; End of function RefillMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set HP to max by force index
+; Refill force member's HP for combatant D0
 
-RefillHPFromTargetID:
+RefillHPforCombatant:
 		
 		movem.w d0-d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.w  d1,d0
-		bsr.w   RefillHP
+		bsr.w   RefillHP        
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function RefillHPFromTargetID
+    ; End of function RefillHPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Set MP to max by force index
+; Refill force member's MP for combatant D0
 
-RefillMPFromTargetID:
+RefillMPforCombatant:
 		
 		movem.w d0-d1,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.w  d1,d0
-		bsr.w   RefillMP
+		bsr.w   RefillMP        
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function RefillMPFromTargetID
+    ; End of function RefillMPforCombatant
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear RAM Table A4C0
-
-sub_24FC4:
+ClearPassabilityFlags:
+		
 		movem.l d0/a0,-(sp)
-		lea     ((byte_FFA4C0-$1000000)).w,a0
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		bra.s   loc_24FD6
 
-	; End of function sub_24FC4
+    ; End of function ClearPassabilityFlags
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_24FCE:
+ClearTableAtFFA8C0:
+		
 		movem.l d0/a0,-(sp)
-		lea     ((word_FFA8C0-$1000000)).w,a0
+		lea     ((TABLE_AT_FFA8C0-$1000000)).w,a0
 loc_24FD6:
 		move.w  #$3FF,d0
 loc_24FDA:
@@ -12754,26 +13711,28 @@ loc_24FDA:
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function sub_24FCE
+    ; End of function ClearTableAtFFA8C0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Wrapper for 25026 and 24FEC
 
-sub_24FE6:
+InitializeBattleMap:
+		
 		bsr.s   sub_25026       
-		bsr.s   sub_24FEC       
+		bsr.s   TrimBattleTerrain
 		rts
 
-	; End of function sub_24FE6
+    ; End of function InitializeBattleMap
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear terrain values (ACC0) at map borders
+; Trim battle terrain table down to map size
 
-sub_24FEC:
+TrimBattleTerrain:
+		
 		movem.l d0-d1/a0-a1,-(sp)
 		lea     ((TERRAIN_DATA-$1000000)).w,a0
 		movea.l a0,a1
@@ -12796,7 +13755,7 @@ loc_25016:
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function sub_24FEC
+    ; End of function TrimBattleTerrain
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12805,8 +13764,8 @@ loc_25016:
 
 sub_25026:
 		movem.l d0-d3/a0-a2,-(sp)
-		movea.l ((dword_FFC602-$1000000)).w,a2
-		lea     $10(a2),a0
+		movea.l ((BATTLE_HEADER_POINTER-$1000000)).w,a2
+		lea     BATTLEHEADER_OFFSET_MAP_WIDTH(a2),a0
 		clr.w   d0
 		move.b  (a0)+,d0
 		addq.w  #2,d0
@@ -12838,7 +13797,7 @@ loc_25074:
 		dbf     d3,loc_2505E
 		adda.w  #2,a1
 		dbf     d2,loc_25058
-		move.l  ((dword_FFC606-$1000000)).w,d0
+		move.l  ((AI_REGIONS_POINTER-$1000000)).w,d0
 		beq.w   loc_250D4
 		movea.l d0,a0
 		lea     ((byte_FFB0C0-$1000000)).w,a1
@@ -12874,41 +13833,41 @@ loc_250D4:
 		movem.l (sp)+,d0-d3/a0-a2
 		rts
 
-	; End of function sub_25026
+    ; End of function sub_25026
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Clear terrain values at occupied squares
-
-sub_250DA:
+ClearTerrainAtOccupiedSpaces:
+		
 		movem.l d0-d2/a0,-(sp)
 		lea     ((TERRAIN_DATA-$1000000)).w,a0
-		moveq   #$1F,d0
+		moveq   #COMBATANT_ENTRIES_COUNTER,d0
 loc_250E4:
-		jsr     j_GetTargetID
-		cmpi.b  #$FF,d1
+		jsr     j_GetEntity
+		cmpi.b  #EMPTY_COMBATANT_SLOT,d1
 		beq.s   loc_25100
-		jsr     j_GetTargetPosition
+		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
-		add.w   d2,d1
+		add.w   d2,d1           ; convert coordinates to offset
 		clr.b   (a0,d1.w)
 loc_25100:
 		dbf     d0,loc_250E4
 		movem.l (sp)+,d0-d2/a0
 		rts
 
-	; End of function sub_250DA
+    ; End of function ClearTerrainAtOccupiedSpaces
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Reset walkable areas (A4C0) and initialize from A0
+; Reset target grid (i.e., passability flags table) and load from A0
 
-sub_2510A:
+LoadPredefinedTargetGrid:
+		
 		movem.l d0-d3/a0-a1,-(sp)
-		bsr.w   sub_24FC4       
-		lea     ((byte_FFA4C0-$1000000)).w,a1
+		bsr.w   ClearPassabilityFlags
+		lea     ((PASSABILITY_FLAGS-$1000000)).w,a1
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		lea     1(a1,d0.w),a1
 		moveq   #$FFFFFFFF,d0
@@ -12934,9 +13893,10 @@ loc_2513E:
 		movem.l (sp)+,d0-d3/a0-a1
 		rts
 
-	; End of function sub_2510A
+    ; End of function LoadPredefinedTargetGrid
 
-CharacterData:  incbin "data/stats/allies/chardata.bin"
+InitialForceData:
+		incbin "data/stats/allies/initialforcedata.bin"
 BattleSpriteData:
 		incbin "data/stats/allies/battlespritedata.bin"
 ItemNames:      incbin "data/stats/items/itemnames.bin"
@@ -12960,9 +13920,9 @@ byte_26BF2:     dc.b 2
 		dc.b 0
 		dc.b $FF
 GrowthCurves:   incbin "data/stats/allies/growthcurves.bin"
-StatGrowths:    incbin "data/stats/allies/statgrowths.bin"
-PromotedStatGrowths:
-		incbin "data/stats/allies/promotedstatgrowths.bin"
+UnpromotedGrowths:
+		incbin "data/stats/allies/unpromotedgrowths.bin"
+PromotedGrowths:incbin "data/stats/allies/promotedgrowths.bin"
 SpellLearningData:
 		incbin "data/stats/allies/spelllearningdata.bin"
 
@@ -12970,11 +13930,12 @@ SpellLearningData:
 
 ; Prepare Ending Sequence
 
-sub_26E16:
+LoadEndingCreditsForce:
+		
 		movem.l d0-d1/a0-a3,-(sp)
-		lea     EndingForceMemberData(pc), a1
+		lea     EndingCreditsForceData(pc), a1
 		lea     (PROMOTED_AT_LEVELS).l,a2
-		lea     (ACTIVE_FORCE_MEMBERS).l,a3
+		lea     (BATTLE_PARTY_MEMBERS).l,a3
 		clr.w   d0
 loc_26E2C:
 		move.b  (a1)+,d0
@@ -12982,9 +13943,9 @@ loc_26E2C:
 		move.b  d0,(a3)+
 		jsr     j_RefillHP
 		move.b  (a1)+,d1
-		jsr     j_SetForceMemberClass
+		jsr     j_SetClass
 		move.b  #$14,(a2,d0.w)
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		moveq   #$FFFFFFFF,d1
 		move.l  d1,(a0)
 		move.b  (a1)+,(a0)
@@ -12992,35 +13953,36 @@ loc_26E2C:
 loc_26E54:
 		st      (a3)
 		move.l  #$90000FF,(CURRENT_CHAPTER).l
-		jsr     j_InitBattle
-		jsr     sub_203A0
+		jsr     j_InitializeBattleData
+		jsr     j_InitializeBattleMap
 		jsr     sub_20010
 		jsr     sub_20004
 		movem.l (sp)+,d0-d1/a0-a3
 		rts
 
-	; End of function sub_26E16
+    ; End of function LoadEndingCreditsForce
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Load Animation D1 of Ending Sequence
+; In: d0.w
 
-sub_26E7E:
+WriteEndingCreditsBattlesceneScript:
+		
 		movem.l d0-d2/a0/a2,-(sp)
 		lea     EndingAnimationSequence(pc), a0
 		clr.w   d1
 		move.w  d0,d1
 		asl.w   #2,d1
 		adda.w  d1,a0
-		lea     (byte_FFBC8E).l,a2
+		lea     (BATTLE_SCENE_ACTORS).l,a2
 		move.b  (a0)+,d1
 		ext.w   d1
 		move.b  (a0)+,d2
 		ext.w   d2
-		clr.w   (a2)+
-		move.w  d2,(a2)+
-		move.w  d1,(a2)+
+		clr.w   (a2)+           ; battlescene command
+		move.w  d2,(a2)+        ; enemy
+		move.w  d1,(a2)+        ; ally
 		move.b  (a0)+,d1
 		ext.w   d1
 		move.b  (a0)+,d2
@@ -13050,24 +14012,25 @@ loc_26EDA:
 		movem.l (sp)+,d0-d2/a0/a2
 		rts
 
-	; End of function sub_26E7E
+    ; End of function WriteEndingCreditsBattlesceneScript
 
-EndingForceMemberData:
-		incbin "data/stats/allies/endingforcememberdata.bin"
+EndingCreditsForceData:
+		incbin "data/stats/allies/endingcreditsforcedata.bin"
 EndingAnimationSequence:
 		incbin "data/stats/allies/endinganimationsequence.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
-InitBattle:
+InitializeBattleData:
+		
 		movem.l d0-d1/a0-a3,-(sp)
-		lea     (dword_FFC602).l,a0
-		lea     EnemyData(pc), a2
+		lea     (BATTLE_HEADER_POINTER).l,a0
+		lea     table_EnemyDefs(pc), a2
 		move.l  a2,$C(a0)
 		lea     byte_2751A(pc), a2
 		move.l  a2,$10(a0)
-		lea     MapHeaders(pc), a3
-		lea     MapHeaders(pc), a1
+		lea     rpt_MapHeaders(pc), a3
+		lea     rpt_MapHeaders(pc), a1
 		move.b  (CURRENT_CHAPTER).l,d0
 		ext.w   d0
 		subq.w  #1,d0
@@ -13163,7 +14126,7 @@ loc_2702C:
 		movem.l (sp)+,d0-d1/a0-a3
 		rts
 
-	; End of function InitBattle
+    ; End of function InitializeBattleData
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -13173,9495 +14136,20 @@ loc_2702C:
 sub_27036:
 		move.w  d0,-(sp)
 		move.b  (byte_FF9C88).l,d0
-		or.b    (AI_REGIONS_TRIGGERED).l,d0
+		or.b    (TRIGGERED_AI_REGIONS).l,d0
 		move.b  d0,(byte_FF9C88).l
 		move.w  (sp)+,d0
 		rts
 
-	; End of function sub_27036
+    ; End of function sub_27036
 
-MapHeaders:     incbin "data/maps/global/mapheaders.bin"
+rpt_MapHeaders: incbin "data/maps/global/mapheaders.bin"
 byte_2751A:     dc.b 0
 		dc.b $FF
-EnemyData:      incbin "data/stats/enemies/enemydata.bin"
-		dc.b   0
-		dc.b  $C
-		dc.b   3
-		dc.b $84 
-		dc.b   0
-		dc.b $2D 
-		dc.b   0
-		dc.b $4B 
-		dc.b   2
-		dc.b $BC 
-		dc.b   0
-		dc.b $19
-		dc.b   6
-		dc.b  $E
-		dc.b   0
-		dc.b $50 
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b $96 
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b $7D 
-		dc.b   2
-		dc.b $EE 
-		dc.b   6
-		dc.b $A4 
-		dc.b   0
-		dc.b $C8 
-		dc.b   1
-		dc.b $B8 
-		dc.b   2
-		dc.b $A8 
-		dc.b   1
-		dc.b $7C 
-		dc.b   2
-		dc.b $EE 
-		dc.b   0
-		dc.b $8C 
-		dc.b   0
-		dc.b $64 
-		dc.b   0
-		dc.b $5C 
-		dc.b   3
-		dc.b $52 
-		dc.b   5
-		dc.b $F0 
-		dc.b   0
-		dc.b $3C 
-		dc.b   1
-		dc.b $5E 
-		dc.b   1
-		dc.b $90 
-		dc.b   4
-		dc.b   6
-		dc.b   5
-		dc.b $DC 
-		dc.b   1
-		dc.b $C2 
-		dc.b   0
-		dc.b $7D 
-		dc.b   0
-		dc.b $64 
-		dc.b   0
-		dc.b $82 
-		dc.b   3
-		dc.b $48 
-		dc.b   0
-		dc.b $8C 
-		dc.b   5
-		dc.b $3C 
-		dc.b   0
-		dc.b $C8 
-		dc.b   7
-		dc.b $3A 
-		dc.b   8
-		dc.b $48 
-		dc.b   0
-		dc.b $B4 
-		dc.b   1
-		dc.b $C2 
-		dc.b   8
-		dc.b $FC 
-		dc.b   5
-		dc.b $46 
-		dc.b   9
-		dc.b $C4 
-		dc.b   0
-		dc.b $E6 
-		dc.b   1
-		dc.b  $E
-		dc.b   0
-		dc.b $B4 
-		dc.b   4
-		dc.b $C4 
-		dc.b   5
-		dc.b $46 
-		dc.b   5
-		dc.b $96 
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b $5E 
-		dc.b   1
-		dc.b $C2 
-		dc.b   2
-		dc.b   8
-		dc.b   5
-		dc.b $DC 
-		dc.b   7
-		dc.b $D0 
-		dc.b  $B
-		dc.b $B8 
-		dc.b   4
-		dc.b $B0 
-		dc.b   9
-		dc.b $C4 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $78 
-		dc.b   0
-		dc.b $8C 
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b $C8 
-		dc.b   0
-		dc.b $FA 
-		dc.b   3
-		dc.b $52 
-		dc.b   2
-		dc.b $EE 
-		dc.b   5
-		dc.b $DC 
-		dc.b   8
-		dc.b $FC 
-		dc.b   1
-		dc.b $40 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   1
-		dc.b  $D
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $14
-		dc.b $1E
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $80 
-		dc.b $41 
-		dc.b $10
-		dc.b $81 
-		dc.b $30 
-		dc.b $41 
-		dc.b   0
-		dc.b $32 
-		dc.b $61 
-		dc.b $50 
-		dc.b $11
-		dc.b $10
-		dc.b $41 
-		dc.b $22 
-		dc.b $21 
-		dc.b $40 
-		dc.b $11
-		dc.b   0
-		dc.b $51 
-		dc.b $22 
-		dc.b $21 
-		dc.b $10
-		dc.b $41 
-		dc.b   0
-		dc.b $B1 
-		dc.b $10
-		dc.b $41 
-		dc.b   0
-		dc.b $B1 
-		dc.b $50 
-		dc.b   1
-		dc.b   0
-		dc.b $11
-		dc.b $22 
-		dc.b $41 
-		dc.b $12
-		dc.b $50 
-		dc.b   1
-		dc.b   0
-		dc.b $11
-		dc.b $22 
-		dc.b $61 
-		dc.b $30 
-		dc.b $F1 
-		dc.b $20
-		dc.b $D1 
-		dc.b $10
-		dc.b   1
-		dc.b $20
-		dc.b $31 
-		dc.b $80 
-		dc.b   1
-		dc.b $80 
-		dc.b   1
-		dc.b $80 
-		dc.b   1
-		dc.b $80 
-		dc.b   1
-		dc.b $80 
-		dc.b   1
-		dc.b $70 
-		dc.b $11
-		dc.b $80 
-		dc.b   1
-		dc.b $70 
-		dc.b $11
-		dc.b $80 
-		dc.b   1
-		dc.b $70 
-		dc.b   1
-		dc.b $90 
-		dc.b   1
-		dc.b $70 
-		dc.b   1
-		dc.b $90 
-		dc.b   1
-		dc.b $70 
-		dc.b   1
-		dc.b $90 
-		dc.b   1
-		dc.b $70 
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b $40 
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b $10
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b $10
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b $10
-		dc.b $F1 
-		dc.b $11
-		dc.b $10
-		dc.b $F1 
-		dc.b $11
-		dc.b $A0 
-		dc.b $81 
-		dc.b $A0 
-		dc.b $81 
-		dc.b $A0 
-		dc.b $81 
-		dc.b $F0 
-		dc.b $40 
-		dc.b   0
-		dc.b  $C
-		dc.b $14
-		dc.b $17
-		dc.b   1
-		dc.b  $C
-		dc.b $18
-		dc.b $15
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $14
-		dc.b $21 
-		dc.b $70 
-		dc.b $51 
-		dc.b $70 
-		dc.b $31 
-		dc.b $40 
-		dc.b $12
-		dc.b $40 
-		dc.b $11
-		dc.b $40 
-		dc.b $12
-		dc.b $40 
-		dc.b $11
-		dc.b $20
-		dc.b $42 
-		dc.b   3
-		dc.b $20
-		dc.b $11
-		dc.b   0
-		dc.b   2
-		dc.b   3
-		dc.b $62 
-		dc.b   3
-		dc.b   0
-		dc.b   1
-		dc.b   4
-		dc.b $10
-		dc.b $62 
-		dc.b $20
-		dc.b   4
-		dc.b   5
-		dc.b $10
-		dc.b $13
-		dc.b $42 
-		dc.b $20
-		dc.b $15
-		dc.b $20
-		dc.b $13
-		dc.b $32 
-		dc.b $20
-		dc.b   5
-		dc.b   4
-		dc.b   0
-		dc.b   3
-		dc.b $26 
-		dc.b $52 
-		dc.b   0
-		dc.b   4
-		dc.b   3
-		dc.b $56 
-		dc.b   2
-		dc.b   3
-		dc.b $22 
-		dc.b   0
-		dc.b   5
-		dc.b $56 
-		dc.b   3
-		dc.b $42 
-		dc.b   0
-		dc.b   5
-		dc.b   6
-		dc.b $10
-		dc.b $26 
-		dc.b   3
-		dc.b $12
-		dc.b $30 
-		dc.b   4
-		dc.b   6
-		dc.b $10
-		dc.b $16
-		dc.b $32 
-		dc.b $30 
-		dc.b   5
-		dc.b   4
-		dc.b $10
-		dc.b $26 
-		dc.b $12
-		dc.b   3
-		dc.b $30 
-		dc.b $15
-		dc.b $10
-		dc.b $16
-		dc.b $37 
-		dc.b $30 
-		dc.b $14
-		dc.b $26 
-		dc.b $54 
-		dc.b $35 
-		dc.b $26 
-		dc.b $15
-		dc.b $34 
-		dc.b $45 
-		dc.b $16
-		dc.b $35 
-		dc.b $14
-		dc.b $45 
-		dc.b   4
-		dc.b $55 
-		dc.b $14
-		dc.b $55 
-		dc.b $C1 
-		dc.b $13
-		dc.b $11
-		dc.b $13
-		dc.b $11
-		dc.b $53 
-		dc.b $11
-		dc.b $93 
-		dc.b $11
-		dc.b $62 
-		dc.b $11
-		dc.b $62 
-		dc.b $11
-		dc.b $52 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $E1 
-		dc.b   0
-		dc.b $14
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $35 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $C0 
-		dc.b   1
-		dc.b $B0 
-		dc.b $21 
-		dc.b $A0 
-		dc.b $21 
-		dc.b $A0 
-		dc.b $21 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $A0 
-		dc.b $31 
-		dc.b $90 
-		dc.b $31 
-		dc.b $A0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $20
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $90 
-		dc.b $51 
-		dc.b $50 
-		dc.b $91 
-		dc.b $10
-		dc.b   1
-		dc.b $30 
-		dc.b $41 
-		dc.b $20
-		dc.b $11
-		dc.b $30 
-		dc.b $41 
-		dc.b $20
-		dc.b $11
-		dc.b $30 
-		dc.b $41 
-		dc.b $20
-		dc.b $11
-		dc.b   0
-		dc.b $91 
-		dc.b   0
-		dc.b $11
-		dc.b   0
-		dc.b $91 
-		dc.b   0
-		dc.b $11
-		dc.b   0
-		dc.b $91 
-		dc.b   0
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b   1
-		dc.b $32 
-		dc.b $51 
-		dc.b $82 
-		dc.b $31 
-		dc.b $A2 
-		dc.b $11
-		dc.b $B2 
-		dc.b $11
-		dc.b $52 
-		dc.b $FF
-		dc.b   0
-		dc.b $14
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $35 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $C0 
-		dc.b   1
-		dc.b $B0 
-		dc.b $21 
-		dc.b $A0 
-		dc.b $21 
-		dc.b $A0 
-		dc.b $21 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $A0 
-		dc.b $31 
-		dc.b $90 
-		dc.b $31 
-		dc.b $A0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $B0 
-		dc.b $11
-		dc.b $90 
-		dc.b $51 
-		dc.b $50 
-		dc.b $91 
-		dc.b $10
-		dc.b   1
-		dc.b $30 
-		dc.b $41 
-		dc.b $20
-		dc.b $11
-		dc.b $30 
-		dc.b $41 
-		dc.b $20
-		dc.b $11
-		dc.b $30 
-		dc.b $41 
-		dc.b $20
-		dc.b $11
-		dc.b   0
-		dc.b $91 
-		dc.b   0
-		dc.b $11
-		dc.b   0
-		dc.b $91 
-		dc.b   0
-		dc.b $11
-		dc.b   0
-		dc.b $91 
-		dc.b   0
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b $11
-		dc.b $30 
-		dc.b $31 
-		dc.b $30 
-		dc.b   1
-		dc.b $32 
-		dc.b $51 
-		dc.b $82 
-		dc.b $31 
-		dc.b $A2 
-		dc.b $11
-		dc.b $B2 
-		dc.b $11
-		dc.b $52 
-		dc.b $FF
-		dc.b   0
-		dc.b $19
-		dc.b $1B
-		dc.b $1D
-		dc.b $52 
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b   0
-		dc.b   1
-		dc.b $10
-		dc.b $12
-		dc.b $73 
-		dc.b $14
-		dc.b $73 
-		dc.b   2
-		dc.b $10
-		dc.b $21 
-		dc.b   0
-		dc.b   1
-		dc.b $10
-		dc.b $F2 
-		dc.b $32 
-		dc.b   5
-		dc.b $20
-		dc.b   1
-		dc.b   0
-		dc.b $21 
-		dc.b   0
-		dc.b $F2 
-		dc.b $42 
-		dc.b $20
-		dc.b   1
-		dc.b $10
-		dc.b   1
-		dc.b $10
-		dc.b $F2 
-		dc.b $92 
-		dc.b   0
-		dc.b   1
-		dc.b $10
-		dc.b $22 
-		dc.b $53 
-		dc.b $14
-		dc.b   3
-		dc.b $D2 
-		dc.b   0
-		dc.b $52 
-		dc.b   3
-		dc.b $32 
-		dc.b   3
-		dc.b $14
-		dc.b   3
-		dc.b $C2 
-		dc.b   5
-		dc.b $62 
-		dc.b   3
-		dc.b $32 
-		dc.b   3
-		dc.b $14
-		dc.b   3
-		dc.b $62 
-		dc.b $60 
-		dc.b $62 
-		dc.b   3
-		dc.b $32 
-		dc.b   3
-		dc.b $14
-		dc.b $23 
-		dc.b $42 
-		dc.b $60 
-		dc.b $73 
-		dc.b $82 
-		dc.b   3
-		dc.b $42 
-		dc.b   0
-		dc.b $21 
-		dc.b $10
-		dc.b   1
-		dc.b $73 
-		dc.b $82 
-		dc.b   3
-		dc.b $42 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $31 
-		dc.b   3
-		dc.b   5
-		dc.b $E2 
-		dc.b   3
-		dc.b $42 
-		dc.b   0
-		dc.b $51 
-		dc.b   3
-		dc.b $A2 
-		dc.b   5
-		dc.b $32 
-		dc.b   3
-		dc.b $42 
-		dc.b $10
-		dc.b   1
-		dc.b $30 
-		dc.b   3
-		dc.b $12
-		dc.b $40 
-		dc.b $82 
-		dc.b   3
-		dc.b $42 
-		dc.b $10
-		dc.b   1
-		dc.b $30 
-		dc.b   3
-		dc.b $12
-		dc.b $40 
-		dc.b $82 
-		dc.b   3
-		dc.b $A2 
-		dc.b   5
-		dc.b   3
-		dc.b $12
-		dc.b $10
-		dc.b $11
-		dc.b   0
-		dc.b $82 
-		dc.b   3
-		dc.b $B2 
-		dc.b   3
-		dc.b $12
-		dc.b $40 
-		dc.b $82 
-		dc.b $13
-		dc.b $24 
-		dc.b   3
-		dc.b $24 
-		dc.b $43 
-		dc.b $12
-		dc.b $10
-		dc.b $11
-		dc.b   0
-		dc.b $82 
-		dc.b $13
-		dc.b $24 
-		dc.b   3
-		dc.b $24 
-		dc.b $43 
-		dc.b $12
-		dc.b $10
-		dc.b   1
-		dc.b $10
-		dc.b $32 
-		dc.b $53 
-		dc.b $A2 
-		dc.b   5
-		dc.b   3
-		dc.b $12
-		dc.b $10
-		dc.b   1
-		dc.b $10
-		dc.b $32 
-		dc.b $23 
-		dc.b   0
-		dc.b   1
-		dc.b   3
-		dc.b $B2 
-		dc.b   3
-		dc.b $A2 
-		dc.b $53 
-		dc.b $22 
-		dc.b $80 
-		dc.b   3
-		dc.b $A2 
-		dc.b $53 
-		dc.b $22 
-		dc.b $80 
-		dc.b $33 
-		dc.b $24 
-		dc.b $63 
-		dc.b $12
-		dc.b $13
-		dc.b $22 
-		dc.b   0
-		dc.b $21 
-		dc.b $20
-		dc.b $11
-		dc.b $B2 
-		dc.b $13
-		dc.b $12
-		dc.b $13
-		dc.b $22 
-		dc.b $40 
-		dc.b $21 
-		dc.b $40 
-		dc.b $72 
-		dc.b $53 
-		dc.b $22 
-		dc.b $10
-		dc.b $61 
-		dc.b $30 
-		dc.b $A2 
-		dc.b   5
-		dc.b   3
-		dc.b $32 
-		dc.b   0
-		dc.b $71 
-		dc.b   0
-		dc.b $11
-		dc.b   0
-		dc.b $B2 
-		dc.b   4
-		dc.b $32 
-		dc.b   0
-		dc.b $51 
-		dc.b $20
-		dc.b   1
-		dc.b $10
-		dc.b $22 
-		dc.b $60 
-		dc.b $12
-		dc.b   4
-		dc.b $32 
-		dc.b $10
-		dc.b   1
-		dc.b $10
-		dc.b $31 
-		dc.b   0
-		dc.b   1
-		dc.b $10
-		dc.b $22 
-		dc.b $60 
-		dc.b $12
-		dc.b   3
-		dc.b $32 
-		dc.b $10
-		dc.b   1
-		dc.b $40 
-		dc.b   1
-		dc.b   5
-		dc.b $52 
-		dc.b $10
-		dc.b $11
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $12
-		dc.b   3
-		dc.b $72 
-		dc.b $40 
-		dc.b   5
-		dc.b $52 
-		dc.b   0
-		dc.b $41 
-		dc.b   0
-		dc.b $12
-		dc.b   3
-		dc.b   5
-		dc.b $52 
-		dc.b $50 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $D4 
-		dc.b   0
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $E4 
-		dc.b $12
-		dc.b $F4 
-		dc.b $54 
-		dc.b $32 
-		dc.b   4
-		dc.b $12
-		dc.b $D4 
-		dc.b   0
-		dc.b $74 
-		dc.b $62 
-		dc.b $F4 
-		dc.b $62 
-		dc.b $F4 
-		dc.b $82 
-		dc.b $F4 
-		dc.b $14
-		dc.b $82 
-		dc.b $A4 
-		dc.b   2
-		dc.b   0
-		dc.b $E2 
-		dc.b $B4 
-		dc.b $B2 
-		dc.b   0
-		dc.b $32 
-		dc.b $64 
-		dc.b $B2 
-		dc.b $64 
-		dc.b $B2 
-		dc.b $B4 
-		dc.b   0
-		dc.b $22 
-		dc.b $11
-		dc.b $82 
-		dc.b $C4 
-		dc.b $B2 
-		dc.b $C3 
-		dc.b $22 
-		dc.b $11
-		dc.b $82 
-		dc.b $C3 
-		dc.b $22 
-		dc.b   1
-		dc.b $32 
-		dc.b $53 
-		dc.b   0
-		dc.b $93 
-		dc.b   0
-		dc.b $22 
-		dc.b   1
-		dc.b $32 
-		dc.b $F3 
-		dc.b   3
-		dc.b $B1 
-		dc.b $83 
-		dc.b $B1 
-		dc.b $83 
-		dc.b $B1 
-		dc.b $D3 
-		dc.b $B1 
-		dc.b $B3 
-		dc.b $71 
-		dc.b $F3 
-		dc.b $A1 
-		dc.b   0
-		dc.b $C3 
-		dc.b $D1 
-		dc.b $A3 
-		dc.b $51 
-		dc.b $93 
-		dc.b $51 
-		dc.b $63 
-		dc.b   0
-		dc.b $A1 
-		dc.b $83 
-		dc.b   0
-		dc.b $C1 
-		dc.b   3
-		dc.b   0
-		dc.b $53 
-		dc.b   0
-		dc.b $51 
-		dc.b $20
-		dc.b $21 
-		dc.b $1F
-		dc.b $50 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1A
-		dc.b $16
-		dc.b $D0 
-		dc.b   1
-		dc.b $F0 
-		dc.b $80 
-		dc.b   1
-		dc.b $F0 
-		dc.b $70 
-		dc.b   1
-		dc.b $E0 
-		dc.b   2
-		dc.b $80 
-		dc.b   1
-		dc.b $80 
-		dc.b   2
-		dc.b $D0 
-		dc.b $21 
-		dc.b $60 
-		dc.b $22 
-		dc.b $30 
-		dc.b $22 
-		dc.b $30 
-		dc.b $51 
-		dc.b $32 
-		dc.b $10
-		dc.b $22 
-		dc.b $50 
-		dc.b   2
-		dc.b $10
-		dc.b $21 
-		dc.b   2
-		dc.b   0
-		dc.b $21 
-		dc.b   2
-		dc.b $10
-		dc.b   2
-		dc.b $10
-		dc.b   2
-		dc.b   3
-		dc.b $60 
-		dc.b   4
-		dc.b   0
-		dc.b $31 
-		dc.b   2
-		dc.b $21 
-		dc.b $12
-		dc.b $10
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b $60 
-		dc.b   4
-		dc.b $31 
-		dc.b $22 
-		dc.b   3
-		dc.b   1
-		dc.b $12
-		dc.b $10
-		dc.b   3
-		dc.b $42 
-		dc.b $50 
-		dc.b   4
-		dc.b $42 
-		dc.b $31 
-		dc.b $12
-		dc.b   0
-		dc.b $23 
-		dc.b $32 
-		dc.b $60 
-		dc.b $42 
-		dc.b $11
-		dc.b $52 
-		dc.b   3
-		dc.b $32 
-		dc.b $70 
-		dc.b $42 
-		dc.b   5
-		dc.b $92 
-		dc.b $60 
-		dc.b $12
-		dc.b   3
-		dc.b $42 
-		dc.b   1
-		dc.b $42 
-		dc.b   3
-		dc.b $22 
-		dc.b $60 
-		dc.b $12
-		dc.b   3
-		dc.b $12
-		dc.b   1
-		dc.b $12
-		dc.b $11
-		dc.b $12
-		dc.b $40 
-		dc.b $12
-		dc.b $60 
-		dc.b $42 
-		dc.b $41 
-		dc.b $12
-		dc.b $40 
-		dc.b $12
-		dc.b $50 
-		dc.b   4
-		dc.b $42 
-		dc.b $21 
-		dc.b $32 
-		dc.b $40 
-		dc.b $32 
-		dc.b $40 
-		dc.b   1
-		dc.b $32 
-		dc.b $21 
-		dc.b $22 
-		dc.b $30 
-		dc.b $62 
-		dc.b $40 
-		dc.b $61 
-		dc.b   2
-		dc.b $50 
-		dc.b $62 
-		dc.b $40 
-		dc.b $61 
-		dc.b $60 
-		dc.b $52 
-		dc.b $50 
-		dc.b $61 
-		dc.b $F0 
-		dc.b $10
-		dc.b $71 
-		dc.b $F0 
-		dc.b $A1 
-		dc.b $E0 
-		dc.b $42 
-		dc.b   4
-		dc.b $22 
-		dc.b $24 
-		dc.b $82 
-		dc.b $64 
-		dc.b $72 
-		dc.b $34 
-		dc.b $82 
-		dc.b $64 
-		dc.b $92 
-		dc.b $74 
-		dc.b $92 
-		dc.b $84 
-		dc.b $62 
-		dc.b $13
-		dc.b $84 
-		dc.b $52 
-		dc.b $23 
-		dc.b $64 
-		dc.b $31 
-		dc.b $42 
-		dc.b $23 
-		dc.b $54 
-		dc.b $41 
-		dc.b $42 
-		dc.b $13
-		dc.b $14
-		dc.b $41 
-		dc.b $42 
-		dc.b $13
-		dc.b $14
-		dc.b $51 
-		dc.b $22 
-		dc.b $33 
-		dc.b $34 
-		dc.b $41 
-		dc.b $22 
-		dc.b $23 
-		dc.b $64 
-		dc.b $62 
-		dc.b   3
-		dc.b $64 
-		dc.b $62 
-		dc.b $54 
-		dc.b $F2 
-		dc.b $92 
-		dc.b $FF
-		dc.b   0
-		dc.b $23 
-		dc.b $24 
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b  $E
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $D0 
-		dc.b $41 
-		dc.b $60 
-		dc.b $11
-		dc.b $10
-		dc.b   1
-		dc.b $10
-		dc.b $11
-		dc.b $40 
-		dc.b   2
-		dc.b   1
-		dc.b $10
-		dc.b   1
-		dc.b $10
-		dc.b   1
-		dc.b   2
-		dc.b $30 
-		dc.b $11
-		dc.b $62 
-		dc.b $11
-		dc.b $20
-		dc.b $A1 
-		dc.b $20
-		dc.b $33 
-		dc.b $21 
-		dc.b $33 
-		dc.b $20
-		dc.b $A1 
-		dc.b $20
-		dc.b $23 
-		dc.b $41 
-		dc.b $23 
-		dc.b $20
-		dc.b $A1 
-		dc.b $20
-		dc.b $A1 
-		dc.b $60 
-		dc.b $21 
-		dc.b $50 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $E1 
-		dc.b $FF
-		dc.b   0
-		dc.b $2A 
-		dc.b $2C 
-		dc.b $29 
-		dc.b $2B 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $16
-		dc.b $28 
-		dc.b $42 
-		dc.b   3
-		dc.b $B2 
-		dc.b $31 
-		dc.b $42 
-		dc.b   3
-		dc.b $B2 
-		dc.b $31 
-		dc.b $12
-		dc.b $51 
-		dc.b $C2 
-		dc.b   1
-		dc.b $12
-		dc.b $51 
-		dc.b $C2 
-		dc.b   1
-		dc.b $12
-		dc.b $61 
-		dc.b $22 
-		dc.b   4
-		dc.b $41 
-		dc.b $52 
-		dc.b $41 
-		dc.b $22 
-		dc.b   1
-		dc.b   2
-		dc.b $24 
-		dc.b $21 
-		dc.b $72 
-		dc.b $13
-		dc.b $32 
-		dc.b   1
-		dc.b $42 
-		dc.b $11
-		dc.b $72 
-		dc.b $13
-		dc.b $32 
-		dc.b $41 
-		dc.b   4
-		dc.b   2
-		dc.b   1
-		dc.b $72 
-		dc.b $13
-		dc.b   2
-		dc.b $81 
-		dc.b   2
-		dc.b $11
-		dc.b $42 
-		dc.b $91 
-		dc.b $12
-		dc.b   1
-		dc.b   4
-		dc.b $12
-		dc.b   3
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b $51 
-		dc.b   4
-		dc.b $11
-		dc.b $32 
-		dc.b $51 
-		dc.b $22 
-		dc.b $81 
-		dc.b $32 
-		dc.b $51 
-		dc.b $22 
-		dc.b $81 
-		dc.b   2
-		dc.b $14
-		dc.b $12
-		dc.b $13
-		dc.b   2
-		dc.b $11
-		dc.b $22 
-		dc.b $21 
-		dc.b $32 
-		dc.b $11
-		dc.b   2
-		dc.b $14
-		dc.b $12
-		dc.b $13
-		dc.b   2
-		dc.b $11
-		dc.b $C2 
-		dc.b   4
-		dc.b   1
-		dc.b   4
-		dc.b   2
-		dc.b $13
-		dc.b $82 
-		dc.b $31 
-		dc.b $22 
-		dc.b $51 
-		dc.b   4
-		dc.b $72 
-		dc.b $21 
-		dc.b   4
-		dc.b $22 
-		dc.b $41 
-		dc.b   4
-		dc.b   1
-		dc.b $72 
-		dc.b $31 
-		dc.b   2
-		dc.b $91 
-		dc.b   4
-		dc.b $72 
-		dc.b   3
-		dc.b $12
-		dc.b $21 
-		dc.b   4
-		dc.b $71 
-		dc.b $62 
-		dc.b   3
-		dc.b $32 
-		dc.b $91 
-		dc.b $62 
-		dc.b   3
-		dc.b $42 
-		dc.b   3
-		dc.b   2
-		dc.b   1
-		dc.b $14
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b $62 
-		dc.b   3
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b   3
-		dc.b   2
-		dc.b $61 
-		dc.b $52 
-		dc.b $11
-		dc.b   4
-		dc.b   1
-		dc.b $14
-		dc.b   2
-		dc.b   3
-		dc.b $D2 
-		dc.b $21 
-		dc.b $24 
-		dc.b $21 
-		dc.b $D2 
-		dc.b $21 
-		dc.b   4
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $22 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $B0 
-		dc.b   1
-		dc.b $F0 
-		dc.b   0
-		dc.b $41 
-		dc.b $F0 
-		dc.b   0
-		dc.b $41 
-		dc.b $F0 
-		dc.b   0
-		dc.b $21 
-		dc.b $F0 
-		dc.b $40 
-		dc.b   1
-		dc.b $F0 
-		dc.b $40 
-		dc.b   1
-		dc.b $F0 
-		dc.b $40 
-		dc.b   1
-		dc.b $E0 
-		dc.b $91 
-		dc.b $B2 
-		dc.b $91 
-		dc.b $B2 
-		dc.b $91 
-		dc.b $B2 
-		dc.b $91 
-		dc.b $B2 
-		dc.b $91 
-		dc.b $12
-		dc.b $93 
-		dc.b $91 
-		dc.b $12
-		dc.b $93 
-		dc.b $91 
-		dc.b $12
-		dc.b $93 
-		dc.b $91 
-		dc.b $12
-		dc.b $93 
-		dc.b $61 
-		dc.b $42 
-		dc.b $93 
-		dc.b $A2 
-		dc.b $A3 
-		dc.b $A2 
-		dc.b $A3 
-		dc.b $A2 
-		dc.b $A3 
-		dc.b $A2 
-		dc.b $A3 
-		dc.b $42 
-		dc.b $34 
-		dc.b $12
-		dc.b $A3 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $C5 
-		dc.b $84 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $75 
-		dc.b $F1 
-		dc.b   1
-		dc.b $FF
-		dc.b   0
-		dc.b  $C
-		dc.b $2F 
-		dc.b $2E 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $2E 
-		dc.b $12
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $B1 
-		dc.b $22 
-		dc.b $61 
-		dc.b $32 
-		dc.b $81 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $21 
-		dc.b $F2 
-		dc.b $E2 
-		dc.b $D1 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $22 
-		dc.b $A1 
-		dc.b $52 
-		dc.b $61 
-		dc.b $42 
-		dc.b $81 
-		dc.b $72 
-		dc.b $51 
-		dc.b $22 
-		dc.b $11
-		dc.b $42 
-		dc.b $F1 
-		dc.b $61 
-		dc.b $72 
-		dc.b $31 
-		dc.b $32 
-		dc.b $11
-		dc.b $32 
-		dc.b $A1 
-		dc.b $42 
-		dc.b $21 
-		dc.b $22 
-		dc.b $11
-		dc.b   3
-		dc.b   1
-		dc.b $62 
-		dc.b $11
-		dc.b $12
-		dc.b $41 
-		dc.b $22 
-		dc.b $A1 
-		dc.b $62 
-		dc.b $21 
-		dc.b $42 
-		dc.b   1
-		dc.b $62 
-		dc.b $11
-		dc.b   2
-		dc.b $51 
-		dc.b $22 
-		dc.b $A1 
-		dc.b $E2 
-		dc.b $31 
-		dc.b   3
-		dc.b $31 
-		dc.b $12
-		dc.b $51 
-		dc.b $32 
-		dc.b $B1 
-		dc.b $42 
-		dc.b $31 
-		dc.b $52 
-		dc.b $11
-		dc.b   3
-		dc.b $21 
-		dc.b $32 
-		dc.b $41 
-		dc.b $52 
-		dc.b $F1 
-		dc.b $31 
-		dc.b $22 
-		dc.b $31 
-		dc.b   3
-		dc.b $21 
-		dc.b $32 
-		dc.b $41 
-		dc.b $62 
-		dc.b $F1 
-		dc.b $91 
-		dc.b   3
-		dc.b $21 
-		dc.b $32 
-		dc.b $41 
-		dc.b $62 
-		dc.b $F1 
-		dc.b $81 
-		dc.b $72 
-		dc.b $41 
-		dc.b $72 
-		dc.b $F1 
-		dc.b $81 
-		dc.b $42 
-		dc.b $61 
-		dc.b $72 
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $22 
-		dc.b $71 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $65 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $F5 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $F5 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $F5 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $F5 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $F5 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $F5 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $83 
-		dc.b $F5 
-		dc.b $FF
-		dc.b   0
-		dc.b $34 
-		dc.b $36 
-		dc.b $35 
-		dc.b  $C
-		dc.b $32 
-		dc.b  $D
-		dc.b $33 
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $16
-		dc.b $26 
-		dc.b   4
-		dc.b $F2 
-		dc.b $12
-		dc.b   1
-		dc.b $13
-		dc.b   4
-		dc.b $F2 
-		dc.b $12
-		dc.b $11
-		dc.b   3
-		dc.b $F2 
-		dc.b $22 
-		dc.b $21 
-		dc.b $F2 
-		dc.b $52 
-		dc.b   4
-		dc.b $F2 
-		dc.b $35 
-		dc.b   2
-		dc.b   4
-		dc.b $F2 
-		dc.b $35 
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b $35 
-		dc.b $A2 
-		dc.b $35 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $D5 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $25 
-		dc.b $82 
-		dc.b   7
-		dc.b $12
-		dc.b   6
-		dc.b $12
-		dc.b   7
-		dc.b $22 
-		dc.b $25 
-		dc.b $82 
-		dc.b   7
-		dc.b $12
-		dc.b   6
-		dc.b $12
-		dc.b   7
-		dc.b $22 
-		dc.b $25 
-		dc.b $72 
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $75 
-		dc.b   2
-		dc.b $14
-		dc.b $21 
-		dc.b   4
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $75 
-		dc.b   2
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b   1
-		dc.b $52 
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $34 
-		dc.b $61 
-		dc.b   2
-		dc.b $75 
-		dc.b $26 
-		dc.b   4
-		dc.b $81 
-		dc.b   2
-		dc.b $65 
-		dc.b $26 
-		dc.b $14
-		dc.b $81 
-		dc.b $62 
-		dc.b $26 
-		dc.b $14
-		dc.b $91 
-		dc.b $52 
-		dc.b $46 
-		dc.b $D1 
-		dc.b $14
-		dc.b $66 
-		dc.b $21 
-		dc.b $14
-		dc.b $71 
-		dc.b $14
-		dc.b $76 
-		dc.b $C1 
-		dc.b   4
-		dc.b $76 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b $66 
-		dc.b   2
-		dc.b $13
-		dc.b   1
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $32 
-		dc.b   5
-		dc.b $22 
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b   3
-		dc.b $21 
-		dc.b   3
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b $13
-		dc.b   1
-		dc.b $13
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b $12
-		dc.b $11
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b   4
-		dc.b $22 
-		dc.b   4
-		dc.b $22 
-		dc.b   4
-		dc.b $46 
-		dc.b   8
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b   4
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $34 
-		dc.b   6
-		dc.b   4
-		dc.b $28 
-		dc.b $41 
-		dc.b $14
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b $74 
-		dc.b $41 
-		dc.b $18
-		dc.b $51 
-		dc.b $24 
-		dc.b $11
-		dc.b $54 
-		dc.b $21 
-		dc.b $14
-		dc.b   8
-		dc.b $21 
-		dc.b   4
-		dc.b $21 
-		dc.b $14
-		dc.b   1
-		dc.b $44 
-		dc.b $51 
-		dc.b $24 
-		dc.b $21 
-		dc.b   4
-		dc.b $41 
-		dc.b   4
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b   5
-		dc.b $54 
-		dc.b $43 
-		dc.b $A5 
-		dc.b $54 
-		dc.b $43 
-		dc.b $A5 
-		dc.b $54 
-		dc.b $43 
-		dc.b $A5 
-		dc.b $54 
-		dc.b $43 
-		dc.b $A5 
-		dc.b $54 
-		dc.b $43 
-		dc.b $A5 
-		dc.b $54 
-		dc.b $43 
-		dc.b $A5 
-		dc.b   4
-		dc.b $93 
-		dc.b $B2 
-		dc.b $93 
-		dc.b $B2 
-		dc.b $93 
-		dc.b $B2 
-		dc.b $93 
-		dc.b $B2 
-		dc.b $93 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $71 
-		dc.b   0
-		dc.b $34 
-		dc.b $3A 
-		dc.b $35 
-		dc.b  $C
-		dc.b $32 
-		dc.b  $D
-		dc.b $33 
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $16
-		dc.b $26 
-		dc.b   4
-		dc.b $F2 
-		dc.b $12
-		dc.b   1
-		dc.b $13
-		dc.b   4
-		dc.b $F2 
-		dc.b $12
-		dc.b $11
-		dc.b   3
-		dc.b $F2 
-		dc.b $22 
-		dc.b $21 
-		dc.b $F2 
-		dc.b $52 
-		dc.b   4
-		dc.b $F2 
-		dc.b $35 
-		dc.b   2
-		dc.b   4
-		dc.b $F2 
-		dc.b $35 
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b $35 
-		dc.b $A2 
-		dc.b $35 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $D5 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $25 
-		dc.b $82 
-		dc.b   7
-		dc.b $12
-		dc.b   6
-		dc.b $12
-		dc.b   7
-		dc.b $22 
-		dc.b $25 
-		dc.b $82 
-		dc.b   7
-		dc.b $12
-		dc.b   6
-		dc.b $12
-		dc.b   7
-		dc.b $22 
-		dc.b $25 
-		dc.b $42 
-		dc.b   1
-		dc.b $12
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $75 
-		dc.b   2
-		dc.b $14
-		dc.b $21 
-		dc.b   4
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $75 
-		dc.b   2
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b   1
-		dc.b $52 
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $34 
-		dc.b $61 
-		dc.b   2
-		dc.b $75 
-		dc.b $26 
-		dc.b   4
-		dc.b $81 
-		dc.b   2
-		dc.b $65 
-		dc.b $26 
-		dc.b $14
-		dc.b $81 
-		dc.b $62 
-		dc.b $26 
-		dc.b $14
-		dc.b $91 
-		dc.b $52 
-		dc.b $46 
-		dc.b $D1 
-		dc.b $14
-		dc.b $66 
-		dc.b $21 
-		dc.b $14
-		dc.b $71 
-		dc.b $14
-		dc.b $76 
-		dc.b $C1 
-		dc.b   4
-		dc.b $76 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b $66 
-		dc.b   2
-		dc.b $13
-		dc.b   1
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $32 
-		dc.b   5
-		dc.b $22 
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b   3
-		dc.b $21 
-		dc.b   3
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b $13
-		dc.b   1
-		dc.b $13
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b $12
-		dc.b $11
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b   4
-		dc.b $22 
-		dc.b   4
-		dc.b $22 
-		dc.b   4
-		dc.b $46 
-		dc.b   8
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b   4
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $34 
-		dc.b   6
-		dc.b   4
-		dc.b $28 
-		dc.b $41 
-		dc.b $14
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b $74 
-		dc.b $41 
-		dc.b $18
-		dc.b $51 
-		dc.b $24 
-		dc.b $11
-		dc.b $54 
-		dc.b $21 
-		dc.b $14
-		dc.b   8
-		dc.b $21 
-		dc.b   4
-		dc.b $21 
-		dc.b $14
-		dc.b   1
-		dc.b $44 
-		dc.b $51 
-		dc.b $24 
-		dc.b $21 
-		dc.b   4
-		dc.b $41 
-		dc.b   4
-		dc.b   0
-		dc.b $34 
-		dc.b $3A 
-		dc.b $35 
-		dc.b  $C
-		dc.b $32 
-		dc.b  $D
-		dc.b $33 
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $16
-		dc.b $26 
-		dc.b   4
-		dc.b $F2 
-		dc.b $12
-		dc.b   1
-		dc.b $13
-		dc.b   4
-		dc.b $F2 
-		dc.b $12
-		dc.b $11
-		dc.b   3
-		dc.b $F2 
-		dc.b $22 
-		dc.b $21 
-		dc.b $F2 
-		dc.b $52 
-		dc.b   4
-		dc.b $F2 
-		dc.b $35 
-		dc.b   2
-		dc.b   4
-		dc.b $F2 
-		dc.b $35 
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b $35 
-		dc.b $12
-		dc.b   5
-		dc.b $72 
-		dc.b $35 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $D5 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $25 
-		dc.b $82 
-		dc.b   7
-		dc.b $12
-		dc.b   6
-		dc.b $12
-		dc.b   7
-		dc.b $22 
-		dc.b $25 
-		dc.b $82 
-		dc.b   7
-		dc.b $12
-		dc.b   6
-		dc.b $12
-		dc.b   7
-		dc.b $22 
-		dc.b $25 
-		dc.b $72 
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $75 
-		dc.b   2
-		dc.b $14
-		dc.b $21 
-		dc.b   4
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $75 
-		dc.b   2
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b $51 
-		dc.b   2
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $42 
-		dc.b   7
-		dc.b $32 
-		dc.b   1
-		dc.b $52 
-		dc.b $25 
-		dc.b   2
-		dc.b   6
-		dc.b $34 
-		dc.b $61 
-		dc.b   2
-		dc.b $75 
-		dc.b $26 
-		dc.b   4
-		dc.b $81 
-		dc.b   2
-		dc.b $65 
-		dc.b $26 
-		dc.b $14
-		dc.b $81 
-		dc.b $62 
-		dc.b $26 
-		dc.b $14
-		dc.b $91 
-		dc.b $52 
-		dc.b $46 
-		dc.b $D1 
-		dc.b $14
-		dc.b $66 
-		dc.b $21 
-		dc.b $14
-		dc.b $71 
-		dc.b $14
-		dc.b $76 
-		dc.b $C1 
-		dc.b   4
-		dc.b $76 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b $66 
-		dc.b   2
-		dc.b $13
-		dc.b   1
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $92 
-		dc.b $66 
-		dc.b $32 
-		dc.b   7
-		dc.b $32 
-		dc.b   5
-		dc.b $22 
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b   3
-		dc.b $21 
-		dc.b   3
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b   2
-		dc.b $13
-		dc.b   1
-		dc.b $13
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b $66 
-		dc.b $12
-		dc.b $11
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b   4
-		dc.b $22 
-		dc.b   4
-		dc.b $22 
-		dc.b   4
-		dc.b $46 
-		dc.b   8
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b   4
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $34 
-		dc.b   6
-		dc.b   4
-		dc.b $28 
-		dc.b $41 
-		dc.b $14
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b $74 
-		dc.b $41 
-		dc.b $18
-		dc.b $51 
-		dc.b $24 
-		dc.b $11
-		dc.b $54 
-		dc.b $21 
-		dc.b $14
-		dc.b   8
-		dc.b $21 
-		dc.b   4
-		dc.b $21 
-		dc.b $14
-		dc.b   1
-		dc.b $44 
-		dc.b $51 
-		dc.b $24 
-		dc.b $21 
-		dc.b   4
-		dc.b $41 
-		dc.b   4
-		dc.b   0
-		dc.b $3A 
-		dc.b $38 
-		dc.b $39 
-		dc.b $37 
-		dc.b $34 
-		dc.b  $C
-		dc.b $35 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $12
-		dc.b $12
-		dc.b $91 
-		dc.b   2
-		dc.b $61 
-		dc.b   3
-		dc.b $81 
-		dc.b   2
-		dc.b $61 
-		dc.b $13
-		dc.b $71 
-		dc.b   2
-		dc.b $61 
-		dc.b   0
-		dc.b $83 
-		dc.b   2
-		dc.b $63 
-		dc.b   0
-		dc.b $84 
-		dc.b   2
-		dc.b $24 
-		dc.b $33 
-		dc.b   0
-		dc.b $C4 
-		dc.b $33 
-		dc.b   0
-		dc.b $54 
-		dc.b $A3 
-		dc.b   0
-		dc.b $54 
-		dc.b $A3 
-		dc.b   0
-		dc.b $54 
-		dc.b $93 
-		dc.b   5
-		dc.b   0
-		dc.b $21 
-		dc.b $24 
-		dc.b $83 
-		dc.b $15
-		dc.b   0
-		dc.b $21 
-		dc.b $44 
-		dc.b $73 
-		dc.b   5
-		dc.b   0
-		dc.b   1
-		dc.b $64 
-		dc.b $83 
-		dc.b   0
-		dc.b   1
-		dc.b $64 
-		dc.b   3
-		dc.b $34 
-		dc.b $33 
-		dc.b   0
-		dc.b   1
-		dc.b $64 
-		dc.b   3
-		dc.b $34 
-		dc.b $33 
-		dc.b   0
-		dc.b $74 
-		dc.b $13
-		dc.b   4
-		dc.b $53 
-		dc.b   0
-		dc.b $B4 
-		dc.b $43 
-		dc.b $30 
-		dc.b $14
-		dc.b $70 
-		dc.b $33 
-		dc.b $30 
-		dc.b $14
-		dc.b $70 
-		dc.b $23 
-		dc.b   5
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $E1 
-		dc.b   0
-		dc.b $3E 
-		dc.b $3F 
-		dc.b $3C 
-		dc.b $3D 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1A
-		dc.b $22 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $91 
-		dc.b $A2 
-		dc.b $E1 
-		dc.b $A2 
-		dc.b $E1 
-		dc.b $12
-		dc.b $23 
-		dc.b $12
-		dc.b $23 
-		dc.b   2
-		dc.b $E1 
-		dc.b   2
-		dc.b $83 
-		dc.b   2
-		dc.b $D1 
-		dc.b $12
-		dc.b $33 
-		dc.b   4
-		dc.b $33 
-		dc.b $12
-		dc.b $B1 
-		dc.b $22 
-		dc.b $13
-		dc.b $42 
-		dc.b $13
-		dc.b $22 
-		dc.b $91 
-		dc.b $22 
-		dc.b $23 
-		dc.b $42 
-		dc.b $23 
-		dc.b $22 
-		dc.b $81 
-		dc.b $32 
-		dc.b $14
-		dc.b $42 
-		dc.b $14
-		dc.b $32 
-		dc.b $81 
-		dc.b $22 
-		dc.b   3
-		dc.b $14
-		dc.b $32 
-		dc.b   3
-		dc.b $14
-		dc.b $13
-		dc.b $12
-		dc.b $81 
-		dc.b   2
-		dc.b $E3 
-		dc.b   2
-		dc.b $81 
-		dc.b $F3 
-		dc.b   3
-		dc.b $81 
-		dc.b $12
-		dc.b $43 
-		dc.b   2
-		dc.b $13
-		dc.b   2
-		dc.b $33 
-		dc.b $12
-		dc.b $81 
-		dc.b $12
-		dc.b $C3 
-		dc.b $12
-		dc.b $91 
-		dc.b $12
-		dc.b $A3 
-		dc.b $12
-		dc.b $A1 
-		dc.b $42 
-		dc.b $73 
-		dc.b $12
-		dc.b $A1 
-		dc.b $42 
-		dc.b $13
-		dc.b   2
-		dc.b $43 
-		dc.b $12
-		dc.b $B1 
-		dc.b $22 
-		dc.b $23 
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b $23 
-		dc.b   2
-		dc.b $C1 
-		dc.b $53 
-		dc.b $22 
-		dc.b $33 
-		dc.b $C1 
-		dc.b $A3 
-		dc.b $12
-		dc.b $C1 
-		dc.b   3
-		dc.b   2
-		dc.b $83 
-		dc.b $12
-		dc.b $C1 
-		dc.b   3
-		dc.b $12
-		dc.b $63 
-		dc.b $22 
-		dc.b $C1 
-		dc.b $32 
-		dc.b $43 
-		dc.b $32 
-		dc.b $D1 
-		dc.b $A2 
-		dc.b $F1 
-		dc.b $82 
-		dc.b $F1 
-		dc.b $11
-		dc.b $62 
-		dc.b $F1 
-		dc.b $31 
-		dc.b $42 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $71 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $B1 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $B1 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $12
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $53 
-		dc.b   0
-		dc.b $5E 
-		dc.b $5A 
-		dc.b $5B 
-		dc.b $5D 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $71 
-		dc.b $42 
-		dc.b $F1 
-		dc.b $91 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $B1 
-		dc.b   3
-		dc.b $F1 
-		dc.b $C1 
-		dc.b   3
-		dc.b $F1 
-		dc.b $A1 
-		dc.b   2
-		dc.b   4
-		dc.b $22 
-		dc.b $F1 
-		dc.b $21 
-		dc.b $12
-		dc.b   1
-		dc.b $12
-		dc.b   1
-		dc.b   2
-		dc.b $34 
-		dc.b   1
-		dc.b $12
-		dc.b   1
-		dc.b $12
-		dc.b $C1 
-		dc.b $42 
-		dc.b   1
-		dc.b   4
-		dc.b $22 
-		dc.b   4
-		dc.b   1
-		dc.b $42 
-		dc.b $C1 
-		dc.b $42 
-		dc.b   1
-		dc.b $42 
-		dc.b   1
-		dc.b $42 
-		dc.b $E1 
-		dc.b   3
-		dc.b $21 
-		dc.b $42 
-		dc.b $21 
-		dc.b   3
-		dc.b $B1 
-		dc.b   2
-		dc.b $31 
-		dc.b   3
-		dc.b $31 
-		dc.b $22 
-		dc.b   4
-		dc.b $21 
-		dc.b   3
-		dc.b $31 
-		dc.b   2
-		dc.b $61 
-		dc.b   2
-		dc.b   1
-		dc.b $62 
-		dc.b   1
-		dc.b $12
-		dc.b $14
-		dc.b $62 
-		dc.b   1
-		dc.b   2
-		dc.b $61 
-		dc.b $D2 
-		dc.b   4
-		dc.b $72 
-		dc.b $61 
-		dc.b $F2 
-		dc.b $62 
-		dc.b $71 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $A1 
-		dc.b   2
-		dc.b $11
-		dc.b $A2 
-		dc.b $11
-		dc.b $12
-		dc.b $B1 
-		dc.b   2
-		dc.b $51 
-		dc.b $22 
-		dc.b $51 
-		dc.b $12
-		dc.b $B1 
-		dc.b   2
-		dc.b $51 
-		dc.b $22 
-		dc.b $51 
-		dc.b $12
-		dc.b $A1 
-		dc.b $42 
-		dc.b $21 
-		dc.b $22 
-		dc.b $21 
-		dc.b $42 
-		dc.b $A1 
-		dc.b $C2 
-		dc.b   1
-		dc.b $42 
-		dc.b $A1 
-		dc.b $F2 
-		dc.b $22 
-		dc.b $A1 
-		dc.b $42 
-		dc.b   1
-		dc.b $62 
-		dc.b   1
-		dc.b $42 
-		dc.b $F1 
-		dc.b   1
-		dc.b $62 
-		dc.b $F1 
-		dc.b $61 
-		dc.b $62 
-		dc.b $F1 
-		dc.b $61 
-		dc.b   2
-		dc.b $11
-		dc.b   3
-		dc.b $11
-		dc.b   2
-		dc.b $F1 
-		dc.b $61 
-		dc.b   2
-		dc.b $11
-		dc.b   3
-		dc.b $11
-		dc.b   2
-		dc.b $F1 
-		dc.b $61 
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b   2
-		dc.b $F1 
-		dc.b $81 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $B1 
-		dc.b   2
-		dc.b $E1 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $F5 
-		dc.b $15
-		dc.b $A4 
-		dc.b $65 
-		dc.b $F4 
-		dc.b $64 
-		dc.b $65 
-		dc.b $F4 
-		dc.b $64 
-		dc.b $65 
-		dc.b $B4 
-		dc.b $82 
-		dc.b $24 
-		dc.b $45 
-		dc.b $24 
-		dc.b $93 
-		dc.b $82 
-		dc.b $24 
-		dc.b $45 
-		dc.b $24 
-		dc.b $93 
-		dc.b $82 
-		dc.b $24 
-		dc.b $45 
-		dc.b $24 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A4 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A4 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A4 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A4 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A1 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A1 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A1 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A1 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A1 
-		dc.b $93 
-		dc.b $82 
-		dc.b $A1 
-		dc.b $93 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $11
-		dc.b   0
-		dc.b $63 
-		dc.b $60 
-		dc.b $61 
-		dc.b $5F 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $26 
-		dc.b $16
-		dc.b $61 
-		dc.b $43 
-		dc.b $81 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $11
-		dc.b   3
-		dc.b $80 
-		dc.b $13
-		dc.b $90 
-		dc.b $11
-		dc.b $60 
-		dc.b $61 
-		dc.b   3
-		dc.b $80 
-		dc.b $13
-		dc.b $90 
-		dc.b $13
-		dc.b $10
-		dc.b $14
-		dc.b $13
-		dc.b   0
-		dc.b $61 
-		dc.b   3
-		dc.b   0
-		dc.b   4
-		dc.b   0
-		dc.b $13
-		dc.b   4
-		dc.b $20
-		dc.b $13
-		dc.b $10
-		dc.b $54 
-		dc.b $10
-		dc.b $13
-		dc.b   0
-		dc.b   1
-		dc.b $14
-		dc.b $13
-		dc.b   0
-		dc.b $61 
-		dc.b   3
-		dc.b   0
-		dc.b   4
-		dc.b   0
-		dc.b $13
-		dc.b $24 
-		dc.b   0
-		dc.b $13
-		dc.b   0
-		dc.b $11
-		dc.b   4
-		dc.b $11
-		dc.b   4
-		dc.b $11
-		dc.b   0
-		dc.b $13
-		dc.b   0
-		dc.b $24 
-		dc.b $20
-		dc.b $61 
-		dc.b   3
-		dc.b   0
-		dc.b $34 
-		dc.b $11
-		dc.b   4
-		dc.b   0
-		dc.b $13
-		dc.b   0
-		dc.b $11
-		dc.b   4
-		dc.b $11
-		dc.b   4
-		dc.b $11
-		dc.b   0
-		dc.b $13
-		dc.b   0
-		dc.b $24 
-		dc.b $20
-		dc.b   1
-		dc.b $13
-		dc.b $31 
-		dc.b   3
-		dc.b $10
-		dc.b $54 
-		dc.b   0
-		dc.b $13
-		dc.b   0
-		dc.b $24 
-		dc.b $11
-		dc.b $24 
-		dc.b   0
-		dc.b $13
-		dc.b   0
-		dc.b   4
-		dc.b $11
-		dc.b $20
-		dc.b $33 
-		dc.b $21 
-		dc.b   3
-		dc.b $50 
-		dc.b   4
-		dc.b $10
-		dc.b $13
-		dc.b   0
-		dc.b $11
-		dc.b $34 
-		dc.b $11
-		dc.b   0
-		dc.b $13
-		dc.b   0
-		dc.b $44 
-		dc.b   0
-		dc.b $53 
-		dc.b   1
-		dc.b   3
-		dc.b $50 
-		dc.b   4
-		dc.b $10
-		dc.b $13
-		dc.b   0
-		dc.b $11
-		dc.b $34 
-		dc.b $11
-		dc.b   0
-		dc.b $13
-		dc.b $20
-		dc.b   4
-		dc.b $50 
-		dc.b $23 
-		dc.b   1
-		dc.b $B3 
-		dc.b   0
-		dc.b $74 
-		dc.b   0
-		dc.b $13
-		dc.b $20
-		dc.b   4
-		dc.b $50 
-		dc.b $23 
-		dc.b   1
-		dc.b $B3 
-		dc.b $30 
-		dc.b $14
-		dc.b $30 
-		dc.b $83 
-		dc.b   2
-		dc.b   4
-		dc.b   0
-		dc.b $23 
-		dc.b   1
-		dc.b $B3 
-		dc.b $30 
-		dc.b $14
-		dc.b $30 
-		dc.b $83 
-		dc.b $14
-		dc.b   0
-		dc.b $23 
-		dc.b $11
-		dc.b $53 
-		dc.b $41 
-		dc.b $13
-		dc.b   0
-		dc.b $33 
-		dc.b   0
-		dc.b $A3 
-		dc.b   0
-		dc.b   4
-		dc.b   0
-		dc.b $23 
-		dc.b $11
-		dc.b $12
-		dc.b $41 
-		dc.b $23 
-		dc.b   1
-		dc.b $C3 
-		dc.b $60 
-		dc.b   4
-		dc.b   0
-		dc.b $43 
-		dc.b $12
-		dc.b $73 
-		dc.b   1
-		dc.b $C3 
-		dc.b $50 
-		dc.b $F3 
-		dc.b $13
-		dc.b   1
-		dc.b $C3 
-		dc.b $10
-		dc.b   4
-		dc.b $13
-		dc.b   0
-		dc.b $D3 
-		dc.b $11
-		dc.b $13
-		dc.b $11
-		dc.b $12
-		dc.b $61 
-		dc.b $23 
-		dc.b   0
-		dc.b $14
-		dc.b $13
-		dc.b   0
-		dc.b   1
-		dc.b $C3 
-		dc.b $11
-		dc.b $33 
-		dc.b $12
-		dc.b $43 
-		dc.b $11
-		dc.b $23 
-		dc.b   0
-		dc.b $11
-		dc.b $14
-		dc.b $90 
-		dc.b $F3 
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b   0
-		dc.b $24 
-		dc.b   1
-		dc.b $90 
-		dc.b $21 
-		dc.b $F3 
-		dc.b   1
-		dc.b $23 
-		dc.b $10
-		dc.b   4
-		dc.b $30 
-		dc.b   4
-		dc.b   1
-		dc.b   4
-		dc.b   0
-		dc.b $24 
-		dc.b   0
-		dc.b $13
-		dc.b   1
-		dc.b $33 
-		dc.b $11
-		dc.b $93 
-		dc.b   1
-		dc.b $23 
-		dc.b $10
-		dc.b   4
-		dc.b $20
-		dc.b $21 
-		dc.b $24 
-		dc.b   1
-		dc.b   4
-		dc.b   0
-		dc.b $13
-		dc.b $11
-		dc.b $12
-		dc.b $21 
-		dc.b $93 
-		dc.b   1
-		dc.b $63 
-		dc.b $11
-		dc.b $F1 
-		dc.b $41 
-		dc.b $A2 
-		dc.b $91 
-		dc.b $12
-		dc.b $91 
-		dc.b $52 
-		dc.b $D1 
-		dc.b $53 
-		dc.b $62 
-		dc.b $F1 
-		dc.b $73 
-		dc.b $42 
-		dc.b $F1 
-		dc.b   1
-		dc.b $73 
-		dc.b $42 
-		dc.b $F1 
-		dc.b $73 
-		dc.b $42 
-		dc.b $A1 
-		dc.b $73 
-		dc.b $62 
-		dc.b $A1 
-		dc.b $73 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $73 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $13
-		dc.b $82 
-		dc.b $F1 
-		dc.b $11
-		dc.b $13
-		dc.b $82 
-		dc.b $F1 
-		dc.b   1
-		dc.b $22 
-		dc.b $33 
-		dc.b $A2 
-		dc.b $C1 
-		dc.b $42 
-		dc.b $73 
-		dc.b $32 
-		dc.b $91 
-		dc.b $72 
-		dc.b $73 
-		dc.b $32 
-		dc.b $B1 
-		dc.b $72 
-		dc.b $73 
-		dc.b $62 
-		dc.b $B1 
-		dc.b $82 
-		dc.b $53 
-		dc.b $82 
-		dc.b $B1 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $21 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $21 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $81 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $A1 
-		dc.b $F2 
-		dc.b $92 
-		dc.b $FF
-		dc.b   0
-		dc.b $68 
-		dc.b $64 
-		dc.b $65 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1A
-		dc.b $1E
-		dc.b $F0 
-		dc.b $D0 
-		dc.b $F1 
-		dc.b $31 
-		dc.b $50 
-		dc.b   1
-		dc.b $12
-		dc.b   0
-		dc.b $12
-		dc.b   1
-		dc.b   2
-		dc.b $21 
-		dc.b   0
-		dc.b   1
-		dc.b $12
-		dc.b $10
-		dc.b $12
-		dc.b   1
-		dc.b $50 
-		dc.b   1
-		dc.b $12
-		dc.b $11
-		dc.b $22 
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b $42 
-		dc.b $50 
-		dc.b $22 
-		dc.b $11
-		dc.b $82 
-		dc.b   1
-		dc.b $12
-		dc.b   1
-		dc.b $12
-		dc.b $50 
-		dc.b $22 
-		dc.b $11
-		dc.b $82 
-		dc.b   1
-		dc.b $12
-		dc.b   1
-		dc.b $12
-		dc.b $50 
-		dc.b $22 
-		dc.b $21 
-		dc.b $62 
-		dc.b $11
-		dc.b $42 
-		dc.b $20
-		dc.b $21 
-		dc.b $22 
-		dc.b $51 
-		dc.b   3
-		dc.b $41 
-		dc.b $42 
-		dc.b $40 
-		dc.b $32 
-		dc.b $51 
-		dc.b   3
-		dc.b $41 
-		dc.b $32 
-		dc.b $30 
-		dc.b $52 
-		dc.b $21 
-		dc.b $C2 
-		dc.b   0
-		dc.b   1
-		dc.b $10
-		dc.b $52 
-		dc.b $21 
-		dc.b $C2 
-		dc.b   0
-		dc.b   1
-		dc.b $10
-		dc.b $52 
-		dc.b $31 
-		dc.b $42 
-		dc.b $31 
-		dc.b $22 
-		dc.b   0
-		dc.b   1
-		dc.b $10
-		dc.b $62 
-		dc.b $B1 
-		dc.b $22 
-		dc.b $30 
-		dc.b $62 
-		dc.b $91 
-		dc.b $42 
-		dc.b $30 
-		dc.b   1
-		dc.b $F2 
-		dc.b $42 
-		dc.b $50 
-		dc.b   2
-		dc.b $10
-		dc.b $E2 
-		dc.b $20
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b   0
-		dc.b $E2 
-		dc.b   0
-		dc.b $21 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $20
-		dc.b   2
-		dc.b $20
-		dc.b $12
-		dc.b $20
-		dc.b   2
-		dc.b $30 
-		dc.b $21 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b $21 
-		dc.b   2
-		dc.b $21 
-		dc.b $12
-		dc.b $21 
-		dc.b   2
-		dc.b $51 
-		dc.b   2
-		dc.b $20
-		dc.b $22 
-		dc.b $11
-		dc.b $22 
-		dc.b $11
-		dc.b $13
-		dc.b $11
-		dc.b $22 
-		dc.b $21 
-		dc.b $22 
-		dc.b $20
-		dc.b $32 
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b   2
-		dc.b $13
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b $42 
-		dc.b $20
-		dc.b $32 
-		dc.b $41 
-		dc.b $32 
-		dc.b $41 
-		dc.b $42 
-		dc.b $20
-		dc.b $32 
-		dc.b $51 
-		dc.b $12
-		dc.b $51 
-		dc.b $42 
-		dc.b $20
-		dc.b $F2 
-		dc.b $62 
-		dc.b $20
-		dc.b   1
-		dc.b $F2 
-		dc.b $52 
-		dc.b $80 
-		dc.b $92 
-		dc.b $80 
-		dc.b $51 
-		dc.b   0
-		dc.b $92 
-		dc.b   0
-		dc.b $61 
-		dc.b   0
-		dc.b $51 
-		dc.b $40 
-		dc.b $12
-		dc.b $40 
-		dc.b $61 
-		dc.b $60 
-		dc.b $41 
-		dc.b $12
-		dc.b $41 
-		dc.b $D0 
-		dc.b $41 
-		dc.b $13
-		dc.b $41 
-		dc.b $60 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $81 
-		dc.b $24 
-		dc.b   1
-		dc.b   4
-		dc.b   1
-		dc.b $24 
-		dc.b $53 
-		dc.b $41 
-		dc.b $84 
-		dc.b $53 
-		dc.b $41 
-		dc.b $84 
-		dc.b $53 
-		dc.b $51 
-		dc.b $64 
-		dc.b $63 
-		dc.b $B1 
-		dc.b $A3 
-		dc.b $91 
-		dc.b $93 
-		dc.b $81 
-		dc.b $C3 
-		dc.b $91 
-		dc.b $C3 
-		dc.b $A1 
-		dc.b $B3 
-		dc.b $41 
-		dc.b $E2 
-		dc.b $23 
-		dc.b $31 
-		dc.b $F2 
-		dc.b $12
-		dc.b $31 
-		dc.b $F2 
-		dc.b $12
-		dc.b   1
-		dc.b $E2 
-		dc.b $41 
-		dc.b $E2 
-		dc.b $61 
-		dc.b $32 
-		dc.b $91 
-		dc.b   2
-		dc.b $71 
-		dc.b   2
-		dc.b $B1 
-		dc.b $22 
-		dc.b $51 
-		dc.b $22 
-		dc.b $A1 
-		dc.b $22 
-		dc.b $51 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $91 
-		dc.b   0
-		dc.b $6D 
-		dc.b $69 
-		dc.b $6A 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $91 
-		dc.b   2
-		dc.b $F1 
-		dc.b $51 
-		dc.b $22 
-		dc.b $21 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $41 
-		dc.b $22 
-		dc.b $31 
-		dc.b   2
-		dc.b $F1 
-		dc.b $51 
-		dc.b $22 
-		dc.b $31 
-		dc.b   3
-		dc.b $41 
-		dc.b $22 
-		dc.b $D1 
-		dc.b $22 
-		dc.b $31 
-		dc.b   3
-		dc.b $41 
-		dc.b $22 
-		dc.b $81 
-		dc.b $72 
-		dc.b $31 
-		dc.b   3
-		dc.b $41 
-		dc.b $22 
-		dc.b $81 
-		dc.b $72 
-		dc.b $31 
-		dc.b   3
-		dc.b $41 
-		dc.b $22 
-		dc.b $81 
-		dc.b $72 
-		dc.b $31 
-		dc.b   3
-		dc.b $41 
-		dc.b $72 
-		dc.b $31 
-		dc.b $92 
-		dc.b $11
-		dc.b   3
-		dc.b $41 
-		dc.b $72 
-		dc.b $51 
-		dc.b   2
-		dc.b $11
-		dc.b $42 
-		dc.b $11
-		dc.b   3
-		dc.b $11
-		dc.b   2
-		dc.b $11
-		dc.b $72 
-		dc.b $51 
-		dc.b   2
-		dc.b $11
-		dc.b $42 
-		dc.b $11
-		dc.b   2
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b $82 
-		dc.b $51 
-		dc.b   3
-		dc.b $11
-		dc.b $A2 
-		dc.b   1
-		dc.b $32 
-		dc.b $11
-		dc.b   2
-		dc.b $61 
-		dc.b $22 
-		dc.b   1
-		dc.b $A2 
-		dc.b   1
-		dc.b $32 
-		dc.b $11
-		dc.b   2
-		dc.b $61 
-		dc.b $22 
-		dc.b $C1 
-		dc.b $32 
-		dc.b $11
-		dc.b   3
-		dc.b $61 
-		dc.b $22 
-		dc.b $C1 
-		dc.b $32 
-		dc.b   1
-		dc.b $22 
-		dc.b $51 
-		dc.b $22 
-		dc.b $C1 
-		dc.b $32 
-		dc.b   1
-		dc.b $22 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $32 
-		dc.b   1
-		dc.b $22 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $32 
-		dc.b   1
-		dc.b $22 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $32 
-		dc.b   1
-		dc.b $22 
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $22 
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $22 
-		dc.b $F1 
-		dc.b   1
-		dc.b $12
-		dc.b $71 
-		dc.b $22 
-		dc.b $E1 
-		dc.b $E2 
-		dc.b $E1 
-		dc.b $E2 
-		dc.b $E1 
-		dc.b $E2 
-		dc.b $E1 
-		dc.b $E2 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $E1 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $94 
-		dc.b $93 
-		dc.b $F4 
-		dc.b $34 
-		dc.b $93 
-		dc.b $F4 
-		dc.b $34 
-		dc.b $93 
-		dc.b $94 
-		dc.b $92 
-		dc.b $93 
-		dc.b $94 
-		dc.b $92 
-		dc.b $93 
-		dc.b $94 
-		dc.b $92 
-		dc.b $93 
-		dc.b $94 
-		dc.b $92 
-		dc.b $93 
-		dc.b $94 
-		dc.b $92 
-		dc.b $B3 
-		dc.b $74 
-		dc.b $92 
-		dc.b $B3 
-		dc.b $44 
-		dc.b $13
-		dc.b $A2 
-		dc.b $B3 
-		dc.b $44 
-		dc.b $13
-		dc.b $A2 
-		dc.b $F3 
-		dc.b $23 
-		dc.b $42 
-		dc.b $51 
-		dc.b $52 
-		dc.b $C3 
-		dc.b $42 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $51 
-		dc.b $F2 
-		dc.b $72 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $31 
-		dc.b   0
-		dc.b $71 
-		dc.b $6E 
-		dc.b $72 
-		dc.b $6F 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1A
-		dc.b  $E
-		dc.b $10
-		dc.b $11
-		dc.b $52 
-		dc.b $21 
-		dc.b   2
-		dc.b   0
-		dc.b   1
-		dc.b $B0 
-		dc.b   1
-		dc.b $32 
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $12
-		dc.b   1
-		dc.b   2
-		dc.b $B0 
-		dc.b $D2 
-		dc.b $90 
-		dc.b $11
-		dc.b $12
-		dc.b   1
-		dc.b $A2 
-		dc.b $90 
-		dc.b $32 
-		dc.b $11
-		dc.b $42 
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b $90 
-		dc.b $12
-		dc.b   1
-		dc.b $32 
-		dc.b $63 
-		dc.b $12
-		dc.b $90 
-		dc.b $52 
-		dc.b   3
-		dc.b $12
-		dc.b   3
-		dc.b   2
-		dc.b   3
-		dc.b $12
-		dc.b   3
-		dc.b   2
-		dc.b $30 
-		dc.b $12
-		dc.b $20
-		dc.b $12
-		dc.b   1
-		dc.b $32 
-		dc.b   3
-		dc.b $12
-		dc.b   3
-		dc.b   2
-		dc.b   3
-		dc.b $12
-		dc.b   3
-		dc.b   1
-		dc.b $30 
-		dc.b   2
-		dc.b $10
-		dc.b   2
-		dc.b $10
-		dc.b $32 
-		dc.b   1
-		dc.b   2
-		dc.b   3
-		dc.b $62 
-		dc.b   3
-		dc.b   2
-		dc.b $30 
-		dc.b $12
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b $22 
-		dc.b   1
-		dc.b $32 
-		dc.b $33 
-		dc.b   4
-		dc.b $13
-		dc.b $C2 
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b $52 
-		dc.b   1
-		dc.b $C2 
-		dc.b $11
-		dc.b $12
-		dc.b   1
-		dc.b $92 
-		dc.b   1
-		dc.b $30 
-		dc.b $52 
-		dc.b $10
-		dc.b   1
-		dc.b $92 
-		dc.b   1
-		dc.b $50 
-		dc.b $52 
-		dc.b $10
-		dc.b $11
-		dc.b $72 
-		dc.b $11
-		dc.b $B0 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $91 
-		dc.b   0
-		dc.b $78 
-		dc.b $7C 
-		dc.b $79 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $16
-		dc.b $1C
-		dc.b $20
-		dc.b $12
-		dc.b $13
-		dc.b $62 
-		dc.b $23 
-		dc.b $22 
-		dc.b   3
-		dc.b   2
-		dc.b $20
-		dc.b $12
-		dc.b $13
-		dc.b $62 
-		dc.b $21 
-		dc.b $22 
-		dc.b   3
-		dc.b   2
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $40 
-		dc.b $F3 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $31 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $41 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $31 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $41 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $31 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $41 
-		dc.b   0
-		dc.b $F1 
-		dc.b $41 
-		dc.b   0
-		dc.b $F1 
-		dc.b $41 
-		dc.b   0
-		dc.b $F1 
-		dc.b $41 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $40 
-		dc.b $F1 
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b   0
-		dc.b $21 
-		dc.b   0
-		dc.b $21 
-		dc.b $40 
-		dc.b $81 
-		dc.b $10
-		dc.b   1
-		dc.b $20
-		dc.b   1
-		dc.b $80 
-		dc.b $51 
-		dc.b $10
-		dc.b   1
-		dc.b $20
-		dc.b   1
-		dc.b $80 
-		dc.b $51 
-		dc.b $10
-		dc.b   1
-		dc.b $20
-		dc.b   1
-		dc.b $80 
-		dc.b $C1 
-		dc.b $A0 
-		dc.b   1
-		dc.b $B0 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $61 
-		dc.b   0
-		dc.b $78 
-		dc.b $7C 
-		dc.b $79 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $16
-		dc.b $26 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $E0 
-		dc.b $11
-		dc.b   0
-		dc.b $11
-		dc.b $F0 
-		dc.b   0
-		dc.b $41 
-		dc.b $F0 
-		dc.b $61 
-		dc.b $50 
-		dc.b $91 
-		dc.b $12
-		dc.b   3
-		dc.b $12
-		dc.b $11
-		dc.b   0
-		dc.b   1
-		dc.b $20
-		dc.b $31 
-		dc.b   3
-		dc.b $41 
-		dc.b   2
-		dc.b $21 
-		dc.b   2
-		dc.b $31 
-		dc.b $20
-		dc.b $81 
-		dc.b $12
-		dc.b $21 
-		dc.b $12
-		dc.b $21 
-		dc.b $20
-		dc.b $81 
-		dc.b   2
-		dc.b $41 
-		dc.b   2
-		dc.b $21 
-		dc.b $20
-		dc.b $12
-		dc.b $13
-		dc.b $62 
-		dc.b $23 
-		dc.b $22 
-		dc.b   3
-		dc.b   2
-		dc.b $20
-		dc.b $12
-		dc.b $13
-		dc.b $62 
-		dc.b $21 
-		dc.b $22 
-		dc.b   3
-		dc.b   2
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $40 
-		dc.b $F3 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $F1 
-		dc.b $50 
-		dc.b $F1 
-		dc.b   0
-		dc.b $F1 
-		dc.b $41 
-		dc.b   0
-		dc.b $F1 
-		dc.b $41 
-		dc.b   0
-		dc.b $F1 
-		dc.b $41 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $20
-		dc.b $F1 
-		dc.b $21 
-		dc.b $40 
-		dc.b $F1 
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b $40 
-		dc.b $81 
-		dc.b   0
-		dc.b $21 
-		dc.b   0
-		dc.b $21 
-		dc.b $40 
-		dc.b $81 
-		dc.b $10
-		dc.b   1
-		dc.b $20
-		dc.b   1
-		dc.b $80 
-		dc.b $51 
-		dc.b $10
-		dc.b   1
-		dc.b $20
-		dc.b   1
-		dc.b $80 
-		dc.b $51 
-		dc.b $10
-		dc.b   1
-		dc.b $20
-		dc.b   1
-		dc.b $80 
-		dc.b $C1 
-		dc.b $A0 
-		dc.b   1
-		dc.b $B0 
-		dc.b $F2 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $F1 
-		dc.b $81 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $F1 
-		dc.b $81 
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b   1
-		dc.b   0
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $11
-		dc.b $FF
-		dc.b   0
-		dc.b $73 
-		dc.b $77 
-		dc.b $74 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $B0 
-		dc.b $62 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $62 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $62 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $62 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $11
-		dc.b $22 
-		dc.b $11
-		dc.b $A0 
-		dc.b $52 
-		dc.b   0
-		dc.b $42 
-		dc.b $61 
-		dc.b $32 
-		dc.b   0
-		dc.b $B2 
-		dc.b   0
-		dc.b $F1 
-		dc.b   0
-		dc.b $B2 
-		dc.b   0
-		dc.b $F1 
-		dc.b   0
-		dc.b $82 
-		dc.b $21 
-		dc.b $10
-		dc.b $11
-		dc.b $90 
-		dc.b $11
-		dc.b $10
-		dc.b $21 
-		dc.b $52 
-		dc.b $21 
-		dc.b $12
-		dc.b $11
-		dc.b $92 
-		dc.b $13
-		dc.b $12
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $72 
-		dc.b $61 
-		dc.b $22 
-		dc.b   1
-		dc.b $32 
-		dc.b $13
-		dc.b $12
-		dc.b   1
-		dc.b $72 
-		dc.b $81 
-		dc.b $22 
-		dc.b   1
-		dc.b $32 
-		dc.b $13
-		dc.b $12
-		dc.b $21 
-		dc.b $72 
-		dc.b $61 
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $71 
-		dc.b $52 
-		dc.b $81 
-		dc.b $12
-		dc.b $21 
-		dc.b $12
-		dc.b $71 
-		dc.b $72 
-		dc.b $61 
-		dc.b $12
-		dc.b $21 
-		dc.b $72 
-		dc.b   1
-		dc.b $82 
-		dc.b $F1 
-		dc.b $11
-		dc.b $12
-		dc.b   1
-		dc.b $82 
-		dc.b $F1 
-		dc.b $11
-		dc.b $12
-		dc.b   1
-		dc.b $82 
-		dc.b $31 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $11
-		dc.b $82 
-		dc.b $31 
-		dc.b $42 
-		dc.b $21 
-		dc.b $32 
-		dc.b   3
-		dc.b $12
-		dc.b $21 
-		dc.b $F2 
-		dc.b   2
-		dc.b $21 
-		dc.b $32 
-		dc.b   3
-		dc.b $12
-		dc.b $21 
-		dc.b $F2 
-		dc.b $12
-		dc.b   1
-		dc.b $32 
-		dc.b $41 
-		dc.b $72 
-		dc.b $41 
-		dc.b $52 
-		dc.b $21 
-		dc.b $22 
-		dc.b $61 
-		dc.b $72 
-		dc.b $21 
-		dc.b $52 
-		dc.b $21 
-		dc.b $52 
-		dc.b $11
-		dc.b $72 
-		dc.b   1
-		dc.b   2
-		dc.b $21 
-		dc.b $62 
-		dc.b   1
-		dc.b $62 
-		dc.b $31 
-		dc.b $52 
-		dc.b $41 
-		dc.b $32 
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b $11
-		dc.b $32 
-		dc.b $31 
-		dc.b $E2 
-		dc.b $61 
-		dc.b $F2 
-		dc.b $62 
-		dc.b $61 
-		dc.b $F2 
-		dc.b $62 
-		dc.b $61 
-		dc.b $F2 
-		dc.b $62 
-		dc.b $61 
-		dc.b $A2 
-		dc.b $20
-		dc.b $B2 
-		dc.b   1
-		dc.b $A2 
-		dc.b $20
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $23 
-		dc.b $52 
-		dc.b $F3 
-		dc.b $B2 
-		dc.b $F3 
-		dc.b $B2 
-		dc.b $F3 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $11
-		dc.b $FF
-		dc.b   0
-		dc.b $73 
-		dc.b $77 
-		dc.b $74 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $B0 
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $F0 
-		dc.b $60 
-		dc.b $61 
-		dc.b $A0 
-		dc.b $52 
-		dc.b   0
-		dc.b $42 
-		dc.b $61 
-		dc.b $32 
-		dc.b   0
-		dc.b $B2 
-		dc.b   0
-		dc.b $F1 
-		dc.b   0
-		dc.b $B2 
-		dc.b   0
-		dc.b $F1 
-		dc.b   0
-		dc.b $82 
-		dc.b $21 
-		dc.b $10
-		dc.b $11
-		dc.b $90 
-		dc.b $11
-		dc.b $10
-		dc.b $21 
-		dc.b $52 
-		dc.b $21 
-		dc.b $12
-		dc.b $11
-		dc.b $92 
-		dc.b $13
-		dc.b $12
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $72 
-		dc.b $61 
-		dc.b $22 
-		dc.b   1
-		dc.b $32 
-		dc.b $13
-		dc.b $12
-		dc.b   1
-		dc.b $72 
-		dc.b $81 
-		dc.b $22 
-		dc.b   1
-		dc.b $32 
-		dc.b $13
-		dc.b $12
-		dc.b $21 
-		dc.b $72 
-		dc.b $61 
-		dc.b $22 
-		dc.b   1
-		dc.b $22 
-		dc.b $71 
-		dc.b $52 
-		dc.b $81 
-		dc.b $12
-		dc.b $21 
-		dc.b $12
-		dc.b $71 
-		dc.b $72 
-		dc.b $61 
-		dc.b $12
-		dc.b $21 
-		dc.b $72 
-		dc.b   1
-		dc.b $82 
-		dc.b $F1 
-		dc.b $11
-		dc.b $12
-		dc.b   1
-		dc.b $82 
-		dc.b $F1 
-		dc.b $11
-		dc.b $12
-		dc.b   1
-		dc.b $82 
-		dc.b $31 
-		dc.b   2
-		dc.b $C1 
-		dc.b   2
-		dc.b $11
-		dc.b $82 
-		dc.b $31 
-		dc.b $42 
-		dc.b $21 
-		dc.b $32 
-		dc.b   3
-		dc.b $12
-		dc.b $21 
-		dc.b $F2 
-		dc.b   2
-		dc.b $21 
-		dc.b $32 
-		dc.b   3
-		dc.b $12
-		dc.b $21 
-		dc.b $F2 
-		dc.b $12
-		dc.b   1
-		dc.b $32 
-		dc.b $41 
-		dc.b $72 
-		dc.b $41 
-		dc.b $52 
-		dc.b $21 
-		dc.b $22 
-		dc.b $61 
-		dc.b $72 
-		dc.b $21 
-		dc.b $52 
-		dc.b $21 
-		dc.b $52 
-		dc.b $11
-		dc.b $72 
-		dc.b   1
-		dc.b   2
-		dc.b $21 
-		dc.b $62 
-		dc.b   1
-		dc.b $62 
-		dc.b $31 
-		dc.b $52 
-		dc.b $41 
-		dc.b $32 
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b $11
-		dc.b $32 
-		dc.b $31 
-		dc.b $E2 
-		dc.b $61 
-		dc.b $F2 
-		dc.b $62 
-		dc.b $61 
-		dc.b $F2 
-		dc.b $62 
-		dc.b $61 
-		dc.b $F2 
-		dc.b $62 
-		dc.b $61 
-		dc.b $A2 
-		dc.b $20
-		dc.b $B2 
-		dc.b   1
-		dc.b $A2 
-		dc.b $20
-		dc.b   0
-		dc.b $4A 
-		dc.b $49 
-		dc.b $46 
-		dc.b $47 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b   0
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $41 
-		dc.b $F2 
-		dc.b   2
-		dc.b $41 
-		dc.b $20
-		dc.b $41 
-		dc.b $F2 
-		dc.b   2
-		dc.b $41 
-		dc.b $20
-		dc.b $31 
-		dc.b $F2 
-		dc.b $22 
-		dc.b $21 
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b   3
-		dc.b $11
-		dc.b $F2 
-		dc.b $42 
-		dc.b   1
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $11
-		dc.b $F2 
-		dc.b $22 
-		dc.b $11
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $21 
-		dc.b $F2 
-		dc.b   2
-		dc.b $21 
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $31 
-		dc.b $42 
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b $42 
-		dc.b $31 
-		dc.b   3
-		dc.b   1
-		dc.b $20
-		dc.b $23 
-		dc.b $31 
-		dc.b   4
-		dc.b $31 
-		dc.b $24 
-		dc.b $31 
-		dc.b   4
-		dc.b $31 
-		dc.b $13
-		dc.b   1
-		dc.b $20
-		dc.b $33 
-		dc.b $21 
-		dc.b   4
-		dc.b $31 
-		dc.b $24 
-		dc.b $31 
-		dc.b   4
-		dc.b $21 
-		dc.b $33 
-		dc.b $20
-		dc.b   3
-		dc.b $11
-		dc.b $13
-		dc.b $11
-		dc.b   4
-		dc.b $31 
-		dc.b $24 
-		dc.b $31 
-		dc.b   4
-		dc.b $11
-		dc.b $13
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $13
-		dc.b   1
-		dc.b $43 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $43 
-		dc.b $11
-		dc.b $53 
-		dc.b   1
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $31 
-		dc.b $33 
-		dc.b   1
-		dc.b $43 
-		dc.b $11
-		dc.b $23 
-		dc.b $31 
-		dc.b $13
-		dc.b $20
-		dc.b $43 
-		dc.b   1
-		dc.b $33 
-		dc.b $21 
-		dc.b   3
-		dc.b $21 
-		dc.b $33 
-		dc.b   1
-		dc.b $43 
-		dc.b $20
-		dc.b $43 
-		dc.b   1
-		dc.b $53 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $33 
-		dc.b $41 
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b $21 
-		dc.b $53 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $33 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $31 
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $31 
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $51 
-		dc.b   3
-		dc.b $51 
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $31 
-		dc.b $43 
-		dc.b $31 
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b $11
-		dc.b $13
-		dc.b   1
-		dc.b $D3 
-		dc.b $11
-		dc.b $23 
-		dc.b $30 
-		dc.b $23 
-		dc.b $31 
-		dc.b $F3 
-		dc.b $13
-		dc.b $50 
-		dc.b $F3 
-		dc.b $63 
-		dc.b $70 
-		dc.b $F3 
-		dc.b $43 
-		dc.b $40 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $D3 
-		dc.b   2
-		dc.b $F3 
-		dc.b $93 
-		dc.b   2
-		dc.b $F3 
-		dc.b $93 
-		dc.b $12
-		dc.b $F3 
-		dc.b $83 
-		dc.b $12
-		dc.b $F3 
-		dc.b $83 
-		dc.b $12
-		dc.b $F3 
-		dc.b $83 
-		dc.b $22 
-		dc.b $F3 
-		dc.b $73 
-		dc.b $32 
-		dc.b $F3 
-		dc.b $63 
-		dc.b $42 
-		dc.b $F3 
-		dc.b $53 
-		dc.b $52 
-		dc.b $F1 
-		dc.b $41 
-		dc.b $52 
-		dc.b $F1 
-		dc.b $41 
-		dc.b $52 
-		dc.b $F1 
-		dc.b $41 
-		dc.b $52 
-		dc.b $F1 
-		dc.b $41 
-		dc.b $52 
-		dc.b $F1 
-		dc.b $41 
-		dc.b $C2 
-		dc.b $D1 
-		dc.b $C2 
-		dc.b $D1 
-		dc.b $A2 
-		dc.b $F1 
-		dc.b $72 
-		dc.b $F1 
-		dc.b $21 
-		dc.b $62 
-		dc.b $F1 
-		dc.b $11
-		dc.b $22 
-		dc.b $F1 
-		dc.b $31 
-		dc.b $12
-		dc.b $F1 
-		dc.b $21 
-		dc.b $FF
-		dc.b   0
-		dc.b $4A 
-		dc.b $49 
-		dc.b $46 
-		dc.b $47 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b   0
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $20
-		dc.b $41 
-		dc.b $62 
-		dc.b $21 
-		dc.b $62 
-		dc.b $41 
-		dc.b $20
-		dc.b $41 
-		dc.b $42 
-		dc.b $61 
-		dc.b $42 
-		dc.b $41 
-		dc.b $20
-		dc.b $31 
-		dc.b $52 
-		dc.b $61 
-		dc.b $52 
-		dc.b $21 
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $62 
-		dc.b   1
-		dc.b   2
-		dc.b $21 
-		dc.b   2
-		dc.b   1
-		dc.b $62 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $82 
-		dc.b $21 
-		dc.b $82 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $92 
-		dc.b   1
-		dc.b $92 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $21 
-		dc.b $F2 
-		dc.b $42 
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b   3
-		dc.b $11
-		dc.b $F2 
-		dc.b $42 
-		dc.b   1
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $11
-		dc.b $F2 
-		dc.b $22 
-		dc.b $11
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $21 
-		dc.b $F2 
-		dc.b   2
-		dc.b $21 
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $31 
-		dc.b $42 
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b $42 
-		dc.b $31 
-		dc.b   3
-		dc.b   1
-		dc.b $20
-		dc.b $23 
-		dc.b $31 
-		dc.b   4
-		dc.b $31 
-		dc.b $24 
-		dc.b $31 
-		dc.b   4
-		dc.b $31 
-		dc.b $13
-		dc.b   1
-		dc.b $20
-		dc.b $33 
-		dc.b $21 
-		dc.b   4
-		dc.b $31 
-		dc.b $24 
-		dc.b $31 
-		dc.b   4
-		dc.b $21 
-		dc.b $33 
-		dc.b $20
-		dc.b   3
-		dc.b $11
-		dc.b $13
-		dc.b $11
-		dc.b   4
-		dc.b $31 
-		dc.b $24 
-		dc.b $31 
-		dc.b   4
-		dc.b $11
-		dc.b $13
-		dc.b $11
-		dc.b   3
-		dc.b $20
-		dc.b $13
-		dc.b   1
-		dc.b $43 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $43 
-		dc.b $11
-		dc.b $53 
-		dc.b   1
-		dc.b $13
-		dc.b $20
-		dc.b $13
-		dc.b $31 
-		dc.b $33 
-		dc.b   1
-		dc.b $43 
-		dc.b $11
-		dc.b $23 
-		dc.b $31 
-		dc.b $13
-		dc.b $20
-		dc.b $43 
-		dc.b   1
-		dc.b $33 
-		dc.b $21 
-		dc.b   3
-		dc.b $21 
-		dc.b $33 
-		dc.b   1
-		dc.b $43 
-		dc.b $20
-		dc.b $43 
-		dc.b   1
-		dc.b $53 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $33 
-		dc.b $41 
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b $21 
-		dc.b $53 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $33 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $31 
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $31 
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $51 
-		dc.b   3
-		dc.b $51 
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $31 
-		dc.b $43 
-		dc.b $31 
-		dc.b $23 
-		dc.b   1
-		dc.b $23 
-		dc.b $20
-		dc.b $23 
-		dc.b $11
-		dc.b $13
-		dc.b   1
-		dc.b $D3 
-		dc.b $11
-		dc.b $23 
-		dc.b $30 
-		dc.b $23 
-		dc.b $31 
-		dc.b $F3 
-		dc.b $13
-		dc.b $50 
-		dc.b $F3 
-		dc.b $63 
-		dc.b $70 
-		dc.b $F3 
-		dc.b $43 
-		dc.b $40 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $D1 
-		dc.b $FF
-		dc.b   0
-		dc.b  $A
-		dc.b   6
-		dc.b   2
-		dc.b   1
-		dc.b   9
-		dc.b  $C
-		dc.b  $B
-		dc.b   8
-		dc.b   3
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $A1 
-		dc.b $42 
-		dc.b   3
-		dc.b $24 
-		dc.b $31 
-		dc.b $25 
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b $31 
-		dc.b $12
-		dc.b $31 
-		dc.b $52 
-		dc.b $13
-		dc.b   2
-		dc.b $11
-		dc.b   2
-		dc.b $11
-		dc.b   4
-		dc.b $15
-		dc.b   1
-		dc.b $16
-		dc.b $11
-		dc.b $12
-		dc.b $11
-		dc.b $12
-		dc.b $21 
-		dc.b $52 
-		dc.b   3
-		dc.b   4
-		dc.b $12
-		dc.b   4
-		dc.b   2
-		dc.b $11
-		dc.b $15
-		dc.b   1
-		dc.b $16
-		dc.b $11
-		dc.b $12
-		dc.b $21 
-		dc.b $92 
-		dc.b   3
-		dc.b $14
-		dc.b $12
-		dc.b $21 
-		dc.b   5
-		dc.b   1
-		dc.b $16
-		dc.b   1
-		dc.b $12
-		dc.b $11
-		dc.b $12
-		dc.b $11
-		dc.b $72 
-		dc.b $53 
-		dc.b   2
-		dc.b   1
-		dc.b   4
-		dc.b   5
-		dc.b   1
-		dc.b $16
-		dc.b   1
-		dc.b $22 
-		dc.b $11
-		dc.b   2
-		dc.b $21 
-		dc.b $62 
-		dc.b   3
-		dc.b $12
-		dc.b   4
-		dc.b $13
-		dc.b   2
-		dc.b $14
-		dc.b   5
-		dc.b $31 
-		dc.b $22 
-		dc.b   1
-		dc.b $12
-		dc.b $11
-		dc.b $72 
-		dc.b   3
-		dc.b   2
-		dc.b $64 
-		dc.b   5
-		dc.b   1
-		dc.b $26 
-		dc.b $22 
-		dc.b $11
-		dc.b $32 
-		dc.b $11
-		dc.b $32 
-		dc.b $13
-		dc.b $24 
-		dc.b $55 
-		dc.b   1
-		dc.b $26 
-		dc.b $62 
-		dc.b $54 
-		dc.b   2
-		dc.b $13
-		dc.b $24 
-		dc.b $35 
-		dc.b   2
-		dc.b $11
-		dc.b $36 
-		dc.b $14
-		dc.b $22 
-		dc.b $64 
-		dc.b $12
-		dc.b   3
-		dc.b   4
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $11
-		dc.b $36 
-		dc.b $34 
-		dc.b $22 
-		dc.b $34 
-		dc.b $12
-		dc.b $13
-		dc.b $32 
-		dc.b $35 
-		dc.b $12
-		dc.b $31 
-		dc.b   6
-		dc.b $94 
-		dc.b $22 
-		dc.b   3
-		dc.b $14
-		dc.b   2
-		dc.b $25 
-		dc.b $52 
-		dc.b $21 
-		dc.b   6
-		dc.b $14
-		dc.b $47 
-		dc.b $34 
-		dc.b $12
-		dc.b   3
-		dc.b   4
-		dc.b $12
-		dc.b $25 
-		dc.b $24 
-		dc.b $12
-		dc.b $14
-		dc.b $11
-		dc.b   6
-		dc.b $17
-		dc.b   4
-		dc.b $17
-		dc.b $14
-		dc.b $17
-		dc.b $34 
-		dc.b   3
-		dc.b $14
-		dc.b   2
-		dc.b   5
-		dc.b $44 
-		dc.b $16
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b   6
-		dc.b $27 
-		dc.b $14
-		dc.b $27 
-		dc.b $44 
-		dc.b   3
-		dc.b   2
-		dc.b $14
-		dc.b   5
-		dc.b   4
-		dc.b $31 
-		dc.b $16
-		dc.b $41 
-		dc.b $37 
-		dc.b $54 
-		dc.b $33 
-		dc.b $14
-		dc.b $15
-		dc.b $14
-		dc.b $11
-		dc.b $36 
-		dc.b $31 
-		dc.b $54 
-		dc.b $22 
-		dc.b   4
-		dc.b   3
-		dc.b $44 
-		dc.b   5
-		dc.b $24 
-		dc.b $11
-		dc.b $36 
-		dc.b $31 
-		dc.b $14
-		dc.b $52 
-		dc.b   1
-		dc.b   2
-		dc.b   3
-		dc.b $44 
-		dc.b   5
-		dc.b $14
-		dc.b $11
-		dc.b $46 
-		dc.b $31 
-		dc.b $42 
-		dc.b   5
-		dc.b   4
-		dc.b $11
-		dc.b   4
-		dc.b   3
-		dc.b   4
-		dc.b $45 
-		dc.b $14
-		dc.b $11
-		dc.b $36 
-		dc.b $21 
-		dc.b $16
-		dc.b $32 
-		dc.b $15
-		dc.b   4
-		dc.b $21 
-		dc.b   3
-		dc.b   4
-		dc.b   5
-		dc.b   7
-		dc.b $34 
-		dc.b $12
-		dc.b $46 
-		dc.b   1
-		dc.b $16
-		dc.b $18
-		dc.b $24 
-		dc.b $12
-		dc.b   5
-		dc.b   4
-		dc.b $13
-		dc.b   1
-		dc.b $13
-		dc.b   9
-		dc.b $23 
-		dc.b   4
-		dc.b $11
-		dc.b   2
-		dc.b $36 
-		dc.b $11
-		dc.b $38 
-		dc.b $64 
-		dc.b $13
-		dc.b   4
-		dc.b   3
-		dc.b   4
-		dc.b   8
-		dc.b $14
-		dc.b   3
-		dc.b   7
-		dc.b   4
-		dc.b $31 
-		dc.b $16
-		dc.b   1
-		dc.b   3
-		dc.b $16
-		dc.b $28 
-		dc.b $24 
-		dc.b $12
-		dc.b   4
-		dc.b $33 
-		dc.b   4
-		dc.b $28 
-		dc.b $13
-		dc.b   4
-		dc.b   1
-		dc.b   2
-		dc.b $11
-		dc.b $16
-		dc.b $11
-		dc.b $16
-		dc.b   4
-		dc.b $28 
-		dc.b $64 
-		dc.b $17
-		dc.b $18
-		dc.b   7
-		dc.b   8
-		dc.b   7
-		dc.b   3
-		dc.b $14
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $16
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $11
-		dc.b   3
-		dc.b $18
-		dc.b $54 
-		dc.b   7
-		dc.b $28 
-		dc.b   7
-		dc.b   4
-		dc.b   8
-		dc.b   7
-		dc.b $13
-		dc.b   4
-		dc.b   1
-		dc.b $14
-		dc.b $16
-		dc.b   3
-		dc.b $41 
-		dc.b $78 
-		dc.b   7
-		dc.b   8
-		dc.b   7
-		dc.b   8
-		dc.b $14
-		dc.b   8
-		dc.b $14
-		dc.b $73 
-		dc.b   1
-		dc.b $16
-		dc.b   1
-		dc.b   6
-		dc.b $78 
-		dc.b   7
-		dc.b   8
-		dc.b   7
-		dc.b   8
-		dc.b $17
-		dc.b $28 
-		dc.b $44 
-		dc.b $12
-		dc.b $14
-		dc.b $26 
-		dc.b $F8 
-		dc.b $28 
-		dc.b $47 
-		dc.b $16
-		dc.b $21 
-		dc.b $F8 
-		dc.b $A8 
-		dc.b $26 
-		dc.b $F8 
-		dc.b $F8 
-		dc.b   0
-		dc.b  $A
-		dc.b   6
-		dc.b   2
-		dc.b   1
-		dc.b   9
-		dc.b  $C
-		dc.b  $B
-		dc.b   8
-		dc.b   3
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $A1 
-		dc.b $42 
-		dc.b   3
-		dc.b $24 
-		dc.b $31 
-		dc.b $25 
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b $31 
-		dc.b $12
-		dc.b $31 
-		dc.b $52 
-		dc.b $13
-		dc.b   2
-		dc.b $11
-		dc.b   2
-		dc.b $11
-		dc.b   4
-		dc.b $15
-		dc.b   1
-		dc.b $16
-		dc.b $11
-		dc.b $12
-		dc.b $11
-		dc.b $12
-		dc.b $21 
-		dc.b $52 
-		dc.b   3
-		dc.b   4
-		dc.b $12
-		dc.b   4
-		dc.b   2
-		dc.b $11
-		dc.b $15
-		dc.b   1
-		dc.b $16
-		dc.b $11
-		dc.b $12
-		dc.b $21 
-		dc.b $92 
-		dc.b   3
-		dc.b $14
-		dc.b $12
-		dc.b $21 
-		dc.b   5
-		dc.b   1
-		dc.b $16
-		dc.b   1
-		dc.b $12
-		dc.b $11
-		dc.b $12
-		dc.b $11
-		dc.b $72 
-		dc.b $53 
-		dc.b   2
-		dc.b   1
-		dc.b   4
-		dc.b   5
-		dc.b   1
-		dc.b $16
-		dc.b   1
-		dc.b $22 
-		dc.b $11
-		dc.b   2
-		dc.b $21 
-		dc.b $62 
-		dc.b   3
-		dc.b $12
-		dc.b   4
-		dc.b $13
-		dc.b   2
-		dc.b $14
-		dc.b   5
-		dc.b $31 
-		dc.b $22 
-		dc.b   1
-		dc.b $12
-		dc.b $11
-		dc.b $72 
-		dc.b   3
-		dc.b   2
-		dc.b $64 
-		dc.b   5
-		dc.b   1
-		dc.b $26 
-		dc.b $22 
-		dc.b $11
-		dc.b $32 
-		dc.b $11
-		dc.b $32 
-		dc.b $13
-		dc.b $24 
-		dc.b $55 
-		dc.b   1
-		dc.b $26 
-		dc.b $62 
-		dc.b $54 
-		dc.b   2
-		dc.b $13
-		dc.b $24 
-		dc.b $35 
-		dc.b   2
-		dc.b $11
-		dc.b $36 
-		dc.b $14
-		dc.b $22 
-		dc.b $64 
-		dc.b $12
-		dc.b   3
-		dc.b   4
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b $35 
-		dc.b   2
-		dc.b $11
-		dc.b $36 
-		dc.b $34 
-		dc.b $22 
-		dc.b $34 
-		dc.b $12
-		dc.b $13
-		dc.b $32 
-		dc.b $35 
-		dc.b $12
-		dc.b $31 
-		dc.b   6
-		dc.b $94 
-		dc.b $22 
-		dc.b   3
-		dc.b $14
-		dc.b   2
-		dc.b $25 
-		dc.b $52 
-		dc.b $21 
-		dc.b   6
-		dc.b $14
-		dc.b $47 
-		dc.b $34 
-		dc.b $12
-		dc.b   3
-		dc.b   4
-		dc.b $12
-		dc.b $25 
-		dc.b $24 
-		dc.b $12
-		dc.b $14
-		dc.b $11
-		dc.b   6
-		dc.b $17
-		dc.b   4
-		dc.b $17
-		dc.b $14
-		dc.b $17
-		dc.b $34 
-		dc.b   3
-		dc.b $14
-		dc.b   2
-		dc.b   5
-		dc.b $44 
-		dc.b $16
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b   6
-		dc.b $27 
-		dc.b $14
-		dc.b $27 
-		dc.b $44 
-		dc.b   3
-		dc.b   2
-		dc.b $14
-		dc.b   5
-		dc.b   4
-		dc.b $31 
-		dc.b $16
-		dc.b $41 
-		dc.b $37 
-		dc.b $54 
-		dc.b $33 
-		dc.b $14
-		dc.b $15
-		dc.b $14
-		dc.b $11
-		dc.b $36 
-		dc.b $31 
-		dc.b $54 
-		dc.b $22 
-		dc.b   4
-		dc.b   3
-		dc.b $44 
-		dc.b   5
-		dc.b $24 
-		dc.b $11
-		dc.b $36 
-		dc.b $31 
-		dc.b $14
-		dc.b $52 
-		dc.b   1
-		dc.b   2
-		dc.b   3
-		dc.b $44 
-		dc.b   5
-		dc.b $14
-		dc.b $11
-		dc.b $46 
-		dc.b $31 
-		dc.b $42 
-		dc.b   5
-		dc.b   4
-		dc.b $11
-		dc.b   4
-		dc.b   3
-		dc.b   4
-		dc.b $45 
-		dc.b $14
-		dc.b $11
-		dc.b $36 
-		dc.b $21 
-		dc.b $16
-		dc.b $32 
-		dc.b $15
-		dc.b   4
-		dc.b $21 
-		dc.b   3
-		dc.b   4
-		dc.b   5
-		dc.b   7
-		dc.b $34 
-		dc.b $12
-		dc.b $46 
-		dc.b   1
-		dc.b $16
-		dc.b $18
-		dc.b $24 
-		dc.b $12
-		dc.b   5
-		dc.b   4
-		dc.b $13
-		dc.b   1
-		dc.b $13
-		dc.b   9
-		dc.b $23 
-		dc.b   4
-		dc.b $11
-		dc.b   2
-		dc.b $36 
-		dc.b $11
-		dc.b $38 
-		dc.b $64 
-		dc.b $13
-		dc.b   4
-		dc.b   3
-		dc.b   4
-		dc.b   8
-		dc.b $14
-		dc.b   3
-		dc.b   7
-		dc.b   4
-		dc.b $31 
-		dc.b $16
-		dc.b $11
-		dc.b $16
-		dc.b $28 
-		dc.b $24 
-		dc.b $12
-		dc.b   4
-		dc.b $33 
-		dc.b   4
-		dc.b $28 
-		dc.b $13
-		dc.b   4
-		dc.b   1
-		dc.b   2
-		dc.b $11
-		dc.b $16
-		dc.b $11
-		dc.b $16
-		dc.b   4
-		dc.b $28 
-		dc.b $64 
-		dc.b $17
-		dc.b $18
-		dc.b   7
-		dc.b   8
-		dc.b   7
-		dc.b   3
-		dc.b $14
-		dc.b $21 
-		dc.b $16
-		dc.b   3
-		dc.b   1
-		dc.b   3
-		dc.b $11
-		dc.b   3
-		dc.b $18
-		dc.b $54 
-		dc.b   7
-		dc.b $28 
-		dc.b   7
-		dc.b   4
-		dc.b   8
-		dc.b   7
-		dc.b $13
-		dc.b   4
-		dc.b   1
-		dc.b $14
-		dc.b $16
-		dc.b   3
-		dc.b $41 
-		dc.b $78 
-		dc.b   7
-		dc.b   8
-		dc.b   7
-		dc.b   8
-		dc.b $14
-		dc.b   8
-		dc.b $14
-		dc.b $53 
-		dc.b   6
-		dc.b   3
-		dc.b   1
-		dc.b $16
-		dc.b   1
-		dc.b   6
-		dc.b $78 
-		dc.b   7
-		dc.b   8
-		dc.b   7
-		dc.b   8
-		dc.b $17
-		dc.b $28 
-		dc.b $54 
-		dc.b   6
-		dc.b $14
-		dc.b $26 
-		dc.b $F8 
-		dc.b $28 
-		dc.b $37 
-		dc.b $26 
-		dc.b $21 
-		dc.b $F8 
-		dc.b $A8 
-		dc.b $26 
-		dc.b $F8 
-		dc.b $F8 
-		dc.b $F4 
-		dc.b $A4 
-		dc.b $23 
-		dc.b $F4 
-		dc.b $A4 
-		dc.b $23 
-		dc.b $F4 
-		dc.b $A4 
-		dc.b $23 
-		dc.b $F4 
-		dc.b $94 
-		dc.b $33 
-		dc.b $F4 
-		dc.b $94 
-		dc.b $33 
-		dc.b $F4 
-		dc.b $94 
-		dc.b $33 
-		dc.b $F4 
-		dc.b $94 
-		dc.b $33 
-		dc.b $F4 
-		dc.b $94 
-		dc.b $33 
-		dc.b $F4 
-		dc.b $64 
-		dc.b $63 
-		dc.b $F4 
-		dc.b $64 
-		dc.b $63 
-		dc.b $F4 
-		dc.b $64 
-		dc.b $13
-		dc.b $42 
-		dc.b $F4 
-		dc.b $34 
-		dc.b $33 
-		dc.b $52 
-		dc.b $F4 
-		dc.b $34 
-		dc.b $33 
-		dc.b $52 
-		dc.b $F4 
-		dc.b $14
-		dc.b $63 
-		dc.b $42 
-		dc.b $F4 
-		dc.b $14
-		dc.b $63 
-		dc.b $42 
-		dc.b $F4 
-		dc.b $14
-		dc.b $73 
-		dc.b $32 
-		dc.b $F4 
-		dc.b   4
-		dc.b $83 
-		dc.b $31 
-		dc.b $F4 
-		dc.b   4
-		dc.b $83 
-		dc.b $31 
-		dc.b $F4 
-		dc.b   4
-		dc.b $73 
-		dc.b $41 
-		dc.b $C4 
-		dc.b $B3 
-		dc.b $41 
-		dc.b $C4 
-		dc.b $A3 
-		dc.b $51 
-		dc.b $C4 
-		dc.b $A3 
-		dc.b $51 
-		dc.b $E4 
-		dc.b $83 
-		dc.b $51 
-		dc.b $E4 
-		dc.b $83 
-		dc.b $51 
-		dc.b $E4 
-		dc.b $83 
-		dc.b $51 
-		dc.b $E4 
-		dc.b $83 
-		dc.b $51 
-		dc.b $F4 
-		dc.b   4
-		dc.b $63 
-		dc.b $51 
-		dc.b $F4 
-		dc.b $14
-		dc.b $63 
-		dc.b $41 
-		dc.b $F4 
-		dc.b $84 
-		dc.b $41 
-		dc.b $F4 
-		dc.b $84 
-		dc.b $41 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $71 
-		dc.b $FF
-		dc.b   0
-		dc.b  $C
-		dc.b   6
-		dc.b  $B
-		dc.b  $A
-		dc.b   2
-		dc.b   1
-		dc.b   5
-		dc.b   9
-		dc.b   3
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $31 
-		dc.b   2
-		dc.b $13
-		dc.b   4
-		dc.b $13
-		dc.b $34 
-		dc.b $F1 
-		dc.b $11
-		dc.b $15
-		dc.b $16
-		dc.b $43 
-		dc.b $34 
-		dc.b $B1 
-		dc.b   2
-		dc.b $31 
-		dc.b $15
-		dc.b $16
-		dc.b $53 
-		dc.b $24 
-		dc.b $A1 
-		dc.b $12
-		dc.b $21 
-		dc.b   3
-		dc.b $12
-		dc.b $A3 
-		dc.b $91 
-		dc.b $32 
-		dc.b   1
-		dc.b $F3 
-		dc.b $81 
-		dc.b $42 
-		dc.b $F3 
-		dc.b   6
-		dc.b $71 
-		dc.b $42 
-		dc.b $F3 
-		dc.b   2
-		dc.b $61 
-		dc.b $52 
-		dc.b $E3 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $51 
-		dc.b $42 
-		dc.b   1
-		dc.b $D3 
-		dc.b $11
-		dc.b   6
-		dc.b $12
-		dc.b $41 
-		dc.b $12
-		dc.b   5
-		dc.b $12
-		dc.b   1
-		dc.b $D3 
-		dc.b $21 
-		dc.b $26 
-		dc.b $41 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $11
-		dc.b $33 
-		dc.b $11
-		dc.b $63 
-		dc.b $31 
-		dc.b $16
-		dc.b   2
-		dc.b $41 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $11
-		dc.b $33 
-		dc.b $21 
-		dc.b $53 
-		dc.b $31 
-		dc.b $16
-		dc.b   2
-		dc.b $51 
-		dc.b   6
-		dc.b $21 
-		dc.b $13
-		dc.b $14
-		dc.b $21 
-		dc.b $53 
-		dc.b $21 
-		dc.b $46 
-		dc.b $41 
-		dc.b   6
-		dc.b $21 
-		dc.b $13
-		dc.b   4
-		dc.b $31 
-		dc.b $63 
-		dc.b $14
-		dc.b   6
-		dc.b   2
-		dc.b $16
-		dc.b $12
-		dc.b $31 
-		dc.b   6
-		dc.b $21 
-		dc.b   6
-		dc.b $13
-		dc.b $41 
-		dc.b $63 
-		dc.b $46 
-		dc.b   2
-		dc.b   4
-		dc.b $31 
-		dc.b $16
-		dc.b $11
-		dc.b $16
-		dc.b   3
-		dc.b $41 
-		dc.b $63 
-		dc.b $46 
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b $11
-		dc.b $26 
-		dc.b $14
-		dc.b $21 
-		dc.b $63 
-		dc.b $46 
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b   7
-		dc.b   1
-		dc.b $26 
-		dc.b $14
-		dc.b $31 
-		dc.b $53 
-		dc.b $36 
-		dc.b $24 
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b   7
-		dc.b   1
-		dc.b $12
-		dc.b $16
-		dc.b   4
-		dc.b $31 
-		dc.b $86 
-		dc.b $18
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b $16
-		dc.b   1
-		dc.b   6
-		dc.b   2
-		dc.b $26 
-		dc.b   2
-		dc.b $11
-		dc.b $76 
-		dc.b $38 
-		dc.b $14
-		dc.b $21 
-		dc.b $24 
-		dc.b   6
-		dc.b   1
-		dc.b $46 
-		dc.b   2
-		dc.b $96 
-		dc.b $38 
-		dc.b   6
-		dc.b $31 
-		dc.b $24 
-		dc.b   6
-		dc.b   1
-		dc.b   7
-		dc.b $F6 
-		dc.b   8
-		dc.b $26 
-		dc.b $51 
-		dc.b   4
-		dc.b   6
-		dc.b   1
-		dc.b   2
-		dc.b $17
-		dc.b $96 
-		dc.b $48 
-		dc.b $26 
-		dc.b $51 
-		dc.b $16
-		dc.b   1
-		dc.b $12
-		dc.b $37 
-		dc.b $66 
-		dc.b   9
-		dc.b $66 
-		dc.b $51 
-		dc.b   6
-		dc.b $11
-		dc.b $22 
-		dc.b $87 
-		dc.b $18
-		dc.b $46 
-		dc.b   2
-		dc.b $17
-		dc.b   2
-		dc.b $51 
-		dc.b   7
-		dc.b $32 
-		dc.b $47 
-		dc.b   2
-		dc.b   7
-		dc.b $18
-		dc.b $17
-		dc.b $36 
-		dc.b $47 
-		dc.b   1
-		dc.b $26 
-		dc.b $17
-		dc.b   6
-		dc.b $52 
-		dc.b $37 
-		dc.b   8
-		dc.b $47 
-		dc.b $56 
-		dc.b   7
-		dc.b   1
-		dc.b   6
-		dc.b $15
-		dc.b   6
-		dc.b   7
-		dc.b   6
-		dc.b $52 
-		dc.b $37 
-		dc.b $18
-		dc.b $67 
-		dc.b $36 
-		dc.b   1
-		dc.b   6
-		dc.b $15
-		dc.b   6
-		dc.b  $A
-		dc.b $92 
-		dc.b   7
-		dc.b   2
-		dc.b   8
-		dc.b $A7 
-		dc.b   1
-		dc.b $36 
-		dc.b  $A
-		dc.b $92 
-		dc.b $17
-		dc.b $18
-		dc.b $97 
-		dc.b $31 
-		dc.b $1A
-		dc.b $FF
-		dc.b   0
-		dc.b  $C
-		dc.b   6
-		dc.b  $B
-		dc.b  $A
-		dc.b   2
-		dc.b   1
-		dc.b   5
-		dc.b   9
-		dc.b   3
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $31 
-		dc.b   2
-		dc.b $13
-		dc.b   4
-		dc.b $13
-		dc.b $34 
-		dc.b $F1 
-		dc.b $11
-		dc.b $15
-		dc.b $16
-		dc.b $43 
-		dc.b $34 
-		dc.b $B1 
-		dc.b   2
-		dc.b $31 
-		dc.b $15
-		dc.b $16
-		dc.b $53 
-		dc.b $24 
-		dc.b $A1 
-		dc.b $12
-		dc.b $21 
-		dc.b   3
-		dc.b $12
-		dc.b $A3 
-		dc.b $91 
-		dc.b $32 
-		dc.b   1
-		dc.b $F3 
-		dc.b $81 
-		dc.b $42 
-		dc.b $F3 
-		dc.b   6
-		dc.b $71 
-		dc.b $42 
-		dc.b $F3 
-		dc.b   2
-		dc.b $61 
-		dc.b $52 
-		dc.b $E3 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $51 
-		dc.b $42 
-		dc.b   1
-		dc.b $D3 
-		dc.b $11
-		dc.b   6
-		dc.b $12
-		dc.b $41 
-		dc.b $12
-		dc.b   5
-		dc.b $12
-		dc.b   1
-		dc.b $D3 
-		dc.b $21 
-		dc.b $26 
-		dc.b $41 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $11
-		dc.b $33 
-		dc.b $11
-		dc.b $63 
-		dc.b $31 
-		dc.b $16
-		dc.b   2
-		dc.b $41 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $11
-		dc.b $33 
-		dc.b $21 
-		dc.b $53 
-		dc.b $31 
-		dc.b $16
-		dc.b   2
-		dc.b $51 
-		dc.b   6
-		dc.b $21 
-		dc.b $13
-		dc.b $14
-		dc.b $21 
-		dc.b $53 
-		dc.b $21 
-		dc.b $46 
-		dc.b $41 
-		dc.b   6
-		dc.b $21 
-		dc.b $13
-		dc.b   4
-		dc.b $31 
-		dc.b $63 
-		dc.b $14
-		dc.b   6
-		dc.b   2
-		dc.b $16
-		dc.b $12
-		dc.b $31 
-		dc.b   6
-		dc.b $21 
-		dc.b   6
-		dc.b $13
-		dc.b $41 
-		dc.b $63 
-		dc.b $46 
-		dc.b   2
-		dc.b   4
-		dc.b $31 
-		dc.b $16
-		dc.b $11
-		dc.b $16
-		dc.b   3
-		dc.b $41 
-		dc.b $63 
-		dc.b $46 
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b $11
-		dc.b $26 
-		dc.b $14
-		dc.b $21 
-		dc.b $63 
-		dc.b $46 
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b   7
-		dc.b   1
-		dc.b $26 
-		dc.b $14
-		dc.b $31 
-		dc.b $53 
-		dc.b $36 
-		dc.b $24 
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b   7
-		dc.b   1
-		dc.b $12
-		dc.b $16
-		dc.b   4
-		dc.b $31 
-		dc.b $86 
-		dc.b $18
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b $16
-		dc.b   1
-		dc.b   6
-		dc.b   2
-		dc.b $26 
-		dc.b   2
-		dc.b $11
-		dc.b $76 
-		dc.b $38 
-		dc.b $14
-		dc.b $21 
-		dc.b $24 
-		dc.b   6
-		dc.b   1
-		dc.b $46 
-		dc.b   2
-		dc.b $96 
-		dc.b $38 
-		dc.b   6
-		dc.b $31 
-		dc.b $24 
-		dc.b   6
-		dc.b   1
-		dc.b   7
-		dc.b $F6 
-		dc.b   8
-		dc.b $26 
-		dc.b $51 
-		dc.b   4
-		dc.b   6
-		dc.b   1
-		dc.b   2
-		dc.b $17
-		dc.b $96 
-		dc.b $48 
-		dc.b $26 
-		dc.b $51 
-		dc.b $16
-		dc.b   1
-		dc.b $12
-		dc.b $37 
-		dc.b $66 
-		dc.b   9
-		dc.b $66 
-		dc.b $51 
-		dc.b   6
-		dc.b $11
-		dc.b $22 
-		dc.b $87 
-		dc.b $18
-		dc.b $46 
-		dc.b   2
-		dc.b $17
-		dc.b   2
-		dc.b $51 
-		dc.b   7
-		dc.b $32 
-		dc.b $47 
-		dc.b   2
-		dc.b   7
-		dc.b $18
-		dc.b $17
-		dc.b $36 
-		dc.b $47 
-		dc.b   1
-		dc.b $26 
-		dc.b $17
-		dc.b   6
-		dc.b $52 
-		dc.b $37 
-		dc.b   8
-		dc.b $47 
-		dc.b $56 
-		dc.b   7
-		dc.b   1
-		dc.b   6
-		dc.b $15
-		dc.b   6
-		dc.b   7
-		dc.b   6
-		dc.b $52 
-		dc.b $37 
-		dc.b $18
-		dc.b $67 
-		dc.b $56 
-		dc.b $15
-		dc.b   6
-		dc.b  $A
-		dc.b $92 
-		dc.b   7
-		dc.b   2
-		dc.b   8
-		dc.b $A7 
-		dc.b   1
-		dc.b $36 
-		dc.b  $A
-		dc.b $92 
-		dc.b $17
-		dc.b $18
-		dc.b $97 
-		dc.b $31 
-		dc.b $1A
-		dc.b $64 
-		dc.b $F3 
-		dc.b $63 
-		dc.b $74 
-		dc.b $F3 
-		dc.b $53 
-		dc.b $84 
-		dc.b $F3 
-		dc.b $43 
-		dc.b $94 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $84 
-		dc.b $F3 
-		dc.b $43 
-		dc.b $84 
-		dc.b $F3 
-		dc.b $43 
-		dc.b $74 
-		dc.b $F3 
-		dc.b $53 
-		dc.b $64 
-		dc.b $F3 
-		dc.b $63 
-		dc.b $54 
-		dc.b $F3 
-		dc.b $73 
-		dc.b $22 
-		dc.b $14
-		dc.b $E3 
-		dc.b $F2 
-		dc.b $D3 
-		dc.b $F2 
-		dc.b   2
-		dc.b $C3 
-		dc.b $F2 
-		dc.b   2
-		dc.b $D3 
-		dc.b $F2 
-		dc.b $E3 
-		dc.b $F2 
-		dc.b $D3 
-		dc.b $F2 
-		dc.b $D3 
-		dc.b $F2 
-		dc.b $D3 
-		dc.b $F2 
-		dc.b   2
-		dc.b $C3 
-		dc.b $F2 
-		dc.b   2
-		dc.b $C3 
-		dc.b $F2 
-		dc.b $D3 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b   2
-		dc.b $F1 
-		dc.b   1
-		dc.b $D2 
-		dc.b $F1 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $11
-		dc.b $A2 
-		dc.b $F1 
-		dc.b $21 
-		dc.b $A2 
-		dc.b $F1 
-		dc.b $21 
-		dc.b $A2 
-		dc.b $F1 
-		dc.b $21 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $11
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $11
-		dc.b $FF
-		dc.b   0
-		dc.b  $C
-		dc.b   6
-		dc.b  $B
-		dc.b  $A
-		dc.b   2
-		dc.b   1
-		dc.b   5
-		dc.b   9
-		dc.b   3
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $31 
-		dc.b   2
-		dc.b $13
-		dc.b   4
-		dc.b $13
-		dc.b $34 
-		dc.b $F1 
-		dc.b $11
-		dc.b $15
-		dc.b $16
-		dc.b $43 
-		dc.b $34 
-		dc.b $B1 
-		dc.b   2
-		dc.b $31 
-		dc.b $15
-		dc.b $16
-		dc.b $53 
-		dc.b $24 
-		dc.b $A1 
-		dc.b $12
-		dc.b $21 
-		dc.b   3
-		dc.b $12
-		dc.b $A3 
-		dc.b $91 
-		dc.b $32 
-		dc.b   1
-		dc.b $F3 
-		dc.b $81 
-		dc.b $42 
-		dc.b $F3 
-		dc.b   6
-		dc.b $71 
-		dc.b $42 
-		dc.b $F3 
-		dc.b   2
-		dc.b $61 
-		dc.b $52 
-		dc.b $E3 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $51 
-		dc.b $42 
-		dc.b   1
-		dc.b $D3 
-		dc.b $11
-		dc.b   6
-		dc.b $12
-		dc.b $41 
-		dc.b $12
-		dc.b   5
-		dc.b $12
-		dc.b   1
-		dc.b $D3 
-		dc.b $21 
-		dc.b $26 
-		dc.b $41 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $11
-		dc.b $33 
-		dc.b $11
-		dc.b $63 
-		dc.b $31 
-		dc.b $16
-		dc.b   2
-		dc.b $41 
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b $11
-		dc.b $33 
-		dc.b $21 
-		dc.b $53 
-		dc.b $31 
-		dc.b $16
-		dc.b   2
-		dc.b $51 
-		dc.b   6
-		dc.b $21 
-		dc.b $13
-		dc.b $14
-		dc.b $21 
-		dc.b $53 
-		dc.b $21 
-		dc.b $46 
-		dc.b $41 
-		dc.b   6
-		dc.b $21 
-		dc.b $13
-		dc.b   4
-		dc.b $31 
-		dc.b $63 
-		dc.b $14
-		dc.b   6
-		dc.b   2
-		dc.b $16
-		dc.b $12
-		dc.b $31 
-		dc.b   6
-		dc.b $21 
-		dc.b   6
-		dc.b $13
-		dc.b $41 
-		dc.b $63 
-		dc.b $46 
-		dc.b   2
-		dc.b   4
-		dc.b $31 
-		dc.b $16
-		dc.b $11
-		dc.b $16
-		dc.b   3
-		dc.b $41 
-		dc.b $63 
-		dc.b $46 
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b $11
-		dc.b $26 
-		dc.b $14
-		dc.b $21 
-		dc.b $63 
-		dc.b $46 
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b   7
-		dc.b   1
-		dc.b $26 
-		dc.b $14
-		dc.b $31 
-		dc.b $53 
-		dc.b $36 
-		dc.b $24 
-		dc.b $31 
-		dc.b   7
-		dc.b   6
-		dc.b   7
-		dc.b   1
-		dc.b $12
-		dc.b $16
-		dc.b   4
-		dc.b $31 
-		dc.b $86 
-		dc.b $18
-		dc.b $14
-		dc.b $31 
-		dc.b   7
-		dc.b $16
-		dc.b   1
-		dc.b   6
-		dc.b   2
-		dc.b $26 
-		dc.b   2
-		dc.b $11
-		dc.b $76 
-		dc.b $38 
-		dc.b $14
-		dc.b $21 
-		dc.b $24 
-		dc.b   6
-		dc.b   1
-		dc.b $46 
-		dc.b   2
-		dc.b $96 
-		dc.b $38 
-		dc.b   6
-		dc.b $31 
-		dc.b $24 
-		dc.b   6
-		dc.b   1
-		dc.b   7
-		dc.b $F6 
-		dc.b   8
-		dc.b $26 
-		dc.b $51 
-		dc.b   4
-		dc.b   6
-		dc.b   1
-		dc.b   2
-		dc.b $17
-		dc.b $96 
-		dc.b $48 
-		dc.b $26 
-		dc.b $51 
-		dc.b $16
-		dc.b   1
-		dc.b $12
-		dc.b $37 
-		dc.b $66 
-		dc.b   9
-		dc.b $66 
-		dc.b $51 
-		dc.b   6
-		dc.b $11
-		dc.b $22 
-		dc.b $87 
-		dc.b $18
-		dc.b $46 
-		dc.b   2
-		dc.b $17
-		dc.b   2
-		dc.b $31 
-		dc.b   6
-		dc.b   1
-		dc.b   7
-		dc.b $32 
-		dc.b $47 
-		dc.b   2
-		dc.b   7
-		dc.b $18
-		dc.b $17
-		dc.b $36 
-		dc.b $47 
-		dc.b   1
-		dc.b $26 
-		dc.b $17
-		dc.b   6
-		dc.b $52 
-		dc.b $37 
-		dc.b   8
-		dc.b $47 
-		dc.b $56 
-		dc.b   7
-		dc.b   1
-		dc.b   6
-		dc.b $15
-		dc.b   6
-		dc.b   7
-		dc.b   6
-		dc.b $52 
-		dc.b $37 
-		dc.b $18
-		dc.b $67 
-		dc.b $56 
-		dc.b $15
-		dc.b   6
-		dc.b  $A
-		dc.b $92 
-		dc.b   7
-		dc.b   2
-		dc.b   8
-		dc.b $A7 
-		dc.b   1
-		dc.b $36 
-		dc.b  $A
-		dc.b $92 
-		dc.b $17
-		dc.b $18
-		dc.b $97 
-		dc.b $31 
-		dc.b $1A
-		dc.b $FF
-		dc.b   0
-		dc.b  $D
-		dc.b   7
-		dc.b  $A
-		dc.b   9
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $21 
-		dc.b $32 
-		dc.b $51 
-		dc.b $33 
-		dc.b $12
-		dc.b   3
-		dc.b $31 
-		dc.b   4
-		dc.b $11
-		dc.b $25 
-		dc.b $11
-		dc.b $42 
-		dc.b $51 
-		dc.b $13
-		dc.b $22 
-		dc.b $13
-		dc.b $11
-		dc.b $15
-		dc.b   6
-		dc.b $25 
-		dc.b $31 
-		dc.b $52 
-		dc.b $31 
-		dc.b $13
-		dc.b $32 
-		dc.b $43 
-		dc.b   1
-		dc.b   4
-		dc.b $71 
-		dc.b $42 
-		dc.b $31 
-		dc.b $43 
-		dc.b $12
-		dc.b $23 
-		dc.b $11
-		dc.b   4
-		dc.b $71 
-		dc.b $32 
-		dc.b $31 
-		dc.b $43 
-		dc.b $52 
-		dc.b $11
-		dc.b   4
-		dc.b $81 
-		dc.b $22 
-		dc.b $31 
-		dc.b $33 
-		dc.b $42 
-		dc.b $31 
-		dc.b   4
-		dc.b $81 
-		dc.b $C2 
-		dc.b   7
-		dc.b $12
-		dc.b $31 
-		dc.b $14
-		dc.b $81 
-		dc.b $82 
-		dc.b $27 
-		dc.b $22 
-		dc.b   3
-		dc.b $31 
-		dc.b   4
-		dc.b $81 
-		dc.b $82 
-		dc.b   7
-		dc.b $32 
-		dc.b $13
-		dc.b $31 
-		dc.b   4
-		dc.b $71 
-		dc.b $23 
-		dc.b $42 
-		dc.b $27 
-		dc.b $22 
-		dc.b $33 
-		dc.b $11
-		dc.b $24 
-		dc.b $61 
-		dc.b $33 
-		dc.b $22 
-		dc.b $27 
-		dc.b $42 
-		dc.b $23 
-		dc.b $11
-		dc.b $24 
-		dc.b $71 
-		dc.b $33 
-		dc.b $22 
-		dc.b $37 
-		dc.b $12
-		dc.b $33 
-		dc.b $31 
-		dc.b $14
-		dc.b $61 
-		dc.b $33 
-		dc.b $32 
-		dc.b $37 
-		dc.b $22 
-		dc.b $13
-		dc.b $41 
-		dc.b   4
-		dc.b $71 
-		dc.b $23 
-		dc.b $52 
-		dc.b $27 
-		dc.b $22 
-		dc.b $13
-		dc.b $31 
-		dc.b $24 
-		dc.b $51 
-		dc.b $A2 
-		dc.b $17
-		dc.b $22 
-		dc.b   3
-		dc.b $51 
-		dc.b   4
-		dc.b $41 
-		dc.b $A2 
-		dc.b $17
-		dc.b $32 
-		dc.b   3
-		dc.b $B1 
-		dc.b   3
-		dc.b $A2 
-		dc.b $17
-		dc.b $22 
-		dc.b   3
-		dc.b $A1 
-		dc.b $23 
-		dc.b $72 
-		dc.b $17
-		dc.b $42 
-		dc.b $41 
-		dc.b $12
-		dc.b $41 
-		dc.b $23 
-		dc.b $52 
-		dc.b $17
-		dc.b $32 
-		dc.b $43 
-		dc.b $11
-		dc.b $22 
-		dc.b $31 
-		dc.b $43 
-		dc.b $32 
-		dc.b $27 
-		dc.b $22 
-		dc.b $23 
-		dc.b $11
-		dc.b $13
-		dc.b $32 
-		dc.b   3
-		dc.b $21 
-		dc.b $23 
-		dc.b $42 
-		dc.b $27 
-		dc.b $22 
-		dc.b $13
-		dc.b $51 
-		dc.b $32 
-		dc.b $41 
-		dc.b $23 
-		dc.b $32 
-		dc.b $17
-		dc.b   5
-		dc.b $22 
-		dc.b $13
-		dc.b $51 
-		dc.b $22 
-		dc.b   3
-		dc.b $41 
-		dc.b $13
-		dc.b $11
-		dc.b $22 
-		dc.b   7
-		dc.b $15
-		dc.b $32 
-		dc.b   3
-		dc.b $51 
-		dc.b $42 
-		dc.b   3
-		dc.b $31 
-		dc.b   3
-		dc.b $11
-		dc.b $22 
-		dc.b $35 
-		dc.b $22 
-		dc.b   3
-		dc.b $51 
-		dc.b $13
-		dc.b $12
-		dc.b   1
-		dc.b   3
-		dc.b $71 
-		dc.b $22 
-		dc.b $35 
-		dc.b $12
-		dc.b $23 
-		dc.b $31 
-		dc.b $33 
-		dc.b   1
-		dc.b   3
-		dc.b $71 
-		dc.b $32 
-		dc.b $35 
-		dc.b $23 
-		dc.b $91 
-		dc.b $13
-		dc.b $61 
-		dc.b $42 
-		dc.b $25 
-		dc.b $23 
-		dc.b $91 
-		dc.b $33 
-		dc.b $41 
-		dc.b   3
-		dc.b $52 
-		dc.b $13
-		dc.b $16
-		dc.b $21 
-		dc.b $36 
-		dc.b $21 
-		dc.b $43 
-		dc.b $11
-		dc.b $43 
-		dc.b $32 
-		dc.b $13
-		dc.b $16
-		dc.b $21 
-		dc.b $36 
-		dc.b $21 
-		dc.b $43 
-		dc.b $11
-		dc.b $33 
-		dc.b $42 
-		dc.b   3
-		dc.b $51 
-		dc.b $36 
-		dc.b $21 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $F4 
-		dc.b $34 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $D3 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $D1 
-		dc.b   0
-		dc.b  $D
-		dc.b   7
-		dc.b   1
-		dc.b  $A
-		dc.b   5
-		dc.b   2
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $2E 
-		dc.b $12
-		dc.b $41 
-		dc.b $22 
-		dc.b $B3 
-		dc.b $22 
-		dc.b $14
-		dc.b $72 
-		dc.b   3
-		dc.b $32 
-		dc.b $41 
-		dc.b $17
-		dc.b   8
-		dc.b $31 
-		dc.b $12
-		dc.b $F3 
-		dc.b $E3 
-		dc.b $12
-		dc.b $31 
-		dc.b $17
-		dc.b   8
-		dc.b $31 
-		dc.b   2
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $21 
-		dc.b   5
-		dc.b   1
-		dc.b   5
-		dc.b $16
-		dc.b $F3 
-		dc.b $43 
-		dc.b $15
-		dc.b $E3 
-		dc.b $21 
-		dc.b   3
-		dc.b $31 
-		dc.b   2
-		dc.b $F3 
-		dc.b $43 
-		dc.b $25 
-		dc.b $E3 
-		dc.b   1
-		dc.b   3
-		dc.b $41 
-		dc.b   2
-		dc.b $F3 
-		dc.b $D3 
-		dc.b $15
-		dc.b $73 
-		dc.b $41 
-		dc.b $12
-		dc.b $F3 
-		dc.b $A3 
-		dc.b $45 
-		dc.b $73 
-		dc.b $41 
-		dc.b $F3 
-		dc.b $D3 
-		dc.b $25 
-		dc.b $73 
-		dc.b $21 
-		dc.b $12
-		dc.b $83 
-		dc.b $15
-		dc.b $F3 
-		dc.b $C3 
-		dc.b $21 
-		dc.b $12
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $83 
-		dc.b $21 
-		dc.b   4
-		dc.b   2
-		dc.b $83 
-		dc.b   5
-		dc.b $F3 
-		dc.b $E3 
-		dc.b $21 
-		dc.b   4
-		dc.b $12
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $13
-		dc.b $15
-		dc.b $33 
-		dc.b   2
-		dc.b   1
-		dc.b $24 
-		dc.b   2
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $13
-		dc.b $25 
-		dc.b $23 
-		dc.b   2
-		dc.b   1
-		dc.b $34 
-		dc.b   2
-		dc.b $F3 
-		dc.b $93 
-		dc.b $25 
-		dc.b $83 
-		dc.b   2
-		dc.b   4
-		dc.b $21 
-		dc.b $14
-		dc.b $22 
-		dc.b $D3 
-		dc.b $25 
-		dc.b $83 
-		dc.b $15
-		dc.b $63 
-		dc.b $12
-		dc.b   4
-		dc.b $31 
-		dc.b $14
-		dc.b $32 
-		dc.b $F3 
-		dc.b $F3 
-		dc.b $12
-		dc.b $14
-		dc.b $51 
-		dc.b   4
-		dc.b $42 
-		dc.b $F3 
-		dc.b $C3 
-		dc.b $12
-		dc.b $24 
-		dc.b $61 
-		dc.b $14
-		dc.b $52 
-		dc.b $F3 
-		dc.b $93 
-		dc.b $34 
-		dc.b   1
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $D3 
-		dc.b   4
-		dc.b $43 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $C3 
-		dc.b $24 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $B3 
-		dc.b $44 
-		dc.b $23 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $A3 
-		dc.b $64 
-		dc.b $13
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $B3 
-		dc.b $44 
-		dc.b $23 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $C3 
-		dc.b $24 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $D3 
-		dc.b   4
-		dc.b $43 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $F1 
-		dc.b $11
-		dc.b $72 
-		dc.b $F3 
-		dc.b $33 
-		dc.b $FF
-		dc.b   0
-		dc.b  $A
-		dc.b  $D
-		dc.b   2
-		dc.b   7
-		dc.b   5
-		dc.b   1
-		dc.b  $B
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b $31 
-		dc.b $82 
-		dc.b $D1 
-		dc.b $22 
-		dc.b   1
-		dc.b $A2 
-		dc.b $F1 
-		dc.b $13
-		dc.b $92 
-		dc.b $51 
-		dc.b   4
-		dc.b $A1 
-		dc.b $13
-		dc.b $82 
-		dc.b $41 
-		dc.b $64 
-		dc.b $61 
-		dc.b $52 
-		dc.b $61 
-		dc.b $A4 
-		dc.b $61 
-		dc.b $32 
-		dc.b $41 
-		dc.b $64 
-		dc.b   5
-		dc.b $54 
-		dc.b $51 
-		dc.b $42 
-		dc.b $11
-		dc.b $55 
-		dc.b   4
-		dc.b $35 
-		dc.b $44 
-		dc.b $41 
-		dc.b $42 
-		dc.b $31 
-		dc.b $15
-		dc.b $26 
-		dc.b $45 
-		dc.b $54 
-		dc.b $21 
-		dc.b $52 
-		dc.b $31 
-		dc.b $15
-		dc.b $66 
-		dc.b $35 
-		dc.b $24 
-		dc.b $11
-		dc.b $72 
-		dc.b $21 
-		dc.b $86 
-		dc.b $35 
-		dc.b $14
-		dc.b $21 
-		dc.b $82 
-		dc.b   1
-		dc.b $86 
-		dc.b   4
-		dc.b $15
-		dc.b $34 
-		dc.b   1
-		dc.b $A2 
-		dc.b   1
-		dc.b $86 
-		dc.b   4
-		dc.b $52 
-		dc.b $21 
-		dc.b $92 
-		dc.b   1
-		dc.b $76 
-		dc.b $82 
-		dc.b $31 
-		dc.b $52 
-		dc.b $21 
-		dc.b $13
-		dc.b   6
-		dc.b $E2 
-		dc.b $31 
-		dc.b $22 
-		dc.b $31 
-		dc.b   4
-		dc.b $13
-		dc.b $C2 
-		dc.b $B1 
-		dc.b $24 
-		dc.b   7
-		dc.b $52 
-		dc.b $F1 
-		dc.b $11
-		dc.b $24 
-		dc.b $15
-		dc.b   8
-		dc.b $12
-		dc.b $51 
-		dc.b   4
-		dc.b $D1 
-		dc.b $24 
-		dc.b $15
-		dc.b $48 
-		dc.b $26 
-		dc.b $64 
-		dc.b $91 
-		dc.b $14
-		dc.b $15
-		dc.b   6
-		dc.b $68 
-		dc.b $16
-		dc.b $15
-		dc.b $44 
-		dc.b $71 
-		dc.b $24 
-		dc.b   5
-		dc.b   6
-		dc.b $78 
-		dc.b   6
-		dc.b $15
-		dc.b $14
-		dc.b   2
-		dc.b $14
-		dc.b $22 
-		dc.b $31 
-		dc.b $34 
-		dc.b $15
-		dc.b   6
-		dc.b $78 
-		dc.b   6
-		dc.b   5
-		dc.b   4
-		dc.b $92 
-		dc.b $41 
-		dc.b $14
-		dc.b   5
-		dc.b   6
-		dc.b $78 
-		dc.b $15
-		dc.b $C2 
-		dc.b $41 
-		dc.b   4
-		dc.b $16
-		dc.b $78 
-		dc.b $F2 
-		dc.b $21 
-		dc.b $14
-		dc.b $16
-		dc.b $68 
-		dc.b $F2 
-		dc.b $31 
-		dc.b $14
-		dc.b   6
-		dc.b $68 
-		dc.b $F2 
-		dc.b   2
-		dc.b $31 
-		dc.b   4
-		dc.b   6
-		dc.b $68 
-		dc.b $92 
-		dc.b $31 
-		dc.b $32 
-		dc.b $21 
-		dc.b $14
-		dc.b $68 
-		dc.b $52 
-		dc.b $41 
-		dc.b $14
-		dc.b $21 
-		dc.b $32 
-		dc.b   1
-		dc.b $14
-		dc.b $58 
-		dc.b $52 
-		dc.b $11
-		dc.b $74 
-		dc.b $21 
-		dc.b $12
-		dc.b $11
-		dc.b   4
-		dc.b $58 
-		dc.b $52 
-		dc.b $13
-		dc.b $54 
-		dc.b   5
-		dc.b $24 
-		dc.b $41 
-		dc.b   4
-		dc.b $68 
-		dc.b $42 
-		dc.b $13
-		dc.b $34 
-		dc.b $45 
-		dc.b $24 
-		dc.b   1
-		dc.b $24 
-		dc.b $F1 
-		dc.b $21 
-		dc.b $A3 
-		dc.b $F1 
-		dc.b $22 
-		dc.b $A3 
-		dc.b $D1 
-		dc.b $42 
-		dc.b $A3 
-		dc.b $D1 
-		dc.b $62 
-		dc.b $83 
-		dc.b $E1 
-		dc.b $62 
-		dc.b $73 
-		dc.b $E1 
-		dc.b $72 
-		dc.b $63 
-		dc.b $F1 
-		dc.b   1
-		dc.b $52 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $81 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $91 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $91 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $91 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $91 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $91 
-		dc.b $F2 
-		dc.b $32 
-		dc.b $91 
-		dc.b $FF
-		dc.b   0
-		dc.b  $A
-		dc.b   7
-		dc.b   5
-		dc.b  $D
-		dc.b   2
-		dc.b   8
-		dc.b   1
-		dc.b  $B
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b   1
-		dc.b $52 
-		dc.b $E3 
-		dc.b $72 
-		dc.b   1
-		dc.b $82 
-		dc.b $A3 
-		dc.b $82 
-		dc.b $21 
-		dc.b $B2 
-		dc.b $53 
-		dc.b $72 
-		dc.b   1
-		dc.b   4
-		dc.b $15
-		dc.b $31 
-		dc.b $B2 
-		dc.b   3
-		dc.b $92 
-		dc.b   4
-		dc.b $15
-		dc.b $24 
-		dc.b $71 
-		dc.b $F2 
-		dc.b   4
-		dc.b $21 
-		dc.b $84 
-		dc.b $11
-		dc.b $D2 
-		dc.b $21 
-		dc.b   2
-		dc.b $11
-		dc.b $24 
-		dc.b $11
-		dc.b $54 
-		dc.b $11
-		dc.b $92 
-		dc.b $31 
-		dc.b $62 
-		dc.b $21 
-		dc.b $44 
-		dc.b $11
-		dc.b $82 
-		dc.b $21 
-		dc.b $82 
-		dc.b $31 
-		dc.b $24 
-		dc.b $21 
-		dc.b $62 
-		dc.b $31 
-		dc.b $92 
-		dc.b $21 
-		dc.b $44 
-		dc.b $11
-		dc.b $42 
-		dc.b $41 
-		dc.b $92 
-		dc.b $21 
-		dc.b $44 
-		dc.b $21 
-		dc.b $32 
-		dc.b $11
-		dc.b $14
-		dc.b $22 
-		dc.b $21 
-		dc.b $42 
-		dc.b $31 
-		dc.b $24 
-		dc.b $51 
-		dc.b   2
-		dc.b $11
-		dc.b $24 
-		dc.b $12
-		dc.b $41 
-		dc.b $42 
-		dc.b $21 
-		dc.b $24 
-		dc.b   1
-		dc.b $14
-		dc.b $51 
-		dc.b $24 
-		dc.b   2
-		dc.b $11
-		dc.b $14
-		dc.b $21 
-		dc.b $32 
-		dc.b $31 
-		dc.b   4
-		dc.b $11
-		dc.b $14
-		dc.b $41 
-		dc.b $34 
-		dc.b   2
-		dc.b $11
-		dc.b $24 
-		dc.b $11
-		dc.b $42 
-		dc.b $41 
-		dc.b $34 
-		dc.b   1
-		dc.b $15
-		dc.b $44 
-		dc.b   2
-		dc.b   1
-		dc.b $34 
-		dc.b $11
-		dc.b $52 
-		dc.b $21 
-		dc.b $54 
-		dc.b $15
-		dc.b $44 
-		dc.b $11
-		dc.b $44 
-		dc.b $11
-		dc.b $52 
-		dc.b $21 
-		dc.b $94 
-		dc.b $31 
-		dc.b $44 
-		dc.b $11
-		dc.b $52 
-		dc.b $61 
-		dc.b $34 
-		dc.b $31 
-		dc.b   2
-		dc.b $11
-		dc.b $14
-		dc.b $31 
-		dc.b $62 
-		dc.b $21 
-		dc.b $32 
-		dc.b $61 
-		dc.b $12
-		dc.b $51 
-		dc.b $F2 
-		dc.b $12
-		dc.b $31 
-		dc.b $82 
-		dc.b $37 
-		dc.b $23 
-		dc.b $B2 
-		dc.b $11
-		dc.b $26 
-		dc.b   8
-		dc.b   7
-		dc.b $22 
-		dc.b $47 
-		dc.b $23 
-		dc.b $42 
-		dc.b $11
-		dc.b $42 
-		dc.b $11
-		dc.b $36 
-		dc.b   8
-		dc.b $77 
-		dc.b $33 
-		dc.b $22 
-		dc.b $31 
-		dc.b $22 
-		dc.b $11
-		dc.b   4
-		dc.b $46 
-		dc.b   8
-		dc.b $67 
-		dc.b $33 
-		dc.b $12
-		dc.b $31 
-		dc.b $32 
-		dc.b $11
-		dc.b   4
-		dc.b $46 
-		dc.b   8
-		dc.b $57 
-		dc.b $33 
-		dc.b $92 
-		dc.b $11
-		dc.b $14
-		dc.b $46 
-		dc.b $18
-		dc.b $37 
-		dc.b $23 
-		dc.b $92 
-		dc.b $21 
-		dc.b $24 
-		dc.b $56 
-		dc.b   8
-		dc.b $27 
-		dc.b $13
-		dc.b $92 
-		dc.b $21 
-		dc.b $44 
-		dc.b $56 
-		dc.b $18
-		dc.b $17
-		dc.b   3
-		dc.b $82 
-		dc.b $31 
-		dc.b $24 
-		dc.b $20
-		dc.b $66 
-		dc.b   7
-		dc.b $13
-		dc.b $52 
-		dc.b $B0 
-		dc.b $13
-		dc.b $66 
-		dc.b   7
-		dc.b $32 
-		dc.b $10
-		dc.b   5
-		dc.b $10
-		dc.b $57 
-		dc.b $63 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b   1
-		dc.b $FF
-		dc.b   0
-		dc.b  $A
-		dc.b   7
-		dc.b   5
-		dc.b  $D
-		dc.b   2
-		dc.b   8
-		dc.b   1
-		dc.b  $B
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1E
-		dc.b   1
-		dc.b $52 
-		dc.b $E3 
-		dc.b $72 
-		dc.b   1
-		dc.b $82 
-		dc.b $A3 
-		dc.b $82 
-		dc.b $21 
-		dc.b $B2 
-		dc.b $53 
-		dc.b $72 
-		dc.b   1
-		dc.b   4
-		dc.b $15
-		dc.b $31 
-		dc.b $B2 
-		dc.b   3
-		dc.b $92 
-		dc.b   4
-		dc.b $15
-		dc.b $24 
-		dc.b $71 
-		dc.b $F2 
-		dc.b   4
-		dc.b $21 
-		dc.b $84 
-		dc.b $11
-		dc.b $D2 
-		dc.b $21 
-		dc.b   2
-		dc.b $11
-		dc.b $24 
-		dc.b $11
-		dc.b $54 
-		dc.b $11
-		dc.b $92 
-		dc.b $31 
-		dc.b $62 
-		dc.b $21 
-		dc.b $44 
-		dc.b $11
-		dc.b $82 
-		dc.b $21 
-		dc.b $82 
-		dc.b $31 
-		dc.b $24 
-		dc.b $21 
-		dc.b $62 
-		dc.b $31 
-		dc.b $92 
-		dc.b $21 
-		dc.b $44 
-		dc.b $11
-		dc.b $42 
-		dc.b $41 
-		dc.b $92 
-		dc.b $21 
-		dc.b $44 
-		dc.b $21 
-		dc.b $32 
-		dc.b $11
-		dc.b $14
-		dc.b $22 
-		dc.b $21 
-		dc.b $42 
-		dc.b $31 
-		dc.b $24 
-		dc.b $51 
-		dc.b   2
-		dc.b $11
-		dc.b $24 
-		dc.b $12
-		dc.b $41 
-		dc.b $42 
-		dc.b $21 
-		dc.b $24 
-		dc.b   1
-		dc.b $14
-		dc.b $51 
-		dc.b $24 
-		dc.b   2
-		dc.b $11
-		dc.b $14
-		dc.b $21 
-		dc.b $32 
-		dc.b $31 
-		dc.b   4
-		dc.b $11
-		dc.b $14
-		dc.b $41 
-		dc.b $34 
-		dc.b   2
-		dc.b $11
-		dc.b $24 
-		dc.b $11
-		dc.b $42 
-		dc.b $41 
-		dc.b $34 
-		dc.b   1
-		dc.b $15
-		dc.b $44 
-		dc.b   2
-		dc.b   1
-		dc.b $34 
-		dc.b $11
-		dc.b $52 
-		dc.b $21 
-		dc.b $54 
-		dc.b $15
-		dc.b $44 
-		dc.b $11
-		dc.b $44 
-		dc.b $11
-		dc.b $52 
-		dc.b $21 
-		dc.b $94 
-		dc.b $31 
-		dc.b $44 
-		dc.b $11
-		dc.b $52 
-		dc.b $61 
-		dc.b $34 
-		dc.b $31 
-		dc.b   2
-		dc.b $11
-		dc.b $14
-		dc.b $31 
-		dc.b $62 
-		dc.b $21 
-		dc.b $32 
-		dc.b $61 
-		dc.b $12
-		dc.b $51 
-		dc.b $F2 
-		dc.b $12
-		dc.b $31 
-		dc.b $82 
-		dc.b $37 
-		dc.b $23 
-		dc.b $B2 
-		dc.b $11
-		dc.b $26 
-		dc.b   8
-		dc.b   7
-		dc.b $22 
-		dc.b $47 
-		dc.b $23 
-		dc.b $42 
-		dc.b $11
-		dc.b $42 
-		dc.b $11
-		dc.b $36 
-		dc.b   8
-		dc.b $77 
-		dc.b $33 
-		dc.b $22 
-		dc.b $31 
-		dc.b $22 
-		dc.b $11
-		dc.b   4
-		dc.b $46 
-		dc.b   8
-		dc.b $67 
-		dc.b $33 
-		dc.b $12
-		dc.b $31 
-		dc.b $32 
-		dc.b $11
-		dc.b   4
-		dc.b $46 
-		dc.b   8
-		dc.b $57 
-		dc.b $33 
-		dc.b $92 
-		dc.b $11
-		dc.b $14
-		dc.b $46 
-		dc.b $18
-		dc.b $37 
-		dc.b $23 
-		dc.b $92 
-		dc.b $21 
-		dc.b $24 
-		dc.b $56 
-		dc.b   8
-		dc.b $27 
-		dc.b $13
-		dc.b $92 
-		dc.b $21 
-		dc.b $44 
-		dc.b $56 
-		dc.b $18
-		dc.b $17
-		dc.b   3
-		dc.b $82 
-		dc.b $31 
-		dc.b $24 
-		dc.b $20
-		dc.b $66 
-		dc.b   7
-		dc.b $13
-		dc.b $52 
-		dc.b $B0 
-		dc.b $13
-		dc.b $66 
-		dc.b   7
-		dc.b $32 
-		dc.b $40 
-		dc.b $57 
-		dc.b $63 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b   0
-		dc.b   8
-		dc.b  $C
-		dc.b   7
-		dc.b   1
-		dc.b  $D
-		dc.b   5
-		dc.b   2
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $2A 
-		dc.b  $E
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $12
-		dc.b $40 
-		dc.b $24 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b   2
-		dc.b $10
-		dc.b $54 
-		dc.b   3
-		dc.b $F1 
-		dc.b $E1 
-		dc.b $20
-		dc.b $44 
-		dc.b $25 
-		dc.b $F1 
-		dc.b $D1 
-		dc.b   2
-		dc.b   0
-		dc.b $13
-		dc.b $34 
-		dc.b $35 
-		dc.b $F1 
-		dc.b $D1 
-		dc.b   2
-		dc.b   0
-		dc.b   3
-		dc.b   6
-		dc.b $34 
-		dc.b $35 
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $35 
-		dc.b   0
-		dc.b   6
-		dc.b   4
-		dc.b $27 
-		dc.b   8
-		dc.b $35 
-		dc.b $F1 
-		dc.b $91 
-		dc.b $48 
-		dc.b   0
-		dc.b $14
-		dc.b $17
-		dc.b $28 
-		dc.b $25 
-		dc.b $F1 
-		dc.b $81 
-		dc.b   8
-		dc.b   7
-		dc.b $38 
-		dc.b   0
-		dc.b   4
-		dc.b $17
-		dc.b $13
-		dc.b $28 
-		dc.b $15
-		dc.b $F1 
-		dc.b $61 
-		dc.b $58 
-		dc.b $37 
-		dc.b $68 
-		dc.b $15
-		dc.b $F1 
-		dc.b $51 
-		dc.b   4
-		dc.b $58 
-		dc.b $37 
-		dc.b   8
-		dc.b $15
-		dc.b $48 
-		dc.b   5
-		dc.b $F1 
-		dc.b $51 
-		dc.b $52 
-		dc.b   8
-		dc.b $13
-		dc.b   0
-		dc.b $65 
-		dc.b $28 
-		dc.b $F1 
-		dc.b $A1 
-		dc.b $12
-		dc.b $18
-		dc.b   0
-		dc.b $18
-		dc.b $35 
-		dc.b $28 
-		dc.b   2
-		dc.b $F1 
-		dc.b $B1 
-		dc.b $52 
-		dc.b $68 
-		dc.b   2
-		dc.b $F1 
-		dc.b $D1 
-		dc.b $A2 
-		dc.b   1
-		dc.b   0
-		dc.b $45 
-		dc.b $43 
-		dc.b $41 
-		dc.b $42 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $1E
-		dc.b $1A
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $F0 
-		dc.b $30 
-		dc.b $31 
-		dc.b $72 
-		dc.b $11
-		dc.b $B0 
-		dc.b   1
-		dc.b $F2 
-		dc.b $22 
-		dc.b $11
-		dc.b $60 
-		dc.b $11
-		dc.b $32 
-		dc.b   1
-		dc.b $30 
-		dc.b $12
-		dc.b $30 
-		dc.b $11
-		dc.b $22 
-		dc.b $11
-		dc.b $40 
-		dc.b $11
-		dc.b $12
-		dc.b   1
-		dc.b $60 
-		dc.b $12
-		dc.b $60 
-		dc.b   1
-		dc.b   2
-		dc.b $21 
-		dc.b $20
-		dc.b $42 
-		dc.b   1
-		dc.b $30 
-		dc.b $23 
-		dc.b $11
-		dc.b   3
-		dc.b $11
-		dc.b $30 
-		dc.b   1
-		dc.b $12
-		dc.b $11
-		dc.b   2
-		dc.b $10
-		dc.b $42 
-		dc.b   1
-		dc.b   0
-		dc.b $D3 
-		dc.b   0
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b   2
-		dc.b $10
-		dc.b $62 
-		dc.b   1
-		dc.b $C3 
-		dc.b   1
-		dc.b $52 
-		dc.b $10
-		dc.b $62 
-		dc.b   1
-		dc.b $C3 
-		dc.b   1
-		dc.b $52 
-		dc.b $10
-		dc.b $52 
-		dc.b   1
-		dc.b $D3 
-		dc.b   1
-		dc.b $52 
-		dc.b $10
-		dc.b $11
-		dc.b $22 
-		dc.b   1
-		dc.b $E3 
-		dc.b $11
-		dc.b $22 
-		dc.b $11
-		dc.b $10
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b $F3 
-		dc.b   1
-		dc.b $22 
-		dc.b   1
-		dc.b   2
-		dc.b $10
-		dc.b   2
-		dc.b   1
-		dc.b $22 
-		dc.b $11
-		dc.b   4
-		dc.b   1
-		dc.b $93 
-		dc.b   1
-		dc.b   4
-		dc.b $11
-		dc.b $22 
-		dc.b   1
-		dc.b   2
-		dc.b $10
-		dc.b   2
-		dc.b   1
-		dc.b $42 
-		dc.b   4
-		dc.b   1
-		dc.b $93 
-		dc.b   1
-		dc.b   4
-		dc.b $42 
-		dc.b $11
-		dc.b $10
-		dc.b $21 
-		dc.b $42 
-		dc.b   1
-		dc.b $93 
-		dc.b   1
-		dc.b $42 
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $10
-		dc.b $21 
-		dc.b $42 
-		dc.b   1
-		dc.b $93 
-		dc.b   1
-		dc.b $42 
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $10
-		dc.b   2
-		dc.b $11
-		dc.b $42 
-		dc.b $11
-		dc.b $14
-		dc.b $31 
-		dc.b $14
-		dc.b $11
-		dc.b $42 
-		dc.b   1
-		dc.b   2
-		dc.b   1
-		dc.b $10
-		dc.b $12
-		dc.b   1
-		dc.b $62 
-		dc.b $14
-		dc.b $32 
-		dc.b $14
-		dc.b $62 
-		dc.b   1
-		dc.b $12
-		dc.b $20
-		dc.b $12
-		dc.b   1
-		dc.b $F2 
-		dc.b $32 
-		dc.b   1
-		dc.b $12
-		dc.b $40 
-		dc.b $12
-		dc.b $11
-		dc.b $F2 
-		dc.b $11
-		dc.b $12
-		dc.b $60 
-		dc.b $12
-		dc.b $61 
-		dc.b $32 
-		dc.b $61 
-		dc.b $12
-		dc.b $80 
-		dc.b $72 
-		dc.b   1
-		dc.b $12
-		dc.b   1
-		dc.b $72 
-		dc.b $A0 
-		dc.b   2
-		dc.b $11
-		dc.b   2
-		dc.b $11
-		dc.b   2
-		dc.b   1
-		dc.b $12
-		dc.b   1
-		dc.b $32 
-		dc.b $11
-		dc.b   2
-		dc.b $F0 
-		dc.b $30 
-		dc.b $12
-		dc.b $F0 
-		dc.b $B0 
-		dc.b $12
-		dc.b $D0 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $81 
-		dc.b $12
-		dc.b $A1 
-		dc.b $72 
-		dc.b $B1 
-		dc.b $D2 
-		dc.b $C1 
-		dc.b $E2 
-		dc.b $C1 
-		dc.b $E2 
-		dc.b $B1 
-		dc.b $F2 
-		dc.b $A1 
-		dc.b $F2 
-		dc.b $12
-		dc.b $91 
-		dc.b $F2 
-		dc.b $12
-		dc.b $91 
-		dc.b $F2 
-		dc.b $12
-		dc.b $C1 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $B2 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $F1 
-		dc.b $51 
-		dc.b   0
-		dc.b $46 
-		dc.b $64 
-		dc.b $78 
-		dc.b $35 
-		dc.b $2F 
-		dc.b $37 
-		dc.b   5
-		dc.b $73 
-		dc.b  $C
-		dc.b $21 
-		dc.b $6E 
-		dc.b $61 
-		dc.b $5C 
-		dc.b  $A
-		dc.b   0
-		dc.b  $F
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   3
-		dc.b   4
-		dc.b   5
-		dc.b   6
-		dc.b   7
-		dc.b   8
-		dc.b   9
-		dc.b  $A
-		dc.b  $B
-		dc.b  $C
-		dc.b $20
-		dc.b   9
-		dc.b  $D
-		dc.b  $A
-		dc.b   7
-		dc.b   4
-		dc.b   6
-		dc.b   5
-		dc.b  $C
-		dc.b  $E
-		dc.b   2
-		dc.b  $B
-		dc.b   3
-		dc.b   8
-		dc.b $11
-		dc.b $FF
-		dc.b   7
-		dc.b   8
-		dc.b $11
-		dc.b   9
-		dc.b $11
-		dc.b   7
-		dc.b $12
-		dc.b   8
-		dc.b $12
-		dc.b   9
-		dc.b $12
-		dc.b   7
-		dc.b $13
-		dc.b   8
-		dc.b $13
-BattleData:     incbin "data/battles/global/battledata.bin"
+table_EnemyDefs:incbin "data/stats/enemies/enemydefs.bin"
+table_BattleTerrain:
+		                
+		incbin "data/battles/global/battleterrain.bin"
+table_BattleData:
+		incbin "data/battles/global/battledata.bin"
 		align $4000

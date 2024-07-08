@@ -164,7 +164,7 @@ WeaponSprite11: incbin "data/graphics/battles/weapons/weaponsprite11.bin"
 WeaponSprite12: incbin "data/graphics/battles/weapons/weaponsprite12.bin"
 WeaponSprite13: incbin "data/graphics/battles/weapons/weaponsprite13.bin"
 WeaponSprite14: incbin "data/graphics/battles/weapons/weaponsprite14.bin"
-WeaponPalettes: incbin "data/graphics/battles/weapons/weaponpalettes.bin"
+WeaponPalettes: incbin "data/graphics/battles/weapons/palettes/weaponpalettes.bin"
 pt_AllyAnimations:
 		dc.l AllyAnimation000
 		dc.l AllyAnimation001

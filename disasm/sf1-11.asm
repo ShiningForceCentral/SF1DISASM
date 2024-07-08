@@ -13,7 +13,7 @@ j_LoadBaseTilesAndPalette:
 		
 		jmp     LoadBaseTilesAndPalette(pc)
 
-	; End of function j_LoadBaseTilesAndPalette
+    ; End of function j_LoadBaseTilesAndPalette
 
 p_MenuTiles_Options:
 		dc.l MenuTiles_Options
@@ -23,7 +23,8 @@ p_MenuTiles_Item:
 		dc.l MenuTiles_Item
 p_MenuTiles_Shop:
 		dc.l MenuTiles_Shop
-p_MenuTiles_HQ: dc.l MenuTiles_HQ
+p_MenuTiles_Headquarters:
+		dc.l MenuTiles_HQ
 p_MenuTiles_Church:
 		dc.l MenuTiles_Church
 p_SpellIcons:   dc.l SpellIcons
@@ -35,7 +36,7 @@ p_CursorTiles:  dc.l CursorTiles
 sub_CC02C:
 		jmp     sub_D2EA4(pc)
 
-	; End of function sub_CC02C
+    ; End of function sub_CC02C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -43,18 +44,18 @@ sub_CC02C:
 LoadBaseTilesAndPalette:
 		
 		jsr     (j_DisableDisplayAndInterrupts).l
-		lea     BaseTiles(pc), a0
+		lea     tiles_Base(pc), a0
 		lea     (0).w,a1
 		move.w  #$2000,d0
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		lea     BasePalette(pc), a0
-		lea     (PALETTE_3_BIS).l,a1
+		lea     (PALETTE_3_BASE).l,a1
 		jsr     (j_CopyPalette).l
 		jmp     (j_EnableDisplayAndInterrupts).l
 
-	; End of function LoadBaseTilesAndPalette
+    ; End of function LoadBaseTilesAndPalette
 
-BaseTiles:      incbin "data/graphics/tech/basetiles.bin"
+tiles_Base:     incbin "data/graphics/tech/basetiles.bin"
 MenuTiles_Options:
 		incbin "data/graphics/tech/menus/menutiles-battleoptions.bin"
 MenuTiles_Main: incbin "data/graphics/tech/menus/menutiles-main.bin"
@@ -74,7 +75,7 @@ sub_D2EA4:
 		move.l  a3,-(sp)
 		jsr     (j_FadeOutToWhite).l
 		jsr     sub_12401C
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_WaitForVInt).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		bsr.w   sub_D2EE4
@@ -86,7 +87,7 @@ sub_D2EA4:
 		jsr     (j_FadeInFromWhite).l
 		rts
 
-	; End of function sub_D2EA4
+    ; End of function sub_D2EA4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -95,7 +96,7 @@ sub_D2EE4:
 		lea     EndingCreditsFont(pc), a0
 		jmp     (j_DecompressGraphics).l
 
-	; End of function sub_D2EE4
+    ; End of function sub_D2EE4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -109,7 +110,7 @@ loc_D2EFA:
 		dbf     d7,loc_D2EFA
 		rts
 
-	; End of function sub_D2EEE
+    ; End of function sub_D2EEE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -121,7 +122,7 @@ loc_D2F06:
 		clr.w   d0
 		move.b  (a3)+,d0
 		cmpi.b  #$FF,d0
-		beq.s   locret_D2F4E
+		beq.s   return_D2F4E
 		cmpi.b  #$FE,d0
 		bne.s   loc_D2F1E
 		addi.w  #$12,d5
@@ -150,10 +151,10 @@ loc_D2F3A:
 loc_D2F48:
 		bsr.w   sub_D2F50
 		bra.s   loc_D2F06
-locret_D2F4E:
+return_D2F4E:
 		rts
 
-	; End of function sub_D2F02
+    ; End of function sub_D2F02
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -214,7 +215,7 @@ loc_D2FCC:
 		add.w   d6,d4
 		rts
 
-	; End of function sub_D2F50
+    ; End of function sub_D2F50
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -224,19 +225,19 @@ sub_D2FDA:
 		lea     (0).w,a1
 		move.w  #$1000,d0
 		moveq   #2,d1
-		jsr     (j_DMAFromRAMToVRAM).l
+		jsr     (j_ApplyImmediateVramDma).l
 		lea     ($D000).l,a1
 		move.w  #$600,d0
 		moveq   #2,d1
-		jsr     (j_DMAFromRAMToVRAM).l
+		jsr     (j_ApplyImmediateVramDma).l
 		lea     wl_TextInput(pc), a0
 		lea     ($E580).l,a1
 		move.w  #$160,d0
 		moveq   #2,d1
-		jsr     (j_DMAFromRAMToVRAM).l
+		jsr     (j_ApplyImmediateVramDma).l
 		rts
 
-	; End of function sub_D2FDA
+    ; End of function sub_D2FDA
 
 wl_TextInput:   incbin "data/graphics/tech/windowlayouts/wl-textinput.bin"
 byte_D32DA:     dc.b 8
@@ -286,7 +287,7 @@ byte_D32DA:     dc.b 8
 		dc.b  $F
 		dc.b $FF
 EndingCreditsFont:
-		incbin "data/graphics/tech/fonts/endingcreditsfont"
+		incbin "data/graphics/tech/fonts/endingcreditsfont.bin"
 pt_Backgrounds: dc.l Background00
 		dc.l Background01
 		dc.l Background00

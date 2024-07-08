@@ -1,6 +1,6 @@
 
 ; GAME SECTION 01 :
-; Technical layer, low level game engine, ...
+; Technical layer, low level game engine, menu engine, ...
 ; FREE SPACE : 478 bytes.
 
 
@@ -86,7 +86,7 @@ RomEndAddress:  dc.l $17FFFF            ; ROM end address
 		dc.l $FFFFFF            ; RAM end address
 aRa:            dc.b 'RA'               ; SRAM data
 		dc.b %11111000          ; %1x1yy000
-														; x = 1 if used for backup (?)
+														; x = 1 if used for backup
 														; yy = 11 if odd bytes addressing, 10 if even only, 00 if both
 		dc.b %100000
 		dc.l $200001            ; SRAM start address
@@ -98,20 +98,20 @@ aU:             dc.b 'U               ' ; Region codes
 
 ; =============== S U B R O U T I N E =======================================
 
-j_EnableDisplay:
+j_EnableDisplayOnVdp:
 		
-		bra.w   EnableDisplay
+		bra.w   EnableDisplayOnVdp
 
-	; End of function j_EnableDisplay
+    ; End of function j_EnableDisplayOnVdp
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DisableDisplay:
+j_DisableDisplayOnVdp:
 		
-		bra.w   DisableDisplay
+		bra.w   DisableDisplayOnVdp
 
-	; End of function j_DisableDisplay
+    ; End of function j_DisableDisplayOnVdp
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -120,7 +120,7 @@ j_EnableInterrupts:
 		
 		bra.w   EnableInterrupts
 
-	; End of function j_EnableInterrupts
+    ; End of function j_EnableInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -129,7 +129,7 @@ j_DisableInterrupts:
 		
 		bra.w   DisableInterrupts
 
-	; End of function j_DisableInterrupts
+    ; End of function j_DisableInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -138,7 +138,7 @@ j_EnableDisplayAndInterrupts:
 		
 		bra.w   EnableDisplayAndInterrupts
 
-	; End of function j_EnableDisplayAndInterrupts
+    ; End of function j_EnableDisplayAndInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -147,25 +147,25 @@ j_DisableDisplayAndInterrupts:
 		
 		bra.w   DisableDisplayAndInterrupts
 
-	; End of function j_DisableDisplayAndInterrupts
+    ; End of function j_DisableDisplayAndInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_ClearVIntParam1:
+j_ActivateVIntDmaQueueProcessing:
 		
-		bra.w   ClearVIntParam1
+		bra.w   ActivateVIntDmaQueueProcessing
 
-	; End of function j_ClearVIntParam1
+    ; End of function j_ActivateVIntDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetVIntParam1:
+j_DeactivateVIntDmaQueueProcessing:
 		
-		bra.w   SetVIntParam1
+		bra.w   DeactivateVIntDmaQueueProcessing
 
-	; End of function j_SetVIntParam1
+    ; End of function j_DeactivateVIntDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -174,16 +174,16 @@ j_DuplicatePalettes:
 		
 		bra.w   DuplicatePalettes
 
-	; End of function j_DuplicatePalettes
+    ; End of function j_DuplicatePalettes
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_StoreVDPCommandster:
+j_ApplyVIntCramDma:
 		
-		bra.w   StoreVDPCommandster
+		bra.w   ApplyVIntCramDma
 
-	; End of function j_StoreVDPCommandster
+    ; End of function j_ApplyVIntCramDma
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -192,7 +192,7 @@ j_FadeInFromBlack:
 		
 		bra.w   FadeInFromBlack
 
-	; End of function j_FadeInFromBlack
+    ; End of function j_FadeInFromBlack
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -201,7 +201,7 @@ j_FadeOutToBlack:
 		
 		bra.w   FadeOutToBlack
 
-	; End of function j_FadeOutToBlack
+    ; End of function j_FadeOutToBlack
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -210,7 +210,7 @@ j_ClearScrollAndSpriteTables:
 		
 		bra.w   ClearScrollAndSpriteTables
 
-	; End of function j_ClearScrollAndSpriteTables
+    ; End of function j_ClearScrollAndSpriteTables
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -219,7 +219,7 @@ j_ClearScrollTable:
 		
 		bra.w   ClearScrollTable
 
-	; End of function j_ClearScrollTable
+    ; End of function j_ClearScrollTable
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -228,16 +228,16 @@ j_ClearSpriteTable:
 		
 		bra.w   ClearSpriteTable
 
-	; End of function j_ClearSpriteTable
+    ; End of function j_ClearSpriteTable
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DMASpriteTable:
+j_UpdateVdpSpriteTable:
 		
-		bra.w   DMASpriteTable
+		bra.w   UpdateVdpSpriteTable
 
-	; End of function j_DMASpriteTable
+    ; End of function j_UpdateVdpSpriteTable
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -246,7 +246,7 @@ j_WaitForVInt:
 		
 		bra.w   WaitForVInt     
 
-	; End of function j_WaitForVInt
+    ; End of function j_WaitForVInt
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -254,7 +254,7 @@ j_WaitForVInt:
 j_Sleep:
 		bra.w   Sleep           
 
-	; End of function j_Sleep
+    ; End of function j_Sleep
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -262,7 +262,7 @@ j_Sleep:
 sub_248:
 		bra.w   sub_EB6
 
-	; End of function sub_248
+    ; End of function sub_248
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -270,7 +270,7 @@ sub_248:
 sub_24C:
 		bra.w   sub_EF0
 
-	; End of function sub_24C
+    ; End of function sub_24C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -278,7 +278,7 @@ sub_24C:
 sub_250:
 		bra.w   sub_F0A
 
-	; End of function sub_250
+    ; End of function sub_250
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -286,43 +286,43 @@ sub_250:
 sub_254:
 		bra.w   sub_115A
 
-	; End of function sub_254
+    ; End of function sub_254
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetVIntParam0:
+j_RequestVdpCommandQueueProcessing:
 		
-		bra.w   SetVIntParam0   
+		bra.w   RequestVdpCommandQueueProcessing
 
-	; End of function j_SetVIntParam0
+    ; End of function j_RequestVdpCommandQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetVIntParam0AndWait:
+j_WaitForVdpCommandQueueProcessing:
 		
-		bra.w   SetVIntParam0AndWait
+		bra.w   WaitForVdpCommandQueueProcessing
 
-	; End of function j_SetVIntParam0AndWait
+    ; End of function j_WaitForVdpCommandQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetVIntParam3:
+j_EnableDmaQueueProcessing:
 		
-		bra.w   SetVIntParam3
+		bra.w   EnableDmaQueueProcessing
 
-	; End of function j_SetVIntParam3
+    ; End of function j_EnableDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetVIntParam3AndWait:
+j_WaitForDmaQueueProcessing:
 		
-		bra.w   SetVIntParam3AndWait
+		bra.w   WaitForDmaQueueProcessing
 
-	; End of function j_SetVIntParam3AndWait
+    ; End of function j_WaitForDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -330,7 +330,7 @@ j_SetVIntParam3AndWait:
 sub_268:
 		bra.w   sub_F52
 
-	; End of function sub_268
+    ; End of function sub_268
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -338,102 +338,105 @@ sub_268:
 sub_26C:
 		bra.w   sub_FE8
 
-	; End of function sub_26C
+    ; End of function sub_26C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_270:
-		bra.w   loc_F5C
+		bra.w   sub_F5C
 
-	; End of function sub_270
+    ; End of function sub_270
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DMAFromRAMToVRAM:
+j_ApplyImmediateVramDma:
 		
-		bra.w   DMAFromRAMToVRAM
+		bra.w   ApplyImmediateVramDma
 
-	; End of function j_DMAFromRAMToVRAM
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_278:
-		bra.w   sub_10D2        
-
-	; End of function sub_278
+    ; End of function j_ApplyImmediateVramDma
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_StoreVDPCommands:
+j_ApplyVIntVramDma:
 		
-		bra.w   StoreVDPCommands
+		bra.w   ApplyVIntVramDma
 
-	; End of function j_StoreVDPCommands
+    ; End of function j_ApplyVIntVramDma
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_ClearHScrollStuff:
+j_UpdateVdpHScrollData:
 		
-		bra.w   ClearHScrollStuff
+		bra.w   UpdateVdpHScrollData
 
-	; End of function j_ClearHScrollStuff
+    ; End of function j_UpdateVdpHScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_ClearOtherHScrollStuff:
+j_UpdateForegroundHScrollData:
 		
-		bra.w   ClearOtherHScrollStuff
+		bra.w   UpdateForegroundHScrollData
 
-	; End of function j_ClearOtherHScrollStuff
+    ; End of function j_UpdateForegroundHScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_StoreVDPCommandsbis:
+j_UpdateBackgroundHScrollData:
 		
-		bra.w   StoreVDPCommandsbis
+		bra.w   UpdateBackgroundHScrollData
 
-	; End of function j_StoreVDPCommandsbis
+    ; End of function j_UpdateBackgroundHScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_ClearVScrollStuff:
+j_UpdateVdpVScrollData:
 		
-		bra.w   ClearVScrollStuff
+		bra.w   UpdateVdpVScrollData
 
-	; End of function j_ClearVScrollStuff
+    ; End of function j_UpdateVdpVScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_ClearOtherVScrollStuff:
+j_UpdateForegroundVScrollData:
 		
-		bra.w   ClearOtherVScrollStuff
+		bra.w   UpdateForegroundVScrollData
 
-	; End of function j_ClearOtherVScrollStuff
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_294:
-		bra.w   sub_125C
-
-	; End of function sub_294
+    ; End of function j_UpdateForegroundVScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_298:
-		bra.w   sub_1284        
+j_UpdateBackgroundVScrollData:
+		
+		bra.w   UpdateBackgroundVScrollData
 
-	; End of function sub_298
+    ; End of function j_UpdateBackgroundVScrollData
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_ApplyImmediateVramDmaOnCompressedTiles:
+		
+		bra.w   ApplyImmediateVramDmaOnCompressedTiles
+
+    ; End of function j_ApplyImmediateVramDmaOnCompressedTiles
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_ApplyVIntVramDmaOnCompressedTiles:
+		
+		bra.w   ApplyVIntVramDmaOnCompressedTiles
+
+    ; End of function j_ApplyVIntVramDmaOnCompressedTiles
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -441,60 +444,59 @@ sub_298:
 sub_29C:
 		bra.w   sub_1294        
 
-	; End of function sub_29C
+    ; End of function sub_29C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 j_DMAandWait:
-		bra.w   DMAandWait
+		bra.w   DmaAndWait
 
-	; End of function j_DMAandWait
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_GetVDPRegStatus:
-		
-		bra.w   GetVDPRegStatus 
-
-	; End of function j_GetVDPRegStatus
+    ; End of function j_DMAandWait
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_SetVDPRegStatus:
+j_GetVdpRegStatus:
 		
-		bra.w   SetVDPRegStatus
+		bra.w   GetVdpRegStatus 
 
-	; End of function j_SetVDPRegStatus
+    ; End of function j_GetVdpRegStatus
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_VDP_EnableDisplay:
-		
-		bra.w   VDP_EnableDisplay
+j_SetVdpReg:
+		bra.w   SetVdpReg
 
-	; End of function j_VDP_EnableDisplay
-
-
-; =============== S U B R O U T I N E =======================================
-
-j_VDP_DisableDisplay:
-		
-		bra.w   VDP_DisableDisplay
-
-	; End of function j_VDP_DisableDisplay
+    ; End of function j_SetVdpReg
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DMAVramFill:
+j_ApplyLogicalOrOnVdpReg:
 		
-		bra.w   DMAVramFill     
+		bra.w   ApplyLogicalOrOnVdpReg
 
-	; End of function j_DMAVramFill
+    ; End of function j_ApplyLogicalOrOnVdpReg
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_ApplyLogicalAndOnVdpReg:
+		
+		bra.w   ApplyLogicalAndOnVdpReg
+
+    ; End of function j_ApplyLogicalAndOnVdpReg
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_ApplyVramDmaFill:
+		
+		bra.w   ApplyVramDmaFill
+
+    ; End of function j_ApplyVramDmaFill
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -503,7 +505,7 @@ j_CopyPalette1:
 		
 		bra.w   CopyPalette1
 
-	; End of function j_CopyPalette1
+    ; End of function j_CopyPalette1
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -512,15 +514,16 @@ j_CopyPalette:
 		
 		bra.w   CopyPalette
 
-	; End of function j_CopyPalette
+    ; End of function j_CopyPalette
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2C0:
-		bra.w   loc_CD8
+j_CopyPalette_Loop:
+		
+		bra.w   CopyPalette_Loop
 
-	; End of function sub_2C0
+    ; End of function j_CopyPalette_Loop
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -529,15 +532,16 @@ j_WriteAsciiNumber:
 		
 		bra.w   WriteAsciiNumber
 
-	; End of function j_WriteAsciiNumber
+    ; End of function j_WriteAsciiNumber
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_nullsub_1:
-		bra.w   nullsub_1
+j_nullsub_13E8:
+		
+		bra.w   nullsub_13E8
 
-	; End of function j_nullsub_1
+    ; End of function j_nullsub_13E8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -546,16 +550,16 @@ j_WaitForPlayerInput:
 		
 		bra.w   WaitForPlayerInput
 
-	; End of function j_WaitForPlayerInput
+    ; End of function j_WaitForPlayerInput
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_WaitForPlayer1NewButtonPush:
+j_WaitForPlayer1NewInput:
 		
-		bra.w   WaitForPlayer1NewButtonPush
+		bra.w   WaitForPlayer1NewInput
 
-	; End of function j_WaitForPlayer1NewButtonPush
+    ; End of function j_WaitForPlayer1NewInput
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -563,7 +567,7 @@ j_WaitForPlayer1NewButtonPush:
 sub_2D4:
 		bra.w   sub_1482
 
-	; End of function sub_2D4
+    ; End of function sub_2D4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -572,7 +576,7 @@ j_WaitForInputFor1Second:
 		
 		bra.w   WaitForInputFor1Second
 
-	; End of function j_WaitForInputFor1Second
+    ; End of function j_WaitForInputFor1Second
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -581,16 +585,16 @@ j_WaitForInputFor3Seconds:
 		
 		bra.w   WaitForInputFor3Seconds
 
-	; End of function j_WaitForInputFor3Seconds
+    ; End of function j_WaitForInputFor3Seconds
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_UpdateRandomSeed:
+j_GenerateRandomNumber:
 		
-		bra.w   UpdateRandomSeed
+		bra.w   GenerateRandomNumber
 
-	; End of function j_UpdateRandomSeed
+    ; End of function j_GenerateRandomNumber
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -599,16 +603,16 @@ j_PlayMusicAfterCurrentOne:
 		
 		bra.w   PlayMusicAfterCurrentOne
 
-	; End of function j_PlayMusicAfterCurrentOne
+    ; End of function j_PlayMusicAfterCurrentOne
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DoSomethingWithPalettes1or2:
+j_ApplyCurrentColorFadingValue:
 		
-		bra.w   DoSomethingWithPalettes1or2
+		bra.w   ApplyCurrentColorFadingValue
 
-	; End of function j_DoSomethingWithPalettes1or2
+    ; End of function j_ApplyCurrentColorFadingValue
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -617,7 +621,7 @@ j_DecompressGraphics:
 		
 		bra.w   DecompressGraphics
 
-	; End of function j_DecompressGraphics
+    ; End of function j_DecompressGraphics
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -625,7 +629,7 @@ j_DecompressGraphics:
 sub_2F0:
 		bra.w   sub_12BA        
 
-	; End of function sub_2F0
+    ; End of function sub_2F0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -634,7 +638,7 @@ j_FadeInFromWhite:
 		
 		bra.w   FadeInFromWhite
 
-	; End of function j_FadeInFromWhite
+    ; End of function j_FadeInFromWhite
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -643,7 +647,7 @@ j_FadeOutToWhite:
 		
 		bra.w   FadeOutToWhite
 
-	; End of function j_FadeOutToWhite
+    ; End of function j_FadeOutToWhite
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -651,7 +655,7 @@ j_FadeOutToWhite:
 j_CopyBytes:
 		bra.w   CopyBytes       
 
-	; End of function j_CopyBytes
+    ; End of function j_CopyBytes
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -659,7 +663,7 @@ j_CopyBytes:
 sub_300:
 		bra.w   sub_29F8
 
-	; End of function sub_300
+    ; End of function sub_300
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -667,7 +671,7 @@ sub_300:
 sub_304:
 		bra.w   sub_18DC
 
-	; End of function sub_304
+    ; End of function sub_304
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -675,15 +679,16 @@ sub_304:
 j_LoadText:
 		bra.w   LoadText        
 
-	; End of function j_LoadText
+    ; End of function j_LoadText
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_30C:
-		bra.w   sub_1A92
+j_CloseMessageWindow:
+		
+		bra.w   CloseMessageWindow
 
-	; End of function sub_30C
+    ; End of function j_CloseMessageWindow
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -692,7 +697,7 @@ j_InitSprites:
 		
 		bra.w   InitSprites     
 
-	; End of function j_InitSprites
+    ; End of function j_InitSprites
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -700,7 +705,7 @@ j_InitSprites:
 sub_314:
 		bra.w   sub_157C
 
-	; End of function sub_314
+    ; End of function sub_314
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -708,7 +713,7 @@ sub_314:
 sub_318:
 		bra.w   sub_1794
 
-	; End of function sub_318
+    ; End of function sub_318
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -716,7 +721,7 @@ sub_318:
 sub_31C:
 		bra.w   sub_17C0
 
-	; End of function sub_31C
+    ; End of function sub_31C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -724,7 +729,7 @@ sub_31C:
 sub_320:
 		bra.w   sub_1856        
 
-	; End of function sub_320
+    ; End of function sub_320
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -732,31 +737,32 @@ sub_320:
 sub_324:
 		bra.w   sub_18C4
 
-	; End of function sub_324
+    ; End of function sub_324
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_328:
-		bra.w   sub_18EC
+j_CreateMessageWindow:
+		
+		bra.w   CreateMessageWindow
 
-	; End of function sub_328
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_32C:
-		bra.w   sub_37EE
-
-	; End of function sub_32C
+    ; End of function j_CreateMessageWindow
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_330:
-		bra.w   sub_3826
+j_SaveGame:
+		bra.w   SaveGame
 
-	; End of function sub_330
+    ; End of function j_SaveGame
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_LoadGame:
+		bra.w   LoadGame
+
+    ; End of function j_LoadGame
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -765,23 +771,25 @@ j_YesNoChoiceBox:
 		
 		bra.w   YesNoChoiceBox
 
-	; End of function j_YesNoChoiceBox
+    ; End of function j_YesNoChoiceBox
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_338:
-		bra.w   sub_5FF8
+j_ExecuteHeadquartersMenu:
+		
+		bra.w   ExecuteHeadquartersMenu
 
-	; End of function sub_338
+    ; End of function j_ExecuteHeadquartersMenu
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_33C:
-		bra.w   sub_5A18
+j_ExecuteMainMenu:
+		
+		bra.w   ExecuteMainMenu
 
-	; End of function sub_33C
+    ; End of function j_ExecuteMainMenu
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -789,7 +797,7 @@ sub_33C:
 sub_340:
 		bra.w   sub_6706
 
-	; End of function sub_340
+    ; End of function sub_340
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -797,7 +805,7 @@ sub_340:
 sub_344:
 		bra.w   sub_6B38
 
-	; End of function sub_344
+    ; End of function sub_344
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -806,7 +814,7 @@ j_YesNoPrompt:
 		
 		bra.w   YesNoPrompt
 
-	; End of function j_YesNoPrompt
+    ; End of function j_YesNoPrompt
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -814,7 +822,7 @@ j_YesNoPrompt:
 sub_34C:
 		bra.w   sub_77A4
 
-	; End of function sub_34C
+    ; End of function sub_34C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -822,7 +830,7 @@ sub_34C:
 sub_350:
 		bra.w   sub_5532
 
-	; End of function sub_350
+    ; End of function sub_350
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -830,7 +838,7 @@ sub_350:
 sub_354:
 		bra.w   sub_5544
 
-	; End of function sub_354
+    ; End of function sub_354
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -838,7 +846,7 @@ sub_354:
 sub_358:
 		bra.w   sub_557A
 
-	; End of function sub_358
+    ; End of function sub_358
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -846,55 +854,59 @@ sub_358:
 sub_35C:
 		bra.w   sub_550C
 
-	; End of function sub_35C
+    ; End of function sub_35C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_360:
-		bra.w   sub_5B54
+j_ExecuteItemMenu:
+		
+		bra.w   ExecuteItemMenu
 
-	; End of function sub_360
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_364:
-		bra.w   sub_790A
-
-	; End of function sub_364
+    ; End of function j_ExecuteItemMenu
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_368:
-		bra.w   sub_79D6
+j_optionMenu_Speed:
+		
+		bra.w   optionMenu_Speed
 
-	; End of function sub_368
+    ; End of function j_optionMenu_Speed
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_36C:
-		bra.w   sub_7AA6
+j_optionMenuAction_Message:
+		
+		bra.w   optionMenuAction_Message
 
-	; End of function sub_36C
+    ; End of function j_optionMenuAction_Message
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_optionMenuAction_Quit:
+		
+		bra.w   optionMenuAction_Quit
+
+    ; End of function j_optionMenuAction_Quit
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_370:
-		bra.w   sub_3284
+		bra.w   sub_3284        
 
-	; End of function sub_370
+    ; End of function sub_370
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_374:
-		bra.w   sub_32EC
+		bra.w   sub_32EC        
 
-	; End of function sub_374
+    ; End of function sub_374
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -902,7 +914,7 @@ sub_374:
 sub_378:
 		bra.w   sub_6A2E
 
-	; End of function sub_378
+    ; End of function sub_378
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -910,7 +922,7 @@ sub_378:
 sub_37C:
 		bra.w   sub_2FFA
 
-	; End of function sub_37C
+    ; End of function sub_37C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -918,7 +930,7 @@ sub_37C:
 sub_380:
 		bra.w   sub_300A
 
-	; End of function sub_380
+    ; End of function sub_380
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -926,7 +938,7 @@ sub_380:
 sub_384:
 		bra.w   sub_3018
 
-	; End of function sub_384
+    ; End of function sub_384
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -934,7 +946,7 @@ sub_384:
 sub_388:
 		bra.w   sub_3028
 
-	; End of function sub_388
+    ; End of function sub_388
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -943,7 +955,7 @@ j_SetEventFlag:
 		
 		bra.w   SetEventFlag
 
-	; End of function j_SetEventFlag
+    ; End of function j_SetEventFlag
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -952,7 +964,7 @@ j_ClearEventFlag:
 		
 		bra.w   ClearEventFlag
 
-	; End of function j_ClearEventFlag
+    ; End of function j_ClearEventFlag
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -961,79 +973,82 @@ j_CheckEventFlag:
 		
 		bra.w   CheckEventFlag
 
-	; End of function j_CheckEventFlag
+    ; End of function j_CheckEventFlag
 
 
 ; =============== S U B R O U T I N E =======================================
 
 InitSystem:
-		bsr.s   InitVDP
+		bsr.s   InitVdp
 		bsr.w   InitZ80
-		bsr.s   InitRamVdpData
-		jmp     (InitGame).l
+		bsr.s   InitVdpData
+		jmp     (InitializeMain).l
 
-	; End of function InitSystem
+    ; End of function InitSystem
 
 
 ; =============== S U B R O U T I N E =======================================
 
-InitVDP:
+InitVdp:
 		move.w  #$3FFE,d0
-		lea     (PALETTE_1).l,a0
-loc_3B0:
+		lea     (PALETTE_1_CURRENT).l,a0
+@ClearRam_Loop:
+		
 		clr.l   (a0)+           ; clear all RAM
-		dbf     d0,loc_3B0
+		dbf     d0,@ClearRam_Loop
+                
 		move.b  #3,(FADING_COUNTER_MAX).l
 		clr.b   (FADING_SETTING).l
 		lea     vdp_init_params(pc), a0
 		moveq   #$12,d1
-loc_3CA:
+@SetVdpReg_Loop:
+		
 		move.w  (a0)+,d0
-		bsr.w   SetVDPRegStatus
-		dbf     d1,loc_3CA
+		bsr.w   SetVdpReg
+		dbf     d1,@SetVdpReg_Loop
 		clr.w   d0
 		clr.w   d1
 		clr.w   d2
-		bsr.w   DMAVramFill     
+		bsr.w   ApplyVramDmaFill
 		rts
 
-	; End of function InitVDP
+    ; End of function InitVdp
 
 
 ; =============== S U B R O U T I N E =======================================
 
-InitRamVdpData:
-		
-		move.l  #byte_FF0780,(dword_FF0EEE).l
-		move.l  #byte_FF0550,(VDP_REG_COMMANDS).l
+InitVdpData:
+		move.l  #VDP_COMMAND_QUEUE,(VDP_COMMAND_QUEUE_POINTER).l
+		move.l  #DMA_QUEUE,(DMA_QUEUE_POINTER).l
 		moveq   #$40,d0 ; PD2 output mode ?
 		move.b  d0,(CTRL1+1).l  
+loc_3FC:
 		move.b  d0,(CTRL2+1).l
 		move.b  d0,(CTRL3+1).l
-		lea     (dword_FF0100).l,a0
+		lea     (HORIZONTAL_SCROLL_DATA).l,a0
 		move.w  #$FF,d0
 loc_412:
 		move.w  #0,(a0)+        ; clear from FF0100 to FF0500
 		move.w  #0,(a0)+
 		dbf     d0,loc_412
-		lea     (word_FF0500).l,a0
+		lea     (VERTICAL_SCROLL_DATA).l,a0
 		move.w  #$13,d0
 loc_428:
 		move.w  #0,(a0)+        ; clear next 80d bytes
 		move.w  #0,(a0)+
 		dbf     d0,loc_428
-		lea     (PALETTE_1_BIS).l,a0
+		lea     (PALETTE_1_BASE).l,a0
 		moveq   #$7F,d1 
 loc_43C:
 		clr.w   (a0)+           ; clear palette replicas ?
 		dbf     d1,loc_43C
 		bsr.w   ClearSpriteTable
-		bsr.w   StoreVDPCommands
-		bsr.w   StoreVDPCommandsbis
-		bsr.w   SetVIntParam3
+		bsr.w   UpdateVdpHScrollData
+		bsr.w   UpdateVdpVScrollData
+		bsr.w   EnableDmaQueueProcessing
 		rts
 
-	; End of function InitRamVdpData
+    ; End of function InitVdpData
 
 vdp_init_params:dc.w $8004              ; disable H int, enable read H V counter
 		dc.w $8124              ; disable display, enable V int, disable DMA, V28 cell mode
@@ -1127,8 +1142,8 @@ StartParams:
 		dc.l Z80BusReset        ; Z80 bus reset
 		dc.l VDP_Data           ; vdp data port
 		dc.l VDP_Control        ; vdp control port
-		dc.b 4                  ; vdp reg 00 : disable H interupt, enable read H V counter
-		dc.b $14                ; vdp reg 01 : disable display, disable Vint, enable DMA, V28 cell mode
+		dc.b 4                  ; vdp reg 00 : disable HInt, enable read H V counter
+		dc.b $14                ; vdp reg 01 : disable display, disable VInt, enable DMA, V28 cell mode
 		dc.b $30                ; vdp reg 02 : scroll A table vram address : C000
 		dc.b $3C                ; vdp reg 03 : window table vram address : F000 ?
 		dc.b 7                  ; vdp reg 04 : scroll B table vram address : E000
@@ -1152,32 +1167,32 @@ StartParams:
 		dc.b 0                  ; vdp reg 22 : DMA source address mid
 		dc.b $80                ; vdp reg 23 : DMA source address high, VRAM fill
 		dc.l $40000080          ; ?
-		dc.b $AF                ; Z80 start code ... what's the use O_o ?
-		dc.b 1
-		dc.b $D9
-		dc.b $1F
-		dc.b $11
-		dc.b $27
-		dc.b 0
-		dc.b $21
-		dc.b $26
-		dc.b 0
-		dc.b $F9
-		dc.b $77
-		dc.b $ED
-		dc.b $B0
-		dc.b $DD
-		dc.b $E1
-		dc.b $FD
-		dc.b $E1
-		dc.b $ED
-		dc.b $47
-		dc.b $ED
-		dc.b $4F
-		dc.b $D1
-		dc.b $E1
-		dc.b $F1
-		dc.b 8
+		dc.b $AF                ; Z80 start code
+		dc.b 1                  ; xor     a
+		dc.b $D9                ; ld      bc, 1FD9h
+		dc.b $1F                ; ld      de, 27h
+		dc.b $11                ; ld      hl, 26h
+		dc.b $27                ; ld      sp, hl
+		dc.b 0                  ; ld      (hl), a
+		dc.b $21                ; ldir
+		dc.b $26                ; pop     ix
+		dc.b 0                  ; pop     iy
+		dc.b $F9                ; ld      i, a
+		dc.b $77                ; ld      r, a
+		dc.b $ED                ; pop     de
+		dc.b $B0                ; pop     hl
+		dc.b $DD                ; pop     af
+		dc.b $E1                ; ex      af, af'
+		dc.b $FD                ; exx
+		dc.b $E1                ; pop     bc
+		dc.b $ED                ; pop     de
+		dc.b $47                ; pop     hl
+		dc.b $ED                ; pop     af
+		dc.b $4F                ; ld      sp, hl
+		dc.b $D1                ; di
+		dc.b $E1                ; im      1
+		dc.b $F1                ; ld      (hl), 0E9h
+		dc.b 8                  ; jp      (hl)
 		dc.b $D9
 		dc.b $C1
 		dc.b $D1
@@ -1203,9 +1218,10 @@ loc_57A:
 		move.w  (VDP_Control).l,d0
 		andi.w  #2,d0           ; wait for free DMA
 		bne.s   loc_57A
+                
 		bra.w   InitSystem
 
-	; End of function Start
+    ; End of function Start
 
 		dc.b $F3                ; unused Z80 code
 		dc.b $31                ; loc_0:         di
@@ -1229,17 +1245,19 @@ loc_5B6:
 		move.b  (a1)+,d0
 		bsr.w   CopyByteToZ80
 		dbf     d7,loc_5B6
+                
 		move.w  #0,(Z80BusReset).l
 		moveq   #$10,d7
 loc_5CA:
 		dbf     d7,loc_5CA
+                
 		move.w  #$100,(Z80BusReset).l
 		move.w  #0,(Z80BusReq).l
 		lea     (MUSIC_STACK_LENGTH).l,a0
 		movem.l (sp)+,d0-a1
 		rts
 
-	; End of function InitZ80
+    ; End of function InitZ80
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1249,7 +1267,7 @@ CopyWordToZ80:
 		bsr.w   CopyByteToZ80
 		lsr.w   #8,d0
 
-	; End of function CopyWordToZ80
+    ; End of function CopyWordToZ80
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1262,7 +1280,7 @@ CopyByteToZ80:
 		addq.l  #1,a0
 		rts
 
-	; End of function CopyByteToZ80
+    ; End of function CopyByteToZ80
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1291,7 +1309,7 @@ loc_628:
 		movem.l (sp)+,d0-d1/a0
 		rte
 
-	; End of function Trap0_SoundCommand
+    ; End of function Trap0_SoundCommand
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1302,7 +1320,7 @@ int_AdressError:
 		move.l  $A(sp),(ERRCODE_DWORD1).l
 		jmp     sub_8010
 
-	; End of function int_AdressError
+    ; End of function int_AdressError
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1313,7 +1331,7 @@ int_IllegalInstruction:
 		move.l  2(sp),(ERRCODE_DWORD1).l
 		jmp     sub_8010
 
-	; End of function int_IllegalInstruction
+    ; End of function int_IllegalInstruction
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1324,7 +1342,7 @@ int_ZeroDivide:
 		move.l  2(sp),(ERRCODE_DWORD1).l
 		jmp     sub_8010
 
-	; End of function int_ZeroDivide
+    ; End of function int_ZeroDivide
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1335,7 +1353,7 @@ int_OtherError:
 		move.l  2(sp),(ERRCODE_DWORD1).l
 		jmp     sub_8010
 
-	; End of function int_OtherError
+    ; End of function int_OtherError
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1346,7 +1364,7 @@ int_ExternalInterrupt:
 		nop
 		bra.s   int_ExternalInterrupt
 
-	; End of function int_ExternalInterrupt
+    ; End of function int_ExternalInterrupt
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1355,7 +1373,7 @@ IntLv17:
 		nop
 		bra.s   IntLv17
 
-	; End of function IntLv17
+    ; End of function IntLv17
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1366,29 +1384,29 @@ Trap5_:
 		movem.l (sp)+,d0-a6
 		rte
 
-	; End of function Trap5_
+    ; End of function Trap5_
 
 
 ; =============== S U B R O U T I N E =======================================
 
 Trap6_:
 		movem.l d0-a6,-(sp)
-		jsr     (sub_30C).l
+		jsr     (j_CloseMessageWindow).l
 		movem.l (sp)+,d0-a6
 		rte
 
-	; End of function Trap6_
+    ; End of function Trap6_
 
 
 ; =============== S U B R O U T I N E =======================================
 
 Trap7_:
 		movem.l d0-a6,-(sp)
-		jsr     (sub_328).l
+		jsr     (j_CreateMessageWindow).l
 		movem.l (sp)+,d0-a6
 		rte
 
-	; End of function Trap7_
+    ; End of function Trap7_
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1400,84 +1418,88 @@ Trap8_DisplayMessage:
 		movem.l (sp)+,d0-a6
 		rte
 
-	; End of function Trap8_DisplayMessage
+    ; End of function Trap8_DisplayMessage
 
 
 ; =============== S U B R O U T I N E =======================================
 
+; Vertical Interrupt
+
 VInt:
 		movem.l d0-a6,-(sp)
-		bclr    #7,(VINT_PARAMS).l
-		beq.s   loc_70C
-		bsr.w   sub_760
-		bsr.w   sub_7EC         
-		bsr.w   ParseFadingFX
-		bsr.w   UpdateSoundAndInput
-		bsr.w   sub_728
+		bclr    #ENABLE_VINT,(VINT_PARAMS).l
+						; disable VInt
+		beq.s   @Skip           ; skip if VInt was already disabled
+		bsr.w   ProcessVdpQueues
+		bsr.w   ProcessVramRead
+		bsr.w   ApplyFadingEffect
+		bsr.w   ApplyZ80BusUpdates
+		bsr.w   CallContextualFunction
 		clr.b   (VINT_WAIT_TOGGLE).l
 		move.b  (VINT_ENABLED).l,d0
 		or.b    d0,(VINT_PARAMS).l
-loc_70C:
-		addq.b  #1,(byte_FF0E9C).l
+@Skip:
+		addq.b  #1,(FRAME_COUNTER).l
 		clr.b   (byte_FF0E9D).l
 		move.w  (VDP_REG00_STATUS).l,(VDP_Control).l
 		movem.l (sp)+,d0-a6
 		rte
 
-	; End of function VInt
+    ; End of function VInt
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_728:
-		move.b  (byte_FF0EB6).l,d0
-		addq.b  #1,d0
-		cmpi.b  #$3C,d0 
+CallContextualFunction:
+		
+		move.b  (SECONDS_COUNTER_FRAMES).l,d0
+		addq.b  #1,d0           ; increment frame and second counters
+		cmpi.b  #60,d0
 		bne.s   loc_738
 		clr.b   d0
 loc_738:
-		move.b  d0,(byte_FF0EB6).l
-		movea.l (dword_FF0EF6).l,a0
+		move.b  d0,(SECONDS_COUNTER_FRAMES).l
+		movea.l (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l,a0
 		move.l  a0,d0
 		bne.s   loc_74A
 		rts
 loc_74A:
 		jmp     (a0)
 
-	; End of function sub_728
+    ; End of function CallContextualFunction
 
 
 ; =============== S U B R O U T I N E =======================================
 
-DisableDisplaybis:
+DisableDisplay:
 		
 		andi.b  #$BF,(VDP_REG01_VALUE).l
 		move.w  (VDP_REG01_STATUS).l,(VDP_Control).l
 		rts
 
-	; End of function DisableDisplaybis
+    ; End of function DisableDisplay
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_760:
-		bsr.s   sub_768         
-		bsr.w   sub_82C         
+ProcessVdpQueues:
+		
+		bsr.s   ProcessVdpCommandQueue
+		bsr.w   ProcessDmaQueue
 		rts
 
-	; End of function sub_760
+    ; End of function ProcessVdpQueues
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; executes if VINT_PARAMS bit 0 set
-
-sub_768:
-		bclr    #0,(VINT_PARAMS).l
-		beq.w   locret_7EA
-		tst.b   (byte_FF0E95).l
-		beq.w   locret_7EA
-		lea     (byte_FF0780).l,a0
+ProcessVdpCommandQueue:
+		
+		bclr    #VDP_COMMAND_REQUEST,(VINT_PARAMS).l
+		beq.w   return_7EA
+		tst.b   (VDP_COMMAND_COUNTER).l
+		beq.w   return_7EA
+		lea     (VDP_COMMAND_QUEUE).l,a0
 loc_784:
 		move.w  (a0)+,d0
 		move.w  #$8F02,d1
@@ -1503,25 +1525,27 @@ loc_79E:
 loc_7C6:
 		move.w  (a0)+,(VDP_Data).l
 		dbf     d0,loc_7C6
-		subq.b  #1,(byte_FF0E95).l
+                
+		subq.b  #1,(VDP_COMMAND_COUNTER).l
 		bne.s   loc_784
+                
 		move.w  #$8F02,(VDP_Control).l
-		move.l  #byte_FF0780,(dword_FF0EEE).l
-locret_7EA:
+		move.l  #VDP_COMMAND_QUEUE,(VDP_COMMAND_QUEUE_POINTER).l
+return_7EA:
 		rts
 
-	; End of function sub_768
+    ; End of function ProcessVdpCommandQueue
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; related to VINT_PARAMS bit 4
-
-sub_7EC:
-		bclr    #4,(VINT_PARAMS).l
-		beq.s   locret_82A
-		lea     (byte_FF0780).l,a0
-		move.w  #$8F02,(VDP_Control).l
+ProcessVramRead:
+		
+		bclr    #VRAM_READ_REQUEST,(VINT_PARAMS).l
+						; Check if VRAM read requested
+		beq.s   @Return
+		lea     (VDP_COMMAND_QUEUE).l,a0
+		move.w  #$8F02,(VDP_Control).l; autoincrement 02
 		move.w  (a0),d7
 		andi.w  #$3FFF,d7
 		move.w  d7,(VDP_Control).l
@@ -1530,62 +1554,66 @@ sub_7EC:
 		andi.w  #3,d7
 		move.w  d7,(VDP_Control).l
 		move.w  (a0)+,d7
-loc_820:
+@Loop:
 		move.w  (VDP_Data).l,(a0)+
-		dbf     d7,loc_820
-locret_82A:
+		dbf     d7,@Loop
+@Return:
 		rts
 
-	; End of function sub_7EC
+    ; End of function ProcessVramRead
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; executes if VINT_PARAMS bit 3 set or bit 1 clear
-
-sub_82C:
-		bclr    #3,(VINT_PARAMS).l
-		bne.s   loc_840
-		btst    #1,(VINT_PARAMS).l
-		bne.s   locret_8B8
+ProcessDmaQueue:
+		
+		bclr    #DMA_REQUEST,(VINT_PARAMS).l
+						; Check if DMA requested
+		bne.s   loc_840         
+		btst    #DEACTIVATE_DMA,(VINT_PARAMS).l
+						; Check if DMA deactivated
+		bne.s   return_8B8
 loc_840:
-		move.w  #$100,(Z80BusReq).l
+		move.w  #$100,(Z80BusReq).l; Bus request
 loc_848:
-		btst    #0,(Z80BusReq).l
-		bne.s   loc_848
-		btst    #1,(VINT_PARAMS).l
-		bne.s   locret_8B8
-		bsr.w   DMASpriteTable
-		tst.b   (byte_FF0E96).l
+		btst    #0,(Z80BusReq).l; Check bus availability
+		bne.s   loc_848         
+                
+		btst    #DEACTIVATE_DMA,(VINT_PARAMS).l
+						; Check if DMA deactivated
+		bne.s   return_8B8
+		bsr.w   UpdateVdpSpriteTable; Update sprites
+		tst.b   (DMA_QUEUE_SIZE).l
 		beq.s   loc_8A6
-		lea     (byte_FF0550).l,a0
+		lea     (DMA_QUEUE).l,a0
 		lea     (VDP_Control).l,a6
 		move.w  (VDP_REG01_STATUS).l,d7
-		ori.b   #$10,d7
+		ori.b   #$10,d7         ; Enable DMA on VDP
 		move.w  d7,(a6)
 loc_880:
-		move.w  (a0)+,(a6)
+		move.w  (a0)+,(a6)      ; Send all queued DMA commands
 		move.l  (a0)+,(a6)
 		move.l  (a0)+,(a6)
 		move.l  (a0)+,(a6)
 		move.w  (a0)+,(TEMP_DMA_VALUE).l
 		move.w  (TEMP_DMA_VALUE).l,(a6)
-		subq.b  #1,(byte_FF0E96).l
-		bne.s   loc_880
+		subq.b  #1,(DMA_QUEUE_SIZE).l
+		bne.s   loc_880         
+                
 		move.w  (VDP_REG01_STATUS).l,(a6)
 		move.w  #$8F02,(a6)
 loc_8A6:
 		move.w  #0,(Z80BusReq).l
-		move.l  #byte_FF0550,(VDP_REG_COMMANDS).l
-locret_8B8:
+		move.l  #DMA_QUEUE,(DMA_QUEUE_POINTER).l
+return_8B8:
 		rts
 
-	; End of function sub_82C
+    ; End of function ProcessDmaQueue
 
 
 ; =============== S U B R O U T I N E =======================================
 
-UpdateSoundAndInput:
+ApplyZ80BusUpdates:
 		
 		move.w  #$100,(Z80BusReq).l
 loc_8C2:
@@ -1702,17 +1730,17 @@ loc_9EA:
 		bra.s   loc_A38
 loc_A28:
 		move.b  (P1_INPUT).l,d1 ; if only one direction pushed, set it as primary
-		andi.w  #$F,d1
+		andi.w  #INPUT_UP|INPUT_DOWN|INPUT_LEFT|INPUT_RIGHT,d1
 		move.b  d1,(PRIMARY_WALKING_DIRECTION).l
 loc_A38:
 		move.b  (P1_INPUT).l,d0 
 		move.b  d0,(CURRENT_PLAYER_INPUT).l
 						; overwrite P2 6-button data with P1 state with walking direction
-		cmp.b   (LAST_PLAYER_INPUT).l,d0
+		cmp.b   (LAST_DIRECTIONAL_INPUT).l,d0
 		bne.s   loc_A6C         
 		addq.b  #1,(INPUT_REPEAT_DELAYER).l
 						; if input is the same then increment counter and ignore input
-		cmpi.b  #$18,(INPUT_REPEAT_DELAYER).l
+		cmpi.b  #24,(INPUT_REPEAT_DELAYER).l
 		bcc.s   loc_A64
 		clr.b   (CURRENT_PLAYER_INPUT).l; keep current input only when counter reaches $18
 		bra.s   loc_A6A
@@ -1722,13 +1750,13 @@ loc_A6A:
 		bra.s   loc_A9A
 loc_A6C:
 		clr.w   d2              ; if input is new
-		move.b  (LAST_PLAYER_INPUT).l,d1
-		andi.b  #$F,d1
+		move.b  (LAST_DIRECTIONAL_INPUT).l,d1
+		andi.b  #INPUT_UP|INPUT_DOWN|INPUT_LEFT|INPUT_RIGHT,d1
 		beq.s   loc_A7C
 		moveq   #1,d2           ; was pushing a direction
 loc_A7C:
-		move.b  (CURRENT_PLAYER_INPUT).l,(LAST_PLAYER_INPUT).l
-		andi.b  #$F,d0
+		move.b  (CURRENT_PLAYER_INPUT).l,(LAST_DIRECTIONAL_INPUT).l
+		andi.b  #INPUT_UP|INPUT_DOWN|INPUT_LEFT|INPUT_RIGHT,d0
 		beq.w   loc_A94
 		tst.b   d2
 		bne.w   loc_A9A
@@ -1738,7 +1766,7 @@ loc_A9A:
 		move.w  #0,(Z80BusReq).l
 		rts
 
-	; End of function UpdateSoundAndInput
+    ; End of function ApplyZ80BusUpdates
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1746,7 +1774,7 @@ loc_A9A:
 nullsub_AA4:
 		rts
 
-	; End of function nullsub_AA4
+    ; End of function nullsub_AA4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1754,7 +1782,7 @@ nullsub_AA4:
 nullsub_AA6:
 		rts
 
-	; End of function nullsub_AA6
+    ; End of function nullsub_AA6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1777,28 +1805,28 @@ loc_AC6:
 		movem.l (sp)+,d0-d1/a0
 		rte
 
-	; End of function sub_AA8
+    ; End of function sub_AA8
 
 
 ; =============== S U B R O U T I N E =======================================
 
-ParseFadingFX:
+ApplyFadingEffect:
 		
 		move.b  (FADING_SETTING).l,d0
-		beq.w   locret_B4A
+		beq.w   return_B4A
 		subq.b  #1,(FADING_COUNTER).l
-		bne.w   locret_B4A
+		bne.w   return_B4A
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		subq.b  #1,d0
 		ext.w   d0
-		lsl.w   #3,d0           ; *8 ? so 8 bytes per entry ?
+		lsl.w   #3,d0
 		move.b  (FADING_POINTER).l,d1
 		ext.w   d1
 		add.w   d1,d0
 		move.b  FadingData(pc,d0.w),d1
 		cmpi.w  #$80,d1 
 		bne.s   loc_B14
-		clr.b   (FADING_SETTING).l; end of palette fx ?
+		clr.b   (FADING_SETTING).l
 loc_B14:
 		movem.l d1,-(sp)
 		andi.w  #$F0,d1 
@@ -1807,51 +1835,52 @@ loc_B14:
 		bne.s   loc_B34
 		andi.w  #$F,d1          ; go x backwards
 		sub.b   d1,(FADING_POINTER).l
-		bra.w   ParseFadingFX
+		bra.w   ApplyFadingEffect
 loc_B34:
 		ext.w   d1
 		move.w  d1,d0
 		move.b  (FADING_PALETTE_FLAGS).l,d1
 		ext.w   d1
-		bsr.w   DoSomethingWithPalettes1or2
+		bsr.w   ApplyCurrentColorFadingValue
 		addq.b  #1,(FADING_POINTER).l
-locret_B4A:
+return_B4A:
 		rts
 
-	; End of function ParseFadingFX
+    ; End of function ApplyFadingEffect
 
 FadingData:     incbin "data/graphics/tech/fadingdata.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
+; Horizontal Interrupt
+
 HInt:
 		rte
 
-	; End of function HInt
+    ; End of function HInt
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; waits for 0xc00004 (VDP DMA register) to be cleared
 
-WaitForDMAFree:
-		
+WaitDmaEnd:
 		movem.w d0,-(sp)
-loc_BA2:
+@Wait:
 		move.w  (VDP_Control).l,d0
 		btst    #1,d0           ; control if DMA in progress
-		bne.s   loc_BA2         ; loop if DMA in progress
+		bne.s   @Wait           ; loop if DMA in progress
 		move.w  (sp)+,d0
 		rts
 
-	; End of function WaitForDMAFree
+    ; End of function WaitDmaEnd
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; d0 : vdp reg number
+; VDP Reg Status -> D0
 
-GetVDPRegStatus:
+GetVdpRegStatus:
 		
 		movem.l a0,-(sp)
 		lea     (VDP_REG00_STATUS).l,a0
@@ -1860,74 +1889,85 @@ GetVDPRegStatus:
 		movem.l (sp)+,a0
 		rts
 
-	; End of function GetVDPRegStatus
+    ; End of function GetVdpRegStatus
 
 
 ; =============== S U B R O U T I N E =======================================
 
-SetVDPRegStatus:
-		
-		bsr.s   WaitForDMAFree  
+SetVdpReg:
+		bsr.s   WaitDmaEnd      
 		movem.l d0-d1/a0,-(sp)
 		lea     (VDP_REG00_STATUS).l,a0
 		move.w  d0,(VDP_Control).l
 		move.w  d0,d1
 		andi.w  #$7F00,d0
 		lsr.w   #7,d0
-		move.w  d1,(a0,d0.w)
+		move.w  d1,(a0,d0.w)    ; store new vdp reg status
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function SetVDPRegStatus
+    ; End of function SetVdpReg
 
 
 ; =============== S U B R O U T I N E =======================================
 
-VDP_EnableDisplay:
+ApplyLogicalOrOnVdpReg:
 		
-		bsr.s   WaitForDMAFree  
+		bsr.s   WaitDmaEnd      
 		movem.l d0-d1/a0,-(sp)
 		lea     (VDP_REG00_STATUS).l,a0
 		add.w   d0,d0
 		or.b    d1,1(a0,d0.w)   ; enable display
-		bra.s   SendVDPCommand
-VDP_DisableDisplay:
+		bra.s   SendVdpCommand
+
+    ; End of function ApplyLogicalOrOnVdpReg
+
+
+; =============== S U B R O U T I N E =======================================
+
+ApplyLogicalAndOnVdpReg:
 		
-		bsr.s   WaitForDMAFree  
+		bsr.s   WaitDmaEnd      
 		movem.l d0-d1/a0,-(sp)
 		lea     (VDP_REG00_STATUS).l,a0
 		add.w   d0,d0
 		and.b   d1,1(a0,d0.w)   ; disable display
-SendVDPCommand:
+
+    ; End of function ApplyLogicalAndOnVdpReg
+
+
+; START OF FUNCTION CHUNK FOR ApplyLogicalOrOnVdpReg
+
+SendVdpCommand:
 		
 		move.w  (a0,d0.w),d1
 		move.w  d1,(VDP_Control).l
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function VDP_EnableDisplay
+; END OF FUNCTION CHUNK FOR ApplyLogicalOrOnVdpReg
 
 
 ; =============== S U B R O U T I N E =======================================
 
-EnableDisplay:
+EnableDisplayOnVdp:
 		
 		move.w  #1,d0           ; get vdp reg 01
 		move.w  #$40,d1 
-		bra.s   VDP_EnableDisplay
+		bra.s   ApplyLogicalOrOnVdpReg
 
-	; End of function EnableDisplay
+    ; End of function EnableDisplayOnVdp
 
 
 ; =============== S U B R O U T I N E =======================================
 
-DisableDisplay:
+DisableDisplayOnVdp:
 		
 		move.w  #1,d0
 		move.w  #$BF,d1 
-		bra.s   VDP_DisableDisplay
+		bra.s   ApplyLogicalAndOnVdpReg
 
-	; End of function DisableDisplay
+    ; End of function DisableDisplayOnVdp
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1938,7 +1978,7 @@ EnableInterrupts:
 		move    #$2300,sr       ; set interrupt mask to level 3
 		rts
 
-	; End of function EnableInterrupts
+    ; End of function EnableInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1949,17 +1989,17 @@ DisableInterrupts:
 		move    #$2700,sr       ; set interrupt mask to level 7 : no more HInt/VInt !
 		rts
 
-	; End of function DisableInterrupts
+    ; End of function DisableInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
 
 EnableDisplayAndInterrupts:
 		
-		bsr.s   EnableDisplay
+		bsr.s   EnableDisplayOnVdp
 		bra.s   EnableInterrupts
 
-	; End of function EnableDisplayAndInterrupts
+    ; End of function EnableDisplayAndInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1967,86 +2007,99 @@ EnableDisplayAndInterrupts:
 DisableDisplayAndInterrupts:
 		
 		bsr.s   DisableInterrupts
-		bra.s   DisableDisplay
+		bra.s   DisableDisplayOnVdp
 
-	; End of function DisableDisplayAndInterrupts
+    ; End of function DisableDisplayAndInterrupts
 
 
 ; =============== S U B R O U T I N E =======================================
 
-ClearVIntParam1:
+ActivateVIntDmaQueueProcessing:
 		
-		bclr    #1,(VINT_PARAMS).l
+		bclr    #DEACTIVATE_DMA,(VINT_PARAMS).l
 		rts
 
-	; End of function ClearVIntParam1
+    ; End of function ActivateVIntDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-SetVIntParam1:
+DeactivateVIntDmaQueueProcessing:
 		
-		bset    #1,(VINT_PARAMS).l
+		bset    #DEACTIVATE_DMA,(VINT_PARAMS).l
 		rts
 
-	; End of function SetVIntParam1
+    ; End of function DeactivateVIntDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
-
-; Palette transfer ?
 
 DuplicatePalettes:
 		
 		movem.l d7/a5-a6,-(sp)
-		lea     (PALETTE_1_BIS).l,a5
-		lea     (PALETTE_1).l,a6
-		move.w  #$3F,d7 
-loc_C80:
+		lea     (PALETTE_1_BASE).l,a5
+		lea     (PALETTE_1_CURRENT).l,a6
+		move.w  #CRAM_COLORS_COUNTER,d7
+@Loop:
 		move.w  (a5)+,(a6)+
-		dbf     d7,loc_C80
+		dbf     d7,@Loop
 		movem.l (sp)+,d7/a5-a6
-StoreVDPCommandster:
+
+    ; End of function DuplicatePalettes
+
+
+; =============== S U B R O U T I N E =======================================
+
+; VDP CRAM
+
+ApplyVIntCramDma:
 		
 		move    sr,-(sp)
 		move    #$2700,sr       ; disable interrupts
 		movem.l a6,-(sp)
-		movea.l (VDP_REG_COMMANDS).l,a6
+		movea.l (DMA_QUEUE_POINTER).l,a6
 		move.w  #$8F02,(a6)+    ; auto increment : 2
-		move.w  #$9400,(a6)+    ; DMA length
+		move.w  #$9400,(a6)+    ; DMA length : 64
 		move.w  #$9340,(a6)+
 		move.w  #$9680,(a6)+
 		move.w  #$9500,(a6)+
 		move.w  #$977F,(a6)+    ; RAM to VRAM, address : ?
 		move.w  #$C000,(a6)+
-		move.w  #$80,(a6)+ ; data port stuff ?
-		move.l  a6,(VDP_REG_COMMANDS).l
-		addq.b  #1,(byte_FF0E96).l
+		move.w  #$80,(a6)+      ; CRAM DMA Write
+		move.l  a6,(DMA_QUEUE_POINTER).l
+		addq.b  #1,(DMA_QUEUE_SIZE).l
 		movem.l (sp)+,a6
 		move    (sp)+,sr
 		rts
 
-	; End of function DuplicatePalettes
+    ; End of function ApplyVIntCramDma
 
 
 ; =============== S U B R O U T I N E =======================================
 
 CopyPalette1:
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 
-	; End of function CopyPalette1
+    ; End of function CopyPalette1
 
 
 ; =============== S U B R O U T I N E =======================================
 
 CopyPalette:
-		move.w  #$F,d0
-loc_CD8:
+		move.w  #PALETTE_COLORS_COUNTER,d0
+
+    ; End of function CopyPalette
+
+
+; =============== S U B R O U T I N E =======================================
+
+CopyPalette_Loop:
+		
 		move.w  (a0)+,(a1)+
-		dbf     d0,loc_CD8
+		dbf     d0,CopyPalette_Loop
 		rts
 
-	; End of function CopyPalette
+    ; End of function CopyPalette_Loop
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2056,7 +2109,7 @@ FadeInFromBlack:
 		move.b  #IN_FROM_BLACK,(FADING_SETTING).l
 		bra.w   ExecuteFading
 
-	; End of function FadeInFromBlack
+    ; End of function FadeInFromBlack
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2066,7 +2119,7 @@ FadeOutToBlack:
 		move.b  #OUT_TO_BLACK,(FADING_SETTING).l
 		bra.w   ExecuteFading
 
-	; End of function FadeOutToBlack
+    ; End of function FadeOutToBlack
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2076,7 +2129,7 @@ FadeInFromWhite:
 		move.b  #IN_FROM_WHITE,(FADING_SETTING).l
 		bra.w   ExecuteFading
 
-	; End of function FadeInFromWhite
+    ; End of function FadeInFromWhite
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2085,40 +2138,40 @@ FadeOutToWhite:
 		
 		move.b  #OUT_TO_WHITE,(FADING_SETTING).l
 
-	; End of function FadeOutToWhite
+    ; End of function FadeOutToWhite
 
 
-; START OF FUNCTION CHUNK FOR FadeInFromBlack
+; =============== S U B R O U T I N E =======================================
 
 ExecuteFading:
 		
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		move.b  #$F,(FADING_PALETTE_FLAGS).l
-loc_D24:
+@Wait:
 		bsr.w   WaitForVInt     
-		tst.b   (FADING_SETTING).l
-		bne.s   loc_D24
+		tst.b   (FADING_SETTING).l; wait until fade end
+		bne.s   @Wait
 		bsr.w   WaitForVInt     
 		rts
 
-; END OF FUNCTION CHUNK FOR FadeInFromBlack
+    ; End of function ExecuteFading
 
 
 ; =============== S U B R O U T I N E =======================================
 
-DoSomethingWithPalettes1or2:
+ApplyCurrentColorFadingValue:
 		
 		movem.l d2-a2,-(sp)
-		lea     (PALETTE_1_BIS).l,a0
-		lea     (PALETTE_1).l,a1
+		lea     (PALETTE_1_BASE).l,a0
+		lea     (PALETTE_1_CURRENT).l,a1
 		moveq   #3,d6
 loc_D48:
 		moveq   #3,d5
 		sub.w   d6,d5
 		btst    d5,d1
 		bne.s   loc_D5C
-		adda.w  #$20,a0 ; go to plt 2 instead
+		adda.w  #$20,a0 
 		adda.w  #$20,a1 
 		bra.w   loc_DC0
 loc_D5C:
@@ -2136,6 +2189,7 @@ loc_D5E:
 loc_D74:
 		cmpi.w  #$F,d3
 		ble.s   loc_D7E
+loc_D7A:
 		move.w  #$F,d3
 loc_D7E:
 		asl.w   #4,d0
@@ -2169,12 +2223,12 @@ loc_DB4:
 		dbf     d7,loc_D5E
 loc_DC0:
 		dbf     d6,loc_D48
-		bsr.w   StoreVDPCommandster
-		bsr.w   SetVIntParam3
+		bsr.w   ApplyVIntCramDma
+		bsr.w   EnableDmaQueueProcessing
 		movem.l (sp)+,d2-a2
 		rts
 
-	; End of function DoSomethingWithPalettes1or2
+    ; End of function ApplyCurrentColorFadingValue
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2183,21 +2237,26 @@ ClearScrollAndSpriteTables:
 		
 		bsr.s   ClearScrollTable
 		bsr.s   ClearSpriteTable
-DMASpriteTable:
+
+    ; End of function ClearScrollAndSpriteTables
+
+
+; =============== S U B R O U T I N E =======================================
+
+UpdateVdpSpriteTable:
 		
 		lea     (VDP_Control).l,a6
-		move.w  #$8134,(a6)     ; disable display, enable Vint, enable DMA
+		move.w  #$8134,(a6)     ; disable display, enable VInt, enable DMA
 		move.l  #$94019300,(a6) ; DMA Length : $100
-		move.l  #$96869540,(a6) ; from RAM 0xFF8640 ?
+		move.l  #$96869540,(a6)
 		move.w  #$977F,(a6)
-		move.w  #$7000,(a6)     ; to VRAM 0xF000 ?
+		move.w  #$7000,(a6)
 		move.w  #$83,(TEMP_DMA_VALUE).l 
 		move.w  (TEMP_DMA_VALUE).l,(a6)
 		move.w  (VDP_REG01_STATUS).l,(a6)
-						; Shouldn't it go to reg 01 with value 81 instead of 83 ??
 		rts
 
-	; End of function ClearScrollAndSpriteTables
+    ; End of function UpdateVdpSpriteTable
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2205,20 +2264,20 @@ DMASpriteTable:
 ClearSpriteTable:
 		
 		movem.l d0-d1/a0,-(sp)
-		lea     (SPRITE_TABLE).l,a0
-		moveq   #$3F,d1 
+		lea     (SPRITE_00_PROPERTIES).l,a0
+		moveq   #VDP_SPRITES_COUNTER,d1
 		moveq   #1,d0
-loc_E18:
+@Loop:
 		move.l  d0,(a0)
 		clr.l   4(a0)
 		addq.w  #8,a0
 		addq.b  #1,d0
-		dbf     d1,loc_E18
+		dbf     d1,@Loop
 		clr.b   -5(a0)
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function ClearSpriteTable
+    ; End of function ClearSpriteTable
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2229,95 +2288,93 @@ ClearScrollTable:
 		move.w  #$C000,d0       ; clear scroll A table
 		move.w  #$1000,d1
 		clr.w   d2
-		bsr.w   DMAVramFill     
+		bsr.w   ApplyVramDmaFill
 		move.w  #$E000,d0       ; clear scroll B table
 		move.w  #$1000,d1
 		clr.w   d2
-		bsr.w   DMAVramFill     
+		bsr.w   ApplyVramDmaFill
 		move.w  #$7FF,d7
-		lea     (byte_FFD000).l,a6
-loc_E5A:
+		lea     (PLANE_A_MAP_LAYOUT).l,a6
+@Loop:
 		clr.l   (a6)+
-		dbf     d7,loc_E5A
+		dbf     d7,@Loop
 		movem.l (sp)+,d7/a6
 		rts
 
-	; End of function ClearScrollTable
+    ; End of function ClearScrollTable
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Wait until VInt func is called, i.e. next frame
+; Wait until VInt function is called, i.e., next frame
 
 WaitForVInt:
-		bset    #7,(VINT_PARAMS).l
+		bset    #ENABLE_VINT,(VINT_PARAMS).l
 		move.b  #1,(VINT_WAIT_TOGGLE).l
-loc_E76:
-		tst.b   (VINT_WAIT_TOGGLE).l; wait until toggle clear
-		bne.s   loc_E76
+@Wait:
+		tst.b   (VINT_WAIT_TOGGLE).l; wait until toggle cleared
+		bne.s   @Wait
 		rts
 
-	; End of function WaitForVInt
+    ; End of function WaitForVInt
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; wait for D0 Vints/frames
+; Wait for D0 frames
 
 Sleep:
 		movem.w d0,-(sp)
 		subq.w  #1,d0
-		bcs.w   loc_E90
-loc_E8A:
+		bcs.w   @Done
+@Loop:
 		bsr.s   WaitForVInt     
-		dbf     d0,loc_E8A
-loc_E90:
+		dbf     d0,@Loop
+@Done:
 		movem.w (sp)+,d0
 		rts
 
-	; End of function Sleep
+    ; End of function Sleep
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; used to execute sub_768
-
-SetVIntParam0:
+RequestVdpCommandQueueProcessing:
 		
-		bset    #0,(VINT_PARAMS).l
+		bset    #VDP_COMMAND_REQUEST,(VINT_PARAMS).l
 		rts
 
-	; End of function SetVIntParam0
+    ; End of function RequestVdpCommandQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-SetVIntParam0AndWait:
+WaitForVdpCommandQueueProcessing:
 		
-		bsr.s   SetVIntParam0   
+		bsr.s   RequestVdpCommandQueueProcessing
 		bra.w   WaitForVInt     
 
-	; End of function SetVIntParam0AndWait
+    ; End of function WaitForVdpCommandQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-SetVIntParam3:
+EnableDmaQueueProcessing:
 		
-		bset    #3,(VINT_PARAMS).l
+		bset    #DMA_REQUEST,(VINT_PARAMS).l
 		rts
 
-	; End of function SetVIntParam3
+    ; End of function EnableDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
 
-SetVIntParam3AndWait:
+WaitForDmaQueueProcessing:
 		
-		bsr.s   SetVIntParam3
+		bsr.s   EnableDmaQueueProcessing
 		bra.w   WaitForVInt     
 
-	; End of function SetVIntParam3AndWait
+    ; End of function WaitForDmaQueueProcessing
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2325,32 +2382,33 @@ SetVIntParam3AndWait:
 sub_EB6:
 		bsr.w   DisableInterrupts
 		movem.l d7/a4-a5,-(sp)
-		movea.l (dword_FF0EEE).l,a4
+		movea.l (VDP_COMMAND_QUEUE_POINTER).l,a4
 		moveq   #0,d7
 		move.w  d7,(a4)+
 		bsr.s   sub_F0A
 		move.w  a6,(a4)+
 loc_ECC:
 		move.w  d0,(a4)+
-		move.l  a4,(dword_FF0EEE).l
-		addq.b  #1,(byte_FF0E95).l
+		move.l  a4,(VDP_COMMAND_QUEUE_POINTER).l
+		addq.b  #1,(VDP_COMMAND_COUNTER).l
 		clr.l   d7
 		move.w  a6,d7
-		ori.l   #PALETTE_1,d7   
+		ori.l   #PALETTE_1_CURRENT,d7
 		movea.l d7,a6
 		movem.l (sp)+,d7/a4-a5
 		bsr.w   EnableInterrupts
 		rts
 
-	; End of function sub_EB6
+    ; End of function sub_EB6
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_EF0:
 		bsr.w   DisableInterrupts
+loc_EF4:
 		movem.l d7/a4-a5,-(sp)
-		movea.l (dword_FF0EEE).l,a4
+		movea.l (VDP_COMMAND_QUEUE_POINTER).l,a4
 		moveq   #0,d7
 		move.w  d7,(a4)+
 		bsr.s   sub_F0A
@@ -2358,7 +2416,7 @@ sub_EF0:
 		move.w  a6,(a4)+
 		bra.s   loc_ECC
 
-	; End of function sub_EF0
+    ; End of function sub_EF0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2383,7 +2441,7 @@ sub_F0A:
 		andi.w  #$F80,d6
 		rts
 
-	; End of function sub_F0A
+    ; End of function sub_F0A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2396,7 +2454,7 @@ SwapA6:
 		movem.l (sp)+,d7
 		rts
 
-	; End of function SwapA6
+    ; End of function SwapA6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2404,7 +2462,13 @@ SwapA6:
 sub_F52:
 		bsr.w   DisableInterrupts
 		lea     (byte_FF0B80).l,a4
-loc_F5C:
+
+    ; End of function sub_F52
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_F5C:
 		movem.l d5-d6,-(sp)
 		move.w  (word_FF0EC4).l,d5
 		lsr.w   #8,d5
@@ -2422,10 +2486,10 @@ loc_F78:
 loc_F8A:
 		ori.l   #$FF0000,d3
 		movea.l d3,a3
-		movea.l (dword_FF0EEE).l,a5
+		movea.l (VDP_COMMAND_QUEUE_POINTER).l,a5
 		move.w  (word_FF0EC6).l,d3
 		andi.l  #$FF,d3
-		move.b  d3,(byte_FF0E95).l
+		move.b  d3,(VDP_COMMAND_COUNTER).l
 		subq.w  #1,d3
 loc_FAC:
 		movem.l a3,-(sp)
@@ -2445,9 +2509,9 @@ loc_FC4:
 		dbf     d3,loc_FAC
 		movem.l (sp)+,d3-d4/a3-a6
 		bsr.w   EnableInterrupts
-		bra.w   SetVIntParam0AndWait
+		bra.w   WaitForVdpCommandQueueProcessing
 
-	; End of function sub_F52
+    ; End of function sub_F5C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2465,12 +2529,12 @@ sub_FE8:
 		bsr.w   SwapA6
 		bra.w   loc_F78
 
-	; End of function sub_FE8
+    ; End of function sub_FE8
 
 
 ; =============== S U B R O U T I N E =======================================
 
-DMAFromRAMToVRAM:
+ApplyImmediateVramDma:
 		
 		movem.l d2,-(sp)
 		movem.l d0/a6,-(sp)
@@ -2533,21 +2597,22 @@ loc_10BE:
 		movem.l (sp)+,d2
 		rts
 
-	; End of function DMAFromRAMToVRAM
+    ; End of function ApplyImmediateVramDma
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; DMA stuff. d0 = DMA destination ?
+; A0=Source, A1=Destination, D0=Length, D1=Auto-increment
 
-sub_10D2:
+ApplyVIntVramDma:
+		
 		bsr.w   DisableInterrupts
 		movem.l d2,-(sp)
 		movem.l d0/a6,-(sp)
-		movea.l (VDP_REG_COMMANDS).l,a6
+		movea.l (DMA_QUEUE_POINTER).l,a6
 		move.l  d1,d2
 		addi.w  #-$7100,d1
-		move.w  d1,(a6)+
+		move.w  d1,(a6)+        ; Apply auto-increment from D1
 		move.l  d2,d1
 		clr.w   d2
 		move.b  d0,d2
@@ -2555,7 +2620,7 @@ sub_10D2:
 		swap    d0
 		move.w  d2,d0
 		ori.l   #$94009300,d0
-		move.l  d0,(a6)+
+		move.l  d0,(a6)+        ; Apply DMA Length from D0
 		move.l  #$96009500,d2
 		move.l  a0,d0
 		lsr.l   #1,d0
@@ -2567,7 +2632,7 @@ sub_10D2:
 		move.l  d2,(a6)+
 		swap    d0
 		ori.w   #$9700,d0
-		move.w  d0,(a6)+
+		move.w  d0,(a6)+        ; Apply source address from A0
 		move.w  a1,d0
 		andi.w  #$3FFF,d0
 		ori.w   #$4000,d0
@@ -2576,9 +2641,9 @@ sub_10D2:
 		rol.w   #2,d0
 		andi.w  #3,d0
 		ori.b   #$80,d0
-		move.w  d0,(a6)+
-		move.l  a6,(VDP_REG_COMMANDS).l
-		addq.b  #1,(byte_FF0E96).l
+		move.w  d0,(a6)+        ; Apply VRAM write destination address from A1
+		move.l  a6,(DMA_QUEUE_POINTER).l
+		addq.b  #1,(DMA_QUEUE_SIZE).l
 		movem.l (sp)+,d0/a6
 		moveq   #0,d2
 		move.w  d0,d2
@@ -2588,7 +2653,7 @@ sub_10D2:
 		movem.l (sp)+,d2
 		bra.w   EnableInterrupts
 
-	; End of function sub_10D2
+    ; End of function ApplyVIntVramDma
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2606,44 +2671,44 @@ sub_115A:
 		movem.w (sp)+,d7
 		rts
 
-	; End of function sub_115A
+    ; End of function sub_115A
 
 
 ; =============== S U B R O U T I N E =======================================
 
-StoreVDPCommands:
+UpdateVdpHScrollData:
 		
 		movem.l a6,-(sp)
-		movea.l (VDP_REG_COMMANDS).l,a6
+		movea.l (DMA_QUEUE_POINTER).l,a6
 		move.w  #$8F02,(a6)+    ; auto-increment : 2
-		btst    #1,(byte_FF0EDF).l
+		btst    #1,(VDP_REG0B_VALUE).l; Check HScroll mode
 		bne.s   loc_11A2        
-		move.w  #$9400,(a6)+    ; DMA length
-		move.w  #$9302,(a6)+
+		move.w  #$9400,(a6)+    ; If HScroll mode = 00, then full screen
+		move.w  #$9302,(a6)+    ; DMA length = 2
 		bra.s   loc_11AA
 loc_11A2:
-		move.w  #$9402,(a6)+    ; DMA length
-		move.w  #$9300,(a6)+
+		move.w  #$9402,(a6)+    ; If HScroll mode = 10, then 8 pixel rows
+		move.w  #$9300,(a6)+    ; DMA length = $200 = 512
 loc_11AA:
 		move.w  #$9680,(a6)+
 		move.w  #$9580,(a6)+
-		move.w  #$977F,(a6)+    ; RAM to VRAM, address : 0x3FE880
+		move.w  #$977F,(a6)+    ; RAM to VRAM, address :
 		move.w  #$7400,(a6)+
-		move.w  #$83,(a6)+ ; Data Port stuff ?
-		move.l  a6,(VDP_REG_COMMANDS).l
-		addq.b  #1,(byte_FF0E96).l
+		move.w  #$83,(a6)+ 
+		move.l  a6,(DMA_QUEUE_POINTER).l
+		addq.b  #1,(DMA_QUEUE_SIZE).l
 		movem.l (sp)+,a6
 		rts
 
-	; End of function StoreVDPCommands
+    ; End of function UpdateVdpHScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-ClearHScrollStuff:
+UpdateForegroundHScrollData:
 		
 		movem.l d7/a6,-(sp)
-		lea     (dword_FF0100).l,a6
+		lea     (HORIZONTAL_SCROLL_DATA).l,a6
 loc_11DA:
 		move.w  #$FF,d7
 loc_11DE:
@@ -2651,28 +2716,30 @@ loc_11DE:
 		addq.l  #2,a6
 		dbf     d7,loc_11DE
 		movem.l (sp)+,d7/a6
-		bra.s   StoreVDPCommands
+		bra.s   UpdateVdpHScrollData
 
-	; End of function ClearHScrollStuff
+    ; End of function UpdateForegroundHScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-ClearOtherHScrollStuff:
+UpdateBackgroundHScrollData:
 		
 		movem.l d7/a6,-(sp)
-		lea     ((dword_FF0100+2)).l,a6
+		lea     ((HORIZONTAL_SCROLL_DATA+2)).l,a6
 		bra.s   loc_11DA
 
-	; End of function ClearOtherHScrollStuff
+    ; End of function UpdateBackgroundHScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-StoreVDPCommandsbis:
+; VDP Vertical Scroll Data
+
+UpdateVdpVScrollData:
 		
 		movem.l a6,-(sp)
-		movea.l (VDP_REG_COMMANDS).l,a6
+		movea.l (DMA_QUEUE_POINTER).l,a6
 		move.w  #$8F02,(a6)+
 		move.w  #$9400,(a6)+
 		move.w  #$9328,(a6)+
@@ -2681,20 +2748,20 @@ StoreVDPCommandsbis:
 		move.w  #$977F,(a6)+
 		move.w  #$4000,(a6)+
 		move.w  #$90,(a6)+ 
-		move.l  a6,(VDP_REG_COMMANDS).l
-		addq.b  #1,(byte_FF0E96).l
+		move.l  a6,(DMA_QUEUE_POINTER).l
+		addq.b  #1,(DMA_QUEUE_SIZE).l
 		movem.l (sp)+,a6
 		rts
 
-	; End of function StoreVDPCommandsbis
+    ; End of function UpdateVdpVScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-ClearVScrollStuff:
+UpdateForegroundVScrollData:
 		
 		movem.l d7/a6,-(sp)
-		lea     (word_FF0500).l,a6
+		lea     (VERTICAL_SCROLL_DATA).l,a6
 loc_123E:
 		move.w  #$13,d7
 loc_1242:
@@ -2702,37 +2769,40 @@ loc_1242:
 		addq.l  #2,a6
 		dbf     d7,loc_1242
 		movem.l (sp)+,d7/a6
-		bra.s   StoreVDPCommandsbis
+		bra.s   UpdateVdpVScrollData
 
-	; End of function ClearVScrollStuff
+    ; End of function UpdateForegroundVScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-ClearOtherVScrollStuff:
+UpdateBackgroundVScrollData:
 		
 		movem.l d7/a6,-(sp)
-		lea     ((word_FF0500+2)).l,a6
+		lea     ((VERTICAL_SCROLL_DATA+2)).l,a6
 		bra.s   loc_123E
 
-	; End of function ClearOtherVScrollStuff
+    ; End of function UpdateBackgroundVScrollData
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_125C:
+; A0=Source, A1=Destination, D0=Length, D1=Auto-increment
+
+ApplyImmediateVramDmaOnCompressedTiles:
+		
 		movem.w d1,-(sp)
-		bsr.s   PrepareSomethingForDMA
-		bsr.w   DMAFromRAMToVRAM
+		bsr.s   DecompressTilesForVramDma
+		bsr.w   ApplyImmediateVramDma
 		movem.w (sp)+,d1
 		rts
 
-	; End of function sub_125C
+    ; End of function ApplyImmediateVramDmaOnCompressedTiles
 
 
 ; =============== S U B R O U T I N E =======================================
 
-PrepareSomethingForDMA:
+DecompressTilesForVramDma:
 		
 		movem.l d0-d1/a1,-(sp)
 		bsr.w   DecompressGraphics
@@ -2741,73 +2811,73 @@ PrepareSomethingForDMA:
 		move.w  #2,d1
 		rts
 
-	; End of function PrepareSomethingForDMA
+    ; End of function DecompressTilesForVramDma
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; DMA preparation stuff
-
-sub_1284:
+ApplyVIntVramDmaOnCompressedTiles:
+		
 		movem.w d1,-(sp)
-		bsr.s   PrepareSomethingForDMA
-		bsr.w   sub_10D2        
+		bsr.s   DecompressTilesForVramDma
+		bsr.w   ApplyVIntVramDma
 		movem.w (sp)+,d1
 		rts
 
-	; End of function sub_1284
+    ; End of function ApplyVIntVramDmaOnCompressedTiles
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; DMA stuff
+; DMA code
 
 sub_1294:
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($C000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
-		bsr.w   sub_10D2        
-		bsr.w   SetVIntParam3
+		bsr.w   ApplyVIntVramDma
+		bsr.w   EnableDmaQueueProcessing
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function sub_1294
+    ; End of function sub_1294
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; DMA stuff
+; DMA code
 
 sub_12BA:
 		movem.l d0-d1/a0-a1,-(sp)
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$400,d0
 		move.w  #2,d1
-		bsr.w   sub_10D2        
-		bsr.w   SetVIntParam3
+		bsr.w   ApplyVIntVramDma
+		bsr.w   EnableDmaQueueProcessing
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
-	; End of function sub_12BA
+    ; End of function sub_12BA
 
 
 ; =============== S U B R O U T I N E =======================================
 
-DMAandWait:
+DmaAndWait:
 		bsr.s   sub_1294        
 		bra.w   WaitForVInt     
 
-	; End of function DMAandWait
+    ; End of function DmaAndWait
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; d0:DMA destination - d1:DMA length - d2:sent to VDP Data
+; D0=Destination, D1=Length, D2=Filler value
 
-DMAVramFill:
+ApplyVramDmaFill:
+		
 		movem.l d0-d3,-(sp)
 		move.w  (VDP_REG01_STATUS).l,d3; get last 16+ vdp reg config command ?
 		ori.b   #$10,d3         ; make sure it concerns a 16+ vdp reg
@@ -2832,28 +2902,26 @@ DMAVramFill:
 		ori.w   #$80,d0 ; errr .. CD5 set to 1 ? doesn't correspond to any access mode
 		move.w  d0,(VDP_Control).l; destination address, second word
 		move.w  d2,(VDP_Data).l ; writes 0 everytime
-loc_1358:
+@Wait:
 		move.w  (VDP_Control).l,d0
 		andi.w  #2,d0           ; wait for DMA free
-		bne.s   loc_1358
+		bne.s   @Wait
 		move.w  (VDP_REG01_STATUS).l,d3; get last vdp 16+ reg config command and send it
 		move.w  d3,(VDP_Control).l
 		move.w  #$8F02,(VDP_Control).l; auto increment bias number : 2
 		movem.l (sp)+,d0-d3
 		rts
 
-	; End of function DMAVramFill
+    ; End of function ApplyVramDmaFill
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; write D0 into RAM:E80 to D7 places
-
 WriteAsciiNumber:
 		
 		movem.l d5-d7/a5-a6,-(sp)
-		lea     PowersOfTen(pc), a5
-		lea     (byte_FF0E80).l,a6
+		lea     tbl_PowersOfTen(pc), a5
+		lea     (LOADED_NUMBER).l,a6
 		moveq   #9,d5
 loc_138E:
 		move.w  #$2F,d6 
@@ -2864,7 +2932,8 @@ loc_1392:
 		move.b  d6,(a6)+
 		add.l   (a5)+,d0
 		dbf     d5,loc_138E
-		lea     (byte_FF0E80).l,a6
+                
+		lea     (LOADED_NUMBER).l,a6
 		moveq   #8,d6
 loc_13A8:
 		cmpi.b  #$30,(a6) 
@@ -2875,9 +2944,9 @@ loc_13B8:
 		movem.l (sp)+,d5-d7/a5-a6
 		rts
 
-	; End of function WriteAsciiNumber
+    ; End of function WriteAsciiNumber
 
-PowersOfTen:    dc.l 1000000000
+tbl_PowersOfTen:dc.l 1000000000
 		dc.l 100000000
 		dc.l 10000000
 		dc.l 1000000
@@ -2891,19 +2960,27 @@ PowersOfTen:    dc.l 1000000000
 
 ; =============== S U B R O U T I N E =======================================
 
-nullsub_1:
+nullsub_13E8:
 		rts
 
-	; End of function nullsub_1
+    ; End of function nullsub_13E8
 
+
+; =============== S U B R O U T I N E =======================================
+
+sub_13EA:
 		movem.l d6-d7/a5-a6,-(sp)
 		move.w  #$100,(Z80BusReq).l
-loc_13F6:       btst    #0,(Z80BusReq).l
+loc_13F6:
+		btst    #0,(Z80BusReq).l
 		bne.s   loc_13F6
 		bsr.s   UpdatePlayerInputs
 		move.w  #0,(Z80BusReq).l
 		movem.l (sp)+,d6-d7/a5-a6
 		rts
+
+    ; End of function sub_13EA
+
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -2913,10 +2990,10 @@ UpdatePlayerInputs:
 		lea     ((DATA1+1)).l,a6
 		bsr.s   sub_1428
 		neg.b   d6
-		add.w   d6,(RANDOM_SEED).l; Update RNG data?
+		add.w   d6,(RANDOM_SEED).l; Update random seed
 		addq.w  #2,a6
 
-	; End of function UpdatePlayerInputs
+    ; End of function UpdatePlayerInputs
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2938,40 +3015,40 @@ sub_1428:
 		move.b  d6,(a5)+
 		rts
 
-	; End of function sub_1428
+    ; End of function sub_1428
 
 
 ; =============== S U B R O U T I N E =======================================
 
 WaitForPlayerInput:
 		
-		andi.b  #$FF,(CURRENT_PLAYER_INPUT).l
-		bne.s   locret_145E
+		andi.b  #INPUT_UP|INPUT_DOWN|INPUT_LEFT|INPUT_RIGHT|INPUT_B|INPUT_C|INPUT_A|INPUT_START,(CURRENT_PLAYER_INPUT).l
+		bne.s   @Return
 		bsr.w   WaitForVInt     
 		bra.s   WaitForPlayerInput
-locret_145E:
+@Return:
 		rts
 
-	; End of function WaitForPlayerInput
+    ; End of function WaitForPlayerInput
 
 
 ; =============== S U B R O U T I N E =======================================
 
-WaitForPlayer1NewButtonPush:
+WaitForPlayer1NewInput:
 		
-		andi.b  #$FF,(P1_INPUT).l
-		beq.s   loc_1470
+		andi.b  #INPUT_UP|INPUT_DOWN|INPUT_LEFT|INPUT_RIGHT|INPUT_B|INPUT_C|INPUT_A|INPUT_START,(P1_INPUT).l
+		beq.s   @Wait
 		bsr.w   WaitForVInt     
-		bra.s   WaitForPlayer1NewButtonPush
-loc_1470:
-		andi.b  #$FF,(P1_INPUT).l
-		bne.s   locret_1480
+		bra.s   WaitForPlayer1NewInput
+@Wait:
+		andi.b  #INPUT_UP|INPUT_DOWN|INPUT_LEFT|INPUT_RIGHT|INPUT_B|INPUT_C|INPUT_A|INPUT_START,(P1_INPUT).l
+		bne.s   @Return
 		bsr.w   WaitForVInt     
-		bra.s   loc_1470
-locret_1480:
+		bra.s   @Wait
+@Return:
 		rts
 
-	; End of function WaitForPlayer1NewButtonPush
+    ; End of function WaitForPlayer1NewInput
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -2994,7 +3071,7 @@ loc_14B2:
 		movem.l (sp)+,d7
 		rts
 
-	; End of function sub_1482
+    ; End of function sub_1482
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3002,17 +3079,18 @@ loc_14B2:
 WaitForInputFor1Second:
 		
 		movem.l d5,-(sp)
-		moveq   #$3B,d5 
-loc_14CA:
-		andi.b  #$FF,(P1_INPUT).l
-		bne.s   loc_14DC
+		moveq   #59,d5          ; number of frames to wait, minus one
+WaitForInput_Loop:
+		
+		andi.b  #INPUT_UP|INPUT_DOWN|INPUT_LEFT|INPUT_RIGHT|INPUT_B|INPUT_C|INPUT_A|INPUT_START,(P1_INPUT).l
+		bne.s   @Done
 		bsr.w   WaitForVInt     
-		dbf     d5,loc_14CA
-loc_14DC:
+		dbf     d5,WaitForInput_Loop
+@Done:
 		movem.l (sp)+,d5
 		rts
 
-	; End of function WaitForInputFor1Second
+    ; End of function WaitForInputFor1Second
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3020,17 +3098,17 @@ loc_14DC:
 WaitForInputFor3Seconds:
 		
 		movem.l d5,-(sp)
-		move.l  #$B3,d5 
-		bra.s   loc_14CA
+		move.l  #179,d5
+		bra.s   WaitForInput_Loop
 
-	; End of function WaitForInputFor3Seconds
+    ; End of function WaitForInputFor3Seconds
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get random number from 0 to D6, returned in D7
+; In: D6 = Value range, Out: D7 = Random value
 
-UpdateRandomSeed:
+GenerateRandomNumber:
 		
 		move.w  (RANDOM_SEED).l,d7
 		mulu.w  #$D,d7
@@ -3041,7 +3119,7 @@ UpdateRandomSeed:
 		swap    d7
 		rts
 
-	; End of function UpdateRandomSeed
+    ; End of function GenerateRandomNumber
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3050,28 +3128,23 @@ UpdateRandomSeed:
 
 PlayMusicAfterCurrentOne:
 		
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_WAIT_MUSIC_END
+		 
+		sndCom  SOUND_COMMAND_WAIT_MUSIC_END
 						; Wait for current music to end
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_GET_D0_PARAMETER
-						; get d0 value, if $FB : play previous music
-loc_1516:
+		sndCom  SOUND_COMMAND_GET_D0_PARAMETER
+@Wait:
 		moveq   #3,d0
 		bsr.w   Sleep           
 		tst.b   (WAIT_FOR_MUSIC_END).l; wait for sound command sent
-		bne.s   loc_1516
+		bne.s   @Wait
 		rts
 
-	; End of function PlayMusicAfterCurrentOne
+    ; End of function PlayMusicAfterCurrentOne
 
 
 ; =============== S U B R O U T I N E =======================================
 
-;     Copy D7 bytes from A0 to A1.
-;     In: A0 = src address
-;         A1 = dest address
-;         D7 = number of bytes to copy
+; A0=Source, A1=Destination, D7=Length
 
 CopyBytes:
 		movem.l d7-a1,-(sp)
@@ -3093,32 +3166,30 @@ loc_1544:
 		movem.l (sp)+,d7-a1
 		rts
 
-	; End of function CopyBytes
+    ; End of function CopyBytes
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; In: D0 = number of sprites
-; 
-; set default values in sprite table
+; D0 = Number of sprites to initialize
 
 InitSprites:
 		movem.l d0-d1/a0,-(sp)
-		lea     (SPRITE_TABLE).l,a0
+		lea     (SPRITE_00_PROPERTIES).l,a0
 		move.w  #1,d1
-loc_155E:
+@Loop:
 		move.w  #1,(a0)+
 		move.w  d1,(a0)+
 		move.w  #1,(a0)+
 		move.w  #1,(a0)+
 		addq.w  #1,d1
-		dbf     d0,loc_155E
+		dbf     d0,@Loop
 		subq.l  #6,a0
 		clr.w   (a0)
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function InitSprites
+    ; End of function InitSprites
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3133,7 +3204,7 @@ sub_157C:
 		movem.l (sp)+,d1
 		rts
 
-	; End of function sub_157C
+    ; End of function sub_157C
 
 word_1594:      dc.w 0
 		dc.w 3
@@ -3418,7 +3489,7 @@ loc_17BA:
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function sub_1794
+    ; End of function sub_1794
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3438,7 +3509,7 @@ sub_17C0:
 loc_17D8:
 		lsl.w   #6,d7
 		divs.w  d6,d7
-		move.b  unk_1814(pc,d7.w),d7
+		move.b  byte_1814(pc,d7.w),d7
 		andi.w  #$FF,d7
 		movem.l d0,-(sp)
 		muls.w  d1,d0
@@ -3462,32 +3533,32 @@ loc_180E:
 		movem.l (sp)+,d0-d2
 		rts
 
-	; End of function sub_17C0
+    ; End of function sub_17C0
 
-unk_1814:       dc.b   0
-		dc.b   1
-		dc.b   1
-		dc.b   2
-		dc.b   3
-		dc.b   3
-		dc.b   4
-		dc.b   5
-		dc.b   5
-		dc.b   6
-		dc.b   6
-		dc.b   7
-		dc.b   8
-		dc.b   8
-		dc.b   9
-		dc.b  $A
-		dc.b  $A
-		dc.b  $B
-		dc.b  $C
-		dc.b  $C
-		dc.b  $D
-		dc.b  $E
-		dc.b  $E
-		dc.b  $F
+byte_1814:      dc.b 0
+		dc.b 1
+		dc.b 1
+		dc.b 2
+		dc.b 3
+		dc.b 3
+		dc.b 4
+		dc.b 5
+		dc.b 5
+		dc.b 6
+		dc.b 6
+		dc.b 7
+		dc.b 8
+		dc.b 8
+		dc.b 9
+		dc.b $A
+		dc.b $A
+		dc.b $B
+		dc.b $C
+		dc.b $C
+		dc.b $D
+		dc.b $E
+		dc.b $E
+		dc.b $F
 		dc.b $10
 		dc.b $10
 		dc.b $11
@@ -3510,26 +3581,26 @@ unk_1814:       dc.b   0
 		dc.b $1E
 		dc.b $1F
 		dc.b $20
-		dc.b $21 
-		dc.b $22 
-		dc.b $23 
-		dc.b $24 
-		dc.b $25 
-		dc.b $26 
-		dc.b $27 
-		dc.b $28 
-		dc.b $29 
-		dc.b $2B 
-		dc.b $2C 
-		dc.b $2D 
-		dc.b $2F 
-		dc.b $31 
-		dc.b $32 
-		dc.b $35 
-		dc.b $37 
-		dc.b $3B 
-		dc.b $40 
-		dc.b   0
+		dc.b $21
+		dc.b $22
+		dc.b $23
+		dc.b $24
+		dc.b $25
+		dc.b $26
+		dc.b $27
+		dc.b $28
+		dc.b $29
+		dc.b $2B
+		dc.b $2C
+		dc.b $2D
+		dc.b $2F
+		dc.b $31
+		dc.b $32
+		dc.b $35
+		dc.b $37
+		dc.b $3B
+		dc.b $40
+		dc.b 0
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -3537,7 +3608,7 @@ unk_1814:       dc.b   0
 
 sub_1856:
 		movem.l d0-d2/d7-a1,-(sp)
-		lea     (SPRITE_LINK).l,a1
+		lea     (SPRITE_00_LINK).l,a1
 		clr.w   d1
 		moveq   #2,d0
 		bsr.w   sub_1880
@@ -3550,7 +3621,7 @@ sub_1856:
 		movem.l (sp)+,d0-d2/d7-a1
 		rts
 
-	; End of function sub_1856
+    ; End of function sub_1856
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3571,7 +3642,7 @@ loc_1896:
 		subq.w  #1,d0
 		rts
 
-	; End of function sub_1880
+    ; End of function sub_1880
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3592,7 +3663,7 @@ loc_18BC:
 		dbf     d7,loc_18AA
 		rts
 
-	; End of function sub_18A0
+    ; End of function sub_18A0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3607,92 +3678,101 @@ loc_18D0:
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function sub_18C4
+    ; End of function sub_18C4
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_18DC:
 		movem.l d0-a6,-(sp)
-		bsr.w   sub_198E
-		bsr.s   sub_191C
+		bsr.w   HandleDialogueTypewriting
+		bsr.s   OpenMessageWindow
 		movem.l (sp)+,d0-a6
 		rts
 
-	; End of function sub_18DC
+    ; End of function sub_18DC
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_18EC:
+CreateMessageWindow:
+		
 		movem.l d0-a6,-(sp)
-		bsr.w   sub_198E
-		bsr.w   sub_1AB6
-		btst    #0,(byte_FF0EE9).l
+		bsr.w   HandleDialogueTypewriting
+		bsr.w   LoadMessageWindowLayout
+		btst    #0,(VDP_REG10_VALUE).l
 		beq.s   loc_1916
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1C08,d0
 		move.w  #$213,d1
-		bsr.w   sub_801C
+		bsr.w   j_CreateWindow
 		bsr.w   sub_8054
 loc_1916:
 		movem.l (sp)+,d0-a6
 		rts
 
-	; End of function sub_18EC
+    ; End of function CreateMessageWindow
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_191C:
+OpenMessageWindow:
+		
 		move.b  #1,((byte_FFF804-$1000000)).w
-		bsr.w   sub_1AB6
-		btst    #0,(byte_FF0EE9).l
+		bsr.w   LoadMessageWindowLayout
+		btst    #0,(VDP_REG10_VALUE).l
 		beq.w   loc_1B74
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1C08,d0
 		move.l  #$21C0213,d1
 		move.w  #7,d2
-		bra.w   sub_80C0
+		bra.w   j_MoveWindow
 
-	; End of function sub_191C
+    ; End of function OpenMessageWindow
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_1948:
-		lea     ((byte_FFB7DA-$1000000)).w,a0
-		move.w  #$C080,d0
-		move.w  #$C081,d1
-		move.w  #$C880,d2
-		bra.s   loc_197E
-		bsr.s   sub_1948
-		move.w  #$C090,d0
-		move.w  #$C020,d1
-		move.w  #$C890,d2
+LoadMessageWindowLayout_TopBorder:
+		
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
+		move.w  #VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d0
+		move.w  #VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d1
+		move.w  #VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d2
+		bra.s   LoadMessageWindowSingleRow
+		                
+		bsr.s   LoadMessageWindowLayout_TopBorder
+		move.w  #VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d0
+		move.w  #VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d1
+		move.w  #VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d2
 		move.w  #5,d6
 loc_196C:
-		bsr.s   loc_197E
+		bsr.s   LoadMessageWindowSingleRow
 		dbf     d6,loc_196C
-loc_1972:
-		move.w  #$D080,d0
-		move.w  #$D081,d1
-		move.w  #$D880,d2
-loc_197E:
+; ---------------------------------------------------------------------------
+LoadMessageWindowLayout_BottomBorder:
+		
+		move.w  #VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d0
+		move.w  #VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d1
+		move.w  #VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d2
+LoadMessageWindowSingleRow:
+		
 		move.w  d0,(a0)+
 		move.w  #$19,d7
-loc_1984:
+@Loop:
 		move.w  d1,(a0)+
-		dbf     d7,loc_1984
+		dbf     d7,@Loop
+                
 		move.w  d2,(a0)+
 		rts
 
-	; End of function sub_1948
+    ; End of function LoadMessageWindowLayout_TopBorder
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_198E:
+HandleDialogueTypewriting:
+		
 		move.b  #2,((TEXT_X_POSITION-$1000000)).w
 		move.b  #2,((TEXT_Y_POSITION-$1000000)).w
 		lea     (FF3000_LOADING_SPACE).l,a0
@@ -3703,11 +3783,11 @@ loc_19A4:
 		clr.w   d0
 loc_19AE:
 		move.w  d0,-(sp)
-		bsr.w   sub_1A0E
+		bsr.w   HandleBlinkingDialogueCursor
 		move.w  (sp)+,d1
 		clr.w   d0
 		moveq   #3,d2
-		sub.b   ((byte_FF9C05-$1000000)).w,d2
+		sub.b   ((MESSAGE_SPEED-$1000000)).w,d2
 		beq.s   loc_19C4
 		subq.w  #1,d2
 		bset    d2,d0
@@ -3723,47 +3803,47 @@ loc_19D4:
 		beq.s   loc_19F4
 		tst.w   d1
 		beq.s   loc_19F0
-		eori.b  #1,((byte_FFB53C-$1000000)).w
+		eori.b  #1,((SPEECH_SOUND_TOGGLE-$1000000)).w
 		beq.s   loc_19EE
 		move.w  d0,-(sp)
-		move.w  ((word_FFC0BE-$1000000)).w,d0
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_GET_D0_PARAMETER
+		move.w  ((SPEECH_SFX-$1000000)).w,d0
+		sndCom  SOUND_COMMAND_GET_D0_PARAMETER
 		move.w  (sp)+,d0
 loc_19EE:
 		bra.s   loc_19F4
 loc_19F0:
-		clr.b   ((byte_FFB53C-$1000000)).w
+		clr.b   ((SPEECH_SOUND_TOGGLE-$1000000)).w
 loc_19F4:
 		subq.w  #1,d0
-		blt.s   locret_1A0C
+		blt.s   return_1A0C
 loc_19F8:
 		tst.b   (P1_INPUT).l    
-		bne.s   locret_1A0C
+		bne.s   return_1A0C
 		move    sr,-(sp)
 		bsr.w   WaitForVInt     
 		move    (sp)+,ccr
 		dbne    d0,loc_19F8
-locret_1A0C:
+return_1A0C:
 		rts
 
-	; End of function sub_198E
+    ; End of function HandleDialogueTypewriting
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_1A0E:
-		btst    #0,(byte_FF0EE9).l
+HandleBlinkingDialogueCursor:
+		
+		btst    #0,(VDP_REG10_VALUE).l
 		beq.w   loc_1A44
 		lea     (FF3000_LOADING_SPACE).l,a0
 		lea     ($D000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
-		bsr.w   sub_10D2        
+		bsr.w   ApplyVIntVramDma
 		lea     ($F800).l,a1
 		move.w  #$1C0,d0
-		bsr.w   sub_10D2        
-		bra.w   SetVIntParam3AndWait
+		bsr.w   ApplyVIntVramDma
+		bra.w   WaitForDmaQueueProcessing
 loc_1A44:
 		lea     (FF3000_LOADING_SPACE).l,a0
 		lea     (FF0FFE_LOADING_SPACE).l,a1
@@ -3787,81 +3867,86 @@ loc_1A54:
 		lea     ($D120).l,a1
 		move.w  #$680,d0
 		move.w  #2,d1
-		bsr.w   sub_10D2        
-		bsr.w   SetVIntParam3AndWait
+		bsr.w   ApplyVIntVramDma
+		bsr.w   WaitForDmaQueueProcessing
 		rts
 
-	; End of function sub_1A0E
+    ; End of function HandleBlinkingDialogueCursor
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_1A92:
-		bsr.s   sub_1AB6
-		btst    #0,(byte_FF0EE9).l
+CloseMessageWindow:
+		
+		bsr.s   LoadMessageWindowLayout
+		btst    #0,(VDP_REG10_VALUE).l
 		beq.w   loc_1B6E
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1C08,d0
 		move.l  #$213021C,d1
 		move.w  #7,d2
-		bra.w   sub_80C0
+		bra.w   j_MoveWindow
 
-	; End of function sub_1A92
+    ; End of function CloseMessageWindow
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_1AB6:
-		bsr.w   sub_1948
-		move.w  #$C090,d0
-		move.w  #$C680,d1
-		move.w  #$C890,d2
+LoadMessageWindowLayout:
+		
+		bsr.w   LoadMessageWindowLayout_TopBorder
+		move.w  #VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d0
+		move.w  #VDPTILE_MESSAGE_START1|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d1
+		move.w  #VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d2
 		move.w  #5,d6
-loc_1ACA:
-		bsr.s   sub_1AD4
-		dbf     d6,loc_1ACA
-		bra.w   loc_1972
+@Loop:
+		bsr.s   LoadMessageWindowLayout_Content
+		dbf     d6,@Loop
+                
+		bra.w   LoadMessageWindowLayout_BottomBorder
 
-	; End of function sub_1AB6
+    ; End of function LoadMessageWindowLayout
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_1AD4:
+LoadMessageWindowLayout_Content:
+		
 		move.w  d0,(a0)+
 		move.w  #$19,d7
-loc_1ADA:
+@Loop:
 		move.w  d1,(a0)+
 		addq.w  #1,d1
-		cmpi.w  #$C700,d1
-		bne.s   loc_1AE8
-		move.w  #$C7C0,d1
-loc_1AE8:
-		dbf     d7,loc_1ADA
+		cmpi.w  #VDPTILE_MESSAGE_END1|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d1
+		bne.s   @Continue
+		move.w  #VDPTILE_MESSAGE_START2|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,d1
+@Continue:
+		dbf     d7,@Loop
+                
 		move.w  d2,(a0)+
 		rts
 
-	; End of function sub_1AD4
+    ; End of function LoadMessageWindowLayout_Content
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_1AF0:
-		move.l  (dword_FF0EF6).l,-(sp)
-		btst    #0,(byte_FF0EE9).l
+		move.l  (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l,-(sp)
+		btst    #0,(VDP_REG10_VALUE).l
 		bne.s   loc_1B06
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 loc_1B06:
 		move.w  #7,d5
 loc_1B0A:
 		bsr.s   sub_1B1E
 		bsr.s   sub_1B1E
-		bsr.w   sub_1A0E
+		bsr.w   HandleBlinkingDialogueCursor
 		dbf     d5,loc_1B0A
-		move.l  (sp)+,(dword_FF0EF6).l
+		move.l  (sp)+,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		rts
 
-	; End of function sub_1AF0
+    ; End of function sub_1AF0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3875,7 +3960,7 @@ loc_1B28:
 		dbf     d6,loc_1B28
 		rts
 
-	; End of function sub_1B1E
+    ; End of function sub_1B1E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3889,7 +3974,7 @@ loc_1B38:
 		move.l  #$DDDDDDDD,d0
 		bra.s   loc_1B4E
 
-	; End of function sub_1B34
+    ; End of function sub_1B34
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -3907,28 +3992,28 @@ loc_1B4E:
 		move.l  d0,(a0)
 		rts
 
-	; End of function sub_1B4A
+    ; End of function sub_1B4A
 
 
-; START OF FUNCTION CHUNK FOR sub_1A92
+; START OF FUNCTION CHUNK FOR CloseMessageWindow
 
 loc_1B6E:
 		moveq   #$60,d1 
 		bra.w   loc_1B98
 
-; END OF FUNCTION CHUNK FOR sub_1A92
+; END OF FUNCTION CHUNK FOR CloseMessageWindow
 
 
-; START OF FUNCTION CHUNK FOR sub_191C
+; START OF FUNCTION CHUNK FOR OpenMessageWindow
 
 loc_1B74:
-		lea     unk_1F26(pc), a0
+		lea     byte_1F26(pc), a0
 		nop
 		lea     ($D000).l,a1
 		move.w  #$90,d0 
 		move.w  #2,d1
-		bsr.w   sub_10D2        
-		bsr.w   SetVIntParam3
+		bsr.w   ApplyVIntVramDma
+		bsr.w   EnableDmaQueueProcessing
 		jsr     (WaitForVInt).l 
 		clr.w   d1
 loc_1B98:
@@ -3936,7 +4021,7 @@ loc_1B98:
 		move.w  d1,d0
 		asr.w   #8,d0
 		ext.w   d1
-		lea     (word_FF0C88).l,a1
+		lea     (SPRITE_01_PROPERTIES).l,a1
 		moveq   #5,d7
 loc_1BAA:
 		move.w  (a0)+,(a1)
@@ -3945,7 +4030,7 @@ loc_1BAA:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BAA
-		lea     (word_FF0D48).l,a1
+		lea     (SPRITE_25_PROPERTIES).l,a1
 		moveq   #6,d7
 loc_1BC0:
 		move.w  (a0)+,(a1)
@@ -3954,7 +4039,7 @@ loc_1BC0:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BC0
-		lea     (dword_FF0E30).l,a1
+		lea     (SPRITE_54_PROPERTIES).l,a1
 		moveq   #9,d7
 loc_1BD6:
 		move.w  (a0)+,(a1)
@@ -3978,76 +4063,123 @@ loc_1BD6:
 		move.l  d0,(a0)+
 		jmp     (sub_320).l
 
-; END OF FUNCTION CHUNK FOR sub_191C
+; END OF FUNCTION CHUNK FOR OpenMessageWindow
 
-word_1C0E:      dc.w $118
-		dc.l $F00C689
+word_1C0E:      ; sprite properties data
+		dc.w $118
+		dc.b $F
+		dc.b 0
+		dc.w $C689
 		dc.w $98
 		dc.w $118
-		dc.l $F00C699
+		dc.b $F
+		dc.b 0
+		dc.w $C699
 		dc.w $B8
 		dc.w $118
-		dc.l $F00C6A9
+		dc.b $F
+		dc.b 0
+		dc.w $C6A9
 		dc.w $D8
 		dc.w $118
-		dc.l $F00C6B9
+		dc.b $F
+		dc.b 0
+		dc.w $C6B9
 		dc.w $F8
 		dc.w $118
-		dc.l $F00C6C9
+		dc.b $F
+		dc.b 0
+		dc.w $C6C9
 		dc.w $118
 		dc.w $118
-		dc.l $F00C6D9
+		dc.b $F
+		dc.b 0
+		dc.w $C6D9
 		dc.w $138
 		dc.w $118
-		dc.l $700C6E9
+		dc.b 7
+		dc.b 0
+		dc.w $C6E9
 		dc.w $158
 		dc.w $110
-		dc.l $C00C680
+		dc.b $C
+		dc.b 0
+		dc.w $C680
 		dc.w $90
 		dc.w $110
-		dc.l $C00C681
+		dc.b $C
+		dc.b 0
+		dc.w $C681
 		dc.w $B0
 		dc.w $110
-		dc.l $C00C681
+		dc.b $C
+		dc.b 0
+		dc.w $C681
 		dc.w $D0
 		dc.w $110
-		dc.l $C00C681
+		dc.b $C
+		dc.b 0
+		dc.w $C681
 		dc.w $F0
 		dc.w $110
-		dc.l $C00C681
+		dc.b $C
+		dc.b 0
+		dc.w $C681
 		dc.w $110
 		dc.w $110
-		dc.l $C00C681
+		dc.b $C
+		dc.b 0
+		dc.w $C681
 		dc.w $130
 		dc.w $110
-		dc.l $C00CE80
+		dc.b $C
+		dc.b 0
+		dc.w $CE80
 		dc.w $150
 		dc.w $138
-		dc.l $C00D680
+		dc.b $C
+		dc.b 0
+		dc.w $D680
 		dc.w $90
 		dc.w $138
-		dc.l $C00D681
+		dc.b $C
+		dc.b 0
+		dc.w $D681
 		dc.w $B0
 		dc.w $138
-		dc.l $C00D681
+		dc.b $C
+		dc.b 0
+		dc.w $D681
 		dc.w $D0
 		dc.w $138
-		dc.l $C00D681
+		dc.b $C
+		dc.b 0
+		dc.w $D681
 		dc.w $F0
 		dc.w $138
-		dc.l $C00D681
+		dc.b $C
+		dc.b 0
+		dc.w $D681
 		dc.w $110
 		dc.w $138
-		dc.l $C00D681
+		dc.b $C
+		dc.b 0
+		dc.w $D681
 		dc.w $130
 		dc.w $138
-		dc.l $C00DE80
+		dc.b $C
+		dc.b 0
+		dc.w $DE80
 		dc.w $150
 		dc.w $118
-		dc.l $300C685
+		dc.b 3
+		dc.b 0
+		dc.w $C685
 		dc.w $90
 		dc.w $118
-		dc.l $300CE85
+		dc.b 3
+		dc.b 0
+		dc.w $CE85
 		dc.w $168
 
 ; =============== S U B R O U T I N E =======================================
@@ -4060,7 +4192,7 @@ sub_1CC6:
 		movem.w (sp)+,d0-d1
 		rts
 
-	; End of function sub_1CC6
+    ; End of function sub_1CC6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4080,7 +4212,7 @@ loc_1CEC:
 		add.b   d4,((TEXT_X_POSITION-$1000000)).w
 		rts
 
-	; End of function sub_1CD8
+    ; End of function sub_1CD8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4107,7 +4239,7 @@ sub_1CFE:
 		adda.w  d0,a2
 		rts
 
-	; End of function sub_1CFE
+    ; End of function sub_1CFE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4116,13 +4248,13 @@ sub_1D36:
 		adda.w  #4,a2
 		addq.b  #1,d5
 		cmpi.b  #8,d5
-		bcs.s   locret_1D48
+		bcs.s   @Return
 		clr.b   d5
 		adda.w  #$320,a2
-locret_1D48:
+@Return:
 		rts
 
-	; End of function sub_1D36
+    ; End of function sub_1D36
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4164,7 +4296,7 @@ loc_1D90:
 		dbf     d6,loc_1D4E
 		rts
 
-	; End of function sub_1D4A
+    ; End of function sub_1D4A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4174,7 +4306,7 @@ sub_1D96:
 		or.b    d2,(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1D96
+    ; End of function sub_1D96
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4184,7 +4316,7 @@ sub_1D9E:
 		or.b    d1,(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1D9E
+    ; End of function sub_1D9E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4194,7 +4326,7 @@ sub_1DA6:
 		or.b    d2,1(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DA6
+    ; End of function sub_1DA6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4204,7 +4336,7 @@ sub_1DB2:
 		or.b    d1,1(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DB2
+    ; End of function sub_1DB2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4214,7 +4346,7 @@ sub_1DBE:
 		or.b    d2,2(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DBE
+    ; End of function sub_1DBE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4224,7 +4356,7 @@ sub_1DCA:
 		or.b    d1,2(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DCA
+    ; End of function sub_1DCA
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4234,7 +4366,7 @@ sub_1DD6:
 		or.b    d2,3(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DD6
+    ; End of function sub_1DD6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4244,7 +4376,7 @@ sub_1DE2:
 		or.b    d1,3(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DE2
+    ; End of function sub_1DE2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4254,7 +4386,7 @@ sub_1DEE:
 		or.b    d2,$20(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DEE
+    ; End of function sub_1DEE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4264,7 +4396,7 @@ sub_1DFA:
 		or.b    d1,$20(a2)
 		bra.s   loc_1D90
 
-	; End of function sub_1DFA
+    ; End of function sub_1DFA
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4274,7 +4406,7 @@ sub_1E06:
 		or.b    d2,$21(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E06
+    ; End of function sub_1E06
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4284,7 +4416,7 @@ sub_1E14:
 		or.b    d1,$21(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E14
+    ; End of function sub_1E14
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4294,7 +4426,7 @@ sub_1E22:
 		or.b    d2,$22(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E22
+    ; End of function sub_1E22
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4304,7 +4436,7 @@ sub_1E30:
 		or.b    d1,$22(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E30
+    ; End of function sub_1E30
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4314,7 +4446,7 @@ sub_1E3E:
 		or.b    d2,$23(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E3E
+    ; End of function sub_1E3E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4324,7 +4456,7 @@ sub_1E4C:
 		or.b    d1,$23(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E4C
+    ; End of function sub_1E4C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4334,7 +4466,7 @@ sub_1E5A:
 		or.b    d2,$40(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E5A
+    ; End of function sub_1E5A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4344,7 +4476,7 @@ sub_1E68:
 		or.b    d1,$40(a2)
 		bra.w   loc_1D90
 
-	; End of function sub_1E68
+    ; End of function sub_1E68
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4353,446 +4485,446 @@ sub_1E76:
 		andi.b  #$F,$41(a2)
 		or.b    d2,$41(a2)
 		bra.w   loc_1D90
-		lea     unk_1E9E(pc), a0
+		lea     byte_1E9E(pc), a0
 		move.w  #1,d7
 loc_1E8C:
 		move.b  (a0,d7.w),d2
 		beq.s   loc_1E9A
 		cmp.b   d0,d2
-		beq.s   locret_1E9C
+		beq.s   return_1E9C
 		addq.w  #1,d7
 		bra.s   loc_1E8C
 loc_1E9A:
 		clr.w   d7
-locret_1E9C:
+return_1E9C:
 		rts
 
-	; End of function sub_1E76
+    ; End of function sub_1E76
 
-unk_1E9E:       dc.b   0
-		dc.b $30 
-		dc.b $31 
-		dc.b $32 
-		dc.b $33 
-		dc.b $34 
-		dc.b $35 
-		dc.b $36 
-		dc.b $37 
-		dc.b $38 
-		dc.b $39 
-		dc.b $71 
-		dc.b $72 
-		dc.b $73 
-		dc.b $74 
-		dc.b $75 
-		dc.b $76 
-		dc.b $77 
-		dc.b $78 
-		dc.b $79 
-		dc.b $7A 
-		dc.b $7B 
-		dc.b $7C 
-		dc.b $7D 
-		dc.b $7E 
-		dc.b $7F 
-		dc.b $80 
-		dc.b $81 
-		dc.b $82 
-		dc.b $83 
-		dc.b $84 
-		dc.b $85 
-		dc.b $86 
-		dc.b $87 
-		dc.b $88 
-		dc.b $89 
-		dc.b $8A 
-		dc.b $8B 
-		dc.b $8C 
-		dc.b $8D 
-		dc.b $8E 
-		dc.b $8F 
-		dc.b $90 
-		dc.b $91 
-		dc.b $92 
-		dc.b $93 
-		dc.b $94 
-		dc.b $95 
-		dc.b $96 
-		dc.b $97 
-		dc.b $98 
-		dc.b $99 
-		dc.b $9A 
-		dc.b $9B 
-		dc.b $9C 
-		dc.b $66 
-		dc.b $9D 
-		dc.b $67 
-		dc.b $68 
-		dc.b $69 
-		dc.b $6A 
-		dc.b $6B 
-		dc.b $6C 
-		dc.b $6D 
-		dc.b $6E 
-		dc.b $6F 
-		dc.b $B1 
-		dc.b $B2 
-		dc.b $B3 
-		dc.b $B4 
-		dc.b $B5 
-		dc.b $B6 
-		dc.b $B7 
-		dc.b $B8 
-		dc.b $B9 
-		dc.b $BA 
-		dc.b $BB 
-		dc.b $BC 
-		dc.b $BD 
-		dc.b $BE 
-		dc.b $BF 
-		dc.b $C0 
-		dc.b $C1 
-		dc.b $C2 
-		dc.b $C3 
-		dc.b $C4 
-		dc.b $C5 
-		dc.b $C6 
-		dc.b $C7 
-		dc.b $C8 
-		dc.b $C9 
-		dc.b $CA 
-		dc.b $CB 
-		dc.b $CC 
-		dc.b $CD 
-		dc.b $CE 
-		dc.b $CF 
-		dc.b $D0 
-		dc.b $D1 
-		dc.b $D2 
-		dc.b $D3 
-		dc.b $D4 
-		dc.b $D5 
-		dc.b $D6 
-		dc.b $D7 
-		dc.b $D8 
-		dc.b $D9 
-		dc.b $DA 
-		dc.b $DB 
-		dc.b $DC 
-		dc.b $A6 
-		dc.b $DD 
-		dc.b $A7 
-		dc.b $A8 
-		dc.b $A9 
-		dc.b $AA 
-		dc.b $AB 
-		dc.b $AC 
-		dc.b $AD 
-		dc.b $AE 
-		dc.b $AF 
-		dc.b $A4 
-		dc.b $A1 
-		dc.b $9E 
-		dc.b $9F 
-		dc.b $2D 
-		dc.b $21 
-		dc.b $3F 
-		dc.b $2E 
-		dc.b $A2 
-		dc.b $A3 
-		dc.b $A4 
-		dc.b $A5 
-		dc.b $A6 
-		dc.b   0
+byte_1E9E:      dc.b 0
+		dc.b $30
+		dc.b $31
+		dc.b $32
+		dc.b $33
+		dc.b $34
+		dc.b $35
+		dc.b $36
+		dc.b $37
+		dc.b $38
+		dc.b $39
+		dc.b $71
+		dc.b $72
+		dc.b $73
+		dc.b $74
+		dc.b $75
+		dc.b $76
+		dc.b $77
+		dc.b $78
+		dc.b $79
+		dc.b $7A
+		dc.b $7B
+		dc.b $7C
+		dc.b $7D
+		dc.b $7E
+		dc.b $7F
+		dc.b $80
+		dc.b $81
+		dc.b $82
+		dc.b $83
+		dc.b $84
+		dc.b $85
+		dc.b $86
+		dc.b $87
+		dc.b $88
+		dc.b $89
+		dc.b $8A
+		dc.b $8B
+		dc.b $8C
+		dc.b $8D
+		dc.b $8E
+		dc.b $8F
+		dc.b $90
+		dc.b $91
+		dc.b $92
+		dc.b $93
+		dc.b $94
+		dc.b $95
+		dc.b $96
+		dc.b $97
+		dc.b $98
+		dc.b $99
+		dc.b $9A
+		dc.b $9B
+		dc.b $9C
+		dc.b $66
+		dc.b $9D
+		dc.b $67
+		dc.b $68
+		dc.b $69
+		dc.b $6A
+		dc.b $6B
+		dc.b $6C
+		dc.b $6D
+		dc.b $6E
+		dc.b $6F
+		dc.b $B1
+		dc.b $B2
+		dc.b $B3
+		dc.b $B4
+		dc.b $B5
+		dc.b $B6
+		dc.b $B7
+		dc.b $B8
+		dc.b $B9
+		dc.b $BA
+		dc.b $BB
+		dc.b $BC
+		dc.b $BD
+		dc.b $BE
+		dc.b $BF
+		dc.b $C0
+		dc.b $C1
+		dc.b $C2
+		dc.b $C3
+		dc.b $C4
+		dc.b $C5
+		dc.b $C6
+		dc.b $C7
+		dc.b $C8
+		dc.b $C9
+		dc.b $CA
+		dc.b $CB
+		dc.b $CC
+		dc.b $CD
+		dc.b $CE
+		dc.b $CF
+		dc.b $D0
+		dc.b $D1
+		dc.b $D2
+		dc.b $D3
+		dc.b $D4
+		dc.b $D5
+		dc.b $D6
+		dc.b $D7
+		dc.b $D8
+		dc.b $D9
+		dc.b $DA
+		dc.b $DB
+		dc.b $DC
+		dc.b $A6
+		dc.b $DD
+		dc.b $A7
+		dc.b $A8
+		dc.b $A9
+		dc.b $AA
+		dc.b $AB
+		dc.b $AC
+		dc.b $AD
+		dc.b $AE
+		dc.b $AF
+		dc.b $A4
+		dc.b $A1
+		dc.b $9E
+		dc.b $9F
+		dc.b $2D
+		dc.b $21
+		dc.b $3F
+		dc.b $2E
+		dc.b $A2
+		dc.b $A3
+		dc.b $A4
+		dc.b $A5
+		dc.b $A6
+		dc.b 0
 		dc.b $FF
-unk_1F26:       dc.b   0
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b  $E
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $EC 
-		dc.b $CB 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $EC 
-		dc.b $BE 
-		dc.b $CB 
+byte_1F26:      dc.b 0
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $E
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $EC
+		dc.b $CB
+		dc.b $BB
+		dc.b $BB
+		dc.b $EC
+		dc.b $BE
+		dc.b $CB
 		dc.b $11
-		dc.b $EC 
-		dc.b $BC 
-		dc.b $B1 
-		dc.b $CC 
-		dc.b $EC 
-		dc.b $BB 
+		dc.b $EC
+		dc.b $BC
+		dc.b $B1
+		dc.b $CC
+		dc.b $EC
+		dc.b $BB
 		dc.b $1C
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
 		dc.b $11
 		dc.b $11
 		dc.b $11
 		dc.b $11
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
 		dc.b $11
 		dc.b $11
 		dc.b $11
 		dc.b $11
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
 		dc.b $11
 		dc.b $11
 		dc.b $11
 		dc.b $11
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $EE 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
-		dc.b $BB 
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $EE
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
+		dc.b $BB
 		dc.b $11
 		dc.b $11
 		dc.b $11
 		dc.b $11
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $CC 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-unk_2000:       dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
-		dc.b $EC 
-		dc.b $B1 
-		dc.b $CD 
-		dc.b $DD 
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $CC
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
+		dc.b $EC
+		dc.b $B1
+		dc.b $CD
+		dc.b $DD
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -4806,16 +4938,10 @@ LoadText:
 		bsr.w   sub_20DA
 		cmpi.b  #1,(COMPRESSED_STRING_LENGTH).l
 		beq.w   loc_21C2
-		jsr     j_InitDecoder   ; initialize decoder
+		jsr     j_InitDecoder
 		move.l  a0,(COMPRESSED_STRING_POINTER).l
 						; keep string pointer
 		bsr.s   sub_20E0
-
-	; End of function LoadText
-
-
-; START OF FUNCTION CHUNK FOR sub_20E0
-
 loc_2074:
 		bsr.w   GetNextTextSymbol
 loc_2078:
@@ -4828,26 +4954,26 @@ loc_2086:
 		bsr.w   sub_21C8
 		bra.s   loc_2074
 
-; END OF FUNCTION CHUNK FOR sub_20E0
+    ; End of function LoadText
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_208C:
 		cmpi.b  #$C4,(TEXT_X_POSITION).l
-		bls.s   locret_20D8
+		bls.s   return_20D8
 		move.b  #2,(TEXT_X_POSITION).l
 		addi.b  #$10,(TEXT_Y_POSITION).l
-		btst    #0,(byte_FF0EE9).l
+		btst    #0,(VDP_REG10_VALUE).l
 		bne.s   loc_20BA
 		cmpi.b  #$20,(TEXT_Y_POSITION).l 
 		bra.s   loc_20C2
 loc_20BA:
 		cmpi.b  #$30,(TEXT_Y_POSITION).l 
 loc_20C2:
-		bcs.s   locret_20D8
+		bcs.s   return_20D8
 
-	; End of function sub_208C
+    ; End of function sub_208C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4857,20 +4983,20 @@ sub_20C4:
 		bsr.w   sub_1AF0
 		movem.l (sp)+,d0
 		subi.b  #$10,(TEXT_Y_POSITION).l
-locret_20D8:
+return_20D8:
 		rts
 
-	; End of function sub_20C4
+    ; End of function sub_20C4
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_20DA:
-		bsr.s   sub_2124
+		bsr.s   FindString
 		bsr.s   sub_2100
 		rts
 
-	; End of function sub_20DA
+    ; End of function sub_20DA
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4878,61 +5004,61 @@ sub_20DA:
 sub_20E0:
 		bsr.w   GetNextTextSymbol
 		cmpi.w  #$FFEA,d0
-		beq.s   locret_20FE
+		beq.s   @Return
 		movem.l d0,-(sp)
 		bsr.w   sub_2458
 		movem.l (sp)+,d0
 		movem.l (sp)+,d1
 		bra.w   loc_2078
-locret_20FE:
+@Return:
 		rts
 
-	; End of function sub_20E0
+    ; End of function sub_20E0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2100:
-		clr.l   (ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l
+		clr.l   (CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l
 		clr.b   (byte_FFF806).l
 		clr.w   (word_FFF842).l
 		move.b  (a0)+,(COMPRESSED_STRING_LENGTH).l
 						; keep length of current string
-		move.l  #TEXT_NAME_INDEX,(ADDR_CURRENT_DIALOGUE_NAMEIDX).l
+		move.l  #MESSAGE_ARG_NAME_1,(CURRENT_MESSAGE_NAME_INDEX_ADDRESS).l
 		rts
 
-	; End of function sub_2100
+    ; End of function sub_2100
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_2124:
-		movem.w d0,-(sp)        ; save string #
+FindString:
+		movem.w d0,-(sp)        ; save string index
 		lsr.w   #6,d0
-		andi.b  #$FC,d0         ; string # -> bank pointer offset
+		andi.b  #$FC,d0         ; string index -> bank pointer offset
 		movea.l (p_pt_TextBanks).l,a0; load script bank pointer
 		movea.l (a0,d0.w),a0
-		movem.w (sp)+,d0        ; restore string #
-GoToNextString:
+		movem.w (sp)+,d0        ; restore string index
+@GoToNextString:
 		
 		tst.b   d0
-		beq.s   locret_214A
+		beq.s   @Return
 		moveq   #0,d7
 		move.b  (a0),d7         ; first string byte : string length
 		adda.l  d7,a0
 		subq.b  #1,d0
-		bra.s   GoToNextString  ; loop until wanted string reached
-locret_214A:
+		bra.s   @GoToNextString ; loop until wanted string reached
+@Return:
 		rts
 
-	; End of function sub_2124
+    ; End of function FindString
 
 
 ; =============== S U B R O U T I N E =======================================
 
 GetNextTextSymbol:
 		
-		tst.l   (ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l
+		tst.l   (CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l
 		bne.w   loc_219A
 loc_2156:
 		movea.l (COMPRESSED_STRING_POINTER).l,a0
@@ -4956,19 +5082,19 @@ loc_218A:
 		movem.l (sp)+,d0-a6
 		rts
 loc_219A:
-		movea.l (ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l,a1
+		movea.l (CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l,a1
 		move.w  (a1)+,d0
-		move.l  a1,(ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l
+		move.l  a1,(CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l
 		cmpi.w  #$FFFF,d0
 		beq.s   loc_21B8
-		lea     unk_24D0(pc), a1
+		lea     byte_24D0(pc), a1
 		move.b  (a1,d0.w),d0
 		rts
 loc_21B8:
-		clr.l   (ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l
+		clr.l   (CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l
 		bra.w   loc_2156
 
-	; End of function GetNextTextSymbol
+    ; End of function GetNextTextSymbol
 
 
 ; START OF FUNCTION CHUNK FOR LoadText
@@ -4993,7 +5119,7 @@ loc_21D4:
 		bsr.w   loc_19AE
 		rts
 
-	; End of function sub_21C8
+    ; End of function sub_21C8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5001,7 +5127,7 @@ loc_21D4:
 sub_21DE:
 		bra.w   sub_2246
 
-	; End of function sub_21DE
+    ; End of function sub_21DE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5009,7 +5135,7 @@ sub_21DE:
 sub_21E2:
 		bra.w   sub_224C
 
-	; End of function sub_21E2
+    ; End of function sub_21E2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5017,7 +5143,7 @@ sub_21E2:
 sub_21E6:
 		bra.w   sub_2280
 
-	; End of function sub_21E6
+    ; End of function sub_21E6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5025,7 +5151,7 @@ sub_21E6:
 sub_21EA:
 		bra.w   sub_2296
 
-	; End of function sub_21EA
+    ; End of function sub_21EA
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5034,7 +5160,7 @@ j_nullsub_22A2:
 		
 		bra.w   nullsub_22A2
 
-	; End of function j_nullsub_22A2
+    ; End of function j_nullsub_22A2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5042,7 +5168,7 @@ j_nullsub_22A2:
 sub_21F2:
 		bra.w   sub_22C8
 
-	; End of function sub_21F2
+    ; End of function sub_21F2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5050,7 +5176,7 @@ sub_21F2:
 sub_21F6:
 		bra.w   sub_230A
 
-	; End of function sub_21F6
+    ; End of function sub_21F6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5059,7 +5185,7 @@ j_nullsub_2318:
 		
 		bra.w   nullsub_2318
 
-	; End of function j_nullsub_2318
+    ; End of function j_nullsub_2318
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5067,7 +5193,7 @@ j_nullsub_2318:
 sub_21FE:
 		bra.w   sub_231A
 
-	; End of function sub_21FE
+    ; End of function sub_21FE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5075,7 +5201,7 @@ sub_21FE:
 sub_2202:
 		bra.w   sub_2430
 
-	; End of function sub_2202
+    ; End of function sub_2202
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5083,7 +5209,7 @@ sub_2202:
 sub_2206:
 		bra.w   sub_2354
 
-	; End of function sub_2206
+    ; End of function sub_2206
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5091,7 +5217,7 @@ sub_2206:
 sub_220A:
 		bra.w   sub_235A
 
-	; End of function sub_220A
+    ; End of function sub_220A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5099,15 +5225,15 @@ sub_220A:
 sub_220E:
 		bra.w   sub_237E
 
-	; End of function sub_220E
+    ; End of function sub_220E
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2212:
-		bra.w   loc_23B4
+		bra.w   sub_23B4
 
-	; End of function sub_2212
+    ; End of function sub_2212
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5115,7 +5241,7 @@ sub_2212:
 sub_2216:
 		bra.w   sub_2458
 
-	; End of function sub_2216
+    ; End of function sub_2216
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5123,7 +5249,7 @@ sub_2216:
 sub_221A:
 		bra.w   loc_23B8
 
-	; End of function sub_221A
+    ; End of function sub_221A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5131,16 +5257,17 @@ sub_221A:
 sub_221E:
 		bra.w   sub_2430
 
-	; End of function sub_221E
+    ; End of function sub_221E
 
 		dcb.b $10,0
 
 ; =============== S U B R O U T I N E =======================================
 
-j_nullsub_6:
-		bra.w   nullsub_6
+j_nullsub_2466:
+		
+		bra.w   nullsub_2466
 
-	; End of function j_nullsub_6
+    ; End of function j_nullsub_2466
 
 		dcb.b 4,0
 
@@ -5149,7 +5276,7 @@ j_nullsub_6:
 sub_223A:
 		bra.w   sub_22A4
 
-	; End of function sub_223A
+    ; End of function sub_223A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5157,7 +5284,7 @@ sub_223A:
 sub_223E:
 		bra.w   sub_22B0
 
-	; End of function sub_223E
+    ; End of function sub_223E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5165,7 +5292,7 @@ sub_223E:
 sub_2242:
 		bra.w   sub_22BC
 
-	; End of function sub_2242
+    ; End of function sub_2242
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5174,7 +5301,7 @@ sub_2246:
 		movem.l (sp)+,d0
 		rts
 
-	; End of function sub_2246
+    ; End of function sub_2246
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5182,43 +5309,49 @@ sub_2246:
 sub_224C:
 		move.b  #2,(TEXT_X_POSITION).l
 		addi.b  #$10,(TEXT_Y_POSITION).l
-		btst    #0,(byte_FF0EE9).l
+		btst    #0,(VDP_REG10_VALUE).l
 		bne.s   loc_2270
 		cmpi.b  #$20,(TEXT_Y_POSITION).l 
 		bra.s   loc_2278
 loc_2270:
 		cmpi.b  #$30,(TEXT_Y_POSITION).l 
 loc_2278:
-		bcs.s   locret_227E
+		bcs.s   return_227E
 		bsr.w   sub_20C4
-locret_227E:
+return_227E:
 		rts
 
-	; End of function sub_224C
+    ; End of function sub_224C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2280:
 		bsr.w   sub_2468
-		jsr     j_GetSpellName
+		jsr     j_GetSpellNameAddress
+
+    ; End of function sub_2280
+
+
+; START OF FUNCTION CHUNK FOR sub_2296
+
 loc_228A:
 		movea.l a0,a2
 		move.w  d1,d7
 		subi.w  #1,d7
 		bra.w   loc_248E
 
-	; End of function sub_2280
+; END OF FUNCTION CHUNK FOR sub_2296
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2296:
 		bsr.w   sub_2468
-		jsr     j_GetItemName
+		jsr     j_GetItemNameAddress
 		bra.s   loc_228A
 
-	; End of function sub_2296
+    ; End of function sub_2296
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5226,27 +5359,27 @@ sub_2296:
 nullsub_22A2:
 		rts
 
-	; End of function nullsub_22A2
+    ; End of function nullsub_22A2
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_22A4:
 		bsr.w   sub_2468
-		jsr     j_GetClassName
+		jsr     j_GetClassNameAddress
 		bra.s   loc_228A
 
-	; End of function sub_22A4
+    ; End of function sub_22A4
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_22B0:
 		bsr.w   sub_2468
-		jsr     j_GetItemName
+		jsr     j_GetItemNameAddress
 		bra.s   loc_228A
 
-	; End of function sub_22B0
+    ; End of function sub_22B0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5256,7 +5389,7 @@ sub_22BC:
 		move.b  d1,(byte_FFF804).l
 		rts
 
-	; End of function sub_22BC
+    ; End of function sub_22BC
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5264,10 +5397,10 @@ sub_22BC:
 sub_22C8:
 		bsr.w   sub_2468
 		move.w  d1,d0
-		jsr     j_LoadClassName
+		jsr     j_GetDisplayedNameAddress
 loc_22D4:
 		lea     (DIALOG_STRING_TO_PRINT).l,a1
-		move.l  a1,(ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l
+		move.l  a1,(CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l
 		subq.w  #1,d1
 loc_22E2:
 		clr.w   d0
@@ -5284,7 +5417,7 @@ loc_22F2:
 		move.w  #$FFFF,(a1)+
 		rts
 
-	; End of function sub_22C8
+    ; End of function sub_22C8
 
 		move.w  -2(a1),d2
 		move.w  d3,-2(a1)
@@ -5296,11 +5429,11 @@ loc_22F2:
 
 sub_230A:
 		clr.w   d0
-		jsr     j_GetForceStatsAddress
+		jsr     j_GetEntityStatsAddress
 		moveq   #$A,d1
 		bra.w   loc_22D4
 
-	; End of function sub_230A
+    ; End of function sub_230A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5308,7 +5441,7 @@ sub_230A:
 nullsub_2318:
 		rts
 
-	; End of function nullsub_2318
+    ; End of function nullsub_2318
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5321,7 +5454,7 @@ loc_231E:
 		clr.b   (CURRENTLY_TYPEWRITING).l
 loc_232E:
 		move.b  (CURRENT_PLAYER_INPUT).l,d1
-		andi.b  #$70,d1 
+		andi.b  #INPUT_B|INPUT_C|INPUT_A,d1
 		bne.s   loc_2342
 		bsr.w   WaitForVInt     
 		dbf     d0,loc_232E
@@ -5330,7 +5463,7 @@ loc_2342:
 		move.b  d0,(CURRENTLY_TYPEWRITING).l
 		rts
 
-	; End of function sub_231A
+    ; End of function sub_231A
 
 		move.w  #$3B,d0 
 		bra.s   loc_231E
@@ -5341,13 +5474,13 @@ sub_2354:
 		move.w  #$77,d0 
 		bra.s   loc_231E
 
-	; End of function sub_2354
+    ; End of function sub_2354
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_235A:
-		move.w  #$3B,d0 
+		move.w  #59,d0
 		move.b  (CURRENTLY_TYPEWRITING).l,d2
 		movem.w d2,-(sp)
 		clr.b   (CURRENTLY_TYPEWRITING).l
@@ -5356,17 +5489,17 @@ sub_235A:
 		move.b  d0,(CURRENTLY_TYPEWRITING).l
 		rts
 
-	; End of function sub_235A
+    ; End of function sub_235A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_237E:
-		move.l  (TEXT_NUMBER).l,d0
+		move.l  (MESSAGE_ARG_NUMBER).l,d0
 		jsr     (j_WriteAsciiNumber).l
 		lea     (DIALOG_STRING_TO_PRINT).l,a1
-		move.l  a1,(ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l
-		lea     (byte_FF0E80).l,a0
+		move.l  a1,(CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l
+		lea     (LOADED_NUMBER).l,a0
 		moveq   #9,d1
 loc_239E:
 		clr.w   d0
@@ -5379,37 +5512,45 @@ loc_23AA:
 		move.w  #$FFFF,(a1)+
 		rts
 
-	; End of function sub_237E
+    ; End of function sub_237E
 
-loc_23B4:       bsr.w   sub_224C
-loc_23B8:       move.b  (CURRENTLY_TYPEWRITING).l,d2
+
+; =============== S U B R O U T I N E =======================================
+
+sub_23B4:
+		bsr.w   sub_224C
+loc_23B8:
+		move.b  (CURRENTLY_TYPEWRITING).l,d2
 		movem.w d2,-(sp)
 		clr.b   (CURRENTLY_TYPEWRITING).l
 		moveq   #$14,d2
-loc_23CA:       bsr.w   WaitForVInt     
+loc_23CA:
+		bsr.w   WaitForVInt     
 		bsr.s   sub_23DE
 		beq.s   loc_23CA
-		trap    #SOUND_COMMAND
-		dc.w SFX_VALIDATION
+		sndCom  SFX_VALIDATION
 		clr.w   d2
 		bsr.s   sub_23EC
 		bra.w   loc_2342
+
+    ; End of function sub_23B4
+
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_23DE:
 		bsr.s   sub_23EC
 		move.b  (CURRENT_PLAYER_INPUT).l,d1
-		andi.b  #$70,d1 
+		andi.b  #INPUT_B|INPUT_C|INPUT_A,d1
 		rts
 
-	; End of function sub_23DE
+    ; End of function sub_23DE
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_23EC:
-		lea     (SPRITE_TABLE).l,a0
+		lea     (SPRITE_00_PROPERTIES).l,a0
 		cmpi.w  #7,d2
 		bge.s   loc_2404
 		move.w  #1,(a0)
@@ -5417,7 +5558,7 @@ sub_23EC:
 		bra.s   loc_241E
 loc_2404:
 		move.w  #$160,6(a0)
-		btst    #0,(byte_FF0EE9).l
+		btst    #0,(VDP_REG10_VALUE).l
 		beq.s   loc_241A
 		move.w  #$148,(a0)
 		bra.s   loc_241E
@@ -5427,12 +5568,12 @@ loc_241E:
 		clr.b   2(a0)
 		move.w  #$C084,4(a0)
 		subq.w  #1,d2
-		bne.s   locret_242E
+		bne.s   return_242E
 		moveq   #$14,d2
-locret_242E:
+return_242E:
 		rts
 
-	; End of function sub_23EC
+    ; End of function sub_23EC
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5447,17 +5588,17 @@ loc_2440:
 		beq.s   loc_2440
 		bra.w   loc_2342
 
-	; End of function sub_2430
+    ; End of function sub_2430
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_244C:
 		move.b  (CURRENT_PLAYER_INPUT).l,d1
-		andi.b  #$70,d1 
+		andi.b  #INPUT_B|INPUT_C|INPUT_A,d1
 		rts
 
-	; End of function sub_244C
+    ; End of function sub_244C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5467,26 +5608,26 @@ sub_2458:
 		bne.w   sub_224C
 		rts
 
-	; End of function sub_2458
+    ; End of function sub_2458
 
 
 ; =============== S U B R O U T I N E =======================================
 
-nullsub_6:
+nullsub_2466:
 		rts
 
-	; End of function nullsub_6
+    ; End of function nullsub_2466
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2468:
-		movea.l (ADDR_CURRENT_DIALOGUE_NAMEIDX).l,a1
+		movea.l (CURRENT_MESSAGE_NAME_INDEX_ADDRESS).l,a1
 		move.w  (a1)+,d1
-		move.l  a1,(ADDR_CURRENT_DIALOGUE_NAMEIDX).l
+		move.l  a1,(CURRENT_MESSAGE_NAME_INDEX_ADDRESS).l
 		rts
 
-	; End of function sub_2468
+    ; End of function sub_2468
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -5494,12 +5635,6 @@ sub_2468:
 sub_2478:
 		dbf     d0,loc_247E
 		bra.s   loc_2486
-
-	; End of function sub_2478
-
-
-; START OF FUNCTION CHUNK FOR sub_2478
-
 loc_247E:
 		clr.l   d1
 		move.b  (a2),d1
@@ -5511,14 +5646,14 @@ loc_2486:
 		subq.w  #2,d7
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_2478
+    ; End of function sub_2478
 
 
-; START OF FUNCTION CHUNK FOR sub_2280
+; START OF FUNCTION CHUNK FOR sub_2296
 
 loc_248E:
 		lea     (DIALOG_STRING_TO_PRINT).l,a1
-		move.l  a1,(ADDR_CURRENT_DIALOGUE_ASCII_BYTE).l
+		move.l  a1,(CURRENT_MESSAGE_ASCII_BYTE_ADDRESS).l
 loc_249A:
 		clr.w   d0
 		move.b  (a2)+,d0
@@ -5527,7 +5662,7 @@ loc_249A:
 		move.w  #$FFFF,(a1)
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_2280
+; END OF FUNCTION CHUNK FOR sub_2296
 
 word_24AA:      dc.w $FFEA
 		dc.w $FFF1
@@ -5548,76 +5683,76 @@ word_24AA:      dc.w $FFEA
 		dc.w $FFF5
 		dc.w $FFE8
 		dc.w $FFE6
-unk_24D0:       dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $43 
-		dc.b $46 
-		dc.b $4A 
-		dc.b   0
-		dc.b $4B 
-		dc.b $4C 
-		dc.b $47 
-		dc.b $48 
-		dc.b $49 
-		dc.b   0
-		dc.b $4D 
-		dc.b $42 
-		dc.b $40 
-		dc.b $41 
-		dc.b $4E 
-		dc.b   1
-		dc.b   2
-		dc.b   3
-		dc.b   4
-		dc.b   5
-		dc.b   6
-		dc.b   7
-		dc.b   8
-		dc.b   9
-		dc.b  $A
-		dc.b $4F 
-		dc.b $45 
-		dc.b $48 
-		dc.b   0
-		dc.b $49 
-		dc.b $44 
-		dc.b   0
-		dc.b  $B
-		dc.b  $C
-		dc.b  $D
-		dc.b  $E
-		dc.b  $F
+byte_24D0:      dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $43
+		dc.b $46
+		dc.b $4A
+		dc.b 0
+		dc.b $4B
+		dc.b $4C
+		dc.b $47
+		dc.b $48
+		dc.b $49
+		dc.b 0
+		dc.b $4D
+		dc.b $42
+		dc.b $40
+		dc.b $41
+		dc.b $4E
+		dc.b 1
+		dc.b 2
+		dc.b 3
+		dc.b 4
+		dc.b 5
+		dc.b 6
+		dc.b 7
+		dc.b 8
+		dc.b 9
+		dc.b $A
+		dc.b $4F
+		dc.b $45
+		dc.b $48
+		dc.b 0
+		dc.b $49
+		dc.b $44
+		dc.b 0
+		dc.b $B
+		dc.b $C
+		dc.b $D
+		dc.b $E
+		dc.b $F
 		dc.b $10
 		dc.b $11
 		dc.b $12
@@ -5635,175 +5770,175 @@ unk_24D0:       dc.b   0
 		dc.b $1E
 		dc.b $1F
 		dc.b $20
-		dc.b $21 
-		dc.b $22 
-		dc.b $23 
-		dc.b $24 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $3F 
-		dc.b   0
-		dc.b $25 
-		dc.b $26 
-		dc.b $27 
-		dc.b $28 
-		dc.b $29 
-		dc.b $2A 
-		dc.b $2B 
-		dc.b $2C 
-		dc.b $2D 
-		dc.b $2E 
-		dc.b $2F 
-		dc.b $30 
-		dc.b $31 
-		dc.b $32 
-		dc.b $33 
-		dc.b $34 
-		dc.b $35 
-		dc.b $36 
-		dc.b $37 
-		dc.b $38 
-		dc.b $39 
-		dc.b $3A 
-		dc.b $3B 
-		dc.b $3C 
-		dc.b $3D 
-		dc.b $3E 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
+		dc.b $21
+		dc.b $22
+		dc.b $23
+		dc.b $24
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $3F
+		dc.b 0
+		dc.b $25
+		dc.b $26
+		dc.b $27
+		dc.b $28
+		dc.b $29
+		dc.b $2A
+		dc.b $2B
+		dc.b $2C
+		dc.b $2D
+		dc.b $2E
+		dc.b $2F
+		dc.b $30
+		dc.b $31
+		dc.b $32
+		dc.b $33
+		dc.b $34
+		dc.b $35
+		dc.b $36
+		dc.b $37
+		dc.b $38
+		dc.b $39
+		dc.b $3A
+		dc.b $3B
+		dc.b $3C
+		dc.b $3D
+		dc.b $3E
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -6287,7 +6422,7 @@ loc_29D0:
 		movem.l (sp)+,a4-a6
 		rts
 
-	; End of function DecompressGraphics
+    ; End of function DecompressGraphics
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -6887,7 +7022,7 @@ loc_2F6C:
 		movem.l (sp)+,a4-a6
 		rts
 
-	; End of function sub_29F8
+    ; End of function sub_29F8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -6904,7 +7039,7 @@ Trap1_:
 		movea.l (dword_FFCB7A).l,a0
 		rte
 
-	; End of function Trap1_
+    ; End of function Trap1_
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -6921,7 +7056,7 @@ Trap2_:
 		movea.l (dword_FFCB7A).l,a0
 		rte
 
-	; End of function Trap2_
+    ; End of function Trap2_
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -6938,7 +7073,7 @@ Trap3_:
 		movea.l (dword_FFCB7A).l,a0
 		rte
 
-	; End of function Trap3_
+    ; End of function Trap3_
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -6955,52 +7090,52 @@ Trap4_:
 		movea.l (dword_FFCB7A).l,a0
 		rte
 
-	; End of function Trap4_
+    ; End of function Trap4_
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_2FFA:
 		movem.l d0/a0,-(sp)
-		bsr.s   sub_3046
+		bsr.s   GetEventFlagsAddress
 		move.b  (a0),d2
 		and.b   d1,d2
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function sub_2FFA
+    ; End of function sub_2FFA
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_300A:
 		movem.l d0/a0,-(sp)
-		bsr.s   sub_3046
+		bsr.s   GetEventFlagsAddress
 		or.b    d1,(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function sub_300A
+    ; End of function sub_300A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_3018:
 		movem.l d0/a0,-(sp)
-		bsr.s   sub_3046
+		bsr.s   GetEventFlagsAddress
 		not.b   d1
 		and.b   d1,(a0)
 		movem.l (sp)+,d0/a0
 		rts
 
-	; End of function sub_3018
+    ; End of function sub_3018
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_3028:
 		movem.l d0/d2/a0,-(sp)
-		bsr.s   sub_3046
+		bsr.s   GetEventFlagsAddress
 		move.b  (a0),d2
 		and.b   d1,d2
 		beq.s   loc_3040
@@ -7012,18 +7147,19 @@ loc_3040:
 		movem.l (sp)+,d0/d2/a0
 		rts
 
-	; End of function sub_3028
+    ; End of function sub_3028
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3046:
+GetEventFlagsAddress:
+		
 		lea     (EVENT_FLAGS).l,a0
 		andi.w  #$FF,d0
 		adda.w  d0,a0
 		rts
 
-	; End of function sub_3046
+    ; End of function GetEventFlagsAddress
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -7035,7 +7171,7 @@ SetEventFlag:
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function SetEventFlag
+    ; End of function SetEventFlag
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -7049,7 +7185,7 @@ ClearEventFlag:
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function ClearEventFlag
+    ; End of function ClearEventFlag
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -7063,7 +7199,7 @@ CheckEventFlag:
 		movem.l (sp)+,d0-d1/a0
 		rts
 
-	; End of function CheckEventFlag
+    ; End of function CheckEventFlag
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -7081,60 +7217,67 @@ GetEventFlag:
 		lsl.b   d0,d1
 		rts
 
-	; End of function GetEventFlag
+    ; End of function GetEventFlag
 
 
 ; =============== S U B R O U T I N E =======================================
 
-InitGame:
+InitializeMain:
+		
 		jsr     j_LoadBaseTilesAndPalette
 		bsr.w   EnableInterrupts
 		bsr.w   WaitForVInt     
 		bsr.w   DisableInterrupts
-		cmpi.b  #$F0,(P2_INPUT).l
+		cmpi.b  #INPUT_B|INPUT_C|INPUT_A|INPUT_START,(P2_INPUT).l
 		bne.s   loc_30BC
-		move.b  #1,((byte_FFC1CB-$1000000)).w
+		move.b  #1,((DEBUG_MODE_UNLOCKED-$1000000)).w
 loc_30BC:
 		jsr     j_DisplaySegaLogo
 		jsr     PlayIntro
 		bsr.w   DisplayReaderScreen
-		jsr     j_DebugModeSoundTest
-		tst.b   ((byte_FFC1CA-$1000000)).w
+		jsr     j_debugMode_SoundTest
+		tst.b   ((DEBUG_MODE_ACTIVATED-$1000000)).w
 		beq.s   loc_30FC
-		btst    #INPUT_A_A_BIT,(P1_INPUT).l
-		bne.w   DebugModeBattleTest
-		btst    #INPUT_A_B_BIT,(P1_INPUT).l
-		bne.w   DebugModeChapterTest
-		btst    #INPUT_A_C_BIT,(P1_INPUT).l
-		bne.w   j_j_PlayEnding
+		btst    #INPUT_BIT_A,(P1_INPUT).l
+		bne.w   debugMode_BattleTest
+		btst    #INPUT_BIT_B,(P1_INPUT).l
+		bne.w   debugMode_ChapterTest
+		btst    #INPUT_BIT_C,(P1_INPUT).l
+		bne.w   debugMode_PlayEnding
 loc_30FC:
 		move.b  #$FF,((byte_FFC140-$1000000)).w
 		moveq   #$26,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_3110
-		jsr     (sub_3A44).l
+		jsr     (DisplayChapterScreen).l
 loc_3110:
 		bsr.w   sub_312A
 		moveq   #$25,d0 
 		bsr.w   CheckEventFlag
 		beq.s   loc_3124
-		jsr     (sub_3D80).l
+		jsr     (sub_3D80).l    
 		bra.s   loc_30FC
 loc_3124:
-		bsr.w   sub_3F0E
+		bsr.w   ExecuteMapExitScript
 		bra.s   loc_30FC
 
-	; End of function InitGame
+    ; End of function InitializeMain
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_312A:
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		moveq   #$24,d0 
 		bsr.w   CheckEventFlag
 		bne.w   loc_31C2
-loc_313A:
+
+    ; End of function sub_312A
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_313A:
 		moveq   #$27,d0 
 		bsr.w   CheckEventFlag
 		beq.s   loc_314E
@@ -7142,9 +7285,9 @@ loc_313A:
 		jsr     sub_8004
 		bra.s   loc_3154
 loc_314E:
-		jsr     sub_8000
+		jsr     j_BattleLoop
 loc_3154:
-		bpl.s   locret_31C0
+		bpl.s   return_31C0
 		cmpi.b  #$FF,d0
 		bne.s   loc_3174
 		jsr     j_GetGold
@@ -7152,16 +7295,16 @@ loc_3154:
 		jsr     j_SetGold
 		clr.w   d0
 		clr.w   d1
-		jsr     j_SetForceMemberStatus
+		jsr     j_SetStatusEffects
 loc_3174:
 		jsr     j_RefillHP
 		jsr     j_RefillMP
 		jsr     j_ResetForceMemberStats
-		jsr     sub_20014
+		jsr     j_ResetCombatants
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
-		move.b  ((byte_FF9C4C-$1000000)).w,((CURRENT_REGION-$1000000)).w
+		move.b  ((EGRESS_LOCATION-$1000000)).w,((CURRENT_REGION-$1000000)).w
 		move.b  #2,((CURRENT_MAP-$1000000)).w
 		bsr.w   sub_4C0E
 		move.b  #2,((CURRENT_MAP-$1000000)).w
@@ -7170,10 +7313,10 @@ loc_3174:
 		bsr.w   SetEventFlag
 		move.w  (sp)+,d0
 		bra.s   loc_31F6
-locret_31C0:
+return_31C0:
 		rts
 loc_31C2:
-		move.b  ((CURRENT_REGION-$1000000)).w,((byte_FF9C4C-$1000000)).w
+		move.b  ((CURRENT_REGION-$1000000)).w,((EGRESS_LOCATION-$1000000)).w
 		jsr     j_ResetForceMemberStats
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
@@ -7188,74 +7331,75 @@ loc_31F4:
 		move.w  (sp)+,d0
 loc_31F6:
 		move.w  d0,-(sp)
-		jsr     sub_20014
+		jsr     j_ResetCombatants
 		move.w  (sp)+,d0
 		move.b  #1,(byte_FF0F03).l
 		move.w  d0,-(sp)
-		clr.l   (dword_FF0100).l
-		bsr.w   j_StoreVDPCommands
-		bsr.w   j_SetVIntParam3
+		clr.l   (HORIZONTAL_SCROLL_DATA).l
+		bsr.w   j_UpdateVdpHScrollData
+		bsr.w   j_EnableDmaQueueProcessing
 		move.w  (sp)+,d0
 		jsr     sub_10000
 		bsr.w   j_FadeOutToBlack
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		bsr.w   j_WaitForVInt
 		moveq   #$25,d0 
 		bsr.w   CheckEventFlag
-		bne.w   locret_327C
+		bne.w   return_327C
 		cmpi.b  #1,((CURRENT_MAP-$1000000)).w
-		bne.s   locret_327C
+		bne.s   return_327C
 		move.b  ((byte_FFF807-$1000000)).w,d0
 		move.b  ((CURRENT_REGION-$1000000)).w,d1
 		move.b  ((CURRENT_MAP_VERSION-$1000000)).w,d2
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		movem.w d0-d2,-(sp)
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (sub_340).l
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		movem.w (sp)+,d0-d2
 		move.b  d1,((CURRENT_REGION-$1000000)).w
 		move.b  d2,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #1,((CURRENT_MAP-$1000000)).w
 		bra.w   loc_31F6
-locret_327C:
+return_327C:
 		rts
 
-	; End of function sub_312A
+    ; End of function sub_313A
 
 
 ; =============== S U B R O U T I N E =======================================
 
-j_j_PlayEnding:
+debugMode_PlayEnding:
 		
 		jmp     j_PlayEnding
 
-	; End of function j_j_PlayEnding
+    ; End of function debugMode_PlayEnding
 
 
 ; =============== S U B R O U T I N E =======================================
 
+; Suspend game
+
 sub_3284:
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		moveq   #$78,d0 
 		bsr.w   j_Sleep
-		trap    #SOUND_COMMAND
-		dc.w $4884
+		sndCom  SOUND_COMMAND_18564
 		moveq   #$3C,d0 
 		bsr.w   j_Sleep
-		bsr.w   InitDisplay_ReaderScreen
-		move.b  #2,((byte_FF9C05-$1000000)).w
+		bsr.w   InitializeReaderScreen
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     sub_164014
 		jsr     (sub_304).l
-		move.w  #$45,((word_FFC0BE-$1000000)).w 
+		move.w  #SFX_DIALOG_BLEEP_1,((SPEECH_SFX-$1000000)).w
 		move.w  #$3B,d0 ; "Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		move.w  #$3C,d0 ; "Don't stay away too long,[Line]though. We need you here to[Line]lead the Shining Force![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     sub_164018
-		bsr.w   sub_38E4
-		move.w  #$E10,d0
+		bsr.w   DisplayShiningForceLogo
+		move.w  #3600,d0
 		bsr.w   j_Sleep
 		bsr.w   j_FadeOutToBlack
 		bsr.w   j_DisableDisplayAndInterrupts
@@ -7264,23 +7408,24 @@ sub_3284:
 		movea.l (p_Start).w,a0  
 		jmp     (a0)
 
-	; End of function sub_3284
+    ; End of function sub_3284
 
 
 ; =============== S U B R O U T I N E =======================================
 
+; Simone's ending speech
+
 sub_32EC:
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		moveq   #$78,d0 
 		bsr.w   j_Sleep
-		trap    #SOUND_COMMAND
-		dc.w $4884
+		sndCom  SOUND_COMMAND_18564
 		moveq   #$3C,d0 
 		bsr.w   j_Sleep
-		bsr.w   InitDisplay_ReaderScreen
-		move.b  #1,((byte_FF9C05-$1000000)).w
+		bsr.w   InitializeReaderScreen
+		move.b  #1,((MESSAGE_SPEED-$1000000)).w
 		jsr     (sub_304).l
-		move.w  #$45,((word_FFC0BE-$1000000)).w 
+		move.w  #SFX_DIALOG_BLEEP_1,((SPEECH_SFX-$1000000)).w
 		move.w  #$3E,d0 ; "Swallowed by the murky brine,[Line]the Castle of the Ancients[Line]was lost forevermore.[Delay2][Delay2]"
 		trap    #DISPLAY_MESSAGE
 		trap    #7
@@ -7308,55 +7453,51 @@ sub_32EC:
 		trap    #6
 		moveq   #$3C,d0 
 		bsr.w   j_Sleep
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		sndCom  SOUND_COMMAND_FADE_OUT
 		move.w  #$12C,d0
 		bsr.w   j_Sleep
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_CREDITS
+		sndCom  MUSIC_CREDITS
 		bsr.w   j_FadeOutToBlack
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		rts
 
-	; End of function sub_32EC
+    ; End of function sub_32EC
 
 
 ; =============== S U B R O U T I N E =======================================
 
 DisplayReaderScreen:
 		
-		bsr.w   InitDisplay_ReaderScreen
-		tst.b   ((byte_FFC1CB-$1000000)).w
+		bsr.w   InitializeReaderScreen
+		tst.b   ((DEBUG_MODE_UNLOCKED-$1000000)).w
 		beq.s   loc_339E
-		cmpi.b  #1,(P2_INPUT).l 
+		cmpi.b  #INPUT_UP,(P2_INPUT).l
 		bne.s   loc_339E
-		move.b  #1,((byte_FFC1CA-$1000000)).w
-		trap    #SOUND_COMMAND
-		dc.w SFX_VALIDATION
+		move.b  #1,((DEBUG_MODE_ACTIVATED-$1000000)).w
+		sndCom  SFX_VALIDATION
 loc_339E:
-		move.w  #$45,((word_FFC0BE-$1000000)).w 
-		bsr.w   CheckSRAM
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_SIMONE
-		tst.b   ((byte_FFC1CA-$1000000)).w
+		move.w  #SFX_DIALOG_BLEEP_1,((SPEECH_SFX-$1000000)).w
+		bsr.w   CheckSram
+		sndCom  MUSIC_SIMONE
+		tst.b   ((DEBUG_MODE_ACTIVATED-$1000000)).w
 		beq.s   loc_33CA
-		btst    #INPUT_A_START_BIT,(P1_INPUT).l
+		btst    #INPUT_BIT_START,(P1_INPUT).l
 		beq.s   loc_33CA
-		addq.b  #1,((byte_FFB53D-$1000000)).w
-		jsr     j_InitGameSettings
+		addq.b  #1,((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
+		jsr     j_InitializeNewGame
 		bra.w   loc_34B8
 loc_33CA:
 		jsr     (sub_304).l
-		clr.b   ((byte_FF9C05-$1000000)).w
+		clr.b   ((MESSAGE_SPEED-$1000000)).w
 		tst.b   (P1_INPUT).l    
 		bne.s   loc_33EE
 		move.w  #$27,d0 ; "Wow! Dark Dragon, Ancients...[Line]Let's see now, what else does[Line]this old book say?[Wait2][Line]Hmmm. One thousand years[Line]have passed since they[Line]vanquished Dark Dragon.[Wait2][Line]And this book says[Line]Dark Dragon threatened to[Line]return right about now.[Wait2][Line]I bet anything that Dark[Line]Dragon is behind the evil[Line]hordes of Runefaust![Wait2]"
 		trap    #DISPLAY_MESSAGE
-		move.b  #2,((byte_FF9C05-$1000000)).w
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		move.w  #$28,d0 ; "I need to tell someone about[Line]this! But who would listen to[Line]a kid like me?[Wait2]"
 		trap    #DISPLAY_MESSAGE
 loc_33EE:
-		move.b  #2,((byte_FF9C05-$1000000)).w
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     sub_164014
 		tst.b   (P1_INPUT).l    
 		bne.s   loc_340E        
@@ -7374,46 +7515,48 @@ loc_3416:
 		trap    #DISPLAY_MESSAGE
 loc_3422:
 		clr.w   d0
-		jsr     sub_164008
+		jsr     j_CheckSavedGames
 		move.w  d0,-(sp)
 		move.w  (sp)+,d0
 		bmi.s   loc_3416
 		add.w   d0,d0
-		move.w  off_343A(pc,d0.w),d0
-		jmp     off_343A(pc,d0.w)
+		move.w  rjt_ReaderScreenActions(pc,d0.w),d0
+		jmp     rjt_ReaderScreenActions(pc,d0.w)
 
-	; End of function DisplayReaderScreen
+    ; End of function DisplayReaderScreen
 
-off_343A:       dc.w sub_3442-off_343A
-		dc.w sub_34EC-off_343A
-		dc.w sub_3542-off_343A
-		dc.w loc_35AA-off_343A
+rjt_ReaderScreenActions:
+		dc.w readerScreenAction_New-rjt_ReaderScreenActions
+		dc.w readerScreenAction_Cont-rjt_ReaderScreenActions
+		dc.w ReaderScreenAction_Del-rjt_ReaderScreenActions
+		dc.w ReaderScreenAction_Copy-rjt_ReaderScreenActions
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3442:
-		jsr     (sub_328).l
+readerScreenAction_New:
+		
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$3D,d0 ; "Pick an adventure."
 		trap    #DISPLAY_MESSAGE
 		moveq   #1,d0
-		jsr     sub_164008
+		jsr     j_CheckSavedGames
 		bmi.w   loc_3628
-		move.b  #2,((byte_FF9C05-$1000000)).w
-		move.w  d0,((word_FFC0B8-$1000000)).w
-		jsr     (sub_328).l
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
+		move.w  d0,((CURRENT_SAVE_SLOT-$1000000)).w
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$2C,d0 ; "Say, what shall I call you?[Wait2]"
 		trap    #DISPLAY_MESSAGE
-		jsr     (sub_30C).l
-		jsr     j_InitGameSettings
+		jsr     (j_CloseMessageWindow).l
+		jsr     j_InitializeNewGame
 		clr.w   d0
-		jsr     sub_164004
-		cmpi.b  #$F0,(P2_INPUT).l
+		jsr     j_NameAlly
+		cmpi.b  #INPUT_B|INPUT_C|INPUT_A|INPUT_START,(P2_INPUT).l
 		bne.s   loc_34A6
 		moveq   #1,d0
-		moveq   #$1B,d7
+		moveq   #REGULAR_NON_LEADER_FORCE_MEMBERS_COUNTER,d7
 loc_3492:
 		movem.w d0/d7,-(sp)
-		jsr     sub_164004
+		jsr     j_NameAlly
 		movem.w (sp)+,d0/d7
 		addq.w  #1,d0
 		dbf     d7,loc_3492
@@ -7425,116 +7568,117 @@ loc_34A6:
 		trap    #DISPLAY_MESSAGE
 loc_34B8:
 		move.b  #1,((CURRENT_CHAPTER-$1000000)).w
-		jsr     sub_37EE(pc)
+		jsr     SaveGame(pc)
 		nop
-		move.w  ((word_FFC0B8-$1000000)).w,d0
+		move.w  ((CURRENT_SAVE_SLOT-$1000000)).w,d0
 		addq.w  #1,d0
 		bset    d0,(SAVE_FLAGS).l
 		bset    d0,(byte_20022F).l
-		clr.l   (dword_FF0EF6).l
-		clr.b   ((byte_FFB5AC-$1000000)).w
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
+		clr.b   ((IS_DISPLAYING_PORTRAIT-$1000000)).w
+		sndCom  SOUND_COMMAND_FADE_OUT
 		bsr.w   j_FadeOutToBlack
 		clr.w   d0
 		rts
 
-	; End of function sub_3442
+    ; End of function readerScreenAction_New
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_34EC:
-		jsr     (sub_328).l
+readerScreenAction_Cont:
+		
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$2F,d0 ; "Let's get going![Line]You're doing great so far![Wait2]"
 		trap    #DISPLAY_MESSAGE
-		jsr     (sub_328).l
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$30,d0 ; "Which adventure would you[Line]like to continue?[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		moveq   #2,d0
-		jsr     sub_164008
+		jsr     j_CheckSavedGames
 		bmi.w   loc_3628
-		move.w  d0,((word_FFC0B8-$1000000)).w
-		jsr     sub_3826(pc)
+		move.w  d0,((CURRENT_SAVE_SLOT-$1000000)).w
+		jsr     LoadGame(pc)
 		nop
-		move.b  #2,((byte_FF9C05-$1000000)).w
-		jsr     (sub_328).l
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$31,d0 ; "Good luck! And be sure to[Line]stop by to let me know how[Line]you're doing, OK?[Wait2]"
 		trap    #DISPLAY_MESSAGE
-		clr.l   (dword_FF0EF6).l
-		clr.b   ((byte_FFB5AC-$1000000)).w
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
+		clr.b   ((IS_DISPLAYING_PORTRAIT-$1000000)).w
+		sndCom  SOUND_COMMAND_FADE_OUT
 		bsr.w   j_FadeOutToBlack
 		moveq   #$FFFFFFFF,d0
 		rts
 
-	; End of function sub_34EC
+    ; End of function readerScreenAction_Cont
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3542:
-		jsr     (sub_328).l
+ReaderScreenAction_Del:
+		
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$32,d0 ; "Really? Which adventure[Line]should I delete?[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		moveq   #2,d0
-		jsr     sub_164008
+		jsr     j_CheckSavedGames
 		bmi.w   loc_3416
 		movem.w d0,-(sp)
-		move.b  #2,((byte_FF9C05-$1000000)).w
-		jsr     (sub_328).l
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$33,d0 ; "Are you sure?"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		tst.w   d0
 		movem.w (sp)+,d0
 		bmi.w   loc_3628
-		move.w  d0,((word_FFC0B8-$1000000)).w
-		jsr     (sub_328).l
+		move.w  d0,((CURRENT_SAVE_SLOT-$1000000)).w
+		jsr     (j_CreateMessageWindow).l
 		bsr.w   sub_3652
 		move.w  #$34,d0 ; "OK, it's done![Wait2]"
 		trap    #DISPLAY_MESSAGE
-		move.w  ((word_FFC0B8-$1000000)).w,d0
+		move.w  ((CURRENT_SAVE_SLOT-$1000000)).w,d0
 		addq.w  #1,d0
 		bclr    d0,(SAVE_FLAGS).l
 		bclr    d0,(byte_20022F).l
 		bra.w   loc_3416
-loc_35AA:
-		jsr     (sub_328).l
+ReaderScreenAction_Copy:
+		
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$35,d0 ; "Which adventure do you wish[Line]to copy?"
 		trap    #DISPLAY_MESSAGE
 		moveq   #2,d0
-		jsr     sub_164008
+		jsr     j_CheckSavedGames
 		bmi.w   loc_3628
 		movem.w d0,-(sp)
-		move.b  #2,((byte_FF9C05-$1000000)).w
-		jsr     (sub_328).l
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$36,d0 ; "Where do you wish to copy it[Line]to?"
 		trap    #DISPLAY_MESSAGE
 		moveq   #1,d0
-		jsr     sub_164008
+		jsr     j_CheckSavedGames
 		movem.w (sp)+,d1
 		bmi.w   loc_3628
 		move.w  d0,-(sp)
-		move.w  d1,((word_FFC0B8-$1000000)).w
-		bsr.w   sub_3826
+		move.w  d1,((CURRENT_SAVE_SLOT-$1000000)).w
+		bsr.w   LoadGame
 		move.w  (sp)+,d0
-		move.w  d0,((word_FFC0B8-$1000000)).w
-		bsr.w   loc_37F4
-		move.w  ((word_FFC0B8-$1000000)).w,d0
+		move.w  d0,((CURRENT_SAVE_SLOT-$1000000)).w
+		bsr.w   DeleteGame
+		move.w  ((CURRENT_SAVE_SLOT-$1000000)).w,d0
 		addq.w  #1,d0
 		bset    d0,(SAVE_FLAGS).l
 		bset    d0,(byte_20022F).l
-		move.b  #2,((byte_FF9C05-$1000000)).w
-		jsr     (sub_328).l
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
+		jsr     (j_CreateMessageWindow).l
 		bsr.w   sub_3652
 		move.w  #$37,d0 ; "Done![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bra.w   loc_3416
 loc_3628:
-		move.b  #2,((byte_FF9C05-$1000000)).w
-		jsr     (sub_328).l
+		move.b  #2,((MESSAGE_SPEED-$1000000)).w
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$38,d0 ; "Change your mind? No problem![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bra.w   loc_3416
@@ -7545,162 +7689,172 @@ loc_3628:
 		trap    #DISPLAY_MESSAGE
 		rts
 
-	; End of function sub_3542
+    ; End of function ReaderScreenAction_Del
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_3652:
 		jsr     sub_164018
-		moveq   #$14,d0
+		moveq   #20,d0
 		jsr     (Sleep).l       
 
-	; End of function sub_3652
+    ; End of function sub_3652
 
 
 ; =============== S U B R O U T I N E =======================================
 
-CheckSRAM:
+CheckSram:
 		lea     (FF0FFE_LOADING_SPACE).l,a0
+						; load SRAM string into RAM
 		lea     (SRAM_STRING).l,a1
-		moveq   #$15,d7
-		bsr.w   CopyBytesFromSRAM
+		moveq   #21,d7
+		bsr.w   CopyBytesFromSram
 		bne.w   loc_378A
 		lea     (FF0FFE_LOADING_SPACE).l,a0
 		lea     aYasuhirohiroko(pc), a1
-		moveq   #$14,d7
-loc_3682:
+		moveq   #20,d7
+@CheckSramString_Loop:
+		
 		cmpm.b  (a0)+,(a1)+
 		bne.w   loc_378A
-		dbf     d7,loc_3682
+		dbf     d7,@CheckSramString_Loop
+                
 		move.b  (SAVE_FLAGS).l,d0
 		cmp.b   (byte_20022F).l,d0
 		bne.w   loc_378A
 		btst    #1,(SAVE_FLAGS).l
-		beq.s   loc_36DA
+		beq.s   @Slot2
 		lea     (FF0FFE_LOADING_SPACE).l,a0
 		lea     (SAVE_SLOT_1_DATA).l,a1
-		move.w  #$8B6,d7
-		bsr.w   CopyBytesFromSRAM
-		beq.s   loc_36DA
-		move.l  #1,((TEXT_NUMBER-$1000000)).w
+		move.w  #SAVE_SLOT_SIZE,d7
+		bsr.w   CopyBytesFromSram
+		beq.s   @Slot2
+		move.l  #1,((MESSAGE_ARG_NUMBER-$1000000)).w
 		bsr.w   sub_3758
 		bclr    #1,(SAVE_FLAGS).l
 		move.b  (SAVE_FLAGS).l,(byte_20022F).l
-loc_36DA:
+@Slot2:
 		btst    #2,(SAVE_FLAGS).l
-		beq.s   loc_3718
+		beq.s   @Slot3
 		lea     (FF0FFE_LOADING_SPACE).l,a0
 		lea     (SAVE_SLOT_2_DATA).l,a1
-		move.w  #$8B6,d7
-		bsr.w   CopyBytesFromSRAM
-		beq.s   loc_3718
-		move.l  #2,((TEXT_NUMBER-$1000000)).w
+		move.w  #SAVE_SLOT_SIZE,d7
+		bsr.w   CopyBytesFromSram
+		beq.s   @Slot3
+		move.l  #2,((MESSAGE_ARG_NUMBER-$1000000)).w
 		bsr.w   sub_3758
 		bclr    #2,(SAVE_FLAGS).l
 		move.b  (SAVE_FLAGS).l,(byte_20022F).l
-loc_3718:
+@Slot3:
 		btst    #3,(SAVE_FLAGS).l
-		beq.s   locret_3756
+		beq.s   @Return
 		lea     (FF0FFE_LOADING_SPACE).l,a0
 		lea     (SAVE_SLOT_3_DATA).l,a1
-		move.w  #$8B6,d7
-		bsr.w   CopyBytesFromSRAM
-		beq.s   locret_3756
-		move.l  #3,((TEXT_NUMBER-$1000000)).w
+		move.w  #SAVE_SLOT_SIZE,d7
+		bsr.w   CopyBytesFromSram
+		beq.s   @Return
+		move.l  #3,((MESSAGE_ARG_NUMBER-$1000000)).w
 		bsr.w   sub_3758
 		bclr    #3,(SAVE_FLAGS).l
 		move.b  (SAVE_FLAGS).l,(byte_20022F).l
-locret_3756:
+@Return:
 		rts
 
-	; End of function CheckSRAM
+    ; End of function CheckSram
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_3758:
 		jsr     (sub_304).l
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_CURSED_ITEM
+		sndCom  MUSIC_CURSED_ITEM
 		move.w  #$3A,d0 ; "Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bsr.w   j_WaitForInputFor3Seconds
-		jsr     (sub_30C).l
+		jsr     (j_CloseMessageWindow).l
 		rts
 
-	; End of function sub_3758
+    ; End of function sub_3758
 
 aYasuhirohiroko:dc.b 'YASUHIROHIROKOinSERA ',0
 
-; START OF FUNCTION CHUNK FOR CheckSRAM
+; START OF FUNCTION CHUNK FOR CheckSram
 
 loc_378A:
-		clr.b   (byte_203819).l
+		clr.b   (GAME_COMPLETED).l
 		lea     (MAP_SPRITE_POSITION).l,a0
 		lea     (SRAM_START).l,a1
-		move.w  #$1FFE,d7
-		bsr.w   CopyBytesToSRAM
+		move.w  #SRAM_COUNTER_MINUS_ONE,d7
+		bsr.w   CopyBytesToSram
 		lea     aYasuhirohiroko(pc), a0
 		lea     (SRAM_STRING).l,a1
-		moveq   #$15,d7
-		bsr.w   CopyBytesToSRAM
+		moveq   #21,d7
+		bsr.w   CopyBytesToSram
 		moveq   #1,d7
 
-; END OF FUNCTION CHUNK FOR CheckSRAM
+; END OF FUNCTION CHUNK FOR CheckSram
 
 
 ; =============== S U B R O U T I N E =======================================
 
-CopyBytesToSRAM:
+CopyBytesToSram:
 		
-		tst.b   ((byte_FFB53D-$1000000)).w
-		bne.w   locret_37D4
+		tst.b   ((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
+		bne.w   @Return
 		clr.w   d0
 		clr.w   d1
 		subq.w  #1,d7
-loc_37C4:
+@Loop:
 		move.b  (a0)+,d1
 		add.w   d1,d0
 		move.b  d1,(a1)
 		addq.l  #2,a1
-		dbf     d7,loc_37C4
+		dbf     d7,@Loop
+                
 		move.b  d0,(a1)
 		addq.l  #2,a1
-locret_37D4:
+@Return:
 		rts
 
-	; End of function CopyBytesToSRAM
+    ; End of function CopyBytesToSram
 
 
 ; =============== S U B R O U T I N E =======================================
 
-CopyBytesFromSRAM:
+CopyBytesFromSram:
 		
 		clr.w   d0
 		clr.w   d1
 		subq.w  #1,d7
-loc_37DC:
+@Loop:
 		move.b  (a1),d1
 		add.w   d1,d0
 		move.b  d1,(a0)+
 		addq.l  #2,a1
-		dbf     d7,loc_37DC
+		dbf     d7,@Loop
+                
 		cmp.b   (a1),d0
 		addq.l  #2,a1
 		rts
 
-	; End of function CopyBytesFromSRAM
+    ; End of function CopyBytesFromSram
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_37EE:
+SaveGame:
 		jsr     sub_20024
-loc_37F4:
-		moveq   #$27,d0 
+
+    ; End of function SaveGame
+
+
+; =============== S U B R O U T I N E =======================================
+
+DeleteGame:
+		moveq   #39,d0
 		bsr.w   SetEventFlag
-		move.w  ((word_FFC0B8-$1000000)).w,d0
+		move.w  ((CURRENT_SAVE_SLOT-$1000000)).w,d0
 		bne.s   loc_3808
 		lea     (SAVE_SLOT_1_DATA).l,a1
 		bra.s   loc_381C
@@ -7712,227 +7866,111 @@ loc_3808:
 loc_3816:
 		lea     (SAVE_SLOT_3_DATA).l,a1
 loc_381C:
-		move.w  #$8B6,d7
+		move.w  #SAVE_SLOT_SIZE,d7
 		lea     ((CURRENT_CHAPTER-$1000000)).w,a0
-		bra.s   CopyBytesToSRAM
+		bra.s   CopyBytesToSram
 
-	; End of function sub_37EE
+    ; End of function DeleteGame
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3826:
-		move.w  ((word_FFC0B8-$1000000)).w,d0
-		bne.s   loc_3834
+LoadGame:
+		move.w  ((CURRENT_SAVE_SLOT-$1000000)).w,d0
+		bne.s   @Slot2
 		lea     (SAVE_SLOT_1_DATA).l,a1
-		bra.s   loc_3848
-loc_3834:
+		bra.s   @Continue
+@Slot2:
 		cmpi.w  #1,d0
-		bne.s   loc_3842
+		bne.s   @Slot3
 		lea     (SAVE_SLOT_2_DATA).l,a1
-		bra.s   loc_3848
-loc_3842:
+		bra.s   @Continue
+@Slot3:
 		lea     (SAVE_SLOT_3_DATA).l,a1
-loc_3848:
-		move.w  #$8B6,d7
+@Continue:
+		move.w  #SAVE_SLOT_SIZE,d7
 		lea     ((CURRENT_CHAPTER-$1000000)).w,a0
-		bra.s   CopyBytesFromSRAM
+		bra.s   CopyBytesFromSram
 
-	; End of function sub_3826
+    ; End of function LoadGame
 
 
 ; =============== S U B R O U T I N E =======================================
 
-InitDisplay_ReaderScreen:
+InitializeReaderScreen:
 		
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		bsr.w   j_DisableDisplayAndInterrupts
 		bsr.w   j_ClearScrollAndSpriteTables
 		move.w  #$8C00,d0       ; H32 cell mode, no interlace
-		bsr.w   j_SetVDPRegStatus
+		bsr.w   j_SetVdpReg
 		move.w  #$9001,d0       ; scroll size : V32 cell, H64 cell
-		bsr.w   j_SetVDPRegStatus
+		bsr.w   j_SetVdpReg
 		move.w  #$8230,d0       ; scroll A table VRAM address : C000
-		bsr.w   j_SetVDPRegStatus
+		bsr.w   j_SetVdpReg
 		move.w  #$8407,d0       ; scroll B table VRAM address : E000
-		bsr.w   j_SetVDPRegStatus
+		bsr.w   j_SetVdpReg
 		move.w  #$8B00,d0       ; disable external interrupt, full scrolls
-		bsr.w   j_SetVDPRegStatus
+		bsr.w   j_SetVdpReg
 		jsr     sub_16400C
 		bsr.w   j_EnableDisplayAndInterrupts
 		movem.l d7-a1,-(sp)
 		lea     ReaderScreenPalettes(pc), a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$80,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		clr.l   (dword_FF0100).l
-		clr.l   (word_FF0500).l 
-		bsr.w   j_StoreVDPCommands
-		bsr.w   j_StoreVDPCommandsbis
+		clr.l   (HORIZONTAL_SCROLL_DATA).l
+		clr.l   (VERTICAL_SCROLL_DATA).l
+		bsr.w   j_UpdateVdpHScrollData
+		bsr.w   j_UpdateVdpVScrollData
 		bsr.w   j_FadeInFromBlack
 		move.w  #$14,((word_FFB56A-$1000000)).w
 		move.w  #$14,((word_FFB58A-$1000000)).w
-		move.b  #1,((byte_FFB5AC-$1000000)).w
-		move.l  #sub_164010,(dword_FF0EF6).l
+		move.b  #1,((IS_DISPLAYING_PORTRAIT-$1000000)).w
+		move.l  #sub_164010,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		rts
 
-	; End of function InitDisplay_ReaderScreen
+    ; End of function InitializeReaderScreen
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_38E4:
+DisplayShiningForceLogo:
+		
 		move.w  #$3C,d0 
 		jsr     (j_Sleep).l
-		movea.l (p_ShiningForceLogo).l,a0
+		movea.l (p_ShiningForceLogoTiles).l,a0
 		lea     ($A000).l,a1
 		move.w  #$1000,d0
 		moveq   #2,d1
-		bsr.w   sub_298
-		bsr.w   j_SetVIntParam3
+		bsr.w   j_ApplyVIntVramDmaOnCompressedTiles
+		bsr.w   j_EnableDmaQueueProcessing
 		move.b  #2,(FADING_PALETTE_FLAGS).l
 		move.b  #IN_FROM_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
 		moveq   #3,d0
 		bsr.w   j_Sleep
-		lea     unk_39CC(pc), a0
+		lea     ShiningForceLogoLayout(pc), a0
 		move.w  #$C05,d0
 		move.w  #$1215,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		moveq   #$3C,d0 
 		bra.w   j_Sleep
 
-	; End of function sub_38E4
+    ; End of function DisplayShiningForceLogo
 
 ReaderScreenPalettes:
 		incbin "data/graphics/specialscreens/readerscreen/readerscreenpalettes.bin"
-unk_39CC:       dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   1
-		dc.b $A5 
-		dc.b   2
-		dc.b $A5 
-		dc.b   3
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   4
-		dc.b $A5 
-		dc.b   5
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   6
-		dc.b $A5 
-		dc.b   7
-		dc.b $A5 
-		dc.b   8
-		dc.b $A5 
-		dc.b   9
-		dc.b $A5 
-		dc.b  $A
-		dc.b $A5 
-		dc.b  $B
-		dc.b $A5 
-		dc.b  $C
-		dc.b $A5 
-		dc.b  $D
-		dc.b $A5 
-		dc.b  $E
-		dc.b $A5 
-		dc.b  $F
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b $10
-		dc.b $A5 
-		dc.b $11
-		dc.b $A5 
-		dc.b $12
-		dc.b $A5 
-		dc.b $13
-		dc.b $A5 
-		dc.b $14
-		dc.b $A5 
-		dc.b $15
-		dc.b $A5 
-		dc.b $16
-		dc.b $A5 
-		dc.b $17
-		dc.b $A5 
-		dc.b $18
-		dc.b $A5 
-		dc.b $19
-		dc.b $A5 
-		dc.b $1A
-		dc.b $A5 
-		dc.b $1B
-		dc.b $A5 
-		dc.b $1C
-		dc.b $A5 
-		dc.b $1D
-		dc.b $A5 
-		dc.b $1E
-		dc.b $A5 
-		dc.b $1F
-		dc.b $A5 
-		dc.b $20
-		dc.b $A5 
-		dc.b $21 
-		dc.b $A5 
-		dc.b $22 
-		dc.b $A5 
-		dc.b $23 
-		dc.b $A5 
-		dc.b $24 
-		dc.b $A5 
-		dc.b $25 
-		dc.b $A5 
-		dc.b $26 
-		dc.b $A5 
-		dc.b $27 
-		dc.b $A5 
-		dc.b $28 
-		dc.b $A5 
-		dc.b $29 
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b   0
-		dc.b $A5 
-		dc.b $2A 
-		dc.b $A5 
-		dc.b $2B 
-		dc.b $A5 
-		dc.b $2C 
+ShiningForceLogoLayout:
+		incbin "data/graphics/specialscreens/readerscreen/shiningforcelogolayout.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3A44:
+DisplayChapterScreen:
+		
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		lea     (pt_ChapterScreens).l,a0
@@ -7944,16 +7982,16 @@ sub_3A44:
 		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		movea.l (p_ChapterScreensPalette).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
-		lea     word_49EE(pc), a0
+		lea     ChapterScreenLayout(pc), a0
 		move.w  #$2008,d0
 		move.w  #6,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$B4,d0 
@@ -7963,18 +8001,16 @@ sub_3A44:
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		cmpi.b  #1,((CURRENT_CHAPTER-$1000000)).w
-		bne.s   loc_3AE0
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_TOWN
+		bne.s   byte_3AE0
+		sndCom  MUSIC_TOWN
 		bra.s   loc_3AE4
-loc_3AE0:
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_INTRO
+byte_3AE0:
+		sndCom  MUSIC_INTRO
 loc_3AE4:
 		moveq   #$26,d0 
 		bsr.w   SetEventFlag
-		clr.w   ((word_FFC0BE-$1000000)).w
-		move.b  #$FF,((byte_FF9C4D-$1000000)).w
+		clr.w   ((SPEECH_SFX-$1000000)).w
+		move.b  #$FF,((VICTORY_EXIT-$1000000)).w
 		clr.w   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		subq.w  #1,d0
@@ -7982,7 +8018,7 @@ loc_3AE4:
 		move.w  off_3B06(pc,d0.w),d0
 		jmp     off_3B06(pc,d0.w)
 
-	; End of function sub_3A44
+    ; End of function DisplayChapterScreen
 
 off_3B06:       dc.w sub_3B16-off_3B06
 		dc.w sub_3B8E-off_3B06
@@ -8000,25 +8036,21 @@ sub_3B16:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
-		move.w  #$4A,((word_FFC0BE-$1000000)).w 
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  #SFX_DIALOG_BLEEP_6,((SPEECH_SFX-$1000000)).w
 		move.w  #$30C,d0        ; "[Hero]? [Hero]?[Line]C'mon, kid, wake up![Line]I didn't hit you that hard.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		trap    #7
-		trap    #SOUND_COMMAND
-		dc.w SFX_SWORDS_HIT
+		sndCom  SFX_SWORDS_HIT
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
-		trap    #SOUND_COMMAND
-		dc.w SFX_SWORDS_HIT
+		sndCom  SFX_SWORDS_HIT
 		moveq   #$28,d0 
 		jsr     (j_Sleep).l
-		trap    #SOUND_COMMAND
-		dc.w SFX_CRIT
-		moveq   #$1E,d0
+		sndCom  SFX_CRITICAL_HIT
+		moveq   #30,d0
 		jsr     (j_Sleep).l
-		trap    #SOUND_COMMAND
-		dc.w SFX_HIT
+		sndCom  SFX_HIT
 		move.w  #$30D,d0        ; "Keep your guard up, kid.[Line]Those beasts of Runefaust[Line]will tear you to pieces![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
@@ -8032,7 +8064,7 @@ sub_3B16:
 		move.w  #$80,((byte_FF9C88-$1000000)).w 
 		rts
 
-	; End of function sub_3B16
+    ; End of function sub_3B16
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8042,7 +8074,7 @@ sub_3B8E:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #$15D,d0        ; "[Hero] and the Shining[Line]Force followed Kane's trail[Line]to the town of Rindo....[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
@@ -8056,7 +8088,7 @@ sub_3B8E:
 		move.w  #$C0,((byte_FF9C88-$1000000)).w 
 		rts
 
-	; End of function sub_3B8E
+    ; End of function sub_3B8E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8066,7 +8098,7 @@ sub_3BD2:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #$15E,d0        ; "The Shining Force arrived in[Line]Bustoke, a town built into a[Line]mountainside.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
@@ -8080,7 +8112,7 @@ sub_3BD2:
 		move.w  #$80,((byte_FF9C88-$1000000)).w 
 		rts
 
-	; End of function sub_3BD2
+    ; End of function sub_3BD2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8090,7 +8122,7 @@ sub_3C18:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #$15F,d0        ; "The Shining Force reached the[Line]Pao Prairie to discover that[Line]Pao was a town of wagons![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
@@ -8104,7 +8136,7 @@ sub_3C18:
 		move.w  #0,((byte_FF9C88-$1000000)).w
 		rts
 
-	; End of function sub_3C18
+    ; End of function sub_3C18
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8114,12 +8146,12 @@ sub_3C5E:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #$160,d0        ; "After a week at sea, sentries[Line]spotted a horde of monsters[Line]approaching the ship....[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		clr.b   ((CURRENT_REGION-$1000000)).w
-		move.b  #2,((byte_FF9C86-$1000000)).w
+		move.b  #2,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #0,((CURRENT_MAP-$1000000)).w
 		moveq   #$24,d0 
@@ -8129,7 +8161,7 @@ sub_3C5E:
 		move.w  #0,((byte_FF9C88-$1000000)).w
 		rts
 
-	; End of function sub_3C5E
+    ; End of function sub_3C5E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8139,7 +8171,7 @@ sub_3CAA:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #$161,d0        ; "The Shining Force finally[Line]reached the port of Rudo, far[Line]from Prompt.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
@@ -8153,7 +8185,7 @@ sub_3CAA:
 		move.w  #0,((byte_FF9C88-$1000000)).w
 		rts
 
-	; End of function sub_3CAA
+    ; End of function sub_3CAA
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8163,7 +8195,7 @@ sub_3CF2:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #$162,d0        ; "The Shining Force quickly[Line]reached Prompt, hoping[Line]that they had come in time.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
@@ -8177,7 +8209,7 @@ sub_3CF2:
 		move.w  #0,((byte_FF9C88-$1000000)).w
 		rts
 
-	; End of function sub_3CF2
+    ; End of function sub_3CF2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8187,7 +8219,7 @@ sub_3D3A:
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
-		move.l  d0,((TEXT_NUMBER-$1000000)).w
+		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #$163,d0        ; "Runefaust at last! The long[Line]and perilous journey is near[Line]its end.[Wait2][Line]It is up to the Shining Force[Line]whether it ends as a[Line]triumph for Light or Darkness.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
@@ -8201,13 +8233,15 @@ sub_3D3A:
 		move.w  #$C0,((byte_FF9C88-$1000000)).w 
 		rts
 
-	; End of function sub_3D3A
+    ; End of function sub_3D3A
 
 
 ; =============== S U B R O U T I N E =======================================
 
+; End chapter
+
 sub_3D80:
-		clr.w   ((word_FFC0BE-$1000000)).w
+		clr.w   ((SPEECH_SFX-$1000000)).w
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		cmpi.b  #2,d0
 		bne.s   loc_3DBC
@@ -8219,10 +8253,10 @@ sub_3D80:
 		move.w  #$165,d0        ; "[Hero] and the Shining[Line]Force head toward Bustoke.[Line]What awaits them there?[Wait2][Line]The legacy of the Ancients[Line]is still a mystery. Will[Line]they ever solve it?[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
-		bra.w   loc_3DEC
+		bra.w   byte_3DEC
 loc_3DBC:
 		cmpi.b  #7,d0
-		bne.s   loc_3DEC
+		bne.s   byte_3DEC
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
@@ -8231,9 +8265,8 @@ loc_3DBC:
 		move.w  #$16A,d0        ; "The Shining Force is now in a[Line]desperate race against time.[Line]Dark Dragon is awakening![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
-loc_3DEC:
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+byte_3DEC:
+		sndCom  SOUND_COMMAND_FADE_OUT
 		moveq   #$5A,d0 
 		bsr.w   j_Sleep
 		bsr.w   j_DisableDisplayAndInterrupts
@@ -8247,27 +8280,26 @@ loc_3DEC:
 		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		bsr.w   sub_294
+		bsr.w   j_ApplyImmediateVramDmaOnCompressedTiles
 		movea.l (p_ChapterEndTiles).l,a0
 		lea     ($4000).w,a1
 		move.w  #$100,d0
 		move.w  #2,d1
-		bsr.w   sub_294
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_CHAPTER_END
+		bsr.w   j_ApplyImmediateVramDmaOnCompressedTiles
+		sndCom  MUSIC_CHAPTER_END
 		jsr     (j_EnableDisplayAndInterrupts).l
 		movea.l (p_ChapterScreensPalette).l,a0
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
-		lea     unk_4BEE(pc), a0
+		lea     ChapterEndLayout(pc), a0
 		move.w  #$404,d0
 		move.w  #$E0F,d1
-		jsr     sub_801C
-		lea     word_49EE(pc), a0
+		jsr     j_CreateWindow
+		lea     ChapterScreenLayout(pc), a0
 		move.w  #$2008,d0
 		move.w  #6,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		jsr     (j_FadeInFromBlack).l
 		clr.w   d0
@@ -8284,12 +8316,6 @@ loc_3DEC:
 		cmpi.b  #8,d0
 		ble.w   loc_3EC8
 		rts
-
-	; End of function sub_3D80
-
-
-; START OF FUNCTION CHUNK FOR sub_3D80
-
 loc_3EC8:
 		clr.l   d0
 		lea     ((EVENT_FLAGS-$1000000)).w,a0
@@ -8303,210 +8329,231 @@ loc_3EC8:
 		clr.w   (a0)+
 		clr.w   (a0)+
 		clr.w   (a0)+
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_3D80
-
-		dc.w MUSIC_SIMONE
+		sndCom  MUSIC_SIMONE
 		jsr     (j_FadeInFromBlack).l
 		move.w  #$46,d0 ; "Do you want to record your[Line]exploits so far?"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
-		bne.s   loc_3F02
-		jsr     (sub_32C).l
-loc_3F02:       trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		bne.s   byte_3F02
+		jsr     (j_SaveGame).l
+byte_3F02:
+		sndCom  SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
 		rts
 
+    ; End of function sub_3D80
+
+
 ; =============== S U B R O U T I N E =======================================
 
-sub_3F0E:
-		move.b  #$FF,((byte_FF9C4D-$1000000)).w
+ExecuteMapExitScript:
+		
+		move.b  #-1,((VICTORY_EXIT-$1000000)).w
 		clr.w   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		subq.w  #1,d0
 		add.w   d0,d0
-		move.w  off_3F26(pc,d0.w),d0
-		jmp     off_3F26(pc,d0.w)
+		move.w  rjt_MapExitScripts(pc,d0.w),d0
+		jmp     rjt_MapExitScripts(pc,d0.w)
 
-	; End of function sub_3F0E
+    ; End of function ExecuteMapExitScript
 
-off_3F26:       dc.w sub_3F36-off_3F26
-		dc.w sub_4066-off_3F26
-		dc.w sub_41D6-off_3F26
-		dc.w sub_42D4-off_3F26
-		dc.w sub_448A-off_3F26
-		dc.w sub_45CC-off_3F26
-		dc.w sub_46E4-off_3F26
-		dc.w sub_4814-off_3F26
+rjt_MapExitScripts:
+		dc.w mes0_Chapter1-rjt_MapExitScripts
+		dc.w mes1_Chapter2-rjt_MapExitScripts
+		dc.w mes2_Chapter3-rjt_MapExitScripts
+		dc.w mes3_Chapter4-rjt_MapExitScripts
+		dc.w mes4_Chapter5-rjt_MapExitScripts
+		dc.w mes5_Chapter6-rjt_MapExitScripts
+		dc.w mes6_Chapter7-rjt_MapExitScripts
+		dc.w mes7_Chapter8-rjt_MapExitScripts
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3F36:
-		moveq   #$24,d0 
+mes0_Chapter1:
+		
+		moveq   #36,d0
 		bsr.w   SetEventFlag
 		clr.w   d0
 		move.b  ((CURRENT_REGION-$1000000)).w,d0
 		add.w   d0,d0
-		move.w  off_3F4C(pc,d0.w),d0
-		jmp     off_3F4C(pc,d0.w)
+		move.w  rjt_MapExitScript0_Regions(pc,d0.w),d0
+		jmp     rjt_MapExitScript0_Regions(pc,d0.w)
 
-	; End of function sub_3F36
+    ; End of function mes0_Chapter1
 
-off_3F4C:       dc.w sub_3F5A-off_3F4C
-		dc.w sub_3FB6-off_3F4C
-		dc.w sub_4012-off_3F4C
-		dc.w sub_401A-off_3F4C
-		dc.w loc_4032-off_3F4C
-		dc.w loc_403A-off_3F4C
-		dc.w sub_3F5A-off_3F4C
+rjt_MapExitScript0_Regions:
+		dc.w mes0_Region0-rjt_MapExitScript0_Regions
+		dc.w mes0_Region1-rjt_MapExitScript0_Regions
+		dc.w mes0_Region2-rjt_MapExitScript0_Regions
+		dc.w mes0_Region3-rjt_MapExitScript0_Regions
+		dc.w mes0_Region4-rjt_MapExitScript0_Regions
+		dc.w mes0_Region5-rjt_MapExitScript0_Regions
+		dc.w mes0_Region0-rjt_MapExitScript0_Regions
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3F5A:
+mes0_Region0:
 		clr.w   d0
 		move.b  ((CURRENT_MAP-$1000000)).w,d0
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		add.w   d0,d0
-		move.w  off_3F6E(pc,d0.w),d0
-		jmp     off_3F6E(pc,d0.w)
+		move.w  rjt_MapExitScript0_Region0_Exits(pc,d0.w),d0
+		jmp     rjt_MapExitScript0_Region0_Exits(pc,d0.w)
 
-	; End of function sub_3F5A
+    ; End of function mes0_Region0
 
-off_3F6E:       dc.w sub_3F76-off_3F6E
-		dc.w sub_3F7E-off_3F6E
-		dc.w sub_3FA6-off_3F6E
-		dc.w sub_3FAE-off_3F6E
+rjt_MapExitScript0_Region0_Exits:
+		dc.w mes0_r0_Exit0-rjt_MapExitScript0_Region0_Exits
+		dc.w mes0_r0_Exit1-rjt_MapExitScript0_Region0_Exits
+		dc.w mes0_r0_Exit2-rjt_MapExitScript0_Region0_Exits
+		dc.w mes0_r0_Exit3-rjt_MapExitScript0_Region0_Exits
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3F76:
+mes0_r0_Exit0:
+		
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_3F76
+    ; End of function mes0_r0_Exit0
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3F7E:
-		moveq   #$24,d0 
+mes0_r0_Exit1:
+		
+		moveq   #36,d0
 		bsr.w   ClearEventFlag
 		move.b  #1,((CURRENT_REGION-$1000000)).w
-		moveq   #$28,d0 
+		moveq   #40,d0
 		bsr.w   CheckEventFlag
 		bne.s   loc_3F9E
-		move.b  #3,((byte_FF9C4C-$1000000)).w
+		move.b  #3,((EGRESS_LOCATION-$1000000)).w
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_3FA4
+		bra.s   return_3FA4
 loc_3F9E:
-		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_3FA4:
+		move.b  #-1,((CURRENT_MAP_VERSION-$1000000)).w
+return_3FA4:
 		rts
 
-	; End of function sub_3F7E
+    ; End of function mes0_r0_Exit1
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3FA6:
+mes0_r0_Exit2:
+		
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_3FA6
+    ; End of function mes0_r0_Exit2
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3FAE:
+mes0_r0_Exit3:
+		
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_3FAE
+    ; End of function mes0_r0_Exit3
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_3FB6:
+mes0_Region1:
 		move.b  #1,((CURRENT_MAP-$1000000)).w
 loc_3FBC:
 		move.b  #6,((CURRENT_REGION-$1000000)).w
-		moveq   #$24,d0 
+		moveq   #36,d0
 		bsr.w   ClearEventFlag
-		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-		moveq   #$28,d0 
+		move.b  #-1,((CURRENT_MAP_VERSION-$1000000)).w
+		moveq   #40,d0
 		bsr.w   CheckEventFlag
-		beq.s   locret_4010
+		beq.s   return_4010
 		clr.b   ((CURRENT_REGION-$1000000)).w
-		moveq   #$29,d0 
+		moveq   #41,d0
 		bsr.w   CheckEventFlag
 		bne.s   loc_3FF4
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		clr.b   ((byte_FF9C4D-$1000000)).w
-		move.b  #4,((byte_FF9C4C-$1000000)).w
-		bra.s   locret_4010
+		clr.b   ((VICTORY_EXIT-$1000000)).w
+		move.b  #4,((EGRESS_LOCATION-$1000000)).w
+		bra.s   return_4010
 loc_3FF4:
-		moveq   #$30,d0 
+		moveq   #48,d0
 		bsr.w   CheckEventFlag
-		beq.s   locret_4010
-		moveq   #$2A,d0 
+		beq.s   return_4010
+		moveq   #42,d0
 		bsr.w   CheckEventFlag
-		bne.s   locret_4010
+		bne.s   return_4010
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #3,((byte_FF9C4D-$1000000)).w
-locret_4010:
+		move.b  #3,((VICTORY_EXIT-$1000000)).w
+return_4010:
 		rts
 
-	; End of function sub_3FB6
+    ; End of function mes0_Region1
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_4012:
+mes0_Region2:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_4012
+    ; End of function mes0_Region2
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_401A:
+mes0_Region3:
 		clr.b   ((CURRENT_MAP-$1000000)).w
-		moveq   #$33,d0 
+		moveq   #51,d0
 		bsr.w   CheckEventFlag
 		beq.s   loc_4030
 		bsr.w   ClearEventFlag
-		move.b  #1,((byte_FF9C86-$1000000)).w
+		move.b  #1,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 loc_4030:
 		bra.s   loc_3FBC
-loc_4032:
+
+    ; End of function mes0_Region3
+
+
+; =============== S U B R O U T I N E =======================================
+
+mes0_Region4:
 		move.b  #2,((CURRENT_MAP-$1000000)).w
 		bra.s   loc_3FBC
-loc_403A:
+
+    ; End of function mes0_Region4
+
+
+; =============== S U B R O U T I N E =======================================
+
+mes0_Region5:
 		clr.b   ((CURRENT_MAP-$1000000)).w
-		moveq   #$31,d0 
+		moveq   #49,d0
 		bsr.w   CheckEventFlag
 		bne.s   loc_4052
 		move.b  #3,((CURRENT_MAP-$1000000)).w
 		bra.w   loc_3FBC
-		bra.s   locret_4064
+		bra.s   return_4064
 loc_4052:
-		moveq   #$24,d0 
+		moveq   #36,d0
 		bsr.w   ClearEventFlag
 		move.b  #2,((CURRENT_REGION-$1000000)).w
 		move.b  #3,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4064:
+return_4064:
 		rts
 
-	; End of function sub_401A
+    ; End of function mes0_Region5
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_4066:
-		moveq   #$24,d0 
+mes1_Chapter2:
+		
+		moveq   #36,d0
 		bsr.w   SetEventFlag
 		clr.w   d0
 		move.b  ((CURRENT_REGION-$1000000)).w,d0
@@ -8514,7 +8561,7 @@ sub_4066:
 		move.w  off_407C(pc,d0.w),d0
 		jmp     off_407C(pc,d0.w)
 
-	; End of function sub_4066
+    ; End of function mes1_Chapter2
 
 off_407C:       dc.w sub_408E-off_407C
 		dc.w sub_408E-off_407C
@@ -8536,7 +8583,7 @@ sub_408E:
 		move.w  off_40A2(pc,d0.w),d0
 		jmp     off_40A2(pc,d0.w)
 
-	; End of function sub_408E
+    ; End of function sub_408E
 
 off_40A2:       dc.w sub_40A8-off_40A2
 		dc.w sub_40B0-off_40A2
@@ -8548,7 +8595,7 @@ sub_40A8:
 		move.b  #7,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_40A8
+    ; End of function sub_40A8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8557,7 +8604,7 @@ sub_40B0:
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_40B0
+    ; End of function sub_40B0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8566,7 +8613,7 @@ sub_40B8:
 		move.b  #8,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_40B8
+    ; End of function sub_40B8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8576,7 +8623,7 @@ sub_40C0:
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_40C0
+    ; End of function sub_40C0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8586,7 +8633,7 @@ sub_40CE:
 		move.b  #7,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_40CE
+    ; End of function sub_40CE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8596,7 +8643,7 @@ sub_40DC:
 		move.b  #8,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_40DC
+    ; End of function sub_40DC
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8614,25 +8661,19 @@ loc_40F8:
 		bsr.w   CheckEventFlag
 		beq.s   loc_4118
 		move.b  #2,((CURRENT_REGION-$1000000)).w
-		bra.s   locret_4138
+		bra.s   return_4138
 loc_4118:
 		moveq   #$30,d0 
 		bsr.w   CheckEventFlag
-		beq.s   locret_4138
+		beq.s   return_4138
 		move.b  #1,((CURRENT_REGION-$1000000)).w
 		moveq   #$28,d0 
 		bsr.w   CheckEventFlag
-		bne.s   locret_4138
-		move.b  #1,((byte_FF9C4D-$1000000)).w
+		bne.s   return_4138
+		move.b  #1,((VICTORY_EXIT-$1000000)).w
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
-locret_4138:
+return_4138:
 		rts
-
-	; End of function sub_40EA
-
-
-; START OF FUNCTION CHUNK FOR sub_40EA
-
 loc_413A:
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		moveq   #$24,d0 
@@ -8642,13 +8683,13 @@ loc_413A:
 		bsr.w   CheckEventFlag
 		bne.s   loc_415A
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_4160
+		bra.s   return_4160
 loc_415A:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4160:
+return_4160:
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_40EA
+    ; End of function sub_40EA
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8667,13 +8708,13 @@ loc_4170:
 		bsr.w   CheckEventFlag
 		bne.s   loc_4190
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_4196
+		bra.s   return_4196
 loc_4190:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4196:
+return_4196:
 		rts
 
-	; End of function sub_4162
+    ; End of function sub_4162
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8691,20 +8732,21 @@ loc_41A8:
 		moveq   #$2B,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_41CE
-		move.b  #7,((byte_FF9C4C-$1000000)).w
+		move.b  #7,((EGRESS_LOCATION-$1000000)).w
 		move.b  #3,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_41D4
+		bra.s   return_41D4
 loc_41CE:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_41D4:
+return_41D4:
 		rts
 
-	; End of function sub_4198
+    ; End of function sub_4198
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_41D6:
+mes2_Chapter3:
+		
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
 		clr.w   d0
@@ -8713,7 +8755,7 @@ sub_41D6:
 		move.w  off_41EC(pc,d0.w),d0
 		jmp     off_41EC(pc,d0.w)
 
-	; End of function sub_41D6
+    ; End of function mes2_Chapter3
 
 off_41EC:       dc.w sub_41F4-off_41EC
 		dc.w sub_423E-off_41EC
@@ -8730,7 +8772,7 @@ sub_41F4:
 		move.w  off_4208(pc,d0.w),d0
 		jmp     off_4208(pc,d0.w)
 
-	; End of function sub_41F4
+    ; End of function sub_41F4
 
 off_4208:       dc.w sub_420C-off_4208
 		dc.w sub_421A-off_4208
@@ -8742,7 +8784,7 @@ sub_420C:
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_420C
+    ; End of function sub_420C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8755,13 +8797,13 @@ sub_421A:
 		bsr.w   CheckEventFlag
 		bne.s   loc_4236
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_423C
+		bra.s   return_423C
 loc_4236:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_423C:
+return_423C:
 		rts
 
-	; End of function sub_421A
+    ; End of function sub_421A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8771,7 +8813,7 @@ sub_423E:
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_423E
+    ; End of function sub_423E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8784,15 +8826,15 @@ sub_424C:
 		moveq   #$29,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_4272
-		move.b  #1,((byte_FF9C4D-$1000000)).w
+		move.b  #1,((VICTORY_EXIT-$1000000)).w
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_4278
+		bra.s   return_4278
 loc_4272:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4278:
+return_4278:
 		rts
 
-	; End of function sub_424C
+    ; End of function sub_424C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8807,19 +8849,13 @@ sub_427A:
 		moveq   #$29,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_42A6
-		move.b  #1,((byte_FF9C4D-$1000000)).w
+		move.b  #1,((VICTORY_EXIT-$1000000)).w
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_42AC
+		bra.s   return_42AC
 loc_42A6:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_42AC:
+return_42AC:
 		rts
-
-	; End of function sub_427A
-
-
-; START OF FUNCTION CHUNK FOR sub_427A
-
 loc_42AE:
 		move.b  #1,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP-$1000000)).w
@@ -8829,18 +8865,19 @@ loc_42AE:
 		bsr.w   CheckEventFlag
 		bne.s   loc_42CC
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_42D2
+		bra.s   return_42D2
 loc_42CC:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_42D2:
+return_42D2:
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_427A
+    ; End of function sub_427A
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_42D4:
+mes3_Chapter4:
+		
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
 		clr.w   d0
@@ -8849,7 +8886,7 @@ sub_42D4:
 		move.w  off_42EA(pc,d0.w),d0
 		jmp     off_42EA(pc,d0.w)
 
-	; End of function sub_42D4
+    ; End of function mes3_Chapter4
 
 off_42EA:       dc.w sub_42FC-off_42EA
 		dc.w sub_42FC-off_42EA
@@ -8871,7 +8908,7 @@ sub_42FC:
 		move.w  off_4310(pc,d0.w),d0
 		jmp     off_4310(pc,d0.w)
 
-	; End of function sub_42FC
+    ; End of function sub_42FC
 
 off_4310:       dc.w sub_4316-off_4310
 		dc.w sub_4324-off_4310
@@ -8884,7 +8921,7 @@ sub_4316:
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_4316
+    ; End of function sub_4316
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8897,20 +8934,20 @@ sub_4324:
 		bne.s   loc_4340
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #2,((CURRENT_REGION-$1000000)).w
-		bra.s   locret_435C
+		bra.s   return_435C
 loc_4340:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$30,d0 
 		bsr.w   CheckEventFlag
 		beq.s   loc_4356
 		move.b  #3,((CURRENT_REGION-$1000000)).w
-		bra.s   locret_435C
+		bra.s   return_435C
 loc_4356:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
-locret_435C:
+return_435C:
 		rts
 
-	; End of function sub_4324
+    ; End of function sub_4324
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8919,7 +8956,7 @@ sub_435E:
 		move.b  #7,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_435E
+    ; End of function sub_435E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8930,9 +8967,10 @@ sub_4366:
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		add.w   d0,d0
 		move.w  off_437A(pc,d0.w),d0
+loc_4376:
 		jmp     off_437A(pc,d0.w)
 
-	; End of function sub_4366
+    ; End of function sub_4366
 
 off_437A:       dc.w sub_4396-off_437A
 		dc.w sub_4380-off_437A
@@ -8944,7 +8982,7 @@ sub_4380:
 		move.b  #8,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_4380
+    ; End of function sub_4380
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8954,7 +8992,7 @@ sub_4388:
 		move.b  #3,((CURRENT_MAP-$1000000)).w
 		rts
 
-	; End of function sub_4388
+    ; End of function sub_4388
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8969,16 +9007,16 @@ loc_439C:
 		bne.s   loc_43BA
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
-		move.b  #1,((byte_FF9C4D-$1000000)).w
-		bra.s   locret_43CC
+		move.b  #1,((VICTORY_EXIT-$1000000)).w
+		bra.s   return_43CC
 loc_43BA:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #1,((CURRENT_REGION-$1000000)).w
-		move.b  #2,((byte_FF9C4D-$1000000)).w
-locret_43CC:
+		move.b  #2,((VICTORY_EXIT-$1000000)).w
+return_43CC:
 		rts
 
-	; End of function sub_4396
+    ; End of function sub_4396
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8988,7 +9026,7 @@ sub_43CE:
 		move.b  #8,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_43CE
+    ; End of function sub_43CE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -8997,7 +9035,7 @@ sub_43DC:
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		bra.s   loc_439C
 
-	; End of function sub_43DC
+    ; End of function sub_43DC
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9006,7 +9044,7 @@ sub_43E2:
 		move.b  #2,((CURRENT_MAP-$1000000)).w
 		bra.s   loc_439C
 
-	; End of function sub_43E2
+    ; End of function sub_43E2
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9019,7 +9057,7 @@ sub_43EA:
 		move.w  off_43FE(pc,d0.w),d0
 		jmp     off_43FE(pc,d0.w)
 
-	; End of function sub_43EA
+    ; End of function sub_43EA
 
 off_43FE:       dc.w sub_4406-off_43FE
 		dc.w sub_4406-off_43FE
@@ -9037,14 +9075,14 @@ sub_4406:
 		bne.s   loc_4428
 		move.b  #2,((CURRENT_REGION-$1000000)).w
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_4434
+		bra.s   return_4434
 loc_4428:
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4434:
+return_4434:
 		rts
 
-	; End of function sub_4406
+    ; End of function sub_4406
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9058,14 +9096,14 @@ sub_4436:
 		bne.s   loc_4458
 		move.b  #2,((CURRENT_REGION-$1000000)).w
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_4464
+		bra.s   return_4464
 loc_4458:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4464:
+return_4464:
 		rts
 
-	; End of function sub_4436
+    ; End of function sub_4436
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9078,18 +9116,19 @@ sub_4466:
 		bsr.w   CheckEventFlag
 		bne.s   loc_4482
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_4488
+		bra.s   return_4488
 loc_4482:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4488:
+return_4488:
 		rts
 
-	; End of function sub_4466
+    ; End of function sub_4466
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_448A:
+mes4_Chapter5:
+		
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
 		clr.w   d0
@@ -9098,7 +9137,7 @@ sub_448A:
 		move.w  off_44A0(pc,d0.w),d0
 		jmp     off_44A0(pc,d0.w)
 
-	; End of function sub_448A
+    ; End of function mes4_Chapter5
 
 off_44A0:       dc.w sub_44AE-off_44A0
 		dc.w sub_4508-off_44A0
@@ -9118,7 +9157,7 @@ sub_44AE:
 		move.w  off_44C2(pc,d0.w),d0
 		jmp     off_44C2(pc,d0.w)
 
-	; End of function sub_44AE
+    ; End of function sub_44AE
 
 off_44C2:       dc.w sub_44C8-off_44C2
 		dc.w sub_44E0-off_44C2
@@ -9130,11 +9169,11 @@ sub_44C8:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		move.b  #1,((CURRENT_REGION-$1000000)).w
-		move.b  #5,((byte_FF9C4C-$1000000)).w
+		move.b  #5,((EGRESS_LOCATION-$1000000)).w
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
 		rts
 
-	; End of function sub_44C8
+    ; End of function sub_44C8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9144,7 +9183,7 @@ sub_44E0:
 		move.b  #4,((CURRENT_MAP-$1000000)).w
 		rts
 
-	; End of function sub_44E0
+    ; End of function sub_44E0
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9153,11 +9192,11 @@ sub_44EE:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		move.b  #3,((CURRENT_REGION-$1000000)).w
-		move.b  #6,((byte_FF9C4C-$1000000)).w
+		move.b  #6,((EGRESS_LOCATION-$1000000)).w
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
 		rts
 
-	; End of function sub_44EE
+    ; End of function sub_44EE
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9169,17 +9208,17 @@ sub_4508:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		clr.b   ((CURRENT_REGION-$1000000)).w
-		move.b  #3,((byte_FF9C86-$1000000)).w
+		move.b  #3,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #1,((CURRENT_MAP-$1000000)).w
-		bra.s   locret_4538
+		bra.s   return_4538
 loc_452E:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP-$1000000)).w
-locret_4538:
+return_4538:
 		rts
 
-	; End of function sub_4508
+    ; End of function sub_4508
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9189,7 +9228,7 @@ sub_453A:
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		rts
 
-	; End of function sub_453A
+    ; End of function sub_453A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9199,21 +9238,22 @@ sub_4546:
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		rts
 
-	; End of function sub_4546
+    ; End of function sub_4546
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_4552:
 		moveq   #$24,d0 
+loc_4554:
 		bsr.w   ClearEventFlag
 		tst.b   ((CURRENT_MAP-$1000000)).w
 		bne.s   loc_4576
 		clr.b   ((CURRENT_REGION-$1000000)).w
-		move.b  #4,((byte_FF9C86-$1000000)).w
+		move.b  #4,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #2,((CURRENT_MAP-$1000000)).w
-		bra.s   locret_459C
+		bra.s   return_459C
 loc_4576:
 		move.b  #2,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP-$1000000)).w
@@ -9222,13 +9262,13 @@ loc_4576:
 		bsr.w   CheckEventFlag
 		bne.s   loc_4596
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_459C
+		bra.s   return_459C
 loc_4596:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_459C:
+return_459C:
 		rts
 
-	; End of function sub_4552
+    ; End of function sub_4552
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9241,7 +9281,7 @@ sub_459E:
 		move.b  #1,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_459E
+    ; End of function sub_459E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9254,12 +9294,13 @@ sub_45B4:
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_45B4
+    ; End of function sub_45B4
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_45CC:
+mes5_Chapter6:
+		
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
 		clr.w   d0
@@ -9268,7 +9309,7 @@ sub_45CC:
 		move.w  off_45E2(pc,d0.w),d0
 		jmp     off_45E2(pc,d0.w)
 
-	; End of function sub_45CC
+    ; End of function mes5_Chapter6
 
 off_45E2:       dc.w sub_45EE-off_45E2
 		dc.w sub_45EE-off_45E2
@@ -9288,7 +9329,7 @@ loc_45F0:
 		move.w  off_4602(pc,d0.w),d0
 		jmp     off_4602(pc,d0.w)
 
-	; End of function sub_45EE
+    ; End of function sub_45EE
 
 off_4602:       dc.w sub_4608-off_4602
 		dc.w sub_4610-off_4602
@@ -9300,7 +9341,7 @@ sub_4608:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_4608
+    ; End of function sub_4608
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9309,7 +9350,7 @@ sub_4610:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_4610
+    ; End of function sub_4610
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9322,13 +9363,13 @@ sub_4618:
 		bsr.w   CheckEventFlag
 		bne.s   loc_4634
 		move.b  #3,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_463A
+		bra.s   return_463A
 loc_4634:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_463A:
+return_463A:
 		rts
 
-	; End of function sub_4618
+    ; End of function sub_4618
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9345,7 +9386,7 @@ loc_4652:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_463C
+    ; End of function sub_463C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9364,20 +9405,20 @@ loc_4660:
 		moveq   #$2A,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_4692
-		move.b  #2,((byte_FF9C4D-$1000000)).w
+		move.b  #2,((VICTORY_EXIT-$1000000)).w
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
 loc_4692:
-		bra.s   locret_46A6
+		bra.s   return_46A6
 loc_4694:
 		moveq   #$28,d0 
 		bsr.w   CheckEventFlag
-		bne.s   locret_46A6
+		bne.s   return_46A6
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #1,((byte_FF9C4D-$1000000)).w
-locret_46A6:
+		move.b  #1,((VICTORY_EXIT-$1000000)).w
+return_46A6:
 		rts
 
-	; End of function sub_465A
+    ; End of function sub_465A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9386,7 +9427,7 @@ sub_46A8:
 		clr.b   ((CURRENT_MAP-$1000000)).w
 		bra.s   loc_4660
 
-	; End of function sub_46A8
+    ; End of function sub_46A8
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9402,21 +9443,22 @@ sub_46AE:
 		bsr.w   CheckEventFlag
 		bne.s   loc_46D2
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_46D8
+		bra.s   return_46D8
 loc_46D2:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_46D8:
+return_46D8:
 		rts
 loc_46DA:
 		move.b  #1,((CURRENT_MAP-$1000000)).w
 		bra.w   loc_4660
 
-	; End of function sub_46AE
+    ; End of function sub_46AE
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_46E4:
+mes6_Chapter7:
+		
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
 		clr.w   d0
@@ -9425,7 +9467,7 @@ sub_46E4:
 		move.w  off_46FA(pc,d0.w),d0
 		jmp     off_46FA(pc,d0.w)
 
-	; End of function sub_46E4
+    ; End of function mes6_Chapter7
 
 off_46FA:       dc.w sub_4706-off_46FA
 		dc.w sub_4706-off_46FA
@@ -9444,7 +9486,7 @@ sub_4706:
 		move.w  sub_471A(pc,d0.w),d0
 		jmp     sub_471A(pc,d0.w)
 
-	; End of function sub_4706
+    ; End of function sub_4706
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9454,7 +9496,7 @@ sub_471A:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_471A
+    ; End of function sub_471A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9463,7 +9505,7 @@ sub_4726:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_4726
+    ; End of function sub_4726
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9473,13 +9515,13 @@ sub_472E:
 		tst.b   ((CURRENT_MAP-$1000000)).w
 		bne.s   loc_4742
 		move.b  #4,((CURRENT_MAP-$1000000)).w
-		bra.s   locret_4748
+		bra.s   return_4748
 loc_4742:
 		move.b  #3,((CURRENT_MAP-$1000000)).w
-locret_4748:
+return_4748:
 		rts
 
-	; End of function sub_472E
+    ; End of function sub_472E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9489,7 +9531,7 @@ sub_474A:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_474A
+    ; End of function sub_474A
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9512,15 +9554,15 @@ loc_4766:
 		bne.s   loc_4792
 		move.b  #3,((CURRENT_MAP_VERSION-$1000000)).w
 loc_4792:
-		bra.s   locret_47A6
+		bra.s   return_47A6
 loc_4794:
 		moveq   #$28,d0 
 loc_4796:
 		bsr.w   CheckEventFlag
-		bne.s   locret_47A6
+		bne.s   return_47A6
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #1,((byte_FF9C4D-$1000000)).w
-locret_47A6:
+		move.b  #1,((VICTORY_EXIT-$1000000)).w
+return_47A6:
 		rts
 loc_47A8:
 		move.b  #3,((CURRENT_REGION-$1000000)).w
@@ -9531,13 +9573,13 @@ loc_47A8:
 		bsr.w   CheckEventFlag
 		bne.s   loc_47C8
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_47CE
+		bra.s   return_47CE
 loc_47C8:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_47CE:
+return_47CE:
 		rts
 
-	; End of function sub_4758
+    ; End of function sub_4758
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9557,20 +9599,21 @@ loc_47E0:
 		bne.s   loc_480C
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
 loc_47FE:
-		move.b  #1,((byte_FF9C4D-$1000000)).w
-		move.b  #4,((byte_FF9C4C-$1000000)).w
-		bra.s   locret_4812
+		move.b  #1,((VICTORY_EXIT-$1000000)).w
+		move.b  #4,((EGRESS_LOCATION-$1000000)).w
+		bra.s   return_4812
 loc_480C:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-locret_4812:
+return_4812:
 		rts
 
-	; End of function sub_47D0
+    ; End of function sub_47D0
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_4814:
+mes7_Chapter8:
+		
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
 		clr.w   d0
@@ -9579,11 +9622,11 @@ sub_4814:
 		move.w  off_482A(pc,d0.w),d0
 		jmp     off_482A(pc,d0.w)
 
-	; End of function sub_4814
+    ; End of function mes7_Chapter8
 
 off_482A:       dc.w sub_483E-off_482A
 		dc.w sub_4876-off_482A
-		dc.w loc_487E-off_482A
+		dc.w sub_487E-off_482A
 		dc.w sub_48A4-off_482A
 		dc.w sub_48E4-off_482A
 		dc.w sub_48E4-off_482A
@@ -9608,13 +9651,13 @@ loc_484E:
 		bsr.w   CheckEventFlag
 		beq.s   loc_486E
 		move.b  #3,((CURRENT_REGION-$1000000)).w
-		bra.s   locret_4874
+		bra.s   return_4874
 loc_486E:
 		move.b  #8,((CURRENT_REGION-$1000000)).w
-locret_4874:
+return_4874:
 		rts
 
-	; End of function sub_483E
+    ; End of function sub_483E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9622,10 +9665,22 @@ locret_4874:
 sub_4876:
 		cmpi.b  #1,((CURRENT_MAP-$1000000)).w
 		beq.s   loc_488C
-loc_487E:
+
+    ; End of function sub_4876
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_487E:
 		move.b  #4,((CURRENT_MAP-$1000000)).w
 		move.b  #9,((CURRENT_REGION-$1000000)).w
 		rts
+
+    ; End of function sub_487E
+
+
+; START OF FUNCTION CHUNK FOR sub_4876
+
 loc_488C:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
@@ -9634,7 +9689,7 @@ loc_488C:
 		move.b  #2,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_4876
+; END OF FUNCTION CHUNK FOR sub_4876
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9654,14 +9709,14 @@ loc_48BC:
 		bne.s   loc_48D6
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #4,((CURRENT_REGION-$1000000)).w
-		bra.s   locret_48E2
+		bra.s   return_48E2
 loc_48D6:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #5,((CURRENT_REGION-$1000000)).w
-locret_48E2:
+return_48E2:
 		rts
 
-	; End of function sub_48A4
+    ; End of function sub_48A4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9682,14 +9737,14 @@ loc_4904:
 		bne.s   loc_491E
 		move.b  #3,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #6,((CURRENT_REGION-$1000000)).w
-		bra.s   locret_492A
+		bra.s   return_492A
 loc_491E:
 		move.b  #4,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #7,((CURRENT_REGION-$1000000)).w
-locret_492A:
+return_492A:
 		rts
 
-	; End of function sub_48E4
+    ; End of function sub_48E4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9697,13 +9752,18 @@ locret_492A:
 sub_492C:
 		tst.b   ((CURRENT_MAP-$1000000)).w
 		bne.s   loc_494C
-loc_4932:
-		moveq   #$24,d0 
+
+    ; End of function sub_492C
+
+loc_4932:       moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		move.b  #1,((CURRENT_MAP-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
+
+; START OF FUNCTION CHUNK FOR sub_492C
+
 loc_494C:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
@@ -9712,7 +9772,7 @@ loc_494C:
 		move.b  #7,((CURRENT_REGION-$1000000)).w
 		rts
 
-	; End of function sub_492C
+; END OF FUNCTION CHUNK FOR sub_492C
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9725,7 +9785,7 @@ sub_4964:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		rts
 
-	; End of function sub_4964
+    ; End of function sub_4964
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9748,18 +9808,18 @@ loc_4998:
 		bne.s   loc_49B8
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #1,((CURRENT_REGION-$1000000)).w
-		bra.s   locret_49DA
+		bra.s   return_49DA
 loc_49B8:
 		move.b  #2,((CURRENT_REGION-$1000000)).w
 		moveq   #$29,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_49CE
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
-		bra.s   locret_49DA
+		bra.s   return_49DA
 loc_49CE:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #1,((CURRENT_MAP-$1000000)).w
-locret_49DA:
+return_49DA:
 		rts
 loc_49DC:
 		move.b  #3,((CURRENT_MAP-$1000000)).w
@@ -9767,296 +9827,12 @@ loc_49DC:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		rts
 
-	; End of function sub_497C
+    ; End of function sub_497C
 
-word_49EE:      dc.w $100
-		dc.w $104
-		dc.w $108
-		dc.w $10C
-		dc.w $120
-		dc.w $124
-		dc.w $128
-		dc.w $12C
-		dc.w $140
-		dc.w $144
-		dc.w $148
-		dc.w $14C
-		dc.w $160
-		dc.w $164
-		dc.w $168
-		dc.w $16C
-		dc.w $180
-		dc.w $184
-		dc.w $188
-		dc.w $18C
-		dc.w $1A0
-		dc.w $1A4
-		dc.w $1A8
-		dc.w $1AC
-		dc.w $1C0
-		dc.w $1C4
-		dc.w $1C8
-		dc.w $1CC
-		dc.w $1E0
-		dc.w $1E4
-		dc.w $1E8
-		dc.w $1EC
-		dc.w $101
-		dc.w $105
-		dc.w $109
-		dc.w $10D
-		dc.w $121
-		dc.w $125
-		dc.w $129
-		dc.w $12D
-		dc.w $141
-		dc.w $145
-		dc.w $149
-		dc.w $14D
-		dc.w $161
-		dc.w $165
-		dc.w $169
-		dc.w $16D
-		dc.w $181
-		dc.w $185
-		dc.w $189
-		dc.w $18D
-		dc.w $1A1
-		dc.w $1A5
-		dc.w $1A9
-		dc.w $1AD
-		dc.w $1C1
-		dc.w $1C5
-		dc.w $1C9
-		dc.w $1CD
-		dc.w $1E1
-		dc.w $1E5
-		dc.w $1E9
-		dc.w $1ED
-		dc.w $102
-		dc.w $106
-		dc.w $10A
-		dc.w $10E
-		dc.w $122
-		dc.w $126
-		dc.w $12A
-		dc.w $12E
-		dc.w $142
-		dc.w $146
-		dc.w $14A
-		dc.w $14E
-		dc.w $162
-		dc.w $166
-		dc.w $16A
-		dc.w $16E
-		dc.w $182
-		dc.w $186
-		dc.w $18A
-		dc.w $18E
-		dc.w $1A2
-		dc.w $1A6
-		dc.w $1AA
-		dc.w $1AE
-		dc.w $1C2
-		dc.w $1C6
-		dc.w $1CA
-		dc.w $1CE
-		dc.w $1E2
-		dc.w $1E6
-		dc.w $1EA
-		dc.w $1EE
-		dc.w $103
-		dc.w $107
-		dc.w $10B
-		dc.w $10F
-		dc.w $123
-		dc.w $127
-		dc.w $12B
-		dc.w $12F
-		dc.w $143
-		dc.w $147
-		dc.w $14B
-		dc.w $14F
-		dc.w $163
-		dc.w $167
-		dc.w $16B
-		dc.w $16F
-		dc.w $183
-		dc.w $187
-		dc.w $18B
-		dc.w $18F
-		dc.w $1A3
-		dc.w $1A7
-		dc.w $1AB
-		dc.w $1AF
-		dc.w $1C3
-		dc.w $1C7
-		dc.w $1CB
-		dc.w $1CF
-		dc.w $1E3
-		dc.w $1E7
-		dc.w $1EB
-		dc.w $1EF
-		dc.w $110
-		dc.w $114
-		dc.w $118
-		dc.w $11C
-		dc.w $130
-		dc.w $134
-		dc.w $138
-		dc.w $13C
-		dc.w $150
-		dc.w $154
-		dc.w $158
-		dc.w $15C
-		dc.w $170
-		dc.w $174
-		dc.w $178
-		dc.w $17C
-		dc.w $190
-		dc.w $194
-		dc.w $198
-		dc.w $19C
-		dc.w $1B0
-		dc.w $1B4
-		dc.w $1B8
-		dc.w $1BC
-		dc.w $1D0
-		dc.w $1D4
-		dc.w $1D8
-		dc.w $1DC
-		dc.w $1F0
-		dc.w $1F4
-		dc.w $1F8
-		dc.w $1FC
-		dc.w $111
-		dc.w $115
-		dc.w $119
-		dc.w $11D
-		dc.w $131
-		dc.w $135
-		dc.w $139
-		dc.w $13D
-		dc.w $151
-		dc.w $155
-		dc.w $159
-		dc.w $15D
-		dc.w $171
-		dc.w $175
-		dc.w $179
-		dc.w $17D
-		dc.w $191
-		dc.w $195
-		dc.w $199
-		dc.w $19D
-		dc.w $1B1
-		dc.w $1B5
-		dc.w $1B9
-		dc.w $1BD
-		dc.w $1D1
-		dc.w $1D5
-		dc.w $1D9
-		dc.w $1DD
-		dc.w $1F1
-		dc.w $1F5
-		dc.w $1F9
-		dc.w $1FD
-		dc.w $112
-		dc.w $116
-		dc.w $11A
-		dc.w $11E
-		dc.w $132
-		dc.w $136
-		dc.w $13A
-		dc.w $13E
-		dc.w $152
-		dc.w $156
-		dc.w $15A
-		dc.w $15E
-		dc.w $172
-		dc.w $176
-		dc.w $17A
-		dc.w $17E
-		dc.w $192
-		dc.w $196
-		dc.w $19A
-		dc.w $19E
-		dc.w $1B2
-		dc.w $1B6
-		dc.w $1BA
-		dc.w $1BE
-		dc.w $1D2
-		dc.w $1D6
-		dc.w $1DA
-		dc.w $1DE
-		dc.w $1F2
-		dc.w $1F6
-		dc.w $1FA
-		dc.w $1FE
-		dc.w $113
-		dc.w $117
-		dc.w $11B
-		dc.w $11F
-		dc.w $133
-		dc.w $137
-		dc.w $13B
-		dc.w $13F
-		dc.w $153
-		dc.w $157
-		dc.w $15B
-		dc.w $15F
-		dc.w $173
-		dc.w $177
-		dc.w $17B
-		dc.w $17F
-		dc.w $193
-		dc.w $197
-		dc.w $19B
-		dc.w $19F
-		dc.w $1B3
-		dc.w $1B7
-		dc.w $1BB
-		dc.w $1BF
-		dc.w $1D3
-		dc.w $1D7
-		dc.w $1DB
-		dc.w $1DF
-		dc.w $1F3
-		dc.w $1F7
-		dc.w $1FB
-		dc.w $1FF
-unk_4BEE:       dc.b   2
-		dc.b   0
-		dc.b   2
-		dc.b   4
-		dc.b   2
-		dc.b   8
-		dc.b   2
-		dc.b  $C
-		dc.b   2
-		dc.b   1
-		dc.b   2
-		dc.b   5
-		dc.b   2
-		dc.b   9
-		dc.b   2
-		dc.b  $D
-		dc.b   2
-		dc.b   2
-		dc.b   2
-		dc.b   6
-		dc.b   2
-		dc.b  $A
-		dc.b   2
-		dc.b  $E
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b   7
-		dc.b   2
-		dc.b  $B
-		dc.b   2
-		dc.b  $F
+ChapterScreenLayout:
+		incbin "data/graphics/specialscreens/chapterscreens/chapterscreenlayout.bin"
+ChapterEndLayout:
+		incbin "data/graphics/specialscreens/chapterscreens/chapterendlayout.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10068,18 +9844,23 @@ sub_4C0E:
 		move.w  off_4C22(pc,d0.w),d0
 		jmp     off_4C22(pc,d0.w)
 
-	; End of function sub_4C0E
+    ; End of function sub_4C0E
 
-off_4C22:       dc.w loc_4C32-off_4C22
+off_4C22:       dc.w sub_4C32-off_4C22
 		dc.w sub_4CC6-off_4C22
-		dc.w loc_4CFC-off_4C22
+		dc.w sub_4CFC-off_4C22
 		dc.w sub_4D00-off_4C22
 		dc.w sub_4D20-off_4C22
 		dc.w sub_4D4E-off_4C22
 		dc.w sub_4D64-off_4C22
 		dc.w sub_4D88-off_4C22
-loc_4C32:       move.b  (CURRENT_MAP).l,d7
-loc_4C38:       clr.b   (CURRENT_MAP).l
+
+; =============== S U B R O U T I N E =======================================
+
+sub_4C32:
+		move.b  (CURRENT_MAP).l,d7
+loc_4C38:
+		clr.b   (CURRENT_MAP).l
 		clr.w   d1
 		move.b  (CURRENT_REGION).l,d1
 		cmpi.w  #3,d1
@@ -10089,43 +9870,57 @@ loc_4C38:       clr.b   (CURRENT_MAP).l
 		bne.s   loc_4C60
 		move.b  #3,(CURRENT_MAP).l
 		bsr.w   SetEventFlag
-loc_4C60:       moveq   #$29,d0 
+loc_4C60:
+		moveq   #$29,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_4C6C
 		moveq   #2,d0
-		bra.s   locret_4C6E
-loc_4C6C:       moveq   #3,d0
-locret_4C6E:    rts
-loc_4C70:       cmpi.w  #4,d1
+		bra.s   return_4C6E
+loc_4C6C:
+		moveq   #3,d0
+return_4C6E:
+		rts
+loc_4C70:
+		cmpi.w  #4,d1
 		bne.s   loc_4C7A
 		moveq   #$C,d0
 		rts
-loc_4C7A:       moveq   #$27,d0 
+loc_4C7A:
+		moveq   #$27,d0 
 		bsr.w   CheckEventFlag
 		beq.s   loc_4C92
 		moveq   #$2B,d0 
 		bsr.w   CheckEventFlag
 		beq.s   loc_4C8E
 		moveq   #4,d0
-		bra.s   locret_4C90
-loc_4C8E:       moveq   #5,d0
-locret_4C90:    rts
-loc_4C92:       cmpi.b  #4,d7
+		bra.s   return_4C90
+loc_4C8E:
+		moveq   #5,d0
+return_4C90:
+		rts
+loc_4C92:
+		cmpi.b  #4,d7
 		bne.s   loc_4C9E
 		move.b  d7,(CURRENT_MAP).l
-loc_4C9E:       moveq   #$31,d0 
+loc_4C9E:
+		moveq   #$31,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_4CAA
 		moveq   #4,d0
 		rts
-loc_4CAA:       cmpi.b  #2,d7
+loc_4CAA:
+		cmpi.b  #2,d7
 		bne.s   loc_4CBA
 		move.b  d7,(CURRENT_MAP).l
 		moveq   #5,d0
 		rts
-loc_4CBA:       move.b  #3,(CURRENT_MAP).l
+loc_4CBA:
+		move.b  #3,(CURRENT_MAP).l
 		moveq   #4,d0
 		rts
+
+    ; End of function sub_4C32
+
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10147,14 +9942,20 @@ loc_4CE8:
 		rts
 loc_4CF2:
 		cmpi.w  #7,d1
-		bne.s   loc_4CFC
+		bne.s   sub_4CFC
 		moveq   #6,d0
 		rts
-loc_4CFC:
+
+    ; End of function sub_4CC6
+
+
+; =============== S U B R O U T I N E =======================================
+
+sub_4CFC:
 		moveq   #7,d0
 		rts
 
-	; End of function sub_4CC6
+    ; End of function sub_4CFC
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10175,7 +9976,7 @@ loc_4D1C:
 		moveq   #$1D,d0
 		rts
 
-	; End of function sub_4D00
+    ; End of function sub_4D00
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10195,16 +9996,16 @@ loc_4D3A:
 		bsr.w   CheckEventFlag
 		bne.s   loc_4D46
 		moveq   #$20,d0 
-		bra.s   locret_4D48
+		bra.s   return_4D48
 loc_4D46:
 		moveq   #$2A,d0 
-locret_4D48:
+return_4D48:
 		rts
 loc_4D4A:
 		moveq   #$29,d0 
 		rts
 
-	; End of function sub_4D20
+    ; End of function sub_4D20
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10220,7 +10021,7 @@ loc_4D60:
 		moveq   #$1F,d0
 		rts
 
-	; End of function sub_4D4E
+    ; End of function sub_4D4E
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10233,16 +10034,16 @@ sub_4D64:
 		cmpi.b  #3,(CURRENT_MAP).l
 		bne.s   loc_4D80
 		moveq   #$10,d0
-		bra.s   locret_4D82
+		bra.s   return_4D82
 loc_4D80:
 		moveq   #$1E,d0
-locret_4D82:
+return_4D82:
 		rts
 loc_4D84:
 		moveq   #$24,d0 
 		rts
 
-	; End of function sub_4D64
+    ; End of function sub_4D64
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10251,96 +10052,93 @@ sub_4D88:
 		cmpi.b  #2,(CURRENT_MAP).l
 		bgt.s   loc_4D96
 		moveq   #$E,d0
-		bra.s   locret_4D98
+		bra.s   return_4D98
 loc_4D96:
 		moveq   #$25,d0 
-locret_4D98:
+return_4D98:
 		rts
 
-	; End of function sub_4D88
+    ; End of function sub_4D88
 
 
 ; =============== S U B R O U T I N E =======================================
 
-DebugModeChapterTest:
+debugMode_ChapterTest:
 		
-		move.b  #1,((byte_FFB53D-$1000000)).w
-		moveq   #3,d0
+		move.b  #1,((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
+		moveq   #KEN,d0
 		jsr     j_JoinForce
-		moveq   #8,d0
+		moveq   #LUKE,d0
 		jsr     j_JoinForce
-		moveq   #$C,d0
+		moveq   #TAO,d0
 		jsr     j_JoinForce
-		moveq   #$E,d0
+		moveq   #LOWE,d0
 		jsr     j_JoinForce
-		moveq   #$13,d0
+		moveq   #HANS,d0
 		jsr     j_JoinForce
-		moveq   #$18,d0
-loc_4DCA:
+		moveq   #BLEU,d0
 		jsr     j_JoinForce
-		moveq   #$19,d0
+		moveq   #ADAM,d0
 		jsr     j_JoinForce
-		moveq   #$1A,d0
+		moveq   #ZYLO,d0
 		jsr     j_JoinForce
-		moveq   #$1B,d0
+		moveq   #MUSASHI,d0
 		jsr     j_JoinForce
-		moveq   #$1C,d0
-loc_4DEA:
+		moveq   #HANZOU,d0
 		jsr     j_JoinForce
-		moveq   #$1D,d0
+		moveq   #JOGURT,d0
 		jsr     j_JoinForce
-		moveq   #1,d0
-		moveq   #$1C,d7
+		moveq   #MAE,d0
+		moveq   #NON_LEADER_FORCE_MEMBERS_COUNTER,d7
 loc_4DFC:
 		jsr     j_JoinForce
 		addq.w  #1,d0
 		dbf     d7,loc_4DFC
-		clr.l   (dword_FF0EF6).l
+                
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		movem.l d7-a1,-(sp)
 		lea     wl_ChapterTest(pc), a0
-		lea     ((byte_FFB7DA-$1000000)).w,a1
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a1
 		move.w  #$AA,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1105,d0
 loc_4E42:
 		move.l  #$80A,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		jsr     (j_FadeInFromBlack).l
 		moveq   #1,d0
 		moveq   #$14,d1
 loc_4E5E:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_4E76
 		addq.w  #1,d0
 		cmpi.w  #9,d0
-		blt.s   loc_4E72
+		blt.s   byte_4E72
 		moveq   #1,d0
-loc_4E72:
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+byte_4E72:
+		sndCom  SFX_MENU_SELECTION
 loc_4E76:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_4E8A
 		subq.w  #1,d0
-		bne.s   loc_4E86
+		bne.s   byte_4E86
 		moveq   #8,d0
-loc_4E86:
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+byte_4E86:
+		sndCom  SFX_MENU_SELECTION
 loc_4E8A:
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_4EF2
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_4EF2
 		movem.l d7-a1,-(sp)
 		lea     wl_ChapterTest(pc), a0
-		lea     ((byte_FFB7DA-$1000000)).w,a1
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a1
 		move.w  #$AA,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -10348,11 +10146,11 @@ loc_4E8A:
 		lea     ((byte_FFB858-$1000000)).w,a1
 		ext.l   d0
 		moveq   #2,d7
-		jsr     j_DisplayNumber
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		jsr     j_WriteTilesFromNumber
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1105,d0
 		move.l  #$80A,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		move.w  (sp)+,d0
 		jsr     (j_WaitForVInt).l
@@ -10362,58 +10160,57 @@ loc_4EF2:
 		jsr     (j_FadeOutToBlack).l
 		bra.w   loc_30FC
 
-	; End of function DebugModeChapterTest
+    ; End of function debugMode_ChapterTest
 
 
 ; =============== S U B R O U T I N E =======================================
 
-DebugModeBattleTest:
+debugMode_BattleTest:
 		
-		move.b  #1,((byte_FFB53D-$1000000)).w
-		moveq   #3,d0
+		move.b  #1,((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
+		moveq   #KEN,d0
 		jsr     j_JoinForce
-		moveq   #8,d0
+		moveq   #LUKE,d0
 		jsr     j_JoinForce
-		moveq   #$C,d0
-loc_4F18:
+		moveq   #TAO,d0
 		jsr     j_JoinForce
-		moveq   #$E,d0
+		moveq   #LOWE,d0
 		jsr     j_JoinForce
-		moveq   #$13,d0
+		moveq   #HANS,d0
 		jsr     j_JoinForce
-		moveq   #$18,d0
+		moveq   #BLEU,d0
 		jsr     j_JoinForce
-		moveq   #$19,d0
+		moveq   #ADAM,d0
 		jsr     j_JoinForce
-		moveq   #$1A,d0
+		moveq   #ZYLO,d0
 		jsr     j_JoinForce
-		moveq   #$1B,d0
+		moveq   #MUSASHI,d0
 		jsr     j_JoinForce
-		moveq   #$1C,d0
+		moveq   #HANZOU,d0
 		jsr     j_JoinForce
-		moveq   #$1D,d0
+		moveq   #JOGURT,d0
 		jsr     j_JoinForce
-		moveq   #1,d0
-		moveq   #$1C,d7
+		moveq   #MAE,d0
+		moveq   #NON_LEADER_FORCE_MEMBERS_COUNTER,d7
 loc_4F62:
 		jsr     j_JoinForce
 		addq.w  #1,d0
 		dbf     d7,loc_4F62
 loc_4F6E:
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		movem.l d7-a1,-(sp)
 		lea     wl_BattleTest(pc), a0
-		lea     ((byte_FFB7DA-$1000000)).w,a1
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a1
 		move.w  #$AA,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1105,d0
 		move.l  #$80A,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		jsr     (j_FadeInFromBlack).l
 loc_4FC0:
@@ -10422,41 +10219,38 @@ loc_4FC0:
 		clr.w   d0
 		moveq   #$14,d1
 loc_4FCC:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_4FE4
 		addq.w  #1,d0
 		cmpi.w  #$1E,d0
-		blt.s   loc_4FE0
+		blt.s   byte_4FE0
 		moveq   #0,d0
-loc_4FE0:
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+byte_4FE0:
+		sndCom  SFX_MENU_SELECTION
 loc_4FE4:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_4FF8
 		subq.w  #1,d0
-		bgt.s   loc_4FF4
+		bgt.s   byte_4FF4
 		moveq   #$1D,d0
-loc_4FF4:
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+byte_4FF4:
+		sndCom  SFX_MENU_SELECTION
 loc_4FF8:
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
-loc_5000:
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_5086
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_5086
-		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_B,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_5034
 		movem.w d0-d1,-(sp)
-		jsr     sub_20014
-		jsr     j_ChurchMenuActions
-		jsr     (sub_338).l
+		jsr     j_ResetCombatants
+		jsr     j_ExecuteChurchMenu
+		jsr     (j_ExecuteHeadquartersMenu).l
 		movem.w (sp)+,d0-d1
 loc_5034:
 		movem.l d7-a1,-(sp)
 		lea     wl_BattleTest(pc), a0
-		lea     ((byte_FFB7DA-$1000000)).w,a1
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a1
 		move.w  #$AA,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -10465,20 +10259,20 @@ loc_5034:
 		lea     ((byte_FFB858-$1000000)).w,a1
 		ext.l   d0
 		moveq   #2,d7
-		jsr     j_DisplayNumber
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		jsr     j_WriteTilesFromNumber
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1105,d0
 		move.l  #$80A,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		move.w  (sp)+,d0
 		jsr     (j_WaitForVInt).l
 		bra.w   loc_4FCC
 loc_5086:
-		clr.b   ((byte_FFB5AC-$1000000)).w
+		clr.b   ((IS_DISPLAYING_PORTRAIT-$1000000)).w
 		move.w  d0,-(sp)
 		lsl.w   #3,d0
-		lea     BattleTestTargets(pc), a0
+		lea     tbl_BattleTestTargets(pc), a0
 		adda.w  d0,a0
 		move.b  (a0)+,((CURRENT_CHAPTER-$1000000)).w
 		move.b  (a0)+,((CURRENT_REGION-$1000000)).w
@@ -10504,117 +10298,84 @@ loc_50CC:
 		moveq   #$27,d0 
 		bsr.w   ClearEventFlag
 		jsr     (j_FadeOutToBlack).l
-		bsr.w   loc_313A
+		bsr.w   sub_313A
 		move.w  (sp)+,d0
 		bra.w   loc_4F6E
 
-	; End of function DebugModeBattleTest
+    ; End of function debugMode_BattleTest
 
-BattleTestTargets:
+tbl_BattleTestTargets:
 		incbin "data/battles/global/battletesttargets.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_51D2:
-		btst    #INPUT_A_B_BIT,(P1_INPUT).l
+DebugModeMessageTest:
+		
+		btst    #INPUT_BIT_B,(P1_INPUT).l
 		bne.s   loc_51DE
 		rts
-
-	; End of function sub_51D2
-
-
-; START OF FUNCTION CHUNK FOR sub_51D2
-
 loc_51DE:
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		movem.l d7-a1,-(sp)
 		lea     wl_MessageTest(pc), a0
-		lea     ((byte_FFB7DA-$1000000)).w,a1
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a1
 		move.w  #$AA,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1105,d0
 		move.l  #$80A,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		jsr     (j_FadeInFromBlack).l
 		trap    #5
 		moveq   #0,d0
 		moveq   #$14,d1
 loc_5236:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_5250
 		addq.w  #1,d0
 		cmpi.w  #$8BF,d0
-		blt.s   loc_524C
+		blt.s   byte_524C
 		move.w  #$8BF,d0
-loc_524C:
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_51D2
-
-		dc.w SFX_MENU_SELECTION
-
-; START OF FUNCTION CHUNK FOR sub_51D2
-
+byte_524C:
+		sndCom  SFX_MENU_SELECTION
 loc_5250:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_5264
 		subq.w  #1,d0
-		bpl.s   loc_5260
+		bpl.s   byte_5260
 		clr.w   d0
-loc_5260:
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_51D2
-
-		dc.w SFX_MENU_SELECTION
-
-; START OF FUNCTION CHUNK FOR sub_51D2
-
+byte_5260:
+		sndCom  SFX_MENU_SELECTION
 loc_5264:
-		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_DOWN,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_5280
 		addi.w  #$A,d0
 		cmpi.w  #$8BF,d0
-		blt.s   loc_527C
+		blt.s   byte_527C
 		move.w  #$8BF,d0
-loc_527C:
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_51D2
-
-		dc.w SFX_MENU_SELECTION
-
-; START OF FUNCTION CHUNK FOR sub_51D2
-
+byte_527C:
+		sndCom  SFX_MENU_SELECTION
 loc_5280:
-		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_UP,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_5296
 		subi.w  #$A,d0
-		bpl.s   loc_5292
+		bpl.s   byte_5292
 		clr.w   d0
-loc_5292:
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_51D2
-
-		dc.w SFX_MENU_SELECTION
-
-; START OF FUNCTION CHUNK FOR sub_51D2
-
+byte_5292:
+		sndCom  SFX_MENU_SELECTION
 loc_5296:
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_52FE
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_52FE
 		movem.l d7-a1,-(sp)
 		lea     wl_MessageTest(pc), a0
-		lea     ((byte_FFB7DA-$1000000)).w,a1
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a1
 		move.w  #$AA,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -10622,11 +10383,11 @@ loc_5296:
 		lea     ((byte_FFB854-$1000000)).w,a1
 		ext.l   d0
 		moveq   #4,d7
-		jsr     j_DisplayNumber
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		jsr     j_WriteTilesFromNumber
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$1105,d0
 		move.l  #$80A,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jsr     sub_8054
 		move.w  (sp)+,d0
 		jsr     (j_WaitForVInt).l
@@ -10638,7 +10399,7 @@ loc_52FE:
 		movem.w (sp)+,d0
 		bra.w   loc_5236
 
-; END OF FUNCTION CHUNK FOR sub_51D2
+    ; End of function DebugModeMessageTest
 
 wl_BattleTest:  incbin "data/graphics/tech/windowlayouts/wl-battletest.bin"
 wl_ChapterTest: incbin "data/graphics/tech/windowlayouts/wl-chaptertest.bin"
@@ -10647,79 +10408,82 @@ wl_MessageTest: incbin "data/graphics/tech/windowlayouts/wl-messagetest.bin"
 ; =============== S U B R O U T I N E =======================================
 
 sub_550C:
-		bsr.w   sub_558E
+		bsr.w   CreateGoldWindow
 		move.l  #$C1C0C15,d1
 		moveq   #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		jsr     (j_WaitForPlayerInput).l
 		move.l  #$C152015,d1
 		moveq   #6,d2
-		jmp     sub_8020
+		jmp     j_MoveWindowWithSfx
 
-	; End of function sub_550C
+    ; End of function sub_550C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_5532:
-		bsr.w   sub_558E
+		bsr.w   CreateGoldWindow
 		move.l  #$200F160F,d1
 		moveq   #4,d2
-		jmp     sub_8020
+		jmp     j_MoveWindowWithSfx
 
-	; End of function sub_5532
+    ; End of function sub_5532
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_5544:
-		bsr.w   sub_558E
+		bsr.w   CreateGoldWindow
 		move.l  #$160F200F,d1
 		moveq   #4,d2
-		jmp     sub_8020
+		jmp     j_MoveWindowWithSfx
 
-	; End of function sub_5544
+    ; End of function sub_5544
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5556:
-		bsr.w   sub_558E
+DisplayGoldWindow:
+		
+		bsr.w   CreateGoldWindow
 		move.l  #$F8010101,d1
 		moveq   #4,d2
-		jmp     sub_8020
+		jmp     j_MoveWindowWithSfx
 
-	; End of function sub_5556
+    ; End of function DisplayGoldWindow
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5568:
-		bsr.w   sub_558E
+HideGoldWindow:
+		
+		bsr.w   CreateGoldWindow
 		move.l  #$101F801,d1
 		moveq   #4,d2
-		jmp     sub_8020
+		jmp     j_MoveWindowWithSfx
 
-	; End of function sub_5568
+    ; End of function HideGoldWindow
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_557A:
-		bsr.w   sub_558E
+		bsr.w   CreateGoldWindow
 		move.w  #$160F,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		jmp     sub_8054
 
-	; End of function sub_557A
+    ; End of function sub_557A
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_558E:
+CreateGoldWindow:
+		
 		movem.l d7-a1,-(sp)
-		lea     unk_55CC(pc), a0
-		lea     (byte_FFB7DA).l,a1
+		lea     wl_Gold(pc), a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$40,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -10727,77 +10491,14 @@ sub_558E:
 		move.l  d1,d0
 		lea     (byte_FFB7FC).l,a1
 		moveq   #6,d7
-		jsr     j_DisplayNumber
-		lea     (byte_FFB7DA).l,a0
+		jsr     j_WriteTilesFromNumber
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$804,d0
 		rts
 
-	; End of function sub_558E
+    ; End of function CreateGoldWindow
 
-unk_55CC:       dc.b $C0 
-		dc.b $80 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C0 
-		dc.b $81 
-		dc.b $C8 
-		dc.b $80 
-		dc.b $C0 
-		dc.b $90 
-		dc.b $C0 
-		dc.b $47 
-		dc.b $C0 
-		dc.b $4F 
-		dc.b $C0 
-		dc.b $4C 
-		dc.b $C0 
-		dc.b $44 
-		dc.b $C0 
-		dc.b $20
-		dc.b $C0 
-		dc.b $20
-		dc.b $C8 
-		dc.b $90 
-		dc.b $C0 
-		dc.b $90 
-		dc.b $C0 
-		dc.b $FF
-		dc.b $C0 
-		dc.b $FF
-		dc.b $C0 
-		dc.b $FF
-		dc.b $C0 
-		dc.b $FF
-		dc.b $C0 
-		dc.b $FF
-		dc.b $C0 
-		dc.b $30 
-		dc.b $C8 
-		dc.b $90 
-		dc.b $D0 
-		dc.b $80 
-		dc.b $D0 
-		dc.b $81 
-		dc.b $D0 
-		dc.b $81 
-		dc.b $D0 
-		dc.b $81 
-		dc.b $D0 
-		dc.b $81 
-		dc.b $D0 
-		dc.b $81 
-		dc.b $D0 
-		dc.b $81 
-		dc.b $D8 
-		dc.b $80 
+wl_Gold:        incbin "data/graphics/tech/windowlayouts/wl-gold.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10805,6 +10506,12 @@ YesNoPrompt:
 		clr.w   d0
 		move.b  (P1_INPUT).l,d0 
 		bra.s   loc_5618
+
+    ; End of function YesNoPrompt
+
+
+; =============== S U B R O U T I N E =======================================
+
 YesNoChoiceBox:
 		
 		clr.w   d0
@@ -10812,9 +10519,8 @@ loc_5618:
 		move.w  d0,-(sp)
 		lea     MenuTiles_YesNo(pc), a0
 		jsr     (j_DecompressGraphics).l
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SWITCH
-		clr.b   (CURRENT_DIAMENU_CHOICE).l
+		sndCom  SFX_MENU_SWITCH
+		clr.b   (CURRENT_DIAMOND_MENU_SELECTION).l
 		bsr.w   sub_5744
 		move.w  #$90,d0 
 		bsr.w   sub_57BA
@@ -10835,37 +10541,35 @@ loc_566A:
 loc_5672:
 		moveq   #$F,d6
 loc_5674:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_568E
-		clr.b   (CURRENT_DIAMENU_CHOICE).l
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+		clr.b   (CURRENT_DIAMOND_MENU_SELECTION).l
+		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_56F2
 loc_568E:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_56AA
-		move.b  #$FF,(CURRENT_DIAMENU_CHOICE).l
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+		move.b  #$FF,(CURRENT_DIAMOND_MENU_SELECTION).l
+		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_56F2
 loc_56AA:
-		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_B,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_56C2
 		moveq   #$FFFFFFFF,d0
-		move.b  d0,(CURRENT_DIAMENU_CHOICE).l
-		bra.w   loc_5702
+		move.b  d0,(CURRENT_DIAMOND_MENU_SELECTION).l
+		bra.w   byte_5702
 loc_56C2:
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_56DA
 		clr.w   d0
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d0
-		bra.w   loc_5702
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d0
+		bra.w   byte_5702
 loc_56DA:
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_56F4
 		clr.w   d0
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d0
-		bra.w   loc_5702
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d0
+		bra.w   byte_5702
 loc_56F2:
 		moveq   #$13,d6
 loc_56F4:
@@ -10875,9 +10579,8 @@ loc_56F4:
 		moveq   #$14,d6
 loc_56FE:
 		bra.w   loc_5674
-loc_5702:
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SWITCH
+byte_5702:
+		sndCom  SFX_MENU_SWITCH
 		movem.w d0-d1,-(sp)
 		move.w  #$FFD0,d0
 		bsr.w   sub_57BA
@@ -10894,7 +10597,7 @@ loc_5702:
 		ext.w   d0
 		rts
 
-	; End of function YesNoPrompt
+    ; End of function YesNoChoiceBox
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10904,7 +10607,7 @@ sub_5744:
 		movea.l a2,a0
 		cmpi.w  #$A,d6
 		ble.s   loc_575E
-		tst.b   (CURRENT_DIAMENU_CHOICE).l
+		tst.b   (CURRENT_DIAMOND_MENU_SELECTION).l
 		bne.s   loc_575E
 		adda.w  #$120,a0
 loc_575E:
@@ -10916,7 +10619,7 @@ loc_575E:
 		adda.w  #$240,a0
 		cmpi.w  #$A,d6
 		ble.s   loc_578C
-		cmpi.b  #$FF,(CURRENT_DIAMENU_CHOICE).l
+		cmpi.b  #$FF,(CURRENT_DIAMOND_MENU_SELECTION).l
 		bne.s   loc_578C
 		adda.w  #$120,a0
 loc_578C:
@@ -10927,17 +10630,17 @@ loc_578C:
 		lea     ($FDC0).l,a1
 		move.w  #$120,d0
 		moveq   #2,d1
-		jsr     (sub_278).l
-		jsr     (j_SetVIntParam3AndWait).l
+		jsr     (j_ApplyVIntVramDma).l
+		jsr     (j_WaitForDmaQueueProcessing).l
 		rts
 
-	; End of function sub_5744
+    ; End of function sub_5744
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_57BA:
-		lea     (word_FF0C88).l,a0
+		lea     (SPRITE_01_PROPERTIES).l,a0
 		move.w  #$106,(a0)+
 		move.b  #$A,(a0)
 		addq.l  #2,a0
@@ -10952,116 +10655,126 @@ sub_57BA:
 		add.w   d0,(a0)+
 		rts
 
-	; End of function sub_57BA
+    ; End of function sub_57BA
 
 MenuTiles_YesNo:incbin "data/graphics/tech/menus/menutiles-yesno.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5A18:
-		clr.w   ((word_FFC0BE-$1000000)).w
+ExecuteMainMenu:
+		
+		clr.w   ((SPEECH_SFX-$1000000)).w
 		move.b  #1,((byte_FFB53A-$1000000)).w
 		clr.b   ((byte_FFB4CA-$1000000)).w
 loc_5A26:
-		btst    #6,((TEMP_INPUT_STATES-$1000000)).w
+		btst    #INPUT_BIT_A,((TEMP_INPUT_STATES-$1000000)).w
 		beq.s   loc_5A3E
 		clr.w   d0
 		clr.b   ((byte_FFB4CB-$1000000)).w
-		jsr     sub_8070
-		bsr.w   sub_5556
+		jsr     j_OpenMiniStatusWindow
+		bsr.w   DisplayGoldWindow
 loc_5A3E:
-		move.b  #1,((byte_FFB526-$1000000)).w
+		move.b  #MAIN_MENU,((CURRENT_MENU-$1000000)).w
 		jsr     sub_8038
 		tst.w   (word_FFD0BC).l
 		beq.s   loc_5A62
 		move.w  d0,-(sp)
-		bsr.w   sub_5568
+		bsr.w   HideGoldWindow
 		clr.w   d0
-		jsr     sub_8074
+		jsr     j_CloseMiniStatusWindow
 		move.w  (sp)+,d0
 loc_5A62:
 		tst.b   d0
-		bmi.w   locret_5A80
+		bmi.w   return_5A80
 		clr.w   d0
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d0
 		add.w   d0,d0
-		move.w  off_5A78(pc,d0.w),d0
-		jmp     off_5A78(pc,d0.w)
-off_5A78:
-		dc.w sub_5A88-off_5A78
-		dc.w loc_5A9E-off_5A78
-		dc.w loc_5B4A-off_5A78
-		dc.w sub_5A82-off_5A78
-locret_5A80:
+		move.w  rjt_MainMenuActions(pc,d0.w),d0
+		jmp     rjt_MainMenuActions(pc,d0.w)
+rjt_MainMenuActions:
+		
+		dc.w mainMenuAction_Talk-rjt_MainMenuActions
+		dc.w MainMenuAction_Magic-rjt_MainMenuActions
+		dc.w MainMenuAction_Item-rjt_MainMenuActions
+		dc.w j_j_MainMenuAction_Search-rjt_MainMenuActions
+return_5A80:
 		rts
 
-	; End of function sub_5A18
+    ; End of function ExecuteMainMenu
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5A82:
-		jmp     sub_10020
+j_j_MainMenuAction_Search:
+		
+		jmp     j_MainMenuAction_Search
 
-	; End of function sub_5A82
+    ; End of function j_j_MainMenuAction_Search
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5A88:
-		cmpi.b  #$1E,((byte_FFA1C6-$1000000)).w
+mainMenuAction_Talk:
+		
+		cmpi.b  #NOVA,((COMBATANT_1_ENTITY-$1000000)).w
 		beq.s   loc_5A98
 		jmp     sub_10028
-		bra.s   loc_5A9E
+		bra.s   MainMenuAction_Magic
 loc_5A98:
 		jmp     (sub_344).l
-loc_5A9E:
+
+    ; End of function mainMenuAction_Talk
+
+
+; =============== S U B R O U T I N E =======================================
+
+MainMenuAction_Magic:
+		
 		clr.b   ((byte_FFB4C9-$1000000)).w
 		clr.b   ((byte_FFB4C5-$1000000)).w
 		clr.w   d0
-		jsr     j_GetForceSpellsFromForceID
+		jsr     j_GetEntitySpellsAddressForCombatant
 		cmpi.b  #$FF,(a0)
 		bne.s   loc_5ABE
-		moveq   #1,d0
+		moveq   #1,d0           ; "No magic." refusal text
 		bsr.w   sub_8078
 		bra.w   loc_5A26
 loc_5ABE:
-		move.b  #2,((byte_FFB526-$1000000)).w
+		move.b  #MAGIC_MENU,((CURRENT_MENU-$1000000)).w
 		bsr.w   sub_8048
 		cmpi.w  #$FFFF,d0
 		bne.s   loc_5AD8
 		jsr     (j_WaitForVInt).l
 		bra.w   loc_5A26
 loc_5AD8:
-		move.b  d1,((byte_FFB51C-$1000000)).w
+		move.b  d1,((SPELL_INDEX-$1000000)).w
 		clr.w   d0
-		jsr     j_GetForceMemberMP
+		jsr     j_GetCurrentMP
 		move.w  d1,-(sp)
-		move.b  ((byte_FFB51C-$1000000)).w,d1
+		move.b  ((SPELL_INDEX-$1000000)).w,d1
 		jsr     j_GetMPCost
 		move.w  (sp)+,d1
 		cmp.w   d1,d2
 		ble.s   loc_5B00
-		moveq   #3,d0
+		moveq   #3,d0           ; "Not enough MP." refusal text
 		bsr.w   sub_8078
 		bra.w   loc_5A26
 loc_5B00:
 		move.w  d2,-(sp)
-		clr.w   ((TEXT_NAME_INDEX-$1000000)).w
-		move.b  ((byte_FFB51C-$1000000)).w,d1
+		clr.w   ((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.b  ((SPELL_INDEX-$1000000)).w,d1
 		move.w  d1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((word_FFF846-$1000000)).w
+		andi.w  #SPELLENTRY_MASK_INDEX,d1
+		move.w  d1,((MESSAGE_ARG_NAME_2-$1000000)).w
 		move.w  (sp)+,d1
 		lsr.w   #6,d1
 		ext.l   d1
 		addq.l  #1,d1
-		move.l  d1,((TEXT_NUMBER-$1000000)).w
+		move.l  d1,((MESSAGE_ARG_NUMBER-$1000000)).w
 		trap    #5
 		move.w  #$1B5,d0        ; "[Name] casts [Spell][Line]level [Num]!"
 		trap    #DISPLAY_MESSAGE
-		trap    #SOUND_COMMAND
-		dc.w SFX_SPELL_CAST
+		sndCom  SFX_SPELL_CAST
 		move.w  #$1EA,d0        ; "[Dict][Line]"
 		trap    #DISPLAY_MESSAGE
 		trap    #7
@@ -11073,65 +10786,75 @@ loc_5B00:
 		clr.w   d0
 		move.w  (sp)+,d1
 		bra.w   loc_5A26
-loc_5B4A:
-		bsr.w   sub_5B54
-		bmi.w   loc_5A3E
-		rts
 
-	; End of function sub_5A88
+    ; End of function MainMenuAction_Magic
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5B54:
-		clr.w   ((word_FFC0BE-$1000000)).w
+MainMenuAction_Item:
+		
+		bsr.w   ExecuteItemMenu
+		bmi.w   loc_5A3E
+		rts
+
+    ; End of function MainMenuAction_Item
+
+
+; =============== S U B R O U T I N E =======================================
+
+ExecuteItemMenu:
+		
+		clr.w   ((SPEECH_SFX-$1000000)).w
 loc_5B58:
 		tst.w   (word_FFD984).l
 		beq.s   loc_5B62
 		trap    #6
 loc_5B62:
 		clr.b   ((byte_FFB52A-$1000000)).w
-		move.b  #4,((byte_FFB526-$1000000)).w
+		move.b  #ITEM_MENU,((CURRENT_MENU-$1000000)).w
 		jsr     sub_8048
 		tst.w   d0
 		bge.w   loc_5B7A
 		rts
 loc_5B7A:
 		add.w   d0,d0
-		move.w  off_5B84(pc,d0.w),d0
-		jmp     off_5B84(pc,d0.w)
+		move.w  rjt_ItemMenuActions(pc,d0.w),d0
+		jmp     rjt_ItemMenuActions(pc,d0.w)
 
-	; End of function sub_5B54
+    ; End of function ExecuteItemMenu
 
-off_5B84:       dc.w sub_5B8C-off_5B84
-		dc.w sub_5CFE-off_5B84
-		dc.w sub_5EA0-off_5B84
-		dc.w sub_5F4C-off_5B84
+rjt_ItemMenuActions:
+		dc.w itemMenuAction_Use-rjt_ItemMenuActions
+		dc.w itemMenuAction_Give-rjt_ItemMenuActions
+		dc.w itemMenuAction_Equip-rjt_ItemMenuActions
+		dc.w itemMenuAction_Drop-rjt_ItemMenuActions
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5B8C:
+itemMenuAction_Use:
+		
 		trap    #5
 		bsr.w   sub_617C
 loc_5B92:
-		jsr     (sub_328).l
+		jsr     (j_CreateMessageWindow).l
 		move.w  #$1C,d0         ; "Use whose item?"
 		trap    #DISPLAY_MESSAGE
 		jsr     sub_8044
 		tst.w   d0
 		bmi.s   loc_5B58
-		move.w  d0,((word_FFB7C4-$1000000)).w
-		jsr     j_GetForceItemsAddress
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
+		jsr     j_GetEntityItemsAddress
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 		move.b  (a0,d1.w),d1
 		move.b  d0,((byte_FFF001-$1000000)).w
-		jsr     j_GetForceItemsAddress
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
+		jsr     j_GetEntityItemsAddress
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d0
 		move.b  (a0,d0.w),d0
-		andi.w  #$3F,d0 
-		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
-		cmpi.b  #$27,d0 
+		andi.w  #ITEMENTRY_MASK_INDEX,d0
+		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
+		cmpi.b  #CHAOS_BREAKER,d0
 		bne.w   loc_5C30
 		cmpi.b  #8,((CURRENT_CHAPTER-$1000000)).w
 		bne.w   loc_5C30
@@ -11151,24 +10874,18 @@ loc_5B92:
 		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		trap    #6
-		move.b  #5,((byte_FF9C86-$1000000)).w
+		move.b  #5,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		clr.b   ((byte_FFB538-$1000000)).w
 		jmp     sub_124008
-
-	; End of function sub_5B8C
-
-
-; START OF FUNCTION CHUNK FOR sub_5B8C
-
 loc_5C2E:
 		moveq   #$27,d0 
 loc_5C30:
-		cmpi.b  #2,d0
+		cmpi.b  #ANTIDOTE,d0
 		bne.w   loc_5C7E
 		trap    #7
 		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8040
+		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.w   loc_5B92
 		move.w  d0,-(sp)
@@ -11177,24 +10894,24 @@ loc_5C30:
 		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
-		bsr.w   FindBattleMember
-		jsr     sub_202B8
-		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
-		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
-		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
+		bsr.w   FindCombatantSlot
+		jsr     j_CurePoison
+		move.w  ((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w,((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.l  ((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,d0
 		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		trap    #6
 		rts
 loc_5C7E:
-		cmpi.b  #5,d0
+		cmpi.b  #POWER_POTION,d0
 		blt.w   loc_5CE0
-		cmpi.b  #9,d0
+		cmpi.b  #BREAD_OF_LIFE,d0
 		bgt.w   loc_5CE0
 		trap    #7
 		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8040
+		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.w   loc_5B92
 		movem.w d0,-(sp)
@@ -11203,13 +10920,13 @@ loc_5C7E:
 		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
-		bsr.w   FindBattleMember
-		move.w  ((TEXT_NAME_INDEX-$1000000)).w,d1
+		bsr.w   FindCombatantSlot
+		move.w  ((MESSAGE_ARG_NAME_1-$1000000)).w,d1
 		subq.w  #5,d1
-		jsr     sub_202B4
-		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
-		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
-		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
+		jsr     j_IncreaseStatOnItemUse
+		move.w  ((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w,((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.l  ((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,d0
 		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		trap    #6
@@ -11217,7 +10934,7 @@ loc_5C7E:
 loc_5CE0:
 		jmp     sub_10024
 
-; END OF FUNCTION CHUNK FOR sub_5B8C
+    ; End of function itemMenuAction_Use
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11225,12 +10942,12 @@ loc_5CE0:
 sub_5CE6:
 		move.w  #$1EA,d0        ; "[Dict][Line]"
 		trap    #DISPLAY_MESSAGE
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 		jmp     j_RemoveItem
 
-	; End of function sub_5CE6
+    ; End of function sub_5CE6
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11238,34 +10955,35 @@ sub_5CE6:
 nullsub_5CFC:
 		rts
 
-	; End of function nullsub_5CFC
+    ; End of function nullsub_5CFC
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5CFE:
+itemMenuAction_Give:
+		
 		trap    #5
 		bsr.w   sub_617C
 		move.w  #$1F,d0         ; "Transfer whose item?"
 		trap    #DISPLAY_MESSAGE
 		jsr     sub_8044
-		move.w  d0,((word_FFB7C4-$1000000)).w
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_5B58
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 		move.w  d1,((word_FFB7C6-$1000000)).w
-		move.b  (a0,d1.w),d1
-		move.w  d1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
-		move.w  (sp)+,d1
-		btst    #7,d1
-		beq.s   loc_5D5C
+		move.b  (a0,d1.w),d1    ; D1 = selected item index
+		move.w  d1,-(sp)        ; save selected item index
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.w  (sp)+,d1        ; restore selected item index -> D1
+		btst    #ITEMENTRY_BIT_EQUIPPED,d1
+		beq.s   loc_5D5C        ; branch if item is not equipped
 		jsr     j_GetItemType
-		btst    #$D,d2
-		beq.s   loc_5D5C
-		jsr     sub_805C
+		btst    #ITEMTYPE_BIT_CURSED,d2
+		beq.s   loc_5D5C        ; branch if item can be unequipped
+		jsr     j_PlayCursedItemMusic
 		trap    #7
 		move.w  #$21,d0 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
 		trap    #DISPLAY_MESSAGE
@@ -11282,79 +11000,79 @@ loc_5D6A:
 		jsr     sub_8068
 		bra.w   loc_5B58
 loc_5D7E:
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		move.w  d0,((word_FFB7C8-$1000000)).w
 		cmpi.b  #$FF,3(a0)
-		beq.s   loc_5DA0
+		beq.s   loc_5DA0        ; branch if member has an empty item slot
 		move.w  d0,-(sp)
-		jsr     sub_806C
+		jsr     j_PickItemSlot
 		move.w  (sp)+,d0
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		blt.s   loc_5D6A
 loc_5DA0:
 		jsr     sub_8068
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 		move.w  d1,((word_FFB7CA-$1000000)).w
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.w  ((word_FFB7C6-$1000000)).w,d1
-		jsr     j_GetForceItemsAddress
-		move.b  (a0,d1.w),d1
+		jsr     j_GetEntityItemsAddress
+		move.b  (a0,d1.w),d1    ; D1 = item index to give
 		move.w  ((word_FFB7C8-$1000000)).w,d0
-		jsr     j_FindEmptyItemSlot
-		bcc.w   loc_5E8C
+		jsr     j_GiveItem
+		bcc.w   loc_5E8C        ; branch is item has successfully been given
 		move.w  ((word_FFB7C8-$1000000)).w,d0
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		move.w  ((word_FFB7CA-$1000000)).w,d1
 		move.b  (a0,d1.w),d1
 		move.w  d1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
 		move.w  (sp)+,d1
-		btst    #7,d1
+		btst    #ITEMENTRY_BIT_EQUIPPED,d1
 		beq.w   loc_5E14
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_5E14
-		jsr     sub_805C
+		jsr     j_PlayCursedItemMusic
 		trap    #7
 		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bra.w   loc_5E9A
 loc_5E14:
 		move.w  ((word_FFB7C8-$1000000)).w,d0
-		cmp.w   ((word_FFB7C4-$1000000)).w,d0
+		cmp.w   ((CURRENT_OBJECT-$1000000)).w,d0
 		bne.w   loc_5E40
 		move.w  ((word_FFB7CA-$1000000)).w,d1
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 		jsr     j_RemoveItem
 		move.w  d2,d1
-		jsr     j_FindEmptyItemSlot
+		jsr     j_GiveItem
 		bra.s   loc_5E9A
 loc_5E40:
 		move.w  ((word_FFB7CA-$1000000)).w,d1
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 		move.w  d2,-(sp)
 		jsr     j_RemoveItem
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.w  ((word_FFB7C6-$1000000)).w,d1
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 		jsr     j_RemoveItem
 		move.w  ((word_FFB7C8-$1000000)).w,d0
 		move.w  d2,d1
-		jsr     j_FindEmptyItemSlot
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		jsr     j_GiveItem
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.w  (sp)+,d1
-		jsr     j_FindEmptyItemSlot
+		jsr     j_GiveItem
 		bra.s   loc_5E9A
 loc_5E8C:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.w  ((word_FFB7C6-$1000000)).w,d1
 		jsr     j_RemoveItem
 loc_5E9A:
@@ -11362,25 +11080,26 @@ loc_5E9A:
 		trap    #6
 		rts
 
-	; End of function sub_5CFE
+    ; End of function itemMenuAction_Give
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5EA0:
+itemMenuAction_Equip:
+		
 		trap    #5
 		bsr.w   sub_617C
 		move.w  #$23,d0 ; "Who do you wish to equip?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8040
-		move.w  d0,((word_FFB7C4-$1000000)).w
+		jsr     j_CreateMembersListScreen
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_5B58
 		move.w  d0,-(sp)
 		move.w  d0,d2
-		bsr.w   FindBattleMember
-		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
+		bsr.w   FindCombatantSlot
+		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
 		move.w  (sp)+,d0
-		move.w  #$300,d1
+		move.w  #ITEMTYPE_MASK_WEAPON_OR_RING,d1
 		jsr     j_LoadEquippableItems
 		bne.s   loc_5EE0
 		trap    #7
@@ -11389,11 +11108,11 @@ sub_5EA0:
 		trap    #7
 		bra.s   loc_5F46
 loc_5EE0:
-		move.w  #$100,d1
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		jsr     j_LoadEquippableItems
 		beq.w   loc_5F08
-		clr.b   ((byte_FFB526-$1000000)).w
+		clr.b   ((CURRENT_MENU-$1000000)).w
 		bsr.w   sub_6CB6
 		tst.w   d0
 		bpl.s   loc_5F08
@@ -11401,16 +11120,16 @@ loc_5EE0:
 		trap    #7
 		bra.w   loc_5B58
 loc_5F08:
-		move.w  #$200,d1
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  #ITEMTYPE_MASK_RING,d1
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		jsr     j_LoadEquippableItems
 		beq.w   loc_5F42
-		move.b  #1,((byte_FFB526-$1000000)).w
+		move.b  #MAIN_MENU,((CURRENT_MENU-$1000000)).w
 		bsr.w   sub_6CB6
 		tst.w   d0
 		bpl.s   loc_5F42
-		move.w  #$100,d1
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		jsr     j_LoadEquippableItems
 		bne.s   loc_5EE0
 		bsr.w   sub_6C6E
@@ -11423,12 +11142,13 @@ loc_5F46:
 		trap    #6
 		rts
 
-	; End of function sub_5EA0
+    ; End of function itemMenuAction_Equip
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5F4C:
+itemMenuAction_Drop:
+		
 		trap    #5
 		bsr.w   sub_617C
 		move.w  #$25,d0 ; "Discard whose item?"
@@ -11436,21 +11156,21 @@ sub_5F4C:
 		jsr     sub_8044
 		tst.w   d0
 		bmi.w   loc_5B58
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 		move.w  d1,((word_FFB7C6-$1000000)).w
 		move.b  (a0,d1.w),d1
 		move.w  d1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
 		move.w  (sp)+,d1
 		btst    #7,d1
 		beq.w   loc_5FAA
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_5FAA
-		jsr     sub_805C
+		jsr     j_PlayCursedItemMusic
 		trap    #7
 		move.w  #$21,d0 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
 		trap    #DISPLAY_MESSAGE
@@ -11459,7 +11179,7 @@ loc_5FAA:
 		jsr     j_GetItemType
 		btst    #$B,d2
 		bne.s   loc_5FC8
-		jsr     j_IncreaseDealsItemStock
+		jsr     j_IncrementDealsStock
 		move.w  ((word_FFB7C6-$1000000)).w,d1
 		jsr     j_RemoveItem
 		bra.s   loc_5FD0
@@ -11472,7 +11192,7 @@ loc_5FD0:
 		trap    #6
 		rts
 
-	; End of function sub_5F4C
+    ; End of function itemMenuAction_Drop
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11484,29 +11204,31 @@ sub_5FD6:
 		trap    #6
 		rts
 
-	; End of function sub_5FD6
+    ; End of function sub_5FD6
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5FE2:
+DisplayAdvisorPortrait:
+		
 		move.w  d0,-(sp)
 		tst.w   (word_FFD082).l
 		bne.s   loc_5FF4
-		moveq   #$29,d0 
-		jsr     sub_802C
+		moveq   #PORTRAIT_NOVA,d0
+		jsr     j_OpenPortraitWindow
 loc_5FF4:
 		move.w  (sp)+,d0
 		rts
 
-	; End of function sub_5FE2
+    ; End of function DisplayAdvisorPortrait
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_5FF8:
-		jsr     sub_20014
-		bsr.s   sub_5FE2
+ExecuteHeadquartersMenu:
+		
+		jsr     j_ResetCombatants
+		bsr.s   DisplayAdvisorPortrait
 		trap    #5
 		move.w  #0,d0           ; "Well, [Hero],[Line]are you ready to[Line]face the enemy?[Wait2]"
 		trap    #DISPLAY_MESSAGE
@@ -11514,7 +11236,7 @@ loc_6008:
 		trap    #6
 		clr.b   ((byte_FFB4CA-$1000000)).w
 loc_600E:
-		move.b  #8,((byte_FFB526-$1000000)).w
+		move.b  #HEADQUARTERS_MENU,((CURRENT_MENU-$1000000)).w
 		jsr     sub_8048
 		tst.b   d0
 		bge.s   loc_6028
@@ -11525,100 +11247,112 @@ loc_6020:
 		rts
 loc_6028:
 		clr.w   d0
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d0
 		add.w   d0,d0
-		move.w  off_6038(pc,d0.w),d0
-		jmp     off_6038(pc,d0.w)
+		move.w  rjt_HeadquartersMenuActions(pc,d0.w),d0
+		jmp     rjt_HeadquartersMenuActions(pc,d0.w)
 
-	; End of function sub_5FF8
+    ; End of function ExecuteHeadquartersMenu
 
-off_6038:       dc.w sub_6068-off_6038
-		dc.w sub_60AE-off_6038
-		dc.w sub_6268-off_6038
-		dc.w sub_61D0-off_6038
+rjt_HeadquartersMenuActions:
+		dc.w headquartersMenuAction_Advice-rjt_HeadquartersMenuActions
+		dc.w headquartersMenuAction_Join-rjt_HeadquartersMenuActions
+		dc.w headquartersMenuAction_Item-rjt_HeadquartersMenuActions
+		dc.w headquartersMenuAction_Status-rjt_HeadquartersMenuActions
 		trap    #5
 
-; START OF FUNCTION CHUNK FOR sub_60AE
+; START OF FUNCTION CHUNK FOR headquartersMenuAction_Join
 
 loc_6042:
 		move.w  #1,d0           ; "Anything else, [Hero]?"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		bge.w   loc_6008
 		trap    #7
 		bra.s   loc_6020        
 loc_605A:
-		bsr.s   sub_5FE2
+		bsr.s   DisplayAdvisorPortrait
 		trap    #7
 		move.w  #2,d0           ; "A change of heart, eh?[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		trap    #7
 		bra.s   loc_6042        
 
-; END OF FUNCTION CHUNK FOR sub_60AE
+; END OF FUNCTION CHUNK FOR headquartersMenuAction_Join
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_6068:
+headquartersMenuAction_Advice:
+		
 		trap    #5
-		bsr.w   sub_6078
-		addi.w  #$2EE,d0        ; "A word of advice.[Line]Seek the hermit who lives by[Line]the Gate of the Ancients![Wait2]"
+		bsr.w   GetAdviceMessageOffset
+		addi.w  #MESSAGE_ADVICES_START,d0
+						; "A word of advice.[Line]Seek the hermit who lives by[Line]the Gate of the Ancients![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		trap    #7
 		bra.s   loc_6042        
 
-	; End of function sub_6068
+    ; End of function headquartersMenuAction_Advice
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_6078:
+; Get offset to advice message index for current battle -> D0
+
+GetAdviceMessageOffset:
+		
 		clr.w   d2
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d2
 		subq.w  #1,d2
 		move.w  d2,d1
-		move.b  unk_60A6(pc,d2.w),d2
+		move.b  tbl_AdviceMessageNumbers(pc,d2.w),d2
 		subq.w  #1,d2
 		clr.w   d0
-loc_608A:
+@Loop:
 		btst    d0,((byte_FF9C53-$1000000)).w
-		beq.s   loc_6098
+		beq.s   @Break
 		cmp.b   d0,d2
-		beq.s   loc_6098
+		beq.s   @Break
 		addq.w  #1,d0
-		bra.s   loc_608A
-loc_6098:
-		add.b   unk_609E(pc,d1.w),d0
+		bra.s   @Loop
+@Break:
+		add.b   tbl_AdviceMessageOffsets(pc,d1.w),d0
 		rts
 
-	; End of function sub_6078
+    ; End of function GetAdviceMessageOffset
 
-unk_609E:       dc.b   0
-		dc.b   4
-		dc.b   8
-		dc.b  $B
-		dc.b  $E
-		dc.b $11
-		dc.b $15
-		dc.b $19
-unk_60A6:       dc.b   4
-		dc.b   4
-		dc.b   3
-		dc.b   3
-		dc.b   3
-		dc.b   4
-		dc.b   4
-		dc.b   5
+tbl_AdviceMessageOffsets:
+		; Base advice message offsets for each chapter
+		dc.b 0
+		dc.b 4
+		dc.b 8
+		dc.b 11
+		dc.b 14
+		dc.b 17
+		dc.b 21
+		dc.b 25
+                
+tbl_AdviceMessageNumbers:
+		; Number of advice messages per chapter
+		dc.b 4
+		dc.b 4
+		dc.b 3
+		dc.b 3
+		dc.b 3
+		dc.b 4
+		dc.b 4
+		dc.b 5
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_60AE:
+headquartersMenuAction_Join:
+		
 		trap    #5
 loc_60B0:
-		jsr     sub_2003C
-		tst.w   ((word_FFCB82-$1000000)).w
+		jsr     j_PopulateReservePartyMembersList
+		tst.w   ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w
 		bne.w   loc_60CA        
 		move.w  #6,d0           ; "[Hero], no one[Line]is waiting![Delay1]"
 		trap    #DISPLAY_MESSAGE
@@ -11627,32 +11361,32 @@ loc_60B0:
 loc_60CA:
 		move.w  #4,d0           ; "Who do you wish to take?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
+		jsr     j_ClosePortraitWindow
 		move.b  #$FF,((byte_FFC140-$1000000)).w
-		jsr     sub_8040
-		bsr.w   sub_5FE2
-		move.w  d0,((word_FFB7C4-$1000000)).w
+		jsr     j_CreateMembersListScreen
+		bsr.w   DisplayAdvisorPortrait
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_605A
-		jsr     j_GetHPFromForceID
+		jsr     j_GetCurrentHpForCombatant
 		tst.w   d1
 		bne.s   loc_6112
-		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
+		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
 		trap    #7
 		move.w  #7,d0           ; "Are you sure? After all,[Line][Name] needs to[Line]be revived."
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		bmi.s   loc_60CA        
 loc_6112:
 		trap    #7
 		move.w  #5,d0           ; "Who will you leave behind?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_20038
-		jsr     sub_8030
+		jsr     j_PopulateBattlePartyMembersList
+		jsr     j_ClosePortraitWindow
 		move.b  #$FF,((byte_FFC140-$1000000)).w
-		jsr     sub_8040
-		bsr.w   sub_5FE2
+		jsr     j_CreateMembersListScreen
+		bsr.w   DisplayAdvisorPortrait
 		move.w  d0,((word_FFB7C6-$1000000)).w
 		bmi.w   loc_605A
 		bne.s   loc_614A
@@ -11663,40 +11397,41 @@ loc_6112:
 loc_614A:
 		move.w  ((word_FFB7C6-$1000000)).w,d0
 		jsr     j_LeaveBattleParty
-		move.w  ((word_FFB7C4-$1000000)).w,d0
-		moveq   #$B,d1
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
+		moveq   #BATTLE_PARTY_SLOTS_COUNTER,d1
 		jsr     j_JoinBattleParty
 		trap    #7
 		move.w  #8,d0           ; "Anyone else to replace?"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_60B0
 		bra.w   loc_6042        
 
-	; End of function sub_60AE
+    ; End of function headquartersMenuAction_Join
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_617C:
-		move.w  #$C07E,((word_FFC0B6-$1000000)).w
-		jsr     sub_20038
-		move.w  ((word_FFCB82-$1000000)).w,d7
+		move.w  #VDPTILE_FW_SYMBOL|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,((MEMBERS_LIST_SYMBOL-$1000000)).w
+						; load "Fw" VDP tile entry
+		jsr     j_PopulateBattlePartyMembersList
+		move.w  ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w,d7
 		subq.w  #1,d7
 		move.w  d7,-(sp)
 		movem.l d7-a1,-(sp)
-		lea     ((byte_FFCB84-$1000000)).w,a0
+		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a0
 		lea     (FF0FFE_LOADING_SPACE).l,a1
-		move.w  #$C,d7
+		move.w  #BATTLE_PARTY_SLOTS_NUMBER,d7
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		jsr     sub_20034
+		jsr     j_PopulateForceMembersList
 		lea     (FF0FFE_LOADING_SPACE).l,a0
 		move.w  (sp)+,d7
 loc_61BA:
-		lea     ((byte_FFCB84-$1000000)).w,a1
+		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a1
 		move.b  (a0)+,d0
 loc_61C0:
 		cmp.b   (a1)+,d0
@@ -11705,58 +11440,60 @@ loc_61C0:
 		dbf     d7,loc_61BA
 		rts
 
-	; End of function sub_617C
+    ; End of function sub_617C
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_61D0:
+headquartersMenuAction_Status:
+		
 		trap    #5
 		bsr.s   sub_617C
 loc_61D4:
 		move.w  #$18,d0         ; "View whose status?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
-		jsr     sub_8040
-		move.w  d0,((word_FFB7C4-$1000000)).w
+		jsr     j_ClosePortraitWindow
+		jsr     j_CreateMembersListScreen
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_605A
 		trap    #6
-		move.w  ((word_FFB7C4-$1000000)).w,d0
-		jsr     sub_20304
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
+		jsr     j_GetPortrait
 		move.w  d1,d0
-		jsr     sub_802C
-		move.w  ((word_FFB7C4-$1000000)).w,d0
-		jsr     sub_8058
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		jsr     j_OpenPortraitWindow
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
+		jsr     j_BuildMemberStatusWindow
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$161A,d0
 		move.l  #$20010901,d1
 		move.w  #8,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		jsr     (j_WaitForPlayerInput).l
-		lea     ((byte_FFB7DA-$1000000)).w,a0
+		lea     ((WINDOW_LAYOUT_LOADING_SPACE-$1000000)).w,a0
 		move.w  #$161A,d0
 		move.l  #$9012001,d1
 		move.w  #8,d2
-		jsr     sub_8020
-		jsr     sub_8030
-		bsr.w   sub_5FE2
+		jsr     j_MoveWindowWithSfx
+		jsr     j_ClosePortraitWindow
+		bsr.w   DisplayAdvisorPortrait
 		trap    #5
 		move.w  #$19,d0         ; "Check someone else's status?"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_61D4        
 		bra.w   loc_6042        
 
-	; End of function sub_61D0
+    ; End of function headquartersMenuAction_Status
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_6268:
+headquartersMenuAction_Item:
+		
 		clr.b   ((byte_FFB52A-$1000000)).w
-		move.b  #4,((byte_FFB526-$1000000)).w
+		move.b  #ITEM_MENU,((CURRENT_MENU-$1000000)).w
 		jsr     sub_8048
 		cmpi.w  #$FFFF,d0
 		beq.w   loc_600E
@@ -11764,7 +11501,7 @@ sub_6268:
 		move.w  off_628A(pc,d0.w),d0
 		jmp     off_628A(pc,d0.w)
 
-	; End of function sub_6268
+    ; End of function headquartersMenuAction_Item
 
 off_628A:       dc.w sub_6292-off_628A
 		dc.w sub_63B4-off_628A
@@ -11777,29 +11514,29 @@ sub_6292:
 		trap    #5
 		bsr.w   sub_617C
 loc_6298:
-		jsr     (sub_328).l
+		jsr     (j_CreateMessageWindow).l
 		move.w  #9,d0           ; "Use whose item?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
+		jsr     j_ClosePortraitWindow
 		jsr     sub_8044
-		bsr.w   sub_5FE2
+		bsr.w   DisplayAdvisorPortrait
 		tst.w   d0
 		bmi.w   loc_605A
-		move.w  d0,((word_FFB7C4-$1000000)).w
-		jsr     j_GetForceItemsFromForceID
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
+		jsr     j_GetEntityItemsAddressForCombatant
 		clr.w   d0
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d0
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d0
 		move.b  (a0,d0.w),d0
 		trap    #7
-		andi.w  #$3F,d0 
-		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d0
+		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
 		cmpi.b  #2,d0
 		bne.w   loc_632A
 		trap    #7
 		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
-		jsr     sub_8040
+		jsr     j_ClosePortraitWindow
+		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.s   loc_6298
 		move.w  d0,-(sp)
@@ -11808,20 +11545,14 @@ loc_6298:
 		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
-		bsr.w   FindBattleMember
-		jsr     sub_202B8
-		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
-		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
-		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
+		bsr.w   FindCombatantSlot
+		jsr     j_CurePoison
+		move.w  ((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w,((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.l  ((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,d0
 		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		bra.w   loc_6398
-
-	; End of function sub_6292
-
-
-; START OF FUNCTION CHUNK FOR sub_6292
-
 loc_632A:
 		cmpi.b  #5,d0
 		blt.w   loc_6392        
@@ -11830,8 +11561,8 @@ loc_632A:
 		trap    #7
 		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
-		jsr     sub_8040
+		jsr     j_ClosePortraitWindow
+		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.w   loc_6298
 		movem.w d0,-(sp)
@@ -11840,13 +11571,13 @@ loc_632A:
 		trap    #DISPLAY_MESSAGE
 		trap    #7
 		move.w  (sp)+,d2
-		bsr.w   FindBattleMember
-		move.w  ((TEXT_NAME_INDEX-$1000000)).w,d1
+		bsr.w   FindCombatantSlot
+		move.w  ((MESSAGE_ARG_NAME_1-$1000000)).w,d1
 		subq.w  #5,d1
-		jsr     sub_202B4
-		move.w  ((MESSAGE_ARG_NAME-$1000000)).w,((TEXT_NAME_INDEX-$1000000)).w
-		move.l  ((MESSAGE_ARG_NUMBER-$1000000)).w,((TEXT_NUMBER-$1000000)).w
-		move.w  ((MESSAGE_INDEX-$1000000)).w,d0
+		jsr     j_IncreaseStatOnItemUse
+		move.w  ((BATTLE_MESSAGE_ARG_NAME_1-$1000000)).w,((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.l  ((BATTLE_MESSAGE_ARG_NUMBER_1-$1000000)).w,((MESSAGE_ARG_NUMBER-$1000000)).w
+		move.w  ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,d0
 		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
 		jsr     j_ResetForceMemberStats
@@ -11860,11 +11591,11 @@ loc_6398:
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_6298
 		bra.w   loc_6042        
 
-; END OF FUNCTION CHUNK FOR sub_6292
+    ; End of function sub_6292
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11875,133 +11606,127 @@ sub_63B4:
 loc_63BA:
 		move.w  #$D,d0          ; "Transfer whose item?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
+		jsr     j_ClosePortraitWindow
 		jsr     sub_8044
-		bsr.w   sub_5FE2
-		move.w  d0,((word_FFB7C4-$1000000)).w
+		bsr.w   DisplayAdvisorPortrait
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_605A
-		jsr     j_GetForceItemsFromForceID
+		jsr     j_GetEntityItemsAddressForCombatant
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 		move.w  d1,((word_FFB7C6-$1000000)).w
 		move.b  (a0,d1.w),d1
 		move.w  d1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
 		move.w  (sp)+,d1
 		btst    #7,d1
 		beq.w   loc_641E
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_641E
-		jsr     sub_805C
+		jsr     j_PlayCursedItemMusic
 		trap    #7
 		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bra.w   loc_656C
-
-	; End of function sub_63B4
-
-
-; START OF FUNCTION CHUNK FOR sub_63B4
-
 loc_641E:
 		trap    #7
 		move.w  #$10,d0         ; "Now, who gets it?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
+		jsr     j_ClosePortraitWindow
 		jsr     sub_8060
 loc_6432:
 		jsr     sub_8064
 		tst.w   d0
 		bpl.s   loc_644A
 		jsr     sub_8068
-		bsr.w   sub_5FE2
+		bsr.w   DisplayAdvisorPortrait
 		bra.w   loc_605A
 loc_644A:
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		move.w  d0,((word_FFB7C8-$1000000)).w
 		cmpi.b  #$FF,3(a0)
 		beq.w   loc_646E
 		move.w  d0,-(sp)
-		jsr     sub_806C
+		jsr     j_PickItemSlot
 		move.w  (sp)+,d0
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		blt.s   loc_6432
 loc_646E:
 		jsr     sub_8068
-		bsr.w   sub_5FE2
+		bsr.w   DisplayAdvisorPortrait
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 		move.w  d1,((word_FFB7CA-$1000000)).w
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.w  ((word_FFB7C6-$1000000)).w,d1
-		jsr     j_GetForceItemsFromForceID
+		jsr     j_GetEntityItemsAddressForCombatant
 		move.b  (a0,d1.w),d1
 		move.w  ((word_FFB7C8-$1000000)).w,d0
-		jsr     j_FindEmptyItemSlotFromTargetID
+		jsr     j_GiveItemForCombatant
 		bcc.w   loc_655E
 		move.w  ((word_FFB7C8-$1000000)).w,d0
-		jsr     j_GetForceItemsFromForceID
+		jsr     j_GetEntityItemsAddressForCombatant
 		move.w  ((word_FFB7CA-$1000000)).w,d1
 		move.b  (a0,d1.w),d1
 		move.w  d1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
 		move.w  (sp)+,d1
 		btst    #7,d1
 		beq.w   loc_64E6
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_64E6
-		jsr     sub_805C
+		jsr     j_PlayCursedItemMusic
 		trap    #7
 		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bra.w   loc_656C
 loc_64E6:
 		move.w  ((word_FFB7C8-$1000000)).w,d0
-		cmp.w   ((word_FFB7C4-$1000000)).w,d0
+		cmp.w   ((CURRENT_OBJECT-$1000000)).w,d0
 		bne.w   loc_6512
 		move.w  ((word_FFB7CA-$1000000)).w,d1
-		jsr     j_GetForceItemsAddress
+		jsr     j_GetEntityItemsAddress
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 		jsr     j_RemoveItem
 		move.w  d2,d1
-		jsr     j_FindEmptyItemSlot
+		jsr     j_GiveItem
 		bra.s   loc_656C
 loc_6512:
 		move.w  ((word_FFB7CA-$1000000)).w,d1
-		jsr     j_GetForceItemsFromForceID
+		jsr     j_GetEntityItemsAddressForCombatant
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 		move.w  d2,-(sp)
-		jsr     j_RemoveItemFromTargetID
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		jsr     j_RemoveItemForCombatant
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.w  ((word_FFB7C6-$1000000)).w,d1
-		jsr     j_GetForceItemsFromForceID
+		jsr     j_GetEntityItemsAddressForCombatant
 		clr.w   d2
 		move.b  (a0,d1.w),d2
 loc_653E:
-		jsr     j_RemoveItemFromTargetID
+		jsr     j_RemoveItemForCombatant
 loc_6544:
 		move.w  ((word_FFB7C8-$1000000)).w,d0
 		move.w  d2,d1
 loc_654A:
-		jsr     j_FindEmptyItemSlotFromTargetID
+		jsr     j_GiveItemForCombatant
 loc_6550:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		move.w  (sp)+,d1
 loc_6556:
-		jsr     j_FindEmptyItemSlotFromTargetID
+		jsr     j_GiveItemForCombatant
 		bra.s   loc_656C
 loc_655E:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 loc_6562:
 		move.w  ((word_FFB7C6-$1000000)).w,d1
 loc_6566:
-		jsr     j_RemoveItemFromTargetID
+		jsr     j_RemoveItemForCombatant
 loc_656C:
 		trap    #7
 loc_656E:
@@ -12010,12 +11735,12 @@ loc_656E:
 loc_6574:
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 loc_6580:
 		beq.w   loc_63BA        
 		bra.w   loc_6042        
 
-; END OF FUNCTION CHUNK FOR sub_63B4
+    ; End of function sub_63B4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12026,38 +11751,32 @@ sub_6588:
 loc_658E:
 		move.w  #$12,d0         ; "Who do you wish to equip?"
 		trap    #DISPLAY_MESSAGE
-		jsr     sub_8030
-		jsr     sub_8040
-		move.w  d0,((word_FFB7C4-$1000000)).w
+		jsr     j_ClosePortraitWindow
+		jsr     j_CreateMembersListScreen
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 loc_65A4:
 		bmi.w   loc_605A
 		move.w  d0,d2
 loc_65AA:
-		bsr.w   FindBattleMember
-		move.w  d0,((TEXT_NAME_INDEX-$1000000)).w
-		move.w  #$300,d1
+		bsr.w   FindCombatantSlot
+		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
+		move.w  #ITEMTYPE_MASK_WEAPON_OR_RING,d1
 loc_65B6:
-		jsr     j_LoadEquippableItemsFromForceID
+		jsr     j_LoadEquippableItemsForCombatant
 		bne.s   loc_65CE
-		bsr.w   sub_5FE2
+		bsr.w   DisplayAdvisorPortrait
 		trap    #7
 		move.w  #$1B,d0         ; "[Name] can't be[Line]equipped with anything![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		trap    #7
 		bra.s   loc_6630
-
-	; End of function sub_6588
-
-
-; START OF FUNCTION CHUNK FOR sub_6588
-
 loc_65CE:
-		move.w  #$100,d1
-		move.w  ((word_FFB7C4-$1000000)).w,d0
-		jsr     j_LoadEquippableItemsFromForceID
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
+		jsr     j_LoadEquippableItemsForCombatant
 		beq.w   loc_65F4
 loc_65E0:
-		clr.b   ((byte_FFB526-$1000000)).w
+		clr.b   ((CURRENT_MENU-$1000000)).w
 		bsr.w   sub_6CB6
 		tst.w   d0
 		bpl.s   loc_65F4
@@ -12065,20 +11784,20 @@ loc_65EC:
 		bsr.w   sub_6C6E
 		bra.w   loc_605A
 loc_65F4:
-		move.w  #$200,d1
+		move.w  #ITEMTYPE_MASK_RING,d1
 loc_65F8:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 loc_65FC:
-		jsr     j_LoadEquippableItemsFromForceID
+		jsr     j_LoadEquippableItemsForCombatant
 		beq.w   loc_662C
-		move.b  #1,((byte_FFB526-$1000000)).w
+		move.b  #MAIN_MENU,((CURRENT_MENU-$1000000)).w
 		bsr.w   sub_6CB6
 		tst.w   d0
 		bpl.s   loc_662C
-		move.w  #$100,d1
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  #ITEMTYPE_MASK_WEAPON,d1
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 loc_661C:
-		jsr     j_LoadEquippableItemsFromForceID
+		jsr     j_LoadEquippableItemsForCombatant
 		bne.s   loc_65CE
 		bsr.w   sub_6C6E
 loc_6628:
@@ -12086,18 +11805,18 @@ loc_6628:
 loc_662C:
 		bsr.w   sub_6C6E
 loc_6630:
-		bsr.w   sub_5FE2
+		bsr.w   DisplayAdvisorPortrait
 		trap    #7
 		move.w  #$14,d0         ; "Anyone else to equip?"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_658E        
 loc_664C:
 		bra.w   loc_6042        
 
-; END OF FUNCTION CHUNK FOR sub_6588
+    ; End of function sub_6588
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12110,45 +11829,39 @@ loc_6656:
 		move.w  #$15,d0         ; "Discard whose item?"
 		trap    #DISPLAY_MESSAGE
 loc_665C:
-		jsr     sub_8030
+		jsr     j_ClosePortraitWindow
 loc_6662:
 		jsr     sub_8044
-		bsr.w   sub_5FE2
+		bsr.w   DisplayAdvisorPortrait
 		tst.w   d0
 		bmi.w   loc_605A
-		jsr     j_GetForceItemsFromForceID
+		jsr     j_GetEntityItemsAddressForCombatant
 		clr.w   d1
-		move.b  ((CURRENT_DIAMENU_CHOICE-$1000000)).w,d1
+		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
 loc_667E:
 		move.w  d1,((word_FFB7C6-$1000000)).w
 		move.b  (a0,d1.w),d1
 		move.w  d1,-(sp)
-		andi.w  #$3F,d1 
-		move.w  d1,((TEXT_NAME_INDEX-$1000000)).w
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
+		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
 		move.w  (sp)+,d1
 		btst    #7,d1
 		beq.w   loc_66B8
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_66B8
-		jsr     sub_805C
+		jsr     j_PlayCursedItemMusic
 		trap    #7
 		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bra.w   loc_66DE
-
-	; End of function sub_6650
-
-
-; START OF FUNCTION CHUNK FOR sub_6650
-
 loc_66B8:
 		jsr     j_GetItemType
-		btst    #$B,d2
+		btst    #ITEMTYPE_BIT_CANNOT_DROP,d2
 		bne.s   loc_66D6
-		jsr     j_IncreaseDealsItemStock
+		jsr     j_IncrementDealsStock
 		move.w  ((word_FFB7C6-$1000000)).w,d1
-		jsr     j_RemoveItemFromTargetID
+		jsr     j_RemoveItemForCombatant
 		bra.s   loc_66DE
 loc_66D6:
 		trap    #7
@@ -12160,168 +11873,179 @@ loc_66DE:
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_6656        
 		bra.w   loc_6042        
 
-; END OF FUNCTION CHUNK FOR sub_6650
+    ; End of function sub_6650
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_66FA:
-		move.w  #1,(word_FFB7C4).l
-		bra.w   loc_67BC
+		move.w  #1,(CURRENT_OBJECT).l
+		bra.w   PositionHeadquartersMembers
 
-	; End of function sub_66FA
+    ; End of function sub_66FA
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6706:
 		move.l  sp,(dword_FF0EFE).l
-		clr.w   (word_FFB7C4).l 
+		clr.w   (CURRENT_OBJECT).l
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_679A
-		jsr     sub_203A4
+		bsr.w   InitializeHeadquarters
+		jsr     j_ClearTerrainAtOccupiedSquares
 		clr.b   (byte_FFB53A).l
 		move.w  #$15,(SCREEN_POSITION).l
 		move.w  #$21A,(CURSOR_POSITION).l
 		move.b  #1,(byte_FFB4D7).l
 		jsr     sub_8024
-		clr.b   (byte_FFB4C7).l
+		clr.b   (AREA_CURSOR_INDEX).l
 		move.b  #$FF,(byte_FFB4D3).l
 loc_6754:
 		clr.w   d0
-		jsr     j_GetTargetX
+		jsr     j_GetCombatantX
 		lsl.w   #8,d1
 		move.w  d1,d6
-		jsr     j_GetTargetY
+		jsr     j_GetCombatantY
 		or.w    d1,d6
 		move.w  d0,-(sp)
 		move.w  d6,d0
-		jsr     sub_8094
+		jsr     j_LoadCursorTiles
 		clr.b   (byte_FFB538).l
 		jsr     (j_WaitForVInt).l
 		jsr     sub_8098
 		move.w  (sp)+,d0
-		move.b  d0,(byte_FFB4C6).l
+		move.b  d0,(ACTOR_BLINKING_TOGGLE).l
 		jsr     sub_809C
 		jsr     sub_8090
 		bra.s   loc_6754
 
-	; End of function sub_6706
+    ; End of function sub_6706
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_679A:
+InitializeHeadquarters:
+		
 		move.b  #$FF,(CURRENT_REGION).l
 		move.b  #$FF,(CURRENT_MAP_VERSION).l
 		clr.b   (CURRENT_MAP).l
-		jsr     j_InitBattle
-		jsr     sub_203A0
-loc_67BC:
-		moveq   #$FFFFFFFF,d1
-		moveq   #$1E,d7
+		jsr     j_InitializeBattleData
+		jsr     j_InitializeBattleMap
+PositionHeadquartersMembers:
+		
+		moveq   #-1,d1
+		moveq   #FORCE_MEMBERS_COUNTER,d7
 		clr.w   d0
-loc_67C2:
-		jsr     j_SetTargetID
+@ClearEntities_Loop:
+		
+		jsr     j_SetEntityIndex
 		addq.w  #1,d0
-		dbf     d7,loc_67C2
+		dbf     d7,@ClearEntities_Loop
+                
+		                ; Position advisor
 		moveq   #1,d0
-		lea     byte_69D4(pc), a1
-		jsr     sub_20038
-		lea     (byte_FFCB85).l,a0
-		moveq   #$1E,d1
+		lea     HeadquartersMembersPositions(pc), a1
+		jsr     j_PopulateBattlePartyMembersList
+		lea     (byte_FFCB85).l,a0; FORCE_MEMBERS_LIST+1
+		moveq   #NOVA,d1
 		clr.w   d2
 		move.b  (a1)+,d2
-		jsr     j_SetTargetID
-		jsr     sub_689C(pc)
+		jsr     j_SetEntityIndex
+		jsr     LoadHeadquartersMapsprite(pc)
 		nop
 		move.b  (a1)+,d1
-		jsr     j_SetTargetX
+		jsr     j_SetCombatantX
 		move.b  (a1)+,d1
-		jsr     j_SetTargetY
+		jsr     j_SetCombatantY
 		moveq   #2,d0
-loc_6804:
+@PositionBattlePartyMembers_Loop:
+		
 		move.b  (a0)+,d1
-		blt.s   loc_682C
+		blt.s   @PositionReservePartyMembers
 		clr.w   d2
 		move.b  (a1)+,d2
-		jsr     j_SetTargetID
-		jsr     sub_689C(pc)
+		jsr     j_SetEntityIndex
+		jsr     LoadHeadquartersMapsprite(pc)
 		nop
 		move.b  (a1)+,d1
-		jsr     j_SetTargetX
+		jsr     j_SetCombatantX
 		move.b  (a1)+,d1
-		jsr     j_SetTargetY
+		jsr     j_SetCombatantY
 		addq.w  #1,d0
-		bra.s   loc_6804
-loc_682C:
-		jsr     sub_2003C
-		lea     (byte_FFCB84).l,a0
-loc_6838:
+		bra.s   @PositionBattlePartyMembers_Loop
+@PositionReservePartyMembers:
+		
+		jsr     j_PopulateReservePartyMembersList
+		lea     (FORCE_MEMBERS_LIST).l,a0
+@PositionReservePartyMembers_Loop:
+		
 		move.b  (a0)+,d1
 		blt.s   loc_6860
 		clr.w   d2
 		move.b  (a1)+,d2
-		jsr     j_SetTargetID
-		jsr     sub_689C(pc)
+		jsr     j_SetEntityIndex
+		jsr     LoadHeadquartersMapsprite(pc)
 		nop
 		move.b  (a1)+,d1
-		jsr     j_SetTargetX
+		jsr     j_SetCombatantX
 		move.b  (a1)+,d1
-		jsr     j_SetTargetY
+		jsr     j_SetCombatantY
 		addq.w  #1,d0
-		bra.s   loc_6838
+		bra.s   @PositionReservePartyMembers_Loop
 loc_6860:
 		clr.w   d0
 		clr.w   d1
-		tst.w   (word_FFB7C4).l 
+		tst.w   (CURRENT_OBJECT).l
 		bne.s   loc_688C
 		moveq   #1,d2
-		jsr     j_SetTargetID
-		jsr     sub_689C(pc)
+		jsr     j_SetEntityIndex
+		jsr     LoadHeadquartersMapsprite(pc)
 		nop
 		moveq   #2,d1
-		jsr     j_SetTargetX
+		jsr     j_SetCombatantX
 		moveq   #$1A,d1
-		jsr     j_SetTargetY
-		bra.s   locret_6892
+		jsr     j_SetCombatantY
+		bra.s   return_6892
 loc_688C:
-		jsr     j_SetTargetID
-locret_6892:
+		jsr     j_SetEntityIndex
+return_6892:
 		rts
 
-	; End of function sub_679A
+    ; End of function InitializeHeadquarters
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6894:
-		move.w  #1,(word_FFB7C4).l
+		move.w  #1,(CURRENT_OBJECT).l
 
-	; End of function sub_6894
+    ; End of function sub_6894
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_689C:
+; Load headquarters map sprite
+
+LoadHeadquartersMapsprite:
+		
 		movem.w d0-d2,-(sp)
 		movem.l a0-a1,-(sp)
 		move.w  d0,-(sp)
 		move.w  d1,d0
-		cmpi.w  #$1E,d1
+		cmpi.w  #NOVA,d1
 		beq.s   loc_68B8
-		jsr     j_GetForceMemberHP
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		beq.s   loc_68C0
 loc_68B8:
 		jsr     j_GetMapSprite
 		bra.s   loc_68C2
 loc_68C0:
-		moveq   #$2B,d1 
+		moveq   #MAPSPRITE_BLUE_FLAME,d1
 loc_68C2:
 		bsr.w   sub_690A
 		move.w  (sp)+,d0
@@ -12335,20 +12059,20 @@ loc_68C2:
 		movea.w d0,a1
 		move.w  #$120,d0
 		moveq   #2,d1
-		tst.w   (word_FFB7C4).l 
+		tst.w   (CURRENT_OBJECT).l
 		bne.s   loc_68F4
-		jsr     (j_DMAFromRAMToVRAM).l
+		jsr     (j_ApplyImmediateVramDma).l
 		bra.s   loc_6900
 loc_68F4:
-		jsr     (sub_278).l
+		jsr     (j_ApplyVIntVramDma).l
 loc_68FA:
-		jsr     (j_SetVIntParam3AndWait).l
+		jsr     (j_WaitForDmaQueueProcessing).l
 loc_6900:
 		movem.l (sp)+,a0-a1
 		movem.w (sp)+,d0-d2
 		rts
 
-	; End of function sub_689C
+    ; End of function LoadHeadquartersMapsprite
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12359,7 +12083,7 @@ sub_690A:
 		move.w  off_6916(pc,d7.w),d7
 		jmp     off_6916(pc,d7.w)
 
-	; End of function sub_690A
+    ; End of function sub_690A
 
 off_6916:       dc.w sub_6932-off_6916
 		dc.w sub_693A-off_6916
@@ -12370,28 +12094,22 @@ off_6916:       dc.w sub_6932-off_6916
 
 sub_691E:
 		movea.l (p_pt_MapSprites).l,a0
-
-	; End of function sub_691E
-
-
-; START OF FUNCTION CHUNK FOR sub_6932
-
 loc_6924:
 		move.w  d1,d0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jmp     (sub_300).l
 
-; END OF FUNCTION CHUNK FOR sub_6932
+    ; End of function sub_691E
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6932:
-		movea.l (p_p_MapSprite304).l,a0
+		movea.l (p_pt_MapSprites+8).l,a0
 		bra.s   loc_6924
 
-	; End of function sub_6932
+    ; End of function sub_6932
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12452,139 +12170,143 @@ loc_6990:
 		movem.l (sp)+,d7-a1
 		rts
 
-	; End of function sub_693A
+    ; End of function sub_693A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_69CA:
-		movea.l (p_p_MapSprite156).l,a0
+		movea.l (p_pt_MapSprites+4).l,a0
 		bra.w   loc_6924
 
-	; End of function sub_69CA
+    ; End of function sub_69CA
 
-byte_69D4:      dc.b 1                  ; HQ Positions
-		dc.b   3
+HeadquartersMembersPositions:
+		dc.b 1
+		dc.b 3
 		dc.b $18
-		dc.b   2
-		dc.b  $D
+		dc.b 2
+		dc.b $D
 		dc.b $17
-		dc.b   2
-		dc.b  $E
+		dc.b 2
+		dc.b $E
 		dc.b $17
-		dc.b   2
+		dc.b 2
 		dc.b $10
 		dc.b $17
-		dc.b   2
+		dc.b 2
 		dc.b $11
 		dc.b $17
-		dc.b   2
-		dc.b  $D
+		dc.b 2
+		dc.b $D
 		dc.b $19
-		dc.b   2
-		dc.b  $E
+		dc.b 2
+		dc.b $E
 		dc.b $19
-		dc.b   2
+		dc.b 2
 		dc.b $10
 		dc.b $19
-		dc.b   2
+		dc.b 2
 		dc.b $11
 		dc.b $19
-		dc.b   2
-		dc.b  $D
+		dc.b 2
+		dc.b $D
 		dc.b $1B
-		dc.b   2
-		dc.b  $E
+		dc.b 2
+		dc.b $E
 		dc.b $1B
-		dc.b   2
+		dc.b 2
 		dc.b $10
 		dc.b $1B
-		dc.b   2
-		dc.b  $E
-		dc.b   7
-		dc.b   3
+		dc.b 2
+		dc.b $E
+		dc.b 7
+		dc.b 3
 		dc.b $11
-		dc.b   6
-		dc.b   3
-		dc.b  $C
-		dc.b  $B
-		dc.b   2
-		dc.b  $A
-		dc.b   8
-		dc.b   3
-		dc.b  $D
-		dc.b  $A
-		dc.b   1
-		dc.b  $D
-		dc.b   6
-		dc.b   2
+		dc.b 6
+		dc.b 3
+		dc.b $C
+		dc.b $B
+		dc.b 2
+		dc.b $A
+		dc.b 8
+		dc.b 3
+		dc.b $D
+		dc.b $A
+		dc.b 1
+		dc.b $D
+		dc.b 6
+		dc.b 2
 		dc.b $10
-		dc.b   4
-		dc.b   2
-		dc.b  $C
-		dc.b   8
-		dc.b   2
-		dc.b   2
-		dc.b   3
-		dc.b   2
-		dc.b  $F
-		dc.b   4
-		dc.b   0
-		dc.b  $A
-		dc.b   5
-		dc.b   1
-		dc.b   2
-		dc.b   7
-		dc.b   1
-		dc.b   4
-		dc.b   3
-		dc.b   2
+		dc.b 4
+		dc.b 2
+		dc.b $C
+		dc.b 8
+		dc.b 2
+		dc.b 2
+		dc.b 3
+		dc.b 2
+		dc.b $F
+		dc.b 4
+		dc.b 0
+		dc.b $A
+		dc.b 5
+		dc.b 1
+		dc.b 2
+		dc.b 7
+		dc.b 1
+		dc.b 4
+		dc.b 3
+		dc.b 2
 		dc.b $12
-		dc.b   8
-		dc.b   0
-		dc.b   4
-		dc.b   7
-		dc.b   0
-		dc.b   9
-		dc.b   5
-		dc.b   1
-		dc.b   9
-		dc.b   9
-		dc.b   0
-		dc.b   5
+		dc.b 8
+		dc.b 0
+		dc.b 4
+		dc.b 7
+		dc.b 0
+		dc.b 9
+		dc.b 5
+		dc.b 1
+		dc.b 9
+		dc.b 9
+		dc.b 0
+		dc.b 5
 		dc.b $10
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6A2E:
-		jsr     sub_20044
-		clr.w   (word_FFB7C4).l 
+		jsr     j_RefillWholeForceHP
+		clr.w   (CURRENT_OBJECT).l
 		jsr     (j_DisableDisplayAndInterrupts).l
-		bsr.w   sub_6A7E
+		bsr.w   LoadEndingCutsceneCombatantData
 		clr.b   (byte_FFB53A).l
 		move.w  #$1605,(SCREEN_POSITION).l
 		move.w  #$1B09,(CURSOR_POSITION).l
 		clr.b   (byte_FFB4D7).l
 		jsr     sub_8024
-		clr.b   (byte_FFB4C7).l
+		clr.b   (AREA_CURSOR_INDEX).l
 		move.b  #$FF,(byte_FFB4D3).l
 		move.b  #1,(byte_FFB4D7).l
 		rts
 
-	; End of function sub_6A2E
+    ; End of function sub_6A2E
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_6A7E:
+; Load combatant data during ending cutscene
+
+LoadEndingCutsceneCombatantData:
+		
 		clr.b   (CURRENT_REGION).l
 		clr.b   (CURRENT_MAP).l
 		move.b  #$FF,(CURRENT_MAP_VERSION).l
-		jsr     j_InitBattle
-		jsr     sub_203A0
-		moveq   #$1F,d7
-		lea     (BATTLE_STATS).l,a1
-		lea     unk_6AB8(pc), a0
+		jsr     j_InitializeBattleData
+		jsr     j_InitializeBattleMap
+		moveq   #COMBATANT_ENTRIES_COUNTER,d7
+		lea     (COMBATANT_DATA).l,a1
+		lea     dword_6AB8(pc), a0
 		nop
 loc_6AAC:
 		move.l  (a0)+,(a1)
@@ -12592,136 +12314,40 @@ loc_6AAC:
 		dbf     d7,loc_6AAC
 		rts
 
-	; End of function sub_6A7E
+    ; End of function LoadEndingCutsceneCombatantData
 
-unk_6AB8:       dc.b $1E
-		dc.b $1B
-		dc.b   9
-		dc.b   0
-		dc.b   1
-		dc.b $1A
-		dc.b  $A
-		dc.b   0
-		dc.b  $E
-		dc.b $1B
-		dc.b  $A
-		dc.b   0
-		dc.b  $A
-		dc.b $1C
-		dc.b  $A
-		dc.b   0
-		dc.b  $F
-		dc.b $1C
-		dc.b   8
-		dc.b   0
-		dc.b $13
-		dc.b $1D
-		dc.b   8
-		dc.b   0
-		dc.b   8
-		dc.b $1D
-		dc.b   9
-		dc.b   0
-		dc.b   3
-		dc.b $1D
-		dc.b  $A
-		dc.b   0
-		dc.b  $C
-		dc.b $1C
-		dc.b   9
-		dc.b   0
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
-		dc.b $FF
+dword_6AB8:     dc.l $1E1B0900
+		dc.l $11A0A00
+		dc.l $E1B0A00
+		dc.l $A1C0A00
+		dc.l $F1C0800
+		dc.l $131D0800
+		dc.l $81D0900
+		dc.l $31D0A00
+		dc.l $C1C0900
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
+		dc.l $FFFFFFFF
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -12735,17 +12361,17 @@ loc_6B44:
 		move.w  d2,d3
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d3
 		add.w   d1,d3
-		lea     (byte_FFA4C0).l,a0
+		lea     (PASSABILITY_FLAGS).l,a0
 		btst    #2,(a0,d3.w)
 		bne.s   loc_6B44
 		move.w  d1,d3
 		moveq   #1,d0
 		moveq   #$1D,d7
 loc_6B66:
-		jsr     j_GetTargetX
+		jsr     j_GetCombatantX
 		cmp.b   d1,d3
 		bne.s   loc_6B7C
-		jsr     j_GetTargetY
+		jsr     j_GetCombatantY
 		cmp.b   d1,d2
 		beq.w   loc_6B9A
 loc_6B7C:
@@ -12762,7 +12388,7 @@ loc_6B8A:
 		rts
 loc_6B9A:
 		move.w  d0,-(sp)
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.w  d0,-(sp)
 		move.w  d1,-(sp)
 		move.w  d1,d0
@@ -12771,8 +12397,8 @@ loc_6B9A:
 		movea.l (p_SpriteTextSounds).l,a0
 		andi.w  #$FF,d1
 		move.b  (a0,d1.w),d1
-		addi.w  #$45,d1 
-		move.w  d1,((word_FFC0BE-$1000000)).w
+		addi.w  #SFX_DIALOG_BLEEP_1,d1
+		move.w  d1,((SPEECH_SFX-$1000000)).w
 		movea.l (sp)+,a0
 		move.w  (sp)+,d1
 		move.w  (sp)+,d0
@@ -12780,12 +12406,12 @@ loc_6B9A:
 		move.b  ((SPRITE_DIRECTION-$1000000)).w,d2
 		bsr.w   sub_6894
 		move.w  (sp)+,d0
-		cmpi.w  #1,d0
+		cmpi.w  #1,d0           ; Advisor's entity index (HQ)
 		bne.s   loc_6BF6
-		jsr     (sub_338).l
+		jsr     (j_ExecuteHeadquartersMenu).l
 		bsr.w   sub_66FA
-		jsr     sub_8030
-		jsr     (sub_30C).l
+		jsr     j_ClosePortraitWindow
+		jsr     (j_CloseMessageWindow).l
 		rts
 loc_6BF6:
 		move.w  d0,-(sp)
@@ -12793,7 +12419,7 @@ loc_6BF6:
 		moveq   #$23,d0 
 		jsr     (j_CheckEventFlag).l
 		beq.s   loc_6C08
-		moveq   #$39,d2 
+		moveq   #MAPSPRITE_NOVA,d2
 		bra.s   loc_6C12
 loc_6C08:
 		cmpi.b  #$15,((CURSOR_POSITION+1-$1000000)).w
@@ -12801,19 +12427,19 @@ loc_6C08:
 		moveq   #$1C,d2
 loc_6C12:
 		move.w  (sp)+,d0
-		jsr     j_GetTargetID
+		jsr     j_GetEntity
 		move.w  d1,d0
 		movem.w d0/d2,-(sp)
 		move.w  d0,-(sp)
-		jsr     sub_20304
+		jsr     j_GetPortrait
 		move.w  d1,d0
-		jsr     sub_802C
+		jsr     j_OpenPortraitWindow
 		move.w  (sp)+,d0
 		jsr     sub_80D0
 		trap    #5
 		movem.w (sp)+,d0/d2
 		move.w  d0,-(sp)
-		jsr     j_GetForceMemberHP
+		jsr     j_GetCurrentHP
 		tst.w   d1
 		ble.s   loc_6C56        
 		andi.w  #$FF,d0
@@ -12826,51 +12452,45 @@ loc_6C5A:
 		trap    #DISPLAY_MESSAGE
 		move.w  (sp)+,d0
 		jsr     sub_80D4
-		jsr     sub_8030
+		jsr     j_ClosePortraitWindow
 		trap    #6
 		rts
 
-	; End of function sub_6B38
+    ; End of function sub_6B38
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6C6E:
-		bsr.w   sub_7104
-		lea     (byte_FFB7DA).l,a0
+		bsr.w   BuildEquipMenuStatsWindow
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$C09,d0
 		move.l  #$9042004,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		bsr.w   sub_735A
-		lea     (byte_FFB7DA).l,a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$1203,d0
 		move.l  #$9012001,d1
 		move.w  #4,d2
-		jsr     sub_8020
-		move.w  (word_FFB7C4).l,d0
-		jmp     sub_8030
+		jsr     j_MoveWindowWithSfx
+		move.w  (CURRENT_OBJECT).l,d0
+		jmp     j_ClosePortraitWindow
 
-	; End of function sub_6C6E
+    ; End of function sub_6C6E
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6CB6:
-		tst.b   (byte_FFB526).l
+		tst.b   (CURRENT_MENU).l
 		bne.s   loc_6CC4
 		move.w  #$100,d1
 		bra.s   loc_6CC8
-
-	; End of function sub_6CB6
-
-
-; START OF FUNCTION CHUNK FOR sub_6CB6
-
 loc_6CC4:
 		move.w  #$200,d1
 loc_6CC8:
-		move.w  (word_FFB7C4).l,d0
+		move.w  (CURRENT_OBJECT).l,d0
 		jsr     j_GetEquippedItem
 		move.w  d2,(word_FFBC5A).l
 		move.w  d2,(word_FFBC5C).l
@@ -12881,7 +12501,7 @@ loc_6CC8:
 loc_6CEE:
 		cmpi.w  #$FFFF,d3
 		bne.s   loc_6D08
-		cmpi.w  #4,(word_FFA8C0).l
+		cmpi.w  #4,(TABLE_AT_FFA8C0).l
 		bne.s   loc_6D02
 		clr.w   d0
 		bra.s   loc_6D04
@@ -12900,132 +12520,99 @@ loc_6D14:
 		addq.l  #4,a0
 		bra.s   loc_6D14
 loc_6D1E:
-		move.b  d0,(CURRENT_DIAMENU_CHOICE).l
+		move.b  d0,(CURRENT_DIAMOND_MENU_SELECTION).l
 		move.w  d0,(word_FFBC5E).l
 		move.b  d0,(byte_FFB529).l
 		bsr.w   sub_70A6
 		tst.w   (word_FFD082).l
 		bne.w   loc_6D8E
-		move.w  (word_FFB7C4).l,d0
-		jsr     sub_20304
+		move.w  (CURRENT_OBJECT).l,d0
+		jsr     j_GetPortrait
 		move.w  d1,d0
-		jsr     sub_802C
+		jsr     j_OpenPortraitWindow
 		bsr.w   sub_735A
-		lea     (byte_FFB7DA).l,a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$1203,d0
 		move.l  #$20010901,d1
 		move.w  #4,d2
-		jsr     sub_8020
-		bsr.w   sub_7104
-		lea     (byte_FFB7DA).l,a0
+		jsr     j_MoveWindowWithSfx
+		bsr.w   BuildEquipMenuStatsWindow
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$C09,d0
 		move.l  #$20040904,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 loc_6D8E:
 		bsr.w   sub_6FE6
 		bsr.w   sub_70E8
-		bsr.w   nullsub_2
+		bsr.w   nullsub_70A4
 		bsr.w   sub_71A2
 		moveq   #$F,d6
 loc_6DA0:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_6DC4
-		cmpi.w  #2,(word_FFA8C0).l
+		cmpi.w  #2,(TABLE_AT_FFA8C0).l
 		blt.s   loc_6DC4
-		move.b  #1,(CURRENT_DIAMENU_CHOICE).l
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_6CB6
-
-		dc.w SFX_MENU_SELECTION
+		move.b  #1,(CURRENT_DIAMOND_MENU_SELECTION).l
+		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_6E70
-
-; START OF FUNCTION CHUNK FOR sub_6CB6
-
 loc_6DC4:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_6DE8
-		cmpi.w  #3,(word_FFA8C0).l
+		cmpi.w  #3,(TABLE_AT_FFA8C0).l
 		blt.s   loc_6DE8
-		move.b  #2,(CURRENT_DIAMENU_CHOICE).l
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_6CB6
-
-		dc.w SFX_MENU_SELECTION
+		move.b  #2,(CURRENT_DIAMOND_MENU_SELECTION).l
+		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_6E70
-
-; START OF FUNCTION CHUNK FOR sub_6CB6
-
 loc_6DE8:
-		btst    #INPUT_A_UP_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_UP,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_6E00
-		clr.b   (CURRENT_DIAMENU_CHOICE).l
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_6CB6
-
-		dc.w SFX_MENU_SELECTION
+		clr.b   (CURRENT_DIAMOND_MENU_SELECTION).l
+		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_6E70
-
-; START OF FUNCTION CHUNK FOR sub_6CB6
-
 loc_6E00:
-		btst    #INPUT_A_DOWN_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_DOWN,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_6E1A
-		move.b  #3,(CURRENT_DIAMENU_CHOICE).l
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_6CB6
-
-		dc.w SFX_MENU_SELECTION
+		move.b  #3,(CURRENT_DIAMOND_MENU_SELECTION).l
+		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_6E70
-
-; START OF FUNCTION CHUNK FOR sub_6CB6
-
 loc_6E1A:
-		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_B,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_6E42
 		move.w  (word_FFBC58).l,d2
 		bsr.w   loc_70C2
-		bsr.w   sub_7104
+		bsr.w   BuildEquipMenuStatsWindow
 		bsr.w   sub_703A
 		jsr     (j_WaitForVInt).l
 		moveq   #$FFFFFFFF,d0
 		bra.w   loc_6F8E
 loc_6E42:
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_6E58
 		clr.w   d0
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d0
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d0
 		bra.w   loc_6EB8
 loc_6E58:
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
 		beq.w   loc_6EA4
 		clr.w   d0
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d0
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d0
 		bra.w   loc_6EB8
-
-; END OF FUNCTION CHUNK FOR sub_6CB6
-
-loc_6E70:       bsr.w   sub_70A6
+loc_6E70:
+		bsr.w   sub_70A6
 		bsr.w   sub_70E8
 		bsr.w   sub_7020
 		jsr     (j_WaitForVInt).l
 		moveq   #$13,d6
 		bsr.w   sub_7054
 		move.w  d6,-(sp)
-		bsr.w   sub_7104
+		bsr.w   BuildEquipMenuStatsWindow
 		bsr.w   sub_703A
 		jsr     (j_WaitForVInt).l
 		bsr.w   sub_7090
 		bsr.w   sub_71A2
 		move.w  (sp)+,d6
 		bra.s   loc_6EA8
-
-; START OF FUNCTION CHUNK FOR sub_6CB6
-
 loc_6EA4:
 		bsr.w   sub_7054
 loc_6EA8:
@@ -13038,24 +12625,24 @@ loc_6EB4:
 loc_6EB8:
 		movem.w d0-d1,-(sp)
 		move.w  (word_FFBC5A).l,d1
-		move.w  d1,(TEXT_NAME_INDEX).l
+		move.w  d1,(MESSAGE_ARG_NAME_1).l
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_6F3C
 		move.w  (word_FFBC5E).l,d3
-		cmp.b   (CURRENT_DIAMENU_CHOICE).l,d3
+		cmp.b   (CURRENT_DIAMOND_MENU_SELECTION).l,d3
 		beq.s   loc_6F3A
 		move.w  (word_FFBC58).l,d2
 		bsr.w   loc_70C2
-		jsr     sub_805C
-		move.b  d3,(CURRENT_DIAMENU_CHOICE).l
+		jsr     j_PlayCursedItemMusic
+		move.b  d3,(CURRENT_DIAMOND_MENU_SELECTION).l
 loc_6EF8:
 		bsr.w   sub_70E8
 		bsr.w   sub_7020
 		jsr     (j_WaitForVInt).l
 		moveq   #$13,d6
 		bsr.w   sub_7054
-		bsr.w   sub_7104
+		bsr.w   BuildEquipMenuStatsWindow
 		bsr.w   sub_703A
 		jsr     (j_WaitForVInt).l
 		bsr.w   sub_7090
@@ -13072,12 +12659,12 @@ loc_6F3A:
 loc_6F3C:
 		move.w  (word_FFBC5C).l,d1
 		jsr     j_GetItemType
-		btst    #$D,d2
+		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_6F8A
-		jsr     sub_805C
-		move.w  (word_FFB7C4).l,d2
-		bsr.w   FindBattleMember
-		move.w  d0,(TEXT_NAME_INDEX).l
+		jsr     j_PlayCursedItemMusic
+		move.w  (CURRENT_OBJECT).l,d2
+		bsr.w   FindCombatantSlot
+		move.w  d0,(MESSAGE_ARG_NAME_1).l
 		bsr.w   sub_6FA0
 		trap    #7
 		move.w  #$13,d0         ; "[Name] has been cursed....[Wait2]"
@@ -13085,98 +12672,105 @@ loc_6F3C:
 		trap    #7
 		jsr     sub_8088
 		bsr.w   loc_73B6
-		move.w  (word_FFB7C4).l,d0
-		moveq   #4,d1
-		jsr     j_SetForceMemberStatus
+		move.w  (CURRENT_OBJECT).l,d0
+		moveq   #STATUSEFFECT_COUNTER_CURSE,d1
+		jsr     j_SetStatusEffects
 loc_6F8A:
 		movem.w (sp)+,d0-d1
 loc_6F8E:
 		movem.w d0-d1,-(sp)
 		clr.w   d6
 		bsr.w   sub_7054
+loc_6F98:
 		bsr.s   sub_6FA0
 		movem.w (sp)+,d0-d1
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_6CB6
+    ; End of function sub_6CB6
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6FA0:
 		tst.w   (word_FFD692).l
-		beq.s   locret_6FE4
+		beq.s   @Return
 		clr.w   d6
 		bsr.w   sub_7054
 		bsr.w   sub_70E8
-		lea     (byte_FFB7DA).l,a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.l  #$90D200D,d1
 		move.w  #$C05,d0
 		move.w  #4,d2
-		jsr     sub_8020
-		lea     asc_75A0(pc), a0
+		jsr     j_MoveWindowWithSfx
+		lea     wl_75A0(pc), a0
 		move.w  #$606,d0
 		move.l  #$20BFA0B,d1
 		move.w  #4,d2
-		jmp     sub_8020
-locret_6FE4:
+		jmp     j_MoveWindowWithSfx
+@Return:
 		rts
 
-	; End of function sub_6FA0
+    ; End of function sub_6FA0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_6FE6:
 		bsr.w   sub_71C0
-		lea     asc_75A0(pc), a0
+		lea     wl_75A0(pc), a0
 		move.w  #$606,d0
+loc_6FF2:
 		move.l  #$FA0B020B,d1
+loc_6FF8:
 		move.w  #4,d2
-		jsr     sub_8020
+loc_6FFC:
+		jsr     j_MoveWindowWithSfx
 		bsr.w   sub_70E8
 loc_7006:
-		lea     (byte_FFB7DA).l,a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
+loc_700C:
 		move.w  #$C05,d0
+loc_7010:
 		move.l  #$200D090D,d1
 		move.w  #4,d2
-		jmp     sub_8020
+loc_701A:
+		jmp     j_MoveWindowWithSfx
 
-	; End of function sub_6FE6
+    ; End of function sub_6FE6
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_7020:
-		lea     (byte_FFB7DA).l,a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$C05,d0
 		move.l  #$90D,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		bra.w   loc_73B6
 
-	; End of function sub_7020
+    ; End of function sub_7020
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_703A:
-		lea     (byte_FFB7DA).l,a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$C09,d0
 		move.l  #$904,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		bra.w   loc_73B6
 
-	; End of function sub_703A
+    ; End of function sub_703A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_7054:
-		lea     (SPRITE_TABLE).l,a1
+		lea     (SPRITE_00_PROPERTIES).l,a1
 		lea     word_73EE(pc), a0
 		nop
 		clr.w   d0
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d0
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d0
 		lsl.w   #3,d0
 		adda.w  d0,a0
 		move.w  (a0)+,d0
@@ -13184,7 +12778,7 @@ sub_7054:
 		bge.s   loc_7076
 		moveq   #1,d0
 loc_7076:
-		btst    #INPUT_A_START_BIT,(P1_INPUT).l
+		btst    #INPUT_BIT_START,(P1_INPUT).l
 		beq.s   loc_7082
 		moveq   #1,d0
 loc_7082:
@@ -13196,26 +12790,26 @@ loc_7082:
 		move.l  (a0)+,(a1)+
 		rts
 
-	; End of function sub_7054
+    ; End of function sub_7054
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_7090:
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d7
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d7
 		cmp.b   (byte_FFB529).l,d7
-		beq.s   nullsub_2
+		beq.s   nullsub_70A4
 		move.b  d7,(byte_FFB529).l
 
-	; End of function sub_7090
+    ; End of function sub_7090
 
 
 ; =============== S U B R O U T I N E =======================================
 
-nullsub_2:
+nullsub_70A4:
 		rts
 
-	; End of function nullsub_2
+    ; End of function nullsub_70A4
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -13223,13 +12817,13 @@ nullsub_2:
 sub_70A6:
 		lea     (byte_FFA8C2).l,a0
 		clr.w   d2
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d2
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d2
 		lsl.w   #2,d2
 		move.w  2(a0,d2.w),(word_FFBC5C).l
 		move.w  (a0,d2.w),d2
 loc_70C2:
-		move.w  (word_FFB7C4).l,d0
-		tst.b   (byte_FFB526).l
+		move.w  (CURRENT_OBJECT).l,d0
+		tst.b   (CURRENT_MENU).l
 		bne.s   loc_70D6
 		move.w  #$100,d1
 		bra.s   loc_70DA
@@ -13238,96 +12832,97 @@ loc_70D6:
 loc_70DA:
 		jmp     j_EquipItem
 
-	; End of function sub_70A6
+    ; End of function sub_70A6
 
-		dc.b   0
-		dc.b $AE 
-		dc.b   0
-		dc.b $AE 
-		dc.b   0
-		dc.b $62 
-		dc.b   0
-		dc.b $88 
+		dc.b 0
+		dc.b $AE
+		dc.b 0
+		dc.b $AE
+		dc.b 0
+		dc.b $62
+		dc.b 0
+		dc.b $88
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_70E8:
 		bsr.w   sub_71A2
-		lea     wl_EquipMenuItemName(pc), a0
-		lea     (byte_FFB7DA).l,a1
+		lea     wl_EquipMenu_ItemName(pc), a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$CC,d7 
 loc_70FA:
 		jsr     (j_CopyBytes).l
 		bra.w   loc_72D8
 
-	; End of function sub_70E8
+    ; End of function sub_70E8
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_7104:
-		lea     wl_EquipMenuStats(pc), a0
-		lea     (byte_FFB7DA).l,a1
+BuildEquipMenuStatsWindow:
+		
+		lea     wl_EquipMenu_Stats(pc), a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$D8,d7 
 		jsr     (j_CopyBytes).l
-		move.w  (word_FFB7C4).l,d2
-		bsr.w   FindBattleMember
-		jsr     j_GetTargetATT
+		move.w  (CURRENT_OBJECT).l,d2
+		bsr.w   FindCombatantSlot
+		jsr     j_GetModifiedAttack
 		lea     (byte_FFB804).l,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
-		jsr     j_DisplayNumber
-		move.w  (word_FFB7C4).l,d2
-		bsr.w   FindBattleMember
-		jsr     j_GetTargetDEF
+		jsr     j_WriteTilesFromNumber
+		move.w  (CURRENT_OBJECT).l,d2
+		bsr.w   FindCombatantSlot
+		jsr     j_GetModifiedDefense
 		lea     (byte_FFB834).l,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
-		jsr     j_DisplayNumber
-		move.w  (word_FFB7C4).l,d2
-		bsr.w   FindBattleMember
-		jsr     j_GetTargetMOVE
+		jsr     j_WriteTilesFromNumber
+		move.w  (CURRENT_OBJECT).l,d2
+		bsr.w   FindCombatantSlot
+		jsr     j_GetModifiedMove
 		lea     (byte_FFB864).l,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
-		jsr     j_DisplayNumber
-		move.w  (word_FFB7C4).l,d2
-		bsr.w   FindBattleMember
-		jsr     j_GetTargetAGI
+		jsr     j_WriteTilesFromNumber
+		move.w  (CURRENT_OBJECT).l,d2
+		bsr.w   FindCombatantSlot
+		jsr     j_GetModifiedAgility
 		lea     (byte_FFB894).l,a1
 		moveq   #2,d7
 		move.w  d1,d0
 		ext.l   d0
-		jsr     j_DisplayNumber
+		jsr     j_WriteTilesFromNumber
 		rts
 
-	; End of function sub_7104
+    ; End of function BuildEquipMenuStatsWindow
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_71A2:
-		tst.b   (byte_FFB526).l
+		tst.b   (CURRENT_MENU).l
 		bne.s   loc_71B0
 		move.w  #$100,d1
 		bra.s   loc_71B4
 loc_71B0:
 		move.w  #$200,d1
 loc_71B4:
-		move.w  (word_FFB7C4).l,d0
+		move.w  (CURRENT_OBJECT).l,d0
 		jmp     j_LoadEquippableItems
 
-	; End of function sub_71A2
+    ; End of function sub_71A2
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_71C0:
 		bsr.s   sub_71A2
-		move.w  (word_FFA8C0).l,d7
+		move.w  (TABLE_AT_FFA8C0).l,d7
 		subq.w  #1,d7
 		lea     (byte_FFA8C2).l,a3
 		clr.w   d1
@@ -13377,7 +12972,7 @@ loc_7234:
 		move.w  #$C0,d7 
 		jsr     (j_CopyBytes).l
 		adda.w  #$C0,a1 
-		lea     unk_740E(pc), a0
+		lea     IconHighlightTiles_Equip(pc), a0
 		move.w  #$200,d7
 		jsr     (j_CopyBytes).l
 loc_7282:
@@ -13385,64 +12980,64 @@ loc_7282:
 		lea     ($F800).l,a1
 		move.w  #$400,d0
 		moveq   #2,d1
-		jsr     (sub_278).l
-		jmp     (j_SetVIntParam3AndWait).l
+		jsr     (j_ApplyVIntVramDma).l
+		jmp     (j_WaitForDmaQueueProcessing).l
 
-	; End of function sub_71C0
+    ; End of function sub_71C0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_72A0:
 		movea.l (p_ItemIcons).l,a0
-		cmp.w   (word_FFA8C0).l,d1
+		cmp.w   (TABLE_AT_FFA8C0).l,d1
 		blt.s   loc_72C2
 		adda.l  #$2F40,a0
 		cmpi.w  #3,d1
 		bne.s   loc_72C0
 		adda.l  #$C0,a0 
 loc_72C0:
-		bra.s   locret_72D6
+		bra.s   return_72D6
 loc_72C2:
 		lsl.w   #2,d1
 		move.w  2(a3,d1.w),d1
-		andi.w  #$3F,d1 
+		andi.w  #ITEMENTRY_MASK_INDEX,d1
 		move.w  d1,d7
 		add.w   d1,d1
 		add.w   d7,d1
 		lsl.w   #6,d1
 		adda.w  d1,a0
-locret_72D6:
+return_72D6:
 		rts
 
-	; End of function sub_72A0
+    ; End of function sub_72A0
 
 
 ; START OF FUNCTION CHUNK FOR sub_70E8
 
 loc_72D8:
 		movem.l d7-a1,-(sp)
-		lea     wl_EquipMenuItemName(pc), a0
-		lea     (byte_FFB7DA).l,a1
+		lea     wl_EquipMenu_ItemName(pc), a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$78,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		lea     aWeaponring(pc), a0
 		lea     (byte_FFB7F4).l,a1
-		btst    #0,(byte_FFB526).l
+		btst    #0,(CURRENT_MENU).l
 		beq.s   loc_730A
 		addq.w  #6,a0
 loc_730A:
 		moveq   #6,d7
-		moveq   #$FFFFFFE8,d1
-		jsr     sub_804C
+		moveq   #-24,d1
+		jsr     j_WriteTilesFromAscii
 		clr.w   d1
-		move.b  (CURRENT_DIAMENU_CHOICE).l,d1
-		cmpi.w  #4,(word_FFA8C0).l
+		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d1
+		cmpi.w  #4,(TABLE_AT_FFA8C0).l
 		beq.w   loc_7338
 		cmpi.w  #3,d1
 		bne.s   loc_7338
-		lea     unk_758E(pc), a0
+		lea     byte_758E(pc), a0
 		nop
 		moveq   #6,d7
 		bra.s   loc_734C
@@ -13450,12 +13045,12 @@ loc_7338:
 		lea     (byte_FFA8C2).l,a0
 		lsl.w   #2,d1
 		move.w  2(a0,d1.w),d1
-		jsr     j_GetItemName
+		jsr     j_GetItemNameAddress
 		move.w  d1,d7
 loc_734C:
 		lea     (byte_FFB80C).l,a1
-		moveq   #$FFFFFFE8,d1
-		jmp     sub_804C
+		moveq   #-24,d1
+		jmp     j_WriteTilesFromAscii
 
 ; END OF FUNCTION CHUNK FOR sub_70E8
 
@@ -13464,599 +13059,786 @@ loc_734C:
 
 sub_735A:
 		movem.l d7-a1,-(sp)
-		lea     wl_EquipMenuCharName(pc), a0
-		lea     (byte_FFB7DA).l,a1
+		lea     wl_EquipMenu_MemberName(pc), a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$6C,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		lea     (byte_FFB804).l,a1
 		move.l  a1,-(sp)
-		move.w  (word_FFB7C4).l,d0
-		jsr     j_GetForceStatsAddress
-		moveq   #$FFFFFFDC,d1
+		move.w  (CURRENT_OBJECT).l,d0
+		jsr     j_GetEntityStatsAddress
+		moveq   #-36,d1
 		moveq   #$A,d7
-		jsr     sub_804C
+		jsr     j_WriteTilesFromAscii
 		movea.l (sp)+,a1
 		lea     $12(a1),a1
-		move.w  (word_FFB7C4).l,d0
-		jsr     j_GetForceMemberClass
-		jsr     j_GetClassName
+		move.w  (CURRENT_OBJECT).l,d0
+		jsr     j_GetClass
+		jsr     j_GetClassNameAddress
 		move.w  d1,d7
-		moveq   #$FFFFFFDC,d1
-		jsr     sub_804C
+		moveq   #-36,d1
+		jsr     j_WriteTilesFromAscii
 loc_73B6:
 		lea     ($C000).l,a1
 		move.w  #$780,d0
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		moveq   #2,d1
-		jsr     (sub_278).l
-		jmp     (j_SetVIntParam3).l
+		jsr     (j_ApplyVIntVramDma).l
+		jmp     (j_EnableDmaQueueProcessing).l
 
-	; End of function sub_735A
+    ; End of function sub_735A
 
 
 ; =============== S U B R O U T I N E =======================================
 
-; Find battle member with index D2
+; Find force member D2 combatant slot number -> D0 if exists, else D0 = $FFFFFFFF
 
-FindBattleMember:
+FindCombatantSlot:
 		
 		clr.w   d0
-		moveq   #$1F,d7
-loc_73D8:
-		jsr     j_GetTargetID
+		moveq   #31,d7
+@Loop:
+		jsr     j_GetEntity
 		cmp.b   d2,d1
-		beq.w   locret_73EC
+		beq.w   @Return
 		addq.w  #1,d0
-		dbf     d7,loc_73D8
-		moveq   #$FFFFFFFF,d0
-locret_73EC:
+		dbf     d7,@Loop
+                
+		moveq   #-1,d0
+@Return:
 		rts
 
-	; End of function FindBattleMember
+    ; End of function FindCombatantSlot
 
-word_73EE:      dc.w $D7
-		dc.w $B01
-		dc.l $C7DC009F
+word_73EE:      ; sprite properties data
+		dc.w $D7
+		dc.b $B
+		dc.b 1
+		dc.w $C7DC
+		dc.w $9F
 		dc.w $E3
-		dc.w $B01
-		dc.l $C7DC008F
+		dc.b $B
+		dc.b 1
+		dc.w $C7DC
+		dc.w $8F
 		dc.w $E3
-		dc.w $B01
-		dc.l $C7DC00AF
+		dc.b $B
+		dc.b 1
+		dc.w $C7DC
+		dc.w $AF
 		dc.w $EF
-		dc.w $B01
-		dc.l $C7DC009F
-unk_740E:       dc.b   0
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b  $A
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b   0
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $A0 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $AA 
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b $A0 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-unk_758E:       dc.b $B2 
-		dc.b $A5 
-		dc.b $AD 
-		dc.b $AF 
-		dc.b $B6 
-		dc.b $A5 
-aWeaponring:    dc.b 'WEAPONRING',0
-		dc.b   0
-asc_75A0:       dc.b 'À',0
-		dc.b $C0 
-		dc.b   0
-		dc.b $C7 
-		dc.b $C0 
-		dc.b $C7 
-		dc.b $C1 
-		dc.b $C0 
-		dc.b   0
-		dc.b $C0 
-		dc.b   0
-		dc.b $C7 
-		dc.b $C6 
-		dc.b $C7 
-		dc.b $C7 
-		dc.b $C7 
-		dc.b $C2 
-		dc.b $C7 
-		dc.b $C3 
-		dc.b $C7 
-		dc.b $CE 
-		dc.b $C7 
-		dc.b $CF 
-		dc.b $C7 
-		dc.b $C8 
-		dc.b $C7 
-		dc.b $C9 
-		dc.b $C7 
-		dc.b $C4 
-		dc.b $C7 
-		dc.b $C5 
-		dc.b $C7 
-		dc.b $D0 
-		dc.b $C7 
-		dc.b $D1 
-		dc.b $C7 
-		dc.b $CA 
-		dc.b $C7 
-		dc.b $CB 
-		dc.b $C7 
-		dc.b $D6 
-		dc.b $C7 
-		dc.b $D7 
-		dc.b $C7 
-		dc.b $D2 
-		dc.b $C7 
-		dc.b $D3 
-		dc.b $C7 
-		dc.b $CC 
-		dc.b $C7 
-		dc.b $CD 
-		dc.b $C7 
-		dc.b $D8 
-		dc.b $C7 
-		dc.b $D9 
-		dc.b $C7 
-		dc.b $D4 
-		dc.b $C7 
-		dc.b $D5 
-		dc.b $C0 
-		dc.b   0
-		dc.b $C0 
-		dc.b   0
-		dc.b $C7 
-		dc.b $DA 
-		dc.b $C7 
-		dc.b $DB 
-		dc.b $C0 
-		dc.b   0
-		dc.b $C0 
-		dc.b   0
-wl_EquipMenuStats:
-		incbin "data/graphics/tech/windowlayouts/wl-equipmenustats.bin"
-wl_EquipMenuCharName:
-		incbin "data/graphics/tech/windowlayouts/wl-equipmenucharname.bin"
-wl_EquipMenuItemName:
-		incbin "data/graphics/tech/windowlayouts/wl-equipmenuitemname.bin"
+		dc.b $B
+		dc.b 1
+		dc.w $C7DC
+		dc.w $9F
+IconHighlightTiles_Equip:
+		dc.b 0
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $A
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b 0
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $A0
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $AA
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b $A0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+		dc.b 0
+byte_758E:      dc.b VDPTILE_ORANGE_UPPERCASE_R
+		dc.b VDPTILE_ORANGE_UPPERCASE_E
+		dc.b VDPTILE_ORANGE_UPPERCASE_M
+		dc.b VDPTILE_ORANGE_UPPERCASE_O
+		dc.b VDPTILE_ORANGE_UPPERCASE_V
+		dc.b VDPTILE_ORANGE_UPPERCASE_E
+aWeaponring:    dc.b 'WEAPONRING',0,0
+wl_75A0:        dc.w $C000
+		dc.w $C000
+		dc.w $C7C0
+		dc.w $C7C1
+		dc.w $C000
+		dc.w $C000
+		dc.w $C7C6
+		dc.w $C7C7
+		dc.w $C7C2
+		dc.w $C7C3
+		dc.w $C7CE
+		dc.w $C7CF
+		dc.w $C7C8
+		dc.w $C7C9
+		dc.w $C7C4
+		dc.w $C7C5
+		dc.w $C7D0
+		dc.w $C7D1
+		dc.w $C7CA
+		dc.w $C7CB
+		dc.w $C7D6
+		dc.w $C7D7
+		dc.w $C7D2
+		dc.w $C7D3
+		dc.w $C7CC
+		dc.w $C7CD
+		dc.w $C7D8
+		dc.w $C7D9
+		dc.w $C7D4
+		dc.w $C7D5
+		dc.w $C000
+		dc.w $C000
+		dc.w $C7DA
+		dc.w $C7DB
+		dc.w $C000
+		dc.w $C000
+wl_EquipMenu_Stats:
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_C|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_K|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_D|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_N|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_M|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_V|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_G|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_I|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_L|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_I|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_Y|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+wl_EquipMenu_MemberName:
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+wl_EquipMenu_ItemName:
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_77A4:
 		jsr     sub_80A4
-		move.w  d0,((word_FFB7C4-$1000000)).w
+		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		cmpi.w  #$FFFF,d0
 		beq.w   loc_78F4
 		jsr     (j_CheckEventFlag).l
-		bne.w   loc_7898
+		bne.w   sub_7898
 		bsr.w   sub_80C4
-		cmpi.b  #$3F,d3 
-		beq.w   loc_7898
+		cmpi.b  #NOTHING_ITEM,d3
+		beq.w   sub_7898
 		clr.w   d7
 		move.b  ((byte_FFB4C5-$1000000)).w,d7
-		move.w  d7,((TEXT_NAME_INDEX-$1000000)).w
-		cmpi.b  #$3F,d3 
+		move.w  d7,((MESSAGE_ARG_NAME_1-$1000000)).w
+		cmpi.b  #NOTHING_ITEM,d3
 		bgt.w   loc_78B0
-		move.w  d3,((word_FFF846-$1000000)).w
+		move.w  d3,((MESSAGE_ARG_NAME_2-$1000000)).w
 		jsr     (sub_304).l
-		clr.w   ((word_FFC0BE-$1000000)).w
+		clr.w   ((SPEECH_SFX-$1000000)).w
 		movem.w d1,-(sp)
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
-		move.w  ((word_FFF846-$1000000)).w,d1
-		jsr     j_FindEmptyItemSlotFromTargetID
+		move.w  ((MESSAGE_ARG_NAME_2-$1000000)).w,d1
+		jsr     j_GiveItemForCombatant
 		movem.w (sp)+,d1
 		bcs.w   loc_7872
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_ITEM
+		sndCom  MUSIC_ITEM
 		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		jsr     (j_SetEventFlag).l
 		bsr.w   sub_788C
-		cmpi.w  #$26,((word_FFF846-$1000000)).w 
-		bne.s   locret_7870
+		cmpi.w  #$26,((MESSAGE_ARG_NAME_2-$1000000)).w 
+		bne.s   return_7870
 		moveq   #$37,d0 
 		jsr     (j_SetEventFlag).l
 		moveq   #$2B,d0 
 		jsr     (j_CheckEventFlag).l
-		beq.s   locret_7870
+		beq.s   return_7870
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
 		jsr     (sub_304).l
 		move.w  #$169,d0        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
 		trap    #DISPLAY_MESSAGE
-		jsr     (sub_30C).l
+		jsr     (j_CloseMessageWindow).l
 		movea.l (dword_FF0EFE).l,sp
 		jsr     (j_FadeOutToBlack).l
-		clr.l   (dword_FF0EF6).l
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		clr.w   d0
-locret_7870:
+return_7870:
 		rts
-
-	; End of function sub_77A4
-
-
-; START OF FUNCTION CHUNK FOR sub_77A4
-
 loc_7872:
 		movem.w d1-d2,-(sp)
 		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
@@ -14066,172 +13848,158 @@ loc_7872:
 		movem.w (sp)+,d1-d2
 		jsr     sub_80C8
 
-; END OF FUNCTION CHUNK FOR sub_77A4
+    ; End of function sub_77A4
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_788C:
-		jsr     (sub_30C).l
-		jmp     sub_8094
+		jsr     (j_CloseMessageWindow).l
+		jmp     j_LoadCursorTiles
 
-	; End of function sub_788C
+    ; End of function sub_788C
 
 
-; START OF FUNCTION CHUNK FOR sub_77A4
+; =============== S U B R O U T I N E =======================================
 
-loc_7898:
+sub_7898:
 		jsr     (sub_304).l
 		move.w  #$4A,d0 ; "The treasure chest is empty.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 loc_78A4:
-		move.w  ((word_FFB7C4-$1000000)).w,d0
+		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		jsr     (j_SetEventFlag).l
 		bra.s   sub_788C
 loc_78B0:
 		subi.w  #$40,d3 
 		add.w   d3,d3
 		clr.l   d1
-		move.w  word_78E2(pc,d3.w),d1
-		move.l  d1,((TEXT_NUMBER-$1000000)).w
+		move.w  tbl_BattleChestGoldAmounts(pc,d3.w),d1
+		move.l  d1,((MESSAGE_ARG_NUMBER-$1000000)).w
 		jsr     j_IncreaseGold
 		jsr     (sub_304).l
-		trap    #SOUND_COMMAND
-
-; END OF FUNCTION CHUNK FOR sub_77A4
-
-		dc.w MUSIC_ITEM
+		sndCom  MUSIC_ITEM
 		move.w  #$4C,d0 ; "[Name] gains [Num] coins.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_PlayMusicAfterCurrentOne).l
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
+		sndCom  SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		bra.s   loc_78A4
-word_78E2:      dc.w $32
-		dc.w $A
-		dc.w $14
-		dc.w $1E
-		dc.w $28
-		dc.w $32
-		dc.w $3C
-		dc.w $32
-		dc.w $3C
-
-; START OF FUNCTION CHUNK FOR sub_77A4
-
+tbl_BattleChestGoldAmounts:
+		
+		dc.w 50
+		dc.w 10
+		dc.w 20
+		dc.w 30
+		dc.w 40
+		dc.w 50
+		dc.w 60
+		dc.w 50
+		dc.w 60
 loc_78F4:
 		tst.b   ((byte_FFB4D7-$1000000)).w
-		beq.s   locret_7908
+		beq.s   return_7908
 		jsr     (sub_304).l
 		move.w  #$4B,d0 ; "Nothing is found.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		bsr.s   sub_788C
-locret_7908:
+return_7908:
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_77A4
+    ; End of function sub_7898
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_790A:
-		lea     wl_Options(pc), a0
+optionMenu_Speed:
+		
+		lea     wl_BattleOption_Speed(pc), a0
 		move.w  #$1107,d0
 		move.l  #$81C0814,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		clr.w   d0
-		move.b  ((byte_FF9C05-$1000000)).w,d0
+		move.b  ((MESSAGE_SPEED-$1000000)).w,d0
 		moveq   #$14,d1
 loc_792A:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_793E
 		addq.w  #1,d0
 		andi.w  #3,d0
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+		sndCom  SFX_MENU_SELECTION
 loc_793E:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_7952
 		subq.w  #1,d0
 		andi.w  #3,d0
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+		sndCom  SFX_MENU_SELECTION
 loc_7952:
-		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_B,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_79A8
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_7982
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_7982
 		bsr.w   sub_7B1A
 		jsr     (j_WaitForVInt).l
 		bra.s   loc_792A
 loc_7982:
-		move.b  d0,((byte_FF9C05-$1000000)).w
+		move.b  d0,((MESSAGE_SPEED-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     wl_Options(pc), a0
+		lea     wl_BattleOption_Speed(pc), a0
 		move.w  #$1107,d0
 		move.l  #$8142014,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		clr.w   d0
 		rts
-
-	; End of function sub_790A
-
-
-; START OF FUNCTION CHUNK FOR sub_790A
-
 loc_79A8:
 		bset    #0,((byte_FFB4CA-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     wl_Options(pc), a0
+		lea     wl_BattleOption_Speed(pc), a0
 		move.w  #$1107,d0
 		move.l  #$814081C,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		clr.w   d1
 		bsr.w   sub_7B1A
 		moveq   #$FFFFFFFF,d0
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_790A
+    ; End of function optionMenu_Speed
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_79D6:
-		lea     (wl_Options+$EE)(pc), a0
+optionMenuAction_Message:
+		
+		lea     wl_BattleOption_Message(pc), a0
 		move.w  #$1107,d0
 		move.l  #$81C0814,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		clr.w   d0
-		move.b  ((byte_FF9C06-$1000000)).w,d0
+		move.b  ((DISPLAY_BATTLE_MESSAGES_TOGGLE-$1000000)).w,d0
 		moveq   #$14,d1
 loc_79F6:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_7A0A
 		addq.w  #1,d0
 		andi.w  #1,d0
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+		sndCom  SFX_MENU_SELECTION
 loc_7A0A:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_7A1E
 		subq.w  #1,d0
 		andi.w  #1,d0
-		trap    #SOUND_COMMAND
-		dc.w SFX_MENU_SELECTION
+		sndCom  SFX_MENU_SELECTION
 loc_7A1E:
-		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_B,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_7A78
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_7A52
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
 		bne.w   loc_7A52
 		add.w   d0,d0
 		bsr.w   sub_7B1A
@@ -14239,83 +14007,73 @@ loc_7A1E:
 		jsr     (j_WaitForVInt).l
 		bra.s   loc_79F6
 loc_7A52:
-		move.b  d0,((byte_FF9C06-$1000000)).w
+		move.b  d0,((DISPLAY_BATTLE_MESSAGES_TOGGLE-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     (wl_Options+$EE)(pc), a0
+		lea     wl_BattleOption_Message(pc), a0
 		move.w  #$1107,d0
 		move.l  #$8142014,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		clr.w   d0
 		rts
-
-	; End of function sub_79D6
-
-
-; START OF FUNCTION CHUNK FOR sub_79D6
-
 loc_7A78:
 		bset    #0,((byte_FFB4CA-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     (wl_Options+$EE)(pc), a0
+		lea     wl_BattleOption_Message(pc), a0
 		move.w  #$1107,d0
 		move.l  #$814081C,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		clr.w   d1
 		bsr.w   sub_7B1A
 		moveq   #$FFFFFFFF,d0
 		rts
 
-; END OF FUNCTION CHUNK FOR sub_79D6
+    ; End of function optionMenuAction_Message
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_7AA6:
-		lea     (wl_Options+$1DC)(pc), a0
+; Battle menu action : Quit
+
+optionMenuAction_Quit:
+		
+		lea     layout_BattlefieldQuitWindow(pc), a0
 		move.w  #$1107,d0
 		move.l  #$81C0814,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		jsr     (j_YesNoPrompt).l
-		tst.b   ((CURRENT_DIAMENU_CHOICE-$1000000)).w
+		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		bge.w   loc_7AEE
-		lea     (wl_Options+$1DC)(pc), a0
+		lea     layout_BattlefieldQuitWindow(pc), a0
 		move.w  #$1107,d0
 		move.l  #$814081C,d1
 		move.w  #4,d2
-		jsr     sub_8020
+		jsr     j_MoveWindowWithSfx
 		bset    #0,((byte_FFB4CA-$1000000)).w
 		moveq   #$FFFFFFFF,d0
 		rts
-
-	; End of function sub_7AA6
-
-
-; START OF FUNCTION CHUNK FOR sub_7AA6
-
 loc_7AEE:
-		lea     (wl_Options+$1DC)(pc), a0
+		lea     layout_BattlefieldQuitWindow(pc), a0
 		move.w  #$1107,d0
 		move.l  #$8142014,d1
 		move.w  #4,d2
-		jsr     sub_8020
-		jsr     (sub_32C).l
+		jsr     j_MoveWindowWithSfx
+		jsr     (j_SaveGame).l
 		jsr     (j_FadeOutToBlack).l
-		trap    #SOUND_COMMAND
+		sndCom  SOUND_COMMAND_FADE_OUT
+		bra.w   sub_3284        
 
-; END OF FUNCTION CHUNK FOR sub_7AA6
+    ; End of function optionMenuAction_Quit
 
-		dc.w SOUND_COMMAND_FADE_OUT
-		bra.w   sub_3284
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_7B1A:
-		lea     (byte_FF0D28).l,a0
+		lea     (SPRITE_21_PROPERTIES).l,a0
 		cmpi.w  #7,d1
 		bge.s   loc_7B32
 		move.w  #1,(a0)
@@ -14333,12 +14091,371 @@ loc_7B46:
 		clr.b   2(a0)
 		move.w  #$C085,4(a0)
 		subq.w  #1,d1
-		bne.s   locret_7B56
+		bne.s   return_7B56
 		moveq   #$14,d1
-locret_7B56:
+return_7B56:
 		rts
 
-	; End of function sub_7B1A
+    ; End of function sub_7B1A
 
-wl_Options:     incbin "data/graphics/tech/windowlayouts/wl-options.bin"
-algn_7E22:      align $8000
+wl_BattleOption_Speed:
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_W|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_H|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_P|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_D|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_QUESTION_MARK|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_ONE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_TWO|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_THREE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_NUMBER_FOUR|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_L|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_W|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_MINUS_SIGN|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_MINUS_SIGN|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+wl_BattleOption_Message:
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_B|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_L|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_M|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_G|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_QUESTION_MARK|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_N|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+layout_BattlefieldQuitWindow:
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_UPPERCASE_D|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_Y|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_U|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_W|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_N|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_P|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_H|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_G|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_M|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_QUESTION_MARK|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+		align $8000

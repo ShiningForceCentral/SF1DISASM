@@ -10,7 +10,8 @@ p_pt_Portraits: dc.l pt_Portraits
 
 ; =============== S U B R O U T I N E =======================================
 
-CheckRegion:
+CheckRegionLock:
+		
 		jmp     *+4(pc)
 		move.b  #$80,d1
 		bne.s   loc_2C014
@@ -42,25 +43,25 @@ loc_2C060:
 		lea     (REGION_LOCK_STRING_3).l,a1
 		bsr.w   CopyRegionLockString
 		jsr     (j_EnableDisplayAndInterrupts).l
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($C000).l,a1
 		move.w  #$800,d0
 		moveq   #2,d1
-		jsr     (sub_278).l
-		clr.l   (dword_FF0004).l
-		clr.l   (dword_FF0008).l
-		clr.l   (dword_FF000C).l
-		clr.l   (dword_FF0010).l
-		clr.l   (dword_FF0014).l
-		clr.l   (dword_FF0018).l
-		clr.l   (dword_FF001C).l
-		jsr     (j_StoreVDPCommandster).l
-		jsr     (j_SetVIntParam3).l
+		jsr     (j_ApplyVIntVramDma).l
+		clr.l   (PALETTE_1_CURRENT_02).l
+		clr.l   (PALETTE_1_CURRENT_04).l
+		clr.l   (PALETTE_1_CURRENT_06).l
+		clr.l   (PALETTE_1_CURRENT_08).l
+		clr.l   (PALETTE_1_CURRENT_10).l
+		clr.l   (PALETTE_1_CURRENT_12).l
+		clr.l   (PALETTE_1_CURRENT_14).l
+		jsr     (j_ApplyVIntCramDma).l
+		jsr     (j_EnableDmaQueueProcessing).l
 loc_2C0C2:
 		jsr     (j_WaitForVInt).l
 		bra.s   loc_2C0C2
 
-	; End of function CheckRegion
+    ; End of function CheckRegionLock
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -75,7 +76,7 @@ loc_2C0D2:
 		move.w  d0,(a1)+
 		bra.s   CopyRegionLockString
 
-	; End of function CopyRegionLockString
+    ; End of function CopyRegionLockString
 
 aDevelopedForUseOnlyWi:
 		dc.b '  DEVELOPED FOR USE ONLY WITH',0

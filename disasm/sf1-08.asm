@@ -14,7 +14,7 @@ p_pt_SpriteSets:dc.l pt_SpriteSets
 sub_8000C:
 		jmp     sub_80EE0(pc)   
 
-	; End of function sub_8000C
+    ; End of function sub_8000C
 
 pt_SpriteSets:  dc.l SpriteSet00
 		dc.l SpriteSet01
@@ -125,7 +125,7 @@ loc_80EF8:
 		ori     #1,ccr
 		rts
 
-	; End of function sub_80EE0
+    ; End of function sub_80EE0
 
 pt_MapSpriteScripts:
 		dc.l MapSpriteScript00

@@ -7,132 +7,131 @@
 
 ; =============== S U B R O U T I N E =======================================
 
-j_DebugModeSoundTest:
+j_debugMode_SoundTest:
 		
-		jmp     DebugModeSoundTest(pc)
+		jmp     debugMode_SoundTest(pc)
 
-	; End of function j_DebugModeSoundTest
+    ; End of function j_debugMode_SoundTest
 
-p_ShiningForceLogo:
-		dc.l ShiningForceLogo
+p_ShiningForceLogoTiles:
+		dc.l ShiningForceLogoTiles
 off_BC008:      dc.l byte_BE7D8         
 off_BC00C:      dc.l byte_BE8DE
 off_BC010:      dc.l byte_BE932
 off_BC014:      dc.l byte_BEA56
-off_BC018:      dc.l byte_BED2A
+p_pal_BED2A:    dc.l pal_BED2A          
 
 ; =============== S U B R O U T I N E =======================================
 
-DebugModeSoundTest:
+debugMode_SoundTest:
 		
-		tst.b   (byte_203819).l
-		beq.w   locret_BC226
-		cmpi.b  #$82,(P1_INPUT).l
-		bne.w   locret_BC226
-		clr.l   (dword_FF0EF6).l
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		tst.b   (GAME_COMPLETED).l
+		beq.w   return_BC226
+debugMode_CheckInputForSoundTest:
+		
+		cmpi.b  #INPUT_DOWN|INPUT_START,(P1_INPUT).l
+		bne.w   return_BC226
+		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
+		sndCom  SOUND_COMMAND_FADE_OUT
 		jsr     (j_DisableDisplayAndInterrupts).l
 		moveq   #$3F,d0 
 		jsr     (j_InitSprites).l
 		jsr     (sub_324).l
 		move.w  #$8C00,d0       ; H32 cell mode, no interlace
-		jsr     (j_SetVDPRegStatus).w
+		jsr     (j_SetVdpReg).w
 		move.w  #$9010,d0       ; scroll size : V64 cell, H32 cell
-		jsr     (j_SetVDPRegStatus).w
+		jsr     (j_SetVdpReg).w
 		move.w  #$8238,d0       ; scroll A table VRAM address : E000
-		jsr     (j_SetVDPRegStatus).w
+		jsr     (j_SetVdpReg).w
 		move.w  #$8407,d0       ; scroll B table VRAM address : E000
-		jsr     (j_SetVDPRegStatus).w
+		jsr     (j_SetVdpReg).w
 		move.w  #$8B03,d0
-		jsr     (j_SetVDPRegStatus).w
+		jsr     (j_SetVdpReg).w
 		move.w  #0,d6
-		jsr     (j_ClearVScrollStuff).w
+		jsr     (j_UpdateForegroundVScrollData).w
 		move.w  #$100,d6
-		jsr     (j_ClearOtherVScrollStuff).w
-		jsr     (j_SetVIntParam3).w
-		lea     (byte_FFD000).l,a0
+		jsr     (j_UpdateBackgroundVScrollData).w
+		jsr     (j_EnableDmaQueueProcessing).w
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		move.w  #$3FF,d7
 loc_BC096:
 		clr.l   (a0)+
 		dbf     d7,loc_BC096
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
 		move.w  #2,d1
-		jsr     (j_DMAFromRAMToVRAM).l
+		jsr     (j_ApplyImmediateVramDma).l
 		lea     SoundTestTiles1(pc), a0
 		nop
 		lea     ($2000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		lea     SoundTestTiles2(pc), a0
 		nop
 		lea     ($4000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
 		lea     SoundTestTiles3(pc), a0
 		nop
 		lea     ($6000).w,a1
 		move.w  #$1000,d0
 		move.w  #2,d1
-		jsr     (sub_294).l
-		lea     byte_BC2CE(pc), a0
+		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l
+		lea     SoundTestPalettes(pc), a0
 		nop
-		lea     (PALETTE_1_BIS).l,a1
+		lea     (PALETTE_1_BASE).l,a1
 		move.w  #$20,d7 
 		jsr     (j_CopyBytes).l
 		jsr     (j_EnableDisplayAndInterrupts).l
-		lea     byte_BDC38(pc), a0
+		lea     SoundTestLayout(pc), a0
 		nop
 		move.w  #$201C,d0
 		move.w  #0,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		bsr.w   sub_BC228
 		movem.l d7-a1,-(sp)
-		lea     wl_SoundTest(pc), a0
-		lea     (byte_FFB7DA).l,a1
+		lea     layout_SoundTestWindow(pc), a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$A0,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
-		lea     (byte_FFB7DA).l,a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$1005,d0
 		move.l  #$813,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		bsr.w   sub_BC228
-		trap    #SOUND_COMMAND
-		dc.w MUSIC_TOWN
+		sndCom  MUSIC_TOWN
 		jsr     (j_FadeInFromBlack).l
-		move.l  #sub_BC246,(dword_FF0EF6).l
+		move.l  #sub_BC246,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		moveq   #1,d0
 loc_BC17E:
-		btst    #INPUT_A_RIGHT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_RIGHT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BC192
 		addq.w  #1,d0
 		cmpi.w  #$6D,d0 
 		blt.s   loc_BC192
 		moveq   #1,d0
 loc_BC192:
-		btst    #INPUT_A_LEFT_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_LEFT,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BC1A2
 		subq.w  #1,d0
 		bne.s   loc_BC1A2
 		moveq   #$6C,d0 
 loc_BC1A2:
-		btst    #INPUT_A_C_BIT,(CURRENT_PLAYER_INPUT).l
-		bne.w   loc_BC218
-		btst    #INPUT_A_A_BIT,(CURRENT_PLAYER_INPUT).l
-		bne.w   loc_BC218
-		btst    #INPUT_A_B_BIT,(CURRENT_PLAYER_INPUT).l
+		btst    #INPUT_BIT_C,(CURRENT_PLAYER_INPUT).l
+		bne.w   byte_BC218
+		btst    #INPUT_BIT_A,(CURRENT_PLAYER_INPUT).l
+		bne.w   byte_BC218
+		btst    #INPUT_BIT_B,(CURRENT_PLAYER_INPUT).l
 		beq.s   loc_BC1C8
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_FADE_OUT
+		sndCom  SOUND_COMMAND_FADE_OUT
 loc_BC1C8:
 		movem.l d7-a1,-(sp)
-		lea     wl_SoundTest(pc), a0
-		lea     (byte_FFB7DA).l,a1
+		lea     layout_SoundTestWindow(pc), a0
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$AA,d7 
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
@@ -140,23 +139,22 @@ loc_BC1C8:
 		lea     (byte_FFB84E).l,a1
 		ext.l   d0
 		moveq   #3,d7
-		jsr     j_DisplayNumber
-		lea     (byte_FFB7DA).l,a0
+		jsr     j_WriteTilesFromNumber
+		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a0
 		move.w  #$1005,d0
 		move.l  #$813,d1
-		jsr     sub_801C
+		jsr     j_CreateWindow
 		move.w  (sp)+,d0
 		jsr     (j_WaitForVInt).l
 		bra.w   loc_BC17E
-loc_BC218:
-		trap    #SOUND_COMMAND
-		dc.w SOUND_COMMAND_GET_D0_PARAMETER
+byte_BC218:
+		sndCom  SOUND_COMMAND_GET_D0_PARAMETER
 		jsr     (j_WaitForVInt).l
 		bra.w   loc_BC17E
-locret_BC226:
+return_BC226:
 		rts
 
-	; End of function DebugModeSoundTest
+    ; End of function debugMode_SoundTest
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -164,26 +162,26 @@ locret_BC226:
 sub_BC228:
 		lea     ($E000).l,a1
 		move.w  #$780,d0
-		lea     (byte_FFD000).l,a0
+		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		moveq   #2,d1
-		jsr     (sub_278).l
-		jmp     (j_SetVIntParam3).l
+		jsr     (j_ApplyVIntVramDma).l
+		jmp     (j_EnableDmaQueueProcessing).l
 
-	; End of function sub_BC228
+    ; End of function sub_BC228
 
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_BC246:
 		moveq   #5,d7
-		lea     (word_FFB5C0).l,a0
+		lea     (SPELLENTITY_PROPERTIES).l,a0
 loc_BC24E:
 		movem.l d7-a0,-(sp)
 		tst.w   (a0)
 		bne.s   loc_BC27E
 		move.w  d7,-(sp)
 		moveq   #$14,d6
-		jsr     (j_UpdateRandomSeed).l
+		jsr     (j_GenerateRandomNumber).l
 		addi.w  #$A,d7
 		move.w  d7,(a0)
 		move.w  (sp)+,d7
@@ -203,7 +201,7 @@ loc_BC280:
 		bsr.s   sub_BC228
 		rts
 
-	; End of function sub_BC246
+    ; End of function sub_BC246
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -213,9 +211,9 @@ sub_BC28E:
 		movea.l off_BC29E(pc,d0.w),a0
 		move.w  (a0)+,d0
 		move.w  (a0)+,d1
-		jmp     sub_801C
+		jmp     j_CreateWindow
 
-	; End of function sub_BC28E
+    ; End of function sub_BC28E
 
 off_BC29E:      dc.l byte_BE338
 		dc.l byte_BE360
@@ -229,138 +227,12 @@ off_BC29E:      dc.l byte_BE338
 		dc.l byte_BE43A
 		dc.l byte_BE450
 		dc.l byte_BE460
-byte_BC2CE:     dc.b 0
-		dc.b   0
-		dc.b  $E
-		dc.b $EE 
-		dc.b   6
-		dc.b $AE 
-		dc.b   4
-		dc.b $6A 
-		dc.b   0
-		dc.b $24 
-		dc.b   0
-		dc.b   2
-		dc.b  $C
-		dc.b $26 
-		dc.b   6
-		dc.b   0
-		dc.b  $A
-		dc.b $CE 
-		dc.b   2
-		dc.b $22 
-		dc.b   0
-		dc.b   8
-		dc.b   6
-		dc.b $44 
-		dc.b  $C
-		dc.b $AA 
-		dc.b  $E
-		dc.b $6A 
-		dc.b   2
-		dc.b $48 
-		dc.b   6
-		dc.b $8C 
-		dc.b   4
-		dc.b $44 
-		dc.b  $E
-		dc.b $EE 
-		dc.b   2
-		dc.b $AE 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b   2
-		dc.b $46 
-		dc.b   4
-		dc.b $68 
-		dc.b   8
-		dc.b $4E 
-		dc.b   0
-		dc.b  $A
-		dc.b   0
-		dc.b $24 
-		dc.b   0
-		dc.b $48 
-		dc.b   6
-		dc.b $8A 
-		dc.b   0
-		dc.b   0
-		dc.b   0
-		dc.b   2
-		dc.b   0
-		dc.b   4
-		dc.b  $E
-		dc.b $EE 
-		dc.b   0
-		dc.b $42 
-		dc.b   2
-		dc.b $A0 
-		dc.b  $A
-		dc.b $C8 
-		dc.b   6
-		dc.b $AC 
-		dc.b   0
-		dc.b $48 
-		dc.b   0
-		dc.b   4
-		dc.b   4
-		dc.b $20
-		dc.b  $C
-		dc.b $88 
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b $20
-		dc.b   6
-		dc.b $42 
-		dc.b   0
-		dc.b  $C
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $64 
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $EE 
-		dc.b   8
-		dc.b $88 
-		dc.b   4
-		dc.b $44 
-		dc.b   2
-		dc.b $60 
-		dc.b   6
-		dc.b $C0 
-		dc.b  $C
-		dc.b $68 
-		dc.b   4
-		dc.b $8E 
-		dc.b  $A
-		dc.b $CE 
-		dc.b   8
-		dc.b $4E 
-		dc.b   0
-		dc.b  $A
-		dc.b   4
-		dc.b $AE 
-		dc.b   0
-		dc.b $48 
-		dc.b   8
-		dc.b $20
-		dc.b   0
-		dc.b   0
-		dc.b   6
-		dc.b $66 
+SoundTestPalettes:
+		incbin "data/graphics/tech/palettes/soundtestpalettes.bin"
 SoundTestTiles1:incbin "data/graphics/specialscreens/soundtest/soundtesttiles1.bin"
 SoundTestTiles2:incbin "data/graphics/specialscreens/soundtest/soundtesttiles2.bin"
 SoundTestTiles3:incbin "data/graphics/specialscreens/soundtest/soundtesttiles3.bin"
-byte_BDC38:     dc.b 0
+SoundTestLayout:dc.b 0                  ; musicians graphics
 		dc.b   0
 		dc.b   0
 		dc.b   0
@@ -2464,9 +2336,10 @@ byte_BE460:     dc.b 3
 		dc.b $91 
 		dc.b   3
 		dc.b $95 
-wl_SoundTest:   incbin "data/graphics/tech/windowlayouts/wl-soundtest.bin"
-ShiningForceLogo:
-		incbin "data/graphics/specialscreens/readerscreen/shiningforcelogo.bin"
+layout_SoundTestWindow:
+		incbin "data/graphics/tech/windowlayouts/wl-soundtest.bin"
+ShiningForceLogoTiles:
+		incbin "data/graphics/specialscreens/readerscreen/shiningforcelogotiles.bin"
 byte_BE7D8:     dc.b 4                  ; reader screen cloud tiles?
 		dc.b $10
 		dc.b $C3 
@@ -3829,134 +3702,68 @@ byte_BEA56:     dc.b $1E
 		dc.b $80 
 		dc.b $A6 
 		dc.b $80 
-byte_BED2A:     dc.b 2
-		dc.b $22 
-		dc.b  $E
-		dc.b $EE 
-		dc.b   2
-		dc.b $E8 
-		dc.b   2
-		dc.b $C6 
-		dc.b   2
-		dc.b $A4 
-		dc.b   0
-		dc.b  $E
-		dc.b  $E
-		dc.b  $E
-		dc.b   0
-		dc.b $EE 
-		dc.b   0
-		dc.b   0
-		dc.b   8
-		dc.b $88 
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b $80 
-		dc.b   8
-		dc.b $80 
-		dc.b   0
-		dc.b   8
-		dc.b   8
-		dc.b   8
-		dc.b   0
-		dc.b $88 
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $EE 
-		dc.b  $E
-		dc.b   0
-		dc.b   0
-		dc.b $E0 
-		dc.b  $E
-		dc.b $E0 
-		dc.b   0
-		dc.b  $E
-		dc.b  $E
-		dc.b  $E
-		dc.b   0
-		dc.b $EE 
-		dc.b   0
-		dc.b   0
-		dc.b   8
-		dc.b $88 
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b $80 
-		dc.b   8
-		dc.b $80 
-		dc.b   0
-		dc.b   8
-		dc.b   8
-		dc.b   8
-		dc.b   0
-		dc.b $88 
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $EE 
-		dc.b  $E
-		dc.b   0
-		dc.b   0
-		dc.b $E0 
-		dc.b  $E
-		dc.b $E0 
-		dc.b   0
-		dc.b  $E
-		dc.b  $E
-		dc.b  $E
-		dc.b   0
-		dc.b $EE 
-		dc.b   0
-		dc.b   0
-		dc.b   8
-		dc.b $88 
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b $80 
-		dc.b   8
-		dc.b $80 
-		dc.b   0
-		dc.b   8
-		dc.b   8
-		dc.b   8
-		dc.b   0
-		dc.b $88 
-		dc.b   0
-		dc.b   0
-		dc.b  $E
-		dc.b $EE 
-		dc.b  $E
-		dc.b   0
-		dc.b   0
-		dc.b $E0 
-		dc.b  $E
-		dc.b $E0 
-		dc.b   0
-		dc.b  $E
-		dc.b  $E
-		dc.b  $E
-		dc.b   0
-		dc.b $EE 
-		dc.b   0
-		dc.b   0
-		dc.b   8
-		dc.b $88 
-		dc.b   8
-		dc.b   0
-		dc.b   0
-		dc.b $80 
-		dc.b   8
-		dc.b $80 
-		dc.b   0
-		dc.b   8
-		dc.b   8
-		dc.b   8
-		dc.b   0
-		dc.b $88 
-		dc.b $FF
-		dc.b $FF
+pal_BED2A:      dc.w $222               ; unknown palette
+		dc.w $EEE
+		dc.w $2E8
+		dc.w $2C6
+		dc.w $2A4
+		dc.w $E
+		dc.w $E0E
+		dc.w $EE
+		dc.w 0
+		dc.w $888
+		dc.w $800
+		dc.w $80
+		dc.w $880
+		dc.w 8
+		dc.w $808
+		dc.w $88
+		dc.w 0
+		dc.w $EEE
+		dc.w $E00
+		dc.w $E0
+		dc.w $EE0
+		dc.w $E
+		dc.w $E0E
+		dc.w $EE
+		dc.w 0
+		dc.w $888
+		dc.w $800
+		dc.w $80
+		dc.w $880
+		dc.w 8
+		dc.w $808
+		dc.w $88
+		dc.w 0
+		dc.w $EEE
+		dc.w $E00
+		dc.w $E0
+		dc.w $EE0
+		dc.w $E
+		dc.w $E0E
+		dc.w $EE
+		dc.w 0
+		dc.w $888
+		dc.w $800
+		dc.w $80
+		dc.w $880
+		dc.w 8
+		dc.w $808
+		dc.w $88
+		dc.w 0
+		dc.w $EEE
+		dc.w $E00
+		dc.w $E0
+		dc.w $EE0
+		dc.w $E
+		dc.w $E0E
+		dc.w $EE
+		dc.w 0
+		dc.w $888
+		dc.w $800
+		dc.w $80
+		dc.w $880
+		dc.w 8
+		dc.w $808
+		dc.w $88
 		align $8000
