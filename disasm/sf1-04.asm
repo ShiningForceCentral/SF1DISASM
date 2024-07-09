@@ -14112,7 +14112,7 @@ loc_2700C:
 		lea     (a3,d0.w),a2
 loc_27010:
 		move.l  a2,$20(a0)
-		move.b  (CURRENT_MAP).l,d0
+		move.b  (CURRENT_MAP_ENTRANCE).l,d0
 		ext.w   d0
 		add.w   d0,d0
 		move.w  (a1,d0.w),d0

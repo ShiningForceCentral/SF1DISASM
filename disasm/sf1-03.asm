@@ -148,7 +148,7 @@ sub_1004E:
 
 sub_10050:
 		bsr.w   sub_1010E
-		move.b  (CURRENT_MAP).l,d1
+		move.b  (CURRENT_MAP_ENTRANCE).l,d1
 		bra.s   loc_1005E
 
     ; End of function sub_10050
@@ -207,7 +207,7 @@ loc_100F8:
 		move.b  #2,d0
 loc_100FC:
 		subq.b  #1,d0
-		move.b  d0,(CURRENT_MAP).l
+		move.b  d0,(CURRENT_MAP_ENTRANCE).l
 		sndCom  SFX_WARP
 		bsr.w   sub_11940
 		rts
@@ -220,7 +220,7 @@ loc_100FC:
 sub_1010E:
 		bsr.w   sub_12D74
 		clr.w   d1
-		move.b  (CURRENT_MAP).l,d1
+		move.b  (CURRENT_MAP_ENTRANCE).l,d1
 		lsl.w   #2,d1
 		movea.l off_10180(pc,d1.w),a0
 loc_10120:
@@ -1184,7 +1184,7 @@ loc_1098E:
 		jsr     (j_FadeOutToBlack).l
 		move.b  #$FF,(byte_FFF807).l
 		move.b  #9,d0
-		move.b  #4,(CURRENT_MAP).l
+		move.b  #4,(CURRENT_MAP_ENTRANCE).l
 		bra.w   sub_10050
 loc_109B6:
 		cmpi.b  #2,d0
@@ -1202,7 +1202,7 @@ loc_109CA:
 		clr.b   (byte_FFF81B).l
 		move.b  #$FF,(byte_FFF807).l
 		move.b  #$20,d0 
-		move.b  #3,(CURRENT_MAP).l
+		move.b  #3,(CURRENT_MAP_ENTRANCE).l
 		bra.w   sub_10050
 loc_10A00:
 		cmpi.b  #4,d0
@@ -11315,7 +11315,7 @@ ExecuteChurchMenu:
 		bra.w   loc_175A8
 loc_17086:
 		movem.l d0-a6,-(sp)
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		jsr     (j_SaveGame).l
 		move.w  #$27,d0 
 		jsr     (j_ClearEventFlag).l

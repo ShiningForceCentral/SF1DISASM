@@ -11269,7 +11269,7 @@ sub_12ACCC:
 		jsr     (j_ClearEventFlag).l
 		moveq   #$66,d0 
 		jsr     (j_SetEventFlag).l
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   sub_12BF66
 
     ; End of function sub_12ACCC
@@ -11865,7 +11865,7 @@ sub_12B33C:
 		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     j_ClosePortraitWindow
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$58,d0 
 		jsr     (j_SetEventFlag).l
 		bra.w   sub_12BF66
@@ -11912,7 +11912,7 @@ sub_12B398:
 		trap    #DISPLAY_MESSAGE
 		trap    #6
 		jsr     j_ClosePortraitWindow
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.l  (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l,-(sp)
 		bsr.w   sub_12C312
 		move.l  #sub_12C36E,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
@@ -12153,7 +12153,7 @@ loc_12B608:
 		jsr     sub_80AC
 		moveq   #$78,d0 
 		jsr     (j_Sleep).l
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   sub_12BF66
 
     ; End of function sub_12B5E8
@@ -13527,7 +13527,7 @@ sub_12C4AA:
 loc_12C4F6:
 		moveq   #$38,d0 
 		jsr     (sub_384).l
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   sub_12BF66
 
     ; End of function sub_12C4AA
@@ -13584,7 +13584,7 @@ sub_12C524:
 loc_12C570:
 		moveq   #$38,d0 
 		jsr     (sub_384).l
-		move.b  #0,((CURRENT_MAP-$1000000)).w
+		move.b  #0,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   sub_12BF66
 
     ; End of function sub_12C524
@@ -13639,7 +13639,7 @@ sub_12C59C:
 loc_12C5E8:
 		moveq   #$38,d0 
 		jsr     (sub_384).l
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   sub_12BF66
 
     ; End of function sub_12C59C
@@ -13682,7 +13682,7 @@ sub_12C608:
 loc_12C654:
 		moveq   #$38,d0 
 		jsr     (sub_384).l
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   sub_12BF66
 
     ; End of function sub_12C608

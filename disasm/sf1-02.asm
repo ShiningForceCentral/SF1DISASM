@@ -3866,15 +3866,15 @@ loc_9E8A:
 		bsr.w   sub_AB9C
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d3-d4
-		cmpi.b  #$7F,((CURRENT_MAP-$1000000)).w 
+		cmpi.b  #$7F,((CURRENT_MAP_ENTRANCE-$1000000)).w 
 		beq.w   byte_9F68
-		cmpi.b  #$7E,((CURRENT_MAP-$1000000)).w 
+		cmpi.b  #$7E,((CURRENT_MAP_ENTRANCE-$1000000)).w 
 		beq.w   byte_9F88
-		cmpi.b  #$7D,((CURRENT_MAP-$1000000)).w 
+		cmpi.b  #$7D,((CURRENT_MAP_ENTRANCE-$1000000)).w 
 		bne.s   loc_9ECC
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_9ECC:
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		bne.w   loc_9F34
@@ -3883,7 +3883,7 @@ loc_9ECC:
 		jsr     (sub_304).l
 		move.w  #SFX_DIALOG_BLEEP_7,((SPEECH_SFX-$1000000)).w
 		move.b  ((VICTORY_EXIT-$1000000)).w,d0
-		cmp.b   ((CURRENT_MAP-$1000000)).w,d0
+		cmp.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
 		bne.s   loc_9EF8        
 		move.w  #$1B3,d0        ; "[Hero]! You've reached[Line]your destination, but some[Line]enemies remain.[Wait2][Line]Will you leave them?"
 		trap    #DISPLAY_MESSAGE
@@ -3907,7 +3907,7 @@ loc_9EFE:
 		bra.w   loc_9E5E
 loc_9F34:
 		move.b  ((VICTORY_EXIT-$1000000)).w,d0
-		cmp.b   ((CURRENT_MAP-$1000000)).w,d0
+		cmp.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
 		bne.s   loc_9F4E
 		clr.w   d0
 		move.b  ((CURRENT_MAP_VERSION-$1000000)).w,d0
@@ -5275,7 +5275,7 @@ loc_AD9C:
 		moveq   #$FFFFFFFF,d0
 		rts
 loc_ADA0:
-		move.b  d0,((CURRENT_MAP-$1000000)).w
+		move.b  d0,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		rts
 
     ; End of function ParseBattleExits

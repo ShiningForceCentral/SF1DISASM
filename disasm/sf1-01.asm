@@ -7305,9 +7305,9 @@ loc_3174:
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
 		move.b  ((EGRESS_LOCATION-$1000000)).w,((CURRENT_REGION-$1000000)).w
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bsr.w   sub_4C0E
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.w  d0,-(sp)
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
@@ -7326,7 +7326,7 @@ loc_31C2:
 		moveq   #$27,d0 
 		bsr.w   CheckEventFlag
 		beq.s   loc_31F4
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_31F4:
 		move.w  (sp)+,d0
 loc_31F6:
@@ -7346,12 +7346,12 @@ loc_31F6:
 		moveq   #$25,d0 
 		bsr.w   CheckEventFlag
 		bne.w   return_327C
-		cmpi.b  #1,((CURRENT_MAP-$1000000)).w
+		cmpi.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   return_327C
 		move.b  ((byte_FFF807-$1000000)).w,d0
 		move.b  ((CURRENT_REGION-$1000000)).w,d1
 		move.b  ((CURRENT_MAP_VERSION-$1000000)).w,d2
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		movem.w d0-d2,-(sp)
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (sub_340).l
@@ -7359,7 +7359,7 @@ loc_31F6:
 		movem.w (sp)+,d0-d2
 		move.b  d1,((CURRENT_REGION-$1000000)).w
 		move.b  d2,((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   loc_31F6
 return_327C:
 		rts
@@ -8055,7 +8055,7 @@ sub_3B16:
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #3,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
@@ -8078,7 +8078,7 @@ sub_3B8E:
 		move.w  #$15D,d0        ; "[Hero] and the Shining[Line]Force followed Kane's trail[Line]to the town of Rindo....[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$24,d0 
@@ -8103,7 +8103,7 @@ sub_3BD2:
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #3,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
@@ -8127,7 +8127,7 @@ sub_3C18:
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #6,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
@@ -8153,7 +8153,7 @@ sub_3C5E:
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #2,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #0,((CURRENT_MAP-$1000000)).w
+		move.b  #0,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$27,d0 
@@ -8176,7 +8176,7 @@ sub_3CAA:
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #4,((CURRENT_REGION-$1000000)).w
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
@@ -8200,7 +8200,7 @@ sub_3CF2:
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
 		move.b  #4,((CURRENT_REGION-$1000000)).w
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   SetEventFlag
@@ -8223,7 +8223,7 @@ sub_3D3A:
 		move.w  #$163,d0        ; "Runefaust at last! The long[Line]and perilous journey is near[Line]its end.[Wait2][Line]It is up to the Shining Force[Line]whether it ends as a[Line]triumph for Light or Darkness.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_FadeOutToBlack).l
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$24,d0 
@@ -8395,8 +8395,8 @@ rjt_MapExitScript0_Regions:
 
 mes0_Region0:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  rjt_MapExitScript0_Region0_Exits(pc,d0.w),d0
 		jmp     rjt_MapExitScript0_Region0_Exits(pc,d0.w)
@@ -8463,7 +8463,7 @@ mes0_r0_Exit3:
 ; =============== S U B R O U T I N E =======================================
 
 mes0_Region1:
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_3FBC:
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		moveq   #36,d0
@@ -8507,7 +8507,7 @@ mes0_Region2:
 ; =============== S U B R O U T I N E =======================================
 
 mes0_Region3:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #51,d0
 		bsr.w   CheckEventFlag
 		beq.s   loc_4030
@@ -8522,7 +8522,7 @@ loc_4030:
 ; =============== S U B R O U T I N E =======================================
 
 mes0_Region4:
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   loc_3FBC
 
     ; End of function mes0_Region4
@@ -8531,11 +8531,11 @@ mes0_Region4:
 ; =============== S U B R O U T I N E =======================================
 
 mes0_Region5:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #49,d0
 		bsr.w   CheckEventFlag
 		bne.s   loc_4052
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   loc_3FBC
 		bra.s   return_4064
 loc_4052:
@@ -8577,8 +8577,8 @@ off_407C:       dc.w sub_408E-off_407C
 
 sub_408E:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  off_40A2(pc,d0.w),d0
 		jmp     off_40A2(pc,d0.w)
@@ -8619,7 +8619,7 @@ sub_40B8:
 ; =============== S U B R O U T I N E =======================================
 
 sub_40C0:
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -8629,7 +8629,7 @@ sub_40C0:
 ; =============== S U B R O U T I N E =======================================
 
 sub_40CE:
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #7,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -8639,7 +8639,7 @@ sub_40CE:
 ; =============== S U B R O U T I N E =======================================
 
 sub_40DC:
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #8,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -8649,9 +8649,9 @@ sub_40DC:
 ; =============== S U B R O U T I N E =======================================
 
 sub_40EA:
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.w   loc_413A
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_40F8:
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		moveq   #$24,d0 
@@ -8675,7 +8675,7 @@ loc_4118:
 return_4138:
 		rts
 loc_413A:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		move.b  #3,((CURRENT_REGION-$1000000)).w
@@ -8695,12 +8695,12 @@ return_4160:
 ; =============== S U B R O U T I N E =======================================
 
 sub_4162:
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.w   loc_4170
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   loc_40F8
 loc_4170:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		move.b  #4,((CURRENT_REGION-$1000000)).w
@@ -8720,12 +8720,12 @@ return_4196:
 ; =============== S U B R O U T I N E =======================================
 
 sub_4198:
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   loc_41A8
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   loc_40F8
 loc_41A8:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		move.b  #5,((CURRENT_REGION-$1000000)).w
@@ -8766,8 +8766,8 @@ off_41EC:       dc.w sub_41F4-off_41EC
 
 sub_41F4:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  off_4208(pc,d0.w),d0
 		jmp     off_4208(pc,d0.w)
@@ -8780,7 +8780,7 @@ off_4208:       dc.w sub_420C-off_4208
 ; =============== S U B R O U T I N E =======================================
 
 sub_420C:
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -8809,7 +8809,7 @@ return_423C:
 ; =============== S U B R O U T I N E =======================================
 
 sub_423E:
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -8820,7 +8820,7 @@ sub_423E:
 
 sub_424C:
 		clr.b   ((CURRENT_REGION-$1000000)).w
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$29,d0 
@@ -8840,10 +8840,10 @@ return_4278:
 ; =============== S U B R O U T I N E =======================================
 
 sub_427A:
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.w   loc_42AE
 		clr.b   ((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$29,d0 
@@ -8858,7 +8858,7 @@ return_42AC:
 		rts
 loc_42AE:
 		move.b  #1,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$28,d0 
@@ -8902,8 +8902,8 @@ off_42EA:       dc.w sub_42FC-off_42EA
 
 sub_42FC:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  off_4310(pc,d0.w),d0
 		jmp     off_4310(pc,d0.w)
@@ -8917,7 +8917,7 @@ off_4310:       dc.w sub_4316-off_4310
 ; =============== S U B R O U T I N E =======================================
 
 sub_4316:
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -8963,8 +8963,8 @@ sub_435E:
 
 sub_4366:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  off_437A(pc,d0.w),d0
 loc_4376:
@@ -8989,7 +8989,7 @@ sub_4380:
 
 sub_4388:
 		move.b  #8,((CURRENT_REGION-$1000000)).w
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		rts
 
     ; End of function sub_4388
@@ -8998,7 +8998,7 @@ sub_4388:
 ; =============== S U B R O U T I N E =======================================
 
 sub_4396:
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_439C:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
@@ -9022,7 +9022,7 @@ return_43CC:
 ; =============== S U B R O U T I N E =======================================
 
 sub_43CE:
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #8,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -9032,7 +9032,7 @@ sub_43CE:
 ; =============== S U B R O U T I N E =======================================
 
 sub_43DC:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   loc_439C
 
     ; End of function sub_43DC
@@ -9041,7 +9041,7 @@ sub_43DC:
 ; =============== S U B R O U T I N E =======================================
 
 sub_43E2:
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   loc_439C
 
     ; End of function sub_43E2
@@ -9051,8 +9051,8 @@ sub_43E2:
 
 sub_43EA:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  off_43FE(pc,d0.w),d0
 		jmp     off_43FE(pc,d0.w)
@@ -9067,7 +9067,7 @@ off_43FE:       dc.w sub_4406-off_43FE
 ; =============== S U B R O U T I N E =======================================
 
 sub_4406:
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$29,d0 
@@ -9088,7 +9088,7 @@ return_4434:
 ; =============== S U B R O U T I N E =======================================
 
 sub_4436:
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$29,d0 
@@ -9151,8 +9151,8 @@ off_44A0:       dc.w sub_44AE-off_44A0
 
 sub_44AE:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  off_44C2(pc,d0.w),d0
 		jmp     off_44C2(pc,d0.w)
@@ -9180,7 +9180,7 @@ sub_44C8:
 
 sub_44E0:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		rts
 
     ; End of function sub_44E0
@@ -9210,11 +9210,11 @@ sub_4508:
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #3,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   return_4538
 loc_452E:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 return_4538:
 		rts
 
@@ -9225,7 +9225,7 @@ return_4538:
 
 sub_453A:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		rts
 
     ; End of function sub_453A
@@ -9235,7 +9235,7 @@ sub_453A:
 
 sub_4546:
 		move.b  #6,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		rts
 
     ; End of function sub_4546
@@ -9247,16 +9247,16 @@ sub_4552:
 		moveq   #$24,d0 
 loc_4554:
 		bsr.w   ClearEventFlag
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   loc_4576
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #4,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   return_459C
 loc_4576:
 		move.b  #2,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
 		moveq   #$29,d0 
 		bsr.w   CheckEventFlag
@@ -9276,7 +9276,7 @@ return_459C:
 sub_459E:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #1,((CURRENT_REGION-$1000000)).w
 		rts
@@ -9289,7 +9289,7 @@ sub_459E:
 sub_45B4:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #2,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
@@ -9323,8 +9323,8 @@ off_45E2:       dc.w sub_45EE-off_45E2
 sub_45EE:
 		clr.w   d0
 loc_45F0:
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  off_4602(pc,d0.w),d0
 		jmp     off_4602(pc,d0.w)
@@ -9378,10 +9378,10 @@ sub_463C:
 		moveq   #$30,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_464C
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   loc_4652
 loc_464C:
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_4652:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
@@ -9392,7 +9392,7 @@ loc_4652:
 ; =============== S U B R O U T I N E =======================================
 
 sub_465A:
-		move.b  #2,((CURRENT_MAP-$1000000)).w
+		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_4660:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
@@ -9424,7 +9424,7 @@ return_46A6:
 ; =============== S U B R O U T I N E =======================================
 
 sub_46A8:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   loc_4660
 
     ; End of function sub_46A8
@@ -9449,7 +9449,7 @@ loc_46D2:
 return_46D8:
 		rts
 loc_46DA:
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.w   loc_4660
 
     ; End of function sub_46AE
@@ -9480,8 +9480,8 @@ off_46FA:       dc.w sub_4706-off_46FA
 
 sub_4706:
 		clr.w   d0
-		move.b  ((CURRENT_MAP-$1000000)).w,d0
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
 		move.w  sub_471A(pc,d0.w),d0
 		jmp     sub_471A(pc,d0.w)
@@ -9512,12 +9512,12 @@ sub_4726:
 
 sub_472E:
 		move.b  #5,((CURRENT_REGION-$1000000)).w
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   loc_4742
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   return_4748
 loc_4742:
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 return_4748:
 		rts
 
@@ -9527,7 +9527,7 @@ return_4748:
 ; =============== S U B R O U T I N E =======================================
 
 sub_474A:
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -9539,7 +9539,7 @@ sub_474A:
 sub_4758:
 		cmpi.b  #$10,((byte_FFF807-$1000000)).w
 		beq.w   loc_47A8
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 loc_4766:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
@@ -9566,7 +9566,7 @@ return_47A6:
 		rts
 loc_47A8:
 		move.b  #3,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$2A,d0 
@@ -9585,13 +9585,13 @@ return_47CE:
 ; =============== S U B R O U T I N E =======================================
 
 sub_47D0:
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.w   loc_47E0
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bra.s   loc_4766
 loc_47E0:
 		move.b  #2,((CURRENT_REGION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		moveq   #$29,d0 
@@ -9638,7 +9638,7 @@ off_482A:       dc.w sub_483E-off_482A
 ; =============== S U B R O U T I N E =======================================
 
 sub_483E:
-		cmpi.b  #1,((CURRENT_MAP-$1000000)).w
+		cmpi.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		beq.s   loc_484E
 		move.b  #9,((CURRENT_REGION-$1000000)).w
 		rts
@@ -9646,7 +9646,7 @@ loc_484E:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$31,d0 
 		bsr.w   CheckEventFlag
 		beq.s   loc_486E
@@ -9663,7 +9663,7 @@ return_4874:
 ; =============== S U B R O U T I N E =======================================
 
 sub_4876:
-		cmpi.b  #1,((CURRENT_MAP-$1000000)).w
+		cmpi.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		beq.s   loc_488C
 
     ; End of function sub_4876
@@ -9672,7 +9672,7 @@ sub_4876:
 ; =============== S U B R O U T I N E =======================================
 
 sub_487E:
-		move.b  #4,((CURRENT_MAP-$1000000)).w
+		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #9,((CURRENT_REGION-$1000000)).w
 		rts
 
@@ -9684,7 +9684,7 @@ sub_487E:
 loc_488C:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #1,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #2,((CURRENT_REGION-$1000000)).w
 		rts
@@ -9697,13 +9697,13 @@ loc_488C:
 sub_48A4:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   loc_48BC
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		rts
 loc_48BC:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$2A,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_48D6
@@ -9724,14 +9724,14 @@ return_48E2:
 sub_48E4:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   loc_4904
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		rts
 loc_4904:
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$2B,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_491E
@@ -9750,14 +9750,14 @@ return_492A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_492C:
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   loc_494C
 
     ; End of function sub_492C
 
 loc_4932:       moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #5,((CURRENT_REGION-$1000000)).w
 		rts
@@ -9767,7 +9767,7 @@ loc_4932:       moveq   #$24,d0
 loc_494C:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		move.b  #4,((CURRENT_MAP_VERSION-$1000000)).w
 		move.b  #7,((CURRENT_REGION-$1000000)).w
 		rts
@@ -9780,7 +9780,7 @@ loc_494C:
 sub_4964:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		rts
@@ -9793,16 +9793,16 @@ sub_4964:
 sub_497C:
 		moveq   #$24,d0 
 		bsr.w   ClearEventFlag
-		tst.b   ((CURRENT_MAP-$1000000)).w
+		tst.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		bne.s   loc_4998
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		rts
 loc_4998:
-		cmpi.b  #3,((CURRENT_MAP-$1000000)).w
+		cmpi.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		beq.s   loc_49DC
-		clr.b   ((CURRENT_MAP-$1000000)).w
+		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		moveq   #$28,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_49B8
@@ -9818,11 +9818,11 @@ loc_49B8:
 		bra.s   return_49DA
 loc_49CE:
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  #1,((CURRENT_MAP-$1000000)).w
+		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
 return_49DA:
 		rts
 loc_49DC:
-		move.b  #3,((CURRENT_MAP-$1000000)).w
+		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #$FF,((CURRENT_MAP_VERSION-$1000000)).w
 		rts
@@ -9858,9 +9858,9 @@ off_4C22:       dc.w sub_4C32-off_4C22
 ; =============== S U B R O U T I N E =======================================
 
 sub_4C32:
-		move.b  (CURRENT_MAP).l,d7
+		move.b  (CURRENT_MAP_ENTRANCE).l,d7
 loc_4C38:
-		clr.b   (CURRENT_MAP).l
+		clr.b   (CURRENT_MAP_ENTRANCE).l
 		clr.w   d1
 		move.b  (CURRENT_REGION).l,d1
 		cmpi.w  #3,d1
@@ -9868,7 +9868,7 @@ loc_4C38:
 		moveq   #$38,d0 
 		bsr.w   CheckEventFlag
 		bne.s   loc_4C60
-		move.b  #3,(CURRENT_MAP).l
+		move.b  #3,(CURRENT_MAP_ENTRANCE).l
 		bsr.w   SetEventFlag
 loc_4C60:
 		moveq   #$29,d0 
@@ -9901,7 +9901,7 @@ return_4C90:
 loc_4C92:
 		cmpi.b  #4,d7
 		bne.s   loc_4C9E
-		move.b  d7,(CURRENT_MAP).l
+		move.b  d7,(CURRENT_MAP_ENTRANCE).l
 loc_4C9E:
 		moveq   #$31,d0 
 		bsr.w   CheckEventFlag
@@ -9911,11 +9911,11 @@ loc_4C9E:
 loc_4CAA:
 		cmpi.b  #2,d7
 		bne.s   loc_4CBA
-		move.b  d7,(CURRENT_MAP).l
+		move.b  d7,(CURRENT_MAP_ENTRANCE).l
 		moveq   #5,d0
 		rts
 loc_4CBA:
-		move.b  #3,(CURRENT_MAP).l
+		move.b  #3,(CURRENT_MAP_ENTRANCE).l
 		moveq   #4,d0
 		rts
 
@@ -9932,9 +9932,9 @@ sub_4CC6:
 		moveq   #8,d0
 		rts
 loc_4CD8:
-		tst.b   (CURRENT_MAP).l
+		tst.b   (CURRENT_MAP_ENTRANCE).l
 		beq.s   loc_4CE8
-		move.b  #3,(CURRENT_MAP).l
+		move.b  #3,(CURRENT_MAP_ENTRANCE).l
 loc_4CE8:
 		cmpi.w  #6,d1
 		bne.s   loc_4CF2
@@ -10031,7 +10031,7 @@ sub_4D64:
 		move.b  (CURRENT_REGION).l,d1
 		cmpi.w  #4,d1
 		bne.s   loc_4D84
-		cmpi.b  #3,(CURRENT_MAP).l
+		cmpi.b  #3,(CURRENT_MAP_ENTRANCE).l
 		bne.s   loc_4D80
 		moveq   #$10,d0
 		bra.s   return_4D82
@@ -10049,7 +10049,7 @@ loc_4D84:
 ; =============== S U B R O U T I N E =======================================
 
 sub_4D88:
-		cmpi.b  #2,(CURRENT_MAP).l
+		cmpi.b  #2,(CURRENT_MAP_ENTRANCE).l
 		bgt.s   loc_4D96
 		moveq   #$E,d0
 		bra.s   return_4D98
@@ -10277,7 +10277,7 @@ loc_5086:
 		move.b  (a0)+,((CURRENT_CHAPTER-$1000000)).w
 		move.b  (a0)+,((CURRENT_REGION-$1000000)).w
 		move.b  (a0)+,((CURRENT_MAP_VERSION-$1000000)).w
-		move.b  (a0)+,((CURRENT_MAP-$1000000)).w
+		move.b  (a0)+,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.w   d1
 		move.b  (a0)+,d1
 		bmi.w   loc_50CC
@@ -11932,7 +11932,7 @@ InitializeHeadquarters:
 		
 		move.b  #$FF,(CURRENT_REGION).l
 		move.b  #$FF,(CURRENT_MAP_VERSION).l
-		clr.b   (CURRENT_MAP).l
+		clr.b   (CURRENT_MAP_ENTRANCE).l
 		jsr     j_InitializeBattleData
 		jsr     j_InitializeBattleMap
 PositionHeadquartersMembers:
@@ -12300,7 +12300,7 @@ sub_6A2E:
 LoadEndingCutsceneCombatantData:
 		
 		clr.b   (CURRENT_REGION).l
-		clr.b   (CURRENT_MAP).l
+		clr.b   (CURRENT_MAP_ENTRANCE).l
 		move.b  #$FF,(CURRENT_MAP_VERSION).l
 		jsr     j_InitializeBattleData
 		jsr     j_InitializeBattleMap
