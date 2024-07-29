@@ -414,6 +414,20 @@ EFFECT_DEMON_BLAZE_2: equ 58
 
 ; ---------------------------------------------------------------------------
 
+; enum EffectStatuses
+EFFECT_STATUS_QUICK: equ 0
+EFFECT_STATUS_SLOW: equ 1
+EFFECT_STATUS_BOOST: equ 2
+EFFECT_STATUS_DISPEL: equ 3
+EFFECT_STATUS_SHIELD: equ 4
+EFFECT_STATUS_MUDDLE: equ 5
+EFFECT_STATUS_SLEEP: equ 6
+EFFECT_STATUS_POISON: equ 7
+EFFECT_STATUS_CURSE: equ 8
+EFFECT_STATUS_JOGURT: equ 9
+
+; ---------------------------------------------------------------------------
+
 ; enum EnemyEntry_Offsets
 ENEMY_OFFSET_COINS: equ 0
 ENEMY_OFFSET_CLASS: equ 2
@@ -434,6 +448,14 @@ ENEMY_OFFSET_PORTRAIT: equ 15
 
 ; enum EventFlags
 EVENT_FLAGS_COUNTER: equ 63
+
+; ---------------------------------------------------------------------------
+
+; enum SpriteFacing
+FACING_: equ 0
+FACING_RIGHT: equ 1
+FACING_DOWN: equ 2
+FACING_: equ 3
 
 ; ---------------------------------------------------------------------------
 
@@ -573,7 +595,7 @@ ITEMTYPE_BIT_CURSE_SETTING: equ 0 ; 0 = has to chance to paralyze, 1 = has chanc
 ITEMTYPE_BIT_WEAPON: equ 8
 ITEMTYPE_BIT_RING: equ 9
 ITEMTYPE_BIT_USABLE: equ 10
-ITEMTYPE_BIT_CANNOT_DROP: equ 11
+ITEMTYPE_BIT_UNSELLABLE: equ 11
 ITEMTYPE_BIT_CONSUMABLE: equ 12
 ITEMTYPE_BIT_CURSED: equ 13
 ITEMTYPE_BIT_CHANCE_TO_CRACK: equ 14
@@ -1291,20 +1313,6 @@ SRAM_COUNTER_MINUS_ONE: equ 8190
 
 ; ---------------------------------------------------------------------------
 
-; enum StatusEffects
-STATUSEFFECT_QUICK: equ 0
-STATUSEFFECT_SLOW: equ 1
-STATUSEFFECT_BOOST: equ 2
-STATUSEFFECT_DISPEL: equ 3
-STATUSEFFECT_SHIELD: equ 4
-STATUSEFFECT_MUDDLE: equ 5
-STATUSEFFECT_SLEEP: equ 6
-STATUSEFFECT_POISON: equ 7
-STATUSEFFECT_CURSE: equ 8
-STATUSEFFECT_JOGURT: equ 9
-
-; ---------------------------------------------------------------------------
-
 ; enum StatusEffectBitmap
 STATUSEFFECT_BIT_POISON: equ 0
 STATUSEFFECT_BIT_SLEEP: equ 1
@@ -1623,8 +1631,18 @@ VDPTILE_STATUSEFFECT_SLEEP_B: equ $FD
 VDPTILE_STATUSEFFECT_CURSE_A: equ $FE
 VDPTILE_STATUSEFFECT_CURSE_B: equ $FF
 VDPTILE_MESSAGE_START1: equ $680
+VDPTILE_681: equ $681
+VDPTILE_685: equ $685
+VDPTILE_689: equ $689
+VDPTILE_699: equ $699
+VDPTILE_6A9: equ $6A9
+VDPTILE_6B9: equ $6B9
+VDPTILE_6C9: equ $6C9
+VDPTILE_6D9: equ $6D9
+VDPTILE_6E9: equ $6E9
 VDPTILE_MESSAGE_END1: equ $700
 VDPTILE_MESSAGE_START2: equ $7C0
+VDPTILE_SELECTION: equ $7DC
 VDPTILE_MIRRORED_BIT: equ $800
 VDPTILE_FLIPPED_BIT: equ $1000
 VDPTILE_PALETTE2: equ $2000
@@ -1640,6 +1658,27 @@ VDPTILES_STATUSEFFECT_MUDDLE: equ $C05BC05D
 VDPTILES_STATUSEFFECT_POISON: equ $C0EEC0EF
 VDPTILES_STATUSEFFECT_SLEEP: equ $C0FCC0FD
 VDPTILES_STATUSEFFECT_CURSE: equ $C0FEC0FF
+
+; ---------------------------------------------------------------------------
+
+; enum VdpSprite_Offsets
+VDPSPRITE_OFFSET_Y: equ 0
+VDPSPRITE_OFFSET_SIZE: equ 2
+VDPSPRITE_OFFSET_LINK: equ 3
+VDPSPRITE_OFFSET_TILE: equ 4
+VDPSPRITE_OFFSET_X: equ 6
+
+; ---------------------------------------------------------------------------
+
+; enum VdpSpriteSize (bitfield)
+VDPSPRITESIZE_V1: equ 0 ; vertical tile size
+VDPSPRITESIZE_V2: equ $100
+VDPSPRITESIZE_V3: equ $200
+VDPSPRITESIZE_V4: equ $300
+VDPSPRITESIZE_H1: equ 0 ; horizontal tile size
+VDPSPRITESIZE_H2: equ $400
+VDPSPRITESIZE_H3: equ $800
+VDPSPRITESIZE_H4: equ $C00
 
 ; ---------------------------------------------------------------------------
 
