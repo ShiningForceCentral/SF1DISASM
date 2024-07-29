@@ -1,6 +1,6 @@
 
 ; ASM FILE data\graphics\tech\windowlayouts\battleoptionmessagewindow.asm :
-; 0x7BD1..0x7C48 : Battle option message window layout
+; 0x7C48..0x7D36 : Battle option message window layout
 BattleOptionMessageLayout:
 
 ; 1st line
