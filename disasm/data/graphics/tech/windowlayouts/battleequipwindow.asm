@@ -1,0 +1,136 @@
+
+; ASM FILE data\graphics\tech\windowlayouts\battleequipwindowlayout.asm :
+; 0x75E8..0x76C0 : Battle equip window layout
+BattleEquipWindowLayout:
+                
+; Syntax        vdpBaseTile [VDPTILE_]enum[|MIRRORED_BIT|FLIPPED_BIT]
+;
+; Notes: PALETTE3 and PRIORITY bits are always set.
+;        Constant names ("enums"), shorthands (defined by macro), and numerical indexes are interchangeable.
+                
+; 1st line
+		vdpBaseTile WINDOW_CORNER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_CORNER|MIRRORED_BIT
+  
+; 2nd line
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_UPPERCASE_A
+		vdpBaseTile ASCII_UPPERCASE_T
+		vdpBaseTile ASCII_UPPERCASE_T
+		vdpBaseTile ASCII_UPPERCASE_A
+		vdpBaseTile ASCII_UPPERCASE_C
+		vdpBaseTile ASCII_UPPERCASE_K
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+  
+; 3rd line
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+  
+; 4th line
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_UPPERCASE_D
+		vdpBaseTile ASCII_UPPERCASE_E
+		vdpBaseTile ASCII_UPPERCASE_F
+		vdpBaseTile ASCII_UPPERCASE_E
+		vdpBaseTile ASCII_UPPERCASE_N
+		vdpBaseTile ASCII_UPPERCASE_S
+		vdpBaseTile ASCII_UPPERCASE_E
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+  
+; 5th line
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+  
+; 6th line
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_UPPERCASE_M
+		vdpBaseTile ASCII_UPPERCASE_O
+		vdpBaseTile ASCII_UPPERCASE_V
+		vdpBaseTile ASCII_UPPERCASE_E
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+  
+; 7th line
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+  
+; 8th line
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_UPPERCASE_A
+		vdpBaseTile ASCII_UPPERCASE_G
+		vdpBaseTile ASCII_UPPERCASE_I
+		vdpBaseTile ASCII_UPPERCASE_L
+		vdpBaseTile ASCII_UPPERCASE_I
+		vdpBaseTile ASCII_UPPERCASE_T
+		vdpBaseTile ASCII_UPPERCASE_Y
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile ASCII_NUMBER_NINE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+  
+; 9th line
+		vdpBaseTile WINDOW_CORNER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_CORNER|MIRRORED_BIT|FLIPPED_BIT
+  
