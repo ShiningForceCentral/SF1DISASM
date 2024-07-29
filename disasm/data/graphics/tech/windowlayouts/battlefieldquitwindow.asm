@@ -1,6 +1,6 @@
 
 ; ASM FILE data\graphics\tech\windowlayouts\battlefieldquitwindow.asm :
-; 0x7C48..0x7 : Battlefield quit window layout
+; 0x7D36..0x7E24 : Battlefield quit window layout
 BattlefieldQuitLayout:
 
 ; 1st line
