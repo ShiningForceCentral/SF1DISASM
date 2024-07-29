@@ -1,6 +1,6 @@
 
 ; ASM FILE data\graphics\tech\windowlayouts\battleequipwindowlayout.asm :
-; 0x7B5A..0x7BD1 : Battle option speed window layout
+; 0x7B5A..0x7C48 : Battle option speed window layout
 BattleOptionSpeedLayout:
 
 ; 1st line
