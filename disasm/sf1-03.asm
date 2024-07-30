@@ -2135,7 +2135,7 @@ loc_111B6:
 		adda.w  #$10,a0
 		dbf     d7,loc_111A8
 loc_111BE:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		clr.w   ((SPEECH_SFX-$1000000)).w
 		move.w  #$1B0,d0        ; "No one is in that direction.[Wait2]"
 		trap    #DISPLAY_MESSAGE
@@ -5126,7 +5126,7 @@ sub_13804:
 ; =============== S U B R O U T I N E =======================================
 
 sub_13828:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		bsr.w   sub_10CFE
 		move.w  d2,d4
 		andi.w  #$3FF,d4
@@ -8910,7 +8910,7 @@ loc_15CCE:
 
 sub_15CE6:
 		movem.l a0-a1,-(sp)
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_WaitForPlayerInput).l
 		jsr     (j_CloseMessageWindow).l
 		movem.l (sp)+,a0-a1
@@ -9689,7 +9689,7 @@ sub_16324:
 		bsr.w   sub_1106C
 		move.w  #$16,d0
 		jsr     j_OpenPortraitWindow
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.l  #sub_8034,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		move.b  #1,(CURRENTLY_TYPEWRITING).l
 		movem.w (sp)+,d0
@@ -10424,7 +10424,7 @@ DisplayMenuMessage:
 		bsr.w   sub_168A2
 		tst.w   -6(a6)
 		bne.s   loc_1687A
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		subq.w  #1,-6(a6)
 		jmp     (j_LoadText).l
 loc_1687A:
@@ -10432,7 +10432,7 @@ loc_1687A:
 		jmp     (j_LoadText).l
 		tst.w   -6(a6)
 		bne.s   loc_1689C
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		subq.w  #1,-6(a6)
 		jmp     (j_LoadText).l
 loc_1689C:
@@ -12324,7 +12324,7 @@ loc_17A78:
 loc_17A9E:
 		cmpi.b  #$19,d0
 		beq.s   loc_17AE6
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  #$21B,d0
 		jsr     (j_LoadText).l
 		jsr     (j_WaitForPlayerInput).l
@@ -12709,7 +12709,7 @@ sub_17E58:
 		tst.b   -3(a6)
 		bne.s   @Return
 		move.l  d0,-(sp)
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		st      -3(a6)
 		move.l  (sp)+,d0
 @Return:
@@ -12724,7 +12724,7 @@ sub_17E6E:
 		tst.b   -3(a6)
 		bne.s   loc_17E7E
 		st      -3(a6)
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 loc_17E7E:
 		add.w   d6,d0
 		tst.b   (byte_FF9C5F).l

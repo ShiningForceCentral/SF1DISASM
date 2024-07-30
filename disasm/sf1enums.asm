@@ -452,10 +452,10 @@ EVENT_FLAGS_COUNTER: equ 63
 ; ---------------------------------------------------------------------------
 
 ; enum SpriteFacing
-FACING_: equ 0
+FACING_0: equ 0
 FACING_RIGHT: equ 1
 FACING_DOWN: equ 2
-FACING_: equ 3
+FACING_3: equ 3
 
 ; ---------------------------------------------------------------------------
 

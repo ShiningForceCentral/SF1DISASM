@@ -233,11 +233,11 @@ j_ClearSpriteTable:
 
 ; =============== S U B R O U T I N E =======================================
 
-j_UpdatevdpSprite , ||, , Table:
+j_UpdateVdpSpriteTable:
 		
-		bra.w   UpdatevdpSprite , ||, , Table
+		bra.w   UpdateVdpSpriteTable
 
-    ; End of function j_UpdatevdpSprite , ||, , Table
+    ; End of function j_UpdateVdpSpriteTable
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1582,7 +1582,7 @@ loc_848:
 		btst    #DEACTIVATE_DMA,(VINT_PARAMS).l
 						; Check if DMA deactivated
 		bne.s   return_8B8
-		bsr.w   UpdatevdpSprite , ||, , Table; Update sprites
+		bsr.w   UpdateVdpSpriteTable; Update sprites
 		tst.b   (DMA_QUEUE_SIZE).l
 		beq.s   loc_8A6
 		lea     (DMA_QUEUE).l,a0
@@ -2243,7 +2243,7 @@ ClearScrollAndSpriteTables:
 
 ; =============== S U B R O U T I N E =======================================
 
-UpdatevdpSprite , ||, , Table:
+UpdateVdpSpriteTable:
 		
 		lea     (VDP_Control).l,a6
 		move.w  #$8134,(a6)     ; disable display, enable VInt, enable DMA
@@ -2256,7 +2256,7 @@ UpdatevdpSprite , ||, , Table:
 		move.w  (VDP_REG01_STATUS).l,(a6)
 		rts
 
-    ; End of function UpdatevdpSprite , ||, , Table
+    ; End of function UpdateVdpSpriteTable
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -4067,31 +4067,31 @@ loc_1BD6:
 
 word_1C0E:      ; sprite properties data
 
-                vdpSprite 280, V4|H4|0, $689|PALETTE3|PRIORITY_BIT, 152
-                vdpSprite 280, V4|H4|0, $699|PALETTE3|PRIORITY_BIT, 184
-                vdpSprite 280, V4|H4|0, $6A9|PALETTE3|PRIORITY_BIT, 216
-                vdpSprite 280, V4|H4|0, $6B9|PALETTE3|PRIORITY_BIT, 248
-                vdpSprite 280, V4|H4|0, $6C9|PALETTE3|PRIORITY_BIT, 280
-                vdpSprite 280, V4|H4|0, $6D9|PALETTE3|PRIORITY_BIT, 312
+                vdpSprite 280, V4|H4|0, 689|PALETTE3|PRIORITY_BIT, 152
+                vdpSprite 280, V4|H4|0, 699|PALETTE3|PRIORITY_BIT, 184
+                vdpSprite 280, V4|H4|0, 6A9|PALETTE3|PRIORITY_BIT, 216
+                vdpSprite 280, V4|H4|0, 6B9|PALETTE3|PRIORITY_BIT, 248
+                vdpSprite 280, V4|H4|0, 6C9|PALETTE3|PRIORITY_BIT, 280
+                vdpSprite 280, V4|H4|0, 6D9|PALETTE3|PRIORITY_BIT, 312
 
-                vdpSprite 280, V4|H2|0, $6E9|PALETTE3|PRIORITY_BIT, 344
+                vdpSprite 280, V4|H2|0, 6E9|PALETTE3|PRIORITY_BIT, 344
                 vdpSprite 272, V1|H4|0, MESSAGE_START1|PALETTE3|PRIORITY_BIT, 144
-                vdpSprite 272, V1|H4|0, $681|PALETTE3|PRIORITY_BIT, 176
-                vdpSprite 272, V1|H4|0, $681|PALETTE3|PRIORITY_BIT, 208
-                vdpSprite 272, V1|H4|0, $681|PALETTE3|PRIORITY_BIT, 240
-                vdpSprite 272, V1|H4|0, $681|PALETTE3|PRIORITY_BIT, 272
-                vdpSprite 272, V1|H4|0, $681|PALETTE3|PRIORITY_BIT, 304
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 176
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 208
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 240
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 272
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 304
 
                 vdpSprite 272, V1|H4|0, MESSAGE_START1|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 336
                 vdpSprite 312, V1|H4|0, MESSAGE_START1|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 144
-                vdpSprite 312, V1|H4|0, $681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 176
-                vdpSprite 312, V1|H4|0, $681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 208
-                vdpSprite 312, V1|H4|0, $681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 240
-                vdpSprite 312, V1|H4|0, $681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 272
-                vdpSprite 312, V1|H4|0, $681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 304
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 176
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 208
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 240
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 272
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 304
                 vdpSprite 312, V1|H4|0, MESSAGE_START1|MIRRORED_BIT|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 336
-                vdpSprite 280, V4|H1|0, $685|PALETTE3|PRIORITY_BIT, 144
-                vdpSprite 280, V4|H1|0, $685|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 360
+                vdpSprite 280, V4|H1|0, 685|PALETTE3|PRIORITY_BIT, 144
+                vdpSprite 280, V4|H1|0, 685|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 360
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -13303,9 +13303,9 @@ wl_75A0:        dc.w $C000
 		dc.w $C000
 		dc.w $C000
 
-include "data\graphics\tech\windowlayouts\battleequipwindow.asm"
-include "data\graphics\tech\windowlayouts\membernamelayout.asm"
-include "data\graphics\tech\windowlayouts\itemnamelayout.asm"
+        include "data\graphics\tech\windowlayouts\battleequipwindow.asm"
+        include "data\graphics\tech\windowlayouts\membernamelayout.asm"
+        include "data\graphics\tech\windowlayouts\itemnamelayout.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -13612,7 +13612,7 @@ return_7B56:
 
     ; End of function sub_7B1A
 
-include "data\graphics\tech\windowlayouts\battleoptionspeedwindow.asm"
-include "data\graphics\tech\windowlayouts\battleoptionmessagewindow.asm"
-include "data\graphics\tech\windowlayouts\battlefieldquitwindow.asm"
+        include "data\graphics\tech\windowlayouts\battleoptionspeedwindow.asm"
+        include "data\graphics\tech\windowlayouts\battleoptionmessagewindow.asm"
+        include "data\graphics\tech\windowlayouts\battlefieldquitwindow.asm"
 		align $8000

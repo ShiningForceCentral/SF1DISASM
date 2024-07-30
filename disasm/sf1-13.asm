@@ -1369,7 +1369,7 @@ bsc18_displayMessageWithNoWait:
 		move.l  (a6)+,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  d0,-(sp)
 		clr.w   ((SPEECH_SFX-$1000000)).w
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  (sp)+,d0
 		jsr     (j_LoadText).l
 		jsr     sub_124EA0(pc)
@@ -1399,7 +1399,7 @@ bsc15_displayMessage:
 		bne.s   loc_124E8C
 		move.w  d0,-(sp)
 		clr.w   ((SPEECH_SFX-$1000000)).w
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  (sp)+,d0
 		jsr     (j_LoadText).l
 		jsr     sub_124EA0(pc)
@@ -11815,7 +11815,7 @@ sub_12B2D0:
 		beq.s   loc_12B2FC
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		clr.w   ((SPEECH_SFX-$1000000)).w
 		move.w  #$169,d0        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
 		trap    #DISPLAY_MESSAGE

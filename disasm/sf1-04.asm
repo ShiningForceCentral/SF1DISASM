@@ -3555,7 +3555,7 @@ effect_InflictStatusNullifiableByShield:
 		bcs.w   loc_20DE2
 loc_20F94:
 		clr.w   d2              ; default to "Blaze" resistance
-		cmpi.b  #STATUSEFFECT_SLEEP,EFFECTDEF_OFFSET_STATUS(a0)
+		cmpi.b  #EFFECT_STATUS_SLEEP,EFFECTDEF_OFFSET_STATUS(a0)
 		bne.s   loc_20FA0
 		moveq   #CLASS_RESISTANCE_SLEEP_AND_DESOUL,d2
 loc_20FA0:
@@ -4284,7 +4284,7 @@ specialAttack_InflictPoison:
 		cmpi.w  #25,d7          ; 25% chance to inflict poison
 		bge.s   loc_2147E
 loc_21478:
-		moveq   #STATUSEFFECT_POISON,d2
+		moveq   #EFFECT_STATUS_POISON,d2
 		bsr.w   LoadEffectSuccessMessage
 loc_2147E:
 		movem.l (sp)+,d2/d7
@@ -4305,7 +4305,7 @@ specialAttack_InflictSleep:
 		cmpi.w  #25,d7          ; 25% chance to inflict sleep
 		bge.s   loc_214A2
 loc_2149C:
-		moveq   #STATUSEFFECT_SLEEP,d2
+		moveq   #EFFECT_STATUS_SLEEP,d2
 		bsr.w   LoadEffectSuccessMessage
 loc_214A2:
 		movem.l (sp)+,d2/d7

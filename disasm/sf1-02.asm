@@ -623,7 +623,7 @@ loc_8296:
 		beq.w   loc_82DC
 		sndCom  MUSIC_MAX_DIED
 		bsr.w   sub_AB2C
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  #$1B1,d0        ; "[Hero] has been[Line]defeated...[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_CloseMessageWindow).l
@@ -719,7 +719,7 @@ loc_8366:
 		movem.w (sp)+,d0
 		bsr.w   sub_830A
 		bsr.w   sub_AB2C
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  #$205,d0        ; "[Name] appears![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		jsr     (j_CloseMessageWindow).l
@@ -3880,7 +3880,7 @@ loc_9ECC:
 		bne.w   loc_9F34
 		moveq   #PORTRAIT_NOVA,d0
 		bsr.w   OpenPortraitWindow
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  #SFX_DIALOG_BLEEP_7,((SPEECH_SFX-$1000000)).w
 		move.b  ((VICTORY_EXIT-$1000000)).w,d0
 		cmp.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
@@ -4471,7 +4471,7 @@ sub_A5EA:
 		move.b  d1,((byte_FFB4CD-$1000000)).w
 		move.b  (a0,d1.w),d1
 		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_CANNOT_DROP,d2
+		btst    #ITEMTYPE_BIT_UNSELLABLE,d2
 		bne.s   loc_A644        
 loc_A620:
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
