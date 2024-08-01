@@ -1006,6 +1006,7 @@ InitVdp:
 		move.w  (a0)+,d0
 		bsr.w   SetVdpReg
 		dbf     d1,@SetVdpReg_Loop
+
 		clr.w   d0
 		clr.w   d1
 		clr.w   d2
@@ -1031,17 +1032,20 @@ loc_412:
 		move.w  #0,(a0)+        ; clear from FF0100 to FF0500
 		move.w  #0,(a0)+
 		dbf     d0,loc_412
+
 		lea     (VERTICAL_SCROLL_DATA).l,a0
 		move.w  #$13,d0
 loc_428:
 		move.w  #0,(a0)+        ; clear next 80d bytes
 		move.w  #0,(a0)+
 		dbf     d0,loc_428
+
 		lea     (PALETTE_1_BASE).l,a0
 		moveq   #$7F,d1 
 loc_43C:
 		clr.w   (a0)+           ; clear palette replicas ?
 		dbf     d1,loc_43C
+
 		bsr.w   ClearSpriteTable
 		bsr.w   UpdateVdpHScrollData
 		bsr.w   UpdateVdpVScrollData
@@ -1095,7 +1099,8 @@ loc_4B2:
 		move.b  (a5)+,d5        ; set each vdp register with initial parameters
 		move.w  d5,(a4)
 		add.w   d7,d5
-		dbf     d1,loc_4B2      
+		dbf     d1,loc_4B2    
+
 		move.l  (a5)+,(a4)
 		move.w  d0,(a3)         ; move 0 to vdp data port
 		move.w  d7,(a1)         ; Z80 busreq cancel ?
@@ -1106,28 +1111,33 @@ loc_4C4:
 		moveq   #$25,d2 ; loop 37 times
 loc_4CA:
 		move.b  (a5)+,(a0)+     ; copy 37 bytes to Z80 ram
-		dbf     d2,loc_4CA      
+		dbf     d2,loc_4CA    
+
 		move.w  d0,(a2)         ; Z80 reset request ?
 		move.w  d0,(a1)         ; Z80 busreq cancel ?
 		move.w  d7,(a2)         ; Z80 reset cancel ?
 loc_4D6:
 		move.l  d0,-(a6)        ; clear RAM
-		dbf     d6,loc_4D6      
+		dbf     d6,loc_4D6  
+
 		move.l  (a5)+,(a4)      ; disable DMA, increment data bias number : 2
 		move.l  (a5)+,(a4)      ; address set : CRAM write ?
 		moveq   #$1F,d3         ; loop 31 times
 loc_4E2:
 		move.l  d0,(a3)         ; clear CRAM ?
 		dbf     d3,loc_4E2      
+
 		move.l  (a5)+,(a4)      ; VSRAM write
 		moveq   #$13,d4         ; loop 19 times
 loc_4EC:
 		move.l  d0,(a3)         ; clear VSRAM
 		dbf     d4,loc_4EC      
+
 		moveq   #3,d5           ; loop 3 times
 loc_4F4:
 		move.b  (a5)+,$11(a3)   ; set PSG volume to 0
 		dbf     d5,loc_4F4      
+
 		move.w  d0,(a2)         ; bus reset cancel ?
 		movem.l (a6),d0-a6      ; clear registers
 		move    #$2700,sr       ; Move 0x2700 into Status Register, which now has these set: no trace, A7 is Interupt Stack Pointer, no interrupts, clear condition code bits
@@ -1649,6 +1659,7 @@ loc_8E6:
 loc_924:
 		move.b  1(a0),(a0)+
 		dbf     d7,loc_924
+
 		movem.l (sp)+,d7-a0
 		subq.b  #1,(MUSIC_STACK_LENGTH).l
 loc_936:
@@ -1703,6 +1714,7 @@ loc_9B4:
 loc_9CC:
 		move.b  -2(a0),-(a0)    ; add music index to music stack
 		dbf     d7,loc_9CC
+
 		move.b  d0,-(a0)
 		movem.l (sp)+,d7-a0
 		cmpi.b  #$A,(MUSIC_STACK_LENGTH).l
@@ -2043,6 +2055,7 @@ DuplicatePalettes:
 @Loop:
 		move.w  (a5)+,(a6)+
 		dbf     d7,@Loop
+
 		movem.l (sp)+,d7/a5-a6
 
     ; End of function DuplicatePalettes
@@ -2223,6 +2236,7 @@ loc_DB4:
 		dbf     d7,loc_D5E
 loc_DC0:
 		dbf     d6,loc_D48
+
 		bsr.w   ApplyVIntCramDma
 		bsr.w   EnableDmaQueueProcessing
 		movem.l (sp)+,d2-a2
@@ -2273,6 +2287,7 @@ ClearSpriteTable:
 		addq.w  #8,a0
 		addq.b  #1,d0
 		dbf     d1,@Loop
+
 		clr.b   -5(a0)
 		movem.l (sp)+,d0-d1/a0
 		rts
@@ -2298,6 +2313,7 @@ ClearScrollTable:
 @Loop:
 		clr.l   (a6)+
 		dbf     d7,@Loop
+
 		movem.l (sp)+,d7/a6
 		rts
 
@@ -2503,10 +2519,12 @@ loc_FC4:
 		move.w  (a4),(a5)+
 		move.w  (a4)+,(a3)+
 		dbf     d4,loc_FC4
+
 		adda.w  #$80,a6 
 		movem.l (sp)+,a3
 		adda.w  #$80,a3 
 		dbf     d3,loc_FAC
+
 		movem.l (sp)+,d3-d4/a3-a6
 		bsr.w   EnableInterrupts
 		bra.w   WaitForVdpCommandQueueProcessing
@@ -2715,6 +2733,7 @@ loc_11DE:
 		move.w  d6,(a6)+
 		addq.l  #2,a6
 		dbf     d7,loc_11DE
+
 		movem.l (sp)+,d7/a6
 		bra.s   UpdateVdpHScrollData
 
@@ -2768,6 +2787,7 @@ loc_1242:
 		move.w  d6,(a6)+
 		addq.l  #2,a6
 		dbf     d7,loc_1242
+
 		movem.l (sp)+,d7/a6
 		bra.s   UpdateVdpVScrollData
 
@@ -3154,6 +3174,7 @@ CopyBytes:
 loc_1532:
 		move.b  (a0)+,(a1)+
 		dbf     d7,loc_1532
+
 		movem.l (sp)+,d7-a1
 		rts
 loc_153E:
@@ -3163,6 +3184,7 @@ loc_153E:
 loc_1544:
 		move.b  -(a0),-(a1)
 		dbf     d7,loc_1544
+
 		movem.l (sp)+,d7-a1
 		rts
 
@@ -3184,6 +3206,7 @@ InitSprites:
 		move.w  #1,(a0)+
 		addq.w  #1,d1
 		dbf     d0,@Loop
+
 		subq.l  #6,a0
 		clr.w   (a0)
 		movem.l (sp)+,d0-d1/a0
@@ -3639,6 +3662,7 @@ loc_188A:
 loc_1896:
 		addq.w  #1,d2
 		dbf     d7,loc_188A
+
 		subq.w  #1,d0
 		rts
 
@@ -3675,6 +3699,7 @@ sub_18C4:
 loc_18D0:
 		clr.b   (a0)+
 		dbf     d0,loc_18D0
+
 		movem.l (sp)+,d0/a0
 		rts
 
@@ -3749,6 +3774,7 @@ LoadMessageWindowLayout_TopBorder:
 loc_196C:
 		bsr.s   LoadMessageWindowSingleRow
 		dbf     d6,loc_196C
+
 ; ---------------------------------------------------------------------------
 LoadMessageWindowLayout_BottomBorder:
 		
@@ -3780,6 +3806,7 @@ HandleDialogueTypewriting:
 loc_19A4:
 		move.w  #$DDDD,(a0)+
 		dbf     d7,loc_19A4
+
 		clr.w   d0
 loc_19AE:
 		move.w  d0,-(sp)
@@ -3861,8 +3888,10 @@ loc_1A54:
 		move.l  (a0)+,(a1)+
 		adda.w  #$320,a0
 		dbf     d1,loc_1A54
+
 		suba.w  #$CE0,a0
 		dbf     d0,loc_1A52
+
 		lea     (FF0FFE_LOADING_SPACE).l,a0
 		lea     ($D120).l,a1
 		move.w  #$680,d0
@@ -3943,6 +3972,7 @@ loc_1B0A:
 		bsr.s   sub_1B1E
 		bsr.w   HandleBlinkingDialogueCursor
 		dbf     d5,loc_1B0A
+
 		move.l  (sp)+,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		rts
 
@@ -3971,6 +4001,7 @@ loc_1B38:
 		bsr.s   sub_1B4A
 		adda.w  #$324,a0
 		dbf     d7,loc_1B38
+
 		move.l  #$DDDDDDDD,d0
 		bra.s   loc_1B4E
 
@@ -4030,6 +4061,7 @@ loc_1BAA:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BAA
+
 		lea     (SPRITE_25_PROPERTIES).l,a1
 		moveq   #6,d7
 loc_1BC0:
@@ -4039,6 +4071,7 @@ loc_1BC0:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BC0
+
 		lea     (SPRITE_54_PROPERTIES).l,a1
 		moveq   #9,d7
 loc_1BD6:
@@ -4048,6 +4081,7 @@ loc_1BD6:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BD6
+
 		move.l  #$2020202,d0
 		lea     ((byte_FFB4DB-$1000000)).w,a0
 		move.b  d0,(a0)+
@@ -4120,6 +4154,7 @@ loc_1CEC:
 		bsr.w   sub_1D4A
 		bsr.w   sub_1D36
 		dbf     d7,loc_1CEC
+
 		add.b   d4,((TEXT_X_POSITION-$1000000)).w
 		rts
 
@@ -5420,6 +5455,7 @@ loc_239E:
 		move.w  d0,(a1)+
 loc_23AA:
 		dbf     d1,loc_239E
+
 		move.w  #$FFFF,(a1)+
 		rts
 
@@ -5570,7 +5606,8 @@ loc_249A:
 		move.b  (a2)+,d0
 		move.w  d0,(a1)+
 		dbf     d7,loc_249A
-		move.w  #$FFFF,(a1)
+
+		move.w  #-1,(a1)
 		rts
 
 ; END OF FUNCTION CHUNK FOR sub_2296
@@ -5897,6 +5934,7 @@ loc_262E:
 		moveq   #2,d5
 loc_2632:
 		dbf     d3,loc_263A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_263A:
@@ -5908,12 +5946,14 @@ loc_263A:
 		clr.w   d5
 loc_264A:
 		dbf     d3,loc_2652
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2652:
 		add.w   d0,d0
 		addx.w  d5,d5
 		dbf     d4,loc_264A
+
 		adda.w  d5,a2
 		cmpa.l  a3,a2
 		bcc.w   loc_28C6
@@ -5940,6 +5980,7 @@ loc_2682:
 loc_268A:
 		move.b  d1,(a2)
 		dbf     d3,loc_2694
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2694:
@@ -5958,18 +5999,21 @@ loc_2694:
 loc_26B0:
 		addq.w  #3,d3
 		dbf     d3,loc_26BA
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26BA:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_26C8
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26C8:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_26D6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26D6:
@@ -5977,6 +6021,7 @@ loc_26D6:
 		bcc.w   loc_262E
 loc_26DC:
 		dbf     d3,loc_26E4
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26E4:
@@ -5996,18 +6041,21 @@ loc_26E4:
 loc_2706:
 		addq.w  #3,d3
 		dbf     d3,loc_2710
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2710:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_271E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_271E:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_272C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_272C:
@@ -6032,18 +6080,21 @@ loc_2736:
 loc_2754:
 		addq.w  #3,d3
 		dbf     d3,loc_275E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_275E:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_276C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_276C:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_277A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_277A:
@@ -6065,18 +6116,21 @@ loc_2784:
 loc_279E:
 		addq.w  #3,d3
 		dbf     d3,loc_27A8
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27A8:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_27B6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27B6:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_27C4
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27C4:
@@ -6098,18 +6152,21 @@ loc_27CE:
 loc_27EC:
 		addq.w  #3,d3
 		dbf     d3,loc_27F6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27F6:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_2804
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2804:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_2812
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2812:
@@ -6119,6 +6176,7 @@ loc_2812:
 loc_281C:
 		move.l  a1,d5
 		dbf     d3,loc_2826
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2826:
@@ -6138,18 +6196,21 @@ loc_2826:
 loc_2848:
 		addq.w  #3,d3
 		dbf     d3,loc_2852
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2852:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_2860
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2860:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_286E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_286E:
@@ -6171,18 +6232,21 @@ loc_2878:
 loc_2896:
 		addq.w  #3,d3
 		dbf     d3,loc_28A0
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_28A0:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_28AE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_28AE:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_28BC
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_28BC:
@@ -6290,6 +6354,7 @@ loc_2982:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_2982
+
 		lea     4(a0),a2
 		moveq   #7,d3
 loc_299C:
@@ -6302,6 +6367,7 @@ loc_299C:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_299C
+
 		lea     8(a0),a2
 		moveq   #7,d3
 loc_29B6:
@@ -6314,6 +6380,7 @@ loc_29B6:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_29B6
+
 		lea     $C(a0),a2
 		moveq   #7,d3
 loc_29D0:
@@ -6326,10 +6393,13 @@ loc_29D0:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_29D0
+
 		adda.w  d7,a0
 		dbf     d6,loc_297E
+
 		lea     $10(a3),a3
 		dbf     d5,loc_297A
+
 		movem.l (sp)+,a4-a6
 		rts
 
@@ -6362,14 +6432,16 @@ loc_2A2E:
 		movem.l d0/d3-d6/a4-a6,-(a1)
 		movem.l d0/d3-d6/a4-a6,-(a1)
 		dbf     d7,loc_2A2E
-		moveq   #$FFFFFF80,d6
+
+		moveq   #-128,d6
 		moveq   #$F,d7
 		clr.w   d3
 loc_2A48:
-		moveq   #$FFFFFFFF,d4
+		moveq   #-1,d4
 		moveq   #2,d5
 loc_2A4C:
 		dbf     d3,loc_2A54
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2A54:
@@ -6381,12 +6453,14 @@ loc_2A54:
 		clr.w   d5
 loc_2A64:
 		dbf     d3,loc_2A6C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2A6C:
 		add.w   d0,d0
 		addx.w  d5,d5
 		dbf     d4,loc_2A64
+
 		adda.w  d5,a2
 		cmpa.l  a3,a2
 		bcc.w   loc_2CE0
@@ -6413,6 +6487,7 @@ loc_2A9C:
 loc_2AA4:
 		move.b  d1,(a2)
 		dbf     d3,loc_2AAE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AAE:
@@ -6431,18 +6506,21 @@ loc_2AAE:
 loc_2ACA:
 		addq.w  #3,d3
 		dbf     d3,loc_2AD4
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AD4:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2AE2
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AE2:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2AF0
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AF0:
@@ -6450,6 +6528,7 @@ loc_2AF0:
 		bcc.w   loc_2A48
 loc_2AF6:
 		dbf     d3,loc_2AFE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AFE:
@@ -6469,18 +6548,21 @@ loc_2AFE:
 loc_2B20:
 		addq.w  #3,d3
 		dbf     d3,loc_2B2A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B2A:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2B38
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B38:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2B46
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B46:
@@ -6505,18 +6587,21 @@ loc_2B50:
 loc_2B6E:
 		addq.w  #3,d3
 		dbf     d3,loc_2B78
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B78:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2B86
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B86:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2B94
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B94:
@@ -6538,18 +6623,21 @@ loc_2B9E:
 loc_2BB8:
 		addq.w  #3,d3
 		dbf     d3,loc_2BC2
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2BC2:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2BD0
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2BD0:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2BDE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2BDE:
@@ -6571,18 +6659,21 @@ loc_2BE8:
 loc_2C06:
 		addq.w  #3,d3
 		dbf     d3,loc_2C10
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C10:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2C1E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C1E:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2C2C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C2C:
@@ -6592,6 +6683,7 @@ loc_2C2C:
 loc_2C36:
 		move.l  a1,d5
 		dbf     d3,loc_2C40
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C40:
@@ -6611,18 +6703,21 @@ loc_2C40:
 loc_2C62:
 		addq.w  #3,d3
 		dbf     d3,loc_2C6C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C6C:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2C7A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C7A:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2C88
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C88:
@@ -6644,18 +6739,21 @@ loc_2C92:
 loc_2CB0:
 		addq.w  #3,d3
 		dbf     d3,loc_2CBA
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2CBA:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2CC8
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2CC8:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2CD6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2CD6:
@@ -6693,6 +6791,7 @@ loc_2D10:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2D36
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2D36:
@@ -6717,6 +6816,7 @@ loc_2D42:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2D72
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2D72:
@@ -6742,6 +6842,7 @@ loc_2D7E:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2DB0
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2DB0:
@@ -6768,6 +6869,7 @@ loc_2DBC:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2DEE
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2DEE:
@@ -6789,6 +6891,7 @@ loc_2DFA:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2E22
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2E22:
@@ -6811,6 +6914,7 @@ loc_2E2E:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2E58
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2E58:
@@ -6834,6 +6938,7 @@ loc_2E64:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2E8E
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2E8E:
@@ -6852,6 +6957,7 @@ loc_2E9A:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2EBA
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2EBA:
@@ -6871,6 +6977,7 @@ loc_2EC6:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2EE8
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2EE8:
@@ -6891,6 +6998,7 @@ loc_2EF4:
 		or.b    d1,d4
 		lea     $5C(a0),a0
 		dbf     d5,loc_2F16
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2F16:
@@ -6906,6 +7014,7 @@ loc_2F22:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2F3A
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2F3A:
@@ -6922,6 +7031,7 @@ loc_2F46:
 		or.b    d1,d4
 		lea     $5C(a0),a0
 		dbf     d5,loc_2F60
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2F60:
@@ -11948,6 +12058,7 @@ loc_6950:
 		rol.b   #4,d0
 		move.l  d0,(a1)+
 		dbf     d7,loc_6950
+
 		movea.l a0,a1
 		adda.l  #$240,a1
 		moveq   #$17,d7
@@ -11962,6 +12073,7 @@ loc_6970:
 		rol.b   #4,d0
 		move.l  d0,(a1)+
 		dbf     d7,loc_6970
+
 		movea.l a0,a1
 		adda.l  #$180,a1
 		moveq   #$17,d7
@@ -11977,6 +12089,7 @@ loc_6990:
 		move.l  d0,(a1)+
 		dbf     d7,loc_6990
 		dbf     d6,loc_6946
+
 		movem.l d7-a1,-(sp)
 		lea     (byte_FF3240).l,a0
 		lea     (FF3000_LOADING_SPACE).l,a1
@@ -11997,38 +12110,38 @@ sub_69CA:
     ; End of function sub_69CA
 
 HeadquartersMembersPositions:
-		hqPosition 1, 3, 24   ; advisor
+		hqPosition RIGHT, 3, 24   ; advisor
 
-		hqPosition 2, 13, 23  ; active members
-		hqPosition 2, 14, 23
-		hqPosition 2, 16, 23
-		hqPosition 2, 17, 23
-		hqPosition 2, 13, 25
-		hqPosition 2, 14, 25
-		hqPosition 2, 16, 25
-		hqPosition 2, 17, 25
-		hqPosition 2, 13, 27
-		hqPosition 2, 14, 27
-		hqPosition 2, 16, 27
+		hqPosition DOWN, 13, 23  ; active members
+		hqPosition DOWN, 14, 23
+		hqPosition DOWN, 16, 23
+		hqPosition DOWN, 17, 23
+		hqPosition DOWN, 13, 25
+		hqPosition DOWN, 14, 25
+		hqPosition DOWN, 16, 25
+		hqPosition DOWN, 17, 25
+		hqPosition DOWN, 13, 27
+		hqPosition DOWN, 14, 27
+		hqPosition DOWN, 16, 27
 
-		hqPosition 2, 14, 7   ; reserve members
-		hqPosition 3, 17, 6
-		hqPosition 3, 12, 11
-		hqPosition 2, 10, 8
-		hqPosition 3, 13, 10
-		hqPosition 1, 13, 6
-		hqPosition 2, 16, 4
-		hqPosition 2, 12, 8
-		hqPosition 2, 2, 3
-		hqPosition 2, 15, 4
-		hqPosition 0, 10, 5
-		hqPosition 1, 2, 7
-		hqPosition 1, 4, 3
-		hqPosition 2, 18, 8
-		hqPosition 0, 4, 7
-		hqPosition 0, 9, 5
-		hqPosition 1, 9, 9
-		hqPosition 0, 5, 16
+		hqPosition DOWN, 14, 7   ; reserve members
+		hqPosition LEFT, 17, 6
+		hqPosition LEFT, 12, 11
+		hqPosition DOWN, 10, 8
+		hqPosition LEFT, 13, 10
+		hqPosition RIGHT, 13, 6
+		hqPosition DOWN, 16, 4
+		hqPosition DOWN, 12, 8
+		hqPosition DOWN, 2, 3
+		hqPosition DOWN, 15, 4
+		hqPosition UP, 10, 5
+		hqPosition RIGHT, 2, 7
+		hqPosition RIGHT, 4, 3
+		hqPosition DOWN, 18, 8
+		hqPosition UP, 4, 7
+		hqPosition UP, 9, 5
+		hqPosition RIGHT, 9, 9
+		hqPosition UP, 5, 16
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -12134,6 +12247,7 @@ loc_6B66:
 loc_6B7C:
 		addq.w  #1,d0
 		dbf     d7,loc_6B66
+
 		trap    #5
 		txt     $1B0        ; "No one is in that direction.[Wait2]"
 loc_6B8A:
@@ -12690,6 +12804,7 @@ sub_71C0:
 loc_71F0:
 		clr.l   (a1)+
 		dbf     d0,loc_71F0
+
 		movea.l (sp)+,a1
 		moveq   #1,d1
 		bsr.w   sub_72A0
@@ -12705,6 +12820,7 @@ loc_7200:
 		move.l  (a0)+,$4C(a1)
 		adda.w  #$20,a1 
 		dbf     d7,loc_7200
+
 		adda.w  #$40,a1 
 		moveq   #2,d1
 		bsr.w   sub_72A0
@@ -12720,6 +12836,7 @@ loc_7234:
 		move.l  (a0)+,$4C(a1)
 		adda.w  #$20,a1 
 		dbf     d7,loc_7234
+
 		adda.w  #$40,a1 
 		moveq   #3,d1
 		bsr.w   sub_72A0
@@ -13542,7 +13659,7 @@ loc_7A78:
 		jsr     j_MoveWindowWithSfx
 		clr.w   d1
 		bsr.w   sub_7B1A
-		moveq   #$FFFFFFFF,d0
+		moveq   #-1,d0
 		rts
 
     ; End of function optionMenuAction_Message
