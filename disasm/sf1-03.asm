@@ -62,8 +62,8 @@ j_ExecuteChurchMenu:
 
     ; End of function j_ExecuteChurchMenu
 
-p_SpriteTextSounds:
-		dc.l SpriteTextSounds
+p_tbl_SpriteSpeechSfx:
+		dc.l tbl_SpriteSpeechSfx
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -1006,6 +1006,7 @@ loc_107A8:
 		move.w  (a0)+,d3
 		bset    #7,8(a6,d3.w)
 		dbf     d7,loc_107A8
+
 loc_107B4:
 		tst.b   d0
 		rts
@@ -1275,10 +1276,12 @@ sub_10AA0:
 loc_10AB4:
 		move.w  #$E0,(VDP_Data).l 
 		dbf     d0,loc_10AB4
+
 		nop
 		nop
 loc_10AC4:
 		dbf     d0,loc_10AC4
+
 		move.w  #$C000,(VDP_Control).l
 		move.w  #0,(VDP_Control).l
 		move.w  #$F,d0
@@ -1781,6 +1784,7 @@ loc_10E78:
 		move.w  (a1)+,(a0)+
 		addq.w  #1,(a2)
 		dbf     d7,loc_10E88
+
 		move.l  a0,(VDP_COMMAND_QUEUE_POINTER).l
 		rts
 loc_10E88:
@@ -1819,6 +1823,7 @@ loc_10EC0:
 		move.w  (a1)+,(a0)+
 		addq.w  #1,(a2)
 		dbf     d7,loc_10ED0
+
 		move.l  a0,(VDP_COMMAND_QUEUE_POINTER).l
 		rts
 loc_10ED0:
@@ -1988,6 +1993,7 @@ loc_11046:
 loc_11058:
 		move.w  (a0)+,(VDP_Data).l
 		dbf     d4,loc_11058
+
 		addi.w  #$80,d6 
 		dbf     d5,loc_11046
 		rts
@@ -2065,6 +2071,7 @@ loc_11108:
 loc_11114:
 		lea     $10(a0),a0
 		dbf     d7,loc_110A2
+
 return_1111C:
 		rts
 
@@ -2134,6 +2141,7 @@ loc_111A8:
 loc_111B6:
 		adda.w  #$10,a0
 		dbf     d7,loc_111A8
+
 loc_111BE:
 		jsr     (j_OpenMessageWindow).l
 		clr.w   ((SPEECH_SFX-$1000000)).w
@@ -2284,6 +2292,7 @@ loc_11354:
 		or.w    d2,d6
 		addq.w  #1,d0
 		dbf     d5,loc_11354
+
 		movem.w (sp)+,d0/d5-d7
 		move.w  d6,d2
 		andi.w  #$7E,d2 
@@ -2293,6 +2302,7 @@ loc_11354:
 		or.w    d2,d6
 		addq.w  #1,d1
 		dbf     d7,loc_11350
+
 		move.l  a5,(dword_FFF928).l
 		tst.b   d0
 		rts
@@ -2793,6 +2803,7 @@ loc_116C4:
 		andi.b  #$7F,d5 
 		or.b    d5,d6
 		dbf     d7,loc_1164E
+
 		movem.w (sp)+,d0/d6-d7
 		addq.b  #1,d1
 		addi.w  #$180,d6
@@ -2988,6 +2999,7 @@ sub_1195C:
 		movea.l (p_pt_Maps).l,a0
 loc_11974:
 		dbf     d0,loc_1197A
+
 		bra.s   loc_11994
 loc_1197A:
 		move.b  $1B(a0),d3
@@ -3340,6 +3352,7 @@ loc_11D0E:
 		andi.b  #$C0,d1
 		move.b  d1,(a1)+
 		dbf     d7,loc_11C8E
+
 loc_11D22:
 		clr.w   d0
 		jsr     j_GetMapSprite
@@ -3348,7 +3361,8 @@ loc_11D22:
 
     ; End of function sub_11C5C
 
-byte_11D2E:     dc.b 0
+byte_11D2E:  ; masks
+        dc.b 0
 		dc.b 1
 		dc.b 3
 		dc.b 7
@@ -3529,6 +3543,7 @@ sub_11EB2:
 loc_11EC4:
 		move.w  (a0)+,(a1)+
 		dbf     d7,loc_11EC4
+
 		lea     byte_11EE0(pc), a0
 		lea     (PALETTE_4_BASE).l,a1
 		move.w  #$F,d0
@@ -3645,6 +3660,7 @@ loc_11F4C:
 		addq.w  #4,a0
 		subq.w  #1,a1
 		dbf     d7,loc_11F4C
+
 		suba.w  #$5C,a1 
 		rts
 
@@ -3724,6 +3740,7 @@ loc_11FC8:
 		addq.w  #4,a0
 		addq.w  #1,a1
 		dbf     d7,loc_11FC8
+
 		lea     $5C(a1),a1
 		rts
 
@@ -4574,20 +4591,18 @@ loc_12D48:
 		clr.w   d1
 		move.b  3(a0,d7.w),d0
 		add.b   d0,d0
-		move.b  byte_12D70(pc,d0.w),d1
-		move.b  byte_12D71(pc,d0.w),d0
+		move.b  (byte_12D72-2)(pc,d0.w),d1
+		move.b  (byte_12D72-1)(pc,d0.w),d0
 		lea     (EVENT_FLAGS).l,a1
 		btst    d0,(a1,d1.w)
 		beq.w   loc_12CA2
 		move.b  #1,d0
 		ori     #1,ccr
-byte_12D70:
-		dc.b $4E
-byte_12D71:
-		dc.b $75
+		rts
 
     ; End of function sub_12D06
 
+byte_12D72:
 		dc.b 6
 		dc.b 1
 
@@ -5098,6 +5113,7 @@ loc_137D2:
 		addq.b  #1,d0
 		addq.b  #1,d4
 		dbf     d6,loc_137D2
+
 		movem.w (sp)+,d0/d4/d6
 		addq.b  #1,d1
 		addq.b  #1,d5
@@ -5185,7 +5201,7 @@ loc_13878:
 		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
 		trap    #DISPLAY_MESSAGE
 		movem.w d1,-(sp)
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		movem.w (sp)+,d1
 		bra.s   loc_13958
@@ -5208,7 +5224,7 @@ loc_13918:
 		move.w  #$4C,d0 ; "[Name] gains [Num] coins.[Wait2]"
 		trap    #DISPLAY_MESSAGE
 		movem.w d1,-(sp)
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		movem.w (sp)+,d1
 		jsr     j_IncreaseGold
@@ -5700,6 +5716,7 @@ loc_13EDA:
 		jsr     (j_WaitForVInt).l
 		movem.l (sp)+,d7-a1
 		dbf     d7,loc_13EDA
+
 		move.b  #$15,d1
 		move.b  #9,d2
 		bsr.w   loc_15CCE
@@ -5838,6 +5855,7 @@ loc_14040:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_14040
+
 		addq.b  #2,(word_FF5040+1).l
 		move.b  #5,d1
 		move.b  #$E,d2
@@ -6387,8 +6405,10 @@ loc_14558:
 loc_14566:
 		bsr.s   loc_1457E
 		dbf     d6,loc_14566
+
 		addq.w  #1,d0
 		dbf     d7,loc_14558
+
 		move.b  #1,d2
 		bsr.w   sub_15CCA
 		bra.w   SetCarryBit
@@ -6845,6 +6865,7 @@ loc_1484C:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_1484C
+
 		sndCom  SFX_HIT
 		moveq   #5,d7
 loc_14874:
@@ -6854,6 +6875,7 @@ loc_14874:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_14874
+
 		move.b  #2,d2
 		bsr.w   sub_15CCA
 		moveq   #$11,d7
@@ -6864,6 +6886,7 @@ loc_1489A:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_1489A
+
 		movem.l (sp)+,a0-a1
 		sndCom  SFX_HIT
 		bra.w   SetCarryBit
@@ -6897,6 +6920,7 @@ loc_148E6:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_148E6
+
 		bsr.s   loc_14928
 		movem.l (sp)+,a0-a1
 		move.w  #$51,d0 
@@ -6918,6 +6942,7 @@ loc_14932:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_14932
+
 		sndCom  SFX_HIT
 		bsr.w   sub_15E76
 		rts
@@ -7052,6 +7077,7 @@ loc_14A8C:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d0
 		dbf     d0,loc_14A8C
+
 		movem.w (sp)+,d0
 		movem.l (sp)+,d6/a0
 		movem.w (sp)+,d1
@@ -7130,6 +7156,7 @@ loc_14B44:
 		jsr     (j_WaitForVInt).l
 		movem.l (sp)+,d7-a1
 		dbf     d7,loc_14B44
+
 		bra.w   SetCarryBit
 
     ; End of function sub_14B42
@@ -7339,6 +7366,7 @@ loc_14D56:
 		sndCom  SFX_DIALOG_BLEEP_1
 		jsr     (j_WaitForVInt).l
 		dbf     d7,loc_14D44
+
 		bsr.s   loc_14D9A
 		move.b  #8,d2
 		bsr.w   sub_15CCA
@@ -7356,6 +7384,7 @@ loc_14D80:
 loc_14D94:
 		dbf     d7,loc_14D80
 		rts
+
 loc_14D9A:
 		move.w  #$3C,d7 
 		move.w  #1,d0
@@ -7369,6 +7398,7 @@ loc_14DA2:
 loc_14DB6:
 		dbf     d7,loc_14DA2
 		rts
+
 loc_14DBC:
 		movem.l d0/d7-a1,-(sp)
 		move.b  (MAP_SPRITE_FACING).l,d0
@@ -7400,6 +7430,7 @@ loc_14DFE:
 		sndCom  SFX_DIALOG_BLEEP_1
 		jsr     (j_WaitForVInt).l
 		dbf     d7,loc_14DEC
+
 		bsr.s   loc_14D9A
 		bra.w   SetCarryBit
 
@@ -7701,6 +7732,7 @@ loc_150B6:
 		move.w  #$E,(a0)+
 		movem.w d0,-(sp)
 		dbf     d7,loc_150B6
+
 		jsr     (j_DuplicatePalettes).l
 		jsr     (j_EnableDmaQueueProcessing).l
 		jsr     (j_WaitForVInt).l
@@ -7710,11 +7742,13 @@ loc_150E0:
 		movem.w (sp)+,d0
 		move.w  d0,-(a0)
 		dbf     d7,loc_150E0
+
 		jsr     (j_DuplicatePalettes).l
 		jsr     (j_EnableDmaQueueProcessing).l
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d7
 		dbf     d7,loc_150A8
+
 		movem.l (sp)+,a0
 		move.b  #9,d2
 		bsr.w   sub_15CCA
@@ -8062,6 +8096,7 @@ loc_153F0:      jsr     (j_WaitForVInt).l
 loc_1548A:      move.w  #8,d0
 		jsr     (j_Sleep).l
 		dbf     d7,loc_1548A
+
 		clr.b   (FADING_SETTING).l
 		move.b  #4,d2
 		bsr.w   sub_15CCA
@@ -8070,6 +8105,7 @@ loc_1548A:      move.w  #8,d0
 loc_154AC:      bsr.w   sub_155B8
 		addq.w  #1,d0
 		dbf     d7,loc_154AC
+
 		moveq   #$B,d7
 loc_154B8:      movem.l d7-a1,-(sp)
 		lea     (word_FF5030).l,a0
@@ -8079,6 +8115,7 @@ loc_154B8:      movem.l d7-a1,-(sp)
 		jsr     (j_WaitForVInt).l
 		movem.l (sp)+,d7-a1
 		dbf     d7,loc_154B8
+
 		move.b  #5,d2
 		bsr.w   sub_15CCA
 		move.b  #8,(FADING_COUNTER_MAX).l
@@ -8090,6 +8127,7 @@ loc_154B8:      movem.l d7-a1,-(sp)
 loc_15512:      move.w  #8,d0
 		jsr     (j_Sleep).l
 		dbf     d7,loc_15512
+
 		move.w  #$212B,d0
 		move.w  d0,(word_FF5090).l
 		move.w  d0,(word_FF50A0).l
@@ -8175,6 +8213,7 @@ loc_1562E:
 		movem.w (sp)+,d7
 		dbf     d7,loc_1562E
 		rts
+
 loc_15640:
 		move.b  #1,(FADING_COUNTER_MAX).l
 		move.b  #$F,(FADING_PALETTE_FLAGS).l
@@ -8187,6 +8226,7 @@ loc_15668:
 		bne.s   loc_15668
 		move.b  #3,(FADING_COUNTER_MAX).l
 		rts
+
 loc_15680:
 		move.b  #1,(FADING_COUNTER_MAX).l
 		move.b  #$F,(FADING_PALETTE_FLAGS).l
@@ -8252,6 +8292,7 @@ loc_15706:
 		jsr     (j_WaitForVInt).l
 		movem.l (sp)+,d7-a1
 		dbf     d7,loc_15706
+
 		move.b  #3,d2
 		bsr.w   sub_15CCA
 		move.l  a0,d0
@@ -8398,6 +8439,7 @@ loc_15894:
 		bsr.s   loc_158B4
 		movem.l (sp)+,d7-a0
 		dbf     d7,loc_15894
+
 		addq.b  #1,1(a0)
 		bra.w   SetCarryBit
 loc_158B4:
@@ -8479,6 +8521,7 @@ loc_15964:
 		jsr     (j_WaitForVInt).l
 		movem.l (sp)+,d7-a0
 		dbf     d7,loc_15944
+
 		andi.b  #$C0,9(a0)
 		move.w  #30,d0
 		jsr     (j_Sleep).l
@@ -8516,6 +8559,7 @@ loc_159E0:
 		bsr.w   loc_15A7E
 		movem.l (sp)+,d7-a0
 		dbf     d7,loc_159E0
+
 		movem.l a0-a1,-(sp)
 		movem.l a0,-(sp)
 		ori.b   #$10,2(a0)
@@ -8525,12 +8569,14 @@ loc_159E0:
 loc_15A22:
 		bsr.w   loc_15A7E
 		dbf     d7,loc_15A22
+
 		ori.b   #$20,9(a0) 
 		bsr.w   sub_1106C
 		move.w  #$5A,d7 
 loc_15A38:
 		bsr.w   loc_15A7E
 		dbf     d7,loc_15A38
+
 		sndCom  SFX_JOGURT
 		andi.b  #$C0,9(a0)
 		bsr.w   sub_1106C
@@ -8538,6 +8584,7 @@ loc_15A38:
 loc_15A52:
 		bsr.w   loc_15A7E
 		dbf     d7,loc_15A52
+
 		movem.l (sp)+,a0
 		move.b  3(a0),d0
 		andi.w  #$F,d0
@@ -8945,6 +8992,7 @@ loc_15D1A:
 loc_15D22:
 		bsr.s   sub_15D5C
 		dbf     d7,loc_15D22
+
 		subq.w  #1,d6
 		dbf     d5,loc_15D1A
 
@@ -9012,6 +9060,7 @@ loc_15DA4:
 loc_15DAC:
 		bsr.s   sub_15DBC
 		dbf     d7,loc_15DAC
+
 		subq.w  #1,d6
 		dbf     d5,loc_15DA4
 		bra.w   sub_15D5C
@@ -9056,9 +9105,11 @@ loc_15E0C:
 		jsr     (j_WaitForVInt).l
 		movem.w (sp)+,d0
 		dbf     d0,loc_15E0C
+
 		movem.w (sp)+,d0-d6
 		addq.w  #1,d0
 		dbf     d6,loc_15E02
+
 		movem.l (sp)+,d0-a6
 		rts
 
@@ -9083,10 +9134,12 @@ loc_15E44:
 		addq.w  #1,d0
 		addq.w  #1,d2
 		dbf     d4,loc_15E44
+
 		movem.w (sp)+,d0/d2/d4-d5
 		addq.w  #1,d1
 		addq.w  #1,d3
 		dbf     d5,loc_15E40
+
 		movem.l (sp)+,d4-d5/a0-a1
 		rts
 
@@ -9225,6 +9278,7 @@ loc_15FAE:
 		adda.w  #$10,a0
 		addi.w  #$10,d2
 		dbf     d7,loc_15F66
+
 loc_15FBE:
 		tst.b   d0
 		rts
@@ -10006,6 +10060,7 @@ loc_165CC:
 loc_165EC:
 		addi.w  #$10,d3
 		dbf     d7,loc_165CC
+
 loc_165F4:
 		movem.w (sp)+,d7
 		tst.b   d0
@@ -10482,365 +10537,7 @@ DisplayPortraitInMenu:
 
     ; End of function DisplayPortraitInMenu
 
-
-; =============== S U B R O U T I N E =======================================
-
-; In: D0 = current shop index
-;     D1 = 
-;     D2 = 
-
-ExecuteShopMenu:
-		
-		        module
-		movem.l d3-a5,-(sp)
-		link    a6,#-64
-		move.b  d0,((CURRENT_SHOP-$1000000)).w
-		move.w  d1,-6(a6)
-		move.w  d2,-$1A(a6)
-		move.b  d2,-$1B(a6)
-		bsr.w   LoadShopInventory
-		clr.w   -2(a6)
-		tst.w   -6(a6)
-		bne.s   loc_1692C
-		move.w  #$16B,d0        ; "Welcome! Do come in! We've[Line]got the best, you know. Take[Line]your time, take your time![Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_1692C:
-		jsr     (j_CloseMessageWindow).l
-		clr.w   -6(a6)
-		bsr.w   sub_16EA6
-		beq.w   loc_16D8C       
-		dbf     d0,@Deals
-		clr.w   -$12(a6)        ; Buy
-loc_16946:
-		bsr.w   OpenGoldWindowInMenu
-		bsr.w   LoadShopInventory
-		bne.s   loc_1695C
-		move.w  #$178,d0        ; "Sorry, no deals today.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_16D6C
-loc_1695C:
-		tst.w   -$12(a6)
-		beq.s   loc_1696C       
-		move.w  #$179,d0        ; "I have some great stuff here.[Line]See anything you like?"
-		bsr.w   DisplayMenuMessage
-		bra.s   loc_16974       
-loc_1696C:
-		move.w  #$16F,d0        ; "What would you like?"
-		bsr.w   DisplayMenuMessage
-loc_16974:
-		bsr.w   sub_16E66       ; display shop inventory window
-		beq.w   loc_16D6C       ; branch if no item selected (i.e., canceling out of menu)
-		move.w  d0,d1           ; D1 = selected item index
-		move.w  d0,-$A(a6)
-		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		jsr     j_GetItemPrice
-		move.w  d2,-4(a6)
-		ext.l   d2
-		move.l  d2,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$170,d0        ; "[Item], right?[Line]That comes to [Num] coins.[Line]OK?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu; display yes/no choice box
-		bne.w   loc_169C4       ; branch if yes selected
-loc_169A6:
-		move.w  #$171,d0        ; "Rats! We almost had a deal.[Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_169AE:
-		bsr.w   CloseGoldWindowInMenu
-		move.w  #$177,d0        ; "Want anything else?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.s   loc_16946
-		bra.w   loc_16D6C
-loc_169C4:
-		moveq   #0,d0
-		move.w  -4(a6),d0       ; D0 = item price
-		bsr.w   CheckGold       
-		bne.s   loc_169DA       ; branch if enough gold
-		move.w  #$172,d0        ; "You don't have enough money[Line]to buy that. Sorry.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.s   loc_169AE
-loc_169DA:
-		move.w  #$173,d0        ; "Who do you wish to have it?"
-		bsr.w   DisplayMenuMessage
-		move.w  #VDPTILE_EQ_SYMBOL|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,((MEMBERS_LIST_SYMBOL-$1000000)).w
-						; load "Eq" VDP tile entry
-		jsr     j_PopulateForceMembersList
-		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a5
-		clr.w   d3
-loc_169F4:
-		move.w  -$A(a6),d2      ; D2 = selected item index
-		move.w  #ITEMTYPE_MASK_WEAPON_OR_RING,d1
-		move.b  (a5,d3.w),d0
-		andi.b  #FORCEMEMBERENTRY_MASK_INDEX,d0
-		jsr     j_IsItemEquippable
-		bcc.s   loc_16A10       ; branch if item can be equipped
-		bra.w   loc_16A16
-loc_16A10:
-		bset    #6,(a5,d3.w)
-loc_16A16:
-		addq.w  #1,d3
-		cmp.w   ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w,d3
-		bcs.s   loc_169F4       
-		bsr.w   sub_16E30
-		beq.s   loc_169A6       
-		move.w  d0,-8(a6)
-		move.w  #ITEMTYPE_MASK_WEAPON_OR_RING,d1
-		move.w  -$A(a6),d2
-		jsr     j_IsItemEquippable
-		bcc.w   loc_16A54
-		beq.w   loc_16A54
-		move.w  -8(a6),((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.w  #$174,d0        ; "[Name] can't use this. Do you[Line]still want it?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		beq.w   loc_169C4
-loc_16A54:
-		move.w  -8(a6),d0
-		move.w  -$A(a6),d1
-		jsr     j_GiveItem
-		bcc.w   loc_16A80
-		move.w  -8(a6),((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.w  #$175,d0        ; "[Name]'s hands are full. How[Line]about someone else?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_169C4
-		bra.w   loc_169AE
-loc_16A80:
-		jsr     j_DecrementDealsStock
-		moveq   #0,d1
-		move.w  -4(a6),d1
-		jsr     j_DecreaseGold
-		bsr.w   OpenGoldWindowInMenu
-		move.w  #$176,d0        ; "Here you go! Use it in good[Line]health, my friend.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_169AE
-@Deals:
-		dbf     d0,@Sell
-		st      -$12(a6)
-		bra.w   loc_16946
-@Repair:
-		move.w  #$184,d0        ; "Repair whose item?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   sub_16E48
-		beq.w   loc_16D6C
-		move.w  d0,-8(a6)
-		move.w  d1,-$C(a6)
-		jsr     j_GetEntityItemsAddress
-		move.l  a0,-$10(a6)
-		move.w  #ITEMENTRY_MASK_INDEX,d0
-		move.w  -$C(a6),d1
-		and.b   (a0,d1.w),d0
-		move.w  d0,-$A(a6)
-		move.w  d0,d1
-		jsr     j_GetItemPrice
-		lsr.w   #2,d2
-		move.w  d2,-4(a6)
-		move.w  -$C(a6),d1
-		btst    #6,(a0,d1.w)
-		bne.s   loc_16B18
-		move.w  #$186,d0        ; "Who are you trying to fool?[Line]That item's not damaged.[Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_16B02:
-		move.w  #$18B,d0        ; "Anything else?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		beq.w   loc_16D6C
-		bsr.w   CloseGoldWindowInMenu
-		bra.s   @Repair         
-loc_16B18:
-		move.w  -4(a6),d2
-		ext.l   d2
-		move.l  d2,((MESSAGE_ARG_NUMBER-$1000000)).w
-		bsr.w   OpenGoldWindowInMenu
-		move.w  #$185,d0        ; "That'll cost [Num] coins. OK?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_16B38
-		bra.s   loc_16B02       
-loc_16B38:
-		moveq   #0,d0
-		move.w  -4(a6),d0
-		bsr.w   CheckGold       
-		bne.s   loc_16B4E
-		move.w  #$187,d0        ; "I'd like to repair it, but[Line]you seem to be a bit low on[Line]money. Sorry.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.s   loc_16B02       
-loc_16B4E:
-		move.w  -$A(a6),d1
-		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_CURSED,d2
-		beq.s   loc_16B78       
-		movea.l -$10(a6),a0
-		move.w  -$C(a6),d0
-		btst    #ITEMENTRY_BIT_EQUIPPED,(a0,d0.w)
-		beq.s   loc_16B78       
-		move.w  #$188,d0        ; "Whoa! I don't repair cursed[Line]items! Nope, not me. I'm[Line]nobody's fool![Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.s   loc_16B02       
-loc_16B78:
-		move.w  #$189,d0        ; "OK. Just a minute.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		sndCom  SFX_SWORDS_HIT
-		moveq   #$14,d0
-		jsr     (j_Sleep).l
-		sndCom  SFX_SWORDS_HIT
-		moveq   #$14,d0
-		jsr     (j_Sleep).l
-		sndCom  SFX_BOW_MASTER
-		moveq   #$A,d0
-		jsr     (j_Sleep).l
-		sndCom  SFX_BOW_MASTER
-		moveq   #$A,d0
-		jsr     (j_Sleep).l
-		sndCom  SFX_BOW_MASTER
-		moveq   #$A,d0
-		jsr     (j_Sleep).l
-		sndCom  SFX_BOW_MASTER
-		moveq   #30,d0
-		jsr     (j_Sleep).l
-		sndCom  SFX_SWORDS_HIT
-		moveq   #$14,d0
-		jsr     (j_Sleep).l
-		sndCom  SFX_SWORDS_HIT
-		moveq   #$14,d0
-		jsr     (j_Sleep).l
-		move.w  #$18A,d0        ; "I have it right here. It's as[Line]good as new! Try not to[Line]damage it again, OK?[Wait2]"
-		bsr.w   DisplayMenuMessage
-		moveq   #0,d1
-		move.w  -4(a6),d1
-		jsr     j_DecreaseGold
-		bsr.w   OpenGoldWindowInMenu
-		movea.l -$10(a6),a0
-		move.w  -$C(a6),d0
-		bclr    #6,(a0,d0.w)
-		bra.w   loc_16B02       
-@Sell:
-		dbf     d0,@Repair      
-loc_16C0E:
-		move.w  #$17A,d0        ; "Let's see. Who wants to sell,[Line]and which item?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   sub_16E48
-		beq.w   loc_16D6C
-                
-		move.w  d0,-8(a6)
-		move.w  d1,-$C(a6)
-		jsr     j_GetEntityItemsAddress
-		move.l  a0,-$10(a6)
-		move.w  #ITEMENTRY_MASK_INDEX,d0
-		move.w  -$C(a6),d1
-		and.b   (a0,d1.w),d0
-		move.w  d0,-$A(a6)
-		move.w  d0,d1
-		cmpi.w  #ORB_OF_LIGHT,d0
-		beq.w   loc_16D60       
-		cmpi.w  #MOON_STONE,d0
-		beq.w   loc_16D60       
-		cmpi.w  #LUNAR_DEW,d0
-		beq.w   loc_16D60       
-		cmpi.w  #SWORD_OF_LIGHT,d0
-		beq.w   loc_16D60       
-		cmpi.w  #SWORD_OF_DARKNESS,d0
-		beq.w   loc_16D60       
-		cmpi.w  #CHAOS_BREAKER,d0
-		beq.w   loc_16D60       
-		jsr     j_GetItemPrice
-		move.l  d2,d0
-		add.l   d2,d2
-		add.l   d0,d2
-		lsr.l   #2,d2
-		move.w  d2,-4(a6)
-		move.l  d2,((MESSAGE_ARG_NUMBER-$1000000)).w
-		bsr.w   IsSellingRareItem
-		bne.s   loc_16C98       
-		move.w  #$17B,d0        ; "I'll give you [Num] coins[Line]for it. OK?"
-		bsr.w   DisplayMenuMessage
-		bra.s   loc_16CA0
-loc_16C98:
-		move.w  #$17C,d0        ; "Say, that's nice! How about[Line][Num] coins for it?"
-		bsr.w   DisplayMenuMessage
-loc_16CA0:
-		bsr.w   OpenGoldWindowInMenu
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   @IsCursed
-		move.w  #$17D,d0        ; "Sorry we couldn't cut a deal.[Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_16CB4:
-		bsr.w   CloseGoldWindowInMenu
-		move.w  #$182,d0        ; "Anything else to sell?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		beq.w   loc_16D6C
-		bra.w   loc_16C0E       
-@IsCursed:
-		move.w  -$A(a6),d1
-		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_CURSED,d2
-		beq.s   loc_16CF6
-		movea.l -$10(a6),a0
-		move.w  -$C(a6),d0
-		btst    #ITEMENTRY_BIT_EQUIPPED,(a0,d0.w)
-		beq.s   loc_16CF6
-		move.w  #$183,d0        ; "Hey, wait a minute. I don't[Line]deal with cursed items! It's[Line]bad luck, you know.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.s   loc_16CB4
-loc_16CF6:
-		move.w  -8(a6),d0
-		move.w  -$C(a6),d1
-		jsr     j_RemoveItem
-		move.w  -$A(a6),d1
-		jsr     j_IncrementDealsStock
-		moveq   #0,d1
-		move.w  -4(a6),d1
-		jsr     j_IncreaseGold
-		bsr.w   OpenGoldWindowInMenu
-		move.w  -$A(a6),d1
-		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_WEAPON,d2
-		bne.s   loc_16D42
-		tst.w   -$14(a6)
-		bne.s   loc_16D40
-		move.w  #$181,d0        ; "Thanks, I don't sell this[Line]type of item, but I know[Line]someone who does.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_16CB4
-loc_16D40:
-		bra.s   loc_16D54       
-loc_16D42:
-		tst.w   -$14(a6)
-		beq.s   loc_16D54       
-		move.w  #$180,d0        ; "Thanks, I don't sell this[Line]type of item, but I know[Line]someone who does.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_16CB4
-loc_16D54:
-		move.w  #$17F,d0        ; "It's mine, all mine![Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_16CB4
-loc_16D60:
-		move.w  #$17E,d0        ; "I'd like to help, but we[Line]don't deal with these.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_16CB4
-loc_16D6C:
-		bsr.w   CloseGoldWindowInMenu
-		move.w  #$16C,d0        ; "Anything else?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		beq.w   loc_16D8C       
-		move.w  #$16D,d0        ; "What do you need, then?[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_1692C
-loc_16D8C:
-		move.w  #$16E,d0        ; "Thank you. Do come again![Wait2]"
-		bsr.w   DisplayMenuMessage
-		jsr     (j_CloseMessageWindow).l
-		clr.w   -6(a6)
-		move.w  -6(a6),d1
-		move.b  -$19(a6),d2
-		unlk    a6
-		movem.l (sp)+,d3-a5
-		rts
-        modend
-
-    ; End of function ExecuteShopMenu
-
+        include "code\common\shopactions.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10963,7 +10660,7 @@ DisplayYesNoPromptInMenu:
 		
 		movem.l d0-a6,-(sp)
 		jsr     (j_YesNoChoiceBox).l
-		cmpi.w  #$FFFF,d0
+		cmpi.w  #-1,d0
 		movem.l (sp)+,d0-a6
 		rts
 
@@ -10972,14 +10669,14 @@ DisplayYesNoPromptInMenu:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_16E92:
+CheckYesNoPrompt:
 		movem.l d0-a6,-(sp)
 		jsr     (j_YesNoPrompt).l
-		cmpi.w  #$FFFF,d0
+		cmpi.w  #-1,d0
 		movem.l (sp)+,d0-a6
 		rts
 
-    ; End of function sub_16E92
+    ; End of function CheckYesNoPrompt
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -10998,11 +10695,11 @@ sub_16EAE:
 loc_16EB4:
 		movem.l d1-a6,-(sp)
 		jsr     sub_8048
-		cmpi.w  #$FFFF,d0
+		cmpi.w  #-1,d0
 		beq.s   loc_16ECE
 		clr.w   d0
 		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d0
-		cmpi.w  #$FFFF,d0
+		cmpi.w  #-1,d0
 loc_16ECE:
 		movem.l (sp)+,d1-a6
 		rts
@@ -11012,13 +10709,13 @@ loc_16ECE:
 
 ; =============== S U B R O U T I N E =======================================
 
-IsSellingRareItem:
+IsSellingDealsItem:
 		
 		movem.l d0-a6,-(sp)
 		move.w  -$A(a6),d1
 		jsr     j_GetItemType
 		btst    #ITEMTYPE_BIT_RARE,d2
-		beq.s   loc_16F12
+		beq.s   @Done  ; is not rare item
 		clr.w   d0
 		move.b  ((CURRENT_SHOP-$1000000)).w,d0
 		add.w   d0,d0
@@ -11029,20 +10726,21 @@ IsSellingRareItem:
 		move.b  (a0)+,d0
 		move.w  d0,-$14(a6)
 		move.w  -$A(a6),d0
-loc_16F06:
+@CheckInventory_Loop:
 		move.b  (a0)+,d1
 		cmpi.b  #$FF,d1
-		beq.s   loc_16F18
+		beq.s   @NotInInventory
 		cmp.b   d1,d0
-		bne.s   loc_16F06
-loc_16F12:
+		bne.s   @CheckInventory_Loop
+@Done:
 		movem.l (sp)+,d0-a6
 		rts
-loc_16F18:
-		subq.b  #1,d1
-		bra.s   loc_16F12
 
-    ; End of function IsSellingRareItem
+@NotInInventory:
+		subq.b  #1,d1
+		bra.s   @Done
+
+    ; End of function IsSellingDealsItem
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11079,634 +10777,15 @@ loc_16F56:
 
     ; End of function LoadShopInventory
 
-rpt_ShopInventories:
-		dc.w ShopInventory00-ShopInventory00
-		dc.w ShopInventory01-ShopInventory00
-		dc.w ShopInventory02-ShopInventory00
-		dc.w ShopInventory03-ShopInventory00
-		dc.w ShopInventory04-ShopInventory00
-		dc.w ShopInventory05-ShopInventory00
-		dc.w ShopInventory06-ShopInventory00
-		dc.w ShopInventory07-ShopInventory00
-		dc.w ShopInventory08-ShopInventory00
-		dc.w ShopInventory09-ShopInventory00
-		dc.w ShopInventory10-ShopInventory00
-		dc.w ShopInventory11-ShopInventory00
-		dc.w ShopInventory12-ShopInventory00
-		dc.w ShopInventory13-ShopInventory00
-		dc.w ShopInventory14-ShopInventory00
-		dc.w ShopInventory15-ShopInventory00
-		dc.w ShopInventory16-ShopInventory00
-		dc.w ShopInventory17-ShopInventory00
-		dc.w ShopInventory18-ShopInventory00
-		dc.w ShopInventory19-ShopInventory00
-		dc.w ShopInventory20-ShopInventory00
-		dc.w ShopInventory21-ShopInventory00
-		dc.w ShopInventory22-ShopInventory00
-		dc.w ShopInventory23-ShopInventory00
-                
-ShopInventory00:dc.b SHOPTYPE_WEAPONS
-		dc.b SHORT_SWORD
-		dc.b SPEAR
-		dc.b HAND_AXE
-		dc.b WOODEN_STAFF
-		dc.b WOODEN_ARROW
-		dc.b $FF
-                
-ShopInventory01:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory02:dc.b SHOPTYPE_WEAPONS
-		dc.b SHORT_SWORD
-		dc.b SPEAR
-		dc.b HAND_AXE
-		dc.b WOODEN_STAFF
-		dc.b WOODEN_ARROW
-		dc.b $FF
-                
-ShopInventory03:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory04:dc.b SHOPTYPE_WEAPONS
-		dc.b MIDDLE_SWORD
-		dc.b SPEAR
-		dc.b BRONZE_LANCE
-		dc.b POWER_STAFF
-		dc.b WOODEN_STAFF
-		dc.b WOODEN_ARROW
-		dc.b $FF
-                
-ShopInventory05:dc.b HEALING_SEED
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory06:dc.b SHOPTYPE_WEAPONS
-		dc.b $FF
-                
-ShopInventory07:dc.b SHOPTYPE_ITEMS
-		dc.b $FF
-                
-ShopInventory08:dc.b SHOPTYPE_WEAPONS
-		dc.b MIDDLE_SWORD
-		dc.b POWER_SPEAR
-		dc.b BRONZE_LANCE
-		dc.b MIDDLE_AXE
-		dc.b POWER_STAFF
-		dc.b STEEL_ARROW
-		dc.b $FF
-                
-ShopInventory09:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory10:dc.b SHOPTYPE_WEAPONS
-		dc.b LONG_SWORD
-		dc.b POWER_SPEAR
-		dc.b BRONZE_LANCE
-		dc.b MIDDLE_AXE
-		dc.b POWER_STAFF
-		dc.b STEEL_ARROW
-		dc.b $FF
-                
-ShopInventory11:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory12:dc.b SHOPTYPE_WEAPONS
-		dc.b LONG_SWORD
-		dc.b POWER_SPEAR
-		dc.b BRONZE_LANCE
-		dc.b BATTLE_AXE
-		dc.b POWER_STAFF
-		dc.b STEEL_ARROW
-		dc.b $FF
-                
-ShopInventory13:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory14:dc.b SHOPTYPE_WEAPONS
-		dc.b STEEL_SWORD
-		dc.b POWER_SPEAR
-		dc.b STEEL_LANCE
-		dc.b BATTLE_AXE
-		dc.b POWER_STAFF
-		dc.b ELVEN_ARROW
-		dc.b $FF
-                
-ShopInventory15:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory16:dc.b SHOPTYPE_WEAPONS
-		dc.b STEEL_SWORD
-		dc.b CHROME_LANCE
-		dc.b BATTLE_AXE
-		dc.b GUARDIAN_STAFF
-		dc.b ELVEN_ARROW
-		dc.b $FF
-                
-ShopInventory17:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory18:dc.b SHOPTYPE_WEAPONS
-		dc.b STEEL_SWORD
-		dc.b CHROME_LANCE
-		dc.b BATTLE_AXE
-		dc.b GUARDIAN_STAFF
-		dc.b ASSAULT_SHELL
-		dc.b $FF
-                
-ShopInventory19:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory20:dc.b SHOPTYPE_WEAPONS
-		dc.b BROAD_SWORD
-		dc.b CHROME_LANCE
-		dc.b GREAT_AXE
-		dc.b HOLY_STAFF
-		dc.b ASSAULT_SHELL
-		dc.b $FF
-                
-ShopInventory21:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-                
-ShopInventory22:dc.b SHOPTYPE_WEAPONS
-		dc.b BROAD_SWORD
-		dc.b CHROME_LANCE
-		dc.b GREAT_AXE
-		dc.b HOLY_STAFF
-		dc.b BUSTER_SHOT
-		dc.b $FF
-                
-ShopInventory23:dc.b SHOPTYPE_ITEMS
-		dc.b MEDICAL_HERB
-		dc.b HEALING_SEED
-		dc.b ANTIDOTE
-		dc.b ANGEL_WING
-		dc.b $FF
-
-; =============== S U B R O U T I N E =======================================
-
-; In: D1 =
-;     D2 = 
-
-ExecuteChurchMenu:
-		
-		                module
-		movem.l d3-a5,-(sp)
-		link    a6,#-64
-		move.w  d1,-6(a6)
-		move.w  d2,-$1A(a6)
-		move.b  d2,-$1B(a6)
-		clr.w   -2(a6)
-		tst.w   -6(a6)
-		bne.s   @Start
-		move.w  #$18C,d0        ; "Welcome, [Hero]![Line]I've been expecting you.[Wait2][Line]How can I help you[Line]and the Shining Force?[Wait2]"
-		bsr.w   DisplayMenuMessage
-@Start:
-		jsr     (j_CloseMessageWindow).l
-		clr.w   -6(a6)
-		bsr.w   sub_16EAE
-		beq.w   @Exit           
-		dbf     d0,@IsCureAction
-                
-		                ; Save action
-		jsr     j_PopulateForceMembersList
-		move.w  #$190,d0        ; "Shall I make a record of your[Line]adventures thus far?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   sub_16E92
-		bne.w   loc_17086
-		move.w  #$18D,d0        ; "Remember that I'm always[Line]willing to record your deeds.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_175A8
-loc_17086:
-		movem.l d0-a6,-(sp)
-		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
-		jsr     (j_SaveGame).l
-		move.w  #$27,d0 
-		jsr     (j_ClearEventFlag).l
-		movem.l (sp)+,d0-a6
-		sndCom  MUSIC_SAVE
-		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
-		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$191,d0        ; "There, my record of your[Line]exploits is complete.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		move.w  #$192,d0        ; "Will you continue your[Line]journey?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   sub_16E92
-		bne.w   loc_175A8
-		move.w  #$193,d0        ; "Yes, you should rest before[Line]continuing. Remember, a tired[Line]warrior is soon a dead one![Wait2]"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayPortraitInMenu
-		sndCom  SOUND_COMMAND_FADE_OUT
-		jsr     (j_FadeOutToBlack).l
-		jmp     (sub_370).l
-@IsCureAction:
-		
-		dbf     d0,@IsReviveAction
-                
-		                ; Cure action
-		jsr     j_PopulateForceMembersList
-		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a5
-		move.w  #$194,d0        ; "Well, let's just see who[Line]needs my help.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		clr.w   -8(a6)
-		clr.b   -$16(a6)
-loc_17104:
-		move.w  -8(a6),d0
-		move.b  (a5,d0.w),d1
-		andi.b  #FORCEMEMBERENTRY_MASK_INDEX,d1
-		move.b  d1,-$1C(a6)
-		                
-		move.b  -$1C(a6),d0
-		jsr     j_GetStatusEffects
-		btst    #STATUSEFFECT_BIT_POISON,d1
-		beq.w   loc_171B4
-		st      -$16(a6)
-		clr.w   ((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.b  -$1C(a6),((MESSAGE_ARG_NAME_1+1-$1000000)).w
-		move.w  #$197,d0        ; "Oh, my![Line][Name] is poisoned![Wait2]"
-		bsr.w   DisplayMenuMessage
-		moveq   #CHURCH_CURE_POISON_COST,d0
-		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$199,d0        ; "I can heal [Name],[Line]but it'll cost [Num] coins.[Line]Agreed?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   OpenGoldWindowInMenu
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_17162
-		move.w  #$18D,d0        ; "Remember that I'm always[Line]willing to record your deeds.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_171B4
-loc_17162:
-		moveq   #CHURCH_CURE_POISON_COST,d0
-		bsr.w   CheckGold       
-		bne.w   loc_17178
-		move.w  #$19A,d0        ; "Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_171B4
-loc_17178:
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		jsr     j_GetStatusEffects
-		bclr    #STATUSEFFECT_BIT_POISON,d1
-		jsr     j_SetStatusEffects
-		moveq   #CHURCH_CURE_POISON_COST,d1
-		jsr     j_DecreaseGold
-		bsr.w   OpenGoldWindowInMenu
-		sndCom  MUSIC_REVIVE
-		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
-		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$19B,d0        ; "Done. [Name] is cured![Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_171B4:
-		move.w  -8(a6),d0
-		addq.w  #1,d0
-		move.w  d0,-8(a6)
-		cmp.w   ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w,d0
-		bcs.w   loc_17104
-		tst.b   -$16(a6)
-		bne.s   loc_171D4
-		move.w  #$195,d0        ; "Hmmm...no one's poisoned.[Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_171D4:
-		clr.w   -8(a6)
-		clr.b   -$15(a6)
-loc_171DC:
-		move.w  -8(a6),d0
-		move.b  (a5,d0.w),d1
-		andi.b  #FORCEMEMBERENTRY_MASK_INDEX,d1
-		move.b  d1,-$1C(a6)
-		                
-		move.b  d1,d0
-		jsr     j_GetStatusEffects
-		btst    #STATUSEFFECT_BIT_CURSE,d1
-		beq.w   loc_172DC
-		st      -$15(a6)
-		clr.w   ((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.b  -$1C(a6),((MESSAGE_ARG_NAME_1+1-$1000000)).w
-		move.w  #$198,d0        ; "Oh, my![Line][Name] is cursed![Wait2]"
-		bsr.w   DisplayMenuMessage
-		moveq   #CHURCH_CURE_CURSE_COST,d0
-		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$199,d0        ; "I can heal [Name],[Line]but it'll cost [Num] coins.[Line]Agreed?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   OpenGoldWindowInMenu
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_17238
-		move.w  #$18D,d0        ; "Remember that I'm always[Line]willing to record your deeds.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_172DC
-loc_17238:
-		moveq   #CHURCH_CURE_CURSE_COST,d0
-		bsr.w   CheckGold       
-		bne.w   loc_1724E
-		move.w  #$19A,d0        ; "Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_172DC
-loc_1724E:
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		jsr     j_GetStatusEffects
-		bclr    #STATUSEFFECT_BIT_CURSE,d1
-		jsr     j_SetStatusEffects
-		move.w  #ITEMTYPE_MASK_WEAPON,d1
-		jsr     j_GetEquippedItem
-		bcs.s   loc_1728E
-		move.w  d2,d1
-		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_CURSED,d2
-		beq.s   loc_1728E
-		jsr     j_GetEntityItemsAddress
-		bclr    #ITEMENTRY_BIT_EQUIPPED,(a0,d3.w)
-loc_1728E:
-		move.w  #ITEMTYPE_MASK_RING,d1
-		jsr     j_GetEquippedItem
-		bcs.s   loc_172B4
-		move.w  d2,d1
-		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_CURSED,d2
-		beq.s   loc_172B4
-		jsr     j_GetEntityItemsAddress
-		bclr    #ITEMENTRY_BIT_EQUIPPED,(a0,d3.w)
-loc_172B4:
-		jsr     j_ResetCombatants
-		moveq   #CHURCH_CURE_CURSE_COST,d1
-		jsr     j_DecreaseGold
-		bsr.w   OpenGoldWindowInMenu
-		sndCom  MUSIC_REVIVE
-		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
-		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$19C,d0        ; "Done. [Name] is cured![Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_172DC:
-		move.w  -8(a6),d0
-		addq.w  #1,d0
-		move.w  d0,-8(a6)
-		cmp.w   ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w,d0
-		bcs.w   loc_171DC
-		tst.b   -$15(a6)
-		bne.s   loc_172FC
-		move.w  #$196,d0        ; "No one's cursed![Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_172FC:
-		bra.w   loc_175A8
-@IsReviveAction:
-		
-		dbf     d0,@IsPromoteAction
-                
-		                ; Revive action
-		jsr     j_PopulateForceMembersList
-		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a5
-		move.w  #$194,d0        ; "Well, let's just see who[Line]needs my help.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		clr.w   -8(a6)
-		clr.b   -$17(a6)
-loc_1731E:
-		move.w  -8(a6),d0
-		move.b  (a5,d0.w),d0
-		move.b  d0,-$1C(a6)
-		jsr     j_GetCurrentHP
-		tst.w   d1
-		bne.w   loc_173EC
-		st      -$17(a6)
-		clr.w   ((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.b  -$1C(a6),((MESSAGE_ARG_NAME_1+1-$1000000)).w
-		move.w  #$19E,d0        ; "Oh, my! [Name] is in bad[Line]shape. I'll see if I can help.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		lea     ((PROMOTED_AT_LEVELS-$1000000)).w,a0
-		moveq   #0,d7
-		tst.b   (a0,d0.w)
-		beq.w   loc_17362
-		moveq   #CHURCH_BASE_PROMOTION_LEVEL,d7
-loc_17362:
-		jsr     j_GetLevel
-		add.w   d7,d1
-		mulu.w  #CHURCH_RAISE_COST_PER_LEVEL,d1
-		move.w  d1,-4(a6)
-		move.l  d1,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$19F,d0        ; "I can revive [Name], but it[Line]will cost [Num] coins.[Line]Agreed?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   OpenGoldWindowInMenu
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_17396
-		move.w  #$18D,d0        ; "Remember that I'm always[Line]willing to record your deeds.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_173EC
-loc_17396:
-		moveq   #0,d0
-		move.w  -4(a6),d0
-		bsr.w   CheckGold       
-		bne.w   loc_173B0
-		move.w  #$19A,d0        ; "Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_173EC
-loc_173B0:
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		jsr     j_GetMaxHP
-		jsr     j_SetCurrentHP
-		moveq   #0,d1
-		move.w  -4(a6),d1
-		jsr     j_DecreaseGold
-		bsr.w   OpenGoldWindowInMenu
-		sndCom  MUSIC_REVIVE
-		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
-		jsr     (j_PlayMusicAfterCurrentOne).l
-		move.w  #$1A0,d0        ; "[Name] has revived![Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_173EC:
-		move.w  -8(a6),d0
-		addq.w  #1,d0
-		move.w  d0,-8(a6)
-		cmp.w   ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w,d0
-		bcs.w   loc_1731E
-		tst.b   -$17(a6)
-		bne.s   loc_1740C
-		move.w  #$19D,d0        ; "Hmm...everyone seems OK.[Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_1740C:
-		bra.w   loc_175A8
-@IsPromoteAction:
-		
-		                ; Promote action
-		jsr     j_PopulateForceMembersList
-		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a5
-		clr.w   -8(a6)
-		clr.b   -$18(a6)
-loc_17422:
-		move.w  -8(a6),d0
-		move.b  (a5,d0.w),d0
-		sf      -$40(a6,d0.w)
-		move.b  d0,-$1C(a6)
-		cmpi.b  #JOGURT,d0
-		beq.s   loc_17456
-		jsr     j_GetLevel
-		cmpi.w  #CHURCH_BASE_PROMOTION_LEVEL,d1
-		blt.s   loc_17470
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		jsr     j_GetClass
-		cmpi.w  #BASE_CLASSES_END,d1
-		bgt.s   loc_17470
-loc_17456:
-		andi.w  #$FF,d0
-		st      -$40(a6,d0.w)
-		st      -$18(a6)
-		lea     ((FORCE_MEMBERS_LIST-$1000000)).w,a0
-		move.w  -8(a6),d0
-		bset    #6,(a0,d0.w)
-loc_17470:
-		addq.w  #1,-8(a6)
-		move.w  -8(a6),d0
-		cmp.w   ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w,d0
-		bcs.s   loc_17422
-		tst.b   -$18(a6)
-		bne.s   loc_17490       
-		move.w  #$1A1,d0        ; "I'm sorry, but no one has[Line]earned a promotion.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_175A8
-loc_17490:
-		move.w  #$1A2,d0        ; "Does anyone want to be[Line]promoted?"
-		bsr.w   DisplayMenuMessage
-		move.w  #VDPTILE_CL_SYMBOL|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT,((MEMBERS_LIST_SYMBOL-$1000000)).w
-		bsr.w   DisplayPortraitInMenu
-		movem.l d1-a6,-(sp)
-		jsr     j_CreateMembersListScreen
-		cmpi.w  #$FFFF,d0
-		movem.l (sp)+,d1-a6
-		bne.s   loc_174C2
-		move.w  #$1A3,d0        ; "Changed your mind?[Line]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_175A8
-loc_174C2:
-		andi.b  #FORCEMEMBERENTRY_MASK_INDEX,d0
-		move.b  d0,-$1C(a6)
-		jsr     j_GetCurrentHP
-		tst.w   d1
-		bne.s   loc_174E4
-		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.w  #$1A5,d0        ; "[Name] needs to be revived[Line]before being promoted.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_175A8
-loc_174E4:
-		tst.b   -$40(a6,d0.w)
-		bne.s   loc_1751C
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		jsr     j_GetClass
-		cmpi.w  #BASE_CLASSES_END,d1
-		ble.s   loc_17510       
-		move.w  d1,((MESSAGE_ARG_NAME_2-$1000000)).w
-		move.w  #$1A9,d0        ; "Hmm...[Line]I think [Name] should[Line]stay as [Class].[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_175A8
-loc_17510:
-		move.w  #$1A4,d0        ; "Hmm...[Name] needs some more[Line]training. Come back[Line]later.[Wait2]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_175A8
-loc_1751C:
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.w  #$1A6,d0        ; "[Name] wants[Line]a promotion?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_17542
-		move.w  #$1A3,d0        ; "Changed your mind?[Line]"
-		bsr.w   DisplayMenuMessage
-		bra.w   loc_175A8
-loc_17542:
-		clr.w   d0
-		move.b  -$1C(a6),d0
-		move.w  d0,((MESSAGE_ARG_NAME_2-$1000000)).w
-		jsr     j_GetClass
-		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #JOGURT,d0
-		beq.s   loc_17562
-		jsr     j_Promote
-loc_17562:
-		jsr     j_GetClass
-		move.w  d1,((MESSAGE_ARG_NAME_3-$1000000)).w
-		move.w  #$1A7,d0        ; "I hereby make a promotion.[Line]Now, [Class] [Name] shall[Line]be known as a [Class]![Wait2]"
-		bsr.w   DisplayMenuMessage
-		sndCom  MUSIC_PROMOTION
-		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0
-		jsr     (j_PlayMusicAfterCurrentOne).l
-		movem.l d0-a6,-(sp)
-		jsr     loc_11D22       ; Update Max's map sprite after promoting
-		movem.l (sp)+,d0-a6
-		clr.w   ((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.b  -$1C(a6),((MESSAGE_ARG_NAME_1+1-$1000000)).w
-		move.w  ((MESSAGE_ARG_NAME_3-$1000000)).w,((MESSAGE_ARG_NAME_2-$1000000)).w
-		move.w  #$1A8,d0        ; "Congratulations, [Name]![Wait2]"
-		bsr.w   DisplayMenuMessage
-loc_175A8:
-		bsr.w   CloseGoldWindowInMenu
-		move.w  #$18E,d0        ; "Can I help in some other way?"
-		bsr.w   DisplayMenuMessage
-		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   @Start
-@Exit:
-		move.w  #$18F,d0        ; "May the Powers of Light be[Line]always with you, [Hero]![Wait2]"
-		bsr.w   DisplayMenuMessage
-		jsr     (j_CloseMessageWindow).l
-		clr.w   -6(a6)
-		move.w  -6(a6),d1
-		move.b  -$19(a6),d2
-		unlk    a6
-		movem.l (sp)+,d3-a5
-		rts
-                modend
-
-    ; End of function ExecuteChurchMenu
-
+        include "data/stats/items/shopdata.asm"
+        include "code/common/churchactions.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
 sub_175DE:
 		move.l  d0,-(sp)
 		move.l  #MAP_DATA,(dword_FFF006).l
-		moveq   #$FFFFFFFF,d0
+		moveq   #-1,d0
 		bsr.s   sub_175F2
 		move.l  (sp)+,d0
 		rts
@@ -11747,6 +10826,7 @@ loc_17640:
 loc_17642:
 		move.l  d1,(a4)+
 		dbf     d0,loc_17642
+
 loc_17648:
 		bsr.w   sub_17668
 		move.l  a5,d0
@@ -11774,18 +10854,21 @@ loc_1766E:
 		rts
 loc_17676:
 		dbf     d6,loc_1767E
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_1767E:
 		add.w   d7,d7
 		bcc.s   loc_176A6
 		dbf     d6,loc_1768A
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_1768A:
 		add.w   d7,d7
 		subx.w  d4,d4
 		dbf     d6,loc_17696
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_17696:
@@ -11799,30 +10882,35 @@ loc_1769E:
 		bra.w   loc_17716
 loc_176A6:
 		dbf     d6,loc_176AE
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_176AE:
 		add.w   d7,d7
 		bcc.s   loc_176F2
 		dbf     d6,loc_176BA
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_176BA:
 		add.w   d7,d7
 		subx.w  d4,d4
 		dbf     d6,loc_176C6
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_176C6:
 		add.w   d7,d7
 		addx.w  d4,d4
 		dbf     d6,loc_176D2
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_176D2:
 		add.w   d7,d7
 		addx.w  d4,d4
 		dbf     d6,loc_176DE
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_176DE:
@@ -11859,9 +10947,10 @@ loc_17716:
 		bcs.w   loc_1771E
 		rts
 loc_1771E:
-		moveq   #$FFFFFFFF,d4
+		moveq   #-1,d4
 loc_17720:
 		dbf     d6,loc_17728
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_17728:
@@ -11869,6 +10958,7 @@ loc_17728:
 		dbcs    d4,loc_17720
 		negx.w  d4
 		dbf     d4,loc_17738
+
 		bra.w   loc_17676
 loc_17738:
 		moveq   #0,d3
@@ -11876,12 +10966,14 @@ loc_17738:
 		moveq   #0,d1
 loc_1773E:
 		dbf     d6,loc_17746
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_17746:
 		add.w   d7,d7
 		addx.w  d1,d1
 		dbf     d6,loc_17752
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_17752:
@@ -11891,12 +10983,14 @@ loc_17752:
 		add.w   d2,d2
 		add.w   d2,d2
 		dbf     d4,loc_1773E
+
 		add.w   d3,d1
 		lsr.w   #1,d1
 		bcc.s   loc_17768
 		move.w  d5,(a1)+
 loc_17768:
 		dbf     d1,loc_17770
+
 		bra.w   loc_1766E
 loc_17770:
 		move.w  d5,d4
@@ -11905,6 +10999,7 @@ loc_17770:
 loc_17776:
 		move.l  d5,(a1)+
 		dbf     d1,loc_17776
+
 		bra.w   loc_1766E
 
     ; End of function sub_17668
@@ -11916,6 +11011,7 @@ sub_17780:
 		movea.l (dword_FFF006).l,a1
 		clr.w   d5
 		dbf     d6,loc_17790
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_17790:
@@ -11926,7 +11022,7 @@ loc_17794:
 		bcs.w   loc_1779C
 		rts
 loc_1779C:
-		moveq   #$FFFFFFFF,d4
+		moveq   #-1,d4
 		moveq   #0,d3
 		moveq   #2,d2
 		moveq   #0,d1
@@ -11937,6 +11033,7 @@ loc_177A6:
 		add.w   d2,d2
 loc_177AC:
 		dbf     d6,loc_177B4
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_177B4:
@@ -11946,18 +11043,21 @@ loc_177B4:
 		add.w   d4,d4
 loc_177BE:
 		dbf     d6,loc_177C6
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_177C6:
 		add.w   d7,d7
 		addx.w  d1,d1
 		dbf     d4,loc_177BE
+
 		add.w   d3,d1
 		bchg    #$F,d5
 		bne.s   loc_177DE
 loc_177D6:
 		or.w    d5,(a1)+
 		dbf     d1,loc_177D6
+
 		bra.s   loc_17794
 loc_177DE:
 		addq.w  #1,d1
@@ -12061,12 +11161,14 @@ loc_1788C:
 		clr.w   d4
 loc_17894:
 		dbf     d6,loc_1789C
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_1789C:
 		add.w   d7,d7
 		addx.w  d4,d4
 		dbf     d3,loc_17894
+
 		ror.w   #6,d4
 loc_178A6:
 		move.w  d2,d3
@@ -12077,22 +11179,26 @@ loc_178A8:
 		moveq   #3,d5
 loc_178B2:
 		dbf     d6,loc_178BA
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_178BA:
 		add.w   d7,d7
 		addx.w  d4,d4
 		dbf     d5,loc_178B2
+
 		lsl.w   #6,d4
 		or.w    d4,(a4,d0.w)
 		swap    d4
 		addq.w  #2,d0
 		dbf     d3,loc_178A8
+
 		add.w   a3,d0
 		sub.w   d2,d0
 		sub.w   d2,d0
 		subq.w  #2,d0
 		dbf     d1,loc_178A6
+
 		bra.w   loc_177F2
 
     ; End of function sub_177E6
@@ -12191,12 +11297,14 @@ loc_17986:
 		clr.w   d4
 loc_1798E:
 		dbf     d6,loc_17996
+
 		move.w  (a0)+,d7
 		moveq   #$F,d6
 loc_17996:
 		add.w   d7,d7
 		addx.w  d4,d4
 		dbf     d3,loc_1798E
+
 		ror.w   #4,d4
 loc_179A0:
 		movea.l d2,a6
@@ -12224,12 +11332,14 @@ loc_179C6:
 		or.w    d5,(a4,d0.w)
 		addq.w  #2,d0
 		dbf     d3,loc_179A4
+
 		move.l  a6,d2
 		add.w   a3,d0
 		sub.w   d2,d0
 		sub.w   d2,d0
 		subq.w  #2,d0
 		dbf     d1,loc_179A0
+
 		bra.w   loc_178EC
 
     ; End of function sub_178E0
@@ -12314,7 +11424,7 @@ loc_17A78:
 		tst.w   (a0)
 		bmi.s   loc_17AC4
 		move.w  d0,d7
-		moveq   #$FFFFFFFC,d0
+		moveq   #-4,d0
 		and.b   (a0),d0
 		lsr.b   #2,d0
 		cmpi.b  #$1C,d0
@@ -12341,8 +11451,9 @@ loc_17ACC:
 		bpl.s   loc_17ADA
 		addq.w  #1,d2
 		dbf     d0,loc_17ACC
+
 loc_17ADA:
-		moveq   #$FFFFFFFE,d1
+		moveq   #-2,d1
 		bsr.w   sub_17CCA
 loc_17AE0:
 		movem.l (sp)+,d0-a6
@@ -12362,8 +11473,9 @@ loc_17AF6:
 		bne.s   loc_17B08
 		addq.w  #1,d2
 		dbf     d7,loc_17AF6
+
 loc_17B08:
-		moveq   #$FFFFFFFC,d1
+		moveq   #-4,d1
 		bsr.w   sub_17CCA
 		bra.s   loc_17AE0
 
@@ -12408,14 +11520,14 @@ loc_17B58:
 		movea.l a0,a1
 		add.w   d3,d0
 		adda.w  d0,a0
-		moveq   #$FFFFFFFC,d0
+		moveq   #-4,d0
 		and.b   (a0),d0
 		lsr.b   #2,d0
 		cmpi.b  #$15,d0
 		bcs.s   loc_17B8A
 		cmpi.b  #$19,d0
 		bcc.s   loc_17B8A
-		moveq   #$FFFFFFFD,d1
+		moveq   #-3,d1
 		move.w  d0,d2
 		lsl.w   #8,d2
 		move.b  d4,d2
@@ -12437,8 +11549,7 @@ loc_17BB6:
 
     ; End of function sub_17B10
 
-SpriteTextSounds:
-		incbin "data/scripting/spritetextsounds.bin"
+		include "data\stats\spritespeechsfx.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -12477,6 +11588,7 @@ sub_17C70:
 loc_17C7C:
 		move.l  d0,(a0)+
 		dbf     d1,loc_17C7C
+
 		move.b  ((DIALOG_INDEX-$1000000)).w,d0
 		cmpi.b  #$2E,d0 
 		bne.s   loc_17CA6
@@ -12484,7 +11596,7 @@ loc_17C7C:
 		bsr.s   j_j_CheckEventFlag
 		bne.s   loc_17CA4
 		moveq   #$A,d0
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		jsr     (sub_384).l
 		move.w  #$57,d0 
 		bsr.s   j_j_SetEventFlag
@@ -12497,7 +11609,7 @@ loc_17CA6:
 		bsr.s   j_j_CheckEventFlag
 		bne.s   loc_17CC4
 		moveq   #$A,d0
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		jsr     (sub_384).l
 		move.w  #$57,d0 
 		bsr.s   j_j_SetEventFlag
@@ -12543,7 +11655,7 @@ loc_17D06:
 		cmpi.b  #$FE,d1
 		beq.s   loc_17D2E
 		move.b  d3,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 loc_17D2E:
 		move.w  (a0)+,d0
 		move.w  (a0),d6
@@ -12777,7 +11889,7 @@ GiveItemToHero:
 		movem.l d0-d1,-(sp)
 		clr.w   d1
 		move.b  d0,d1
-		moveq   #0,d0
+		moveq   #ALLY_MAX,d0
 		jsr     j_GiveItem
 		movem.l (sp)+,d0-d1
 		rts
@@ -12787,7 +11899,7 @@ GiveItemToHero:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_17EEC:
+RemoveKeyItem:
 		movem.l d0-d3/a0,-(sp)
 		move.b  d0,d3
 		move.b  d0,d1
@@ -12796,12 +11908,12 @@ sub_17EEC:
 		move.b  d0,((byte_FFF001-$1000000)).w
 		andi.w  #$FF,d0
 		movem.l d0-d3,-(sp)
-		cmpi.b  #$25,d3 
+		cmpi.b  #ITEM_SWORD_OF_DARKNESS,d3 
 		bne.s   loc_17F30
 		move.w  #ITEMTYPE_MASK_WEAPON,d1
 		jsr     j_GetEquippedItem
 		bcs.s   loc_17F30
-		cmpi.b  #SWORD_OF_DARKNESS,d2
+		cmpi.b  #ITEM_SWORD_OF_DARKNESS,d2
 		bne.s   loc_17F30
 		jsr     j_GetStatusEffects
 		bclr    #STATUSEFFECT_BIT_CURSE,d1
@@ -12815,6 +11927,7 @@ loc_17F3C:
 		and.b   (a0)+,d0
 		cmp.b   d0,d3
 		dbeq    d2,loc_17F3C
+
 		bne.s   loc_17F60
 		moveq   #3,d1
 		sub.w   d2,d1
@@ -12829,30 +11942,30 @@ loc_17F60:
 		addq.w  #8,d2
 		bra.s   loc_17F5A
 
-    ; End of function sub_17EEC
+    ; End of function RemoveKeyItem
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Set speech SFX
 
-sub_17F64:
+CutsceneFunction_SetSpeechSfx:
 		movem.l d1/a0,-(sp)
 		clr.w   d1
 		move.b  d0,d1
-		lea     SpriteTextSounds(pc), a0
+		lea     tbl_SpriteSpeechSfx(pc), a0
 		move.b  (a0,d1.w),d1
-		beq.s   loc_17F7C
+		beq.s   @NoSpeechSfx
 		addi.w  #SFX_DIALOG_BLEEP_1,d1
-		bra.s   loc_17F7E
-loc_17F7C:
+		bra.s   @SetSpeechSfx
+@NoSpeechSfx:
 		clr.w   d1
-loc_17F7E:
+@SetSpeechSfx:
 		move.w  d1,((SPEECH_SFX-$1000000)).w
 		movem.l (sp)+,d1/a0
 		rts
 
-    ; End of function sub_17F64
+    ; End of function CutsceneFunction_SetSpeechSfx
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12871,7 +11984,7 @@ sub_17F88:
 		move.w  #$393,d6
 		moveq   #4,d0
 		jsr     (a5)
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		moveq   #8,d0
 		jsr     (a5)
@@ -12887,14 +12000,14 @@ sub_17F88:
 
 ; "Join Force" cutscene command
 
-sub_17FE0:
+CutsceneFunction_JoinForce:
 		movem.l d0-d1,-(sp)
 		jsr     j_JoinForce
 		jsr     j_ResetCombatants
 		movem.l (sp)+,d0-d1
 		rts
 
-    ; End of function sub_17FE0
+    ; End of function CutsceneFunction_JoinForce
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -12910,7 +12023,7 @@ sub_17FF6:
 		jsr     (a3)
 		moveq   #0,d0
 		jsr     (a5)
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  d6,-(sp)
 		move.w  #$39B,d6
@@ -12950,7 +12063,7 @@ loc_18052:
 sub_18056:
 		movem.l d0-a6,-(sp)
 		jsr     (j_YesNoPrompt).l
-		cmpi.w  #$FFFF,d0
+		cmpi.w  #-1,d0
 		movem.l (sp)+,d0-a6
 		move    sr,-(sp)
 		jsr     (j_CreateMessageWindow).l
@@ -13052,7 +12165,7 @@ sub_180F0:
 		beq.w   loc_1812C
 		cmpi.b  #2,d1
 		bne.s   loc_1810C
-		moveq   #$E,d0
+		moveq   #PORTRAIT_LOWE,d0
 		jsr     (a4)
 		moveq   #8,d0
 		jsr     (a5)
@@ -13060,7 +12173,7 @@ sub_180F0:
 loc_1810C:
 		cmpi.b  #3,d1
 		bne.w   loc_1811E
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		moveq   #6,d0
 		jsr     (a5)
@@ -13075,11 +12188,11 @@ loc_1811E:
 loc_1812C:
 		cmpi.w  #0,d2
 		bne.s   loc_18148
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
@@ -13088,10 +12201,10 @@ loc_18148:
 		cmpi.w  #1,d2
 		bne.s   loc_18168
 		move.l  d0,-(sp)
-		move.b  #$E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_LOWE_HEAL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$E,d0
+		moveq   #PORTRAIT_LOWE,d0
 		jsr     (a4)
 		moveq   #7,d0
 		jsr     (a5)
@@ -13101,14 +12214,14 @@ loc_18148:
 loc_18168:
 		cmpi.w  #2,d2
 		bne.s   loc_1818E
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		moveq   #0,d0
 		moveq   #3,d1
 		jsr     sub_11126       
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
@@ -13117,16 +12230,16 @@ loc_1818E:
 		cmpi.w  #3,d2
 		bne.s   loc_181DA
 		move.l  d0,-(sp)
-		move.b  #$92,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SOLDIER,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$A,d0
 		jsr     (a5)
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
@@ -13145,10 +12258,10 @@ loc_181DA:
 		cmpi.w  #4,d2
 		bne.s   loc_181FA
 		move.l  d0,-(sp)
-		move.b  #$E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_LOWE_HEAL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$E,d0
+		moveq   #PORTRAIT_LOWE,d0
 		jsr     (a4)
 		moveq   #$D,d0
 		jsr     (a5)
@@ -13267,7 +12380,7 @@ return_182E4:
 loc_182E6:
 		cmpi.w  #$19,d1
 		bne.s   loc_18310
-		moveq   #1,d0
+		moveq   #PORTRAIT_MAE,d0
 		jsr     (a4)
 		move.w  #$36C,d6
 		move.w  #$55,d0 
@@ -13287,19 +12400,19 @@ loc_18310:
 		bne.w   loc_18480
 		cmpi.w  #9,d2
 		bne.s   loc_18360
-		moveq   #$31,d0 
+		moveq   #PORTRAIT_GUARDIANA_KING_1,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
@@ -13311,7 +12424,7 @@ loc_18310:
 		jsr     (a5)
 		rts
 loc_18360:
-		moveq   #$31,d0 
+		moveq   #PORTRAIT_GUARDIANA_KING_1,d0 
 		jsr     (a4)
 		move.w  #$46,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -13328,11 +12441,11 @@ loc_18360:
 		sndCom  MUSIC_ITEM
 		moveq   #$10,d0
 		jsr     (a5)
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		jsr     (j_CreateMessageWindow).l
 		move.w  -6(a6),((SPEECH_SFX-$1000000)).w
-		moveq   #$31,d0 
+		moveq   #PORTRAIT_GUARDIANA_KING_1,d0 
 		jsr     (a4)
 		moveq   #$11,d0
 		jsr     (a5)
@@ -13362,11 +12475,11 @@ loc_183E6:
 		bne.s   loc_1844E
 		moveq   #3,d0
 		jsr     (a5)
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		moveq   #1,d1
@@ -13377,18 +12490,18 @@ loc_183E6:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		moveq   #3,d1
 		jsr     sub_11126       
 		moveq   #6,d0
 		jsr     (a5)
-		moveq   #$31,d0 
+		moveq   #PORTRAIT_GUARDIANA_KING_1,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		moveq   #0,d1
@@ -13420,7 +12533,7 @@ return_1847E:
 loc_18480:
 		cmpi.w  #$D,d1
 		bne.s   loc_184B4
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.w  #$51,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -13444,7 +12557,7 @@ return_184B2:
 loc_184B4:
 		cmpi.w  #$E,d1
 		bne.s   loc_184D8
-		moveq   #$29,d0 
+		moveq   #PORTRAIT_NOVA,d0 
 		jsr     (a4)
 		move.w  #$54,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -13552,8 +12665,8 @@ loc_185A0:
 		cmpi.w  #$16,d1
 		bne.s   loc_185C8
 		move.l  d0,-(sp)
-		move.b  #$92,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SOLDIER,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$391,d6
 		cmpi.w  #8,d2
@@ -13579,53 +12692,53 @@ sub_185D0:
 		move.w  #$393,d6        ; set message bank : 915
 		cmpi.w  #0,d2           ; check dialogue group : 0
 		bne.w   loc_1867A
-		moveq   #8,d0           ; set portrait : 8 (Luke)
+		moveq   #PORTRAIT_LUKE,d0           ; set portrait : 8 (Luke)
 		jsr     (a4)
 		move.l  d0,-(sp)        ; set speech SFX : 8
-		move.b  #8,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_LUKE_WARR,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0           ; display message : 0
 		jsr     (a5)
 		move.l  d0,-(sp)        ; add force member (data) : 8 (Luke)
-		moveq   #8,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_LUKE,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
-		moveq   #3,d0
+		moveq   #PORTRAIT_KEN,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #3,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KEN_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #3,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_KEN,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
-		moveq   #$C,d0
+		moveq   #PORTRAIT_TAO,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$C,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_TAO_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #$C,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_TAO,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
-		moveq   #$13,d0
+		moveq   #PORTRAIT_HANS,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$13,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_HANS_ACHR,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #$13,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_HANS,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #1,d0
@@ -13633,7 +12746,7 @@ sub_185D0:
 		moveq   #8,d1
 		bsr.w   sub_17FF6
 		movem.l (sp)+,d0-d1/d6
-		moveq   #8,d0
+		moveq   #PORTRAIT_LUKE,d0
 		jsr     (a4)
 		moveq   #7,d0
 		jsr     (a5)
@@ -13641,11 +12754,11 @@ sub_185D0:
 loc_1867A:
 		cmpi.w  #1,d2
 		bne.s   loc_186A0
-		moveq   #$E,d0
+		moveq   #PORTRAIT_LOWE,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_LOWE_HEAL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #5,d0
 		jsr     (a5)
@@ -13661,15 +12774,15 @@ loc_186A0:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
-		moveq   #$E,d0
+		moveq   #PORTRAIT_LOWE,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_LOWE_HEAL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
@@ -13692,7 +12805,7 @@ loc_186D8:
 sub_186E6:
 		cmpi.w  #1,d1
 		bne.w   loc_1878C
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  #$32,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -13776,7 +12889,7 @@ loc_187BC:
 loc_187CC:
 		cmpi.w  #$E,d1
 		bne.s   loc_18800
-		moveq   #7,d0
+		moveq   #PORTRAIT_GORT,d0
 		jsr     (a4)
 		move.w  #$33A,d6
 		moveq   #0,d0
@@ -13917,14 +13030,14 @@ loc_188D6:
 loc_188FC:
 		cmpi.w  #8,d1
 		bne.s   loc_18944
-		moveq   #7,d0
+		moveq   #PORTRAIT_GORT,d0
 		jsr     (a4)
 		move.w  #$3AE,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #7,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_GORT,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -13950,8 +13063,8 @@ loc_18944:
 		bra.s   return_1897E
 loc_1895A:
 		move.l  d0,-(sp)
-		move.b  #$92,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SOLDIER,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
@@ -13981,7 +13094,7 @@ loc_1898C:
 loc_1899C:
 		cmpi.w  #$10,d1
 		bne.s   loc_189C6
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -14011,8 +13124,8 @@ sub_189CE:
 		cmpi.w  #2,d1
 		bne.s   loc_18A0A
 		move.l  d0,-(sp)
-		move.b  #$8F,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MINISTER,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		cmpi.w  #8,d2
 		bne.s   loc_189FE
@@ -14028,32 +13141,32 @@ return_18A08:
 loc_18A0A:
 		cmpi.w  #1,d1
 		bne.s   loc_18A88
-		moveq   #$31,d0 
+		moveq   #PORTRAIT_GUARDIANA_KING_1,d0 
 		jsr     (a4)
 		cmpi.w  #$11,d2
 		bne.s   return_18A86
 		sndCom  MUSIC_SAD_THEME
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
 		moveq   #$A,d0
 		jsr     (a5)
-		moveq   #1,d0
+		moveq   PORTRAIT_MAE,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #1,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAE_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
-		moveq   #$31,d0 
+		moveq   #PORTRAIT_GUARDIANA_KING_1,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$C,d0
 		jsr     (a5)
@@ -14077,35 +13190,35 @@ loc_18A88:
 		bne.w   loc_18B2A
 		cmpi.w  #$A,d2
 		bne.w   loc_18B1A
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
-		moveq   #$24,d0 
+		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
-		moveq   #$24,d0 
+		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
@@ -14115,10 +13228,10 @@ loc_18A88:
 		jsr     sub_124028
 		movem.l (sp)+,d6/a0-a6
 		move.l  d0,-(sp)
-		move.b  #$79,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_VARIOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$1E,d0
+		moveq   #PORTRAIT_VARIOS,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$3E6,d6
@@ -14137,10 +13250,10 @@ loc_18B2A:
 		cmpi.w  #4,d1
 		bne.s   loc_18B5A
 		move.l  d0,-(sp)
-		move.b  #1,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAE_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #1,d0
+		moveq   #PORTRAIT_MAE,d0
 		jsr     (a4)
 		cmpi.w  #$D,d2
 		bne.s   loc_18B4A
@@ -14158,10 +13271,10 @@ loc_18B5A:
 		cmpi.w  #5,d1
 		bne.s   loc_18B86
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$24,d0 
+		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     (a4)
 		cmpi.w  #$B,d2
 		bne.s   loc_18B7A
@@ -14225,10 +13338,10 @@ loc_18BE2:
 		cmpi.w  #0,d2
 		bne.s   sub_18C52
 		move.l  d0,-(sp)
-		move.b  #1,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAE_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #1,d0
+		moveq   #PORTRAIT_MAE,d0
 		jsr     (a4)
 		move.w  #$3D1,d6
 		moveq   #$E,d0
@@ -14246,8 +13359,8 @@ loc_18BE2:
 		moveq   #$13,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #1,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_MAE,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -14255,7 +13368,7 @@ loc_18BE2:
 		moveq   #1,d1
 		bsr.w   sub_17FF6
 		movem.l (sp)+,d0-d1/d6
-		moveq   #1,d0
+		moveq   #PORTRAIT_MAE,d0
 		jsr     (a4)
 		moveq   #$10,d0
 		jsr     (a5)
@@ -14326,7 +13439,7 @@ return_18CE6:
 loc_18CE8:
 		cmpi.w  #$F,d1
 		bne.s   loc_18D2C
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  #$3FE,d6
 		move.w  #$51,d0 
@@ -14359,14 +13472,14 @@ loc_18D2C:
 loc_18D44:
 		cmpi.w  #$11,d1
 		bne.s   loc_18D8C
-		moveq   #7,d0
+		moveq   #PORTRAIT_GORT,d0
 		jsr     (a4)
 		move.w  #$3AE,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #7,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_GORT,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -14392,8 +13505,8 @@ loc_18D8C:
 
 sub_18D94:
 		move.l  d0,-(sp)
-		move.b  #$92,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SOLDIER,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$481,d6
 		moveq   #0,d0
@@ -14412,7 +13525,7 @@ sub_18DAA:
 		cmpi.w  #5,d1
 		bne.s   loc_18DD2
 		move.w  #$46D,d6
-		moveq   #$21,d0 
+		moveq   #PORTRAIT_MISHAELA,d0 
 		jsr     (a4)
 		moveq   #0,d0
 		jsr     (a5)
@@ -14458,8 +13571,8 @@ loc_18E26:
 		cmpi.w  #$F,d1
 		bne.s   loc_18E9E
 		move.l  d0,-(sp)
-		move.b  #$9C,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_WATER_SPLASH,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		cmpi.w  #8,d2
 		bne.s   loc_18E62
@@ -14515,8 +13628,8 @@ loc_18E9E:
 loc_18EAE:
 		move.w  #$47D,d6
 		move.l  d0,-(sp)
-		move.b  #$93,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAID,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		cmpi.w  #9,d2
 		bne.s   loc_18ECA
@@ -14630,7 +13743,7 @@ loc_18FA2:
 loc_18FD2:
 		cmpi.w  #$14,d1
 		bne.s   loc_19008
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_MISHAELA,d0 
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$436,d6
@@ -14708,8 +13821,8 @@ loc_19084:
 		cmpi.w  #$11,d1
 		bne.s   loc_190D0
 		move.l  d0,-(sp)
-		move.b  #$92,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SOLDIER,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$41D,d6
 		cmpi.w  #8,d2
@@ -14752,7 +13865,7 @@ loc_190D0:
 loc_190E4:
 		cmpi.w  #5,d1
 		bne.w   loc_191AC
-		moveq   #$F,d0
+		moveq   #PORTRAIT_KHRIS,d0
 		jsr     (a4)
 		cmpi.w  #8,d2
 		bne.w   loc_1916E
@@ -14779,8 +13892,8 @@ loc_19124:
 		moveq   #$A,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #$F,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_KHRIS,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -14788,7 +13901,7 @@ loc_19124:
 		moveq   #$F,d1
 		bsr.w   sub_17FF6
 		movem.l (sp)+,d0-d1/d6
-		moveq   #$F,d0
+		moveq   #PORTRAIT_KHRIS,d0
 		jsr     (a4)
 		moveq   #$D,d0
 		jsr     (a5)
@@ -14803,8 +13916,8 @@ return_1916C:
 loc_1916E:
 		move.w  #$425,d6
 		move.l  d0,-(sp)
-		move.b  #$F,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KHRIS_HEAL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		cmpi.w  #9,d2
 		bne.s   loc_19188
@@ -14831,7 +13944,7 @@ loc_191AC:
 		move.w  #$425,d6
 		cmpi.w  #$E,d1
 		bne.s   loc_19228
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.w  #$5E,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -14840,8 +13953,8 @@ loc_191AC:
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_191E8
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
@@ -14850,8 +13963,8 @@ loc_191AC:
 		bra.s   loc_191F8
 loc_191E8:
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
@@ -14859,16 +13972,16 @@ loc_191F8:
 		bra.s   return_19226
 loc_191FA:
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
-		moveq   #$24,d0 
+		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
@@ -14905,7 +14018,7 @@ loc_19250:
 loc_1925C:
 		cmpi.w  #$14,d1
 		bne.s   loc_19274
-		moveq   #$24,d0 
+		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     (a4)
 		moveq   #5,d0
 		jsr     (a5)
@@ -14958,7 +14071,7 @@ return_192CA:
 loc_192CC:
 		cmpi.w  #$1A,d1
 		bne.s   loc_19314
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  #$434,d6
 		move.w  #$56,d0 
@@ -15015,7 +14128,7 @@ sub_1934C:
 		cmpi.w  #$F,d1
 		bne.s   loc_193A0
 		move.w  #$44B,d6
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.w  #$54,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -15137,7 +14250,7 @@ loc_1947E:
 loc_1948A:
 		cmpi.w  #3,d1
 		bne.s   loc_1949A
-		moveq   #$1D,d0
+		moveq   #PORTRAIT_JOGURT,d0
 		jsr     (a4)
 		moveq   #2,d0
 		jsr     (a5)
@@ -15145,7 +14258,7 @@ loc_1948A:
 loc_1949A:
 		cmpi.w  #4,d1
 		bne.s   loc_194D0
-		moveq   #$11,d0
+		moveq   #PORTRAIT_GONG,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$8A1,d6
@@ -15218,7 +14331,7 @@ loc_1951E:
 loc_1954E:
 		cmpi.w  #$14,d1
 		bne.s   loc_19578
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -15235,7 +14348,7 @@ loc_19578:
 		bne.s   loc_195B4
 		move.w  #$90,d0 
 		bsr.w   j_j_SetEventFlag
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		move.w  #$4DD,d6
 		move.w  #$2A,d0 
@@ -15270,11 +14383,11 @@ loc_195B4:
 		bne.s   loc_19634
 		moveq   #1,d0
 		jsr     (a5)
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #9,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GUNTZ_SKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -15284,16 +14397,16 @@ loc_195B4:
 		moveq   #3,d1
 		jsr     sub_11126       
 		move.l  d0,-(sp)
-		move.b  #$80,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_OLD_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		move.b  #9,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GUNTZ_SKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		moveq   #$A,d0
 		jsr     (a5)
@@ -15311,11 +14424,11 @@ loc_1963A:
 		bne.s   loc_1969C
 		moveq   #5,d0
 		jsr     (a5)
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #9,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GUNTZ_SKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -15325,16 +14438,16 @@ loc_1963A:
 		moveq   #3,d1
 		jsr     sub_11126       
 		move.l  d0,-(sp)
-		move.b  #$80,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_OLD_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		move.b  #9,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GUNTZ_SKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		moveq   #$A,d0
 		jsr     (a5)
@@ -15749,19 +14862,19 @@ loc_19A4C:
 		cmpi.w  #3,d2
 		bne.s   loc_19A84
 		move.w  #$4DD,d6
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #9,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GUNTZ_SKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		jsr     (a3)
 		move.l  d0,-(sp)
-		move.b  #$80,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_OLD_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$C,d0
 		jsr     (a5)
@@ -15774,8 +14887,8 @@ loc_19A84:
 		cmpi.w  #0,d2
 		bne.s   loc_19AB6
 		move.l  d0,-(sp)
-		move.b  #$8B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MERCHANT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
@@ -15787,29 +14900,29 @@ loc_19AB6:
 		cmpi.w  #1,d2
 		bne.w   loc_19B3E
 		move.l  d0,-(sp)
-		move.b  #0,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAX_SDMN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$A,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$88,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DOG,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #0,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAX_SDMN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$C,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$88,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DOG,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$D,d0
 		jsr     (a5)
@@ -15822,8 +14935,8 @@ loc_19AB6:
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$86,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOY,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$F,d0
 		jsr     (a5)
@@ -15832,22 +14945,22 @@ loc_19B3E:
 		cmpi.w  #2,d2
 		bne.s   loc_19B82
 		move.l  d0,-(sp)
-		move.b  #$8B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MERCHANT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$10,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$86,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOY,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$F,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$8B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MERCHANT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$11,d0
 		jsr     (a5)
@@ -15858,8 +14971,8 @@ loc_19B86:
 		cmpi.w  #0,d2
 		bne.s   loc_19BA8
 		move.l  d0,-(sp)
-		move.b  #$8B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MERCHANT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$1B,d0
 		jsr     (a5)
@@ -15871,29 +14984,29 @@ loc_19BA8:
 		cmpi.w  #1,d2
 		bne.w   loc_19C30
 		move.l  d0,-(sp)
-		move.b  #$88,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DOG,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$1C,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #0,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAX_SDMN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$1D,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$88,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DOG,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$1E,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #0,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAX_SDMN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$1F,d0
 		jsr     (a5)
@@ -15906,8 +15019,8 @@ loc_19BA8:
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$86,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOY,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$21,d0 
 		jsr     (a5)
@@ -15916,22 +15029,22 @@ loc_19C30:
 		cmpi.w  #2,d2
 		bne.s   loc_19C74
 		move.l  d0,-(sp)
-		move.b  #$8B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MERCHANT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$22,d0 
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$86,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOY,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$21,d0 
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$8B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MERCHANT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$23,d0 
 		jsr     (a5)
@@ -15965,7 +15078,7 @@ sub_19C82:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
@@ -15975,11 +15088,11 @@ loc_19CC6:
 		cmpi.b  #1,d2
 		bne.s   loc_19CE6
 		sndCom  MUSIC_BATTLE_3
-		moveq   #$21,d0 
+		moveq   #PORTRAIT_MISHAELA,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$72,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MISHAELA,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
@@ -15988,10 +15101,10 @@ loc_19CE6:
 		cmpi.b  #2,d2
 		bne.s   loc_19D02
 		move.l  d0,-(sp)
-		move.b  #$72,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MISHAELA,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$21,d0 
+		moveq   #PORTRAIT_MISHAELA,d0 
 		jsr     (a4)
 		moveq   #2,d0
 		jsr     (a5)
@@ -16000,10 +15113,10 @@ loc_19D02:
 		cmpi.b  #3,d2
 		bne.s   loc_19D1E
 		move.l  d0,-(sp)
-		move.b  #$72,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MISHAELA,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$21,d0 
+		moveq   #PORTRAIT_MISHAELA,d0 
 		jsr     (a4)
 		moveq   #3,d0
 		jsr     (a5)
@@ -16015,7 +15128,7 @@ loc_19D1E:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
@@ -16051,7 +15164,7 @@ DialogueScript13:
 		jsr     (a5)
 		rts
 loc_19D78:
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -16123,7 +15236,7 @@ loc_19DF0:
 loc_19E18:
 		cmpi.w  #8,d1
 		bne.w   loc_19ECC
-		moveq   #$30,d0 
+		moveq   #PORTRAIT_OTRANT,d0 
 		jsr     (a4)
 		tst.b   d7
 		beq.s   loc_19E2E
@@ -16283,7 +15396,7 @@ return_19F84:
 loc_19F86:
 		cmpi.w  #5,d1
 		bne.w   loc_1A014
-		moveq   #$A,d0
+		moveq   #PORTRAIT_ANRI,d0
 		jsr     (a4)
 		move.w  #$54B,d6
 		move.w  #$71,d0 
@@ -16324,8 +15437,8 @@ loc_19FE2:
 		moveq   #9,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #$A,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_ANRI,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -16359,7 +15472,7 @@ loc_1A024:
 loc_1A03E:
 		cmpi.w  #$18,d1
 		bne.s   loc_1A082
-		moveq   #6,d0
+		moveq   #PORTRAIT_ARTHUR,d0
 		jsr     (a4)
 		tst.b   d7
 		beq.s   loc_1A052
@@ -16639,8 +15752,8 @@ loc_1A284:
 		cmpi.w  #0,d2
 		bne.s   loc_1A2A0
 		move.l  d0,-(sp)
-		move.b  #$82,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MIDDLE_AGED_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
@@ -16653,8 +15766,8 @@ loc_1A2A0:
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$83,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MIDDLE_AGED_WOMAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #5,d0
 		jsr     (a5)
@@ -16663,8 +15776,8 @@ loc_1A2C6:
 		cmpi.w  #2,d2
 		bne.s   loc_1A2DE
 		move.l  d0,-(sp)
-		move.b  #$82,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MIDDLE_AGED_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
@@ -16677,15 +15790,15 @@ loc_1A2DE:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
-		moveq   #$A,d0
+		moveq   #PORTRAIT_ANRI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$A,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ANRI_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
@@ -16693,15 +15806,15 @@ loc_1A2DE:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
-		moveq   #$A,d0
+		moveq   #PORTRAIT_ANRI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$A,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ANRI_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
@@ -16709,15 +15822,15 @@ loc_1A2DE:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #5,d0
 		jsr     (a5)
-		moveq   #$A,d0
+		moveq   #PORTRAIT_ANRI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$A,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ANRI_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
@@ -16725,15 +15838,15 @@ loc_1A2DE:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$D,d0
 		jsr     (a5)
-		moveq   #$A,d0
+		moveq   #PORTRAIT_ANRI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$A,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ANRI_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$E,d0
 		jsr     (a5)
@@ -16745,7 +15858,7 @@ loc_1A38C:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
@@ -16754,8 +15867,8 @@ loc_1A3A8:
 		cmpi.w  #5,d2
 		bne.s   loc_1A3C4
 		move.l  d0,-(sp)
-		move.b  #$97,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$55A,d6
 		moveq   #2,d0
@@ -16766,8 +15879,8 @@ loc_1A3C4:
 		bne.s   loc_1A3E8
 		sndCom  MUSIC_INTRO
 		move.l  d0,-(sp)
-		move.b  #$A0,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_160,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$580,d6
 		moveq   #0,d0
@@ -16778,8 +15891,8 @@ loc_1A3E8:
 		cmpi.w  #7,d2
 		bne.s   loc_1A404
 		move.l  d0,-(sp)
-		move.b  #$7D,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_WITCH,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$55D,d6
 		moveq   #3,d0
@@ -16789,8 +15902,8 @@ loc_1A404:
 		cmpi.w  #8,d2
 		bne.s   loc_1A420
 		move.l  d0,-(sp)
-		move.b  #$7D,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_WITCH,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$55D,d6
 		moveq   #4,d0
@@ -16830,7 +15943,7 @@ loc_1A454:
 		clr.w   ((MESSAGE_ARG_NAME_1-$1000000)).w
 		moveq   #$16,d0
 		move.w  d0,((MESSAGE_ARG_NAME_2-$1000000)).w
-		moveq   #$16,d0
+		moveq   #ITEM_DOMINGO_EGG,d0
 		jsr     GiveItemToHero  
 		bcs.s   loc_1A4B0
 		move.w  #$91,d0 
@@ -16841,7 +15954,7 @@ loc_1A454:
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		bra.s   loc_1A4CE
 loc_1A4B0:
@@ -16881,7 +15994,7 @@ sub_1A4E2:
 		beq.w   sub_1808A
 		cmpi.w  #1,d1
 		bne.s   loc_1A506
-		moveq   #$15,d0
+		moveq   #PORTRAIT_AMON,d0
 		jsr     (a4)
 		move.w  #$684,d6
 		moveq   #0,d0
@@ -16940,7 +16053,7 @@ loc_1A562:
 loc_1A576:
 		cmpi.w  #7,d1
 		bne.s   loc_1A5A2
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  #$67F,d6
 		move.w  #$74,d0 
@@ -17005,10 +16118,10 @@ loc_1A5FA:
 		cmpi.w  #0,d2
 		bne.s   loc_1A622
 		move.l  d0,-(sp)
-		move.b  #$16,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BALBAROY_BDMN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$16,d0
+		moveq   #PORTRAIT_BALBAROY,d0
 		jsr     (a4)
 		move.w  #$68C,d6
 		moveq   #0,d0
@@ -17033,10 +16146,10 @@ loc_1A630:
 		cmpi.w  #0,d2
 		bne.s   loc_1A680
 		move.l  d0,-(sp)
-		move.b  #$16,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BALBAROY_BDMN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$16,d0
+		moveq   #PORTRAIT_BALBAROY,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$690,d6
@@ -17044,8 +16157,8 @@ loc_1A630:
 		jsr     (a5)
 		move.w  (sp)+,d6
 		move.l  d0,-(sp)
-		moveq   #$16,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_BALBAROY,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -17063,10 +16176,10 @@ loc_1A680:
 		cmpi.w  #1,d2
 		bne.s   loc_1A6D4
 		move.l  d0,-(sp)
-		move.b  #$15,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_AMON_BDMN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$15,d0
+		moveq   #PORTRAIT_AMON,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$692,d6
@@ -17074,8 +16187,8 @@ loc_1A680:
 		jsr     (a5)
 		move.w  (sp)+,d6
 		move.l  d0,-(sp)
-		moveq   #$15,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_AMON,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -17083,7 +16196,7 @@ loc_1A680:
 		moveq   #$15,d1
 		bsr.w   sub_17FF6
 		movem.l (sp)+,d0-d1/d6
-		moveq   #$15,d0
+		moveq   #PORTRAIT_AMON,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$693,d6
@@ -17111,7 +16224,7 @@ sub_1A6E2:
 		beq.w   sub_18074
 		cmpi.w  #6,d1
 		bne.s   loc_1A71C
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -17225,7 +16338,7 @@ return_1A812:
 loc_1A814:
 		cmpi.w  #7,d1
 		bne.s   loc_1A852
-		moveq   #$12,d0
+		moveq   #PORTRAIT_DIANE,d0
 		jsr     (a4)
 		move.w  #$6B4,d6
 		move.w  #$50,d0 
@@ -17241,7 +16354,7 @@ loc_1A832:
 		moveq   #$12,d0
 		bsr.w   sub_17F88
 		move.l  (sp)+,d0
-		moveq   #$12,d0
+		moveq   #PORTRAIT_DIANE,d0
 		jsr     (a4)
 		moveq   #3,d0
 		jsr     (a5)
@@ -17267,7 +16380,7 @@ sub_1A85A:
 		beq.w   loc_1AAEC
 		cmpi.w  #7,d1
 		bne.s   loc_1A89C
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -17429,7 +16542,7 @@ return_1A9EE:
 loc_1A9F0:
 		cmpi.w  #$E,d1
 		bne.s   loc_1AA18
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		move.w  #$54,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -17530,7 +16643,7 @@ loc_1AAD0:
 		cmpi.w  #$16,d1
 		bne.s   loc_1AAE4
 		move.w  #$6EF,d6
-		moveq   #$1A,d0
+		moveq   #PORTRAIT_ZYLO,d0
 		jsr     (a4)
 		moveq   #5,d0
 		jsr     (a5)
@@ -17542,22 +16655,22 @@ loc_1AAEC:
 		cmpi.w  #0,d2
 		bne.s   loc_1AB58
 		move.l  d0,-(sp)
-		move.b  #$9B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MAYOR,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$6E8,d6
 		moveq   #3,d0
 		jsr     (a5)
 		move.w  #$52,d0 
 		bsr.w   j_j_SetEventFlag
-		moveq   #MOON_STONE,d0
-		bsr.w   sub_17EEC
-		moveq   #LUNAR_DEW,d0
+		moveq   #ITEM_MOON_STONE,d0
+		bsr.w   RemoveKeyItem
+		moveq   #ITEM_LUNAR_DEW,d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
 		movem.l d0-d1,-(sp)
 		clr.w   d0
 		move.b  (byte_FFF001).l,d0
-		moveq   #LUNAR_DEW,d1
+		moveq   #ITEM_LUNAR_DEW,d1
 		jsr     j_GiveItem
 		movem.l (sp)+,d0-d1
 		clr.w   ((SPEECH_SFX-$1000000)).w
@@ -17568,7 +16681,7 @@ loc_1AAEC:
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		rts
 loc_1AB58:
@@ -17576,10 +16689,10 @@ loc_1AB58:
 		cmpi.w  #1,d2
 		bne.s   loc_1AB78
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		moveq   #3,d0
 		jsr     (a5)
@@ -17588,10 +16701,10 @@ loc_1AB78:
 		cmpi.w  #2,d2
 		bne.s   loc_1AB94
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		moveq   #5,d0
 		jsr     (a5)
@@ -17599,19 +16712,19 @@ loc_1AB78:
 loc_1AB94:
 		cmpi.w  #3,d2
 		bne.s   loc_1ABC8
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
 		jsr     (a3)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$84,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_YOUNG_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
@@ -17620,8 +16733,8 @@ loc_1ABC8:
 		cmpi.w  #4,d2
 		bne.s   loc_1ABE8
 		move.l  d0,-(sp)
-		move.b  #$84,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_YOUNG_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -17633,10 +16746,10 @@ loc_1ABE8:
 		cmpi.w  #5,d2
 		bne.s   loc_1AC1E
 		move.l  d0,-(sp)
-		move.b  #$1A,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ZYLO_WRWF,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$1A,d0
+		moveq   #PORTRAIT_ZYLO,d0
 		jsr     (a4)
 		moveq   #7,d0
 		jsr     (a5)
@@ -17673,10 +16786,10 @@ loc_1AC2C:
 loc_1AC58:
 		move.w  #$6DD,d6
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		moveq   #3,d0
 		jsr     (a5)
@@ -17687,8 +16800,8 @@ loc_1AC72:
 loc_1AC76:
 		cmpi.w  #$1514,d2
 		bne.s   loc_1AC98
-		moveq   #$14,d0
-		bsr.w   sub_17EEC
+		moveq   #ITEM_LUNAR_DEW,d0
+		bsr.w   RemoveKeyItem
 		move.w  #$6EF,d6
 		clr.w   ((SPEECH_SFX-$1000000)).w
 		moveq   #6,d0
@@ -17726,7 +16839,7 @@ sub_1AC9C:
 loc_1ACD4:
 		cmpi.w  #$B,d1
 		bne.s   loc_1ACFE
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -17758,7 +16871,7 @@ loc_1ACFE:
 loc_1AD2E:
 		cmpi.w  #$16,d1
 		bne.s   loc_1AD42
-		moveq   #5,d0
+		moveq   #PORTRAIT_EARNEST,d0
 		jsr     (a4)
 		move.w  #$6FA,d6
 		moveq   #$16,d0
@@ -17877,7 +16990,7 @@ return_1AE30:
 loc_1AE32:
 		cmpi.w  #9,d1
 		bne.s   loc_1AE62
-		moveq   #$1F,d0
+		moveq   #PORTRAIT_ELLIOTT,d0
 		jsr     (a4)
 		move.w  #$728,d6
 		moveq   #0,d0
@@ -17928,11 +17041,11 @@ loc_1AEB2:
 loc_1AEBA:
 		cmpi.w  #0,d2
 		bne.s   loc_1AEDA
-		moveq   #$1F,d0
+		moveq   #PORTRAIT_ELLIOTT,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$70,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ELLIOTT,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$728,d6
 		moveq   #4,d0
@@ -17943,8 +17056,8 @@ loc_1AEDA:
 		cmpi.w  #1,d2
 		bne.s   loc_1AEF6
 		move.l  d0,-(sp)
-		move.b  #$82,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MIDDLE_AGED_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
@@ -17953,8 +17066,8 @@ loc_1AEF6:
 		cmpi.w  #2,d2
 		bne.s   loc_1AF0E
 		move.l  d0,-(sp)
-		move.b  #$87,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GIRL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
@@ -17963,8 +17076,8 @@ loc_1AF0E:
 		cmpi.w  #3,d2
 		bne.s   loc_1AF22
 		move.l  d0,-(sp)
-		moveq   #$1D,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_JOGURT,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		rts
 loc_1AF22:
@@ -17985,7 +17098,7 @@ sub_1AF30:
 		beq.w   loc_1AFAA
 		cmpi.w  #$B,d1
 		bne.s   loc_1AF62
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -18000,7 +17113,7 @@ sub_1AF30:
 loc_1AF62:
 		cmpi.w  #$1B,d1
 		bne.s   loc_1AF9C
-		moveq   #4,d0
+		moveq   #PORTRAIT_VANKAR,d0
 		jsr     (a4)
 		move.w  #$733,d6
 		moveq   #0,d0
@@ -18013,7 +17126,7 @@ loc_1AF62:
 		moveq   #4,d0
 		bsr.w   sub_17F88
 		move.l  (sp)+,d0
-		moveq   #4,d0
+		moveq   #PORTRAIT_VANKAR,d0
 		jsr     (a4)
 		moveq   #5,d0
 		jsr     (a5)
@@ -18031,11 +17144,11 @@ loc_1AFAA:
 		move.w  #$739,d6
 		cmpi.w  #0,d2
 		bne.s   loc_1AFCA
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
@@ -18043,11 +17156,11 @@ loc_1AFAA:
 loc_1AFCA:
 		cmpi.w  #1,d2
 		bne.s   loc_1AFE6
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
@@ -18055,11 +17168,11 @@ loc_1AFCA:
 loc_1AFE6:
 		cmpi.w  #2,d2
 		bne.s   loc_1B002
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
@@ -18067,11 +17180,11 @@ loc_1AFE6:
 loc_1B002:
 		cmpi.w  #3,d2
 		bne.s   loc_1B030
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$17,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KOKICHI_WKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
@@ -18079,7 +17192,7 @@ loc_1B002:
 		moveq   #$17,d0
 		bsr.w   sub_17F88
 		move.l  (sp)+,d0
-		moveq   #$17,d0
+		moveq   #PORTRAIT_KOKICHI,d0
 		jsr     (a4)
 		moveq   #4,d0
 		jsr     (a5)
@@ -18137,7 +17250,7 @@ loc_1B076:
 loc_1B0A6:
 		cmpi.w  #$11,d1
 		bne.s   loc_1B0D0
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -18201,8 +17314,8 @@ loc_1B120:
 		jsr     (a5)
 		bra.s   loc_1B188
 loc_1B148:
-		moveq   #$16,d0
-		bsr.w   sub_17EEC
+		moveq   #ITEM_DOMINGO_EGG,d0
+		bsr.w   RemoveKeyItem
 		moveq   #4,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
@@ -18211,8 +17324,8 @@ loc_1B148:
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$8B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MERCHANT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
@@ -18232,7 +17345,7 @@ loc_1B190:
 		cmpi.w  #$1A,d1
 		bne.s   loc_1B1BE
 		move.w  #$75F,d6
-		moveq   #$D,d0
+		moveq   #PORTRAIT_DOMINGO,d0
 		jsr     (a4)
 		moveq   #8,d0
 		jsr     (a5)
@@ -18240,7 +17353,7 @@ loc_1B190:
 		moveq   #$D,d0
 		bsr.w   sub_17F88
 		move.l  (sp)+,d0
-		moveq   #$D,d0
+		moveq   #PORTRAIT_DOMINGO,d0
 		jsr     (a4)
 		moveq   #$A,d0
 		jsr     (a5)
@@ -18254,10 +17367,10 @@ loc_1B1C6:
 		cmpi.w  #0,d2
 		bne.s   loc_1B1F6
 		move.l  d0,-(sp)
-		move.b  #9,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GUNTZ_SKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		move.w  #$76A,d6
 		move.w  #$90,d0 
@@ -18275,10 +17388,10 @@ loc_1B1F6:
 		cmpi.w  #1,d2
 		bne.s   loc_1B228
 		move.l  d0,-(sp)
-		move.b  #9,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GUNTZ_SKNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		move.w  #$76A,d6
 		moveq   #2,d0
@@ -18287,7 +17400,7 @@ loc_1B1F6:
 		moveq   #9,d0
 		bsr.w   sub_17F88
 		move.l  (sp)+,d0
-		moveq   #9,d0
+		moveq   #PORTRAIT_GUNTZ,d0
 		jsr     (a4)
 		moveq   #4,d0
 		jsr     (a5)
@@ -18327,7 +17440,7 @@ sub_1B236:
 loc_1B26E:
 		cmpi.w  #5,d1
 		bne.s   loc_1B298
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -18383,7 +17496,7 @@ return_1B2F6:
 loc_1B2F8:
 		cmpi.w  #$A,d1
 		bne.s   loc_1B37C
-		moveq   #5,d0
+		moveq   #PORTRAIT_EARNEST,d0
 		jsr     (a4)
 		move.w  #$782,d6
 		move.w  #$55,d0 
@@ -18394,8 +17507,8 @@ loc_1B2F8:
 		moveq   #0,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #5,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_EARNEST,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -18412,8 +17525,8 @@ loc_1B34A:
 		moveq   #5,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #5,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_EARNEST,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -18434,11 +17547,11 @@ loc_1B384:
 		move.w  #$782,d6
 		cmpi.w  #0,d2
 		bne.s   loc_1B3A4
-		moveq   #5,d0
+		moveq   #PORTRAIT_EARNEST,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #5,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_EARNEST_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -18447,8 +17560,8 @@ loc_1B3A4:
 		cmpi.w  #1,d2
 		bne.s   loc_1B3BC
 		move.l  d0,-(sp)
-		move.b  #$49,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_CERBERUS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
@@ -18456,11 +17569,11 @@ loc_1B3A4:
 loc_1B3BC:
 		cmpi.w  #2,d2
 		bne.s   loc_1B3D8
-		moveq   #5,d0
+		moveq   #PORTRAIT_EARNEST,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #5,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_EARNEST_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$A,d0
 		jsr     (a5)
@@ -18468,11 +17581,11 @@ loc_1B3BC:
 loc_1B3D8:
 		cmpi.w  #3,d2
 		bne.s   loc_1B3F4
-		moveq   #5,d0
+		moveq   #PORTRAIT_EARNEST,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #5,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_EARNEST_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
@@ -18480,11 +17593,11 @@ loc_1B3D8:
 loc_1B3F4:
 		cmpi.w  #4,d2
 		bne.s   loc_1B410
-		moveq   #5,d0
+		moveq   #PORTRAIT_EARNEST,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #5,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_EARNEST_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
@@ -18492,11 +17605,11 @@ loc_1B3F4:
 loc_1B410:
 		cmpi.w  #5,d2
 		bne.s   loc_1B42C
-		moveq   #5,d0
+		moveq   #PORTRAIT_EARNEST,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #5,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_EARNEST_KNT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
@@ -18524,7 +17637,7 @@ sub_1B43A:
 		beq.w   loc_1B622
 		cmpi.w  #$10,d1
 		bne.s   loc_1B480
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -18592,7 +17705,7 @@ loc_1B4F0:
 loc_1B508:
 		cmpi.w  #7,d1
 		bne.w   loc_1B590
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.w  #$7F,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -18668,7 +17781,7 @@ return_1B5C6:
 loc_1B5C8:
 		cmpi.w  #$18,d1
 		bne.s   loc_1B60A
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  #$56,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -18706,11 +17819,11 @@ loc_1B61A:
 loc_1B622:
 		cmpi.w  #0,d2
 		bne.s   loc_1B66A
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$5AB,d6
 		moveq   #2,d0
@@ -18731,11 +17844,11 @@ loc_1B622:
 loc_1B66A:
 		cmpi.w  #1,d2
 		bne.s   loc_1B6B2
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$5AB,d6
 		moveq   #2,d0
@@ -18760,8 +17873,8 @@ loc_1B6B2:
 		moveq   #1,d1
 		jsr     sub_11126       
 		move.l  d0,-(sp)
-		move.b  #$7F,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOKEN,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$5AE,d6
 		moveq   #1,d0
@@ -18781,7 +17894,7 @@ loc_1B6EA:
 		beq.w   loc_1B84A
 		cmpi.w  #$10,d1
 		bne.s   loc_1B71C
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -18811,7 +17924,7 @@ return_1B73A:
 loc_1B73C:
 		cmpi.w  #7,d1
 		bne.w   loc_1B7DE
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.w  #$7F,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -18880,7 +17993,7 @@ loc_1B7DE:
 loc_1B7F6:
 		cmpi.w  #$18,d1
 		bne.s   loc_1B822
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  #$5E9,d6
 		move.w  #$54,d0 
@@ -18899,7 +18012,7 @@ return_1B820:
 loc_1B822:
 		cmpi.w  #$1B,d1
 		bne.s   loc_1B842
-		moveq   #$2A,d0 
+		moveq   #PORTRAIT_SHELL,d0 
 		jsr     (a4)
 		move.w  #$5EB,d6
 		moveq   #0,d0
@@ -18915,11 +18028,11 @@ loc_1B842:
 loc_1B84A:
 		cmpi.w  #0,d2
 		bne.s   loc_1B892
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$5AB,d6
 		moveq   #2,d0
@@ -18940,11 +18053,11 @@ loc_1B84A:
 loc_1B892:
 		cmpi.w  #1,d2
 		bne.s   loc_1B8DA
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$5AB,d6
 		moveq   #2,d0
@@ -18969,8 +18082,8 @@ loc_1B8DA:
 		moveq   #1,d1
 		jsr     sub_11126       
 		move.l  d0,-(sp)
-		move.b  #$7F,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOKEN,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  #$5AE,d6
 		moveq   #1,d0
@@ -19000,8 +18113,8 @@ loc_1B91E:
 		cmpi.w  #0,d2
 		bne.s   loc_1B942
 		move.l  d0,-(sp)
-		move.b  #$5E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SKELETON,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
@@ -19013,8 +18126,8 @@ loc_1B942:
 		bne.s   loc_1B95E
 		sndCom  MUSIC_INTRO
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
@@ -19026,8 +18139,8 @@ loc_1B95E:
 		moveq   #2,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		jsr     (j_CreateMessageWindow).l
 		moveq   #3,d0
@@ -19038,8 +18151,8 @@ loc_1B988:
 		cmpi.w  #3,d2
 		bne.s   loc_1B9A0
 		move.l  d0,-(sp)
-		move.b  #$52,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_MASTER_MAGE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
@@ -19061,8 +18174,8 @@ loc_1B9B0:
 		jsr     (a5)
 		sndCom  MUSIC_INTRO
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		jsr     (j_CreateMessageWindow).l
 		moveq   #6,d0
@@ -19070,7 +18183,7 @@ loc_1B9B0:
 		sndCom  SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #PORTRAIT_NOVA,d0
 		jsr     (a4)
@@ -19096,7 +18209,7 @@ loc_1BA04:
 sub_1BA12:
 		cmpi.w  #5,d1
 		bne.s   loc_1BA48
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$581,d6
@@ -19159,7 +18272,7 @@ loc_1BA86:
 loc_1BAAE:
 		cmpi.w  #3,d1
 		bne.s   loc_1BAD8
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -19265,8 +18378,8 @@ loc_1BBA8:
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1BBFE
 		move.l  d0,-(sp)
-		move.b  #$49,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_CERBERUS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
@@ -19275,8 +18388,8 @@ loc_1BBA8:
 		beq.s   loc_1BBFC
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$87,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GIRL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -19352,7 +18465,7 @@ return_1BC8E:
 loc_1BC90:
 		cmpi.w  #5,d1
 		bne.s   loc_1BCCA
-		moveq   #$14,d0
+		moveq   #PORTRAIT_LYLE,d0
 		jsr     (a4)
 		move.w  #$7EC,d6
 		moveq   #0,d0
@@ -19426,8 +18539,8 @@ loc_1BD46:
 		cmpi.w  #0,d2
 		bne.s   loc_1BD66
 		move.l  d0,-(sp)
-		move.b  #$86,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOY,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$7F6,d6
@@ -19479,7 +18592,7 @@ loc_1BD9C:
 loc_1BDC4:
 		cmpi.w  #3,d1
 		bne.s   loc_1BDEE
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -19498,7 +18611,7 @@ loc_1BDEE:
 		beq.w   sub_180B4
 		cmpi.w  #5,d1
 		bne.s   loc_1BE38
-		moveq   #$14,d0
+		moveq   #PORTRAIT_LYLE,d0
 		jsr     (a4)
 		move.w  #$7EC,d6
 		moveq   #0,d0
@@ -19637,7 +18750,7 @@ sub_1BF28:
 		beq.w   loc_1C0B0
 		cmpi.w  #1,d1
 		bne.s   loc_1BF64
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -19673,7 +18786,7 @@ loc_1BF98:
 		cmpi.w  #5,d1
 		bne.w   loc_1C02E
 		move.w  #$64D,d6
-		moveq   #$18,d0
+		moveq   #PORTRAIT_BLEU_DRGN,d0
 		jsr     (a4)
 		move.w  #$78,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -19707,8 +18820,8 @@ loc_1BFF8:
 		moveq   #$10,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #$18,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_BLEU,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -19716,7 +18829,7 @@ loc_1BFF8:
 		moveq   #$18,d1
 		bsr.w   sub_17FF6
 		movem.l (sp)+,d0-d1/d6
-		moveq   #$18,d0
+		moveq   #PORTRAIT_BLEU_DRGN,d0
 		jsr     (a4)
 		moveq   #$12,d0
 		jsr     (a5)
@@ -19743,7 +18856,7 @@ loc_1C052:
 		move.w  #$47,d0 
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1C08E
-		moveq   #$24,d0 
+		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     (a4)
 		move.w  #$64D,d6
 		move.w  #$7B,d0 
@@ -19760,7 +18873,7 @@ loc_1C088:
 		jsr     (a5)
 		bra.s   return_1C0A6
 loc_1C08E:
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$666,d6
@@ -19779,8 +18892,8 @@ loc_1C0B0:
 		cmpi.w  #0,d2
 		bne.s   loc_1C0CC
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
@@ -19789,8 +18902,8 @@ loc_1C0CC:
 		cmpi.w  #1,d2
 		bne.s   loc_1C0E4
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
@@ -19799,8 +18912,8 @@ loc_1C0E4:
 		cmpi.w  #2,d2
 		bne.s   loc_1C0FC
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
@@ -19808,27 +18921,27 @@ loc_1C0E4:
 loc_1C0FC:
 		cmpi.w  #3,d2
 		bne.s   loc_1C140
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #5,d0
 		jsr     (a5)
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
@@ -19839,11 +18952,11 @@ loc_1C140:
 		moveq   #8,d0
 		moveq   #2,d1
 		jsr     sub_11126       
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -19852,19 +18965,19 @@ loc_1C166:
 		cmpi.w  #5,d2
 		bne.s   loc_1C1A2
 		move.l  d0,-(sp)
-		move.b  #$87,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GIRL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$64F,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		moveq   #$18,d0
+		moveq   #PORTRAIT_BLEU_DRGN,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$18,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BLEU_DRGN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$650,d6
@@ -19876,8 +18989,8 @@ loc_1C1A2:
 		cmpi.w  #6,d2
 		bne.s   loc_1C1E4
 		move.l  d0,-(sp)
-		move.b  #$87,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GIRL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$654,d6
@@ -19886,10 +18999,10 @@ loc_1C1A2:
 		move.w  (sp)+,d6
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$18,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BLEU_DRGN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$18,d0
+		moveq   #PORTRAIT_BLEU_DRGN,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$655,d6
@@ -19902,23 +19015,23 @@ loc_1C1E4:
 		bne.s   loc_1C22A
 		move.w  #$64D,d6
 		move.l  d0,-(sp)
-		move.b  #$3E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_RUNE_KNIGHT,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
 		move.l  d0,-(sp)
-		move.b  #$87,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GIRL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$A,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		move.b  #$18,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BLEU_DRGN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$18,d0
+		moveq   #PORTRAIT_BLEU_DRGN,d0
 		jsr     (a4)
 		moveq   #$C,d0
 		jsr     (a5)
@@ -19927,8 +19040,8 @@ loc_1C22A:
 		cmpi.w  #8,d2
 		bne.s   loc_1C260
 		move.l  d0,-(sp)
-		move.b  #$3E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_RUNE_KNIGHT,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$65A,d6
@@ -19947,8 +19060,8 @@ loc_1C260:
 		cmpi.w  #9,d2
 		bne.s   loc_1C280
 		move.l  d0,-(sp)
-		move.b  #$3E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_RUNE_KNIGHT,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$65C,d6
@@ -19960,8 +19073,8 @@ loc_1C280:
 		cmpi.w  #$A,d2
 		bne.s   loc_1C2AA
 		move.l  d0,-(sp)
-		move.b  #$87,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_GIRL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		moveq   #3,d1
@@ -20028,7 +19141,7 @@ loc_1C2F4:
 loc_1C328:
 		cmpi.w  #$C,d1
 		bne.s   loc_1C352
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -20109,8 +19222,8 @@ loc_1C3DE:
 		jsr     (a5)
 		move.w  (sp)+,d6
 		move.l  d0,-(sp)
-		moveq   #$1B,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_MUSASHI,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		rts
 loc_1C408:
@@ -20357,7 +19470,7 @@ return_1C61E:
 loc_1C620:
 		cmpi.w  #9,d1
 		bne.w   loc_1C6BC
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.w  #$40,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -20420,7 +19533,7 @@ loc_1C6BC:
 		bne.s   loc_1C6FC
 		clr.w   ((SPEECH_SFX-$1000000)).w
 		bsr.w   sub_17E58
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		moveq   #1,d0
 		movem.l d6/a0-a6,-(sp)
@@ -20462,8 +19575,8 @@ loc_1C72C:
 		cmpi.w  #$14,d1
 		bne.s   loc_1C75C
 		move.l  d0,-(sp)
-		move.b  #$7F,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOKEN,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$859,d6
@@ -20482,8 +19595,8 @@ loc_1C764:
 		cmpi.w  #0,d2
 		bne.s   loc_1C78C
 		move.l  d0,-(sp)
-		move.b  #$7F,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_BOKEN,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$858,d6
@@ -20497,8 +19610,8 @@ loc_1C78C:
 		cmpi.w  #1,d2
 		bne.s   loc_1C7AC
 		move.l  d0,-(sp)
-		move.b  #$8C,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_FAT_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$85A,d6
@@ -20510,8 +19623,8 @@ loc_1C7AC:
 		cmpi.w  #2,d2
 		bne.s   loc_1C7CC
 		move.l  d0,-(sp)
-		move.b  #$8C,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_FAT_MAN,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$85B,d6
@@ -20523,11 +19636,11 @@ loc_1C7CC:
 		cmpi.w  #3,d2
 		bne.s   loc_1C7F0
 		move.w  #$85E,d6
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
@@ -20538,30 +19651,30 @@ loc_1C7F0:
 		cmpi.w  #4,d2
 		bne.s   loc_1C870
 		move.w  #$85E,d6
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
 		moveq   #0,d0
 		moveq   #0,d1
 		jsr     sub_11126       
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -20573,11 +19686,11 @@ loc_1C7F0:
 		moveq   #9,d0
 		moveq   #2,d1
 		jsr     sub_11126       
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
@@ -20664,7 +19777,7 @@ loc_1C928:
 		cmpi.w  #9,d1
 		bne.w   loc_1C9D4
 		move.w  #$882,d6
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.w  #$57,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -20684,7 +19797,7 @@ loc_1C964:
 		moveq   #8,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
-		moveq   #$25,d0 
+		moveq   #ITEM_SWORD_OF_DARKNESS,d0 
 		bsr.w   GiveItemToHero  
 		bcc.s   loc_1C97C
 		moveq   #7,d0
@@ -20696,15 +19809,15 @@ loc_1C97C:
 		sndCom  MUSIC_ITEM
 		moveq   #$A,d0
 		jsr     (a5)
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  #$53,d0 
 		bsr.w   j_j_SetEventFlag
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
@@ -20815,7 +19928,7 @@ return_1CA8A:
 loc_1CA8C:
 		cmpi.w  #$16,d1
 		bne.s   loc_1CADA
-		moveq   #$30,d0 
+		moveq   #PORTRAIT_OTRANT,d0 
 		jsr     (a4)
 		move.w  #$57,d0 
 		bsr.w   j_j_CheckEventFlag
@@ -20859,11 +19972,11 @@ loc_1CAF2:
 loc_1CAF6:
 		cmpi.w  #0,d2
 		bne.s   loc_1CB1A
-		moveq   #$30,d0 
+		moveq   #PORTRAIT_OTRANT,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$7E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_OTRANT,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$883,d6
@@ -20875,51 +19988,51 @@ loc_1CB1A:
 		cmpi.w  #1,d2
 		bne.w   loc_1CBE6
 		move.w  #$882,d6
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
-		moveq   #$30,d0 
+		moveq   #PORTRAIT_OTRANT,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$7E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_OTRANT,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
-		moveq   #$30,d0 
+		moveq   #PORTRAIT_OTRANT,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$7E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_OTRANT,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #5,d0
 		jsr     (a5)
 		moveq   #0,d0
 		moveq   #0,d1
 		jsr     sub_11126       
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
 		jsr     (j_CreateMessageWindow).l
-		moveq   #$25,d0 
+		moveq   #ITEM_SWORD_OF_DARKNESS,d0 
 		bsr.w   GiveItemToHero  
 		bcc.s   loc_1CBB0
 		moveq   #7,d0
@@ -20933,15 +20046,15 @@ loc_1CBB0:
 		sndCom  MUSIC_ITEM
 		moveq   #$A,d0
 		jsr     (a5)
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  #$53,d0 
 		bsr.w   j_j_SetEventFlag
-		moveq   #$2E,d0 
+		moveq   #PORTRAIT_KING,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$8E,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KING,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
@@ -20973,7 +20086,7 @@ DialogueScript29:
 		beq.w   loc_1CECC
 		cmpi.w  #1,d1
 		bne.s   loc_1CC44
-		moveq   #$19,d0
+		moveq   #PORTRAIT_ADAM_RBT,d0
 		jsr     (a4)
 		move.w  #$631,d6
 		move.w  #$55,d0 
@@ -20988,8 +20101,8 @@ loc_1CC2A:
 		move.w  #$60,d0 
 		bsr.w   j_j_SetEventFlag
 		move.l  d0,-(sp)
-		moveq   #$19,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_ADAM,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 return_1CC42:
 		rts
@@ -21000,8 +20113,8 @@ loc_1CC48:
 		bne.s   loc_1CC78
 		sndCom  MUSIC_INTRO
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$631,d6
@@ -21017,8 +20130,8 @@ loc_1CC78:
 		bne.s   loc_1CCA0
 		sndCom  MUSIC_INTRO
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$642,d6
@@ -21031,10 +20144,10 @@ loc_1CCA0:
 		cmpi.w  #2,d2
 		bne.s   loc_1CCC4
 		move.l  d0,-(sp)
-		move.b  #$19,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ADAM_RBT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$19,d0
+		moveq   #PORTRAIT_ADAM_RBT,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$634,d6
@@ -21046,10 +20159,10 @@ loc_1CCC4:
 		cmpi.w  #3,d2
 		bne.s   loc_1CCFE
 		move.l  d0,-(sp)
-		move.b  #$19,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ADAM_RBT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
-		moveq   #$19,d0
+		moveq   #PORTRAIT_ADAM_RBT,d0
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$635,d6
@@ -21067,11 +20180,11 @@ loc_1CCC4:
 loc_1CCFE:
 		cmpi.w  #4,d2
 		bne.s   loc_1CD22
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$638,d6
@@ -21082,11 +20195,11 @@ loc_1CCFE:
 loc_1CD22:
 		cmpi.w  #5,d2
 		bne.s   loc_1CD46
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$63A,d6
@@ -21097,11 +20210,11 @@ loc_1CD22:
 loc_1CD46:
 		cmpi.w  #6,d2
 		bne.s   loc_1CD96
-		moveq   #$19,d0
+		moveq   #PORTRAIT_ADAM_RBT,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$19,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ADAM_RBT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$63B,d6
@@ -21109,8 +20222,8 @@ loc_1CD46:
 		jsr     (a5)
 		move.w  (sp)+,d6
 		move.l  d0,-(sp)
-		moveq   #$19,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_ADAM,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		movem.l d0-d1/d6,-(sp)
 		moveq   #$16,d0
@@ -21127,11 +20240,11 @@ loc_1CD46:
 loc_1CD96:
 		cmpi.w  #7,d2
 		bne.s   loc_1CDBA
-		moveq   #$22,d0 
+		moveq   #PORTRAIT_CHAOS,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$73,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_CHAOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$63E,d6
@@ -21142,22 +20255,22 @@ loc_1CD96:
 loc_1CDBA:
 		cmpi.w  #8,d2
 		bne.s   loc_1CE10
-		moveq   #$19,d0
+		moveq   #PORTRAIT_ADAM_RBT,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$19,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ADAM_RBT,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$63F,d6
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		moveq   #$22,d0 
+		moveq   #PORTRAIT_CHAOS,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$73,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_CHAOS,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$640,d6
@@ -21175,8 +20288,8 @@ loc_1CE10:
 		bne.s   loc_1CE40
 		sndCom  MUSIC_INTRO
 		move.l  d0,-(sp)
-		move.b  #$59,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_SPIRIT_OF_THE_POOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$643,d6
@@ -21216,7 +20329,7 @@ loc_1CE64:
 		moveq   #0,d0
 		jsr     (a5)
 		move.w  (sp)+,d6
-		move.w  #$FB,d0 
+		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  #$56,d0 
 		bsr.w   j_j_ClearEventFlag
@@ -21261,8 +20374,8 @@ loc_1CEF8:
 		bne.s   loc_1CF20
 		move.w  #$5D,d0 
 		bsr.w   j_j_SetEventFlag
-		moveq   #$26,d0 
-		bsr.w   sub_17EEC
+		moveq   #ITEM_SWORD_OF_LIGHT,d0 
+		bsr.w   RemoveKeyItem
 		move.w  #$5C,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   return_1CF1E
@@ -21275,8 +20388,8 @@ loc_1CF20:
 		bne.s   loc_1CF48
 		move.w  #$5C,d0 
 		bsr.w   j_j_SetEventFlag
-		moveq   #$25,d0 
-		bsr.w   sub_17EEC
+		moveq   #ITEM_SWORD_OF_DARKNESS,d0 
+		bsr.w   RemoveKeyItem
 		move.w  #$5D,d0 
 		bsr.w   j_j_CheckEventFlag
 		beq.s   return_1CF46
@@ -21316,56 +20429,56 @@ loc_1CF80:
 		cmpi.w  #3,d2
 		bne.s   loc_1CFF4
 		move.w  #$8A7,d6
-		moveq   #$B,d0
+		moveq   #PORTRAIT_ALEF,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ALEF_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
-		moveq   #$10,d0
+		moveq   #PORTRAIT_TORASU,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$10,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_TORASU_HEAL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
-		moveq   #$B,d0
+		moveq   #PORTRAIT_ALEF,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$B,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_ALEF_MAGE,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
-		moveq   #$10,d0
+		moveq   #PORTRAIT_TORASU,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$10,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_TORASU_HEAL,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
 		move.l  d0,-(sp)
-		moveq   #$B,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_ALEF,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		move.l  d0,-(sp)
-		moveq   #$10,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_TORASU,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		rts
 loc_1CFF4:
 		move.w  #$8AB,d6
 		cmpi.w  #4,d2
 		bne.s   loc_1D014
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #0,d0
 		jsr     (a5)
@@ -21373,11 +20486,11 @@ loc_1CFF4:
 loc_1D014:
 		cmpi.w  #5,d2
 		bne.s   loc_1D030
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #1,d0
 		jsr     (a5)
@@ -21385,11 +20498,11 @@ loc_1D014:
 loc_1D030:
 		cmpi.w  #6,d2
 		bne.s   loc_1D04C
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #2,d0
 		jsr     (a5)
@@ -21397,11 +20510,11 @@ loc_1D030:
 loc_1D04C:
 		cmpi.w  #7,d2
 		bne.s   loc_1D068
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #3,d0
 		jsr     (a5)
@@ -21409,27 +20522,27 @@ loc_1D04C:
 loc_1D068:
 		cmpi.w  #8,d2
 		bne.s   loc_1D0C2
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #4,d0
 		jsr     (a5)
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #5,d0
 		jsr     (a5)
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #6,d0
 		jsr     (a5)
@@ -21442,19 +20555,19 @@ loc_1D068:
 loc_1D0C2:
 		cmpi.w  #9,d2
 		bne.s   loc_1D0F6
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #7,d0
 		jsr     (a5)
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #8,d0
 		jsr     (a5)
@@ -21464,11 +20577,11 @@ loc_1D0F6:
 		cmpi.w  #$A,d2
 		bne.s   loc_1D116
 		sndCom  MUSIC_SAD_THEME
-		moveq   #$25,d0 
+		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     (a4)
 		move.l  d0,-(sp)
-		move.b  #$75,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_KANE,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #9,d0
 		jsr     (a5)
@@ -21484,7 +20597,7 @@ loc_1D116:
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_NOVA,d0
-		bsr.w   sub_17F64       
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		moveq   #$B,d0
 		jsr     (a5)
@@ -21546,7 +20659,7 @@ loc_1D18E:
 loc_1D1C2:
 		cmpi.w  #4,d1
 		bne.s   loc_1D1EC
-		moveq   #$2F,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		clr.w   d1
 		move.b  -3(a6),d1
@@ -21657,12 +20770,12 @@ loc_1D2B8:
 sub_1D2C0:
 		move.w  #$8A3,d6
 		move.l  d0,-(sp)
-		move.b  #$6E,d0 
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_DARKSOL,d0 
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		cmpi.w  #0,d2
 		bne.s   loc_1D2E0
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		moveq   #0,d0
 		jsr     (a5)
@@ -21670,7 +20783,7 @@ sub_1D2C0:
 loc_1D2E0:
 		cmpi.w  #1,d2
 		bne.s   loc_1D2F0
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		moveq   #1,d0
 		jsr     (a5)
@@ -21678,7 +20791,7 @@ loc_1D2E0:
 loc_1D2F0:
 		cmpi.w  #2,d2
 		bne.s   loc_1D300
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		moveq   #2,d0
 		jsr     (a5)
@@ -21686,7 +20799,7 @@ loc_1D2F0:
 loc_1D300:
 		cmpi.w  #3,d2
 		bne.s   loc_1D310
-		moveq   #$28,d0 
+		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     (a4)
 		moveq   #3,d0
 		jsr     (a5)
@@ -21706,8 +20819,8 @@ loc_1D314:
 		bsr.w   j_j_CheckEventFlag
 		bne.s   loc_1D352
 		move.l  d0,-(sp)
-		move.b  #$1C,d0
-		bsr.w   sub_17F64       
+		move.b  #MAPSPRITE_HANZOU,d0
+		bsr.w   CutsceneFunction_SetSpeechSfx       
 		move.l  (sp)+,d0
 		move.w  d6,-(sp)
 		move.w  #$7B6,d6
@@ -21715,8 +20828,8 @@ loc_1D314:
 		jsr     (a5)
 		move.w  (sp)+,d6
 		move.l  d0,-(sp)
-		moveq   #$1C,d0
-		bsr.w   sub_17FE0       
+		moveq   #ALLY_HANZOU,d0
+		bsr.w   CutsceneFunction_JoinForce       
 		movem.l (sp)+,d0
 		move.w  #$52,d0 
 		bsr.w   j_j_SetEventFlag
@@ -21753,59 +20866,36 @@ loc_1D36E:
 
     ; End of function sub_1D356
 
-byte_1D37E:     dc.b 2
-		dc.b 3
-		dc.b 0
-		dc.b $22
-		dc.b 4
-		dc.b 3
-		dc.b 5
-		dc.b $22
-		dc.b 6
-		dc.b 3
-		dc.b $D
-		dc.b 3
-		dc.b 8
-		dc.b $18
-		dc.b 7
-		dc.b 3
-		dc.b 9
-		dc.b 3
-		dc.b $A
-		dc.b 3
-		dc.b $1D
-		dc.b $A
-		dc.b $20
-		dc.b 3
-		dc.b $2A
-		dc.b $A
-		dc.b $21
-		dc.b 3
-		dc.b $1F
-		dc.b $10
-		dc.b $1E
-		dc.b 3
-		dc.b $22
-		dc.b $22
-		dc.b $24
-		dc.b $A
-		dc.b $10
-		dc.b 9
-		dc.b $E
-		dc.b 3
-		dc.b $29
-		dc.b $21
-		dc.b $C
-		dc.b 3
-		dc.b 3
-		dc.b $18
-		dc.b $25
-		dc.b $A
-		dc.b $FF
-		dc.b 3
-		dc.b $4E
-		dc.b $75
-pt_BattleExits: dc.l BattleExit0
+byte_1D37E:
+        dc.b MAP_GUARDIANA, MUSIC_TOWN
+		dc.b MAP_GUARDIANA_CASTLE, MUSIC_CASTLE
+		dc.b MAP_ALTERONE, MUSIC_TOWN
+		dc.b MAP_ALTERONE_CASTLE, MUSIC_CASTLE
+		dc.b MAP_RINDO, MUSIC_TOWN
+		dc.b MAP_MANARINA, MUSIC_TOWN
+		dc.b MAP_SHADE_ABBEY, MUSIC_SAD_TOWN
+		dc.b MAP_BUSTOKE, MUSIC_TOWN
+		dc.b MAP_PAO1, MUSIC_TOWN
+		dc.b MAP_PAO2, MUSIC_TOWN
+		dc.b MAP_URANBATOL, MUSIC_BATTLE_2
+		dc.b MAP_WARAL, MUSIC_TOWN
+		dc.b MAP_SHINING_PATH, MUSIC_BATTLE_2
+		dc.b MAP_RUDO, MUSIC_TOWN
+		dc.b MAP_DRAGONIA, MUSIC_BATTLE_3
+		dc.b MAP_PROMPT, MUSIC_TOWN
+		dc.b MAP_PROMPT_CASTLE, MUSIC_CASTLE
+		dc.b MAP_TOWER_OF_THE_ANCIENTS, MUSIC_BATTLE_2
+		dc.b MAP_METAPHA, MUSIC_BATTLE_1
+		dc.b MAP_RUNEFAUST, MUSIC_TOWN
+		dc.b MAP_SHIP_DECK, MUSIC_BATTLE_4
+		dc.b MAP_CABIN, MUSIC_TOWN
+		dc.b MAP_GUARDIANA_RUINED, MUSIC_SAD_TOWN
+		dc.b MAP_RUNEFAUST_CASTLE, MUSIC_BATTLE_2
+		dc.b $FF, MUSIC_TOWN
+		rts
+
+pt_BattleExits:
+        dc.l BattleExit0
 		dc.l BattleExit1
 		dc.l BattleExit2
 		dc.l BattleExit3
@@ -21856,6 +20946,7 @@ PlayEnding:
 loc_1DB04:
 		clr.l   (a0)+
 		dbf     d7,loc_1DB04
+
 		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
@@ -21877,7 +20968,7 @@ loc_1DB4C:
 		jsr     j_WriteEndingCreditsBattlesceneScript
 		move.w  d0,-(sp)
 		jsr     j_ExecuteBattlesceneScript
-		move.w  #$A,d0
+		move.w  #10,d0
 		jsr     (j_Sleep).l
 		move.w  (sp)+,d0
 		lea     (PALETTE_2_CURRENT).l,a0
@@ -21894,16 +20985,17 @@ loc_1DB4C:
 		lsl.w   #2,d0
 		movea.l (a3,d0.w),a3
 		jsr     sub_CC02C
-		move.w  #$104,d0
+		move.w  #260,d0
 		jsr     (j_Sleep).l
 		movem.w (sp)+,d0/d7
 		addq.w  #1,d0
 		dbf     d7,loc_1DB4C
+
 		clr.b   ((DONT_SEND_SOUND_COMMANDS-$1000000)).w
 		clr.w   ((SPEECH_SFX-$1000000)).w
 		move.b  #3,((MESSAGE_SPEED-$1000000)).w
 		jsr     (j_FadeOutToBlack).l
-		move.w  #$C8,d0 
+		move.w  #200,d0 
 		jsr     (j_Sleep).l
 		sndCom  MUSIC_ENDING
 		jsr     (j_DisableDisplayAndInterrupts).l
@@ -21933,11 +21025,13 @@ loc_1DC38:
 		move.w  (a0)+,(a1)+
 		move.w  #0,(a2)+
 		dbf     d0,loc_1DC38
+
 		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		move.w  #$3FF,d7
 loc_1DC4C:
 		clr.l   (a0)+
 		dbf     d7,loc_1DC4C
+
 		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
@@ -21960,6 +21054,7 @@ loc_1DC9C:
 		move.l  d0,(a1)+
 		move.l  d0,(a2)+
 		dbf     d7,loc_1DC9C
+
 		movea.l (p_EndingTiles_Max1).l,a0
 		lea     ($8000).l,a1
 		move.w  #$900,d0
@@ -21999,23 +21094,17 @@ loc_1DC9C:
 		trap    #5
 		move.b  #2,(byte_FFF804).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$5E,d0 ; "Well, hello there.[Delay2][Delay2][Line]You look like you're[Line]a long way from home.[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$5F,d0 ; "We don't see many folk in[Line]full armor like that.[Delay2][Delay2][Delay2][Line]Quite a fancy getup![Delay2][Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$60,d0 ; "I have come a long way.[Delay2][Delay2][Delay2][Line]Longer than you can[Line]imagine.[Delay2][Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$61,d0 ; "I must say you do look pretty[Line]tired and, well,[Delay2][Delay2][Line]your things have seen[Line]better days.[Delay2][Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$62,d0 ; "I'm tired of wandering.[Delay2][Delay2][Line]I'm looking for a place to[Line]settle down and rest.[Delay2][Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$63,d0 ; "Well, how about right here?[Delay2][Delay2][Line]Lend your hands to the fields[Line]of our village?[Delay2][Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
+		txt     #$5E ; "Well, hello there.[Delay2][Delay2][Line]You look like you're[Line]a long way from home.[Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$5F ; "We don't see many folk in[Line]full armor like that.[Delay2][Delay2][Delay2][Line]Quite a fancy getup![Delay2][Delay2][Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$60 ; "I have come a long way.[Delay2][Delay2][Delay2][Line]Longer than you can[Line]imagine.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$61 ; "I must say you do look pretty[Line]tired and, well,[Delay2][Delay2][Line]your things have seen[Line]better days.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$62 ; "I'm tired of wandering.[Delay2][Delay2][Line]I'm looking for a place to[Line]settle down and rest.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$63 ; "Well, how about right here?[Delay2][Delay2][Line]Lend your hands to the fields[Line]of our village?[Delay2][Delay2][Delay2][Delay2]"
 		moveq   #$33,d7 
 loc_1DD9C:
 		move.w  d7,-(sp)
@@ -22029,22 +21118,20 @@ loc_1DDBA:
 		subq.w  #2,(a0)
 		addq.l  #8,a0
 		dbf     d7,loc_1DDBA
+
 		jsr     (j_WaitForVInt).l
 		move.w  (sp)+,d7
 		dbf     d7,loc_1DD9C
-		trap    #7
-		move.w  #$64,d0 ; "That sounds like just what I[Line]need right now. [Delay2][Delay2][Delay2]I work hard[Line]and I'm a fast learner.[Delay2][Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$65,d0 ; "Good! We've got a deal then.[Delay2][Delay2][Delay2][Line]Folks in the village will be[Line]excited to see a new face![Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$66,d0 ; "I didn't catch your name.[Line]What do they call you?[Delay2][Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$67,d0 ; "Me? You can call me...[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$64 ; "That sounds like just what I[Line]need right now. [Delay2][Delay2][Delay2]I work hard[Line]and I'm a fast learner.[Delay2][Delay2][Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$65 ; "Good! We've got a deal then.[Delay2][Delay2][Delay2][Line]Folks in the village will be[Line]excited to see a new face![Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$66 ; "I didn't catch your name.[Line]What do they call you?[Delay2][Delay2][Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     #$67 ; "Me? You can call me...[Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		movea.l (p_EndingTiles_Max2).l,a0
 		lea     ($8000).l,a1
 		move.w  #$900,d0
@@ -22059,7 +21146,7 @@ loc_1DDBA:
 		move.w  #2,d1
 		jsr     (j_ApplyVIntVramDmaOnCompressedTiles).l
 		jsr     (j_EnableDmaQueueProcessing).l
-		moveq   #$12,d0
+		moveq   #18,d0
 		jsr     (j_Sleep).l
 		movea.l (p_EndingTiles_Max4).l,a0
 		lea     ($8000).l,a1
@@ -22067,23 +21154,23 @@ loc_1DDBA:
 		move.w  #2,d1
 		jsr     (j_ApplyVIntVramDmaOnCompressedTiles).l
 		jsr     (j_EnableDmaQueueProcessing).l
-		moveq   #$5A,d0 
+		moveq   #90,d0 
 		jsr     (j_Sleep).l
-		trap    #6
+		trap    #CLOSE_MESSAGE_WINDOW
 		lea     byte_1E712(pc), a0
 		lea     ($EA40).l,a1
 		move.w  #$C0,d0 
 		move.w  #2,d1
 		jsr     (j_ApplyVIntVramDma).l
 		jsr     (j_EnableDmaQueueProcessing).l
-		move.w  #$21C,d0
+		move.w  #540,d0
 		jsr     (j_Sleep).l
 		move.b  #$B,(FADING_PALETTE_FLAGS).l
 		move.b  #5,(FADING_COUNTER_MAX).l
 		move.b  #OUT_TO_BLACK,(FADING_SETTING).l
 		clr.b   (FADING_POINTER).l
 		move.b  (FADING_COUNTER_MAX).l,(FADING_COUNTER).l
-		moveq   #$5A,d0 
+		moveq   #90,d0 
 		jsr     (j_Sleep).l
 		lea     (PALETTE_1_BASE).l,a0
 		clr.l   (a0)+
@@ -22112,7 +21199,7 @@ loc_1DDBA:
 		clr.l   (a0)+
 		clr.l   (a0)+
 		move.b  #1,(GAME_COMPLETED).l
-		move.w  #$E10,d0
+		move.w  #3600,d0
 		jsr     (j_Sleep).l
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
@@ -22123,7 +21210,8 @@ loc_1DDBA:
 
     ; End of function PlayEnding
 
-pt_IntroTiles:  dc.l IntroTile00
+pt_IntroTiles:
+        dc.l IntroTile00
 		dc.l IntroTile01
 		dc.l IntroTile02
 		dc.l IntroTile03
@@ -22155,7 +21243,8 @@ IntroTile12:    incbin "data/graphics/introtiles/introtile12.bin"
 IntroTile13:    incbin "data/graphics/introtiles/introtile13.bin"
 IntroTile14:    incbin "data/graphics/introtiles/introtile14.bin"
 IntroTile15:    incbin "data/graphics/introtiles/introtile15.bin"
-byte_1E37A:     dc.b 1
+byte_1E37A:
+        dc.b 1
 		dc.b 0
 		dc.b 1
 		dc.b 4
@@ -22924,485 +22013,231 @@ byte_1E37A:     dc.b 1
 		dc.b 2
 		dc.b $7F
 word_1E67A:     ; sprite properties data
-		dc.w $A8
-		dc.b $F
-		dc.b $21
-		dc.w $2400
-		dc.w $180
-		dc.w $C8
-		dc.b $F
-		dc.b $22
-		dc.w $2410
-		dc.w $180
-		dc.w $E8
-		dc.b $F
-		dc.b $23
-		dc.w $2420
-		dc.w $180
-		dc.w $A8
-		dc.b $F
-		dc.b $24
-		dc.w $2430
-		dc.w $1A0
-		dc.w $C8
-		dc.b $F
-		dc.b $25
-		dc.w $2440
-		dc.w $1A0
-		dc.w $E8
-		dc.b $F
-		dc.b $26
-		dc.w $2450
-		dc.w $1A0
-		dc.w $A8
-		dc.b $F
-		dc.b $27
-		dc.w $2460
-		dc.w $1C0
-		dc.w $C8
-		dc.b $F
-		dc.b $28
-		dc.w $2470
-		dc.w $1C0
-		dc.w $E8
-		dc.b $F
-		dc.b $29
-		dc.w $2480
-		dc.w $1C0
-		dc.w $C8
-		dc.b $F
-		dc.b $2A
-		dc.w $6490
-		dc.w $140
-		dc.w $E8
-		dc.b $F
-		dc.b $2B
-		dc.w $64A0
-		dc.w $140
-		dc.w $C8
-		dc.b $F
-		dc.b $2C
-		dc.w $64B0
-		dc.w $160
-		dc.w $E8
-		dc.b $F
-		dc.b $2D
-		dc.w $64C0
-		dc.w $160
-		dc.w $C8
-		dc.b $F
-		dc.b $2E
-		dc.w $64D0
-		dc.w $98
-		dc.w $E8
-		dc.b $F
-		dc.b $2F
-		dc.w $64E0
-		dc.w $98
-		dc.w $C8
-		dc.b $F
-		dc.b $30
-		dc.w $64F0
-		dc.w $B8
-		dc.w $E8
-		dc.b $F
-		dc.b $31
-		dc.w $6500
-		dc.w $B8
-		dc.w $C8
-		dc.b $F
-		dc.b $32
-		dc.w $6510
-		dc.w $D8
-		dc.w $E8
-		dc.b $F
-		dc.b $33
-		dc.w $6520
-		dc.w $D8
-byte_1E712:     dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b $C3
-		dc.b 0
-		dc.b $C3
-		dc.b 1
-		dc.b $C3
-		dc.b 2
-		dc.b $C3
-		dc.b 3
-		dc.b $C3
-		dc.b 4
-		dc.b $C3
-		dc.b 5
-		dc.b $C3
-		dc.b 6
-		dc.b $C3
-		dc.b 7
-		dc.b $C3
-		dc.b 8
-		dc.b $C3
-		dc.b 9
-		dc.b $C3
-		dc.b $A
-		dc.b $C3
-		dc.b $B
-		dc.b $C3
-		dc.b $C
-		dc.b $C3
-		dc.b $D
-		dc.b $C3
-		dc.b $E
-		dc.b $C3
-		dc.b $F
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b $C3
-		dc.b $10
-		dc.b $C3
-		dc.b $11
-		dc.b $C3
-		dc.b $12
-		dc.b $C3
-		dc.b $13
-		dc.b $C3
-		dc.b $14
-		dc.b $C3
-		dc.b $15
-		dc.b $C3
-		dc.b $16
-		dc.b $C3
-		dc.b $17
-		dc.b $C3
-		dc.b $18
-		dc.b $C3
-		dc.b $19
-		dc.b $C3
-		dc.b $1A
-		dc.b $C3
-		dc.b $1B
-		dc.b $C3
-		dc.b $1C
-		dc.b $C3
-		dc.b $1D
-		dc.b $C3
-		dc.b $1E
-		dc.b $C3
-		dc.b $1F
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b $C3
-		dc.b $20
-		dc.b $C3
-		dc.b $21
-		dc.b $C3
-		dc.b $22
-		dc.b $C3
-		dc.b $23
-		dc.b $C3
-		dc.b $24
-		dc.b $C3
-		dc.b $25
-		dc.b $C3
-		dc.b $26
-		dc.b $C3
-		dc.b $27
-		dc.b $C3
-		dc.b $28
-		dc.b $C3
-		dc.b $29
-		dc.b $C3
-		dc.b $2A
-		dc.b $C3
-		dc.b $2B
-		dc.b $C3
-		dc.b $2C
-		dc.b $C3
-		dc.b $2D
-		dc.b $C3
-		dc.b $2E
-		dc.b $C3
-		dc.b $2F
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b $C3
-		dc.b $30
-		dc.b $C3
-		dc.b $31
-		dc.b $C3
-		dc.b $32
-		dc.b $C3
-		dc.b $33
-		dc.b $C3
-		dc.b $34
-		dc.b $C3
-		dc.b $35
-		dc.b $C3
-		dc.b $36
-		dc.b $C3
-		dc.b $37
-		dc.b $C3
-		dc.b $38
-		dc.b $C3
-		dc.b $39
-		dc.b $C3
-		dc.b $3A
-		dc.b $C3
-		dc.b $3B
-		dc.b $C3
-		dc.b $3C
-		dc.b $C3
-		dc.b $3D
-		dc.b $C3
-		dc.b $3E
-		dc.b $C3
-		dc.b $3F
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b $C3
-		dc.b $40
-		dc.b $C3
-		dc.b $41
-		dc.b $C3
-		dc.b $42
-		dc.b $C3
-		dc.b $43
-		dc.b $C3
-		dc.b $44
-		dc.b $C3
-		dc.b $45
-		dc.b $C3
-		dc.b $46
-		dc.b $C3
-		dc.b $47
-		dc.b $C3
-		dc.b $48
-		dc.b $C3
-		dc.b $49
-		dc.b $C3
-		dc.b $4A
-		dc.b $C3
-		dc.b $4B
-		dc.b $C3
-		dc.b $4C
-		dc.b $C3
-		dc.b $4D
-		dc.b $C3
-		dc.b $4E
-		dc.b $C3
-		dc.b $4F
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b $C3
-		dc.b $50
-		dc.b $C3
-		dc.b $51
-		dc.b $C3
-		dc.b $52
-		dc.b $C3
-		dc.b $53
-		dc.b $C3
-		dc.b $54
-		dc.b $C3
-		dc.b $55
-		dc.b $C3
-		dc.b $56
-		dc.b $C3
-		dc.b $57
-		dc.b $C3
-		dc.b $58
-		dc.b $C3
-		dc.b $59
-		dc.b $C3
-		dc.b $5A
-		dc.b $C3
-		dc.b $5B
-		dc.b $C3
-		dc.b $5C
-		dc.b $C3
-		dc.b $5D
-		dc.b $C3
-		dc.b $5E
-		dc.b $C3
-		dc.b $5F
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+        vdpSprite 168, V4|H4|33, 400|PALETTE2, 384
+        vdpSprite 200, V4|H4|34, 410|PALETTE2, 384
+        vdpSprite 232, V4|H4|35, 420|PALETTE2, 384
+        vdpSprite 168, V4|H4|36, 430|PALETTE2, 416
+        vdpSprite 200, V4|H4|37, 440|PALETTE2, 416
+        vdpSprite 232, V4|H4|38, 450|PALETTE2, 416
+        vdpSprite 168, V4|H4|39, 460|PALETTE2, 448
+        vdpSprite 200, V4|H4|40, 470|PALETTE2, 448
+        vdpSprite 232, V4|H4|41, 480|PALETTE2, 448
+        vdpSprite 200, V4|H4|42, 490|PALETTE4, 320
+        vdpSprite 232, V4|H4|43, 4A0|PALETTE4, 320
+        vdpSprite 200, V4|H4|44, 4B0|PALETTE4, 352
+        vdpSprite 232, V4|H4|45, 4C0|PALETTE4, 352
+        vdpSprite 200, V4|H4|46, 4D0|PALETTE4, 152
+        vdpSprite 232, V4|H4|47, 4E0|PALETTE4, 152
+        vdpSprite 200, V4|H4|48, 4F0|PALETTE4, 184
+        vdpSprite 232, V4|H4|49, 500|PALETTE4, 184
+        vdpSprite 200, V4|H4|50, 510|PALETTE4, 216
+        vdpSprite 232, V4|H4|51, 520|PALETTE4, 216
+
+byte_1E712:
+; 1st line
+        vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 300
+		vdpBaseTile 301
+		vdpBaseTile 302
+		vdpBaseTile 303
+		vdpBaseTile 304
+		vdpBaseTile 305
+		vdpBaseTile 306
+		vdpBaseTile 307
+		vdpBaseTile 308
+		vdpBaseTile 309
+		vdpBaseTile 30A
+		vdpBaseTile 30B
+		vdpBaseTile 30C
+		vdpBaseTile 30D
+		vdpBaseTile 30E
+		vdpBaseTile 30F
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+
+; 2nd line
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 310
+		vdpBaseTile 311
+		vdpBaseTile 312
+		vdpBaseTile 313
+		vdpBaseTile 314
+		vdpBaseTile 315
+		vdpBaseTile 316
+		vdpBaseTile 317
+		vdpBaseTile 318
+		vdpBaseTile 319
+		vdpBaseTile 31A
+		vdpBaseTile 31B
+		vdpBaseTile 31C
+		vdpBaseTile 31D
+		vdpBaseTile 31E
+		vdpBaseTile 31F
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+
+; 3rd line
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 320
+		vdpBaseTile 321
+		vdpBaseTile 322
+		vdpBaseTile 323
+		vdpBaseTile 324
+		vdpBaseTile 325
+		vdpBaseTile 326
+		vdpBaseTile 327
+		vdpBaseTile 328
+		vdpBaseTile 329
+		vdpBaseTile 32A
+		vdpBaseTile 32B
+		vdpBaseTile 32C
+		vdpBaseTile 32D
+		vdpBaseTile 32E
+		vdpBaseTile 32F
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+
+; 4th line
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 330
+		vdpBaseTile 331
+		vdpBaseTile 332
+		vdpBaseTile 333
+		vdpBaseTile 334
+		vdpBaseTile 335
+		vdpBaseTile 336
+		vdpBaseTile 337
+		vdpBaseTile 338
+		vdpBaseTile 339
+		vdpBaseTile 33A
+		vdpBaseTile 33B
+		vdpBaseTile 33C
+		vdpBaseTile 33D
+		vdpBaseTile 33E
+		vdpBaseTile 33F
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+
+; 5th line
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 340
+		vdpBaseTile 341
+		vdpBaseTile 342
+		vdpBaseTile 343
+		vdpBaseTile 344
+		vdpBaseTile 345
+		vdpBaseTile 346
+		vdpBaseTile 347
+		vdpBaseTile 348
+		vdpBaseTile 349
+		vdpBaseTile 34A
+		vdpBaseTile 34B
+		vdpBaseTile 34C
+		vdpBaseTile 34D
+		vdpBaseTile 34E
+		vdpBaseTile 34F
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+
+; 6th line
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 350
+		vdpBaseTile 351
+		vdpBaseTile 352
+		vdpBaseTile 353
+		vdpBaseTile 354
+		vdpBaseTile 355
+		vdpBaseTile 356
+		vdpBaseTile 357
+		vdpBaseTile 358
+		vdpBaseTile 359
+		vdpBaseTile 35A
+		vdpBaseTile 35B
+		vdpBaseTile 35C
+		vdpBaseTile 35D
+		vdpBaseTile 35E
+		vdpBaseTile 35F
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+		vdpBaseTile 0
+
 TextBankTreesPointers:
 		incbin "data/scripting/text/huffmantreeoffsets.bin"
 TextBankTreeData:
@@ -23443,6 +22278,7 @@ HuffmanDecode:
 		clr.w   d5              ; clear skipped symbols counter
 loc_1F022:
 		dbf     d3,loc_1F02A    
+
 		moveq   #7,d3
 		move.b  (a1)+,d2        ; Load next Huffman tree byte
 loc_1F02A:
@@ -23451,6 +22287,7 @@ loc_1F02A:
 														; C = 0 --> Non-leaf node, read next string bit
 														; 
 		dbf     d6,loc_1F036    
+
 		moveq   #7,d6
 		move.b  (a0)+,d7        ; Load next compressed string byte
 loc_1F036:
@@ -23460,6 +22297,7 @@ loc_1F036:
 		clr.w   d4              ; Clear non-leaf node counter
 loc_1F03C:
 		dbf     d3,loc_1F044    ; count left sub-tree symbols to skip
+
 		moveq   #7,d3
 		move.b  (a1)+,d2        ; Load next huffman tree byte
 loc_1F044:
@@ -23471,6 +22309,7 @@ loc_1F044:
 loc_1F04C:
 		subq.w  #1,d5           ; increment skipped symbols counter
 		dbf     d4,loc_1F03C    ; Continue until all nodes in left subtree exhausted
+
 		bra.s   loc_1F022       ; Examine next tree node
 loc_1F054:
 		move.b  -1(a2,d5.w),d0  ; Load decoded symbol
