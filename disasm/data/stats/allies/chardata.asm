@@ -1,6 +1,6 @@
 
 ; ASM FILE data\stats\allies\chardata.asm :
-; 0x1F806..0x1F914 : Initial character data
+; 0x25154..0x25604 : Initial character data
 
 InitialForceData:
         allyName   "Max"
