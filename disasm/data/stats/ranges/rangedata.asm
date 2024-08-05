@@ -7,102 +7,105 @@
 ;       targetType 
 
 tbl_RangeData:
-        ; 0
+    ; EquipEffects
+        ; Increase Attack
         range      0,0
         area       0
         targetType NONE
         bra.w   EquipEffect_IncreaseAttack
 
-        ; 1
+        ; Increase Defense
         range      0,0
         area       0
         targetType NONE
         bra.w   EquipEffect_IncreaseDefense
 
-        ; 2
+        ; Increase Agility
         range      0,0
         area       0
         targetType NONE
         bra.w   EquipEffect_IncreaseAgility
 
-        ; 3
+        ; Increase Move
         range      0,0
         area       0
         targetType NONE
         bra.w   EquipEffect_IncreaseMove
 
-        ; 4
+        ; Increase Attack/Set Critical
         range      0,0
         area       0
         targetType NONE
         bra.w   EquipEffect_IncreaseAttackSetCritical
 
-        ; 5
+        ; Increase Attack/Defense
         range      0,0
         area       0
         targetType NONE
         bra.w   EquipEffect_IncreaseAttackAndDefense
 
-        ; 6
+        ; Yogurtize
         range      0,0
         area       0
         targetType NONE
         bra.w   EquipEffect_SetJogurtStatus
 
-        ; 7
+        ; Null
         range      0,0
         area       0
         targetType NONE
         bra.w   nullsub_23378
 
-        ; 8
+    ; AfterTurnEffects
+        ; Recover HP
         range      0,0
         area       0
         targetType NONE
-        bra.w   sub_23450
+        bra.w   AfterTurn_RecoverHP
 
-        ; 9
+        ; Recover MP
         range      0,0
         area       0
         targetType NONE
-        bra.w   sub_2345E
+        bra.w   AfterTurn_RecoverMP
 
-        ; A
+        ; Gain HP
         range      0,0
         area       0
         targetType NONE
-        bra.w   sub_2346C
+        bra.w   AfterTurn_GainHP
 
-        ; B
+        ; Gain ATK
         range      0,0
         area       0
         targetType NONE
-        bra.w   sub_2347A
+        bra.w   AfterTurn_GainATK
 
-        ; C
+        ; Gain DEF
         range      0,0
         area       0
         targetType NONE
-        bra.w   sub_23488
+        bra.w   AfterTurn_GainDEF
 
-        ; D
+        ; Gain AGI
         range      0,0
         area       0
         targetType NONE
-        bra.w   sub_23496
+        bra.w   AfterTurn_GainAGI
 
-        ; E
+        ; Gain MOV
         range      0,0
         area       0
         targetType NONE
-        bra.w   sub_234A4
+        bra.w   AfterTurn_GainMOV
 
-        ; F
+        ; Null
         range      0,0
         area       0
         targetType NONE
         bra.w   nullsub_23378
 
+    ; ActionEffects
         ; Melee
         range      1,1
         area       0
