@@ -2,9 +2,11 @@
 # No rom files or game content on the repository
 *.bin
 
-# No symbols or listings files
+# No symbols or listings files or patches
 *.lst
 *.sym
+*.ips
+*.bps
 
 # No log files
 *.log
