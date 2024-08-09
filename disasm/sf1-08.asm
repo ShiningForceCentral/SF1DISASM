@@ -644,622 +644,492 @@ MapSpriteScript170:
 		incbin "data/scripting/mapspritescripts/mapspritescript170.bin"
 MapSpriteScript171:
 		incbin "data/scripting/mapspritescripts/mapspritescript171.bin"
-pt_Maps:        dc.l Map00Section0
+
+pt_Maps:
+        dc.l Map00Section0
 		dc.l Map00Section1
 		dc.l Map00Section2
 		dc.l Map00Section3
 		dc.l Map00Section4
 		dc.l Map00Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 1
-		dc.b $38
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $38|MAP_CHAPTER_1             ; 0000 0xxx = chapter association
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map01Section1
 		dc.l Map01Section2
 		dc.l Map01Section3
 		dc.l Map01Section4
 		dc.l Map01Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 6
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map02Section1
 		dc.l Map02Section2
 		dc.l Map02Section3
 		dc.l Map02Section4
 		dc.l Map02Section5
+		dc.w 4
 		dc.b 0
-		dc.b 4
-		dc.b 0
-		dc.b 8
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 8|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map02Section1
 		dc.l Map02Section2
 		dc.l Map02Section3
 		dc.l Map03Section4
 		dc.l Map02Section5
+		dc.w 4
 		dc.b 0
-		dc.b 4
-		dc.b 0
-		dc.b 8
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 8|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map04Section1
 		dc.l Map04Section2
 		dc.l Map04Section3
 		dc.l Map04Section4
 		dc.l Map04Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 3
-		dc.b $80
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $80|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map05Section1
 		dc.l Map04Section2
 		dc.l Map05Section3
 		dc.l Map05Section4
 		dc.l Map05Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 2
-		dc.b $58
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $58|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map04Section1
 		dc.l Map04Section2
 		dc.l Map04Section3
 		dc.l Map06Section4
 		dc.l Map06Section5
-		dc.b 0
-		dc.b $4A
+		dc.w $4A
 		dc.b 3
-		dc.b $19
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $18|MAP_CHAPTER_2
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map07Section1
 		dc.l Map01Section2
 		dc.l Map01Section3
 		dc.l Map07Section4
 		dc.l Map07Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 7
-		dc.b 2
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_3
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map08Section1
 		dc.l Map08Section2
 		dc.l Map08Section3
 		dc.l Map08Section4
 		dc.l Map08Section5
-		dc.b 0
-		dc.b 4
+		dc.w 4
 		dc.b 5
-		dc.b 1
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_2
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map09Section1
 		dc.l Map09Section2
 		dc.l Map09Section3
 		dc.l Map09Section4
 		dc.l Map00Section5
-		dc.b 2
-		dc.b 7
+		dc.w $207
 		dc.b 4
-		dc.b $2B
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $28|MAP_CHAPTER_4
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map09Section1
 		dc.l Map09Section2
 		dc.l Map09Section3
 		dc.l Map10Section4
 		dc.l Map00Section5
-		dc.b 0
-		dc.b $D3
+		dc.w $D3
 		dc.b 4
-		dc.b $23
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $20|MAP_CHAPTER_4
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map05Section1
 		dc.l Map04Section2
 		dc.l Map05Section3
 		dc.l Map11Section4
 		dc.l Map11Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 2
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map09Section1
 		dc.l Map09Section2
 		dc.l Map09Section3
 		dc.l Map12Section4
 		dc.l Map12Section5
-		dc.b 0
-		dc.b $4A
+		dc.w $4A
 		dc.b 4
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map13Section1
 		dc.l Map13Section2
 		dc.l Map13Section3
 		dc.l Map13Section4
 		dc.l Map02Section5
-		dc.b 0
-		dc.b $4A
+		dc.w $4A
 		dc.b 9
-		dc.b 1
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_2
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map00Section1
 		dc.l Map00Section2
 		dc.l Map00Section3
 		dc.l Map14Section4
 		dc.l Map02Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 1
-		dc.b $17
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $10|MAP_CHAPTER_8
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map15Section1
 		dc.l Map13Section2
 		dc.l Map13Section3
 		dc.l Map15Section4
 		dc.l Map15Section5
-		dc.b 2
-		dc.b $9D
+		dc.w $29D
 		dc.b 8
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map00Section0
 		dc.l Map08Section1
 		dc.l Map08Section2
 		dc.l Map08Section3
 		dc.l Map16Section4
 		dc.l Map16Section5
-		dc.b 0
+		dc.w 5
 		dc.b 5
-		dc.b 5
-		dc.b 6
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_7
+		dcl. 0
+
 		dc.l Map00Section0
 		dc.l Map01Section1
 		dc.l Map01Section2
 		dc.l Map01Section3
 		dc.l Map17Section4
 		dc.l Map01Section5
-		dc.b 0
-		dc.b 5
+		dc.w 5
 		dc.b 6
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map18Section0
 		dc.l Map18Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map18Section4
 		dc.l Map18Section5
-		dc.b $FF
-		dc.b $FF
+		dc.w $FFFF
 		dc.b $10
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map18Section0
 		dc.l Map18Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map19Section4
 		dc.l Map18Section5
-		dc.b 2
-		dc.b $B1
+		dc.w $2B1
 		dc.b $10
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map18Section0
 		dc.l Map18Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map20Section4
 		dc.l Map18Section5
-		dc.b 1
-		dc.b $1E
+		dc.w $11E
 		dc.b $10
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map18Section0
 		dc.l Map18Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map21Section4
 		dc.l Map18Section5
-		dc.b 2
-		dc.b $E8
+		dc.w $2E8
 		dc.b $10
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map18Section0
 		dc.l Map18Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map22Section4
 		dc.l Map18Section5
-		dc.b 0
-		dc.b $89
+		dc.w $89
 		dc.b $10
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map18Section0
 		dc.l Map18Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map23Section4
 		dc.l Map18Section5
-		dc.b 0
-		dc.b 2
+		dc.w 2
 		dc.b $10
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map18Section0
 		dc.l Map24Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map24Section4
 		dc.l Map24Section5
-		dc.b 0
-		dc.b $61
+		dc.w $61
 		dc.b $11
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map25Section0
 		dc.l Map25Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map25Section4
 		dc.l Map25Section5
-		dc.b 0
-		dc.b 2
+		dc.w 2
 		dc.b $21
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map25Section0
 		dc.l Map26Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map26Section4
 		dc.l Map26Section5
-		dc.b 0
-		dc.b 3
+		dc.w 3
 		dc.b $20
-		dc.b 1
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_2
+		dc.l 0
+
 		dc.l Map25Section0
 		dc.l Map25Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map27Section4
 		dc.l Map27Section5
-		dc.b 0
-		dc.b 6
+		dc.w 6
 		dc.b $21
-		dc.b 5
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_6
+		dc.l 0
+
 		dc.l Map25Section0
 		dc.l Map26Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map28Section4
 		dc.l Map28Section5
-		dc.b 3
-		dc.b $40
+		dc.w $340
 		dc.b $20
-		dc.b 2
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_3
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map29Section1
 		dc.l Map29Section2
 		dc.l Map29Section3
 		dc.l Map29Section4
 		dc.l Map00Section5
-		dc.b 0
-		dc.b 4
+		dc.w 4
 		dc.b $33
-		dc.b 3
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_4
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map30Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map30Section4
 		dc.l Map04Section5
-		dc.b 0
-		dc.b $7D
+		dc.w $7D
 		dc.b $30
-		dc.b $16
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $10|MAP_CHAPTER_7
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map31Section1
 		dc.l Map31Section2
 		dc.l Map31Section3
 		dc.l Map31Section4
 		dc.l Map04Section5
-		dc.b 0
-		dc.b 4
+		dc.w 4
 		dc.b $31
-		dc.b $2D
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $28|MAP_CHAPTER_6
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map32Section1
 		dc.l Map32Section2
 		dc.l Map32Section3
 		dc.l Map32Section4
 		dc.l Map32Section5
-		dc.b 0
-		dc.b $96
+		dc.w $96
 		dc.b $37
-		dc.b $34
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $30|MAP_CHAPTER_5
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map30Section1
 		dc.l Map18Section2
 		dc.l Map18Section3
 		dc.l Map33Section4
 		dc.l Map33Section5
-		dc.b 0
-		dc.b 4
+		dc.w 4
 		dc.b $30
-		dc.b $25
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $20|MAP_CHAPTER_6
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map34Section1
 		dc.l Map29Section2
 		dc.l Map34Section3
 		dc.l Map34Section4
 		dc.l Map02Section5
-		dc.b 0
-		dc.b 4
+		dc.w 4
 		dc.b $32
-		dc.b 6
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_7
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map35Section1
 		dc.l Map32Section2
 		dc.l Map35Section3
 		dc.l Map35Section4
 		dc.l Map35Section5
-		dc.b 2
-		dc.b $94
+		dc.w $294
 		dc.b $34
-		dc.b 2
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_3
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map36Section1
 		dc.l Map32Section2
 		dc.l Map35Section3
 		dc.l Map36Section4
 		dc.l Map02Section5
-		dc.b 0
-		dc.b $96
+		dc.w $96
 		dc.b $35
-		dc.b $36
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b $30|MAP_CHAPTER_7
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map37Section1
 		dc.l Map32Section2
 		dc.l Map37Section3
 		dc.l Map37Section4
 		dc.l Map37Section5
-		dc.b 2
-		dc.b $94
+		dc.w $294
 		dc.b $36
-		dc.b 7
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_8
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map38Section1
 		dc.l Map02Section3
 		dc.l Map00Section4
 		dc.l Map38Section4
 		dc.l Map11Section5
-		dc.b 0
-		dc.b 4
+		dc.w 4
 		dc.b $38
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map29Section0
 		dc.l Map39Section1
 		dc.l Map02Section3
 		dc.l Map00Section4
 		dc.l Map39Section4
 		dc.l Map39Section5
-		dc.b 2
-		dc.b $94
+		dc.w $294
 		dc.b $39
-		dc.b 7
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_8
+		dc.l 0
+
 		dc.l Map40Section0
 		dc.l Map40Section1
 		dc.l Map02Section3
 		dc.l Map00Section4
 		dc.l Map40Section4
 		dc.l Map40Section5
-		dc.b 0
-		dc.b 6
+		dc.w 6
 		dc.b $40
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_1
+		dc.l 0
+
 		dc.l Map40Section0
 		dc.l Map40Section1
 		dc.l Map02Section3
 		dc.l Map00Section4
 		dc.l Map41Section4
 		dc.l Map41Section5
-		dc.b 3
-		dc.b $5B
+		dc.w $35B
 		dc.b $40
-		dc.b 4
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_5
+		dc.l 0
+
 		dc.l Map42Section0
 		dc.l Map42Section1
 		dc.l Map02Section3
 		dc.l Map00Section4
 		dc.l Map42Section4
 		dc.l Map42Section5
-		dc.b 2
-		dc.b $94
+		dc.w $294
 		dc.b $50
-		dc.b 4
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_5
+		dc.l 0
+
 		dc.l Map42Section0
 		dc.l Map43Section1
 		dc.l Map02Section3
 		dc.l Map00Section4
 		dc.l Map43Section4
 		dc.l Map43Section5
-		dc.b 2
-		dc.b $94
+		dc.w $294
 		dc.b $51
-		dc.b 7
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+		dc.b 0|MAP_CHAPTER_8
+		dc.l 0
+
 Map00Section0:  incbin "data/maps/entries/map00/section0.bin"
 Map18Section0:  incbin "data/maps/entries/map18/section0.bin"
 Map25Section0:  incbin "data/maps/entries/map25/section0.bin"
