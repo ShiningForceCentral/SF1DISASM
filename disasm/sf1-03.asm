@@ -3000,18 +3000,18 @@ sub_1195C:
 loc_11974:
 		dbf     d0,loc_1197A
 
-		bra.s   loc_11994
+		bra.s   loc_11994   ; exit on correct map
 loc_1197A:
 		move.b  $1B(a0),d3
 		andi.b  #7,d3
 		cmp.b   d3,d2
-		bne.s   loc_1198E
+		bne.s   loc_1198E   ; skip if different chapter
 		move.b  $1B(a0),d3
 		lsr.b   #3,d3
 		add.b   d3,d1
 loc_1198E:
-		lea     $20(a0),a0
-		bra.s   loc_11974
+		lea     $20(a0),a0  ; offset to next map
+		bra.s   loc_11974   ; loop through maps
 loc_11994:
 		move.w  d1,(word_FFF8E0).l
 		move.l  (a0)+,(dword_FFF910).l
