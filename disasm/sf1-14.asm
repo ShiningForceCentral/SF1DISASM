@@ -29,24 +29,21 @@ PlayIntro:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		move.l  #sub_1305B4,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$52,d0 ; "In ages long forgotten..."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$52 ; "In ages long forgotten..."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #7
-		move.w  #$53,d0 ; "...Light fought Darkness for[Line]control of the world."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$53 ; "...Light fought Darkness for[Line]control of the world."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #7
-		move.w  #$54,d0 ; "Dark Dragon led the evil[Line]hordes of Darkness."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$54 ; "Dark Dragon led the evil[Line]hordes of Darkness."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		move.w  #5,((word_FFB7C6-$1000000)).w
 		move.w  #$10,((CURRENT_OBJECT-$1000000)).w
-		move.w  #$19,d0
+		move.w  #25,d0
 		bsr.w   CheckSkipToTitleScreen
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToWhite).l
@@ -55,6 +52,7 @@ PlayIntro:
 loc_1300C4:
 		move.l  #$EEE0EEE,(a0)+
 		dbf     d7,loc_1300C4
+
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
@@ -78,14 +76,12 @@ loc_1300C4:
 		move.b  #2,((byte_FFF804-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$55,d0 ; "The Ancients fought back with[Line]the Powers of Light."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$55 ; "The Ancients fought back with[Line]the Powers of Light."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #7
-		move.w  #$56,d0 ; "Dark Dragon was defeated and[Line]cast into another dimension."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$168,d0
+		txt     #$56 ; "Dark Dragon was defeated and[Line]cast into another dimension."
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		jsr     (j_FadeOutToBlack).l
@@ -107,12 +103,11 @@ loc_1300C4:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		move.l  #sub_13062A,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$57,d0 ; "The Lord of Darkness vowed to[Line]return in 1,000 years."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$168,d0
+		txt     #$57 ; "The Lord of Darkness vowed to[Line]return in 1,000 years."
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		trap    #6
-		move.w  #$19,d0
+		move.w  #25,d0
 		bsr.w   CheckSkipToTitleScreen
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToWhite).l
@@ -121,6 +116,7 @@ loc_1300C4:
 loc_1301F4:
 		move.l  #$EEE0EEE,(a0)+
 		dbf     d7,loc_1301F4
+
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToBlack).l
 		jsr     (j_DisableDisplayAndInterrupts).l
@@ -148,14 +144,12 @@ loc_1301F4:
 		move.b  #2,((byte_FFF804-$1000000)).w
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$58,d0 ; "Time passed, and Dark Dragon[Line]was forgotten by all."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$58 ; "Time passed, and Dark Dragon[Line]was forgotten by all."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #7
-		move.w  #$59,d0 ; "Ten centuries of peace ruled[Line]the land of Rune."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$168,d0
+		txt     #$59 ; "Ten centuries of peace ruled[Line]the land of Rune."
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		jsr     (j_FadeOutToBlack).l
@@ -193,33 +187,29 @@ loc_1301F4:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		move.l  #sub_130694,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$5A,d0 ; "Until the kingdom of Runefaust[Line]brought war and fear to Rune."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$5A ; "Until the kingdom of Runefaust[Line]brought war and fear to Rune."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #7
-		move.w  #$5B,d0 ; "Hordes of evil creatures[Line]ravaged every land."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$5B ; "Hordes of evil creatures[Line]ravaged every land."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #7
-		move.w  #$5C,d0 ; "Here and there, strongholds[Line]of Good still held out..."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$B4,d0 
+		txt     #$5C ; "Here and there, strongholds[Line]of Good still held out..."
+		move.w  #180,d0 
 		bsr.w   CheckSkipToTitleScreen
 		trap    #7
-		move.w  #$5D,d0 ; "...awaiting a Hero who could[Line]wield the Powers of Light!"
-		trap    #DISPLAY_MESSAGE
-		move.w  #$168,d0
+		txt     #$5D ; "...awaiting a Hero who could[Line]wield the Powers of Light!"
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		trap    #6
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		sndCom  SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
-		move.w  #$3C,d0 
+		move.w  #60,d0 
 		bsr.w   CheckSkipToTitleScreen
 		sndCom  MUSIC_TITLE
-		move.w  #$5A,d0 
+		move.w  #90,d0 
 		bsr.w   CheckSkipToTitleScreen
 		move.w  #$280,((CURRENT_OBJECT-$1000000)).w
 TitleScreen:
@@ -494,6 +484,7 @@ sub_130694:
 loc_1306B0:
 		move.l  4(a0),(a0)+
 		dbf     d7,loc_1306B0
+
 		jsr     (j_UpdateVdpHScrollData).l
 		jsr     (j_EnableDmaQueueProcessing).l
 		subq.w  #1,((word_FFB7C6-$1000000)).w
@@ -4396,6 +4387,7 @@ InitDisplay_Intro:
 loc_131688:
 		clr.l   (a0)+
 		dbf     d7,loc_131688
+
 		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
