@@ -20,6 +20,27 @@ BATTLE_ACTION_TYPE_3: equ 3
 
 ; ---------------------------------------------------------------------------
 
+; enum BattleDataOffsets
+BATTLEDATA_ALLY_X: equ 0
+BATTLEDATA_ALLY_Y: equ 1
+
+BATTLEDATA_ENEMY_X: equ 0
+BATTLEDATA_ENEMY_Y: equ 1
+BATTLEDATA_ENEMY_SPAWN_REGION: equ 2
+BATTLEDATA_ENEMY_SPAWN_COUNTER: equ 3
+
+BATTLEDATA_ENEMY_CLASS: equ 0
+BATTLEDATA_ENEMY_ITEM_0: equ 1
+BATTLEDATA_ENEMY_ITEM_1: equ 2
+BATTLEDATA_ENEMY_SPELL: equ 3
+
+BATTLEDATA_AI_REGIONS: equ 0
+BATTLEDATA_AI_COMMAND: equ 1
+BATTLEDATA_AI_PARAMETER_0: equ 2
+BATTLEDATA_AI_PARAMETER_1: equ 3
+
+; ---------------------------------------------------------------------------
+
 ; enum BattlefieldEngine_Offsets
 OFFSET_PASSABILITY_FLAGS_TO_TABLE_AT_FFA8C0: equ $400
 OFFSET_PASSABILITY_FLAGS_TO_CURRENT_TERRAIN_DATA: equ $800
@@ -96,6 +117,7 @@ CLASSDEF_OFFSET_SPECIAL_ATTACK_INDEX: equ 7
 ; ---------------------------------------------------------------------------
 
 ; enum ClassDefMoveTypes
+MOVE_TYPE_NULL: equ 0
 MOVE_TYPE_STANDARD: equ 1
 MOVE_TYPE_MOUNTED: equ 2
 MOVE_TYPE_AQUATIC: equ 3
@@ -107,6 +129,17 @@ MOVE_TYPE_HOVERING: equ 7
 ; ---------------------------------------------------------------------------
 
 ; enum ClassDefAiActions
+AI_ACTION_FIRE_BREATH_1: equ $0
+AI_ACTION_FIRE_BREATH_2: equ $1
+AI_ACTION_FIRE_BREATH_3: equ $2
+AI_ACTION_ICE_BREATH_1: equ $3
+AI_ACTION_ICE_BREATH_2: equ $4
+AI_ACTION_ICE_BREATH_3: equ $5
+AI_ACTION_ELECTRIC_BREATH: equ $6
+AI_ACTION_MACHINE_GUN: equ $7
+AI_ACTION_LASER: equ $8
+AI_ACTION_DEMON_BLAZE_1: equ $9
+AI_ACTION_DEMON_BLAZE_2: equ $A
 AI_ACTION_CAST_SPELL: equ $80
 AI_ACTION_USE_ITEM_SLOT_0: equ $81
 AI_ACTION_USE_ITEM_SLOT_1: equ $82
@@ -139,9 +172,61 @@ ELEMENT_NONE: equ 7
 
 ; ---------------------------------------------------------------------------
 
-; enum ClassDefProperties
-CLASS_PROPERTY_MASK_SPECIAL_ATTACK_CHANCE: equ 3
+; enum ClassResistance (bitfield)
+RESISTANCE_NONE: equ $0
+RESISTANCE_FIRE_MINOR: equ $1
+RESISTANCE_FIRE_MAJOR: equ $2
+RESISTANCE_FIRE_WEAKNESS: equ $3
+RESISTANCE_ICE_MINOR: equ $4
+RESISTANCE_ICE_MAJOR: equ $8
+RESISTANCE_ICE_WEAKNESS: equ $C
+RESISTANCE_LIGHTNING_MINOR: equ $10
+RESISTANCE_LIGHTNING_MAJOR: equ $20
+RESISTANCE_LIGHTNING_WEAKNESS: equ $30
+RESISTANCE_SLEEPDESOUL_MINOR: equ $40
+RESISTANCE_SLEEPDESOUL_MAJOR: equ $80
+RESISTANCE_SLEEPDESOUL_WEAKNESS: equ $C0
+RESISTANCE_ANTIAIR_MINOR: equ $100
+RESISTANCE_ANTIAIR_MAJOR: equ $200
+RESISTANCE_ANTIAIR_WEAKNESS: equ $300
+RESISTANCE_CHAOS_BREAKER_MINOR: equ $400
+RESISTANCE_CHAOS_BREAKER_MAJOR: equ $800
+RESISTANCE_CHAOS_BREAKER_WEAKNESS: equ $C00
+RESISTANCE_UNUSED_MINOR: equ $1000
+RESISTANCE_UNUSED_MAJOR: equ $2000
+RESISTANCE_UNUSED_WEAKNESS: equ $3000
+RESISTANCE_EVASION_25: equ $4000
+RESISTANCE_EVASION_50: equ $8000
+RESISTANCE_EVASION_0: equ $C000
+
+; ---------------------------------------------------------------------------
+
+; enum ClassDefProperties (bitfield)
+AISETTING_SPECIAL_0: equ $0
+AISETTING_SPECIAL_25: equ $1
+AISETTING_SPECIAL_50: equ $2
+AISETTING_SPECIAL_75: equ $3
+AISETTING_DOUBLE_DEFAULT: equ $0
+AISETTING_DOUBLE_NEVER: equ $4
+AISETTING_DOUBLE_HIGH: equ $8
+AISETTING_DOUBLE_LEVEL: equ $C
+AISETTING_ACTION_100: equ $00
+AISETTING_ACTION_25: equ $10
+AISETTING_ACTION_50: equ $20
+AISETTING_ACTION_75: equ $30
+AISETTING_BIT6: equ $40
+AISETTING_HP_REGEN: equ $80
+
+; ---------------------------------------------------------------------------
+
+; enum ClassDefProperties Bitmap
+CLASS_PROPERTY_BIT6: equ 6
 CLASS_PROPERTY_HP_REGEN_TOGGLE: equ 7
+
+; ---------------------------------------------------------------------------
+
+; enum ClassDefPropertiesMasks
+CLASS_PROPERTY_MASK_SPECIAL_ATTACK_CHANCE: equ 3
 CLASS_PROPERTY_MASK_DOUBLE_ATTACK_MODE: equ $C
 CLASS_PROPERTY_MASK_AI_ACTION_CHANCE: equ $30
 
@@ -294,8 +379,21 @@ COMBATANT_OFFSET_SPELLS: equ 12
 
 ; ---------------------------------------------------------------------------
 
+; enum Combatants
+ALLY_LEADER: equ 0
+ENEMY_LEADER: equ 128
+
+; ---------------------------------------------------------------------------
+
 ; enum CombatantMasks
 COMBATANT_INDEX_MASK: equ $7F
+
+; ---------------------------------------------------------------------------
+
+; enum AiCommands
+COMMAND_MOVE_TO: equ 0      ; parameters (local x, local y)
+COMMAND_CHARGE: equ 1       ; parameters (, )
+COMMAND_FOLLOW_PATH: equ 2  ; parameters (distance to table, )
 
 ; ---------------------------------------------------------------------------
 
@@ -412,6 +510,9 @@ EFFECT_TURBO_PEPPER: equ 56
 EFFECT_BREAD_OF_LIFE: equ 57
 EFFECT_DEMON_BLAZE_2: equ 58
 
+EFFECT_KINDAN_NO_HAKO: equ 99
+EFFECT_NONE: equ 255
+
 ; ---------------------------------------------------------------------------
 
 ; enum EffectStatuses
@@ -425,6 +526,83 @@ EFFECT_STATUS_SLEEP: equ 6
 EFFECT_STATUS_POISON: equ 7
 EFFECT_STATUS_CURSE: equ 8
 EFFECT_STATUS_JOGURT: equ 9
+
+; ---------------------------------------------------------------------------
+
+; enum Enemies
+ENEMY_GOBLIN: equ 0
+ENEMY_BOWRIDER: equ 1
+ENEMY_RUNE_KNIGHT: equ 2
+ENEMY_SILVER_KNIGHT: equ 3
+ENEMY_DURAHAN_1: equ 4
+ENEMY_DARK_SWARF: equ 5
+ENEMY_HORSEMAN: equ 6
+ENEMY_SNIPER: equ 7
+ENEMY_DARK_ELF: equ 8
+ENEMY_LIZARDMAN: equ 9
+ENEMY_DARK_MAGE_1: equ 10
+ENEMY_DARK_PRIEST_1: equ 11
+ENEMY_HIGH_PRIEST_1: equ 12
+ENEMY_CERBERUS: equ 13
+ENEMY_HELLHOUND: equ 14
+ENEMY_GARGOYLE: equ 15
+ENEMY_BELIAL: equ 16
+ENEMY_GOLEM: equ 17
+ENEMY_WEED: equ 18
+ENEMY_DARK_PRIEST_2: equ 19
+ENEMY_ZOMBIE_1: equ 20
+ENEMY_DARK_MAGE_2: equ 21
+ENEMY_MASTER_MAGE: equ 22
+ENEMY_DEMON_MASTER_1: equ 23
+ENEMY_GIANT_BAT: equ 24
+ENEMY_SEABAT: equ 25
+ENEMY_WORM: equ 26
+ENEMY_ICE_WORM: equ 27
+ENEMY_MINOTAUR_1: equ 28
+ENEMY_ARTILLERY_1: equ 29
+ENEMY_MANNEQUIN: equ 30
+ENEMY_EVIL_PUPPET: equ 31
+ENEMY_DIRE_CLOWN: equ 32
+ENEMY_DURAHAN_2: equ 33
+ENEMY_SKELETON_1: equ 34
+ENEMY_HIGH_PRIEST_2: equ 35
+ENEMY_MARIONETTE: equ 36
+ENEMY_DEMON_MASTER_2: equ 37
+ENEMY_ARMED_SKELETON: equ 38
+ENEMY_PEGASUS_KNIGHT_1: equ 39
+ENEMY_ARTILLERY_2: equ 40
+ENEMY_CHIMAERA_1: equ 41
+ENEMY_WYVERN: equ 42
+ENEMY_BLUE_DRAGON: equ 43
+ENEMY_CONCH: equ 44
+ENEMY_SHELLFISH: equ 45
+ENEMY_ARTILLERY_3: equ 46
+ENEMY_STEEL_CLAW: equ 47
+ENEMY_TORCH_EYE: equ 48
+ENEMY_JET: equ 49
+ENEMY_DARKSOL: equ 50
+ENEMY_LASER_EYE: equ 51
+ENEMY_ELLIOTT: equ 52
+ENEMY_BALBAZAK: equ 53
+ENEMY_MISHAELA: equ 54
+ENEMY_CHAOS: equ 55
+ENEMY_RAMLADU: equ 56
+ENEMY_CAIN: equ 57
+ENEMY_COLOSSUS_1: equ 58
+ENEMY_DARK_DRAGON_1: equ 59
+ENEMY_COLOSSUS_2: equ 60
+ENEMY_COLOSSUS_3: equ 61
+ENEMY_DARK_MAGE_3: equ 62
+ENEMY_ZOMBIE_2: equ 63
+ENEMY_SKELETON_2: equ 64
+ENEMY_GHOUL: equ 65
+ENEMY_PEGASUS_KNIGHT_2: equ 66
+ENEMY_DARK_MAGE_4: equ 67
+ENEMY_DURAHAN_3: equ 68
+ENEMY_MINOTAUR_2: equ 69
+ENEMY_CHIMAERA_2: equ 70
+ENEMY_SKELETON_3: equ 71
+ENEMY_DARK_DRAGON_2: equ 72
 
 ; ---------------------------------------------------------------------------
 
@@ -451,11 +629,18 @@ EVENT_FLAGS_COUNTER: equ 63
 
 ; ---------------------------------------------------------------------------
 
+; enum ExperienceValues
+EXPERIENCE_PER_HEAL: equ 10
+EXPERIENCE_HEAL_CAP: equ 20
+EXPERIENCE_ACTION_CAP: equ 48
+
+; ---------------------------------------------------------------------------
+
 ; enum SpriteFacing
-FACING_0: equ 0
+FACING_UP: equ 0
 FACING_RIGHT: equ 1
 FACING_DOWN: equ 2
-FACING_3: equ 3
+FACING_LEFT: equ 3
 
 ; ---------------------------------------------------------------------------
 
@@ -506,37 +691,46 @@ FORCE_OFFSET_SPELLS: equ 30
 ; ---------------------------------------------------------------------------
 
 ; enum ForceMembers
-MAX: equ 0
-MAE: equ 1
-PELLE: equ 2
-KEN: equ 3
-VANKAR: equ 4
-EARNEST: equ 5
-ARTHUR: equ 6
-GORT: equ 7
-LUKE: equ 8
-GUNTZ: equ 9
-ANRI: equ 10
-ALEF: equ 11
-TAO: equ 12
-DOMINGO: equ 13
-LOWE: equ 14
-KHRIS: equ 15
-TORASU: equ 16
-GONG: equ 17
-DIANE: equ 18
-HANS: equ 19
-LYLE: equ 20
-AMON: equ 21
-BALBAROY: equ 22
-KOKICHI: equ 23
-BLEU: equ 24
-ADAM: equ 25
-ZYLO: equ 26
-MUSASHI: equ 27
-HANZOU: equ 28
-JOGURT: equ 29
-NOVA: equ 30
+ALLY_MAX: equ 0
+ALLY_MAE: equ 1
+ALLY_PELLE: equ 2
+ALLY_KEN: equ 3
+ALLY_VANKAR: equ 4
+ALLY_EARNEST: equ 5
+ALLY_ARTHUR: equ 6
+ALLY_GORT: equ 7
+ALLY_LUKE: equ 8
+ALLY_GUNTZ: equ 9
+ALLY_ANRI: equ 10
+ALLY_ALEF: equ 11
+ALLY_TAO: equ 12
+ALLY_DOMINGO: equ 13
+ALLY_LOWE: equ 14
+ALLY_KHRIS: equ 15
+ALLY_TORASU: equ 16
+ALLY_GONG: equ 17
+ALLY_DIANE: equ 18
+ALLY_HANS: equ 19
+ALLY_LYLE: equ 20
+ALLY_AMON: equ 21
+ALLY_BALBAROY: equ 22
+ALLY_KOKICHI: equ 23
+ALLY_BLEU: equ 24
+ALLY_ADAM: equ 25
+ALLY_ZYLO: equ 26
+ALLY_MUSASHI: equ 27
+ALLY_HANZOU: equ 28
+ALLY_JOGURT: equ 29
+ALLY_NOVA: equ 30
+
+; ---------------------------------------------------------------------------
+
+; enum General Entities
+NPC00: equ 128
+NPC01: equ 129
+NPC02: equ 130
+NPC03: equ 131
+NPC04: equ 132
 
 ; ---------------------------------------------------------------------------
 
@@ -547,6 +741,14 @@ NON_LEADER_FORCE_MEMBERS_COUNTER: equ 28 ; exclude Max
 FORCE_MEMBERS_COUNTER: equ 30
 FORCE_MEMBERS_NUMBER: equ 31
 FORCE_MEMBERS_DATA_BYTES_COUNTER: equ 1239
+
+; ---------------------------------------------------------------------------
+
+; enum GrowthCurves
+GROWTHCURVE_LINEAR: equ $00
+GROWTHCURVE_LATE: equ $40
+GROWTHCURVE_EARLYLATE: equ $80
+GROWTHCURVE_EARLY: equ $C0
 
 ; ---------------------------------------------------------------------------
 
@@ -590,6 +792,26 @@ ITEMENTRY_MASK_EQUIPPED_BIT: equ $80
 
 ; ---------------------------------------------------------------------------
 
+; enum ItemEquipEffects
+EQUIPEFFECT_INCREASE_ATK: equ 0
+EQUIPEFFECT_INCREASE_DEF: equ 1
+EQUIPEFFECT_INCREASE_AGI: equ 2
+EQUIPEFFECT_INCREASE_MOV: equ 3
+EQUIPEFFECT_INCREASE_ATK_AND_CRIT: equ 4
+EQUIPEFFECT_INCREASE_ATK_AND_DEF: equ 5  ; correctly works only with parameter = 1
+EQUIPEFFECT_YOGURTIZE: equ 6
+EQUIPEFFECT_NULL: equ 7
+EQUIPEFFECT_RECOVER_HP: equ 8
+EQUIPEFFECT_9: equ 9
+EQUIPEFFECT_A: equ 10
+EQUIPEFFECT_B: equ 11
+EQUIPEFFECT_C: equ 12
+EQUIPEFFECT_D: equ 13
+EQUIPEFFECT_E: equ 14
+EQUIPEFFECT_F: equ 15
+
+; ---------------------------------------------------------------------------
+
 ; enum ItemTypeBitmap
 ITEMTYPE_BIT_CURSE_SETTING: equ 0 ; 0 = has to chance to paralyze, 1 = has chance to inflict damage back to attacker
 ITEMTYPE_BIT_WEAPON: equ 8
@@ -613,72 +835,74 @@ ITEMTYPE_MASK_USABLE: equ $400
 ; ---------------------------------------------------------------------------
 
 ; enum Items (bitfield)
-MEDICAL_HERB: equ 0
-HEALING_SEED: equ 1
-ANTIDOTE: equ 2
-SHOWER_OF_CURE: equ 3
-ANGEL_WING: equ 4
-POWER_POTION: equ 5
-DEFENSE_POTION: equ 6
-LEGS_OF_HASTE: equ 7
-TURBO_PEPPER: equ 8
-BREAD_OF_LIFE: equ 9
-POWER_RING: equ 10
-SHIELD_RING: equ 11
-SPEED_RING: equ 12
-MOBILITY_RING: equ 13
-WHITE_RING: equ 14
-BLACK_RING: equ 15
-EVIL_RING: equ 16
-SUGOI_MIZUGI: equ 17
-ORB_OF_LIGHT: equ 18
-MOON_STONE: equ 19
-LUNAR_DEW: equ 20
-KITUI_HUKU: equ 21
-DOMINGO_EGG: equ 22
-KENJI: equ 23
-TEPPOU: equ 24
-KAKU_CHAN: equ 25
-YOUJI: equ 26
-GREAT_AXE: equ 27
-KINDAN_NOHAKO: equ 28
-SHORT_SWORD: equ 29
-MIDDLE_SWORD: equ 30
-LONG_SWORD: equ 31
-STEEL_SWORD: equ 32
-BROAD_SWORD: equ 33
-DOOM_BLADE: equ 34
-KATANA: equ 35
-ELVEN_ARROW: equ 36
-SWORD_OF_DARKNESS: equ 37
-SWORD_OF_LIGHT: equ 38
-CHAOS_BREAKER: equ 39
-BRONZE_LANCE: equ 40
-STEEL_LANCE: equ 41
-CHROME_LANCE: equ 42
-DEVIL_LANCE: equ 43
-HALBERD: equ 44
-SPEAR: equ 45
-POWER_SPEAR: equ 46
-VALKYRIE: equ 47
-HAND_AXE: equ 48
-MIDDLE_AXE: equ 49
-BATTLE_AXE: equ 50
-HEAT_AXE: equ 51
-ATLAS: equ 52
-WOODEN_STAFF: equ 53
-GUARDIAN_STAFF: equ 54
-HOLY_STAFF: equ 55
-POWER_STAFF: equ 56
-DEMON_ROD: equ 57
-YOGURT_RING: equ 58
-WOODEN_ARROW: equ 59
-STEEL_ARROW: equ 60
-ASSAULT_SHELL: equ 61
-BUSTER_SHOT: equ 62
-NOTHING_ITEM: equ 63
-BROKEN: equ 64
-EQUIPPED: equ 128
+ITEM_MEDICAL_HERB: equ 0
+ITEM_HEALING_SEED: equ 1
+ITEM_ANTIDOTE: equ 2
+ITEM_SHOWER_OF_CURE: equ 3
+ITEM_ANGEL_WING: equ 4
+ITEM_POWER_POTION: equ 5
+ITEM_DEFENSE_POTION: equ 6
+ITEM_LEGS_OF_HASTE: equ 7
+ITEM_TURBO_PEPPER: equ 8
+ITEM_BREAD_OF_LIFE: equ 9
+ITEM_POWER_RING: equ 10
+ITEM_SHIELD_RING: equ 11
+ITEM_SPEED_RING: equ 12
+ITEM_MOBILITY_RING: equ 13
+ITEM_WHITE_RING: equ 14
+ITEM_BLACK_RING: equ 15
+ITEM_EVIL_RING: equ 16
+ITEM_SUGOI_MIZUGI: equ 17
+ITEM_ORB_OF_LIGHT: equ 18
+ITEM_MOON_STONE: equ 19
+ITEM_LUNAR_DEW: equ 20
+ITEM_KITUI_HUKU: equ 21
+ITEM_DOMINGO_EGG: equ 22
+ITEM_KENJI: equ 23
+ITEM_TEPPOU: equ 24
+ITEM_KAKU_CHAN: equ 25
+ITEM_YOUJI: equ 26
+ITEM_GREAT_AXE: equ 27
+ITEM_KINDAN_NOHAKO: equ 28
+ITEM_SHORT_SWORD: equ 29
+ITEM_MIDDLE_SWORD: equ 30
+ITEM_LONG_SWORD: equ 31
+ITEM_STEEL_SWORD: equ 32
+ITEM_BROAD_SWORD: equ 33
+ITEM_DOOM_BLADE: equ 34
+ITEM_KATANA: equ 35
+ITEM_ELVEN_ARROW: equ 36
+ITEM_SWORD_OF_DARKNESS: equ 37
+ITEM_SWORD_OF_LIGHT: equ 38
+ITEM_CHAOS_BREAKER: equ 39
+ITEM_BRONZE_LANCE: equ 40
+ITEM_STEEL_LANCE: equ 41
+ITEM_CHROME_LANCE: equ 42
+ITEM_DEVIL_LANCE: equ 43
+ITEM_HALBERD: equ 44
+ITEM_SPEAR: equ 45
+ITEM_POWER_SPEAR: equ 46
+ITEM_VALKYRIE: equ 47
+ITEM_HAND_AXE: equ 48
+ITEM_MIDDLE_AXE: equ 49
+ITEM_BATTLE_AXE: equ 50
+ITEM_HEAT_AXE: equ 51
+ITEM_ATLAS: equ 52
+ITEM_WOODEN_STAFF: equ 53
+ITEM_GUARDIAN_STAFF: equ 54
+ITEM_HOLY_STAFF: equ 55
+ITEM_POWER_STAFF: equ 56
+ITEM_DEMON_ROD: equ 57
+ITEM_YOGURT_RING: equ 58
+ITEM_WOODEN_ARROW: equ 59
+ITEM_STEEL_ARROW: equ 60
+ITEM_ASSAULT_SHELL: equ 61
+ITEM_BUSTER_SHOT: equ 62
+ITEM_NOTHING_ITEM: equ 63
+ITEM_BROKEN: equ 64
+ITEM_EQUIPPED: equ 128
+
+WEAPONS_START: equ 27
 
 ; ---------------------------------------------------------------------------
 
@@ -734,6 +958,18 @@ MAP_RINDO_SHIP: equ 40
 MAP_SHIP_DECK: equ 41
 MAP_SHINING_PATH: equ 42
 MAP_CASTLE_OF_THE_ANCIENTS2: equ 43
+
+; ---------------------------------------------------------------------------
+
+; enum MapChapter
+MAP_CHAPTER_1: equ 0
+MAP_CHAPTER_2: equ 1
+MAP_CHAPTER_3: equ 2
+MAP_CHAPTER_4: equ 3
+MAP_CHAPTER_5: equ 4
+MAP_CHAPTER_6: equ 5
+MAP_CHAPTER_7: equ 6
+MAP_CHAPTER_8: equ 7
 
 ; ---------------------------------------------------------------------------
 
@@ -799,7 +1035,7 @@ MAPSPRITE_BALBAROY_SKYW: equ 52
 MAPSPRITE_KOKICHI_SKYL: equ 53
 MAPSPRITE_BLEU_GRDR: equ 54
 MAPSPRITE_ADAM_CYBG: equ 55
-MAPSPRITE_ZYLO_WFBN: equ 56
+MAPSPRITE_ZYLO_WN: equ 56
 MAPSPRITE_NOVA: equ 57
 MAPSPRITE_ANRI_OUTFIT: equ 58
 MAPSPRITE_TAO_OUTFIT: equ 59
@@ -903,6 +1139,8 @@ MAPSPRITE_WATER_SPLASH: equ 156
 MAPSPRITE_MAX_DROWNING: equ 157
 MAPSPRITE_NUN: equ 158
 MAPSPRITE_JOGURT_5: equ 159
+MAPSPRITE_160: equ 160
+MAPSPRITE_161: equ 161
 
 ; ---------------------------------------------------------------------------
 
@@ -1011,31 +1249,16 @@ RANGE_GROUP_MASK_ALL: equ $FC
 
 ; ---------------------------------------------------------------------------
 
-; enum RangeEntry_Targets
+; enum RangeEntry_Targets (bitfield)
 RANGE_TARGETS_NONE: equ 0
 RANGE_TARGETS_FRIENDS: equ 1
 RANGE_TARGETS_FOES: equ 2
-RANGE_TARGETS_FRIENDS_AND_FOES: equ 3
+RANGE_TARGETS_ALL: equ 4
 
 ; ---------------------------------------------------------------------------
 
 ; enum Ranges
 RANGE_0: equ 0
-RANGE_1: equ 1
-RANGE_2: equ 2
-RANGE_3: equ 3
-RANGE_4: equ 4
-RANGE_5: equ 5
-RANGE_6: equ 6
-RANGE_7: equ 7
-RANGE_8: equ 8
-RANGE_9: equ 9
-RANGE_A: equ 10
-RANGE_B: equ 11
-RANGE_C: equ 12
-RANGE_D: equ 13
-RANGE_E: equ 14
-RANGE_F: equ 15
 RANGE_MELEE: equ 16
 RANGE_ARROW_LONG: equ 17 ; arrows (long)
 RANGE_ARROW_SHORT: equ 18 ; arrows (short)
@@ -1084,6 +1307,8 @@ RANGE_ITEM: equ 60
 RANGE_KINDAN_NOHAKO: equ 61
 RANGE_QUICK_2: equ 62
 RANGE_SLOW_2: equ 63
+
+RANGE_NONE: equ 255
 
 ; ---------------------------------------------------------------------------
 
@@ -1148,6 +1373,17 @@ MUSIC_ENDING: equ 39
 
 ; ---------------------------------------------------------------------------
 
+; enum Region (bitfield)
+REGION_1: equ $2
+REGION_2: equ $4
+REGION_3: equ $8
+REGION_4: equ $10
+REGION_5: equ $20
+REGION_6: equ $40
+REGION_7: equ $80
+
+; ---------------------------------------------------------------------------
+
 ; enum Sfx
 SFX_MENU_SWITCH: equ 65
 SFX_MENU_SELECTION: equ 66
@@ -1190,6 +1426,17 @@ SFX_DESOUL_HOVERING: equ 102
 SFX_LIGHTNING_BREATH: equ 103
 SFX_METALLIC: equ 104
 SFX_SWORD_BEAM: equ 105
+
+; ---------------------------------------------------------------------------
+
+; enum SpecialAttacks
+SPECIAL_150_CRIT: equ 0
+SPECIAL_200_CRIT: equ 1
+SPECIAL_STEAL_MP: equ 2
+SPECIAL_STEAL_HP: equ 3
+SPECIAL_POISON: equ 5
+SPECIAL_SLEEP: equ 6
+SPECIAL_NONE: equ 255
 
 ; ---------------------------------------------------------------------------
 
@@ -1313,6 +1560,18 @@ SRAM_COUNTER_MINUS_ONE: equ 8190
 
 ; ---------------------------------------------------------------------------
 
+; enum StatLimits
+STATCAP_ATT: equ 99
+STATCAP_DEF: equ 99
+STATCAP_AGI: equ 99
+STATCAP_MOV: equ 9
+STATCAP_CRIT: equ 99
+STATCAP_LV: equ 99
+STATCAP_HP: equ 99
+STATCAP_MP: equ 99
+
+; ---------------------------------------------------------------------------
+
 ; enum StatusEffectBitmap
 STATUSEFFECT_BIT_POISON: equ 0
 STATUSEFFECT_BIT_SLEEP: equ 1
@@ -1328,16 +1587,16 @@ STATUSEFFECT_BIT_SHIELD: equ 14
 ; ---------------------------------------------------------------------------
 
 ; enum StatusEffectCounters (bitfield)
-STATUSEFFECT_COUNTER_POISON: equ 1
-STATUSEFFECT_COUNTER_SLEEP: equ 2
-STATUSEFFECT_COUNTER_CURSE: equ 4
-STATUSEFFECT_COUNTER_JOGURT: equ 8
-STATUSEFFECT_COUNTER_MUDDLE: equ $30
-STATUSEFFECT_COUNTER_DISPEL: equ $C0
-STATUSEFFECT_COUNTER_QUICK: equ $300
-STATUSEFFECT_COUNTER_SLOW: equ $C00
-STATUSEFFECT_COUNTER_BOOST: equ $3000
-STATUSEFFECT_COUNTER_SHIELD: equ $C000
+STATUSEFFECT_POISON: equ 1
+STATUSEFFECT_SLEEP: equ 2
+STATUSEFFECT_CURSE: equ 4
+STATUSEFFECT_JOGURT: equ 8
+STATUSEFFECT_MUDDLE: equ $30
+STATUSEFFECT_DISPEL: equ $C0
+STATUSEFFECT_QUICK: equ $300
+STATUSEFFECT_SLOW: equ $C00
+STATUSEFFECT_BOOST: equ $3000
+STATUSEFFECT_SHIELD: equ $C000
 
 ; ---------------------------------------------------------------------------
 
@@ -1346,6 +1605,7 @@ STATUSEFFECT_MASK_COUNTER: equ 3
 STATUSEFFECT_COUNTERS_COUNTER: equ 5
 STATUSEFFECT_COUNTERS_NUMBER: equ 6
 STATUSEFFECT_BASE_CHANCE_TO_HIT: equ 37
+STATUSEFFECT_MASK: equ $FFFF
 
 ; ---------------------------------------------------------------------------
 
@@ -1630,6 +1890,139 @@ VDPTILE_STATUSEFFECT_SLEEP_A: equ $FC
 VDPTILE_STATUSEFFECT_SLEEP_B: equ $FD
 VDPTILE_STATUSEFFECT_CURSE_A: equ $FE
 VDPTILE_STATUSEFFECT_CURSE_B: equ $FF
+
+VDPTILE_300: equ $300
+VDPTILE_301: equ $301
+VDPTILE_302: equ $302
+VDPTILE_303: equ $303
+VDPTILE_304: equ $304
+VDPTILE_305: equ $305
+VDPTILE_306: equ $306
+VDPTILE_307: equ $307
+VDPTILE_308: equ $308
+VDPTILE_309: equ $309
+VDPTILE_30A: equ $30A
+VDPTILE_30B: equ $30B
+VDPTILE_30C: equ $30C
+VDPTILE_30D: equ $30D
+VDPTILE_30E: equ $30E
+VDPTILE_30F: equ $30F
+VDPTILE_310: equ $310
+VDPTILE_311: equ $311
+VDPTILE_312: equ $312
+VDPTILE_313: equ $313
+VDPTILE_314: equ $314
+VDPTILE_315: equ $315
+VDPTILE_316: equ $316
+VDPTILE_317: equ $317
+VDPTILE_318: equ $318
+VDPTILE_319: equ $319
+VDPTILE_31A: equ $31A
+VDPTILE_31B: equ $31B
+VDPTILE_31C: equ $31C
+VDPTILE_31D: equ $31D
+VDPTILE_31E: equ $31E
+VDPTILE_31F: equ $31F
+VDPTILE_320: equ $320
+VDPTILE_321: equ $321
+VDPTILE_322: equ $322
+VDPTILE_323: equ $323
+VDPTILE_324: equ $324
+VDPTILE_325: equ $325
+VDPTILE_326: equ $326
+VDPTILE_327: equ $327
+VDPTILE_328: equ $328
+VDPTILE_329: equ $329
+VDPTILE_32A: equ $32A
+VDPTILE_32B: equ $32B
+VDPTILE_32C: equ $32C
+VDPTILE_32D: equ $32D
+VDPTILE_32E: equ $32E
+VDPTILE_32F: equ $32F
+VDPTILE_330: equ $330
+VDPTILE_331: equ $331
+VDPTILE_332: equ $332
+VDPTILE_333: equ $333
+VDPTILE_334: equ $334
+VDPTILE_335: equ $335
+VDPTILE_336: equ $336
+VDPTILE_337: equ $337
+VDPTILE_338: equ $338
+VDPTILE_339: equ $339
+VDPTILE_33A: equ $33A
+VDPTILE_33B: equ $33B
+VDPTILE_33C: equ $33C
+VDPTILE_33D: equ $33D
+VDPTILE_33E: equ $33E
+VDPTILE_33F: equ $33F
+VDPTILE_340: equ $340
+VDPTILE_341: equ $341
+VDPTILE_342: equ $342
+VDPTILE_343: equ $343
+VDPTILE_344: equ $344
+VDPTILE_345: equ $345
+VDPTILE_346: equ $346
+VDPTILE_347: equ $347
+VDPTILE_348: equ $348
+VDPTILE_349: equ $349
+VDPTILE_34A: equ $34A
+VDPTILE_34B: equ $34B
+VDPTILE_34C: equ $34C
+VDPTILE_34D: equ $34D
+VDPTILE_34E: equ $34E
+VDPTILE_34F: equ $34F
+VDPTILE_350: equ $350
+VDPTILE_351: equ $351
+VDPTILE_352: equ $352
+VDPTILE_353: equ $353
+VDPTILE_354: equ $354
+VDPTILE_355: equ $355
+VDPTILE_356: equ $356
+VDPTILE_357: equ $357
+VDPTILE_358: equ $358
+VDPTILE_359: equ $359
+VDPTILE_35A: equ $35A
+VDPTILE_35B: equ $35B
+VDPTILE_35C: equ $35C
+VDPTILE_35D: equ $35D
+VDPTILE_35E: equ $35E
+VDPTILE_35F: equ $35F
+
+VDPTILE_ALLYSPRITE_1: equ $400
+VDPTILE_ALLYSPRITE_2: equ $410
+VDPTILE_ALLYSPRITE_3: equ $420
+VDPTILE_ALLYSPRITE_4: equ $430
+VDPTILE_ALLYSPRITE_5: equ $440
+VDPTILE_ALLYSPRITE_6: equ $450
+VDPTILE_ALLYSPRITE_7: equ $460
+VDPTILE_ALLYSPRITE_8: equ $470
+VDPTILE_ALLYSPRITE_9: equ $480
+VDPTILE_400: equ $400
+VDPTILE_410: equ $410
+VDPTILE_420: equ $420
+VDPTILE_430: equ $430
+VDPTILE_440: equ $440
+VDPTILE_450: equ $450
+VDPTILE_460: equ $460
+VDPTILE_470: equ $470
+VDPTILE_480: equ $480
+VDPTILE_490: equ $490
+VDPTILE_4A0: equ $4A0
+VDPTILE_4B0: equ $4B0
+VDPTILE_4C0: equ $4C0
+VDPTILE_4D0: equ $4D0
+VDPTILE_4E0: equ $4E0
+VDPTILE_4F0: equ $4F0
+VDPTILE_500: equ $500
+VDPTILE_510: equ $510
+VDPTILE_520: equ $520
+VDPTILE_WEAPONSPRITE_1: equ $520
+VDPTILE_WEAPONSPRITE_2: equ $530
+VDPTILE_WEAPONSPRITE_3: equ $540
+VDPTILE_WEAPONSPRITE_4: equ $550
+VDPTILE_GROUNDSPRITE_1: equ $560
+VDPTILE_GROUNDSPRITE_2: equ $570
+VDPTILE_GROUNDSPRITE_3: equ $580
 VDPTILE_MESSAGE_START1: equ $680
 VDPTILE_681: equ $681
 VDPTILE_685: equ $685
@@ -1688,3 +2081,13 @@ DEACTIVATE_DMA: equ 1
 DMA_REQUEST: equ 3
 VRAM_READ_REQUEST: equ 4
 ENABLE_VINT: equ 7
+
+; ---------------------------------------------------------------------------
+
+; enum Weaponsprite variation
+WEAPON_VARIATION_1: equ $00
+WEAPON_VARIATION_2: equ $10
+WEAPON_VARIATION_3: equ $20
+WEAPON_VARIATION_4: equ $30
+WEAPON_VARIATION_MASK: equ $30
+
