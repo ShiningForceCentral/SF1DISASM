@@ -29,7 +29,7 @@ txt:        macro
                 trap   #DISPLAY_MESSAGE
             endm
     
-clstxt:        macro
+clstxt:     macro
                 trap #CLOSE_MESSAGE_WINDOW
             endm
 
@@ -80,14 +80,57 @@ defineShorthand: macro Prefix,Shorthand
 ; ---------------------------------------------------------------------------
 ; 
 ; ---------------------------------------------------------------------------
+
+mpCost:     macro
+                dc.b \1
+                dc.b 0
+            endm
+
+range:      macro
+                dc.b \2
+                dc.b \1
+            endm
+
+area:       macro
+                dc.b \1
+            endm
+
+targetType: macro
+                defineShorthand.b RANGE_TARGETS_,\1
+            endm
+
+costume:    macro
+                defineShorthand.b ALLY_,\1
+                defineShorthand.b ITEM_,\1
+                defineShorthand.b MAPSPRITE_,\1
+            endm
     
-vdpTile:     macro
-                if (narg=0)
-                    dc.w 0
-                else
-                    defineBitfield.w VDPTILE_,\1
-                endc
-             endm
+shopList:   macro
+                defineShorthand.b SHOPTYPE_,\1
+            rept narg-1
+                defineShorthand.b ITEM_,\2
+            shift
+            endr
+                dc.b $FF
+            endm
+
+speechSfx:  macro
+                dc.b \1-SFX_DIALOG_BLEEP_1
+            endm
+
+creditsAlly:macro
+                defineShorthand.b ALLY_,\1
+                defineShorthand.b CLASS_,\2
+                defineBitfield.b ITEM_,\3
+            endm
+    
+vdpTile:    macro
+            if (narg=0)
+                   dc.w 0
+               else
+                   defineBitfield.w VDPTILE_,\1
+               endc
+            endm
     
 vdpBaseTile: macro
                 defineBitfieldWithParam.w VDPTILE_,\1,VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
