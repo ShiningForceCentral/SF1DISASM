@@ -501,7 +501,7 @@ byte_FFB53B: equ $FFB53B
 SPEECH_SOUND_TOGGLE: equ $FFB53C
 SAVE_GAME_DISABLED_TOGGLE: equ $FFB53D ; 1 = save game function is disabled
 byte_FFB53E: equ $FFB53E
-byte_FFB540: equ $FFB540 ; weapon sprite animation data?
+byte_FFB540: equ $FFB540 ; weapon sprite variation
 byte_FFB541: equ $FFB541
 byte_FFB542: equ $FFB542
 byte_FFB543: equ $FFB543
@@ -620,8 +620,8 @@ ALLY_BATTLE_SPRITE: equ $FFBC6E ; battle sprite number?
 ALLY_BATTLE_PALETTE: equ $FFBC70
 BATTLESCENE_ENEMY: equ $FFBC72
 BATTLESCENE_ALLY: equ $FFBC74
-word_FFBC76: equ $FFBC76 ; animation type?
-word_FFBC78: equ $FFBC78 ; copy of equipped weapon index used during battlescene command execution
+word_FFBC76: equ $FFBC76 ; weapon index
+word_FFBC78: equ $FFBC78 ; weapon palette
 ENEMY_BATTLESPRITE_ANIMATION_SPEED: equ $FFBC7A
 ENEMY_BATTLESPRITE_ANIMATION_COUNTER: equ $FFBC7C
 ALLY_BATTLESPRITE_ANIMATION_SPEED: equ $FFBC7E
