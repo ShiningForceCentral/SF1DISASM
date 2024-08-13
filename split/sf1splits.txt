@@ -60,6 +60,7 @@
 
 /***********************Data***************************/
 
+#split	0xB4C,0xB9C,data/graphics/tech/fadingdata.bin
 #split	0xD3BE,0xD408,data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout0.bin
 #split	0xD408,0xD44C,data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout1.bin
 #split	0xD44C,0xD48A,data/graphics/tech/windowlayouts/miscmessages/miscmessagewindowlayout2.bin
@@ -744,12 +745,13 @@
 #split	0x20BCC,0x20BD2,data/stats/effects/effect57.bin
 #split	0x20BD4,0x20BDA,data/stats/effects/effect58.bin
 #split	0x25D2C,0x25D6C,data/stats/items/itemtypes.bin
+#split	0x26666,0x2688E,data/stats/allies/forceanimationdata.bin
 #split	0x2688E,0x269FE,data/stats/enemies/enemyanimationdata.bin
 #split	0x269FE,0x26BF2,data/battles/global/terraindata.bin
 #split	0x26F0A,0x26F46,data/stats/allies/endinganimationsequence.bin
 #split	0x26F0A,0x26F46,data/stats/allies/endinganimationsequence.bin
 #split	0x2704E,0x2751A,data/maps/global/mapheaders.bin
-#split	0x27AC4,0x29EB3,data/battles/global/battleterrain.bin
+#split	0x279AC,0x29EA4,data/battles/global/battleterrain.bin
 #split	0x2C13E,0x2D13E,data/graphics/tech/fonts/variablewidthfont.bin
 #split	0x396C0,0x39928,data/graphics/specialsprites/specialsprite-jogurt1.bin
 #split	0x38000,0x58000,data/graphics/mapsprites.bin
@@ -800,8 +802,8 @@
 #split	0xD2E84,0xD2EA4,data/graphics/tech/basepalette.bin
 #split	0xD301A,0xD32DA,data/graphics/tech/windowlayouts/wl-textinput.bin
 #split	0xD3308,0xD398E,data/graphics/tech/fonts/endingcreditsfont.bin
-#split	0x125A0A,0x125B48,data/graphics/battles/oundtransitiontiles1.bin
-#split	0x125B48,0x125C3E,data/graphics/battles/oundtransitiontiles2.bin
+#split	0x125A0A,0x125B48,data/graphics/battles/backgroundtransitiontiles1.bin
+#split	0x125B48,0x125C3E,data/graphics/battles/backgroundtransitiontiles2.bin
 #split	0x125D54,0x125F36,data/graphics/battles/statuseffectstiles.bin
 #split	0x1269C6,0x1269EE,data/graphics/battles/spells/palettes/spellpalette-bolt.bin
 #split	0x126A6C,0x126A76,data/graphics/battles/spells/palettes/spellpalette-blaze.bin

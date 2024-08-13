@@ -3219,7 +3219,7 @@ loc_20D28:
 						; Cure poison
 		tst.b   EFFECTDEF_OFFSET_STATUS(a0)
 		bne.s   loc_20D3E
-		andi.w  (#STATUSEFFECT_MASK-STAUTUSEFFECT_POISON),((EFFECT_STATUS_CHANGE-$1000000)).w
+		andi.w  #(STATUSEFFECT_MASK-STATUSEFFECT_POISON),((EFFECT_STATUS_CHANGE-$1000000)).w
 		move.w  #$1C8,d2        ; "All traces of poison are[Line]purged from [Name]."
 		bra.s   loc_20D48
 loc_20D3E:
@@ -3904,7 +3904,7 @@ IsSpellNullified:
 		beq.s   loc_2121E       ; skip if spell costs 0 MP to cast
 		move.b  d1,d0
 		jsr     j_GetStatusEffectsForCombatant
-		andi.w  #STATUSEFFECT_COUNTER_SHIELD,d1
+		andi.w  #STATUSEFFECT_SHIELD,d1
 		beq.s   loc_2121E
 		move.w  #$1C5,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
 						; "But the spell is nullified by[Line]the magic curtain."
@@ -6164,7 +6164,7 @@ SetForceLeaderStatsInBattleTestMode:
 		jsr     j_SetBaseMove
 		jsr     j_LoadCombatantData
 		jsr     j_GetEntityItemsAddress
-		move.b  #KINDAN_NOHAKO,2(a0)
+		move.b  #ITEM_KINDAN_NOHAKO,2(a0)
 		jsr     j_GetCharacterSpellsAddress
 		addq.l  #1,a0
 		move.b  #SPELL_BLAZE|LV_4,(a0)+
@@ -7143,7 +7143,7 @@ SetStatusEffectCounter:
 		jsr     j_GetStatusEffectsForCombatant
 		ror.w   d3,d1
 		andi.w  #3,d2
-		andi.w  (#STATUSEFFECT_MASK-STATUSEFFECT_CURSE),d1
+		andi.w  #$FFFC,d1
 		or.w    d2,d1
 		rol.w   d3,d1
 		bsr.w   SetStatusEffectsForCombatant
@@ -9196,7 +9196,7 @@ tbl_AdjustedGroupFlags:
 		dc.b RANGE_TARGETS_NONE
 		dc.b RANGE_TARGETS_FOES
 		dc.b RANGE_TARGETS_FRIENDS
-		dc.b RANGE_TARGETS_FRIENDS_AND_FOES
+		dc.b RANGE_TARGETS_FRIENDS|RANGE_TARGETS_FOES
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -9554,7 +9554,7 @@ KindanNoHako:
 loc_23534:
 		move.b  d2,d0
 		jsr     j_GetLevel
-		move.w  #24,d3
+		move.w  #18,d3
 		sub.w   d1,d3
 		bsr.w   FindCombatantEntry
 		bne.s   loc_23550
@@ -10280,7 +10280,7 @@ GetPortrait:
 		ext.w   d1
 		bra.s   @Done
 @ForceMember:
-		cmpi.b  #NOVA,d0
+		cmpi.b  #ALLY_NOVA,d0
 		bne.s   @CheckIfChangedIntoJogurt
 		move.w  #PORTRAIT_NOVA,d1
 		bra.s   @Done
@@ -10340,7 +10340,7 @@ GetMapsprite:
 		move.b  ENEMY_OFFSET_MAPSPRITE(a1),d1
 		bra.s   @Done
 @ForceMember:
-		cmpi.b  #NOVA,d0
+		cmpi.b  #ALLY_NOVA,d0
 		bne.s   @isChangedIntoJogurt
 		move.w  #MAPSPRITE_NOVA,d1
 		bra.s   @Done
@@ -13004,7 +13004,7 @@ loc_24EA6:
 		move.w  d1,(a3)+
 loc_24EB0:
 		addq.w  #1,d1
-		cmpi.w  #NOTHING_ITEM,d1
+		cmpi.w  #ITEM_NOTHING_ITEM,d1
 		bne.s   loc_24E82
 		move.w  d3,(SHOP_INVENTORY_LENGTH).l
 		movem.l (sp)+,d0-d3/a0-a1/a3
@@ -13543,7 +13543,6 @@ loc_26EDA:
 
     ; End of function WriteEndingCreditsBattlesceneScript
 
-EndingCreditsForceData:
 		include "data\stats\allies\endcreditsforcedata.asm"
 EndingAnimationSequence:
 		incbin "data/stats/allies/endinganimationsequence.bin"

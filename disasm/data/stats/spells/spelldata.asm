@@ -5,7 +5,7 @@
 SpellData:
 
     ; HEAL 1
-    spellEffect HEAL1, HEAL_1
+    spellEffect HEAL_1, HEAL_1
     mpCost      3
     
     ; HEAL 2

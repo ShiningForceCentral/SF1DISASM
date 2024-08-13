@@ -29,7 +29,7 @@ rpt_ShopInventories:
 		dc.w ShopInventory23-ShopInventory00
                 
 ShopInventory00:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         SHORT_SWORD, &
         SPEAR, &
         HAND_AXE, &
@@ -37,13 +37,13 @@ ShopInventory00:
         WOODEN_ARROW
                 
 ShopInventory01:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANGEL_WING
                 
 ShopInventory02:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         SHORT_SWORD, &
         SPEAR, &
         HAND_AXE, &
@@ -51,13 +51,13 @@ ShopInventory02:
         WOODEN_ARROW
                 
 ShopInventory03:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANGEL_WING
                 
 ShopInventory04
-    shopList WEAPON, &
+    shopList WEAPONS, &
         MIDDLE_SWORD, &
         SPEAR, &
         BRONZE_LANCE, &
@@ -66,20 +66,20 @@ ShopInventory04
         WOODEN_ARROW
                 
 ShopInventory05:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory06:
-    shopList WEAPON
+    shopList WEAPONS
                 
 ShopInventory07:
-    shopList ITEM
+    shopList ITEMS
                 
 ShopInventory08:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         MIDDLE_SWORD, &
         POWER_SPEAR, &
         BRONZE_LANCE, &
@@ -88,14 +88,14 @@ ShopInventory08:
         STEEL_ARROW
                 
 ShopInventory09:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory10:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         LONG_SWORD, &
         POWER_SPEAR, &
         BRONZE_LANCE, &
@@ -104,14 +104,14 @@ ShopInventory10:
         STEEL_ARROW
                 
 ShopInventory11:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory12:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         LONG_SWORD, &
         POWER_SPEAR, &
         BRONZE_LANCE, &
@@ -120,14 +120,14 @@ ShopInventory12:
         STEEL_ARROW
                 
 ShopInventory13:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory14:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         STEEL_SWORD, &
         POWER_SPEAR, &
         STEEL_LANCE, &
@@ -136,14 +136,14 @@ ShopInventory14:
         ELVEN_ARROW
                 
 ShopInventory15:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory16:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         STEEL_SWORD, &
         CHROME_LANCE, &
         BATTLE_AXE, &
@@ -151,14 +151,14 @@ ShopInventory16:
         ELVEN_ARROW
                 
 ShopInventory17:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory18:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         STEEL_SWORD, &
         CHROME_LANCE, &
         BATTLE_AXE, &
@@ -166,14 +166,14 @@ ShopInventory18:
         ASSAULT_SHELL
                 
 ShopInventory19:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory20:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         BROAD_SWORD, &
         CHROME_LANCE, &
         GREAT_AXE, &
@@ -181,14 +181,14 @@ ShopInventory20:
         ASSAULT_SHELL
                 
 ShopInventory21:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
                 
 ShopInventory22:
-    shopList WEAPON, &
+    shopList WEAPONS, &
         BROAD_SWORD, &
         CHROME_LANCE, &
         GREAT_AXE, &
@@ -196,7 +196,7 @@ ShopInventory22:
         BUSTER_SHOT
                 
 ShopInventory23:
-    shopList ITEM, &
+    shopList ITEMS, &
         MEDICAL_HERB, &
         HEALING_SEED, &
         ANTIDOTE, &

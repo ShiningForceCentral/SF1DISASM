@@ -202,8 +202,8 @@ bsc00_:
 		move.w  d2,((ALLY_BATTLE_PALETTE-$1000000)).w
 		move.w  d3,((ALLY_BATTLE_ANIMATION-$1000000)).w
 		jsr     j_GetEquippedWeaponIndex
-		move.w  d2,((word_FFBC76-$1000000)).w
-		move.w  d3,((word_FFBC78-$1000000)).w
+		move.w  d2,((WEAPONSPRITE_INDEX-$1000000)).w
+		move.w  d3,((WEAPONSPRITE_PALETTE-$1000000)).w
 		move.w  #100,((ENEMY_BATTLESPRITE_ANIMATION_SPEED-$1000000)).w
 		move.w  #101,((ALLY_BATTLESPRITE_ANIMATION_SPEED-$1000000)).w
 		sndCom  SOUND_COMMAND_FADE_OUT
@@ -359,7 +359,7 @@ loc_12430C:
 		move.w  ((ALLY_BATTLE_PALETTE-$1000000)).w,d1
 		bsr.w   sub_1262CE
 		bsr.w   sub_124516
-		move.w  ((word_FFBC76-$1000000)).w,d0
+		move.w  ((WEAPONSPRITE_INDEX-$1000000)).w,d0
 		cmpi.w  #-1,d0
 		beq.s   loc_1243CE
 		bsr.w   LoadWeaponsprite
@@ -369,11 +369,11 @@ loc_12430C:
 		movea.l (a0,d0.w),a0
 		addq.l  #4,a0
 		move.w  (a0)+,((word_FFB544-$1000000)).w
-		move.w  ((word_FFB544-$1000000)).w,((byte_FFB540-$1000000)).w
+		move.w  ((word_FFB544-$1000000)).w,((WEAPONSPRITE_VARIATION-$1000000)).w
 		move.w  (a0)+,((word_FFB546-$1000000)).w
 		move.w  ((word_FFB546-$1000000)).w,((byte_FFB542-$1000000)).w
 		lea     (MAP_SPRITE_POSITION).l,a0
-		move.b  ((byte_FFB540-$1000000)).w,d0
+		move.b  ((WEAPONSPRITE_VARIATION-$1000000)).w,d0
 		andi.w  #$F,d0
 		ror.w   #5,d0
 		adda.w  d0,a0
@@ -381,7 +381,7 @@ loc_12430C:
 		move.w  #$400,d0
 		move.w  #2,d1
 		jsr     (j_ApplyImmediateVramDma).l
-		move.w  ((word_FFBC78-$1000000)).w,d0
+		move.w  ((WEAPONSPRITE_PALETTE-$1000000)).w,d0
 		bsr.w   LoadWeaponPalette
 loc_1243CE:
 		move.w  ((BATTLESCENE_ALLY-$1000000)).w,d0
@@ -468,7 +468,7 @@ sub_1244CA:
 		move.w  d0,((ENEMY_BATTLESPRITE_ANIMATION_SPEED-$1000000)).w
 loc_1244EC:
 		move.w  d1,-(sp)
-		andi.w  #STATUSEFFECT_BOOST,d1
+		andi.w  #STATUSEFFECT_QUICK,d1
 		movem.w (sp)+,d1
 		beq.s   loc_124502
 		move.w  ((ENEMY_BATTLESPRITE_ANIMATION_SPEED-$1000000)).w,d0
@@ -634,17 +634,17 @@ loc_12465C:
 		move.w  (a0)+,d1
 		cmpi.b  #1,((byte_FFB5BB-$1000000)).w
 		bne.s   loc_124672
-		move.l  (a0)+,((byte_FFB540-$1000000)).w
+		move.l  (a0)+,((WEAPONSPRITE_VARIATION-$1000000)).w
 loc_124672:
 		movem.l a0,-(sp)
 		movem.w d3-d7,-(sp)
 		btst    #0,((byte_FFB5BB-$1000000)).w
 		beq.s   loc_1246BE
 		bsr.w   sub_1253CC
-		cmpi.w  #-1,((word_FFBC76-$1000000)).w
+		cmpi.w  #-1,((WEAPONSPRITE_INDEX-$1000000)).w
 		beq.s   loc_1246BC
 		clr.w   d0
-		move.b  ((byte_FFB540-$1000000)).w,d0
+		move.b  ((WEAPONSPRITE_VARIATION-$1000000)).w,d0
 		andi.w  #7,d0
 		ror.w   #5,d0
 		lea     (MAP_SPRITE_POSITION).l,a0
@@ -764,15 +764,15 @@ bsc04_:
 ; =============== S U B R O U T I N E =======================================
 
 bsc03_:
-		move.w  ((word_FFB544-$1000000)).w,((byte_FFB540-$1000000)).w
+		move.w  ((word_FFB544-$1000000)).w,((WEAPONSPRITE_VARIATION-$1000000)).w
 		move.w  ((word_FFB546-$1000000)).w,((byte_FFB542-$1000000)).w
 		clr.w   d0
 		clr.w   d1
 		bsr.w   sub_1253CC
-		cmpi.w  #-1,((word_FFBC76-$1000000)).w
+		cmpi.w  #-1,((WEAPONSPRITE_INDEX-$1000000)).w
 		beq.s   loc_1247D8
 		lea     (MAP_SPRITE_POSITION).l,a0
-		move.b  ((byte_FFB540-$1000000)).w,d0
+		move.b  ((WEAPONSPRITE_VARIATION-$1000000)).w,d0
 		andi.w  #$F,d0
 		ror.w   #5,d0
 		adda.w  d0,a0
@@ -1235,7 +1235,7 @@ loc_124CC2:
 loc_124CCA:
 		lea     (FF3000_LOADING_SPACE).l,a0
 		bsr.w   loc_125462
-		cmpi.w  #-1,((word_FFBC76-$1000000)).w
+		cmpi.w  #-1,((WEAPONSPRITE_INDEX-$1000000)).w
 		beq.s   loc_124D08
 		lea     (MAP_SPRITE_POSITION).l,a0
 		move.b  ((word_FFB544-$1000000)).w,d7
@@ -1452,7 +1452,7 @@ sub_124EA0:
 		clr.w   d0
 		move.b  ((MESSAGE_SPEED-$1000000)).w,d0
 		bne.s   loc_124EB0
-		txt     #$1EA        ; "[Dict][Line]"
+		txt     $1EA        ; "[Dict][Line]"
 		bra.s   return_124ECA
 loc_124EB0:
 		moveq   #8,d1
@@ -1731,7 +1731,7 @@ loc_1250F6:
 		bset    #3,((byte_FFB4D2-$1000000)).w
 		cmpi.w  #-1,((BATTLESCENE_ALLY-$1000000)).w
 		beq.s   return_12518A
-		move.w  ((word_FFBC76-$1000000)).w,d0
+		move.w  ((WEAPONSPRITE_INDEX-$1000000)).w,d0
 		cmpi.w  #-1,d0
 		beq.s   return_12518A
 		bsr.w   LoadWeaponsprite
@@ -1810,9 +1810,9 @@ loc_12522E:
 		moveq   #-1,d2
 		moveq   #-1,d3
 loc_125232:
-		move.w  d2,((word_FFBC76-$1000000)).w
-		move.w  d3,((word_FFBC78-$1000000)).w
-		move.w  ((word_FFBC76-$1000000)).w,d0
+		move.w  d2,((WEAPONSPRITE_INDEX-$1000000)).w
+		move.w  d3,((WEAPONSPRITE_PALETTE-$1000000)).w
+		move.w  ((WEAPONSPRITE_INDEX-$1000000)).w,d0
 		cmpi.w  #-1,d0
 		beq.s   loc_125264
 		bsr.w   LoadWeaponsprite
@@ -1828,11 +1828,11 @@ loc_125264:
 		move.w  #$400,((word_FFB544-$1000000)).w
 		move.w  #$7F7F,((word_FFB546-$1000000)).w
 loc_125270:
-		move.w  ((word_FFB544-$1000000)).w,((byte_FFB540-$1000000)).w
+		move.w  ((word_FFB544-$1000000)).w,((WEAPONSPRITE_VARIATION-$1000000)).w
 		move.w  ((word_FFB546-$1000000)).w,((byte_FFB542-$1000000)).w
-		move.w  ((word_FFBC78-$1000000)).w,d0
+		move.w  ((WEAPONSPRITE_PALETTE-$1000000)).w,d0
 		bsr.w   LoadWeaponPalette
-		move.b  ((byte_FFB540-$1000000)).w,d0
+		move.b  ((WEAPONSPRITE_VARIATION-$1000000)).w,d0
 		lea     (MAP_SPRITE_POSITION).l,a0
 		andi.w  #$F,d0
 		ror.w   #5,d0
@@ -1940,7 +1940,7 @@ loc_125398:
 loc_12539E:
 		lea     word_125534(pc), a0
 		clr.w   d7
-		move.b  ((byte_FFB540-$1000000)).w,d7
+		move.b  ((WEAPONSPRITE_VARIATION-$1000000)).w,d7
 		andi.w  #WEAPON_VARIATION_MASK,d7 
 		add.w   d7,d7
 		adda.w  d7,a0
@@ -2058,55 +2058,55 @@ sub_125496:
     ; End of function sub_125496
 
 word_1254A4:    ; ally battlesprite
-                vdpSprite 192, V4|H4|0, ALLYSPRITE_1|PALETTE_3|PRIORITY_BIT, 264
-                vdpSprite 224, V4|H4|0, ALLYSPRITE_2|PALETTE_3|PRIORITY_BIT, 264
-                vdpSprite 256, V4|H4|0, ALLYSPRITE_3|PALETTE_3|PRIORITY_BIT, 264
-                vdpSprite 192, V4|H4|0, ALLYSPRITE_4|PALETTE_3|PRIORITY_BIT, 296
-                vdpSprite 224, V4|H4|0, ALLYSPRITE_5|PALETTE_3|PRIORITY_BIT, 296
-                vdpSprite 256, V4|H4|0, ALLYSPRITE_6|PALETTE_3|PRIORITY_BIT, 296
-                vdpSprite 192, V4|H4|0, ALLYSPRITE_7|PALETTE_3|PRIORITY_BIT, 328
-                vdpSprite 224, V4|H4|0, ALLYSPRITE_8|PALETTE_3|PRIORITY_BIT, 328
-                vdpSprite 256, V4|H4|0, ALLYSPRITE_9|PALETTE_3|PRIORITY_BIT, 328
+                vdpSprite 192, V4|H4|0, ALLYSPRITE_1|PALETTE3|PRIORITY_BIT, 264
+                vdpSprite 224, V4|H4|0, ALLYSPRITE_2|PALETTE3|PRIORITY_BIT, 264
+                vdpSprite 256, V4|H4|0, ALLYSPRITE_3|PALETTE3|PRIORITY_BIT, 264
+                vdpSprite 192, V4|H4|0, ALLYSPRITE_4|PALETTE3|PRIORITY_BIT, 296
+                vdpSprite 224, V4|H4|0, ALLYSPRITE_5|PALETTE3|PRIORITY_BIT, 296
+                vdpSprite 256, V4|H4|0, ALLYSPRITE_6|PALETTE3|PRIORITY_BIT, 296
+                vdpSprite 192, V4|H4|0, ALLYSPRITE_7|PALETTE3|PRIORITY_BIT, 328
+                vdpSprite 224, V4|H4|0, ALLYSPRITE_8|PALETTE3|PRIORITY_BIT, 328
+                vdpSprite 256, V4|H4|0, ALLYSPRITE_9|PALETTE3|PRIORITY_BIT, 328
 
                 ; ally battlesprite mirrored
-                vdpSprite 192, V4|H4|0, ALLYSPRITE_1|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 328
-                vdpSprite 224, V4|H4|0, ALLYSPRITE_2|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 328
-                vdpSprite 256, V4|H4|0, ALLYSPRITE_3|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 328
-                vdpSprite 192, V4|H4|0, ALLYSPRITE_4|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 296
-                vdpSprite 224, V4|H4|0, ALLYSPRITE_5|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 296
-                vdpSprite 256, V4|H4|0, ALLYSPRITE_6|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 296
-                vdpSprite 192, V4|H4|0, ALLYSPRITE_7|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 264
-                vdpSprite 224, V4|H4|0, ALLYSPRITE_8|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 264
-                vdpSprite 256, V4|H4|0, ALLYSPRITE_9|MIRRORED_BIT|PALETTE_3|PRIORITY_BIT, 264
+                vdpSprite 192, V4|H4|0, ALLYSPRITE_1|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 328
+                vdpSprite 224, V4|H4|0, ALLYSPRITE_2|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 328
+                vdpSprite 256, V4|H4|0, ALLYSPRITE_3|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 328
+                vdpSprite 192, V4|H4|0, ALLYSPRITE_4|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 296
+                vdpSprite 224, V4|H4|0, ALLYSPRITE_5|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 296
+                vdpSprite 256, V4|H4|0, ALLYSPRITE_6|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 296
+                vdpSprite 192, V4|H4|0, ALLYSPRITE_7|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 264
+                vdpSprite 224, V4|H4|0, ALLYSPRITE_8|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 264
+                vdpSprite 256, V4|H4|0, ALLYSPRITE_9|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 264
 
 word_125534:    ; weapon variation 1
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_1|PALETTE_2|PRIORITY_BIT, 264
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_2|PALETTE_2|PRIORITY_BIT, 264
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_3|PALETTE_2|PRIORITY_BIT, 296
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_4|PALETTE_2|PRIORITY_BIT, 296
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_1|PALETTE2|PRIORITY_BIT, 264
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_2|PALETTE2|PRIORITY_BIT, 264
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_3|PALETTE2|PRIORITY_BIT, 296
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_4|PALETTE2|PRIORITY_BIT, 296
 
                 ; weapon variation 2
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_1|MIRRORED_BIT|PALETTE_2|PRIORITY_BIT, 296
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_2|MIRRORED_BIT|PALETTE_2|PRIORITY_BIT, 296
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_3|MIRRORED_BIT|PALETTE_2|PRIORITY_BIT, 264
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_4|MIRRORED_BIT|PALETTE_2|PRIORITY_BIT, 264
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_1|MIRRORED_BIT|PALETTE2|PRIORITY_BIT, 296
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_2|MIRRORED_BIT|PALETTE2|PRIORITY_BIT, 296
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_3|MIRRORED_BIT|PALETTE2|PRIORITY_BIT, 264
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_4|MIRRORED_BIT|PALETTE2|PRIORITY_BIT, 264
 
                 ; weapon variation 3
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_1|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 264
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_2|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 264
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_3|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 296
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_4|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 296
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_1|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 264
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_2|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 264
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_3|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 296
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_4|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 296
 
                 ; weapon variation 4
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_1|MIRRORED_BIT|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 296
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_2|MIRRORED_BIT|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 296
-                vdpSprite 224, V4|H4|0, WEAPONSPRITE_3|MIRRORED_BIT|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 264
-                vdpSprite 192, V4|H4|0, WEAPONSPRITE_4|MIRRORED_BIT|FLIPPED_BIT|PALETTE_2|PRIORITY_BIT, 264
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_1|MIRRORED_BIT|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 296
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_2|MIRRORED_BIT|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 296
+                vdpSprite 224, V4|H4|0, WEAPONSPRITE_3|MIRRORED_BIT|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 264
+                vdpSprite 192, V4|H4|0, WEAPONSPRITE_4|MIRRORED_BIT|FLIPPED_BIT|PALETTE2|PRIORITY_BIT, 264
 
 word_1255B4:    ; Ground sprite
-                vdpSprite 268, V4|H4|0, GROUNDSPRITE_1|PALETTE_2, 256
-                vdpSprite 268, V4|H4|0, GROUNDSPRITE_2|PALETTE_2, 288
-                vdpSprite 268, V4|H4|0, GROUNDSPRITE_3|PALETTE_2, 320
+                vdpSprite 268, V4|H4|0, GROUNDSPRITE_1|PALETTE2, 256
+                vdpSprite 268, V4|H4|0, GROUNDSPRITE_2|PALETTE2, 288
+                vdpSprite 268, V4|H4|0, GROUNDSPRITE_3|PALETTE2, 320
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -5141,7 +5141,7 @@ loc_1269B6:
 
     ; End of function sub_1269A4
 
-SpellPalette_Bolt:
+SpellPALETTEBolt:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-bolt.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5150,7 +5150,7 @@ LoadSpellGraphics_Bolt:
 		
 		move.w  d3,-(sp)
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_Bolt(pc), a0
+		lea     SpellPALETTEBolt(pc), a0
 		andi.w  #7,d3
 		subq.w  #1,d3
 		mulu.w  #$A,d3
@@ -5196,7 +5196,7 @@ SetupSpellAnimation_Bolt:
 
     ; End of function SetupSpellAnimation_Bolt
 
-SpellPalette_Blaze:
+SpellPALETTEBlaze:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-blaze.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5205,7 +5205,7 @@ LoadSpellGraphics_Blaze:
 		
 		move.w  d3,-(sp)
 		bsr.w   SetupScreenTint_Red
-		lea     SpellPalette_Blaze(pc), a0
+		lea     SpellPALETTEBlaze(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5325,7 +5325,7 @@ SetupSpellAnimation_AssaultShell:
 		
 		move.w  d3,-(sp)
 		sndCom  SFX_HIT
-		lea     SpellPalette_Blaze(pc), a0
+		lea     SpellPALETTEBlaze(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5348,7 +5348,7 @@ SetupSpellAnimation_AssaultShell:
 
     ; End of function SetupSpellAnimation_AssaultShell
 
-SpellPalette_Freeze:
+SpellPALETTEFreeze:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-freeze.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5357,7 +5357,7 @@ LoadSpellGraphics_Freeze:
 		
 		move.w  d3,-(sp)
 		bsr.w   SetupScreenTint_Grey
-		lea     SpellPalette_Freeze(pc), a0
+		lea     SpellPALETTEFreeze(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5411,7 +5411,7 @@ SetupSpellAnimation_IceBreath:
 
     ; End of function SetupSpellAnimation_IceBreath
 
-SpellPalette_DemonBlaze:
+SpellPALETTEDemonBlaze:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-demonblaze.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5423,7 +5423,7 @@ SetupSpellAnimation_DemonBlaze:
 		movem.l d3,-(sp)
 		sndCom  SFX_FIRE_BREATH
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_DemonBlaze(pc), a0
+		lea     SpellPALETTEDemonBlaze(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5447,7 +5447,7 @@ SetupSpellAnimation_DemonBlaze:
 
     ; End of function SetupSpellAnimation_DemonBlaze
 
-SpellPalette_Desoul:
+SpellPALETTEDesoul:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-desoul.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5457,7 +5457,7 @@ SpellPalette_Desoul:
 SetupSpellAnimation_Desoul:
 		
 		bsr.w   SetupScreenTint_Grey
-		lea     SpellPalette_Desoul(pc), a0
+		lea     SpellPALETTEDesoul(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5612,7 +5612,7 @@ loc_126D9A:
 
     ; End of function SetupSpellAnimation_Sleep
 
-SpellPalette_Healing:
+SpellPALETTEHealing:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-healing.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5622,7 +5622,7 @@ SpellPalette_Healing:
 SetupSpellAnimation_Healing:
 		
 		move.w  d3,-(sp)
-		lea     SpellPalette_Healing(pc), a0
+		lea     SpellPALETTEHealing(pc), a0
 		andi.w  #7,d3
 		subq.w  #1,d3
 		mulu.w  #$A,d3
@@ -5659,7 +5659,7 @@ SetupSpellAnimation_Healing:
 
     ; End of function SetupSpellAnimation_Healing
 
-SpellPalette_MachineGun:
+SpellPALETTEMachineGun:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-machinegun.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5670,13 +5670,13 @@ SetupSpellAnimation_MachineGun:
 		
 		 
 		sndCom  SFX_MACHINE_GUN
-		lea     SpellPalette_MachineGun(pc), a0
+		lea     SpellPALETTEMachineGun(pc), a0
 		moveq   #SPELLANIM_TYPE_MACHINE_GUN,d4
 		bra.w   loc_126EA0
 
     ; End of function SetupSpellAnimation_MachineGun
 
-SpellPalette_Crossbow:
+SpellPALETTECrossbow:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-crossbow.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5685,7 +5685,7 @@ SpellPalette_Crossbow:
 
 SetupSpellAnimation_Crossbow:
 		
-		lea     SpellPalette_Crossbow(pc), a0
+		lea     SpellPALETTECrossbow(pc), a0
 		moveq   #SPELLANIM_TYPE_CROSSBOW,d4
 loc_126EA0:
 		movem.l d3-d4,-(sp)
@@ -5711,14 +5711,14 @@ loc_126EA0:
 
     ; End of function SetupSpellAnimation_Crossbow
 
-SpellPalette_BlueFlyingDragons:
+SpellPALETTEBlueFlyingDragons:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-blueflyingdragons.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
 sa74_BlueFlyingDragons:
 		
-		lea     SpellPalette_BlueFlyingDragons(pc), a0
+		lea     SpellPALETTEBlueFlyingDragons(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5741,14 +5741,14 @@ loc_126F10:
 
     ; End of function sa74_BlueFlyingDragons
 
-SpellPalette_YellowFlyingDragons:
+SpellPALETTEYellowFlyingDragons:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-yellowflyingdragons.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
 sa71_YellowFlyingDragons:
 		
-		lea     SpellPalette_YellowFlyingDragons(pc), a0
+		lea     SpellPALETTEYellowFlyingDragons(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5758,7 +5758,7 @@ sa71_YellowFlyingDragons:
 
     ; End of function sa71_YellowFlyingDragons
 
-SpellPalette_YellowLightningBreath:
+SpellPALETTEYellowLightningBreath:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-yellowlightningbreath.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5766,7 +5766,7 @@ SpellPalette_YellowLightningBreath:
 sa65_YellowLightningBreath:
 		
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_YellowLightningBreath(pc), a0
+		lea     SpellPALETTEYellowLightningBreath(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5790,7 +5790,7 @@ byte_126F98:
 
     ; End of function sa65_YellowLightningBreath
 
-SpellPalette_BlueLightningBreath:
+SpellPALETTEBlueLightningBreath:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-bluelightningbreath.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5798,7 +5798,7 @@ SpellPalette_BlueLightningBreath:
 sa72_BlueLightningBreath:
 		
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_BlueLightningBreath(pc), a0
+		lea     SpellPALETTEBlueLightningBreath(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5809,7 +5809,7 @@ sa72_BlueLightningBreath:
 
     ; End of function sa72_BlueLightningBreath
 
-SpellPalette_GreenLaser:
+SpellPALETTEGreenLaser:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-greenlaser.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5830,7 +5830,7 @@ SetupSpellAnimation_GreenLaser:
 		 
 		sndCom  SFX_LASER
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_GreenLaser(pc), a0
+		lea     SpellPALETTEGreenLaser(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5853,7 +5853,7 @@ loc_12702C:
 
     ; End of function SetupSpellAnimation_GreenLaser
 
-SpellPalette_BlueLaser:
+SpellPALETTEBlueLaser:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-bluelaser.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5874,7 +5874,7 @@ SetupSpellAnimation_LaserEye:
 		 
 		sndCom  SFX_LASER
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_BlueLaser(pc), a0
+		lea     SpellPALETTEBlueLaser(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5885,7 +5885,7 @@ SetupSpellAnimation_LaserEye:
 
     ; End of function SetupSpellAnimation_LaserEye
 
-SpellPalette_BusterShot:
+SpellPALETTEBusterShot:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-bustershot.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5895,7 +5895,7 @@ sa70_BusterShot:
 		 
 		sndCom  SFX_HIT
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_BusterShot(pc), a0
+		lea     SpellPALETTEBusterShot(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5917,14 +5917,14 @@ sa70_BusterShot:
 
     ; End of function sa70_BusterShot
 
-SpellPalette_EnergyBlast:
+SpellPALETTEEnergyBlast:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-energyblast.bin"
 
 ; =============== S U B R O U T I N E =======================================
 
 sa68_SwordBeam:
 		
-		lea     SpellPalette_EnergyBlast(pc), a0
+		lea     SpellPALETTEEnergyBlast(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5961,7 +5961,7 @@ sa67_PowerFist:
 		 
 		sndCom  SFX_SWORD_BEAM
 		bsr.w   SetupScreenTint_Dark
-		lea     SpellPalette_EnergyBlast(pc), a0
+		lea     SpellPALETTEEnergyBlast(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -5972,7 +5972,7 @@ sa67_PowerFist:
 
     ; End of function sa67_PowerFist
 
-SpellPalette_FireBreath:
+SpellPALETTEFireBreath:
 		incbin "data/graphics/battles/spells/palettes/spellpalette-firebreath.bin"
 
 ; =============== S U B R O U T I N E =======================================
@@ -5983,7 +5983,7 @@ LoadSpellGraphics_FireBreath:
 		sndCom  SFX_FIRE_BREATH
 		move.w  d3,-(sp)
 		bsr.w   SetupScreenTint_Red
-		lea     SpellPalette_FireBreath(pc), a0
+		lea     SpellPALETTEFireBreath(pc), a0
 		lea     (PALETTE_2_CURRENT_06).l,a1
 		move.l  (a0)+,(a1)+
 		move.l  (a0)+,(a1)+
@@ -8596,7 +8596,7 @@ loc_129068:
 		moveq   #PORTRAIT_LOWE,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$69 ; "[Hero]![Line]Goblins! Runefaust[Line]must be up to something![Wait2]"
+		txt     $69 ; "[Hero]![Line]Goblins! Runefaust[Line]must be up to something![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		jsr     j_LoadCursorTiles
@@ -8618,7 +8618,7 @@ loc_1290C2:
 		moveq   #PORTRAIT_TAO,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$6A ; "We can take them,[Line][Hero]![Wait2]"
+		txt     $6A ; "We can take them,[Line][Hero]![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		jsr     j_LoadCursorTiles
@@ -8638,7 +8638,7 @@ loc_1290C2:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_12911C:
 		trap    #5
-		txt     #$6B ; "Move it, vermin! Find the key[Line]to this blasted door![Wait2]"
+		txt     $6B ; "Move it, vermin! Find the key[Line]to this blasted door![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -8648,7 +8648,7 @@ loc_12911C:
 		bsr.w   sub_12C2DC
 loc_12913C:
 		trap    #7
-		txt     #$6C ; "C'mon, we're almost in![Wait2]"
+		txt     $6C ; "C'mon, we're almost in![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -8658,7 +8658,7 @@ loc_12913C:
 		bsr.w   sub_12C2DC
 loc_12915C:
 		trap    #7
-		txt     #$6D ; "Where is that blasted key?[Wait2]"
+		txt     $6D ; "Where is that blasted key?[Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -8668,7 +8668,7 @@ loc_12915C:
 		bsr.w   sub_12C2DC
 loc_12917C:
 		trap    #7
-		txt     #$6E ; "What? Blast it! Those fools[Line]from Guardiana are here![Wait2]"
+		txt     $6E ; "What? Blast it! Those fools[Line]from Guardiana are here![Wait2]"
 		trap    #6
 		jsr     j_LoadCursorTiles
 		move.w  #ALLY_MAX,d2
@@ -8711,7 +8711,7 @@ byte_1291C8:
 		moveq   #$C,d6
 		jsr     sub_80AC
 		trap    #5
-		txt     #$6F ; "Earthquake![Wait2]"
+		txt     $6F ; "Earthquake![Wait2]"
 		trap    #6
 		sndCom  SOUND_COMMAND_FADE_OUT
 loc_12922E:
@@ -8737,7 +8737,7 @@ loc_12922E:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l  ; 1, V4|H4|63 : cursor?
 loc_129286:
 		trap    #5
-		txt     #$70 ; "Attack, goblins and dwarves![Line]Strike a blow for the honor[Line]of Runefaust![Wait2]"
+		txt     $70 ; "Attack, goblins and dwarves![Line]Strike a blow for the honor[Line]of Runefaust![Wait2]"
 		trap    #6
 		rts
 
@@ -8752,7 +8752,7 @@ bbcs01:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$73 ; "The earthquake blocked the[Line]road. Head north, but be[Line]ready for battle.[Wait2]"
+		txt     $73 ; "The earthquake blocked the[Line]road. Head north, but be[Line]ready for battle.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		jsr     j_LoadCursorTiles
@@ -8772,7 +8772,7 @@ bbcs01:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_1292F2:
 		trap    #5
-		txt     #$74 ; "No one enters Guardiana while[Line]we live! For Darksol![Wait2]"
+		txt     $74 ; "No one enters Guardiana while[Line]we live! For Darksol![Wait2]"
 		trap    #6
 		jsr     j_LoadCursorTiles
 		move.w  #NPC02,d2 
@@ -8791,7 +8791,7 @@ loc_1292F2:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_12933E:
 		trap    #5
-		txt     #$75 ; "Death to Guardiana![Wait2]"
+		txt     $75 ; "Death to Guardiana![Wait2]"
 		trap    #6
 		jsr     j_LoadCursorTiles
 		move.w  #NPC03,d2 
@@ -8810,7 +8810,7 @@ loc_12933E:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_12938A:
 		trap    #5
-		txt     #$75 ; "Death to Guardiana![Wait2]"
+		txt     $75 ; "Death to Guardiana![Wait2]"
 		trap    #6
 		rts
 
@@ -8825,7 +8825,7 @@ bbcs02:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$77 ; "[Hero]! Enemies await[Line]you on the road to Alterone.[Line]Take all precautions![Wait2]"
+		txt     $77 ; "[Hero]! Enemies await[Line]you on the road to Alterone.[Line]Take all precautions![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -8860,7 +8860,7 @@ loc_129410:
 		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$79 ; "Lowly worms, I shall crush[Line]you beneath my heel. Attack,[Line]soldiers of Runefaust![Wait2]"
+		txt     $79 ; "Lowly worms, I shall crush[Line]you beneath my heel. Attack,[Line]soldiers of Runefaust![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC01,d2 
@@ -8881,7 +8881,7 @@ loc_129440:
 		bsr.w   sub_12C2DC
 loc_129458:
 		trap    #5
-		txt     #$7A ; "Lord Kane, Lord Darksol[Line]commands you to return to[Line]Runefaust immediately.[Wait2]"
+		txt     $7A ; "Lord Kane, Lord Darksol[Line]commands you to return to[Line]Runefaust immediately.[Wait2]"
 		trap    #6
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
@@ -8894,11 +8894,11 @@ loc_12947A:
 		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$7B ; "Tell him I'm on my way.[Wait2]"
+		txt     $7B ; "Tell him I'm on my way.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		trap    #5
-		txt     #$7C ; "Yes, sir.[Wait2]"
+		txt     $7C ; "Yes, sir.[Wait2]"
 		trap    #6
 		move.w  #NPC01,d2 
 		bsr.w   FindEntityForCutscene
@@ -8927,7 +8927,7 @@ loc_1294E0:
 		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$7D ; "A shame I can't stay to watch[Line]you meet your doom! My troops[Line]can handle the likes of you.[Wait2]"
+		txt     $7D ; "A shame I can't stay to watch[Line]you meet your doom! My troops[Line]can handle the likes of you.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -8960,7 +8960,7 @@ bbcs04:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$7F ; "Our enemies seek to stop you[Line]from reaching Anri in[Line]Manarina. You must succeed![Wait2]"
+		txt     $7F ; "Our enemies seek to stop you[Line]from reaching Anri in[Line]Manarina. You must succeed![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -8976,7 +8976,7 @@ bbcs05:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$81 ; "Behold the dreaded Cavern of[Line]Darkness! You must defeat the[Line]monsters to gain the orb![Wait2]"
+		txt     $81 ; "Behold the dreaded Cavern of[Line]Darkness! You must defeat the[Line]monsters to gain the orb![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9011,7 +9011,7 @@ loc_1295C0:
 		moveq   #PORTRAIT_MISHAELA,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$84 ; "Well, [Hero], remember[Line]me? You'll soon wish you'd[Line]taken my advice in Alterone![Wait2]"
+		txt     $84 ; "Well, [Hero], remember[Line]me? You'll soon wish you'd[Line]taken my advice in Alterone![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9021,7 +9021,7 @@ loc_1295C0:
 		bsr.w   sub_12C2DC
 loc_1295E8:
 		trap    #7
-		txt     #$85 ; "Come, my pets! Look who's[Line]come to play with you. Why,[Line]it's the Shining Force![Wait2]"
+		txt     $85 ; "Come, my pets! Look who's[Line]come to play with you. Why,[Line]it's the Shining Force![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9031,7 +9031,7 @@ loc_1295E8:
 		bsr.w   sub_12C2DC
 loc_129608:
 		trap    #7
-		txt     #$86 ; "I leave you in good hands,[Line][Hero].[Wait2][Line]I have more vital matters[Line]to attend to right now![Wait2]"
+		txt     $86 ; "I leave you in good hands,[Line][Hero].[Wait2][Line]I have more vital matters[Line]to attend to right now![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -9085,7 +9085,7 @@ loc_12969A:
 		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$89 ; "Been praying, and well you[Line]might![Wait2]"
+		txt     $89 ; "Been praying, and well you[Line]might![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -9102,7 +9102,7 @@ loc_1296CA:
 		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$8A ; "You and your pitiful Shining[Line]Force cannot be saved by[Line]prayers! You won't escape![Wait2]"
+		txt     $8A ; "You and your pitiful Shining[Line]Force cannot be saved by[Line]prayers! You won't escape![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9112,7 +9112,7 @@ loc_1296CA:
 		bsr.w   sub_12C2DC
 loc_129700:
 		trap    #7
-		txt     #$8B ; "How fitting that you perish[Line]in a former chapel of Light![Line][Wait2]"
+		txt     $8B ; "How fitting that you perish[Line]in a former chapel of Light![Line][Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9122,7 +9122,7 @@ loc_129700:
 		bsr.w   sub_12C2DC
 loc_129720:
 		trap    #7
-		txt     #$8C ; "I leave you now in the care[Line]of my minions, who know well[Line]what to do with you....[Wait2]"
+		txt     $8C ; "I leave you now in the care[Line]of my minions, who know well[Line]what to do with you....[Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9132,7 +9132,7 @@ loc_129720:
 		bsr.w   sub_12C2DC
 loc_129740:
 		trap    #7
-		txt     #$8D ; "Undead! Dispose of these[Line]pests once and for all![Wait2]"
+		txt     $8D ; "Undead! Dispose of these[Line]pests once and for all![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9195,7 +9195,7 @@ loc_1297E4:
 		bsr.w   sub_12C2DC
 loc_1297FC:
 		trap    #5
-		txt     #$8E ; "Master, we have found it![Wait2]"
+		txt     $8E ; "Master, we have found it![Wait2]"
 		trap    #6
 		jsr     j_LoadCursorTiles
 		move.w  #NPC02,d2 
@@ -9222,7 +9222,7 @@ loc_129848:
 		bsr.w   sub_12C2DC
 loc_129860:
 		trap    #5
-		txt     #$8F ; "The Laser Eye! At last![Wait2]"
+		txt     $8F ; "The Laser Eye! At last![Wait2]"
 		move.w  #NPC02,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9232,7 +9232,7 @@ loc_129860:
 		bsr.w   sub_12C2DC
 loc_129880:
 		trap    #7
-		txt     #$90 ; "This is the end of that[Line]cursed Shining Force![Wait2]"
+		txt     $90 ; "This is the end of that[Line]cursed Shining Force![Wait2]"
 		move.w  #NPC02,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9242,7 +9242,7 @@ loc_129880:
 		bsr.w   sub_12C2DC
 loc_1298A0:
 		trap    #7
-		txt     #$91 ; "Get rid of those men from[Line]Bustoke. They are of no[Line]further use to us.[Wait2]"
+		txt     $91 ; "Get rid of those men from[Line]Bustoke. They are of no[Line]further use to us.[Wait2]"
 		trap    #6
 		move.w  #NPC01,d2 
 		bsr.w   FindEntityForCutscene
@@ -9269,7 +9269,7 @@ loc_1298C2:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_129904:
 		trap    #5
-		txt     #$92 ; "Alert! Intruders![Wait2]"
+		txt     $92 ; "Alert! Intruders![Wait2]"
 		trap    #6
 		move.w  #NPC02,d2 
 		bsr.w   FindEntityForCutscene
@@ -9296,7 +9296,7 @@ loc_129926:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_129968:
 		trap    #5
-		txt     #$93 ; "What? The Shining Force![Wait2]"
+		txt     $93 ; "What? The Shining Force![Wait2]"
 		move.w  #NPC02,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9315,7 +9315,7 @@ loc_129988:
 		bsr.w   loc_12C0AE
 loc_1299A0:
 		trap    #7
-		txt     #$94 ; "Stop them! We must have time[Line]to remove the Laser Eye![Wait2]"
+		txt     $94 ; "Stop them! We must have time[Line]to remove the Laser Eye![Wait2]"
 		move.w  #NPC02,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9339,7 +9339,7 @@ bbcs09:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$97 ; "Look, they are trying to[Line]block our way to the bridge.[Line]Attack them, Shining Force![Wait2]"
+		txt     $97 ; "Look, they are trying to[Line]block our way to the bridge.[Line]Attack them, Shining Force![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9391,7 +9391,7 @@ loc_129A40:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_129A82:
 		trap    #5
-		txt     #$99 ; "Traitor! You've betrayed Lord[Line]Kane![Wait2]"
+		txt     $99 ; "Traitor! You've betrayed Lord[Line]Kane![Wait2]"
 		trap    #6
 		jsr     j_LoadCursorTiles
 		move.w  #NPC00,d2 
@@ -9412,7 +9412,7 @@ loc_129ACE:
 		moveq   #PORTRAIT_PELLE,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$9A ; "I owe no allegiance to you or[Line]him, foul fiend that he is![Wait2]"
+		txt     $9A ; "I owe no allegiance to you or[Line]him, foul fiend that he is![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		jsr     j_LoadCursorTiles
@@ -9432,7 +9432,7 @@ loc_129ACE:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_129B28:
 		trap    #5
-		txt     #$9B ; "You are only a mercenary. You[Line]do what we pay you to do![Wait2]"
+		txt     $9B ; "You are only a mercenary. You[Line]do what we pay you to do![Wait2]"
 		trap    #6
 		jsr     j_LoadCursorTiles
 		move.w  #NPC00,d2 
@@ -9453,7 +9453,7 @@ loc_129B74:
 		moveq   #PORTRAIT_PELLE,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$9C ; "Here, I return your gold. I[Line]shall no longer follow your[Line]orders, toad![Wait2]"
+		txt     $9C ; "Here, I return your gold. I[Line]shall no longer follow your[Line]orders, toad![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		jsr     j_LoadCursorTiles
@@ -9473,9 +9473,9 @@ loc_129B74:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_129BCE:
 		trap    #5
-		txt     #$9D ; "If you are not with us, then[Line]you are against us![Wait2]"
+		txt     $9D ; "If you are not with us, then[Line]you are against us![Wait2]"
 		trap    #6
-		move.w  #NPCO2,d2 
+		move.w  #NPC02,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_129BF0
@@ -9493,7 +9493,7 @@ loc_129BF0:
 		bsr.w   sub_12C2DC
 loc_129C08:
 		trap    #5
-		txt     #$9E ; "I will have the pleasure of[Line]killing you myself![Wait2]"
+		txt     $9E ; "I will have the pleasure of[Line]killing you myself![Wait2]"
 		trap    #6
 		move.w  #2,((word_FFB7C6-$1000000)).w
 		move.w  #NPC02,d2 
@@ -9528,7 +9528,7 @@ loc_129C6C:
 		moveq   #PORTRAIT_PELLE,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$9F ; "Vile fiend! Aiiiieeeee....[Wait2]"
+		txt     $9F ; "Vile fiend! Aiiiieeeee....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		sndCom  SFX_FALLING
@@ -9559,7 +9559,7 @@ loc_129CC0:
 		jsr     j_SetEntityIndex
 loc_129CD4:
 		trap    #5
-		txt     #$A0 ; "Ha, ha! Thus fall all who[Line]dare to oppose the will of[Line]Darksol![Wait2]"
+		txt     $A0 ; "Ha, ha! Thus fall all who[Line]dare to oppose the will of[Line]Darksol![Wait2]"
 		trap    #6
 		move.l  (sp)+,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		rts
@@ -9594,7 +9594,7 @@ loc_129D3C:
 		moveq   #PORTRAIT_ELLIOTT,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$A6 ; "The time for battle has come.[Line]For King Ramladu![Wait2]"
+		txt     $A6 ; "The time for battle has come.[Line]For King Ramladu![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -9602,7 +9602,7 @@ loc_129D3C:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$A7 ; "General Elliott is said to be[Line]the finest swordsman in all[Line]of Rune.[Wait2][Line]Take care, [Hero]![Wait2]"
+		txt     $A7 ; "General Elliott is said to be[Line]the finest swordsman in all[Line]of Rune.[Wait2][Line]Take care, [Hero]![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9618,7 +9618,7 @@ bbcs12:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$AA ; "[Hero], you must break[Line]through to reach the harbor.[Line]Be careful, but be quick![Wait2]"
+		txt     $AA ; "[Hero], you must break[Line]through to reach the harbor.[Line]Be careful, but be quick![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9652,10 +9652,10 @@ bbcs13:
 loc_129DEA:
 		moveq   #PORTRAIT_BALBAZAK,d0 
 		jsr     j_OpenPortraitWindow
-		moveq   #MAPSPRITE_BALABAZAK,d1 
+		moveq   #MAPSPRITE_BALBAZAK,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$AB ; "At last we meet, [Hero].[Line]Soon you and your misfits[Line]will trouble us no longer![Wait2]"
+		txt     $AB ; "At last we meet, [Hero].[Line]Soon you and your misfits[Line]will trouble us no longer![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -9663,7 +9663,7 @@ loc_129DEA:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$AC ; "Yes, that is Balbazak, a[Line]commander of the Runefaust[Line]army. You must destroy him![Wait2]"
+		txt     $AC ; "Yes, that is Balbazak, a[Line]commander of the Runefaust[Line]army. You must destroy him![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9679,7 +9679,7 @@ bbcs14:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B7 ; "The ship is surrounded by[Line]monsters, [Hero]![Line]Prepare to defend it![Wait2]"
+		txt     $B7 ; "The ship is surrounded by[Line]monsters, [Hero]![Line]Prepare to defend it![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #$23,d0 
@@ -9717,7 +9717,7 @@ loc_129E68:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_129EAA:
 		trap    #5
-		txt     #$BB ; "I invoke a path before[Line]me....What?[Wait2]"
+		txt     $BB ; "I invoke a path before[Line]me....What?[Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9727,7 +9727,7 @@ loc_129EAA:
 		bsr.w   sub_12C2DC
 loc_129ECA:
 		trap    #7
-		txt     #$BC ; "Shining Force! I was so[Line]close...so close! I shall[Line]destroy you all![Wait2]"
+		txt     $BC ; "Shining Force! I was so[Line]close...so close! I shall[Line]destroy you all![Wait2]"
 		trap    #6
 		rts
 
@@ -9742,7 +9742,7 @@ bbcs16:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$BE ; "Here we go again. We were[Line]just about to land, too! Go[Line]get them![Wait2]"
+		txt     $BE ; "Here we go again. We were[Line]just about to land, too! Go[Line]get them![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #$23,d0 
@@ -9772,14 +9772,14 @@ bbcs17:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_129F40:
 		trap    #5
-		txt     #$C0 ; "These Guardiana fools must be[Line]stopped. Kane's mission is[Line]vital. Attack![Wait2]"
+		txt     $C0 ; "These Guardiana fools must be[Line]stopped. Kane's mission is[Line]vital. Attack![Wait2]"
 		trap    #6
 		moveq   #PORTRAIT_NOVA,d0
 		jsr     j_OpenPortraitWindow
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$C1 ; "[Hero], you must quickly[Line]break through to Dragonia![Wait2]"
+		txt     $C1 ; "[Hero], you must quickly[Line]break through to Dragonia![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9809,7 +9809,7 @@ loc_129FAC:
 		moveq   #PORTRAIT_KANE_MASKED,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$C4 ; "Ha! I knew you couldn't hide[Line]in there forever! Come on[Line]out, little hero![Wait2]"
+		txt     $C4 ; "Ha! I knew you couldn't hide[Line]in there forever! Come on[Line]out, little hero![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -9817,7 +9817,7 @@ loc_129FAC:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$C5 ; "[Hero], be careful.[Line]Remember that Kane killed[Line]Varios![Wait2]"
+		txt     $C5 ; "[Hero], be careful.[Line]Remember that Kane killed[Line]Varios![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9833,7 +9833,7 @@ bbcs19:
 		moveq   #MAPSPRITE_MISHAELA,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$C9 ; "Well, [Hero], we meet[Line]once more.  For the last time,[Line]I fear, as you will die here.[Wait2][Line]My minions shall take care of[Line]you, but if they fail, I await[Line]you in Demon Castle![Wait2]"
+		txt     $C9 ; "Well, [Hero], we meet[Line]once more.  For the last time,[Line]I fear, as you will die here.[Wait2][Line]My minions shall take care of[Line]you, but if they fail, I await[Line]you in Demon Castle![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9868,7 +9868,7 @@ loc_12A05A:
 		moveq   #PORTRAIT_MISHAELA,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$CB ; "Well, here's the little hero[Line]coming for my Sword of Light![Line]Take it, if you dare![Wait2]"
+		txt     $CB ; "Well, here's the little hero[Line]coming for my Sword of Light![Line]Take it, if you dare![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9878,7 +9878,7 @@ loc_12A05A:
 		bsr.w   sub_12C2DC
 loc_12A082:
 		trap    #7
-		txt     #$CC ; "You'll never leave my castle,[Line]you pitiful fools![Wait2]"
+		txt     $CC ; "You'll never leave my castle,[Line]you pitiful fools![Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -9888,7 +9888,7 @@ loc_12A082:
 		bsr.w   sub_12C2DC
 loc_12A0A2:
 		trap    #7
-		txt     #$CD ; "This is as close as you'll[Line]ever come to the Sword of[Line]Light![Wait2]"
+		txt     $CD ; "This is as close as you'll[Line]ever come to the Sword of[Line]Light![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -9896,7 +9896,7 @@ loc_12A0A2:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$CE ; "[Hero], take great care.[Line]Mishaela is a powerful[Line]wizardess, a dangerous foe![Wait2]"
+		txt     $CE ; "[Hero], take great care.[Line]Mishaela is a powerful[Line]wizardess, a dangerous foe![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9912,7 +9912,7 @@ bbcs21:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D1 ; "The Tower of the Ancients is[Line]to the east. Hurry, while[Line]there's still time![Wait2]"
+		txt     $D1 ; "The Tower of the Ancients is[Line]to the east. Hurry, while[Line]there's still time![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9940,14 +9940,14 @@ bbcs22:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_12A134:
 		trap    #5
-		txt     #$D3 ; "Stop them! Lord Darksol must[Line]not be disturbed![Wait2]"
+		txt     $D3 ; "Stop them! Lord Darksol must[Line]not be disturbed![Wait2]"
 		trap    #6
 		moveq   #PORTRAIT_NOVA,d0
 		jsr     j_OpenPortraitWindow
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D4 ; "We must get inside the tower![Line]Smash through these monsters[Line]quickly, [Hero]![Wait2]"
+		txt     $D4 ; "We must get inside the tower![Line]Smash through these monsters[Line]quickly, [Hero]![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9963,7 +9963,7 @@ bbcs23:
 		moveq   #MAPSPRITE_CHAOS,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D7 ; "Screech! Kill...kill....[Wait2]"
+		txt     $D7 ; "Screech! Kill...kill....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -9979,7 +9979,7 @@ bbcs24:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D9 ; "To the south is Runefaust.[Line]Their army approaches. You[Line]must fight your way in.[Wait2]"
+		txt     $D9 ; "To the south is Runefaust.[Line]Their army approaches. You[Line]must fight your way in.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -10012,7 +10012,7 @@ loc_12A1E4:
 		moveq   #MAPSPRITE_RAMLADU,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$DB ; "Long have I waited for[Line]this moment, [Hero]![Line]Prepare to meet your death.[Wait2]"
+		txt     $DB ; "Long have I waited for[Line]this moment, [Hero]![Line]Prepare to meet your death.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -10050,7 +10050,7 @@ bbcs27:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$DF ; "At last, [Hero]!  The[Line]Castle of the Ancients. The[Line]end is near, for good or ill![Wait2]"
+		txt     $DF ; "At last, [Hero]!  The[Line]Castle of the Ancients. The[Line]end is near, for good or ill![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #2,((word_FFB7C6-$1000000)).w
@@ -10073,7 +10073,7 @@ loc_12A280:
 		bsr.w   loc_12C0AE
 loc_12A298:
 		jsr     j_LoadCursorTiles
-		move.w  #NP00,d2 
+		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_12A2DA
@@ -10093,7 +10093,7 @@ loc_12A2DA:
 		moveq   #MAPSPRITE_COLOSSUS,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$E0 ; "None shall pass Colossus,[Line]the eternal sentinel![Line]Leave now![Wait2]"
+		txt     $E0 ; "None shall pass Colossus,[Line]the eternal sentinel![Line]Leave now![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		clr.w   ((word_FFB7C6-$1000000)).w
@@ -10139,7 +10139,7 @@ byte_12A35C:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$E1 ; "Colossus! I've heard of it[Line]in legends! [Hero]![Line]They are attacking![Wait2]"
+		txt     $E1 ; "Colossus! I've heard of it[Line]in legends! [Hero]![Line]They are attacking![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -10178,7 +10178,7 @@ bbcs28:
 		bne.w   return_12BFCE
 		moveq   #$32,d0 
 		jsr     (j_SetEventFlag).l
-		move.w  #NPC0,d2
+		move.w  #NPC00,d2
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_12A3E0
@@ -10207,7 +10207,7 @@ loc_12A422:
 		moveq   #MAPSPRITE_DARKSOL,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #229         ; "Dark Dragon! Awake from your[Line]long sleep! The time has come[Line]for you to reclaim this land![Wait2]"
+		txt     229         ; "Dark Dragon! Awake from your[Line]long sleep! The time has come[Line]for you to reclaim this land![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		lea     byte_12A388(pc), a0
@@ -10228,7 +10228,7 @@ loc_12A462:
 		moveq   #PORTRAIT_DARKSOL,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #230         ; "Awaken, Dark Dragon![Line]Something is wrong....[Wait2]"
+		txt     230         ; "Awaken, Dark Dragon![Line]Something is wrong....[Wait2]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -10238,7 +10238,7 @@ loc_12A462:
 		bsr.w   sub_12C2DC
 loc_12A48A:
 		trap    #7
-		txt     #231         ; "[Hero]! Blast![Line]You have meddled for the last[Line]time! Kill them, my servants![Wait2]"
+		txt     231         ; "[Hero]! Blast![Line]You have meddled for the last[Line]time! Kill them, my servants![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -10246,7 +10246,7 @@ loc_12A48A:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #232         ; "[Hero]! You must stop[Line]Darksol before he completes[Line]his foul ceremony! Attack![Wait2]"
+		txt     232         ; "[Hero]! You must stop[Line]Darksol before he completes[Line]his foul ceremony! Attack![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -10329,7 +10329,7 @@ edcs00:
 		bsr.w   sub_12C2DC
 loc_12A54E:
 		trap    #5
-		txt     #$71 ; "Fools...you have won here,[Line]but Lord Kane of Runefaust is[Line]even now attacking Guardiana![Wait2]"
+		txt     $71 ; "Fools...you have won here,[Line]but Lord Kane of Runefaust is[Line]even now attacking Guardiana![Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10362,7 +10362,7 @@ edcs05:
 		bsr.w   sub_12C2DC
 loc_12A586:
 		trap    #5
-		txt     #$82 ; "No! It cannot be! After all[Line]these centuries....[Wait2]"
+		txt     $82 ; "No! It cannot be! After all[Line]these centuries....[Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10378,7 +10378,7 @@ edcs06:
 		bsr.w   WasEntityKilledByLastAttack
 		bne.w   return_12BFCE
 		trap    #5
-		txt     #$87 ; "Fools! Light will never defeat[Line]the Darkness....[Wait2]"
+		txt     $87 ; "Fools! Light will never defeat[Line]the Darkness....[Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10404,7 +10404,7 @@ edcs08:
 		bsr.w   sub_12C2DC
 loc_12A5DA:
 		trap    #5
-		txt     #$95 ; "You think you've won, but[Line]you've failed. The Laser Eye[Line]is ours now![Wait2]"
+		txt     $95 ; "You think you've won, but[Line]you've failed. The Laser Eye[Line]is ours now![Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10430,7 +10430,7 @@ edcs10:
 		bsr.w   sub_12C2DC
 loc_12A610:
 		trap    #5
-		txt     #$A1 ; "You may have beaten us here,[Line]but General Elliott will stop[Line]you in Pao![Wait2]"
+		txt     $A1 ; "You may have beaten us here,[Line]but General Elliott will stop[Line]you in Pao![Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10456,7 +10456,7 @@ edcs11:
 		bsr.w   sub_12C2DC
 loc_12A64E:
 		trap    #5
-		txt     #$A8 ; "Perhaps you have the strength[Line]to rescue King Ramladu and[Line]Runefaust! Stop Darksol![Wait2][Line]Promise that you will free[Line]Runefaust, known as Protectora[Line]before Darksol came....[Wait2]"
+		txt     $A8 ; "Perhaps you have the strength[Line]to rescue King Ramladu and[Line]Runefaust! Stop Darksol![Wait2][Line]Promise that you will free[Line]Runefaust, known as Protectora[Line]before Darksol came....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #-1,d2
@@ -10472,7 +10472,7 @@ edcs12:
 		move.w  #$85,d2 
 		bsr.w   WasEntityKilledByLastAttack
 		bne.w   loc_12A68C
-		moveq   #$80,d0
+		moveq   #($FFFFFF00+$80),d0
 		jsr     j_GetCurrentHP
 		tst.w   d1
 		bne.w   return_12BFCE
@@ -10483,7 +10483,7 @@ loc_12A68C:
 		move.w  #$80,d2 
 		bsr.w   WasEntityKilledByLastAttack
 		bne.w   return_12BFCE
-		moveq   #$85,d0
+		moveq   #($FFFFFF00+$85),d0
 		jsr     j_GetCurrentHP
 		tst.w   d1
 		bne.w   return_12BFCE
@@ -10503,19 +10503,19 @@ edcs13:
 		bne.w   return_12BFCE
 		moveq   #PORTRAIT_BALBAZAK,d0
 		jsr     j_OpenPortraitWindow
-		moveq   #MAPSPRITE_BALABAZAK,d1
+		moveq   #MAPSPRITE_BALBAZAK,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$AD ; "[Hero]! Take the ship,[Line]but please spare my life![Line]Please![Wait2]"
+		txt     $AD ; "[Hero]! Take the ship,[Line]but please spare my life![Line]Please![Wait2]"
 loc_12A6D0:
 		jsr     (j_YesNoChoiceBox).l
 		trap    #7
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.s   loc_12A6E6      
-		txt     #$AE,d0 ; "You don't want to[Line]kill me, do you?[Line]Please let me go.[Wait2]"
+		txt     $AE,d0 ; "You don't want to[Line]kill me, do you?[Line]Please let me go.[Wait2]"
 		bra.s   loc_12A6D0
 loc_12A6E6:
-		txt     #$AF,d0 ; "Thank you! Take the ship, go[Line]after Darksol![Wait2]"
+		txt     $AF,d0 ; "Thank you! Take the ship, go[Line]after Darksol![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #20,d0
@@ -10529,14 +10529,14 @@ loc_12A6E6:
 		moveq   #MAPSPRITE_DARKSOL,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B0 ; "Balbazak, you betrayed me![Wait2]"
+		txt     $B0 ; "Balbazak, you betrayed me![Wait2]"
 		trap    #6
 		moveq   #PORTRAIT_BALBAZAK,d0 
 		jsr     j_OpenPortraitWindow
-		moveq   #MAPSPRITE_BALABAZAK,d1 
+		moveq   #MAPSPRITE_BALBAZAK,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B1 ; "No, no, please Darksol![Line]Leave me in peace![Wait2]"
+		txt     $B1 ; "No, no, please Darksol![Line]Leave me in peace![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		sndCom  SFX_HIT
@@ -10545,15 +10545,15 @@ loc_12A6E6:
 		moveq   #MAPSPRITE_DARKSOL,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B2 ; "You disgust me, Balbazak![Line]Leave you in peace? I will[Line]leave you in pieces![Wait2]"
+		txt     $B2 ; "You disgust me, Balbazak![Line]Leave you in peace? I will[Line]leave you in pieces![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_BALBAZAK,d0 
 		jsr     j_OpenPortraitWindow
-		moveq   #MAPSPRITE_BALABAZAK,d1 
+		moveq   #MAPSPRITE_BALBAZAK,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B3 ; "Forgive me![Wait2]"
+		txt     $B3 ; "Forgive me![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_DARKSOL,d0 
@@ -10561,7 +10561,7 @@ loc_12A6E6:
 		moveq   #MAPSPRITE_DARKSOL,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B4 ; "Too late, worm! Receive your[Line]punishment for failure![Wait2]"
+		txt     $B4 ; "Too late, worm! Receive your[Line]punishment for failure![Wait2]"
 		sndCom  SFX_HIT
 		bsr.w   sub_128F98
 		trap    #6
@@ -10576,10 +10576,10 @@ loc_12A6E6:
 loc_12A7D0:
 		moveq   #PORTRAIT_BALBAZAK,d0 
 		jsr     j_OpenPortraitWindow
-		moveq   #MAPSPRITE_BALABAZAK,d1 
+		moveq   #MAPSPRITE_BALBAZAK,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B5 ; "I am dying, [Hero]....[Line]You must kill Darksol...[Line]free Runefaust....[Wait2]"
+		txt     $B5 ; "I am dying, [Hero]....[Line]You must kill Darksol...[Line]free Runefaust....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #-1,d2
@@ -10613,7 +10613,7 @@ edcs15:
 		bsr.w   sub_12C2DC
 loc_12A81C:
 		trap    #5
-		txt     #$BD ; "Arrghh...I was so close...the[Line]way to Metapha...almost[Line]ours....[Wait2]"
+		txt     $BD ; "Arrghh...I was so close...the[Line]way to Metapha...almost[Line]ours....[Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10646,7 +10646,7 @@ edcs17:
 		bsr.w   sub_12C2DC
 loc_12A854:
 		trap    #5
-		txt     #$C2 ; "You'll never beat Kane,[Line]Shining Fools![Wait2]"
+		txt     $C2 ; "You'll never beat Kane,[Line]Shining Fools![Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10672,14 +10672,14 @@ edcs18:
 		bsr.w   sub_12C2DC
 loc_12A892:
 		trap    #5
-		txt     #$C6 ; "Arrgh! My mask[Line]is...breaking![Wait2]"
+		txt     $C6 ; "Arrgh! My mask[Line]is...breaking![Wait2]"
 		bsr.w   sub_128F98
 		jsr     j_ClosePortraitWindow
 		sndCom  SFX_METALLIC
 		moveq   #PORTRAIT_KANE_UNMASKED,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #7
-		txt     #$C7 ; "Wh...where am I? I[Line]remember now. Darksol masked[Line]my face to control me....[Wait2][Line]What have I done?[Line]He even made me fight you![Line]Forgive me, [Hero]![Wait2]"
+		txt     $C7 ; "Wh...where am I? I[Line]remember now. Darksol masked[Line]my face to control me....[Wait2][Line]What have I done?[Line]He even made me fight you![Line]Forgive me, [Hero]![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -10728,7 +10728,7 @@ edcs20:
 		bsr.w   sub_12C2DC
 loc_12A91A:
 		trap    #5
-		txt     #$CF ; "Though you can take...my[Line]sword...you will never...stop[Line]Darksol.[Wait2][Line]Dark Dragon will be set[Line]free....[Wait2]"
+		txt     $CF ; "Though you can take...my[Line]sword...you will never...stop[Line]Darksol.[Wait2][Line]Dark Dragon will be set[Line]free....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #-1,d2
@@ -10770,7 +10770,7 @@ edcs22:
 		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
 loc_12A982:
 		trap    #5
-		txt     #$D5 ; "Lord Darksol...I have failed[Line]...they're coming...into the[Line]tower....[Wait2]"
+		txt     $D5 ; "Lord Darksol...I have failed[Line]...they're coming...into the[Line]tower....[Wait2]"
 		trap    #6
 		moveq   #-1,d2
 		bsr.w   KillChosenEnemies
@@ -10790,7 +10790,7 @@ edcs23:
 		moveq   #MAPSPRITE_CHAOS,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D8 ; "This unit...now ceases to[Line]function...mission incomplete[Line]...system failure....[Wait2]"
+		txt     $D8 ; "This unit...now ceases to[Line]function...mission incomplete[Line]...system failure....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #-1,d2
@@ -10833,7 +10833,7 @@ edcs26:
 		moveq   #MAPSPRITE_RAMLADU,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$DD ; "I am dying...but my mind is[Line]once more my own. Darksol[Line]was controlling me.[Wait2][Line]You must stop Darksol![Line]If he frees Dark Dragon,[Line]all of Rune is doomed.[Wait2][Line]He has gone to the gate,[Line]to summon the castle from the[Line]depths of the sea. Go![Wait2]"
+		txt     $DD ; "I am dying...but my mind is[Line]once more my own. Darksol[Line]was controlling me.[Wait2][Line]You must stop Darksol![Line]If he frees Dark Dragon,[Line]all of Rune is doomed.[Wait2][Line]He has gone to the gate,[Line]to summon the castle from the[Line]depths of the sea. Go![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #-1,d2
@@ -10854,7 +10854,7 @@ edcs27:
 		moveq   #MAPSPRITE_COLOSSUS,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$E2 ; "Fools...Dark Dragon...will[Line]come...to destroy you....[Wait2]"
+		txt     $E2 ; "Fools...Dark Dragon...will[Line]come...to destroy you....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #-1,d2
@@ -10875,14 +10875,14 @@ edcs28:
 		moveq   #MAPSPRITE_DARKSOL,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$E9 ; "Dark Dragon! With my dying[Line]breath...I summon you....[Line]Arise, Dark Dragon![Wait2]"
+		txt     $E9 ; "Dark Dragon! With my dying[Line]breath...I summon you....[Line]Arise, Dark Dragon![Wait2]"
 		bsr.w   sub_128F98
 		moveq   #10,d0
 		jsr     (j_Sleep).l
 		bsr.w   sub_128F98
 		moveq   #10,d0
 		jsr     (j_Sleep).l
-		txt     #$1EA        ; "[Dict][Line]"
+		txt     $1EA        ; "[Dict][Line]"
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -10892,8 +10892,8 @@ edcs28:
 		bsr.w   sub_12C2DC
 loc_12AA98:
 		trap    #7
-		txt     #$EA ; "Yes! At last, you are[Line]awakening![Wait2]"
-		txt     #$EB ; "I offer myself to you, Dark[Line]Dragon! Use my power to help[Line]you cast off your bonds.[Wait2]"
+		txt     $EA ; "Yes! At last, you are[Line]awakening![Wait2]"
+		txt     $EB ; "I offer myself to you, Dark[Line]Dragon! Use my power to help[Line]you cast off your bonds.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -10938,7 +10938,7 @@ loc_12AB3A:
 		moveq   #PORTRAIT_DARKSOL,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$EC ; "You are free once more! Let[Line]all of Rune tremble! I die[Line]fulfilled! Cringe fools![Wait2]"
+		txt     $EC ; "You are free once more! Let[Line]all of Rune tremble! I die[Line]fulfilled! Cringe fools![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -11062,7 +11062,7 @@ loc_12AC50:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$72 ; "If that creature spoke truly,[Line]we must return to help defend[Line]Guardiana![Wait2]"
+		txt     $72 ; "If that creature spoke truly,[Line]we must return to help defend[Line]Guardiana![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.b  #4,((EGRESS_LOCATION-$1000000)).w
@@ -11079,7 +11079,7 @@ abcs01:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$76 ; "Well done, Shining Force![Line]Now, enter Guardiana and find[Line]out what's happened there![Wait2]"
+		txt     $76 ; "Well done, Shining Force![Line]Now, enter Guardiana and find[Line]out what's happened there![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11095,7 +11095,7 @@ abcs02:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$78 ; "Excellent! Kane will have to[Line]do better than that to stop[Line]you. On to Alterone![Wait2]"
+		txt     $78 ; "Excellent! Kane will have to[Line]do better than that to stop[Line]you. On to Alterone![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11111,7 +11111,7 @@ abcs03:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$7E ; "[Hero], there's no time[Line]to lose. Kane must be found[Line]and stopped at all costs.[Wait2][Line]Find out all you can and[Line]be sure to talk to the king[Line]of Alterone![Wait2]"
+		txt     $7E ; "[Hero], there's no time[Line]to lose. Kane must be found[Line]and stopped at all costs.[Wait2][Line]Find out all you can and[Line]be sure to talk to the king[Line]of Alterone![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #$31,d0 
@@ -11132,7 +11132,7 @@ abcs04:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$80 ; "[Hero], now enter[Line]Manarina! We must inform[Line]Anri about Guardiana![Wait2]"
+		txt     $80 ; "[Hero], now enter[Line]Manarina! We must inform[Line]Anri about Guardiana![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11148,7 +11148,7 @@ abcs05:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$83 ; "[Hero], the Orb of Light[Line]must be within that chest.[Line]Take it quickly![Wait2]"
+		txt     $83 ; "[Hero], the Orb of Light[Line]must be within that chest.[Line]Take it quickly![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11206,7 +11206,7 @@ loc_12ADD6:
 		bsr.w   sub_12C2BE
 loc_12ADF2:
 		trap    #5
-		txt     #136         ; "She...that evil woman...was[Line]going to take me to Runefaust,[Line]to feed me to a dragon![Wait2][Line]Thank you! I'm going home and[Line]I'm never leaving![Wait2]"
+		txt     136         ; "She...that evil woman...was[Line]going to take me to Runefaust,[Line]to feed me to a dragon![Wait2][Line]Thank you! I'm going home and[Line]I'm never leaving![Wait2]"
 		trap    #6
 		move.w  #NPC00,d2 
 		bsr.w   FindEntityForCutscene
@@ -11265,7 +11265,7 @@ abcs08:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$96 ; "[Hero], the Moon Stone[Line]lies inside the cavern.[Wait2]"
+		txt     $96 ; "[Hero], the Moon Stone[Line]lies inside the cavern.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #0,d1
@@ -11287,7 +11287,7 @@ abcs09:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$98 ; "Head for the bridge. We need[Line]to get across quickly![Wait2]"
+		txt     $98 ; "Head for the bridge. We need[Line]to get across quickly![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11304,7 +11304,7 @@ abcs10:
 		move.l  (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l,-(sp)
 		move.l  #sub_8034,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		moveq   #12,d0          ; 12 = first enemy combatant
-		moveq   #NPC00,d1
+		moveq   #($FFFFFF00+NPC00),d1
 		jsr     j_SetEntityIndex
 		moveq   #29,d1
 		jsr     j_SetCombatantX
@@ -11332,7 +11332,7 @@ loc_12AF42:
 		moveq   #PORTRAIT_PELLE,d0
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #162         ; "Whew! I thought I was a[Line]goner, but I caught a branch[Line]and just hung on.[Wait2]"
+		txt     162         ; "Whew! I thought I was a[Line]goner, but I caught a branch[Line]and just hung on.[Wait2]"
 		move.w  #NPC00,d2
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -11353,7 +11353,7 @@ loc_12AF6E:
 		bsr.w   sub_12C2BE
 loc_12AF8A:
 		trap    #7
-		txt     #163         ; "A great battle! I don't know[Line]who you are, but I want to[Line]tag along![Wait2]"
+		txt     163         ; "A great battle! I don't know[Line]who you are, but I want to[Line]tag along![Wait2]"
 		jsr     j_ClosePortraitWindow
 		moveq   #2,d0
 		bsr.w   sub_12C446      
@@ -11363,12 +11363,12 @@ loc_12AF8A:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #164         ; "A good job getting to that[Line]Laser Eye. Hurry on to Pao.[Line]Evil is afoot![Wait2]"
+		txt     164         ; "A good job getting to that[Line]Laser Eye. Hurry on to Pao.[Line]Evil is afoot![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		trap    #5
 		clr.w   ((SPEECH_SFX-$1000000)).w
-		txt     #358         ; "With the Laser Eye gone,[Line]the Shining Force heads toward[Line]the moving town of Pao.[Wait2][Line]Knowing that Runefaust is[Line]gathering its forces, our[Line]heroes hurried onward.[Wait2]"
+		txt     358         ; "With the Laser Eye gone,[Line]the Shining Force heads toward[Line]the moving town of Pao.[Wait2][Line]Knowing that Runefaust is[Line]gathering its forces, our[Line]heroes hurried onward.[Wait2]"
 		trap    #6
 		moveq   #37,d0
 		jsr     (j_SetEventFlag).l
@@ -11385,7 +11385,7 @@ abcs11:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$A9 ; "Elliott was a great warrior...[Line]too bad he was our enemy.[Wait2][Line]But look, the traveling town[Line]of Pao is coming up again![Wait2]"
+		txt     $A9 ; "Elliott was a great warrior...[Line]too bad he was our enemy.[Wait2][Line]But look, the traveling town[Line]of Pao is coming up again![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		jsr     (j_FadeOutToBlack).l
@@ -11451,7 +11451,7 @@ abcs13:
 		moveq   #MAPSPRITE_DARKSOL,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B6 ; "Take the ship, as that fool[Line]said. You will not survive[Line]the voyage! Ha, ha, ha![Wait2]"
+		txt     $B6 ; "Take the ship, as that fool[Line]said. You will not survive[Line]the voyage! Ha, ha, ha![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.b  #$A,(FADING_SETTING).l
@@ -11462,7 +11462,7 @@ abcs13:
 		jsr     (j_Sleep).l
 		trap    #5
 		clr.w   ((SPEECH_SFX-$1000000)).w
-		txt     #$167        ; "Thus did the Shining Force[Line]free Uranbatol and set sail[Line]for a land of legend....[Wait2]"
+		txt     $167        ; "Thus did the Shining Force[Line]free Uranbatol and set sail[Line]for a land of legend....[Wait2]"
 		trap    #6
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
@@ -11479,7 +11479,7 @@ abcs14:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$B8 ; "The ship was damaged in the[Line]battle. We must repair it.[Line]That island over there....[Wait2]"
+		txt     $B8 ; "The ship was damaged in the[Line]battle. We must repair it.[Line]That island over there....[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.l  #sub_8034,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
@@ -11530,7 +11530,7 @@ loc_12B1B8:
 		moveq   #PORTRAIT_SHELL,d0 
 		jsr     j_OpenPortraitWindow
 		trap    #5
-		txt     #$B9 ; "Thank you for destroying[Line]those monsters! My name is[Line]Shell of Waral.[Wait2][Line]You can repair your ship in[Line]Waral. Please follow me![Wait2]"
+		txt     $B9 ; "Thank you for destroying[Line]those monsters! My name is[Line]Shell of Waral.[Wait2][Line]You can repair your ship in[Line]Waral. Please follow me![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #NPC00,d2 
@@ -11548,7 +11548,7 @@ loc_12B1EC:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$BA ; "I've heard of Waral. We[Line]should be able to get the[Line]ship fixed there.[Wait2]"
+		txt     $BA ; "I've heard of Waral. We[Line]should be able to get the[Line]ship fixed there.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #$23,d0 
@@ -11566,12 +11566,12 @@ abcs16:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$BF ; "The ship's helm was destroyed[Line]in the battle. We're now[Line]adrift at sea![Wait2]"
+		txt     $BF ; "The ship's helm was destroyed[Line]in the battle. We're now[Line]adrift at sea![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		trap    #5
 		clr.w   ((SPEECH_SFX-$1000000)).w
-		txt     #$168        ; "The ship drifted off course,[Line]lost at sea. What will become[Line]of the Shining Force?[Wait2]"
+		txt     $168        ; "The ship drifted off course,[Line]lost at sea. What will become[Line]of the Shining Force?[Wait2]"
 		trap    #6
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
@@ -11590,7 +11590,7 @@ abcs17:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$C3 ; "[Hero], you must[Line]stop Kane before he finds the[Line]Manual of the Seal. Onward![Wait2]"
+		txt     $C3 ; "[Hero], you must[Line]stop Kane before he finds the[Line]Manual of the Seal. Onward![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11606,7 +11606,7 @@ abcs18:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$C8 ; "It seems that Darksol is[Line]behind all the evil afoot.[Line]Stop him and it all ends.[Wait2][Line]In any case, let's take[Line]another look at this village.[Wait2][Line]Check
+		txt     $C8 ; "It seems that Darksol is[Line]behind all the evil afoot.[Line]Stop him and it all ends.[Wait2][Line]In any case, let's take[Line]another look at this village.[Wait2][Line]Check
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #$47,d0 
@@ -11628,7 +11628,7 @@ abcs19:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$CA ; "Mishaela is said to possess[Line]the Sword of Light. You must[Line]enter her castle and get it![Wait2][Line]With that legendary weapon,[Line]you stand a much better[Line]chance against Darksol.[Wait2]"
+		txt     $CA ; "Mishaela is said to possess[Line]the Sword of Light. You must[Line]enter her castle and get it![Wait2][Line]With that legendary weapon,[Line]you stand a much better[Line]chance against Darksol.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11646,7 +11646,7 @@ abcs20:
 		jsr     (j_SetEventFlag).l
 		jsr     (j_OpenMessageWindow).l
 		clr.w   ((SPEECH_SFX-$1000000)).w
-		txt     #$169        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
+		txt     $169        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
 		jsr     (j_CloseMessageWindow).l
 		bra.w   sub_12BF66
 loc_12B2FC:
@@ -11655,7 +11655,7 @@ loc_12B2FC:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D0 ; "With the Sword of Light you[Line]might be able to defeat[Line]Darksol. We shall see![Wait2]"
+		txt     $D0 ; "With the Sword of Light you[Line]might be able to defeat[Line]Darksol. We shall see![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11671,7 +11671,7 @@ abcs21:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D2 ; "Now, on to the Tower of the[Line]Ancients![Wait2]"
+		txt     $D2 ; "Now, on to the Tower of the[Line]Ancients![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11687,7 +11687,7 @@ abcs22:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$D6 ; "Get in there, quickly![Wait2]"
+		txt     $D6 ; "Get in there, quickly![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
@@ -11716,7 +11716,7 @@ abcs24:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$DA ; "Now, [Hero], into[Line]Runefaust![Wait2]"
+		txt     $DA ; "Now, [Hero], into[Line]Runefaust![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11732,7 +11732,7 @@ abcs25:
 		moveq   #MAPSPRITE_RAMLADU,d1 
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$DC ; "Is that the best you can do?[Line]Well, meet my robots,[Line]weaklings![Wait2]"
+		txt     $DC ; "Is that the best you can do?[Line]Well, meet my robots,[Line]weaklings![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.b  #1,((CURRENT_MAP_ENTRANCE-$1000000)).w
@@ -11786,7 +11786,7 @@ abcs26:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$DE ; "[Hero]! Darksol has[Line]already entered the Castle of[Line]the Ancients.  You must hurry![Wait2][Line]I found a secret passage[Line]to the gate. It is in the[Line]entry hall of this castle.[Wait2][Line]Return to town and make[Line]your final preparations. Then[Line]take the passage.[Wait2]"
+		txt     $DE ; "[Hero]! Darksol has[Line]already entered the Castle of[Line]the Ancients.  You must hurry![Wait2][Line]I found a secret passage[Line]to the gate. It is in the[Line]entry hall of this castle.[Wait2][Line]Return to town and make[Line]your final preparations. Then[Line]take the passage.[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -11802,7 +11802,7 @@ abcs27:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$E3 ; "You've destroyed Colossus![Line]But where is Darksol?[Wait2]"
+		txt     $E3 ; "You've destroyed Colossus![Line]But where is Darksol?[Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		sndCom  MUSIC_EARTHQUAKE
@@ -11861,7 +11861,7 @@ loc_12B54A:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$E4 ; "Use the staircase,[Line][Hero].[Line]Darksol must be up there![Wait2]"
+		txt     $E4 ; "Use the staircase,[Line][Hero].[Line]Darksol must be up there![Wait2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		rts
@@ -12001,9 +12001,9 @@ abcs29:
 		moveq   #MAPSPRITE_DARK_DRAGON,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$ED ; "Nooooo! These puny creatures[Line]cannot defeat the Lord of[Line]Darkness![Delay2][Delay2]"
+		txt     $ED ; "Nooooo! These puny creatures[Line]cannot defeat the Lord of[Line]Darkness![Delay2][Delay2]"
 		trap    #7
-		txt     #$EE ; "Never! I will not be banished[Line]again! The Powers of Darkness[Line]will sustain me![Delay2][Delay2]"
+		txt     $EE ; "Never! I will not be banished[Line]again! The Powers of Darkness[Line]will sustain me![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.b  #1,(FADING_COUNTER_MAX).l
@@ -12061,11 +12061,11 @@ loc_12B716:
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
 		trap    #7
-		txt     #$EF ; "Dark Dragon still lives![Line]Perhaps we cannot kill him![Line]There must be a way....[Delay2][Delay2]"
+		txt     $EF ; "Dark Dragon still lives![Line]Perhaps we cannot kill him![Line]There must be a way....[Delay2][Delay2]"
 		trap    #7
-		txt     #$F0 ; "[Hero]! Dark Dragon[Line]must be sealed away once[Line]again. And only you can do it![Delay2][Delay2]"
+		txt     $F0 ; "[Hero]! Dark Dragon[Line]must be sealed away once[Line]again. And only you can do it![Delay2][Delay2]"
 		trap    #7
-		txt     #$F1 ; "Use the Chaos Breaker! Drive[Line]it through Dark Dragon![Delay2][Delay2]"
+		txt     $F1 ; "Use the Chaos Breaker! Drive[Line]it through Dark Dragon![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_DARK_DRAGON,d0
@@ -12073,7 +12073,7 @@ loc_12B716:
 		moveq   #MAPSPRITE_DARK_DRAGON,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$F2 ; "Fools! Nothing you do can[Line]stop me! I am Dark Dragon,[Line]Darkness incarnate![Delay2][Delay2]"
+		txt     $F2 ; "Fools! Nothing you do can[Line]stop me! I am Dark Dragon,[Line]Darkness incarnate![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -12081,7 +12081,7 @@ loc_12B716:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$F3 ; "[Hero]! Stab him with[Line]the Chaos Breaker![Delay2][Delay2]"
+		txt     $F3 ; "[Hero]! Stab him with[Line]the Chaos Breaker![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #30,d0
@@ -12250,7 +12250,7 @@ loc_12B9CC:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$F5 ; "[Hero]! The Castle of the[Line]Ancients is sinking! Let's[Line]get out of here![Delay2][Delay2]"
+		txt     $F5 ; "[Hero]! The Castle of the[Line]Ancients is sinking! Let's[Line]get out of here![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #$F0,d7 
@@ -12260,14 +12260,14 @@ loc_12BA0E:
 		dbne    d7,loc_12BA0E
 		trap    #5
 		clr.w   ((SPEECH_SFX-$1000000)).w
-		txt     #$F6 ; "But [Hero] cannot move![Delay2][Delay2]"
+		txt     $F6 ; "But [Hero] cannot move![Delay2][Delay2]"
 		trap    #6
 		moveq   #PORTRAIT_NOVA,d0
 		jsr     j_OpenPortraitWindow
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$F7 ; "[Hero] is somehow bound[Line]to the Chaos Breaker![Delay2][Delay2]"
+		txt     $F7 ; "[Hero] is somehow bound[Line]to the Chaos Breaker![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #$3C,((CURRENT_OBJECT-$1000000)).w 
@@ -12278,7 +12278,7 @@ loc_12BA0E:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$F8 ; "[Hero]! Break free! We[Line]won't leave without you![Delay2][Delay2]"
+		txt     $F8 ; "[Hero]! Break free! We[Line]won't leave without you![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #$5A,((CURRENT_OBJECT-$1000000)).w 
@@ -12289,7 +12289,7 @@ loc_12BA0E:
 		clr.w   d1  ; MAPSPRITE_MAX_SDMN
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$F9 ; "I can't get free, but you[Line]won't die with me![Delay2]"
+		txt     $F9 ; "I can't get free, but you[Line]won't die with me![Delay2]"
 		sndCom  SFX_SPELL_CAST
 		lea     (PALETTE_2_CURRENT).l,a0
 		lea     (PALETTE_2_BASE).l,a1
@@ -12323,7 +12323,7 @@ loc_12BAD0:
 		moveq   #MAPSPRITE_MAE_KNT,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$FA ; "[Hero] used his Egress[Line]magic to save us. But[Line]where is [Hero]?[Delay2][Delay2]"
+		txt     $FA ; "[Hero] used his Egress[Line]magic to save us. But[Line]where is [Hero]?[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_LOWE,d0
@@ -12331,7 +12331,7 @@ loc_12BAD0:
 		moveq   #MAPSPRITE_LOWE_HEAL,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$FB ; "That spell's supposed to[Line]get us all out. Why isn't[Line][Hero] here? Why, Nova?[Delay2][Delay2]"
+		txt     $FB ; "That spell's supposed to[Line]get us all out. Why isn't[Line][Hero] here? Why, Nova?[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -12339,7 +12339,7 @@ loc_12BAD0:
 		moveq   #MAPSPRITE_NOVA,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$FC ; "I have no answers for you.[Line]Perhaps a great hero is[Line]needed to guard the seal.[Delay2][Line]Perhaps he must[Line]stand as an eternal vigil to[Line]prevent Dark Dragon's return.[Delay2][Delay2]"
+		txt     $FC ; "I have no answers for you.[Line]Perhaps a great hero is[Line]needed to guard the seal.[Delay2][Line]Perhaps he must[Line]stand as an eternal vigil to[Line]prevent Dark Dragon's return.[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_LOWE,d0
@@ -12347,7 +12347,7 @@ loc_12BAD0:
 		moveq   #MAPSPRITE_LOWE_HEAL,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$FD ; "But why did it have[Line]to be [Hero]? Any of us[Line]would have taken his place....[Delay2][Delay2]"
+		txt     $FD ; "But why did it have[Line]to be [Hero]? Any of us[Line]would have taken his place....[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		move.w  #ALLY_MAE,d2
@@ -12363,7 +12363,7 @@ loc_12BB94:
 		moveq   #MAPSPRITE_MAE_KNT,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$FE ; "I won't believe it![Line][Hero] will come back,[Line]I know it![Delay2]"
+		txt     $FE ; "I won't believe it![Line][Hero] will come back,[Line]I know it![Delay2]"
 		move.w  #ALLY_MAE,d2
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
@@ -12373,7 +12373,7 @@ loc_12BB94:
 		bsr.w   sub_12C2DC
 loc_12BBC2:
 		trap    #7
-		txt     #$FF         ; "Perhaps [Hero] will still[Line]come out. Wait, look at[Line]the castle![Delay2][Delay2]"
+		txt     $FF         ; "Perhaps [Hero] will still[Line]come out. Wait, look at[Line]the castle![Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #0,d1
@@ -12526,7 +12526,7 @@ loc_12BD96:
 		moveq   #MAPSPRITE_LOWE_HEAL,d1
 		bsr.w   SetSpeechSfxForCutscene
 		trap    #5
-		txt     #$100        ; "No! It's gone...the castle...[Line]and [Hero] with it....[Delay2][Delay2]"
+		txt     $100        ; "No! It's gone...the castle...[Line]and [Hero] with it....[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		jsr     j_LoadCursorTiles
@@ -12550,7 +12550,7 @@ byte_12BE08:
 		jsr     j_OpenPortraitWindow
 		trap    #5
 		trap    #7
-		txt     #$101        ; "That's it. He didn't escape.[Line]He's gone....[Delay2][Delay2]"
+		txt     $101        ; "That's it. He didn't escape.[Line]He's gone....[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_MAE,d0
@@ -12564,7 +12564,7 @@ byte_12BE08:
 		bsr.w   sub_12C2DC
 loc_12BE46:
 		trap    #5
-		txt     #$103        ; "I won't believe it....[Delay2][Delay2]"
+		txt     $103        ; "I won't believe it....[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #PORTRAIT_NOVA,d0
@@ -12578,7 +12578,7 @@ loc_12BE46:
 		bsr.w   sub_12C2DC
 loc_12BE76:
 		trap    #5
-		txt     #$102        ; "[Hero] has saved all of[Line]Rune. His sacrifice will be[Line]remembered forever.[Delay2][Line]And now, friends, it is[Line]time for us to begin the long[Line]journey home....[Delay2][Delay2]"
+		txt     $102        ; "[Hero] has saved all of[Line]Rune. His sacrifice will be[Line]remembered forever.[Delay2][Line]And now, friends, it is[Line]time for us to begin the long[Line]journey home....[Delay2][Delay2]"
 		trap    #6
 		jsr     j_ClosePortraitWindow
 		moveq   #60,d0 
@@ -12594,7 +12594,7 @@ loc_12BE76:
 		bsr.w   sub_12C2DC
 loc_12BEAE:
 		trap    #5
-		txt     #$103        ; "I won't believe it....[Delay2][Delay2]"
+		txt     $103        ; "I won't believe it....[Delay2][Delay2]"
 		trap    #6
 		jsr     j_LoadCursorTiles
 		move.w  #ALLY_MAE,d2
@@ -12617,7 +12617,7 @@ loc_12BF04:
 		moveq   #90,d0 
 		jsr     (j_Sleep).l
 		trap    #5
-		txt     #$104        ; "[Hero]!"
+		txt     $104        ; "[Hero]!"
 		moveq   #2,d0
 		jsr     sub_80D8
 		move.w  #120,d0 
@@ -13170,7 +13170,7 @@ SetSpeechSfxForCutscene:
 		
 		move.w  d1,-(sp)
 		move.l  a0,-(sp)
-		movea.l (p_SpriteTextSounds).l,a0
+		movea.l (p_tbl_SpriteSpeechSfx).l,a0
 		andi.w  #$FF,d1
 		move.b  (a0,d1.w),d1
 		addi.w  #SFX_DIALOG_BLEEP_1,d1
@@ -13278,7 +13278,7 @@ sub_12C446:
 		trap    #7
 		jsr     (j_WaitForVInt).l
 		sndCom  MUSIC_JOIN
-		txt     #$397        ; "([Name] joins the[Line]Shining Force!)"
+		txt     $397        ; "([Name] joins the[Line]Shining Force!)"
 		move.w  #SOUND_COMMAND_PLAY_PREVIOUS_MUSIC,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		movem.l (sp)+,d0-d1/d6

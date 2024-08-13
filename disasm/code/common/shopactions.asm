@@ -247,17 +247,17 @@ loc_16C0E:
 		and.b   (a0,d1.w),d0
 		move.w  d0,-$A(a6)
 		move.w  d0,d1
-		cmpi.w  #ORB_OF_LIGHT,d0
+		cmpi.w  #ITEM_ORB_OF_LIGHT,d0
 		beq.w   loc_16D60       
-		cmpi.w  #MOON_STONE,d0
+		cmpi.w  #ITEM_MOON_STONE,d0
 		beq.w   loc_16D60       
-		cmpi.w  #LUNAR_DEW,d0
+		cmpi.w  #ITEM_LUNAR_DEW,d0
 		beq.w   loc_16D60       
-		cmpi.w  #SWORD_OF_LIGHT,d0
+		cmpi.w  #ITEM_SWORD_OF_LIGHT,d0
 		beq.w   loc_16D60       
-		cmpi.w  #SWORD_OF_DARKNESS,d0
+		cmpi.w  #ITEM_SWORD_OF_DARKNESS,d0
 		beq.w   loc_16D60       
-		cmpi.w  #CHAOS_BREAKER,d0
+		cmpi.w  #ITEM_CHAOS_BREAKER,d0
 		beq.w   loc_16D60       
 		jsr     j_GetItemPrice
 		move.l  d2,d0
@@ -266,7 +266,7 @@ loc_16C0E:
 		lsr.l   #2,d2
 		move.w  d2,-4(a6)
 		move.l  d2,((MESSAGE_ARG_NUMBER-$1000000)).w
-		bsr.w   IsSellingRareItem
+		bsr.w   IsSellingDealsItem
 		bne.s   loc_16C98       
 		move.w  #$17B,d0        ; "I'll give you [Num] coins[Line]for it. OK?"
 		bsr.w   DisplayMenuMessage

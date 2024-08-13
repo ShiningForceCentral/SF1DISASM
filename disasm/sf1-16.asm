@@ -612,7 +612,7 @@ sub_1645A4:
 		clr.l   (a0)+
 		clr.l   (a0)+
 		clr.l   (a0)
-		clr.w   ((CURSOR_POSITION-$1000000)).w
+		clr.w   ((CURSOR_POSITION_X-$1000000)).w
 		clr.w   ((word_FFB7C6-$1000000)).w
 		clr.w   d0
 		moveq   #$14,d1
@@ -638,15 +638,15 @@ loc_164610:
 byte_16461C:
 		sndCom  SFX_VALIDATION
 		clr.w   d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		cmpi.w  #$13,d0                              ; 19 columns
 		blt.s   loc_164636
-		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w  ; 4 rows
+		cmpi.b  #4,((CURSOR_POSITION_Y-$1000000)).w  ; 4 rows
 		beq.w   loc_1646CE
 loc_164636:
 		add.w   d0,d0
 		clr.w   d2
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d2
 		mulu.w  #$3C,d2 
 		add.w   d2,d0
 		lea     byte_164AD4(pc), a0
@@ -669,7 +669,7 @@ loc_16466A:
 		moveq   #$14,d1
 		cmpi.w  #8,((word_FFB7C6-$1000000)).w
 		bne.s   loc_164698
-		move.w  #$1704,((CURSOR_POSITION-$1000000)).w
+		move.w  #$1704,((CURSOR_POSITION_X-$1000000)).w
 loc_164698:
 		bra.w   loc_1645BC
 loc_16469C:
@@ -687,9 +687,9 @@ loc_16469C:
 		clr.b   (a0)
 		bra.s   loc_16466A
 loc_1646CE:
-		cmpi.b  #$17,((CURSOR_POSITION-$1000000)).w
+		cmpi.b  #$17,((CURSOR_POSITION_X-$1000000)).w
 		beq.w   loc_164876
-		cmpi.b  #$13,((CURSOR_POSITION-$1000000)).w
+		cmpi.b  #$13,((CURSOR_POSITION_X-$1000000)).w
 		blt.w   loc_164636
 loc_1646E2:
 		bsr.w   sub_16470E
@@ -741,14 +741,14 @@ sub_164732:
 loc_164738:
 		cmpi.w  #8,((word_FFB7C6-$1000000)).w
 		bne.s   loc_164754
-		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #4,((CURSOR_POSITION_Y-$1000000)).w
 		bne.w   loc_164610
-		cmpi.b  #$13,((CURSOR_POSITION-$1000000)).w
+		cmpi.b  #$13,((CURSOR_POSITION_X-$1000000)).w
 		bne.w   loc_164610
 loc_164754:
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		addq.b  #1,d0
-		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #4,((CURSOR_POSITION_Y-$1000000)).w
 		bge.s   loc_16476C
 		cmpi.b  #$1A,d0
 		bne.s   loc_16476A
@@ -768,20 +768,20 @@ loc_16477C:
 		bne.s   loc_164784
 		moveq   #0,d0
 loc_164784:
-		move.b  d0,((CURSOR_POSITION-$1000000)).w
+		move.b  d0,((CURSOR_POSITION_X-$1000000)).w
 		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_164610
 loc_164790:
 		cmpi.w  #8,((word_FFB7C6-$1000000)).w
 		bne.s   loc_1647AC
-		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #4,((CURSOR_POSITION_Y-$1000000)).w
 		bne.w   loc_164610
-		cmpi.b  #$17,((CURSOR_POSITION-$1000000)).w
+		cmpi.b  #$17,((CURSOR_POSITION_X-$1000000)).w
 		bne.w   loc_164610
 loc_1647AC:
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		subq.b  #1,d0
-		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #4,((CURSOR_POSITION_Y-$1000000)).w
 		bge.s   loc_1647C4
 		cmpi.b  #$FF,d0
 		bne.s   loc_1647C2
@@ -801,32 +801,32 @@ loc_1647D4:
 		bne.s   loc_1647DC
 		moveq   #$17,d0
 loc_1647DC:
-		move.b  d0,((CURSOR_POSITION-$1000000)).w
+		move.b  d0,((CURSOR_POSITION_X-$1000000)).w
 		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_164610
 loc_1647E8:
 		cmpi.w  #8,((word_FFB7C6-$1000000)).w
 		beq.w   loc_164610
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		subq.b  #2,d0
 		cmpi.b  #$FE,d0
 		bne.s   loc_164800
 		moveq   #4,d0
 loc_164800:
-		move.b  d0,((CURSOR_POSITION+1-$1000000)).w
+		move.b  d0,((CURSOR_POSITION_Y-$1000000)).w
 		bsr.s   sub_164834
 		sndCom  SFX_MENU_SELECTION
 		bra.w   loc_164610
 loc_16480E:
 		cmpi.w  #8,((word_FFB7C6-$1000000)).w
 		beq.w   loc_164610
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		addq.b  #2,d0
 		cmpi.b  #6,d0
 		bne.s   loc_164826
 		moveq   #0,d0
 loc_164826:
-		move.b  d0,((CURSOR_POSITION+1-$1000000)).w
+		move.b  d0,((CURSOR_POSITION_Y-$1000000)).w
 		sndCom  SFX_MENU_SELECTION
 		bsr.s   sub_164834
 		bra.w   loc_164610
@@ -837,9 +837,9 @@ loc_164826:
 ; =============== S U B R O U T I N E =======================================
 
 sub_164834:
-		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #4,((CURSOR_POSITION_Y-$1000000)).w
 		bne.s   return_164874
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		cmpi.b  #$12,d0
 		bne.s   loc_164848
 		moveq   #$13,d0
@@ -864,7 +864,7 @@ loc_164868:
 		bne.s   loc_164870
 		moveq   #$17,d0
 loc_164870:
-		move.b  d0,((CURSOR_POSITION-$1000000)).w
+		move.b  d0,((CURSOR_POSITION_X-$1000000)).w
 return_164874:
 		
 		rts
@@ -893,12 +893,12 @@ sub_164878:
 		bra.s   loc_1648DC
 loc_16489C:
 		clr.w   d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		lsl.w   #3,d0
 		addi.w  #$94,d0 
 		move.w  d0,6(a0)
 		clr.w   d0
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		lsl.w   #3,d0
 		addi.w  #$E4,d0 
 		move.w  d0,(a0)
@@ -916,9 +916,9 @@ loc_1648D6:
 loc_1648DC:
 		move.b  #5,2(a0)
 		move.w  #$C5B8,4(a0)
-		cmpi.b  #4,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #4,((CURSOR_POSITION_Y-$1000000)).w
 		bne.s   loc_164904
-		cmpi.b  #$13,((CURSOR_POSITION-$1000000)).w
+		cmpi.b  #$13,((CURSOR_POSITION_X-$1000000)).w
 		blt.s   loc_164904
 		move.b  #$D,2(a0)
 		move.w  #$C5B0,4(a0)
@@ -3331,7 +3331,7 @@ byte_166400:    dc.w $100                  ; girl w/book tiles?
 		dc.w $9B4 
 		dc.w $9B3 
 		dc.w $9B2 
-		dc.w $9$B1 
+		dc.w $9B1 
 		dc.w $9B0 
 		dc.w $100
 		dc.w $100
@@ -3450,7 +3450,7 @@ byte_166400:    dc.w $100                  ; girl w/book tiles?
 		dc.w $1E1 
 		dc.w $1E2 
 		dc.w $9E2 
-		dc.w $9E1 
+		dc.w $1E1 
 		dc.w $9E0 
 		dc.w $9DF 
 		dc.w $9DE 

@@ -5,7 +5,7 @@
 ClassData:
 
         ; SDMN
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -13,7 +13,7 @@ ClassData:
         specialAttack NONE
         
         ; KNT
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -21,7 +21,7 @@ ClassData:
         specialAttack NONE
         
         ; WARR
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -37,7 +37,7 @@ ClassData:
         specialAttack NONE
         
         ; MAGE
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -45,7 +45,7 @@ ClassData:
         specialAttack NONE
         
         ; MONK
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -53,7 +53,7 @@ ClassData:
         specialAttack NONE
         
         ; HEAL
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -61,7 +61,7 @@ ClassData:
         specialAttack NONE
         
         ; ACHR
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -69,7 +69,7 @@ ClassData:
         specialAttack NONE
         
         ; ASKT
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -109,7 +109,7 @@ ClassData:
         specialAttack NONE
         
         ; WRWF
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -117,7 +117,7 @@ ClassData:
         specialAttack NONE
         
         ; SMR
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -125,7 +125,7 @@ ClassData:
         specialAttack NONE
         
         ; NINJ
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -133,7 +133,7 @@ ClassData:
         specialAttack NONE
         
         ; HERO
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -141,7 +141,7 @@ ClassData:
         specialAttack NONE
         
         ; PLDN
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -149,7 +149,7 @@ ClassData:
         specialAttack NONE
         
         ; GLDR
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -165,7 +165,7 @@ ClassData:
         specialAttack NONE
         
         ; WIZD
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -173,7 +173,7 @@ ClassData:
         specialAttack NONE
         
         ; MSMK
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -181,7 +181,7 @@ ClassData:
         specialAttack NONE
         
         ; VICR
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -189,7 +189,7 @@ ClassData:
         specialAttack NONE
         
         ; BWMS
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -197,7 +197,7 @@ ClassData:
         specialAttack NONE
         
         ; SKNT2
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -237,7 +237,7 @@ ClassData:
         specialAttack NONE
         
         ; WFBN
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -245,7 +245,7 @@ ClassData:
         specialAttack NONE
         
         ; YGRT
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    FIRE_MAJOR|ICE_MAJOR|LIGHTNING_MAJOR|SLEEPDESOUL_MAJOR|ANTIAIR_MAJOR|CHAOS_BREAKER_MAJOR|UNUSED_MAJOR|EVASION_50
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -262,7 +262,7 @@ ClassData:
         
 
         ; GOBLIN
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -270,7 +270,7 @@ ClassData:
         specialAttack NONE
         
         ; BOWRIDER
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -278,7 +278,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; RUNE_KNIGHT
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
@@ -286,7 +286,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; SILVER_KNIGHT
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
@@ -294,7 +294,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; DURAHAN
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_100
@@ -302,7 +302,7 @@ ClassData:
         specialAttack SLEEP
         
         ; DARK_DWARF
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -310,7 +310,7 @@ ClassData:
         specialAttack NONE
         
         ; HORSEMAN
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
@@ -318,7 +318,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; SNIPER
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
@@ -326,15 +326,15 @@ ClassData:
         specialAttack 150_CRIT
         
         ; DARK_ELF
-        moveType      STEALTH
+        moveType      FOREST
         actionType    USE_ITEM_SLOT_1
-        resistance    NONE0
+        resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_50
         attackEffect  NONE, NONE
         specialAttack 150_CRIT
         
         ; LIZARDMAN
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
@@ -342,7 +342,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; DARK_MAGE
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75
@@ -350,7 +350,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; DARK_PRIEST
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    EVASION_25
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
@@ -358,7 +358,7 @@ ClassData:
         specialAttack NONE
         
         ; HIGH_PRIEST
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75
@@ -366,7 +366,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; CERBERUS
-        moveType      STEALTH
+        moveType      FOREST
         actionType    FIRE_BREATH_2
         resistance    FIRE_MINOR|ICE_WEAKNESS
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_50
@@ -374,7 +374,7 @@ ClassData:
         specialAttack NONE
         
         ; HELLHOUND
-        moveType      STEALTH
+        moveType      FOREST
         actionType    FIRE_BREATH_1
         resistance    FIRE_MINOR|ICE_WEAKNESS
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_50
@@ -414,15 +414,15 @@ ClassData:
         specialAttack 200_CRIT
         
         ; DARK_PRIEST2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    NONE
-        aiSetting     SPECIAL_100|DOUBLE_DEFAULT|ACTION_75
+        aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
         attackEffect  MELEE, ATTACK
         specialAttack NONE
         
         ; ZOMBIE
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    FIRE_WEAKNESS|ICE_MINOR|SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_100
@@ -430,15 +430,15 @@ ClassData:
         specialAttack POISON
         
         ; DARK_MAGE2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    NONE
-        aiSetting     SPECIAL_100|DOUBLE_DEFAULT|ACTION_75
+        aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
         attackEffect  MELEE, ATTACK
         specialAttack NONE
         
         ; MASTER_MAGE
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    NONE
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_75|HP_REGEN
@@ -446,10 +446,10 @@ ClassData:
         specialAttack SLEEP
         
         ; DEMON_MASTER
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    SLEEPDESOUL_MAJOR
-        aiSetting     SPECIAL_100|DOUBLE_DEFAULT|ACTION_75
+        aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
         attackEffect  MELEE, ATTACK
         specialAttack NONE
         
@@ -470,7 +470,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; WORM
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_100
@@ -478,7 +478,7 @@ ClassData:
         specialAttack SLEEP
         
         ; ICE_WORM
-        moveType      STEALTH
+        moveType      FOREST
         actionType    ICE_BREATH_1
         resistance    ICE_MINOR
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_50
@@ -486,7 +486,7 @@ ClassData:
         specialAttack SLEEP
         
         ; MINOTAUR
-        moveType      STEALTH
+        moveType      FOREST
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -502,7 +502,7 @@ ClassData:
         specialAttack NONE
         
         ; MANNEQUIN
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_100
@@ -510,7 +510,7 @@ ClassData:
         specialAttack POISON
         
         ; EVIL_PUPPET
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    NONE
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_50
@@ -518,7 +518,7 @@ ClassData:
         specialAttack STEAL_HP
         
         ; DIRE_CLOWN
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
@@ -526,7 +526,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; DURAHAN2
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    REGULAR_ATTACK
         resistance    LIGHTNING_MINOR|SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
@@ -534,7 +534,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; SKELETON
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    USE_ITEM_SLOT_1
         resistance    FIRE_WEAKNESS|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75 SPECIAL_25
@@ -542,7 +542,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; HIGH_PRIEST2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    NONE
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75 SPECIAL_25
@@ -550,7 +550,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; MARIONETTE
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    FIRE_MAJOR|ICE_MAJOR|LIGHTNING_MAJOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75|HP_REGEN
@@ -558,7 +558,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; DEMON_MASTER2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    ICE_MINOR|SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75 SPECIAL_25
@@ -566,7 +566,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; ARMED_SKELETON
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    MACHINE_GUN
         resistance    FIRE_WEAKNESS|SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_50 SPECIAL_25
@@ -646,7 +646,7 @@ ClassData:
         specialAttack 150_CRIT
         
         ; TORCH_EYE
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -662,7 +662,7 @@ ClassData:
         specialAttack NONE
         
         ; DARKSOL
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    DEMON_BLAZE_1
         resistance    SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_50
@@ -670,7 +670,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; LASER_EYE
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    FIRE_MINOR|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_100
@@ -678,7 +678,7 @@ ClassData:
         specialAttack NONE
         
         ; ELLIOTT
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    FIRE_MINOR|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100|BIT6|HP_REGEN
@@ -686,7 +686,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; BALBAZAK
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
         resistance    FIRE_MINOR|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100|BIT6|HP_REGEN
@@ -694,7 +694,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; MISHAELA
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    FIRE_MAJOR|ICE_MAJOR|LIGHTNING_MAJOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_75|BIT6|HP_REGEN
@@ -702,7 +702,7 @@ ClassData:
         specialAttack SLEEP
         
         ; CHAOS
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    LASER
         resistance    FIRE_MAJOR|ICE_MAJOR|LIGHTNING_MAJOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_25|BIT6|HP_REGEN
@@ -710,7 +710,7 @@ ClassData:
         specialAttack NONE
         
         ; RAMLADU
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
         resistance    FIRE_MINOR|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_25|BIT6|HP_REGEN
@@ -718,7 +718,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; CAIN
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    USE_ITEM_SLOT_0
         resistance    FIRE_MINOR|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_25|BIT6
@@ -729,12 +729,12 @@ ClassData:
         moveType      FLYING
         actionType    CAST_SPELL
         resistance    SLEEPDESOUL_MAJOR|EVASION_25
-        aiSetting     SPECIAL_100|DOUBLE_DEFAULT|ACTION_75
+        aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
         attackEffect  MELEE, ATTACK
         specialAttack NONE
         
         ; DARK_DRAGON
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    DEMON_BLAZE_2
         resistance    SLEEPDESOUL_MAJOR|CHAOS_BREAKER_WEAKNESS
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100|BIT6
@@ -745,7 +745,7 @@ ClassData:
         moveType      FLYING
         actionType    CAST_SPELL
         resistance    SLEEPDESOUL_MAJOR|EVASION_25
-        aiSetting     SPECIAL_100|DOUBLE_DEFAULT|ACTION_75
+        aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
         attackEffect  MELEE, ATTACK
         specialAttack NONE
         
@@ -753,28 +753,28 @@ ClassData:
         moveType      FLYING
         actionType    CAST_SPELL
         resistance    SLEEPDESOUL_MAJOR|EVASION_25
-        aiSetting     SPECIAL_100|DOUBLE_DEFAULT|ACTION_75
+        aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
         attackEffect  MELEE, ATTACK
         specialAttack NONE
         
         ; DARK_MAGE3
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
-        resistance    SLEEPDESOUL_MAJOR80
-        aiSetting     SPECIAL_100|DOUBLE_DEFAULT|ACTION_75
+        resistance    SLEEPDESOUL_MAJOR|EVASION_50
+        aiSetting     SPECIAL_0|DOUBLE_DEFAULT|ACTION_75
         attackEffect  MELEE, ATTACK
         specialAttack NONE
         
         ; ZOMBIE2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
-        resistance    SLEEPDESOUL_MAJOR87
+        resistance    FIRE_WEAKNESS|ICE_MINOR|SLEEPDESOUL_MAJOR|EVASION_50
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_100
         attackEffect  MELEE, ATTACK
         specialAttack POISON
         
         ; SKELETON2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    USE_ITEM_SLOT_1
         resistance    FIRE_WEAKNESS|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR|EVASION_25
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75 SPECIAL_25
@@ -782,9 +782,9 @@ ClassData:
         specialAttack 200_CRIT
         
         ; GHOUL
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
-        resistance    SLEEPDESOUL_MAJORA9
+        resistance    FIRE_MINOR|ICE_MAJOR|LIGHTNING_MAJOR|SLEEPDESOUL_MAJOR|EVASION_50
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_100
         attackEffect  MELEE, ATTACK
         specialAttack SLEEP
@@ -798,25 +798,25 @@ ClassData:
         specialAttack 150_CRIT
         
         ; DARK_MAGE4
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    CAST_SPELL
-        resistance    SLEEPDESOUL_MAJORAA
+        resistance    FIRE_MAJOR|ICE_MAJOR|LIGHTNING_MAJOR|SLEEPDESOUL_MAJOR|EVASION_50
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_75|HP_REGEN
         attackEffect  MELEE, ATTACK
         specialAttack SLEEP
         
         ; DURAHAN3
-        moveType      CENTAUR
+        moveType      MOUNTED
         actionType    CAST_SPELL
-        resistance    SLEEPDESOUL_MAJOR80
+        resistance    SLEEPDESOUL_MAJOR|EVASION_50
         aiSetting     SPECIAL_50|DOUBLE_DEFAULT|ACTION_75 SPECIAL_50
         attackEffect  MELEE, ATTACK
         specialAttack SLEEP
         
         ; MINOTAUR2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    REGULAR_ATTACK
-        resistance    SLEEPDESOUL_MAJOR95
+        resistance    FIRE_MINOR|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR|EVASION_50
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_100
         attackEffect  MELEE, ATTACK
         specialAttack 200_CRIT
@@ -830,7 +830,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; SKELETON3
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    USE_ITEM_SLOT_1
         resistance    FIRE_WEAKNESS|ICE_MINOR|LIGHTNING_MINOR|SLEEPDESOUL_MAJOR
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_50 SPECIAL_25
@@ -838,7 +838,7 @@ ClassData:
         specialAttack 200_CRIT
         
         ; DARK_DRAGON2
-        moveType      REGULAR
+        moveType      STANDARD
         actionType    DARK_DRAGON
         resistance    SLEEPDESOUL_MAJOR|CHAOS_BREAKER_WEAKNESS
         aiSetting     SPECIAL_25|DOUBLE_DEFAULT|ACTION_75|BIT6

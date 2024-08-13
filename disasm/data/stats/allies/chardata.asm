@@ -17,15 +17,14 @@ InitialForceData:
         status     NONE
         items &
             MIDDLE_SWORD|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Mae"
         allyClass  KNT
@@ -41,15 +40,14 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Pelle"
         allyClass  KNT
@@ -65,15 +63,14 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Ken"
         allyClass  KNT
@@ -89,15 +86,14 @@ InitialForceData:
         status     NONE
         items &
             SPEAR|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Vankar"
         allyClass  KNT
@@ -113,15 +109,14 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Earnest"
         allyClass  KNT
@@ -137,15 +132,14 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Arthur"
         allyClass  KNT
@@ -161,15 +155,14 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Gort"
         allyClass  WARR
@@ -185,15 +178,14 @@ InitialForceData:
         status     NONE
         items &
             HAND_AXE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Luke"
         allyClass  WARR
@@ -209,15 +201,14 @@ InitialForceData:
         status     NONE
         items &
             SHORT_SWORD|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Guntz"
         allyClass  SKNT_1
@@ -233,15 +224,14 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Anri"
         allyClass  MAGE
@@ -257,15 +247,14 @@ InitialForceData:
         status     NONE
         items &
             POWER_STAFF|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Alef"
         allyClass  MAGE
@@ -281,15 +270,14 @@ InitialForceData:
         status     NONE
         items &
             POWER_STAFF|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Tao"
         allyClass  MAGE
@@ -305,15 +293,14 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_STAFF|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Domingo"
         allyClass  MGCR
@@ -328,16 +315,15 @@ InitialForceData:
         startMP    15
         status     NONE
         items &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Lowe"
         allyClass  HEAL
@@ -353,15 +339,14 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_STAFF|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Khris"
         allyClass  HEAL
@@ -377,15 +362,14 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_STAFF|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Torasu"
         allyClass  HEAL
@@ -401,15 +385,14 @@ InitialForceData:
         status     NONE
         items &
             POWER_STAFF|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Gong"
         allyClass  MONK
@@ -424,16 +407,15 @@ InitialForceData:
         startMP    8
         status     NONE
         items &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Diane"
         allyClass  ACHR
@@ -449,15 +431,14 @@ InitialForceData:
         status     NONE
         items &
             STEEL_ARROW|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Hans"
         allyClass  ACHR
@@ -473,15 +454,14 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_ARROW|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Lyle"
         allyClass  ASKT
@@ -497,15 +477,14 @@ InitialForceData:
         status     NONE
         items &
             ELVEN_ARROW|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Amon"
         allyClass  BDMN
@@ -521,15 +500,14 @@ InitialForceData:
         status     NONE
         items &
             MIDDLE_SWORD|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Balbaroy"
         allyClass  BDMN
@@ -545,15 +523,14 @@ InitialForceData:
         status     NONE
         items &
             MIDDLE_SWORD|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Kokichi"
         allyClass  WKNT
@@ -568,16 +545,15 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            BRONZE_LANCE, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            BRONZE_LANCE|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Bleu"
         allyClass  DRGN
@@ -592,16 +568,15 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Adam"
         allyClass  RBT
@@ -616,16 +591,15 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Zylo"
         allyClass  WRWF
@@ -640,16 +614,15 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Musashi"
         allyClass  SMR
@@ -665,15 +638,14 @@ InitialForceData:
         status     NONE
         items &
             KATANA|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Hanzou"
         allyClass  NINJ
@@ -689,15 +661,14 @@ InitialForceData:
         status     NONE
         items &
             DOOM_BLADE|EQUIPPED, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     
         allyName   "Jogurt"
         allyClass  YGRT
@@ -712,14 +683,13 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM, &
-            NOTHING_ITEM
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED, &
+            NOTHING_ITEM|BROKEN|EQUIPPED
         spells &
-            NOTHING, &
-            NOTHING, &
-            NOTHING, &
-            NOTHING
-        allyFiller
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4, &
+            NOTHING|LV_4
     

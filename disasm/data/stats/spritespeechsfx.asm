@@ -73,7 +73,7 @@ tbl_SpriteSpeechSfx:
     speechSfx SFX_DIALOG_BLEEP_6  ; SNIPER
     speechSfx SFX_DIALOG_BLEEP_6  ; DARK_ELF
     speechSfx SFX_DIALOG_BLEEP_6  ; LIZARDMAN
-    speechSfx SFX_DIALOG_BLEEP_0  ; ROCK
+    speechSfx SFX_DIALOG_BLEEP_1  ; ROCK
     speechSfx SFX_DIALOG_BLEEP_6  ; DARK_PRIEST
     speechSfx SFX_DIALOG_BLEEP_6  ; HIGH_PRIEST
     speechSfx SFX_DIALOG_BLEEP_5  ; CERBERUS

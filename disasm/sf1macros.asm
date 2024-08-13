@@ -81,6 +81,11 @@ defineShorthand: macro Prefix,Shorthand
 ; 
 ; ---------------------------------------------------------------------------
 
+spellEffect:macro
+                defineShorthand.b RANGE_,\1
+                defineShorthand.b EFFECT_,\2
+            endm
+
 mpCost:     macro
                 dc.b \1
                 dc.b 0
@@ -96,13 +101,13 @@ area:       macro
             endm
 
 targetType: macro
-                defineShorthand.b RANGE_TARGETS_,\1
+                defineBitfield.b RANGE_TARGETS_,\1
             endm
 
 costume:    macro
                 defineShorthand.b ALLY_,\1
-                defineShorthand.b ITEM_,\1
-                defineShorthand.b MAPSPRITE_,\1
+                defineShorthand.b ITEM_,\2
+                defineShorthand.b MAPSPRITE_,\3
             endm
     
 shopList:   macro
@@ -112,6 +117,364 @@ shopList:   macro
             shift
             endr
                 dc.b $FF
+            endm
+    
+chestItem:  macro
+                dc.b \1
+                dc.b \2
+                dc.b \3
+                defineBitfield.b ITEM_,\4
+            endm
+
+defineName: macro
+    case narg
+=3  dc.b strlen(\1)+strlen(\3)+1
+=?  dc.b strlen(\1)
+    endcase
+    rept narg
+    dc.b \1
+    shift
+    endr
+    endm
+    
+className: macro
+    if (narg=3)
+    defineName \1,\2,\3
+    else
+    defineName \1
+    endc
+    endm
+    
+enemyName: macro
+    defineName \1
+    endm
+    
+itemName: macro
+    if (narg=3)
+    defineName \1,\2,\3
+    else
+    defineName \1
+    endc
+    endm
+    
+spellName: macro
+    if (narg=3)
+    defineName \1,\2,\3
+    else
+    defineName \1
+    endc
+    endm
+    
+; ally definition
+
+allyName:   macro
+	case strlen(\1)
+=1
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 9,0
+=2
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 8,0
+=3
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 7,0
+=4
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 6,0
+=5
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 5,0
+=6
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 4,0
+=7
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 3,0
+=8
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dcb.b 2,0
+=9
+    rept narg
+    dc.b \1
+    shift
+    endr
+    dc.b 0
+=?
+    endcase
+    endm
+    
+allyClass:  macro
+                defineShorthand.b CLASS_,\1
+            endm
+    
+startLevel: macro
+                dc.b \1
+            endm
+    
+startATK:   macro
+                dc.b \1
+            endm
+    
+startDEF:   macro
+                dc.b \1
+            endm
+    
+startAGI:   macro
+                dc.b \1
+            endm
+    
+startMOVE:  macro
+                dc.b \1
+            endm
+    
+startCRIT:  macro
+                dc.b \1
+            endm
+    
+startEXP:   macro
+                dc.b \1
+            endm
+    
+startHP:    macro
+                dc.w \1,\1
+            endm
+    
+startMP:    macro
+                dc.b \1,\1
+            endm
+    
+status:     macro
+                defineBitfield.w STATUSEFFECT_,\1
+            endm
+    
+items:      macro
+                defineBitfield.b ITEM_,\1
+                defineBitfield.b ITEM_,\2
+                defineBitfield.b ITEM_,\3
+                defineBitfield.b ITEM_,\4
+            endm
+    
+spells:     macro
+                defineBitfield.b SPELL_,\1
+                defineBitfield.b SPELL_,\2
+                defineBitfield.b SPELL_,\3
+                defineBitfield.b SPELL_,\4
+                dcb.b 6,0
+            endm
+			
+; enemy definition
+
+enemyGold:  macro
+                dc.w \1
+            endm
+    
+enemyClass: macro
+                defineShorthand.b CLASS_,\1
+            endm
+    
+level:      macro
+                dc.b \1
+            endm
+    
+baseATK:    macro
+                dc.b \1
+            endm
+    
+baseDEF:    macro
+                dc.b \1
+            endm
+    
+baseAGI:    macro
+                dc.b \1
+            endm
+    
+baseHP:     macro
+                dc.w \1
+            endm
+    
+baseMP:     macro
+                dc.b \1
+            endm
+    
+movement:   macro
+                dc.b \1
+            endm
+    
+mapSprite:  macro
+                defineShorthand.b MAPSPRITE_,\1
+            endm
+    
+battleSprite: macro
+                defineShorthand.b BATTLESPRITE_,\1
+                dc.b \2
+            endm
+    
+portrait:   macro
+                defineShorthand.b PORTRAIT_,\1
+            endm
+			
+; item definition
+    
+equipFlags: macro
+    defineBitfield.l EQUIPFLAG_,\1
+    endm
+    
+itemType: macro
+    defineBitfield.w ITEMTYPE_,\1
+    endm
+    
+equipEffect: macro
+    defineShorthand.b EQUIPEFFECT_,\1
+    dc.b \2
+    endm
+    
+useEffect: macro
+    defineShorthand.b RANGE_,\1
+    defineShorthand.b EFFECT_,\2
+    endm
+    
+turnEffect: macro
+    defineShorthand.b EQUIPEFFECT_,\1
+    dc.b \2
+    endm
+    
+attackEffect: macro
+    defineShorthand.b RANGE_,\1
+    defineShorthand.b EFFECT_,\2
+    endm
+    
+price: macro
+    dc.w \1
+    endm
+    
+moveType: macro
+    defineShorthand.b MOVE_TYPE_,\1
+    endm
+    
+actionType: macro
+    defineShorthand.b AI_ACTION_,\1
+    endm
+    
+resistance: macro
+    defineBitfield.w RESISTANCE_,\1
+    endm
+    
+aiSetting: macro
+    defineBitfield.b AISETTING_,\1
+    endm
+    
+specialAttack: macro
+    defineShorthand.b SPECIAL_,\1
+    endm
+    
+atkGrowth: macro
+    dc.b \1+GROWTHCURVE_\2
+    endm
+    
+defGrowth: macro
+    dc.b \1+GROWTHCURVE_\2
+    endm
+    
+agiGrowth: macro
+    dc.b \1+GROWTHCURVE_\2
+    endm
+    
+hpGrowth: macro
+    dc.b \1+GROWTHCURVE_\2
+    endm
+    
+mpGrowth: macro
+    dc.b \1+GROWTHCURVE_\2
+    endm
+    
+critGrowth: macro
+    dc.b \1+GROWTHCURVE_\2
+    endm
+    
+caster: macro
+    defineShorthand.b ALLY_,\1
+    endm
+    
+spellList: macro
+    dc.b narg/2
+    rept narg/2
+    dc.b \1
+    defineBitfield.b SPELL_,\2
+    shift
+    shift
+    endr
+    endm
+    
+weaponsprite: macro
+    defineShorthand.b WEAPONSPRITE_,\1
+    endm
+    
+numberAllies: macro
+    dc.b \1
+    endm
+    
+allyPosition: macro
+    dc.b \1
+	dc.b \2
+    endm
+    
+enemyCombatant: macro
+    defineShorthand.b ENEMY_,\1
+    defineBitfield.b ITEM_,\2
+    defineBitfield.b ITEM_,\3
+    defineBitfield.b SPELL_,\4
+    endm
+    
+numberEnemies: macro
+    dc.b \1
+    endm
+    
+enemyPosition: macro
+    dc.b \1
+	dc.b \2
+    defineShorthand.b SPAWN_,\3
+	dc.b \4
+    endm
+    
+battleCommand: macro
+    dc.b \1
+	defineShorthand.b COMMAND_\2
+    dc.b \3
+	dc.b \4
+    endm
+    
+aiPath:     macro
+                rept narg/2
+                dc.b \1
+                dc.b \2
+                shift
+                shift
+                endr
+                dc.b 255
             endm
 
 speechSfx:  macro

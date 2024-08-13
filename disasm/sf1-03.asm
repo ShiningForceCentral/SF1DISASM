@@ -5189,7 +5189,7 @@ loc_13878:
 		cmpi.b  #$FF,d1
 		beq.w   loc_13996
 		bmi.s   loc_13918
-		cmpi.b  #NOTHING_ITEM,d1
+		cmpi.b  #ITEM_NOTHING_ITEM,d1
 		beq.w   loc_13996
 		ext.w   d1
 		move.w  d1,(MESSAGE_ARG_NAME_2).l
@@ -13154,7 +13154,7 @@ loc_18A0A:
 		jsr     (a5)
 		moveq   #$A,d0
 		jsr     (a5)
-		moveq   PORTRAIT_MAE,d0
+		moveq   #PORTRAIT_MAE,d0
 		jsr     (a4)
 		move.l  d0,-(sp)
 		move.b  #MAPSPRITE_MAE_KNT,d0
@@ -13743,7 +13743,7 @@ loc_18FA2:
 loc_18FD2:
 		cmpi.w  #$14,d1
 		bne.s   loc_19008
-		moveq   #PORTRAIT_MISHAELA,d0 
+		moveq   #PORTRAIT_FRIAR,d0 
 		jsr     (a4)
 		move.w  d6,-(sp)
 		move.w  #$436,d6
@@ -17303,7 +17303,7 @@ loc_1B120:
 		move.w  #$75F,d6
 		moveq   #0,d0
 		jsr     (a5)
-		moveq   #DOMINGO_EGG,d1
+		moveq   #ITEM_DOMINGO_EGG,d1
 		jsr     j_IsItemHeldByForce
 		bcs.s   loc_1B18A
 		moveq   #2,d0
@@ -20319,8 +20319,8 @@ loc_1CE40:
 loc_1CE64:
 		clr.w   ((SPEECH_SFX-$1000000)).w
 		clr.w   ((MESSAGE_ARG_NAME_1-$1000000)).w
-		move.w  #CHAOS_BREAKER,((MESSAGE_ARG_NAME_2-$1000000)).w
-		moveq   #CHAOS_BREAKER,d0
+		move.w  #ITEM_CHAOS_BREAKER,((MESSAGE_ARG_NAME_2-$1000000)).w
+		moveq   #ITEM_CHAOS_BREAKER,d0
 		bsr.w   GiveItemToHero  
 		bcs.s   loc_1CEAE
 		sndCom  MUSIC_ITEM
@@ -20911,7 +20911,7 @@ BattleExit4:    incbin "data/battles/battleexits/battleexit4.bin"
 BattleExit5:    incbin "data/battles/battleexits/battleexit5.bin"
 BattleExit6:    incbin "data/battles/battleexits/battleexit6.bin"
 BattleExit7:    incbin "data/battles/battleexits/battleexit7.bin"
-BattleChests:   incbin "data/battles/global/battlechests.bin"
+                include "data\battles\global\battlechests.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -21094,17 +21094,17 @@ loc_1DC9C:
 		trap    #5
 		move.b  #2,(byte_FFF804).l
 		jsr     (j_FadeInFromBlack).l
-		txt     #$5E ; "Well, hello there.[Delay2][Delay2][Line]You look like you're[Line]a long way from home.[Delay2][Delay2]"
+		txt     $5E ; "Well, hello there.[Delay2][Delay2][Line]You look like you're[Line]a long way from home.[Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$5F ; "We don't see many folk in[Line]full armor like that.[Delay2][Delay2][Delay2][Line]Quite a fancy getup![Delay2][Delay2][Delay2][Delay2]"
+		txt     $5F ; "We don't see many folk in[Line]full armor like that.[Delay2][Delay2][Delay2][Line]Quite a fancy getup![Delay2][Delay2][Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$60 ; "I have come a long way.[Delay2][Delay2][Delay2][Line]Longer than you can[Line]imagine.[Delay2][Delay2][Delay2][Delay2]"
+		txt     $60 ; "I have come a long way.[Delay2][Delay2][Delay2][Line]Longer than you can[Line]imagine.[Delay2][Delay2][Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$61 ; "I must say you do look pretty[Line]tired and, well,[Delay2][Delay2][Line]your things have seen[Line]better days.[Delay2][Delay2][Delay2][Delay2]"
+		txt     $61 ; "I must say you do look pretty[Line]tired and, well,[Delay2][Delay2][Line]your things have seen[Line]better days.[Delay2][Delay2][Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$62 ; "I'm tired of wandering.[Delay2][Delay2][Line]I'm looking for a place to[Line]settle down and rest.[Delay2][Delay2][Delay2][Delay2]"
+		txt     $62 ; "I'm tired of wandering.[Delay2][Delay2][Line]I'm looking for a place to[Line]settle down and rest.[Delay2][Delay2][Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$63 ; "Well, how about right here?[Delay2][Delay2][Line]Lend your hands to the fields[Line]of our village?[Delay2][Delay2][Delay2][Delay2]"
+		txt     $63 ; "Well, how about right here?[Delay2][Delay2][Line]Lend your hands to the fields[Line]of our village?[Delay2][Delay2][Delay2][Delay2]"
 		moveq   #$33,d7 
 loc_1DD9C:
 		move.w  d7,-(sp)
@@ -21124,13 +21124,13 @@ loc_1DDBA:
 		dbf     d7,loc_1DD9C
 
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$64 ; "That sounds like just what I[Line]need right now. [Delay2][Delay2][Delay2]I work hard[Line]and I'm a fast learner.[Delay2][Delay2][Delay2][Delay2]"
+		txt     $64 ; "That sounds like just what I[Line]need right now. [Delay2][Delay2][Delay2]I work hard[Line]and I'm a fast learner.[Delay2][Delay2][Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$65 ; "Good! We've got a deal then.[Delay2][Delay2][Delay2][Line]Folks in the village will be[Line]excited to see a new face![Delay2][Delay2]"
+		txt     $65 ; "Good! We've got a deal then.[Delay2][Delay2][Delay2][Line]Folks in the village will be[Line]excited to see a new face![Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$66 ; "I didn't catch your name.[Line]What do they call you?[Delay2][Delay2][Delay2][Delay2]"
+		txt     $66 ; "I didn't catch your name.[Line]What do they call you?[Delay2][Delay2][Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
-		txt     #$67 ; "Me? You can call me...[Delay2][Delay2]"
+		txt     $67 ; "Me? You can call me...[Delay2][Delay2]"
 		trap    #CREATE_MESSAGE_WINDOW
 		movea.l (p_EndingTiles_Max2).l,a0
 		lea     ($8000).l,a1
@@ -22035,14 +22035,14 @@ word_1E67A:     ; sprite properties data
 
 byte_1E712:
 ; 1st line
-        vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+        vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 		vdpBaseTile 300
 		vdpBaseTile 301
 		vdpBaseTile 302
@@ -22059,24 +22059,24 @@ byte_1E712:
 		vdpBaseTile 30D
 		vdpBaseTile 30E
 		vdpBaseTile 30F
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 
 ; 2nd line
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 		vdpBaseTile 310
 		vdpBaseTile 311
 		vdpBaseTile 312
@@ -22093,24 +22093,24 @@ byte_1E712:
 		vdpBaseTile 31D
 		vdpBaseTile 31E
 		vdpBaseTile 31F
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 
 ; 3rd line
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 		vdpBaseTile 320
 		vdpBaseTile 321
 		vdpBaseTile 322
@@ -22127,24 +22127,24 @@ byte_1E712:
 		vdpBaseTile 32D
 		vdpBaseTile 32E
 		vdpBaseTile 32F
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 
 ; 4th line
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 		vdpBaseTile 330
 		vdpBaseTile 331
 		vdpBaseTile 332
@@ -22161,24 +22161,24 @@ byte_1E712:
 		vdpBaseTile 33D
 		vdpBaseTile 33E
 		vdpBaseTile 33F
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 
 ; 5th line
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 		vdpBaseTile 340
 		vdpBaseTile 341
 		vdpBaseTile 342
@@ -22195,24 +22195,24 @@ byte_1E712:
 		vdpBaseTile 34D
 		vdpBaseTile 34E
 		vdpBaseTile 34F
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 
 ; 6th line
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 		vdpBaseTile 350
 		vdpBaseTile 351
 		vdpBaseTile 352
@@ -22229,14 +22229,14 @@ byte_1E712:
 		vdpBaseTile 35D
 		vdpBaseTile 35E
 		vdpBaseTile 35F
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
-		vdpBaseTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
+		vdpTile 0
 
 TextBankTreesPointers:
 		incbin "data/scripting/text/huffmantreeoffsets.bin"

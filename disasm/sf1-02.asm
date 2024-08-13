@@ -503,7 +503,7 @@ loc_8110:
 BattleLoop:
 		move.l  sp,(dword_FF0EFE).l
 		clr.w   ((SCREEN_POSITION-$1000000)).w
-		move.w  #$101,((CURSOR_POSITION-$1000000)).w
+		move.w  #$101,((CURSOR_POSITION_X-$1000000)).w
 		clr.b   ((AREA_CURSOR_INDEX-$1000000)).w
 		clr.b   ((byte_FFB4D7-$1000000)).w
 		clr.b   ((byte_FFB53A-$1000000)).w
@@ -513,7 +513,7 @@ BattleLoop:
 		jsr     j_InitializeBattleMap
 		clr.w   d0
 		jsr     j_GetCombatantX
-		move.b  d1,((CURSOR_POSITION-$1000000)).w
+		move.b  d1,((CURSOR_POSITION_X-$1000000)).w
 		subq.w  #5,d1
 		bge.s   loc_8160
 		clr.w   d1
@@ -527,7 +527,7 @@ loc_816E:
 		move.b  d1,((SCREEN_POSITION-$1000000)).w
 		move.w  d1,d2
 		jsr     j_GetCombatantY
-		move.b  d1,((CURSOR_POSITION+1-$1000000)).w
+		move.b  d1,((CURSOR_POSITION_Y-$1000000)).w
 		subq.w  #5,d1
 		bge.s   loc_8184
 		clr.w   d1
@@ -848,7 +848,7 @@ loc_8532:
 
 sub_853E:
 		move.b  #FACING_DOWN,((SPRITE_DIRECTION-$1000000)).w
-		cmpi.b  #1,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #1,((CURSOR_POSITION_Y-$1000000)).w
 		beq.w   nullsub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_8598
@@ -874,9 +874,9 @@ sub_853E:
 		btst    #0,(a0,d0.w)
 		beq.w   nullsub_8DDE
 loc_8598:
-		subq.b  #1,((CURSOR_POSITION+1-$1000000)).w
+		subq.b  #1,((CURSOR_POSITION_Y-$1000000)).w
 		move.b  #4,((CURSOR_YSPEED-$1000000)).w
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION+1-$1000000)).w,d0
 		cmpi.b  #3,d0
 		bne.s   return_85C0
@@ -896,7 +896,7 @@ sub_85C2:
 		move.b  #FACING_UP,((SPRITE_DIRECTION-$1000000)).w
 		move.w  ((MAP_HEIGHT-$1000000)).w,d7
 		subq.w  #2,d7
-		cmp.b   ((CURSOR_POSITION+1-$1000000)).w,d7
+		cmp.b   ((CURSOR_POSITION_Y-$1000000)).w,d7
 		beq.w   nullsub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_861E
@@ -921,9 +921,9 @@ sub_85C2:
 		btst    #0,(a0,d0.w)
 		beq.w   nullsub_8DDE
 loc_861E:
-		addq.b  #1,((CURSOR_POSITION+1-$1000000)).w
+		addq.b  #1,((CURSOR_POSITION_Y-$1000000)).w
 		move.b  #-4,((CURSOR_YSPEED-$1000000)).w
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION+1-$1000000)).w,d0
 		cmpi.b  #6,d0
 		bne.s   return_864E
@@ -945,7 +945,7 @@ sub_8650:
 		move.b  #FACING_LEFT,((SPRITE_DIRECTION-$1000000)).w
 		move.w  ((MAP_WIDTH-$1000000)).w,d7
 		subq.w  #2,d7
-		cmp.b   ((CURSOR_POSITION-$1000000)).w,d7
+		cmp.b   ((CURSOR_POSITION_X-$1000000)).w,d7
 		beq.w   nullsub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_86A8
@@ -969,9 +969,9 @@ sub_8650:
 		btst    #0,1(a0)
 		beq.w   nullsub_8DDE
 loc_86A8:
-		addq.b  #1,((CURSOR_POSITION-$1000000)).w
+		addq.b  #1,((CURSOR_POSITION_X-$1000000)).w
 		move.b  #-4,((CURSOR_XSPEED-$1000000)).w
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION-$1000000)).w,d0
 		cmpi.b  #7,d0
 		bne.s   return_86D8
@@ -991,7 +991,7 @@ return_86D8:
 
 sub_86DA:
 		move.b  #FACING_RIGHT,((SPRITE_DIRECTION-$1000000)).w
-		cmpi.b  #1,((CURSOR_POSITION-$1000000)).w
+		cmpi.b  #1,((CURSOR_POSITION_X-$1000000)).w
 		beq.w   nullsub_8DDE
 		tst.b   ((byte_FFB538-$1000000)).w
 		beq.w   loc_872E
@@ -1015,9 +1015,9 @@ sub_86DA:
 		btst    #0,-1(a0)
 		beq.w   nullsub_8DDE
 loc_872E:
-		subq.b  #1,((CURSOR_POSITION-$1000000)).w
+		subq.b  #1,((CURSOR_POSITION_X-$1000000)).w
 		move.b  #4,((CURSOR_XSPEED-$1000000)).w
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION-$1000000)).w,d0
 		cmpi.b  #3,d0
 		bne.s   return_8758
@@ -1078,12 +1078,12 @@ til_87A2:       dc.b 8                  ; unknown tiles
 
 sub_87AA:
 		clr.w   d0
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION+1-$1000000)).w,d0
 		mulu.w  #$18,d0
 		move.w  d0,((SCREEN_ADJUSTED_CURSOR_Y-$1000000)).w
 		clr.w   d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		sub.b   ((SCREEN_POSITION-$1000000)).w,d0
 		mulu.w  #$18,d0
 		move.w  d0,((SCREEN_ADJUSTED_CURSOR_X-$1000000)).w
@@ -1584,10 +1584,10 @@ loc_8CEA:
 		clr.l   ((CAMERA_XSPEED-$1000000)).w
 		bsr.w   sub_87AA
 		clr.w   d1
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d1
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		clr.w   d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		add.w   d1,d0
 		lea     (PASSABILITY_FLAGS).l,a0
 		adda.w  d0,a0
@@ -1647,10 +1647,10 @@ loc_8D74:
 		clr.l   ((CAMERA_XSPEED-$1000000)).w
 		bsr.w   sub_87AA
 		clr.w   d1
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d1
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		clr.w   d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		add.w   d1,d0
 		lea     (PASSABILITY_FLAGS).l,a0
 		adda.w  d0,a0
@@ -1757,7 +1757,7 @@ sub_8E52:
 loc_8E5C:
 		clr.l   ((CAMERA_XSPEED-$1000000)).w
 		bsr.w   sub_87AA
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		cmp.b   ((TARGET_X-$1000000)).w,d0
 		ble.s   loc_8E76
 		bsr.w   sub_86DA
@@ -1766,7 +1766,7 @@ loc_8E76:
 		bge.s   loc_8E7C
 		bsr.w   sub_8650
 loc_8E7C:
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		cmp.b   ((TARGET_Y-$1000000)).w,d0
 		ble.s   loc_8E8C
 		bsr.w   sub_853E
@@ -1781,9 +1781,9 @@ loc_8E92:
 		bsr.w   UpdateBattlefieldSprites
 loc_8EA0:
 		jsr     (j_WaitForVInt).l
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		sub.b   ((TARGET_X-$1000000)).w,d0
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d1
 		sub.b   ((TARGET_Y-$1000000)).w,d1
 		or.b    d1,d0
 		bne.s   loc_8E5C
@@ -3146,7 +3146,7 @@ und_981E:
 		dc.b $99
 		dc.b 0
 loc_9824:
-		cmpi.b  #NOVA,((COMBATANT_1_ENTITY-$1000000)).w
+		cmpi.b  #ALLY_NOVA,((COMBATANT_1_ENTITY-$1000000)).w
 		beq.s   return_981C
 		clr.w   d0
 		movem.w d0/d2,-(sp)
@@ -3695,8 +3695,8 @@ loc_9CEC:
 sub_9D08:
 		clr.b   (FADING_SETTING).l
 		move.b  ((ACTOR_BLINKING_TOGGLE-$1000000)).w,((byte_FFB537-$1000000)).w
-		move.b  ((CURSOR_POSITION-$1000000)).w,((byte_FFB535-$1000000)).w
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,((byte_FFB536-$1000000)).w
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,((byte_FFB535-$1000000)).w
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,((byte_FFB536-$1000000)).w
 		bsr.w   sub_AB5C
 		bcs.w   sub_AAE4
 		clr.b   ((AREA_CURSOR_INDEX-$1000000)).w
@@ -3773,17 +3773,17 @@ loc_9E00:
 		bne.s   loc_9E26
 		clr.b   ((SPRITE_DIRECTION-$1000000)).w
 loc_9E26:
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		lsl.w   #8,d0
-		or.b    ((CURSOR_POSITION-$1000000)).w,d0
+		or.b    ((CURSOR_POSITION_X-$1000000)).w,d0
 		move.w  d0,((word_FFC0B2-$1000000)).w
 loc_9E34:
 		clr.b   ((byte_FFB4D4-$1000000)).w
 		bsr.w   sub_8CD4
 		jsr     (j_WaitForVInt).l
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		lsl.w   #8,d0
-		or.b    ((CURSOR_POSITION-$1000000)).w,d0
+		or.b    ((CURSOR_POSITION_X-$1000000)).w,d0
 		cmp.w   ((word_FFC0B2-$1000000)).w,d0
 		beq.s   loc_9E5E
 		move.w  d0,((word_FFC0B2-$1000000)).w
@@ -3888,7 +3888,7 @@ sub_9FB0:
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		move.b  d3,d1
 		jsr     j_SetCombatantX
-		move.b  d1,((CURSOR_POSITION-$1000000)).w
+		move.b  d1,((CURSOR_POSITION_X-$1000000)).w
 		subq.w  #5,d1
 		bge.s   loc_9FC8
 		clr.w   d1
@@ -3903,7 +3903,7 @@ loc_9FD6:
 		move.w  d1,d2
 		move.b  d4,d1
 		jsr     j_SetCombatantY
-		move.b  d1,((CURSOR_POSITION+1-$1000000)).w
+		move.b  d1,((CURSOR_POSITION_Y-$1000000)).w
 		subq.w  #5,d1
 		bge.s   loc_9FEE
 		clr.w   d1
@@ -3921,9 +3921,9 @@ loc_9FFC:
 		bsr.w   sub_9BD0
 		bsr.w   sub_87AA
 		bsr.w   UpdateBattlefieldSprites
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		lsl.w   #8,d0
-		or.b    ((CURSOR_POSITION-$1000000)).w,d0
+		or.b    ((CURSOR_POSITION_X-$1000000)).w,d0
 		move.w  d0,((word_FFC0B2-$1000000)).w
 		rts
 
@@ -3948,8 +3948,8 @@ loc_A026:
 		move.b  #$FF,((ACTOR_BLINKING_TOGGLE-$1000000)).w
 		movem.w d0-d2,-(sp)
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
-		move.b  ((CURSOR_POSITION-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d2
 		jsr     sub_202D4
 		lea     ((byte_FFCB28-$1000000)).w,a0
 loc_A074:
@@ -3962,8 +3962,8 @@ loc_A074:
 		bls.s   loc_A074
 		movem.w (sp)+,d0-d2
 		move.b  #$FF,((byte_FFB4D3-$1000000)).w
-		move.b  d1,((CURSOR_POSITION-$1000000)).w
-		move.b  d2,((CURSOR_POSITION+1-$1000000)).w
+		move.b  d1,((CURSOR_POSITION_X-$1000000)).w
+		move.b  d2,((CURSOR_POSITION_Y-$1000000)).w
 		move.b  d0,((ACTOR_BLINKING_TOGGLE-$1000000)).w
 		bsr.w   sub_AB2C
 		bsr.w   sub_A8C0
@@ -3997,10 +3997,10 @@ loc_A0DE:
 		clr.w   d2
 		move.b  2(a0),d2
 		clr.w   d3
-		move.b  ((CURSOR_POSITION-$1000000)).w,d3
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d3
 		move.b  d3,1(a0)
 		clr.w   d4
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d4
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d4
 		move.b  d4,2(a0)
 		bsr.w   UpdateBattlefieldSprites
 		bsr.w   sub_A8C0
@@ -4013,7 +4013,7 @@ loc_A132:
 		move.b  #$FF,((byte_FFB4D3-$1000000)).w
 		bsr.w   UpdateBattlefieldSprites
 		clr.b   ((byte_FFB4CB-$1000000)).w
-		cmpi.b  #NOVA,((COMBATANT_1_ENTITY-$1000000)).w
+		cmpi.b  #ALLY_NOVA,((COMBATANT_1_ENTITY-$1000000)).w
 		bne.s   loc_A15C
 		clr.b   (FADING_SETTING).l
 		jsr     (j_ExecuteMainMenu).l
@@ -4412,7 +4412,7 @@ sub_A5EA:
 		move.b  d1,((byte_FFB4CD-$1000000)).w
 		move.b  (a0,d1.w),d1
 		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_UNSELLABLE,d2
+		btst    #ITEMTYPE_BIT_CANNOT_DROP,d2
 		bne.s   loc_A644        
 loc_A620:
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
@@ -4538,10 +4538,10 @@ loc_A744:
 		clr.w   d2
 		move.b  2(a0),d2
 		clr.w   d3
-		move.b  ((CURSOR_POSITION-$1000000)).w,d3
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d3
 		move.b  d3,1(a0)
 		clr.w   d4
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d4
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d4
 		move.b  d4,2(a0)
 		bsr.w   UpdateBattlefieldSprites
 		bsr.w   sub_A8C0
@@ -4935,9 +4935,9 @@ sub_AB2C:
 sub_AB40:
 		clr.w   d1
 		clr.w   d2
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d1
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
-		move.b  ((CURSOR_POSITION-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d2
 		add.w   d2,d1
 		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		btst    d0,(a0,d1.w)
@@ -4954,10 +4954,10 @@ sub_AB5C:
 loc_AB62:
 		cmpi.b  #$FF,(a0)
 		beq.s   loc_AB7C
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		cmp.b   1(a0),d0
 		bne.s   loc_AB7C
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		cmp.b   2(a0),d0
 		beq.s   loc_AB90
 loc_AB7C:
@@ -5186,13 +5186,13 @@ ParseBattleExits:
 loc_AD42:
 		move.b  ((CURRENT_REGION-$1000000)).w,d0
 		bpl.s   loc_AD54
-		cmpi.w  #$21A,((CURSOR_POSITION-$1000000)).w
+		cmpi.w  #$21A,((CURSOR_POSITION_X-$1000000)).w
 		bne.s   loc_AD54
 		moveq   #1,d0
 		rts
 loc_AD54:
-		move.b  ((CURSOR_POSITION-$1000000)).w,d1
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d2
 		movea.l (p_pt_BattleExits).l,a0
 		clr.w   d7
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d7
@@ -5233,8 +5233,8 @@ loc_ADA0:
 
 sub_ADA6:
 		move.b  ((CURRENT_REGION-$1000000)).w,d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d1
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d2
 		bsr.s   sub_ADB8        
 		bra.w   loc_ADE0
 
@@ -6555,11 +6555,11 @@ sub_B926:
 
 sub_B936:
 		clr.w   d2
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d2
 		move.w  ((MAP_WIDTH-$1000000)).w,d1
 		mulu.w  d1,d2
 		clr.w   d1
-		move.b  ((CURSOR_POSITION-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d1
 		add.w   d2,d1
 		lea     ((PASSABILITY_FLAGS-$1000000)).w,a0
 		adda.w  d1,a0
@@ -7405,7 +7405,7 @@ GetIconTilesAddress:
 		
 		move.b  (a3,d1.w),d1
 		andi.w  #ITEMENTRY_MASK_INDEX,d1
-		cmpi.w  #NOTHING_ITEM,d1
+		cmpi.w  #ITEM_NOTHING_ITEM,d1
 		bne.s   @Continue
 		                
 		movea.l (p_ItemIcons).l,a0
@@ -7497,7 +7497,7 @@ return_C790:
 ; END OF FUNCTION CHUNK FOR sub_C3AA
 
 spr_C792:       ; icon highlight sprite properties
-        vdpSprite 295, V4|H3|1, SELECTION|PRIORITY_BIT, 255
+        vdpSprite 295, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 255
         vdpSprite 307, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 239
         vdpSprite 307, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 271
         vdpSprite 319, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 255
@@ -8851,7 +8851,7 @@ loc_D9A2:
 		moveq   #6,d0           ; "The item is cursed." refusal text
 		bsr.w   sub_D32C        
 		move.b  ((byte_FFB4C9-$1000000)).w,d0
-		moveq   #STATUS_CURSED,d1
+		moveq   #STATUSEFFECT_CURSE,d1
 		jsr     j_SetStatusEffectsForCombatant
 loc_D9C8:
 		movem.w (sp)+,d0-d1
@@ -9494,8 +9494,8 @@ BuildLandEffectWindow:
 		clr.w   d1
 		clr.w   d2
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d2
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d1
 		jsr     j_GetLandEffectAtPosition
 		move.w  d1,-(sp)
 		lea     aLandEffect(pc), a0
@@ -12198,12 +12198,12 @@ loc_FC48:
 		bsr.w   sub_FBD6
 		lea     (byte_FF10FE).l,a0
 		clr.w   d0
-		move.b  ((CURSOR_POSITION-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d0
 		lsl.w   #2,d0
 		add.w   d2,d0
 		move.w  d0,6(a1)
 		clr.w   d0
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d0
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d0
 		lsl.w   #2,d0
 		add.w   d3,d0
 		move.w  d0,(a1)

@@ -870,9 +870,9 @@ table_EnemyDefs:
         baseHP       70
         baseMP       24
         dc.b         $0
-        mapSprite    CAIN
+        mapSprite    KANE
         battleSprite CAIN, 0
-        portrait     CAIN
+        portrait     KANE_MASKED
         
         ; COLOSSUS
         enemyGold    2500

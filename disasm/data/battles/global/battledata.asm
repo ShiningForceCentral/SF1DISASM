@@ -1,6 +1,6 @@
 
 ; ASM FILE data\stats\battles\global\battledata.asm :
-; 0x1F806..0x1F914 : Position/enemy/ai data for battles
+; 0x29EA4..0x2BF85 : Position/enemy/ai data for battles
 
 ; Syntax allyPosition    x, y
 ;        enemyPosition   x, y, [SPAWN_]enum, # of spawns
@@ -11,13 +11,13 @@ table_BattleData:
 
         ; Battle 0
         numberAllies  7
-        allyPostion   8, 17
-        allyPostion   9, 17
-        allyPostion   7, 18
-        allyPostion   8, 18
-        allyPostion   9, 18
-        allyPostion   7, 19
-        allyPostion   8, 19
+        allyPosition   8, 17
+        allyPosition   9, 17
+        allyPosition   7, 18
+        allyPosition   8, 18
+        allyPosition   9, 18
+        allyPosition   7, 19
+        allyPosition   8, 19
         
         ; Battle 0
         enemyCombatant RUNE_KNIGHT, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -71,27 +71,27 @@ table_BattleData:
         
         ; Battle 1
         numberAllies  9
-        allyPostion   26, 24
-        allyPostion   25, 23
-        allyPostion   26, 23
-        allyPostion   25, 22
-        allyPostion   26, 22
-        allyPostion   25, 21
-        allyPostion   26, 21
-        allyPostion   25, 24
-        allyPostion   25, 25
+        allyPosition   26, 24
+        allyPosition   25, 23
+        allyPosition   26, 23
+        allyPosition   25, 22
+        allyPosition   26, 22
+        allyPosition   25, 21
+        allyPosition   26, 21
+        allyPosition   25, 24
+        allyPosition   25, 25
         
         ; Battle 2
         numberAllies  9
-        allyPostion   9, 23
-        allyPostion   11, 21
-        allyPostion   11, 22
-        allyPostion   11, 23
-        allyPostion   10, 22
-        allyPostion   10, 23
-        allyPostion   9, 24
-        allyPostion   8, 23
-        allyPostion   8, 24
+        allyPosition   9, 23
+        allyPosition   11, 21
+        allyPosition   11, 22
+        allyPosition   11, 23
+        allyPosition   10, 22
+        allyPosition   10, 23
+        allyPosition   9, 24
+        allyPosition   8, 23
+        allyPosition   8, 24
         
         
         dc.b $7, $15  ; allyPosition  7, 21
@@ -257,16 +257,16 @@ table_BattleData:
         
         ; Battle 3
         numberAllies  10
-        allyPostion   6, 28
-        allyPostion   5, 28
-        allyPostion   7, 28
-        allyPostion   4, 29
-        allyPostion   5, 29
-        allyPostion   6, 29
-        allyPostion   7, 29
-        allyPostion   5, 30
-        allyPostion   6, 30
-        allyPostion   7, 30
+        allyPosition   6, 28
+        allyPosition   5, 28
+        allyPosition   7, 28
+        allyPosition   4, 29
+        allyPosition   5, 29
+        allyPosition   6, 29
+        allyPosition   7, 29
+        allyPosition   5, 30
+        allyPosition   6, 30
+        allyPosition   7, 30
         
         ; Battle 3
         enemyCombatant CAIN, SWORD_OF_DARKNESS|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -390,17 +390,17 @@ table_BattleData:
         
         ; Battle 4
         numberAllies  11
-        allyPostion   26, 28
-        allyPostion   25, 28
-        allyPostion   24, 26
-        allyPostion   24, 27
-        allyPostion   24, 28
-        allyPostion   24, 29
-        allyPostion   26, 26
-        allyPostion   26, 27
-        allyPostion   26, 29
-        allyPostion   27, 29
-        allyPostion   28, 29
+        allyPosition   26, 28
+        allyPosition   25, 28
+        allyPosition   24, 26
+        allyPosition   24, 27
+        allyPosition   24, 28
+        allyPosition   24, 29
+        allyPosition   26, 26
+        allyPosition   26, 27
+        allyPosition   26, 29
+        allyPosition   27, 29
+        allyPosition   28, 29
         
         dc.b $1
         dc.b $4
@@ -515,18 +515,18 @@ table_BattleData:
         
         ; Battle 5
         numberAllies  12
-        allyPostion   6, 14
-        allyPostion   7, 15
-        allyPostion   7, 16
-        allyPostion   5, 14
-        allyPostion   6, 15
-        allyPostion   6, 16
-        allyPostion   4, 14
-        allyPostion   5, 15
-        allyPostion   5, 16
-        allyPostion   4, 15
-        allyPostion   4, 16
-        allyPostion   3, 15
+        allyPosition   6, 14
+        allyPosition   7, 15
+        allyPosition   7, 16
+        allyPosition   5, 14
+        allyPosition   6, 15
+        allyPosition   6, 16
+        allyPosition   4, 14
+        allyPosition   5, 15
+        allyPosition   5, 16
+        allyPosition   4, 15
+        allyPosition   4, 16
+        allyPosition   3, 15
         
         ; Battle 5
         enemyCombatant SKELETON_3, MIDDLE_SWORD|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -614,28 +614,28 @@ table_BattleData:
         
         ; Battle 6
         numberAllies  12
-        allyPostion   15, 23
-        allyPostion   14, 21
-        allyPostion   15, 21
-        allyPostion   16, 21
-        allyPostion   17, 21
-        allyPostion   14, 22
-        allyPostion   15, 22
-        allyPostion   16, 22
-        allyPostion   17, 22
-        allyPostion   16, 23
-        allyPostion   15, 24
-        allyPostion   16, 24
+        allyPosition   15, 23
+        allyPosition   14, 21
+        allyPosition   15, 21
+        allyPosition   16, 21
+        allyPosition   17, 21
+        allyPosition   14, 22
+        allyPosition   15, 22
+        allyPosition   16, 22
+        allyPosition   17, 22
+        allyPosition   16, 23
+        allyPosition   15, 24
+        allyPosition   16, 24
         
         ; Battle 6
         enemyCombatant MISHAELA, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant MARIONETTE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, FREEZE|LV_3
+        enemyCombatant MARIONETTE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_3
         enemyCombatant DIRE_CLOWN, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DIRE_CLOWN, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant EVIL_PUPPET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, FREEZE|LV_1
+        enemyCombatant EVIL_PUPPET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_1
         enemyCombatant MANNEQUIN, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant EVIL_PUPPET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, FREEZE|LV_1
-        enemyCombatant EVIL_PUPPET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, FREEZE|LV_1
+        enemyCombatant EVIL_PUPPET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_1
+        enemyCombatant EVIL_PUPPET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_1
         enemyCombatant MANNEQUIN, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant MANNEQUIN, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant GIANT_BAT, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -698,18 +698,18 @@ table_BattleData:
         
         ; Battle 7
         numberAllies  12
-        allyPostion   7, 6
-        allyPostion   7, 11
-        allyPostion   6, 11
-        allyPostion   6, 12
-        allyPostion   8, 12
-        allyPostion   7, 12
-        allyPostion   6, 13
-        allyPostion   8, 13
-        allyPostion   7, 13
-        allyPostion   6, 14
-        allyPostion   8, 14
-        allyPostion   7, 14
+        allyPosition   7, 6
+        allyPosition   7, 11
+        allyPosition   6, 11
+        allyPosition   6, 12
+        allyPosition   8, 12
+        allyPosition   7, 12
+        allyPosition   6, 13
+        allyPosition   8, 13
+        allyPosition   7, 13
+        allyPosition   6, 14
+        allyPosition   8, 14
+        allyPosition   7, 14
         
         ; Battle 7
         enemyCombatant DARKSOL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -769,18 +769,18 @@ table_BattleData:
         
         ; Battle 8
         numberAllies  12
-        allyPostion   6, 3
-        allyPostion   5, 5
-        allyPostion   6, 5
-        allyPostion   4, 4
-        allyPostion   5, 4
-        allyPostion   6, 4
-        allyPostion   7, 4
-        allyPostion   8, 4
-        allyPostion   4, 3
-        allyPostion   5, 3
-        allyPostion   7, 3
-        allyPostion   8, 3
+        allyPosition   6, 3
+        allyPosition   5, 5
+        allyPosition   6, 5
+        allyPosition   4, 4
+        allyPosition   5, 4
+        allyPosition   6, 4
+        allyPosition   7, 4
+        allyPosition   8, 4
+        allyPosition   4, 3
+        allyPosition   5, 3
+        allyPosition   7, 3
+        allyPosition   8, 3
         
         ; Battle 8
         enemyCombatant LIZARDMAN, MIDDLE_AXE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -804,10 +804,10 @@ table_BattleData:
         ; Battle 8
         numberEnemies  16
         enemyPosition 10, 23, REGION_0, 1
-        enemyPosition $8, 10, REGION_0, 1
-        enemyPosition $8, 16, REGION_0, 1
-        enemyPosition $7, 16, REGION_0, 1
-        enemyPosition 14, 16, REGION_0, 1
+        enemyPosition 8, 10, REGION_0, 1
+        enemyPosition 8, 16, REGION_0, 1
+        enemyPosition 7, 16, REGION_0, 1
+        enemyPosition 14, 19, REGION_0, 1
         enemyPosition 16, 20, REGION_0, 1
         enemyPosition 17, 19, REGION_0, 1
         enemyPosition 18, 20, REGION_0, 1
@@ -874,18 +874,18 @@ table_BattleData:
         
         ; Battle 9
         numberAllies  12
-        allyPostion   17, 26
-        allyPostion   17, 27
-        allyPostion   18, 26
-        allyPostion   18, 27
-        allyPostion   17, 28
-        allyPostion   18, 28
-        allyPostion   19, 26
-        allyPostion   19, 27
-        allyPostion   17, 29
-        allyPostion   18, 29
-        allyPostion   20, 28
-        allyPostion   20, 27
+        allyPosition   17, 26
+        allyPosition   17, 27
+        allyPosition   18, 26
+        allyPosition   18, 27
+        allyPosition   17, 28
+        allyPosition   18, 28
+        allyPosition   19, 26
+        allyPosition   19, 27
+        allyPosition   17, 29
+        allyPosition   18, 29
+        allyPosition   20, 28
+        allyPosition   20, 27
         
         dc.b $1
         dc.b $17
@@ -897,7 +897,7 @@ table_BattleData:
         enemyCombatant SKELETON_1, MIDDLE_SWORD|EQUIPPED, MEDICAL_HERB, NOTHING|LV_4
         enemyCombatant DARK_ELF, STEEL_ARROW|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DARK_ELF, STEEL_ARROW|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL_LV_1
+        enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL|LV_1
         enemyCombatant LIZARDMAN, MIDDLE_AXE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant SKELETON_1, MIDDLE_SWORD|EQUIPPED, MEDICAL_HERB, NOTHING|LV_4
         enemyCombatant SKELETON_1, MIDDLE_SWORD|EQUIPPED, MEDICAL_HERB, NOTHING|LV_4
@@ -905,7 +905,7 @@ table_BattleData:
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL_LV_1
+        enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL|LV_1
         enemyCombatant LIZARDMAN, MIDDLE_AXE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         dc.b $FF
         
@@ -982,18 +982,18 @@ table_BattleData:
         
         ; Battle 10: Laser Eye
         numberAllies  12
-        allyPostion   2, 18
-        allyPostion   5, 15
-        allyPostion   4, 15
-        allyPostion   3, 16
-        allyPostion   4, 16
-        allyPostion   5, 16
-        allyPostion   5, 17
-        allyPostion   4, 17
-        allyPostion   3, 17
-        allyPostion   2, 17
-        allyPostion   4, 18
-        allyPostion   3, 18
+        allyPosition   2, 18
+        allyPosition   5, 15
+        allyPosition   4, 15
+        allyPosition   3, 16
+        allyPosition   4, 16
+        allyPosition   5, 16
+        allyPosition   5, 17
+        allyPosition   4, 17
+        allyPosition   3, 17
+        allyPosition   2, 17
+        allyPosition   4, 18
+        allyPosition   3, 18
         
         ; Battle 10: Laser Eye
         enemyCombatant GOBLIN, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1007,7 +1007,7 @@ table_BattleData:
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL|LV1
+        enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL|LV_1
         enemyCombatant LIZARDMAN, MIDDLE_AXE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DARK_ELF, STEEL_ARROW|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DARK_ELF, STEEL_ARROW|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1090,18 +1090,18 @@ table_BattleData:
         
         ; Battle 11: Elliott
         numberAllies  12
-        allyPostion   6, 6
-        allyPostion   6, 5
-        allyPostion   6, 4
-        allyPostion   6, 3
-        allyPostion   6, 2
-        allyPostion   5, 6
-        allyPostion   5, 5
-        allyPostion   5, 4
-        allyPostion   5, 3
-        allyPostion   5, 2
-        allyPostion   4, 5
-        allyPostion   4, 4
+        allyPosition   6, 6
+        allyPosition   6, 5
+        allyPosition   6, 4
+        allyPosition   6, 3
+        allyPosition   6, 2
+        allyPosition   5, 6
+        allyPosition   5, 5
+        allyPosition   5, 4
+        allyPosition   5, 3
+        allyPosition   5, 2
+        allyPosition   4, 5
+        allyPosition   4, 4
         
         dc.b $1
         dc.b $2D
@@ -1112,7 +1112,7 @@ table_BattleData:
         
         ; Battle 11: Elliott
         enemyCombatant ELLIOTT, LONG_SWORD|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant ATILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
+        enemyCombatant ARTILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, SHIELD_RING|EQUIPPED, HEAL|LV_1
         enemyCombatant SILVER_KNIGHT, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant SILVER_KNIGHT, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1213,18 +1213,18 @@ table_BattleData:
         
         ; Battle 12
         numberAllies  12
-        allyPostion   7, 36
-        allyPostion   6, 36
-        allyPostion   5, 36
-        allyPostion   4, 36
-        allyPostion   5, 37
-        allyPostion   6, 37
-        allyPostion   7, 37
-        allyPostion   8, 35
-        allyPostion   9, 35
-        allyPostion   5, 38
-        allyPostion   6, 38
-        allyPostion   7, 38
+        allyPosition   7, 36
+        allyPosition   6, 36
+        allyPosition   5, 36
+        allyPosition   4, 36
+        allyPosition   5, 37
+        allyPosition   6, 37
+        allyPosition   7, 37
+        allyPosition   8, 35
+        allyPosition   9, 35
+        allyPosition   5, 38
+        allyPosition   6, 38
+        allyPosition   7, 38
         
         dc.b $1
         dc.b $9
@@ -1239,7 +1239,7 @@ table_BattleData:
         enemyCombatant SILVER_KNIGHT, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant SILVER_KNIGHT, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, SHIELD_RING|EQUIPPED, HEAL|LV_1
-        enemyCombatant ATILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
+        enemyCombatant ARTILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, SHIELD_RING|EQUIPPED, HEAL|LV_1
         enemyCombatant SILVER_KNIGHT, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1317,26 +1317,26 @@ table_BattleData:
         
         ; Battle 13: Balbazak
         numberAllies  12
-        allyPostion   5, 14
-        allyPostion   6, 14
-        allyPostion   4, 15
-        allyPostion   5, 15
-        allyPostion   6, 15
-        allyPostion   7, 15
-        allyPostion   3, 16
-        allyPostion   4, 16
-        allyPostion   5, 16
-        allyPostion   6, 16
-        allyPostion   7, 16
-        allyPostion   8, 16
+        allyPosition   5, 14
+        allyPosition   6, 14
+        allyPosition   4, 15
+        allyPosition   5, 15
+        allyPosition   6, 15
+        allyPosition   7, 15
+        allyPosition   3, 16
+        allyPosition   4, 16
+        allyPosition   5, 16
+        allyPosition   6, 16
+        allyPosition   7, 16
+        allyPosition   8, 16
         
         ; Battle 13: Balbazak
         enemyCombatant BALBAZAK, STEEL_SWORD|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant EVIL_PUPPET, POWER_STAFF|EQUIPPED, SHIELD_RING|EQUIPPED, HEAL|LV_1
         enemyCombatant HELLHOUND, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant ATILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant ATILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant ATILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
+        enemyCombatant ARTILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
+        enemyCombatant ARTILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
+        enemyCombatant ARTILLERY_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant HELLHOUND, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant DARK_PRIEST_1, POWER_STAFF|EQUIPPED, SHIELD_RING|EQUIPPED, HEAL|LV_1
         enemyCombatant SILVER_KNIGHT, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1404,18 +1404,18 @@ table_BattleData:
         
         ; Battle 14
         numberAllies  12
-        allyPostion   15, 9
-        allyPostion   11, 10
-        allyPostion   11, 9
-        allyPostion   17, 10
-        allyPostion   12, 9
-        allyPostion   13, 9
-        allyPostion   16, 9
-        allyPostion   12, 10
-        allyPostion   13, 10
-        allyPostion   14, 9
-        allyPostion   15, 10
-        allyPostion   16, 10
+        allyPosition   15, 9
+        allyPosition   11, 10
+        allyPosition   11, 9
+        allyPosition   17, 10
+        allyPosition   12, 9
+        allyPosition   13, 9
+        allyPosition   16, 9
+        allyPosition   12, 10
+        allyPosition   13, 10
+        allyPosition   14, 9
+        allyPosition   15, 10
+        allyPosition   16, 10
         
         ; Battle 14
         enemyCombatant SEABAT, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1482,21 +1482,21 @@ table_BattleData:
         
         ; Battle 15
         numberAllies  12
-        allyPostion   15, 28
-        allyPostion   15, 24
-        allyPostion   13, 25
-        allyPostion   14, 25
-        allyPostion   15, 25
-        allyPostion   16, 25
-        allyPostion   17, 25
-        allyPostion   15, 26
-        allyPostion   15, 27
-        allyPostion   14, 28
-        allyPostion   16, 28
-        allyPostion   15, 29
+        allyPosition   15, 28
+        allyPosition   15, 24
+        allyPosition   13, 25
+        allyPosition   14, 25
+        allyPosition   15, 25
+        allyPosition   16, 25
+        allyPosition   17, 25
+        allyPosition   15, 26
+        allyPosition   15, 27
+        allyPosition   14, 28
+        allyPosition   16, 28
+        allyPosition   15, 29
         
         ; Battle 15
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, $4A
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
         enemyCombatant HELLHOUND, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant HELLHOUND, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant WORM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1541,21 +1541,21 @@ table_BattleData:
         dc.b $1
         battleCommand REGION_1|REGION_2|REGION_3|REGION_4|REGION_5|REGION_6|REGION_7, MOVE_TO, 15, 3
         dc.b $2
-        battleCommand REGION_10, CHARGE, $FF, $FF
+        battleCommand REGION_5, CHARGE, $FF, $FF
         battleCommand REGION_1|REGION_2|REGION_3|REGION_4, MOVE_TO, 14, 4
         dc.b $2
-        battleCommand REGION_10, CHARGE, $FF, $FF
+        battleCommand REGION_5, CHARGE, $FF, $FF
         battleCommand REGION_1|REGION_2|REGION_3|REGION_4, MOVE_TO, 16, 4
         dc.b $3
-        battleCommand REGION_10, MOVE_TO, 14, 3
+        battleCommand REGION_5, MOVE_TO, 14, 3
         battleCommand REGION_4, MOVE_TO, 14, 7
         battleCommand REGION_1|REGION_2|REGION_3, MOVE_TO, 14, 9
         dc.b $3
-        battleCommand REGION_10, MOVE_TO, 15, 4
+        battleCommand REGION_5, MOVE_TO, 15, 4
         battleCommand REGION_4, MOVE_TO, 15, 7
         battleCommand REGION_1|REGION_2|REGION_3, MOVE_TO, 15, 10
         dc.b $3
-        battleCommand REGION_10, MOVE_TO, 16, 3
+        battleCommand REGION_5, MOVE_TO, 16, 3
         battleCommand REGION_4, MOVE_TO, 16, 7
         battleCommand REGION_1|REGION_2|REGION_3, MOVE_TO, 16, 9
         dc.b $3
@@ -1599,21 +1599,21 @@ table_BattleData:
         
         ; Battle 16
         numberAllies  12
-        allyPostion   15, 9
-        allyPostion   11, 10
-        allyPostion   11, 9
-        allyPostion   17, 10
-        allyPostion   12, 9
-        allyPostion   13, 9
-        allyPostion   16, 9
-        allyPostion   12, 10
-        allyPostion   13, 10
-        allyPostion   14, 9
-        allyPostion   15, 10
-        allyPostion   16, 10
+        allyPosition   15, 9
+        allyPosition   11, 10
+        allyPosition   11, 9
+        allyPosition   17, 10
+        allyPosition   12, 9
+        allyPosition   13, 9
+        allyPosition   16, 9
+        allyPosition   12, 10
+        allyPosition   13, 10
+        allyPosition   14, 9
+        allyPosition   15, 10
+        allyPosition   16, 10
         
         ; Battle 16
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant PEGASUS_KNIGHT_1, BRONZE_LANCE|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant SEABAT, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -1719,6 +1719,7 @@ table_BattleData:
         aiPath &
             18, 25, &
             18, 20
+        dc.b $FF
 
         aiPath &
             13, 23, &
@@ -1730,18 +1731,18 @@ table_BattleData:
         
         ; Battle 17 & 19
         numberAllies  12
-        allyPostion   2, 13
-        allyPostion   5, 11
-        allyPostion   5, 12
-        allyPostion   5, 13
-        allyPostion   4, 11
-        allyPostion   4, 12
-        allyPostion   4, 13
-        allyPostion   3, 11
-        allyPostion   3, 12
-        allyPostion   3, 13
-        allyPostion   2, 11
-        allyPostion   2, 12
+        allyPosition   2, 13
+        allyPosition   5, 11
+        allyPosition   5, 12
+        allyPosition   5, 13
+        allyPosition   4, 11
+        allyPosition   4, 12
+        allyPosition   4, 13
+        allyPosition   3, 11
+        allyPosition   3, 12
+        allyPosition   3, 13
+        allyPosition   2, 11
+        allyPosition   2, 12
         
         dc.b $C
         dc.b $1C
@@ -1884,18 +1885,18 @@ table_BattleData:
         
         ; Battle 18
         numberAllies  12
-        allyPostion   2, 16
-        allyPostion   4, 15
-        allyPostion   4, 16
-        allyPostion   4, 17
-        allyPostion   4, 18
-        allyPostion   3, 16
-        allyPostion   3, 17
-        allyPostion   3, 18
-        allyPostion   2, 17
-        allyPostion   2, 18
-        allyPostion   1, 16
-        allyPostion   1, 17
+        allyPosition   2, 16
+        allyPosition   4, 15
+        allyPosition   4, 16
+        allyPosition   4, 17
+        allyPosition   4, 18
+        allyPosition   3, 16
+        allyPosition   3, 17
+        allyPosition   3, 18
+        allyPosition   2, 17
+        allyPosition   2, 18
+        allyPosition   1, 16
+        allyPosition   1, 17
         
         ; Battle 18
         enemyCombatant CAIN, SWORD_OF_DARKNESS|EQUIPPED, BROAD_SWORD, NOTHING|LV_4
@@ -1910,13 +1911,12 @@ table_BattleData:
         enemyCombatant GOLEM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant GOLEM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant GOLEM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
         dc.b $FF
         
-        dc.b $F
-        
+		
         ; Battle 18
         numberEnemies 15
         enemyPosition 24, 9, REGION_0, 1
@@ -1992,21 +1992,21 @@ table_BattleData:
         enemyCombatant BOWRIDER, ASSAULT_SHELL|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant HIGH_PRIEST_1, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL|LV_4
         enemyCombatant GOLEM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
         enemyCombatant GOLEM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
         enemyCombatant GOLEM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant HIGH_PRIEST_1, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL|LV_4
         enemyCombatant GOLEM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant BOWRIDER, ASSAULT_SHELL|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
         dc.b $FF
         
         ; Battle 19
@@ -2074,37 +2074,37 @@ table_BattleData:
         
         ; Battle 20: Mishaela
         numberAllies  12
-        allyPostion   14, 26
-        allyPostion   13, 26
-        allyPostion   12, 26
-        allyPostion   15, 26
-        allyPostion   11, 26
-        allyPostion   16, 26
-        allyPostion   13, 27
-        allyPostion   14, 27
-        allyPostion   12, 27
-        allyPostion   15, 27
-        allyPostion   11, 27
-        allyPostion   16, 27
+        allyPosition   14, 26
+        allyPosition   13, 26
+        allyPosition   12, 26
+        allyPosition   15, 26
+        allyPosition   11, 26
+        allyPosition   16, 26
+        allyPosition   13, 27
+        allyPosition   14, 27
+        allyPosition   12, 27
+        allyPosition   15, 27
+        allyPosition   11, 27
+        allyPosition   16, 27
         
         ; Battle 20: Mishaela
-        enemyCombatant MISHAELA, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, BOLT|LV_2
+        enemyCombatant MISHAELA, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_2
         enemyCombatant DURAHAN_2, BROAD_SWORD|EQUIPPED, SHIELD_RING|EQUIPPED, NOTHING|LV_4
         enemyCombatant DURAHAN_2, BROAD_SWORD|EQUIPPED, SHIELD_RING|EQUIPPED, NOTHING|LV_4
         enemyCombatant HIGH_PRIEST_1, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, HEAL|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
-        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_4
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
+        enemyCombatant MASTER_MAGE, HOLY_STAFF|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_2
         enemyCombatant BOWRIDER, ASSAULT_SHELL|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant BOWRIDER, ASSAULT_SHELL|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant BOWRIDER, ASSAULT_SHELL|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, BOLT|LV_1
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, BOLT|LV_1
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, BOLT|LV_1
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
-        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
+        enemyCombatant GARGOYLE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_1
         dc.b $FF
         
         ; Battle 20: Mishaela
@@ -2213,32 +2213,32 @@ table_BattleData:
         
         ; Battle 21
         numberAllies  12
-        allyPostion   4, 4
-        allyPostion   9, 4
-        allyPostion   9, 5
-        allyPostion   8, 3
-        allyPostion   8, 4
-        allyPostion   7, 3
-        allyPostion   7, 4
-        allyPostion   6, 3
-        allyPostion   6, 4
-        allyPostion   5, 3
-        allyPostion   5, 4
-        allyPostion   4, 3
+        allyPosition   4, 4
+        allyPosition   9, 4
+        allyPosition   9, 5
+        allyPosition   8, 3
+        allyPosition   8, 4
+        allyPosition   7, 3
+        allyPosition   7, 4
+        allyPosition   6, 3
+        allyPosition   6, 4
+        allyPosition   5, 3
+        allyPosition   5, 4
+        allyPosition   4, 3
         
         numberAllies  12
-        allyPostion   24, 14
-        allyPostion   24, 13
-        allyPostion   23, 13
-        allyPostion   22, 13
-        allyPostion   25, 13
-        allyPostion   26, 13
-        allyPostion   27, 13
-        allyPostion   23, 14
-        allyPostion   22, 14
-        allyPostion   25, 14
-        allyPostion   26, 14
-        allyPostion   25, 15
+        allyPosition   24, 14
+        allyPosition   24, 13
+        allyPosition   23, 13
+        allyPosition   22, 13
+        allyPosition   25, 13
+        allyPosition   26, 13
+        allyPosition   27, 13
+        allyPosition   23, 14
+        allyPosition   22, 14
+        allyPosition   25, 14
+        allyPosition   26, 14
+        allyPosition   25, 15
         
         ; Battle 21
         enemyCombatant MINOTAUR_1, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -2252,8 +2252,8 @@ table_BattleData:
         enemyCombatant WYVERN, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant JET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant JET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED $B
-        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED $B
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
+        enemyCombatant BELIAL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_1
         dc.b $FF
         
         ; Battle 21
@@ -2304,18 +2304,18 @@ table_BattleData:
         
         ; Battle 22
         numberAllies  12
-        allyPostion   15, 25
-        allyPostion   19, 25
-        allyPostion   19, 26
-        allyPostion   18, 25
-        allyPostion   18, 26
-        allyPostion   17, 25
-        allyPostion   17, 26
-        allyPostion   16, 25
-        allyPostion   16, 26
-        allyPostion   16, 27
-        allyPostion   15, 26
-        allyPostion   15, 27
+        allyPosition   15, 25
+        allyPosition   19, 25
+        allyPosition   19, 26
+        allyPosition   18, 25
+        allyPosition   18, 26
+        allyPosition   17, 25
+        allyPosition   17, 26
+        allyPosition   16, 25
+        allyPosition   16, 26
+        allyPosition   16, 27
+        allyPosition   15, 26
+        allyPosition   15, 27
         
         
         dc.b $1, $F, $3
@@ -2435,32 +2435,32 @@ table_BattleData:
         
         ; Battle 23: Chaos
         numberAllies  12
-        allyPostion   10, 14
-        allyPostion   9, 12
-        allyPostion   10, 12
-        allyPostion   11, 12
-        allyPostion   9, 13
-        allyPostion   8, 14
-        allyPostion   10, 13
-        allyPostion   11, 13
-        allyPostion   12, 13
-        allyPostion   9, 14
-        allyPostion   11, 14
-        allyPostion   12, 14
+        allyPosition   10, 14
+        allyPosition   9, 12
+        allyPosition   10, 12
+        allyPosition   11, 12
+        allyPosition   9, 13
+        allyPosition   8, 14
+        allyPosition   10, 13
+        allyPosition   11, 13
+        allyPosition   12, 13
+        allyPosition   9, 14
+        allyPosition   11, 14
+        allyPosition   12, 14
         
         ; Battle 23: Chaos
         enemyCombatant CHAOS, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant MINOTAUR_1, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant MINOTAUR_1, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant DEMON_MASTER_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED MUDDLE|LV_3
+        enemyCombatant DEMON_MASTER_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, MUDDLE|LV_3
         enemyCombatant ICE_WORM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant ICE_WORM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant DEMON_MASTER_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED FREEZE|LV3
+        enemyCombatant DEMON_MASTER_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_3
         enemyCombatant TORCH_EYE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant TORCH_EYE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant TORCH_EYE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant ICE_WORM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
-        enemyCombatant DEMON_MASTER_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED FREEZE|LV3
+        enemyCombatant DEMON_MASTER_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_3
         enemyCombatant ICE_WORM, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant TORCH_EYE, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant JET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -2532,18 +2532,18 @@ table_BattleData:
         
         ; Battle 24
         numberAllies  12
-        allyPostion   3, 6
-        allyPostion   5, 8
-        allyPostion   4, 8
-        allyPostion   3, 8
-        allyPostion   2, 8
-        allyPostion   5, 7
-        allyPostion   4, 7
-        allyPostion   3, 7
-        allyPostion   2, 7
-        allyPostion   1, 7
-        allyPostion   4, 6
-        allyPostion   2, 6
+        allyPosition   3, 6
+        allyPosition   5, 8
+        allyPosition   4, 8
+        allyPosition   3, 8
+        allyPosition   2, 8
+        allyPosition   5, 7
+        allyPosition   4, 7
+        allyPosition   3, 7
+        allyPosition   2, 7
+        allyPosition   1, 7
+        allyPosition   4, 6
+        allyPosition   2, 6
         
         ; Battle 24
         enemyCombatant ARMED_SKELETON, GREAT_AXE|EQUIPPED, GREAT_AXE, NOTHING|LV_4
@@ -2629,18 +2629,18 @@ table_BattleData:
         
         ; Battle 25: Ramladu 1
         numberAllies  12
-        allyPostion   11, 25
-        allyPostion   8, 26
-        allyPostion   9, 26
-        allyPostion   10, 26
-        allyPostion   12, 26
-        allyPostion   13, 26
-        allyPostion   8, 27
-        allyPostion   9, 27
-        allyPostion   10, 27
-        allyPostion   11, 27
-        allyPostion   12, 27
-        allyPostion   13, 27
+        allyPosition   11, 25
+        allyPosition   8, 26
+        allyPosition   9, 26
+        allyPosition   10, 26
+        allyPosition   12, 26
+        allyPosition   13, 26
+        allyPosition   8, 27
+        allyPosition   9, 27
+        allyPosition   10, 27
+        allyPosition   11, 27
+        allyPosition   12, 27
+        allyPosition   13, 27
         
         ; Battle 25: Ramladu 1
         enemyCombatant RAMLADU, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -2737,18 +2737,18 @@ table_BattleData:
         
         ; Battle 26: Ramladu 2
         numberAllies  12
-        allyPostion   16, 13
-        allyPostion   14, 14
-        allyPostion   13, 14
-        allyPostion   15, 14
-        allyPostion   12, 14
-        allyPostion   16, 14
-        allyPostion   14, 15
-        allyPostion   13, 15
-        allyPostion   15, 15
-        allyPostion   12, 15
-        allyPostion   16, 15
-        allyPostion   11, 15
+        allyPosition   16, 13
+        allyPosition   14, 14
+        allyPosition   13, 14
+        allyPosition   15, 14
+        allyPosition   12, 14
+        allyPosition   16, 14
+        allyPosition   14, 15
+        allyPosition   13, 15
+        allyPosition   15, 15
+        allyPosition   12, 15
+        allyPosition   16, 15
+        allyPosition   11, 15
         
         dc.b $1, $B, $25
         
@@ -2817,25 +2817,25 @@ table_BattleData:
         
         ; Battle 27: Colossus
         numberAllies  12
-        allyPostion   16, 27
-        allyPostion   15, 28
-        allyPostion   17, 28
-        allyPostion   14, 28
-        allyPostion   18, 28
-        allyPostion   13, 28
-        allyPostion   19, 28
-        allyPostion   16, 29
-        allyPostion   15, 29
-        allyPostion   17, 29
-        allyPostion   14, 29
-        allyPostion   18, 29
+        allyPosition   16, 27
+        allyPosition   15, 28
+        allyPosition   17, 28
+        allyPosition   14, 28
+        allyPosition   18, 28
+        allyPosition   13, 28
+        allyPosition   19, 28
+        allyPosition   16, 29
+        allyPosition   15, 29
+        allyPosition   17, 29
+        allyPosition   14, 29
+        allyPosition   18, 29
         
         dc.b $1, $10, $5
         
         ; Battle 27: Colossus
-        enemyCombatant COLOSSUS_1, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, BOLT|LV_3
-        enemyCombatant COLOSSUS_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, FREEZE|LV_3
-        enemyCombatant COLOSSUS_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|BROKEN|EQUIPPED, BLAZE|LV_3
+        enemyCombatant COLOSSUS_1, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BOLT|LV_3
+        enemyCombatant COLOSSUS_2, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, FREEZE|LV_3
+        enemyCombatant COLOSSUS_3, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, BLAZE|LV_3
         enemyCombatant JET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant JET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
         enemyCombatant JET, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -2946,18 +2946,18 @@ table_BattleData:
         
         ; Battle 28: Darksol
         numberAllies  12
-        allyPostion   15, 27
-        allyPostion   14, 28
-        allyPostion   16, 28
-        allyPostion   15, 28
-        allyPostion   14, 29
-        allyPostion   16, 29
-        allyPostion   15, 29
-        allyPostion   13, 30
-        allyPostion   17, 30
-        allyPostion   14, 30
-        allyPostion   16, 30
-        allyPostion   15, 30
+        allyPosition   15, 27
+        allyPosition   14, 28
+        allyPosition   16, 28
+        allyPosition   15, 28
+        allyPosition   14, 29
+        allyPosition   16, 29
+        allyPosition   15, 29
+        allyPosition   13, 30
+        allyPosition   17, 30
+        allyPosition   14, 30
+        allyPosition   16, 30
+        allyPosition   15, 30
         
         ; Battle 28: Darksol
         enemyCombatant DARKSOL, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -3060,18 +3060,18 @@ table_BattleData:
         
         ; Battle 29: Dark Dragon
         numberAllies  12
-        allyPostion   15, 15
-        allyPostion   8, 15
-        allyPostion   9, 15
-        allyPostion   10, 15
-        allyPostion   9, 16
-        allyPostion   20, 15
-        allyPostion   21, 15
-        allyPostion   22, 15
-        allyPostion   21, 16
-        allyPostion   14, 16
-        allyPostion   15, 16
-        allyPostion   16, 16
+        allyPosition   15, 15
+        allyPosition   8, 15
+        allyPosition   9, 15
+        allyPosition   10, 15
+        allyPosition   9, 16
+        allyPosition   20, 15
+        allyPosition   21, 15
+        allyPosition   22, 15
+        allyPosition   21, 16
+        allyPosition   14, 16
+        allyPosition   15, 16
+        allyPosition   16, 16
         
         ; Battle 29: Dark Dragon
         enemyCombatant DARK_DRAGON_1, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4
@@ -3135,18 +3135,18 @@ table_BattleData:
         
         ; Battle 30
         numberAllies  12
-        allyPostion   1, 1
-        allyPostion   2, 1
-        allyPostion   3, 1
-        allyPostion   4, 1
-        allyPostion   5, 1
-        allyPostion   6, 1
-        allyPostion   7, 1
-        allyPostion   8, 1
-        allyPostion   9, 1
-        allyPostion   10, 1
-        allyPostion   11, 1
-        allyPostion   12, 1
+        allyPosition   1, 1
+        allyPosition   2, 1
+        allyPosition   3, 1
+        allyPosition   4, 1
+        allyPosition   5, 1
+        allyPosition   6, 1
+        allyPosition   7, 1
+        allyPosition   8, 1
+        allyPosition   9, 1
+        allyPosition   10, 1
+        allyPosition   11, 1
+        allyPosition   12, 1
         
         ; Battle 30
         enemyCombatant PEGASUS_KNIGHT_1, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING_ITEM|BROKEN|EQUIPPED, NOTHING|LV_4

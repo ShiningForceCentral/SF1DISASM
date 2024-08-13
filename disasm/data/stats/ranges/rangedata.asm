@@ -337,7 +337,7 @@ tbl_RangeData:
         ; Laser Eye
         range      0,SPECIAL_RANGE_LASER_EYE
         area       $80
-        targetType FRIENDS_AND_FOES
+        targetType FRIENDS|FOES
         bra.w   DetermineLaserEyeAction
 
         ; Machine Gun
@@ -367,7 +367,7 @@ tbl_RangeData:
         ; Demon Rod
         range      0,1
         area       0
-        targetType FRIENDS_AND_FOES
+        targetType FRIENDS|FOES
         bra.w   StartBattleaction
 
         ; Item

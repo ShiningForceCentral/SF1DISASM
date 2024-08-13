@@ -831,7 +831,7 @@ pt_Maps:
 		dc.w 5
 		dc.b 5
 		dc.b 0|MAP_CHAPTER_7
-		dcl. 0
+		dc.l 0
 
 		dc.l Map00Section0
 		dc.l Map01Section1

@@ -10042,29 +10042,29 @@ return_4D98:
 debugMode_ChapterTest:
 		
 		move.b  #1,((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
-		moveq   #KEN,d0
+		moveq   #ALLY_KEN,d0
 		jsr     j_JoinForce
-		moveq   #LUKE,d0
+		moveq   #ALLY_LUKE,d0
 		jsr     j_JoinForce
-		moveq   #TAO,d0
+		moveq   #ALLY_TAO,d0
 		jsr     j_JoinForce
-		moveq   #LOWE,d0
+		moveq   #ALLY_LOWE,d0
 		jsr     j_JoinForce
-		moveq   #HANS,d0
+		moveq   #ALLY_HANS,d0
 		jsr     j_JoinForce
-		moveq   #BLEU,d0
+		moveq   #ALLY_BLEU,d0
 		jsr     j_JoinForce
-		moveq   #ADAM,d0
+		moveq   #ALLY_ADAM,d0
 		jsr     j_JoinForce
-		moveq   #ZYLO,d0
+		moveq   #ALLY_ZYLO,d0
 		jsr     j_JoinForce
-		moveq   #MUSASHI,d0
+		moveq   #ALLY_MUSASHI,d0
 		jsr     j_JoinForce
-		moveq   #HANZOU,d0
+		moveq   #ALLY_HANZOU,d0
 		jsr     j_JoinForce
-		moveq   #JOGURT,d0
+		moveq   #ALLY_JOGURT,d0
 		jsr     j_JoinForce
-		moveq   #MAE,d0
+		moveq   #ALLY_MAE,d0
 		moveq   #NON_LEADER_FORCE_MEMBERS_COUNTER,d7
 loc_4DFC:
 		jsr     j_JoinForce
@@ -10144,29 +10144,29 @@ loc_4EF2:
 debugMode_BattleTest:
 		
 		move.b  #1,((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
-		moveq   #KEN,d0
+		moveq   #ALLY_KEN,d0
 		jsr     j_JoinForce
-		moveq   #LUKE,d0
+		moveq   #ALLY_LUKE,d0
 		jsr     j_JoinForce
-		moveq   #TAO,d0
+		moveq   #ALLY_TAO,d0
 		jsr     j_JoinForce
-		moveq   #LOWE,d0
+		moveq   #ALLY_LOWE,d0
 		jsr     j_JoinForce
-		moveq   #HANS,d0
+		moveq   #ALLY_HANS,d0
 		jsr     j_JoinForce
-		moveq   #BLEU,d0
+		moveq   #ALLY_BLEU,d0
 		jsr     j_JoinForce
-		moveq   #ADAM,d0
+		moveq   #ALLY_ADAM,d0
 		jsr     j_JoinForce
-		moveq   #ZYLO,d0
+		moveq   #ALLY_ZYLO,d0
 		jsr     j_JoinForce
-		moveq   #MUSASHI,d0
+		moveq   #ALLY_MUSASHI,d0
 		jsr     j_JoinForce
-		moveq   #HANZOU,d0
+		moveq   #ALLY_HANZOU,d0
 		jsr     j_JoinForce
-		moveq   #JOGURT,d0
+		moveq   #ALLY_JOGURT,d0
 		jsr     j_JoinForce
-		moveq   #MAE,d0
+		moveq   #ALLY_MAE,d0
 		moveq   #NON_LEADER_FORCE_MEMBERS_COUNTER,d7
 loc_4F62:
 		jsr     j_JoinForce
@@ -10692,7 +10692,7 @@ j_j_MainMenuAction_Search:
 
 mainMenuAction_Talk:
 		
-		cmpi.b  #NOVA,((COMBATANT_1_ENTITY-$1000000)).w
+		cmpi.b  #ALLY_NOVA,((COMBATANT_1_ENTITY-$1000000)).w
 		beq.s   loc_5A98
 		jmp     sub_10028
 		bra.s   MainMenuAction_Magic
@@ -10825,13 +10825,13 @@ loc_5B92:
 		move.b  (a0,d0.w),d0
 		andi.w  #ITEMENTRY_MASK_INDEX,d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #CHAOS_BREAKER,d0
+		cmpi.b  #ITEM_CHAOS_BREAKER,d0
 		bne.w   loc_5C30
 		cmpi.b  #8,((CURRENT_CHAPTER-$1000000)).w
 		bne.w   loc_5C30
 		tst.b   ((CURRENT_REGION-$1000000)).w
 		bne.w   loc_5C30
-		cmpi.w  #$170A,((CURSOR_POSITION-$1000000)).w
+		cmpi.w  #$170A,((CURSOR_POSITION_X-$1000000)).w
 		bne.w   loc_5C30
 		moveq   #$29,d0 
 		bsr.w   CheckEventFlag
@@ -10848,9 +10848,9 @@ loc_5B92:
 		clr.b   ((byte_FFB538-$1000000)).w
 		jmp     sub_124008
 loc_5C2E:
-		moveq   #CHAOS_BREAKER,d0 
+		moveq   #ITEM_CHAOS_BREAKER,d0 
 loc_5C30:
-		cmpi.b  #ANTIDOTE,d0
+		cmpi.b  #ITEM_ANTIDOTE,d0
 		bne.w   loc_5C7E
 		trap    #CREATE_MESSAGE_WINDOW
 		txt     $1D         ; "Who will use the[Line][Item]?"
@@ -10872,9 +10872,9 @@ loc_5C30:
 		clstxt
 		rts
 loc_5C7E:
-		cmpi.b  #POWER_POTION,d0
+		cmpi.b  #ITEM_POWER_POTION,d0
 		blt.w   loc_5CE0
-		cmpi.b  #BREAD_OF_LIFE,d0
+		cmpi.b  #ITEM_BREAD_OF_LIFE,d0
 		bgt.w   loc_5CE0
 		trap    #CREATE_MESSAGE_WINDOW
 		txt     $1D         ; "Who will use the[Line][Item]?"
@@ -11134,7 +11134,7 @@ itemMenuAction_Drop:
 		bra.w   loc_5FD0
 loc_5FAA:
 		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_UNSELLABLE,d2
+		btst    #ITEMTYPE_BIT_CANNOT_DROP,d2
 		bne.s   loc_5FC8
 		jsr     j_IncrementDealsStock
 		move.w  ((word_FFB7C6-$1000000)).w,d1
@@ -11473,7 +11473,7 @@ loc_6298:
 		trap    #CREATE_MESSAGE_WINDOW
 		andi.w  #ITEMENTRY_MASK_INDEX,d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #ANTIDOTE,d0
+		cmpi.b  #ITEM_ANTIDOTE,d0
 		bne.w   loc_632A
 		trap    #CREATE_MESSAGE_WINDOW
 		txt     $1D         ; "Who will use the[Line][Item]?"
@@ -11495,9 +11495,9 @@ loc_6298:
 		bsr.w   sub_5CE6
 		bra.w   loc_6398
 loc_632A:
-		cmpi.b  #POWER_POTION,d0
+		cmpi.b  #ITEM_POWER_POTION,d0
 		blt.w   loc_6392        
-		cmpi.b  #BREAD_OF_LIFE,d0
+		cmpi.b  #ITEM_BREAD_OF_LIFE,d0
 		bgt.w   loc_6392        
 		trap    #CREATE_MESSAGE_WINDOW
 		txt     $1D         ; "Who will use the[Line][Item]?"
@@ -11784,7 +11784,7 @@ loc_667E:
 		bra.w   loc_66DE
 loc_66B8:
 		jsr     j_GetItemType
-		btst    #ITEMTYPE_BIT_UNSELLABLE,d2
+		btst    #ITEMTYPE_BIT_CANNOT_DROP,d2
 		bne.s   loc_66D6
 		jsr     j_IncrementDealsStock
 		move.w  ((word_FFB7C6-$1000000)).w,d1
@@ -11824,7 +11824,7 @@ sub_6706:
 		jsr     j_ClearTerrainAtOccupiedSquares
 		clr.b   (byte_FFB53A).l
 		move.w  #$15,(SCREEN_POSITION).l
-		move.w  #$21A,(CURSOR_POSITION).l
+		move.w  #$21A,(CURSOR_POSITION_X).l
 		move.b  #1,(byte_FFB4D7).l
 		jsr     sub_8024
 		clr.b   (AREA_CURSOR_INDEX).l
@@ -11876,7 +11876,7 @@ PositionHeadquartersMembers:
 		lea     HeadquartersMembersPositions(pc), a1
 		jsr     j_PopulateBattlePartyMembersList
 		lea     (byte_FFCB85).l,a0; FORCE_MEMBERS_LIST+1
-		moveq   #NOVA,d1
+		moveq   #ALLY_NOVA,d1
 		clr.w   d2
 		move.b  (a1)+,d2
 		jsr     j_SetEntityIndex
@@ -11961,7 +11961,7 @@ LoadHeadquartersMapsprite:
 		movem.l a0-a1,-(sp)
 		move.w  d0,-(sp)
 		move.w  d1,d0
-		cmpi.w  #NOVA,d1
+		cmpi.w  #ALLY_NOVA,d1
 		beq.s   loc_68B8
 		jsr     j_GetCurrentHP
 		tst.w   d1
@@ -12152,7 +12152,7 @@ sub_6A2E:
 		bsr.w   LoadEndingCutsceneCombatantData
 		clr.b   (byte_FFB53A).l
 		move.w  #$1605,(SCREEN_POSITION).l
-		move.w  #$1B09,(CURSOR_POSITION).l
+		move.w  #$1B09,(CURSOR_POSITION_X).l
 		clr.b   (byte_FFB4D7).l
 		jsr     sub_8024
 		clr.b   (AREA_CURSOR_INDEX).l
@@ -12224,8 +12224,8 @@ dword_6AB8:     dc.l $1E1B0900
 sub_6B38:
 		clr.w   d1
 		clr.w   d2
-		move.b  ((CURSOR_POSITION-$1000000)).w,d1
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d2
 loc_6B44:
 		jsr     sub_80A8
 		move.w  d2,d3
@@ -12264,7 +12264,7 @@ loc_6B9A:
 		move.w  d1,d0
 		jsr     j_GetMapSprite
 		move.l  a0,-(sp)
-		movea.l (p_SpriteTextSounds).l,a0
+		movea.l (p_tbl_SpriteSpeechSfx).l,a0
 		andi.w  #$FF,d1
 		move.b  (a0,d1.w),d1
 		addi.w  #SFX_DIALOG_BLEEP_1,d1
@@ -12292,7 +12292,7 @@ loc_6BF6:
 		moveq   #MAPSPRITE_NOVA,d2
 		bra.s   loc_6C12
 loc_6C08:
-		cmpi.b  #$15,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #$15,((CURSOR_POSITION_Y-$1000000)).w
 		bge.s   loc_6C12
 		moveq   #$1C,d2
 loc_6C12:
@@ -12541,7 +12541,7 @@ loc_6F3C:
 		jsr     sub_8088
 		bsr.w   loc_73B6
 		move.w  (CURRENT_OBJECT).l,d0
-		moveq   #STATUSEFFECT_COUNTER_CURSE,d1
+		moveq   #STATUSEFFECT_CURSE,d1
 		jsr     j_SetStatusEffects
 loc_6F8A:
 		movem.w (sp)+,d0-d1
@@ -13434,12 +13434,12 @@ sub_77A4:
 		jsr     (j_CheckEventFlag).l
 		bne.w   sub_7898
 		bsr.w   sub_80C4
-		cmpi.b  #NOTHING_ITEM,d3
+		cmpi.b  #ITEM_NOTHING_ITEM,d3
 		beq.w   sub_7898
 		clr.w   d7
 		move.b  ((byte_FFB4C5-$1000000)).w,d7
 		move.w  d7,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #NOTHING_ITEM,d3
+		cmpi.b  #ITEM_NOTHING_ITEM,d3
 		bgt.w   loc_78B0
 		move.w  d3,((MESSAGE_ARG_NAME_2-$1000000)).w
 		jsr     (j_OpenMessageWindow).l

@@ -9,8 +9,8 @@ ItemData:
         itemType     USEABLE|CONSUMABLE
         equipEffect  NONE, 0
         useEffect    ITEM, MEDICAL_HERB
-        turnEffect   $FF, 00
-        attackEffect $FF, 00
+        turnEffect   NONE, 00
+        attackEffect NONE, 00
         price        10
     
     ; HEALING_SEED
@@ -18,8 +18,8 @@ ItemData:
         itemType     USEABLE|CONSUMABLE
         equipEffect  NONE, 0
         useEffect    ITEM, HEALING_SEED
-        turnEffect   $FF, 00
-        attackEffect $FF, 00
+        turnEffect   NONE, 00
+        attackEffect NONE, 00
         price        200
     
     ; ANTIDOTE
@@ -140,7 +140,7 @@ ItemData:
         price        20000
     
     ; BLACK_RING
-        equipFlags   SDMN|KNT|WARR|SKNT|WKNT|SMR|NINJ|HERO|PLDN|GLDR|SBRN|SKYL
+        equipFlags   SDMN|KNT|WARR|SKNT_1|WKNT|SMR|NINJ|HERO|PLDN|GLDR|SBRN|SKYL
         itemType     RING|USEABLE|BREAKABLE|RARE|CURSED
         equipEffect  INCREASE_ATK, 6
         useEffect    BLAZE_2, BLAZE_2
@@ -149,7 +149,7 @@ ItemData:
         price        8500
     
     ; EVIL_RING
-        equipFlags   SDMN|KNT|WARR|SKNT|WKNT|SMR|NINJ|HERO|PLDN|GLDR|SBRN|SKYL
+        equipFlags   SDMN|KNT|WARR|SKNT_1|WKNT|SMR|NINJ|HERO|PLDN|GLDR|SBRN|SKYL
         itemType     RING|USEABLE|BREAKABLE|RARE|CURSED|EVIL
         equipEffect  INCREASE_ATK, 8
         useEffect    BOLT_3, BOLT_3
@@ -168,7 +168,7 @@ ItemData:
     
     ; ORB_OF_LIGHT
         equipFlags   ALL
-        itemType     RARE|UNSELLABLE
+        itemType     RARE|CANNOT_DROP
         equipEffect  NONE, 0
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
@@ -177,7 +177,7 @@ ItemData:
     
     ; MOON_STONE
         equipFlags   ALL
-        itemType     RARE|UNSELLABLE
+        itemType     RARE|CANNOT_DROP
         equipEffect  NONE, 0
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
@@ -186,7 +186,7 @@ ItemData:
     
     ; LUNAR_DEW
         equipFlags   ALL
-        itemType     RARE|UNSELLABLE
+        itemType     RARE|CANNOT_DROP
         equipEffect  NONE, 0
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
@@ -316,7 +316,7 @@ ItemData:
         equipEffect  INCREASE_ATK, 25
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $10, $01
+        attackEffect MELEE, DOOM_BLADE_ATTACK
         price        7200
     
     ; KATANA
@@ -329,17 +329,17 @@ ItemData:
         price        12000
     
     ; ELVEN_ARROW
-        equipFlags   ACHR|ASKT|BWMS|SKNT2
+        equipFlags   ACHR|ASKT|BWMS|SKNT_2
         itemType     WEAPON|RARE
         equipEffect  INCREASE_ATK, 18
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $11, $00
+        attackEffect ARROW_LONG, ATTACK
         price        3200
     
     ; SWORD_OF_DARKNESS
         equipFlags   HERO|SKYW
-        itemType     WEAPON|USEABLE|RARE|CURSED|UNSELLABLE
+        itemType     WEAPON|USEABLE|RARE|CURSED|CANNOT_DROP
         equipEffect  INCREASE_ATK, 40
         useEffect    DESOUL_1, DESOUL_1
         turnEffect   NONE, 0
@@ -348,7 +348,7 @@ ItemData:
     
     ; SWORD_OF_LIGHT
         equipFlags   HERO
-        itemType     WEAPON|USEABLE|RARE|UNSELLABLE
+        itemType     WEAPON|USEABLE|RARE|CANNOT_DROP
         equipEffect  INCREASE_ATK, 36
         useEffect    BOLT_2, BOLT_2
         turnEffect   NONE, 0
@@ -357,15 +357,15 @@ ItemData:
     
     ; CHAOS_BREAKER
         equipFlags   HERO|SKYW
-        itemType     WEAPON|USEABLE|RARE|UNSELLABLE
+        itemType     WEAPON|USEABLE|RARE|CANNOT_DROP
         equipEffect  INCREASE_ATK, 40
         useEffect    FREEZE_3, FREEZE_3
         turnEffect   NONE, 0
-        attackEffect $10, $02
+        attackEffect MELEE, CHAOS_BREAKER_ATTACK
         price        18000
     
     ; BRONZE_LANCE
-        equipFlags   KNT|SKNT|WKNT|PLDN|SBRN|SKYL
+        equipFlags   KNT|SKNT_1|WKNT|PLDN|SBRN|SKYL
         itemType     WEAPON
         equipEffect  INCREASE_ATK, 9
         useEffect    NONE, ATTACK
@@ -410,21 +410,21 @@ ItemData:
         price        8500
     
     ; SPEAR
-        equipFlags   KNT|SKNT|WKNT|PLDN|SBRN|SKYL
+        equipFlags   KNT|SKNT_1|WKNT|PLDN|SBRN|SKYL
         itemType     WEAPON
         equipEffect  INCREASE_ATK, 6
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $13, $00
+        attackEffect SPEAR_AND_LASER, ATTACK
         price        150
     
     ; POWER_SPEAR
-        equipFlags   KNT|SKNT|WKNT|PLDN|SBRN|SKYL
+        equipFlags   KNT|SKNT_1|WKNT|PLDN|SBRN|SKYL
         itemType     WEAPON
         equipEffect  INCREASE_ATK, 15
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $13, $00
+        attackEffect SPEAR_AND_LASER, ATTACK
         price        900
     
     ; VALKYRIE
@@ -433,7 +433,7 @@ ItemData:
         equipEffect  INCREASE_ATK, 35
         useEffect    NONE, ATTACK
         turnEffect   RECOVER_HP, 5
-        attackEffect $13, $00
+        attackEffect SPEAR_AND_LASER, ATTACK
         price        14000
     
     ; HAND_AXE
@@ -474,7 +474,7 @@ ItemData:
     
     ; ATLAS
         equipFlags   GLDR
-        itemType     WEAPON|USEABLE|BREAKABLE|RARE|UNSELLABLE
+        itemType     WEAPON|USEABLE|BREAKABLE|RARE|CANNOT_DROP
         equipEffect  INCREASE_ATK, 33
         useEffect    BLAZE_3, BLAZE_3
         turnEffect   NONE, 0
@@ -532,42 +532,42 @@ ItemData:
         equipEffect  YOGURTIZE, 0
         useEffect    ITEM, YOGURT_RING
         turnEffect   NONE, 0
-        attackEffect $FF, $FF
+        attackEffect NONE, NONE
         price        39
     
     ; WOODEN_ARROW
-        equipFlags   ACHR|ASKT|BWMS|SKNT2
+        equipFlags   ACHR|ASKT|BWMS|SKNT_2
         itemType     WEAPON
         equipEffect  INCREASE_ATK, 8
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $12, $00
+        attackEffect ARROW_SHORT, ATTACK
         price        320
     
     ; STEEL_ARROW
-        equipFlags   ACHR|ASKT|BWMS|SKNT2
+        equipFlags   ACHR|ASKT|BWMS|SKNT_2
         itemType     WEAPON
         equipEffect  INCREASE_ATK, 13
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $12, $00
+        attackEffect ARROW_SHORT, ATTACK
         price        1200
     
     ; ASSAULT_SHELL
-        equipFlags   BWMS|SKNT2
+        equipFlags   BWMS|SKNT_2
         itemType     WEAPON
         equipEffect  INCREASE_ATK, 27
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $11, $00
+        attackEffect ARROW_LONG, ATTACK
         price        4500
     
     ; BUSTER_SHOT
-        equipFlags   BWMS|SKNT2
+        equipFlags   BWMS|SKNT_2
         itemType     WEAPON
         equipEffect  INCREASE_ATK, 35
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
-        attackEffect $11, $00
+        attackEffect ARROW_LONG, ATTACK
         price        12400
 

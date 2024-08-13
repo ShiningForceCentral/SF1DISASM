@@ -384,7 +384,7 @@ loc_174E4:
 		move.w  d0,((MESSAGE_ARG_NAME_2-$1000000)).w
 		jsr     j_GetClass
 		move.w  d1,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #JOGURT,d0
+		cmpi.b  #ALLY_JOGURT,d0
 		beq.s   @DescribePromo
 		jsr     j_Promote
 @DescribePromo:
