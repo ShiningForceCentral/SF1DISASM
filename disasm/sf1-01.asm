@@ -668,10 +668,10 @@ sub_300:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_304:
+j_OpenMessageWindow:
 		bra.w   sub_18DC
 
-    ; End of function sub_304
+    ; End of function j_OpenMessageWindow
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -1006,6 +1006,7 @@ InitVdp:
 		move.w  (a0)+,d0
 		bsr.w   SetVdpReg
 		dbf     d1,@SetVdpReg_Loop
+
 		clr.w   d0
 		clr.w   d1
 		clr.w   d2
@@ -1031,17 +1032,20 @@ loc_412:
 		move.w  #0,(a0)+        ; clear from FF0100 to FF0500
 		move.w  #0,(a0)+
 		dbf     d0,loc_412
+
 		lea     (VERTICAL_SCROLL_DATA).l,a0
 		move.w  #$13,d0
 loc_428:
 		move.w  #0,(a0)+        ; clear next 80d bytes
 		move.w  #0,(a0)+
 		dbf     d0,loc_428
+
 		lea     (PALETTE_1_BASE).l,a0
 		moveq   #$7F,d1 
 loc_43C:
 		clr.w   (a0)+           ; clear palette replicas ?
 		dbf     d1,loc_43C
+
 		bsr.w   ClearSpriteTable
 		bsr.w   UpdateVdpHScrollData
 		bsr.w   UpdateVdpVScrollData
@@ -1095,7 +1099,8 @@ loc_4B2:
 		move.b  (a5)+,d5        ; set each vdp register with initial parameters
 		move.w  d5,(a4)
 		add.w   d7,d5
-		dbf     d1,loc_4B2      
+		dbf     d1,loc_4B2    
+
 		move.l  (a5)+,(a4)
 		move.w  d0,(a3)         ; move 0 to vdp data port
 		move.w  d7,(a1)         ; Z80 busreq cancel ?
@@ -1106,28 +1111,33 @@ loc_4C4:
 		moveq   #$25,d2 ; loop 37 times
 loc_4CA:
 		move.b  (a5)+,(a0)+     ; copy 37 bytes to Z80 ram
-		dbf     d2,loc_4CA      
+		dbf     d2,loc_4CA    
+
 		move.w  d0,(a2)         ; Z80 reset request ?
 		move.w  d0,(a1)         ; Z80 busreq cancel ?
 		move.w  d7,(a2)         ; Z80 reset cancel ?
 loc_4D6:
 		move.l  d0,-(a6)        ; clear RAM
-		dbf     d6,loc_4D6      
+		dbf     d6,loc_4D6  
+
 		move.l  (a5)+,(a4)      ; disable DMA, increment data bias number : 2
 		move.l  (a5)+,(a4)      ; address set : CRAM write ?
 		moveq   #$1F,d3         ; loop 31 times
 loc_4E2:
 		move.l  d0,(a3)         ; clear CRAM ?
 		dbf     d3,loc_4E2      
+
 		move.l  (a5)+,(a4)      ; VSRAM write
 		moveq   #$13,d4         ; loop 19 times
 loc_4EC:
 		move.l  d0,(a3)         ; clear VSRAM
 		dbf     d4,loc_4EC      
+
 		moveq   #3,d5           ; loop 3 times
 loc_4F4:
 		move.b  (a5)+,$11(a3)   ; set PSG volume to 0
 		dbf     d5,loc_4F4      
+
 		move.w  d0,(a2)         ; bus reset cancel ?
 		movem.l (a6),d0-a6      ; clear registers
 		move    #$2700,sr       ; Move 0x2700 into Status Register, which now has these set: no trace, A7 is Interupt Stack Pointer, no interrupts, clear condition code bits
@@ -1380,7 +1390,7 @@ IntLv17:
 
 Trap5_:
 		movem.l d0-a6,-(sp)
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		movem.l (sp)+,d0-a6
 		rte
 
@@ -1649,6 +1659,7 @@ loc_8E6:
 loc_924:
 		move.b  1(a0),(a0)+
 		dbf     d7,loc_924
+
 		movem.l (sp)+,d7-a0
 		subq.b  #1,(MUSIC_STACK_LENGTH).l
 loc_936:
@@ -1703,6 +1714,7 @@ loc_9B4:
 loc_9CC:
 		move.b  -2(a0),-(a0)    ; add music index to music stack
 		dbf     d7,loc_9CC
+
 		move.b  d0,-(a0)
 		movem.l (sp)+,d7-a0
 		cmpi.b  #$A,(MUSIC_STACK_LENGTH).l
@@ -2043,6 +2055,7 @@ DuplicatePalettes:
 @Loop:
 		move.w  (a5)+,(a6)+
 		dbf     d7,@Loop
+
 		movem.l (sp)+,d7/a5-a6
 
     ; End of function DuplicatePalettes
@@ -2223,6 +2236,7 @@ loc_DB4:
 		dbf     d7,loc_D5E
 loc_DC0:
 		dbf     d6,loc_D48
+
 		bsr.w   ApplyVIntCramDma
 		bsr.w   EnableDmaQueueProcessing
 		movem.l (sp)+,d2-a2
@@ -2273,6 +2287,7 @@ ClearSpriteTable:
 		addq.w  #8,a0
 		addq.b  #1,d0
 		dbf     d1,@Loop
+
 		clr.b   -5(a0)
 		movem.l (sp)+,d0-d1/a0
 		rts
@@ -2298,6 +2313,7 @@ ClearScrollTable:
 @Loop:
 		clr.l   (a6)+
 		dbf     d7,@Loop
+
 		movem.l (sp)+,d7/a6
 		rts
 
@@ -2503,10 +2519,12 @@ loc_FC4:
 		move.w  (a4),(a5)+
 		move.w  (a4)+,(a3)+
 		dbf     d4,loc_FC4
+
 		adda.w  #$80,a6 
 		movem.l (sp)+,a3
 		adda.w  #$80,a3 
 		dbf     d3,loc_FAC
+
 		movem.l (sp)+,d3-d4/a3-a6
 		bsr.w   EnableInterrupts
 		bra.w   WaitForVdpCommandQueueProcessing
@@ -2715,6 +2733,7 @@ loc_11DE:
 		move.w  d6,(a6)+
 		addq.l  #2,a6
 		dbf     d7,loc_11DE
+
 		movem.l (sp)+,d7/a6
 		bra.s   UpdateVdpHScrollData
 
@@ -2768,6 +2787,7 @@ loc_1242:
 		move.w  d6,(a6)+
 		addq.l  #2,a6
 		dbf     d7,loc_1242
+
 		movem.l (sp)+,d7/a6
 		bra.s   UpdateVdpVScrollData
 
@@ -3154,6 +3174,7 @@ CopyBytes:
 loc_1532:
 		move.b  (a0)+,(a1)+
 		dbf     d7,loc_1532
+
 		movem.l (sp)+,d7-a1
 		rts
 loc_153E:
@@ -3163,6 +3184,7 @@ loc_153E:
 loc_1544:
 		move.b  -(a0),-(a1)
 		dbf     d7,loc_1544
+
 		movem.l (sp)+,d7-a1
 		rts
 
@@ -3184,6 +3206,7 @@ InitSprites:
 		move.w  #1,(a0)+
 		addq.w  #1,d1
 		dbf     d0,@Loop
+
 		subq.l  #6,a0
 		clr.w   (a0)
 		movem.l (sp)+,d0-d1/a0
@@ -3639,6 +3662,7 @@ loc_188A:
 loc_1896:
 		addq.w  #1,d2
 		dbf     d7,loc_188A
+
 		subq.w  #1,d0
 		rts
 
@@ -3675,6 +3699,7 @@ sub_18C4:
 loc_18D0:
 		clr.b   (a0)+
 		dbf     d0,loc_18D0
+
 		movem.l (sp)+,d0/a0
 		rts
 
@@ -3749,6 +3774,7 @@ LoadMessageWindowLayout_TopBorder:
 loc_196C:
 		bsr.s   LoadMessageWindowSingleRow
 		dbf     d6,loc_196C
+
 ; ---------------------------------------------------------------------------
 LoadMessageWindowLayout_BottomBorder:
 		
@@ -3780,6 +3806,7 @@ HandleDialogueTypewriting:
 loc_19A4:
 		move.w  #$DDDD,(a0)+
 		dbf     d7,loc_19A4
+
 		clr.w   d0
 loc_19AE:
 		move.w  d0,-(sp)
@@ -3861,8 +3888,10 @@ loc_1A54:
 		move.l  (a0)+,(a1)+
 		adda.w  #$320,a0
 		dbf     d1,loc_1A54
+
 		suba.w  #$CE0,a0
 		dbf     d0,loc_1A52
+
 		lea     (FF0FFE_LOADING_SPACE).l,a0
 		lea     ($D120).l,a1
 		move.w  #$680,d0
@@ -3943,6 +3972,7 @@ loc_1B0A:
 		bsr.s   sub_1B1E
 		bsr.w   HandleBlinkingDialogueCursor
 		dbf     d5,loc_1B0A
+
 		move.l  (sp)+,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		rts
 
@@ -3971,6 +4001,7 @@ loc_1B38:
 		bsr.s   sub_1B4A
 		adda.w  #$324,a0
 		dbf     d7,loc_1B38
+
 		move.l  #$DDDDDDDD,d0
 		bra.s   loc_1B4E
 
@@ -4030,6 +4061,7 @@ loc_1BAA:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BAA
+
 		lea     (SPRITE_25_PROPERTIES).l,a1
 		moveq   #6,d7
 loc_1BC0:
@@ -4039,6 +4071,7 @@ loc_1BC0:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BC0
+
 		lea     (SPRITE_54_PROPERTIES).l,a1
 		moveq   #9,d7
 loc_1BD6:
@@ -4048,6 +4081,7 @@ loc_1BD6:
 		move.w  (a0)+,(a1)
 		add.w   d0,(a1)+
 		dbf     d7,loc_1BD6
+
 		move.l  #$2020202,d0
 		lea     ((byte_FFB4DB-$1000000)).w,a0
 		move.b  d0,(a0)+
@@ -4066,121 +4100,32 @@ loc_1BD6:
 ; END OF FUNCTION CHUNK FOR OpenMessageWindow
 
 word_1C0E:      ; sprite properties data
-		dc.w $118
-		dc.b $F
-		dc.b 0
-		dc.w $C689
-		dc.w $98
-		dc.w $118
-		dc.b $F
-		dc.b 0
-		dc.w $C699
-		dc.w $B8
-		dc.w $118
-		dc.b $F
-		dc.b 0
-		dc.w $C6A9
-		dc.w $D8
-		dc.w $118
-		dc.b $F
-		dc.b 0
-		dc.w $C6B9
-		dc.w $F8
-		dc.w $118
-		dc.b $F
-		dc.b 0
-		dc.w $C6C9
-		dc.w $118
-		dc.w $118
-		dc.b $F
-		dc.b 0
-		dc.w $C6D9
-		dc.w $138
-		dc.w $118
-		dc.b 7
-		dc.b 0
-		dc.w $C6E9
-		dc.w $158
-		dc.w $110
-		dc.b $C
-		dc.b 0
-		dc.w $C680
-		dc.w $90
-		dc.w $110
-		dc.b $C
-		dc.b 0
-		dc.w $C681
-		dc.w $B0
-		dc.w $110
-		dc.b $C
-		dc.b 0
-		dc.w $C681
-		dc.w $D0
-		dc.w $110
-		dc.b $C
-		dc.b 0
-		dc.w $C681
-		dc.w $F0
-		dc.w $110
-		dc.b $C
-		dc.b 0
-		dc.w $C681
-		dc.w $110
-		dc.w $110
-		dc.b $C
-		dc.b 0
-		dc.w $C681
-		dc.w $130
-		dc.w $110
-		dc.b $C
-		dc.b 0
-		dc.w $CE80
-		dc.w $150
-		dc.w $138
-		dc.b $C
-		dc.b 0
-		dc.w $D680
-		dc.w $90
-		dc.w $138
-		dc.b $C
-		dc.b 0
-		dc.w $D681
-		dc.w $B0
-		dc.w $138
-		dc.b $C
-		dc.b 0
-		dc.w $D681
-		dc.w $D0
-		dc.w $138
-		dc.b $C
-		dc.b 0
-		dc.w $D681
-		dc.w $F0
-		dc.w $138
-		dc.b $C
-		dc.b 0
-		dc.w $D681
-		dc.w $110
-		dc.w $138
-		dc.b $C
-		dc.b 0
-		dc.w $D681
-		dc.w $130
-		dc.w $138
-		dc.b $C
-		dc.b 0
-		dc.w $DE80
-		dc.w $150
-		dc.w $118
-		dc.b 3
-		dc.b 0
-		dc.w $C685
-		dc.w $90
-		dc.w $118
-		dc.b 3
-		dc.b 0
-		dc.w $CE85
-		dc.w $168
+
+                vdpSprite 280, V4|H4|0, 689|PALETTE3|PRIORITY_BIT, 152
+                vdpSprite 280, V4|H4|0, 699|PALETTE3|PRIORITY_BIT, 184
+                vdpSprite 280, V4|H4|0, 6A9|PALETTE3|PRIORITY_BIT, 216
+                vdpSprite 280, V4|H4|0, 6B9|PALETTE3|PRIORITY_BIT, 248
+                vdpSprite 280, V4|H4|0, 6C9|PALETTE3|PRIORITY_BIT, 280
+                vdpSprite 280, V4|H4|0, 6D9|PALETTE3|PRIORITY_BIT, 312
+
+                vdpSprite 280, V4|H2|0, 6E9|PALETTE3|PRIORITY_BIT, 344
+                vdpSprite 272, V1|H4|0, MESSAGE_START1|PALETTE3|PRIORITY_BIT, 144
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 176
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 208
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 240
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 272
+                vdpSprite 272, V1|H4|0, 681|PALETTE3|PRIORITY_BIT, 304
+
+                vdpSprite 272, V1|H4|0, MESSAGE_START1|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 336
+                vdpSprite 312, V1|H4|0, MESSAGE_START1|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 144
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 176
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 208
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 240
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 272
+                vdpSprite 312, V1|H4|0, 681|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 304
+                vdpSprite 312, V1|H4|0, MESSAGE_START1|MIRRORED_BIT|FLIPPED_BIT|PALETTE3|PRIORITY_BIT, 336
+                vdpSprite 280, V4|H1|0, 685|PALETTE3|PRIORITY_BIT, 144
+                vdpSprite 280, V4|H1|0, 685|MIRRORED_BIT|PALETTE3|PRIORITY_BIT, 360
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -4209,6 +4154,7 @@ loc_1CEC:
 		bsr.w   sub_1D4A
 		bsr.w   sub_1D36
 		dbf     d7,loc_1CEC
+
 		add.b   d4,((TEXT_X_POSITION-$1000000)).w
 		rts
 
@@ -5509,6 +5455,7 @@ loc_239E:
 		move.w  d0,(a1)+
 loc_23AA:
 		dbf     d1,loc_239E
+
 		move.w  #$FFFF,(a1)+
 		rts
 
@@ -5659,7 +5606,8 @@ loc_249A:
 		move.b  (a2)+,d0
 		move.w  d0,(a1)+
 		dbf     d7,loc_249A
-		move.w  #$FFFF,(a1)
+
+		move.w  #-1,(a1)
 		rts
 
 ; END OF FUNCTION CHUNK FOR sub_2296
@@ -5986,6 +5934,7 @@ loc_262E:
 		moveq   #2,d5
 loc_2632:
 		dbf     d3,loc_263A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_263A:
@@ -5997,12 +5946,14 @@ loc_263A:
 		clr.w   d5
 loc_264A:
 		dbf     d3,loc_2652
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2652:
 		add.w   d0,d0
 		addx.w  d5,d5
 		dbf     d4,loc_264A
+
 		adda.w  d5,a2
 		cmpa.l  a3,a2
 		bcc.w   loc_28C6
@@ -6029,6 +5980,7 @@ loc_2682:
 loc_268A:
 		move.b  d1,(a2)
 		dbf     d3,loc_2694
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2694:
@@ -6047,18 +5999,21 @@ loc_2694:
 loc_26B0:
 		addq.w  #3,d3
 		dbf     d3,loc_26BA
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26BA:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_26C8
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26C8:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_26D6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26D6:
@@ -6066,6 +6021,7 @@ loc_26D6:
 		bcc.w   loc_262E
 loc_26DC:
 		dbf     d3,loc_26E4
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_26E4:
@@ -6085,18 +6041,21 @@ loc_26E4:
 loc_2706:
 		addq.w  #3,d3
 		dbf     d3,loc_2710
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2710:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_271E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_271E:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_272C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_272C:
@@ -6121,18 +6080,21 @@ loc_2736:
 loc_2754:
 		addq.w  #3,d3
 		dbf     d3,loc_275E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_275E:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_276C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_276C:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_277A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_277A:
@@ -6154,18 +6116,21 @@ loc_2784:
 loc_279E:
 		addq.w  #3,d3
 		dbf     d3,loc_27A8
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27A8:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_27B6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27B6:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_27C4
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27C4:
@@ -6187,18 +6152,21 @@ loc_27CE:
 loc_27EC:
 		addq.w  #3,d3
 		dbf     d3,loc_27F6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_27F6:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_2804
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2804:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_2812
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2812:
@@ -6208,6 +6176,7 @@ loc_2812:
 loc_281C:
 		move.l  a1,d5
 		dbf     d3,loc_2826
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2826:
@@ -6227,18 +6196,21 @@ loc_2826:
 loc_2848:
 		addq.w  #3,d3
 		dbf     d3,loc_2852
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2852:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_2860
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2860:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_286E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_286E:
@@ -6260,18 +6232,21 @@ loc_2878:
 loc_2896:
 		addq.w  #3,d3
 		dbf     d3,loc_28A0
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_28A0:
 		add.w   d0,d0
 		bcs.w   loc_281C
 		dbf     d3,loc_28AE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_28AE:
 		add.w   d0,d0
 		bcs.w   loc_2878
 		dbf     d3,loc_28BC
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_28BC:
@@ -6379,6 +6354,7 @@ loc_2982:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_2982
+
 		lea     4(a0),a2
 		moveq   #7,d3
 loc_299C:
@@ -6391,6 +6367,7 @@ loc_299C:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_299C
+
 		lea     8(a0),a2
 		moveq   #7,d3
 loc_29B6:
@@ -6403,6 +6380,7 @@ loc_29B6:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_29B6
+
 		lea     $C(a0),a2
 		moveq   #7,d3
 loc_29D0:
@@ -6415,10 +6393,13 @@ loc_29D0:
 		move.l  (a2),(a1)+
 		adda.w  d2,a2
 		dbf     d3,loc_29D0
+
 		adda.w  d7,a0
 		dbf     d6,loc_297E
+
 		lea     $10(a3),a3
 		dbf     d5,loc_297A
+
 		movem.l (sp)+,a4-a6
 		rts
 
@@ -6451,14 +6432,16 @@ loc_2A2E:
 		movem.l d0/d3-d6/a4-a6,-(a1)
 		movem.l d0/d3-d6/a4-a6,-(a1)
 		dbf     d7,loc_2A2E
-		moveq   #$FFFFFF80,d6
+
+		moveq   #-128,d6
 		moveq   #$F,d7
 		clr.w   d3
 loc_2A48:
-		moveq   #$FFFFFFFF,d4
+		moveq   #-1,d4
 		moveq   #2,d5
 loc_2A4C:
 		dbf     d3,loc_2A54
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2A54:
@@ -6470,12 +6453,14 @@ loc_2A54:
 		clr.w   d5
 loc_2A64:
 		dbf     d3,loc_2A6C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2A6C:
 		add.w   d0,d0
 		addx.w  d5,d5
 		dbf     d4,loc_2A64
+
 		adda.w  d5,a2
 		cmpa.l  a3,a2
 		bcc.w   loc_2CE0
@@ -6502,6 +6487,7 @@ loc_2A9C:
 loc_2AA4:
 		move.b  d1,(a2)
 		dbf     d3,loc_2AAE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AAE:
@@ -6520,18 +6506,21 @@ loc_2AAE:
 loc_2ACA:
 		addq.w  #3,d3
 		dbf     d3,loc_2AD4
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AD4:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2AE2
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AE2:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2AF0
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AF0:
@@ -6539,6 +6528,7 @@ loc_2AF0:
 		bcc.w   loc_2A48
 loc_2AF6:
 		dbf     d3,loc_2AFE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2AFE:
@@ -6558,18 +6548,21 @@ loc_2AFE:
 loc_2B20:
 		addq.w  #3,d3
 		dbf     d3,loc_2B2A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B2A:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2B38
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B38:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2B46
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B46:
@@ -6594,18 +6587,21 @@ loc_2B50:
 loc_2B6E:
 		addq.w  #3,d3
 		dbf     d3,loc_2B78
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B78:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2B86
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B86:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2B94
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2B94:
@@ -6627,18 +6623,21 @@ loc_2B9E:
 loc_2BB8:
 		addq.w  #3,d3
 		dbf     d3,loc_2BC2
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2BC2:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2BD0
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2BD0:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2BDE
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2BDE:
@@ -6660,18 +6659,21 @@ loc_2BE8:
 loc_2C06:
 		addq.w  #3,d3
 		dbf     d3,loc_2C10
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C10:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2C1E
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C1E:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2C2C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C2C:
@@ -6681,6 +6683,7 @@ loc_2C2C:
 loc_2C36:
 		move.l  a1,d5
 		dbf     d3,loc_2C40
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C40:
@@ -6700,18 +6703,21 @@ loc_2C40:
 loc_2C62:
 		addq.w  #3,d3
 		dbf     d3,loc_2C6C
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C6C:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2C7A
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C7A:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2C88
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2C88:
@@ -6733,18 +6739,21 @@ loc_2C92:
 loc_2CB0:
 		addq.w  #3,d3
 		dbf     d3,loc_2CBA
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2CBA:
 		add.w   d0,d0
 		bcs.w   loc_2C36
 		dbf     d3,loc_2CC8
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2CC8:
 		add.w   d0,d0
 		bcs.w   loc_2C92
 		dbf     d3,loc_2CD6
+
 		moveq   #$F,d3
 		move.w  (a0)+,d0
 loc_2CD6:
@@ -6782,6 +6791,7 @@ loc_2D10:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2D36
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2D36:
@@ -6806,6 +6816,7 @@ loc_2D42:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2D72
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2D72:
@@ -6831,6 +6842,7 @@ loc_2D7E:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2DB0
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2DB0:
@@ -6857,6 +6869,7 @@ loc_2DBC:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2DEE
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2DEE:
@@ -6878,6 +6891,7 @@ loc_2DFA:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2E22
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2E22:
@@ -6900,6 +6914,7 @@ loc_2E2E:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2E58
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2E58:
@@ -6923,6 +6938,7 @@ loc_2E64:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2E8E
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2E8E:
@@ -6941,6 +6957,7 @@ loc_2E9A:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2EBA
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2EBA:
@@ -6960,6 +6977,7 @@ loc_2EC6:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2EE8
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2EE8:
@@ -6980,6 +6998,7 @@ loc_2EF4:
 		or.b    d1,d4
 		lea     $5C(a0),a0
 		dbf     d5,loc_2F16
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2F16:
@@ -6995,6 +7014,7 @@ loc_2F22:
 		move.b  d4,(a0)+
 		lea     $5C(a0),a0
 		dbf     d5,loc_2F3A
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2F3A:
@@ -7011,6 +7031,7 @@ loc_2F46:
 		or.b    d1,d4
 		lea     $5C(a0),a0
 		dbf     d5,loc_2F60
+
 		lea     -$23C(a0),a0
 		moveq   #5,d5
 loc_2F60:
@@ -7390,13 +7411,11 @@ sub_3284:
 		bsr.w   InitializeReaderScreen
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     sub_164014
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  #SFX_DIALOG_BLEEP_1,((SPEECH_SFX-$1000000)).w
-		move.w  #$3B,d0 ; "Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]"
-		trap    #DISPLAY_MESSAGE
-		move.w  #$3C,d0 ; "Don't stay away too long,[Line]though. We need you here to[Line]lead the Shining Force![Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #6
+		txt     $3B ; "Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]"
+		txt     $3C ; "Don't stay away too long,[Line]though. We need you here to[Line]lead the Shining Force![Wait2]"
+		clstxt
 		jsr     sub_164018
 		bsr.w   DisplayShiningForceLogo
 		move.w  #3600,d0
@@ -7417,40 +7436,32 @@ sub_3284:
 
 sub_32EC:
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
-		moveq   #$78,d0 
+		moveq   #120,d0 
 		bsr.w   j_Sleep
 		sndCom  SOUND_COMMAND_18564
-		moveq   #$3C,d0 
+		moveq   #60,d0 
 		bsr.w   j_Sleep
 		bsr.w   InitializeReaderScreen
 		move.b  #1,((MESSAGE_SPEED-$1000000)).w
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		move.w  #SFX_DIALOG_BLEEP_1,((SPEECH_SFX-$1000000)).w
-		move.w  #$3E,d0 ; "Swallowed by the murky brine,[Line]the Castle of the Ancients[Line]was lost forevermore.[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$3F,d0 ; "The battle over and Rune[Line]saved, the warriors of the[Line]Shining Force returned home.[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$40,d0 ; "Led by Mae, Guardiana was[Line]rebuilt and Anri inherited[Line]the throne.[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$41,d0 ; "As for [Hero], he is[Line]believed to have perished at[Line]sea along with Dark Dragon.[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $3E ; "Swallowed by the murky brine,[Line]the Castle of the Ancients[Line]was lost forevermore.[Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $3F ; "The battle over and Rune[Line]saved, the warriors of the[Line]Shining Force returned home.[Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $40 ; "Led by Mae, Guardiana was[Line]rebuilt and Anri inherited[Line]the throne.[Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $41 ; "As for [Hero], he is[Line]believed to have perished at[Line]sea along with Dark Dragon.[Delay2][Delay2]"
 		jsr     sub_164014
-		trap    #7
-		move.w  #$42,d0 ; "And that is the official[Line]ending. But you and I know[Line]differently, don't we?[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$43,d0 ; "Somewhere, evil stirs in a[Line]land that has need of a[Line]hero.[Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$44,d0 ; "And I know you'll be up to[Line]the challenge, [Hero]![Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$45,d0 ; "Well, goodbye for now. I have[Line]a feeling I'll be seeing you[Line]again.[Delay2][Delay2][Delay2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #6
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $42 ; "And that is the official[Line]ending. But you and I know[Line]differently, don't we?[Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $43 ; "Somewhere, evil stirs in a[Line]land that has need of a[Line]hero.[Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $44 ; "And I know you'll be up to[Line]the challenge, [Hero]![Delay2][Delay2]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $45 ; "Well, goodbye for now. I have[Line]a feeling I'll be seeing you[Line]again.[Delay2][Delay2][Delay2]"
+		clstxt
 		moveq   #$3C,d0 
 		bsr.w   j_Sleep
 		sndCom  SOUND_COMMAND_FADE_OUT
@@ -7487,32 +7498,26 @@ loc_339E:
 		jsr     j_InitializeNewGame
 		bra.w   loc_34B8
 loc_33CA:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		clr.b   ((MESSAGE_SPEED-$1000000)).w
 		tst.b   (P1_INPUT).l    
 		bne.s   loc_33EE
-		move.w  #$27,d0 ; "Wow! Dark Dragon, Ancients...[Line]Let's see now, what else does[Line]this old book say?[Wait2][Line]Hmmm. One thousand years[Line]have passed since they[Line]vanquished Dark Dragon.[Wait2][Line]And this book says[Line]Dark Dragon threatened to[Line]return right about now.[Wait2][Line]I bet anything that Dark[Line]Dragon is behind the evil[Line]hordes of Runefaust![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $27 ; "Wow! Dark Dragon, Ancients...[Line]Let's see now, what else does[Line]this old book say?[Wait2][Line]Hmmm. One thousand years[Line]have passed since they[Line]vanquished Dark Dragon.[Wait2][Line]And this book says[Line]Dark Dragon threatened to[Line]return right about now.[Wait2][Line]I bet anything that Dark[Line]Dragon is behind the evil[Line]hordes of Runefaust![Wait2]"
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
-		move.w  #$28,d0 ; "I need to tell someone about[Line]this! But who would listen to[Line]a kid like me?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $28 ; "I need to tell someone about[Line]this! But who would listen to[Line]a kid like me?[Wait2]"
 loc_33EE:
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     sub_164014
 		tst.b   (P1_INPUT).l    
 		bne.s   loc_340E        
-		move.w  #$29,d0 ; "Oh, hi! I didn't notice you[Line]there at first. Maybe you'll[Line]listen. Nobody else will.[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		move.w  #$2A,d0 ; "This book tells of an ancient[Line]evil that threatened our land[Line]long ago--Dark Dragon![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $29 ; "Oh, hi! I didn't notice you[Line]there at first. Maybe you'll[Line]listen. Nobody else will.[Wait2]"
+		txt     $2A ; "This book tells of an ancient[Line]evil that threatened our land[Line]long ago--Dark Dragon![Wait2]"
 loc_340E:
-		move.w  #$2B,d0 ; "I think Dark Dragon's coming[Line]back! Will you help us?[Line]C'mon, it'll be an adventure![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $2B ; "I think Dark Dragon's coming[Line]back! Will you help us?[Line]C'mon, it'll be an adventure![Wait2]"
 		bra.s   loc_3422
 loc_3416:
 		jsr     sub_164014
-		move.w  #$39,d0 ; "Come on! Let's get on with[Line]your adventure!"
-		trap    #DISPLAY_MESSAGE
+		txt     $39 ; "Come on! Let's get on with[Line]your adventure!"
 loc_3422:
 		clr.w   d0
 		jsr     j_CheckSavedGames
@@ -7536,16 +7541,14 @@ rjt_ReaderScreenActions:
 readerScreenAction_New:
 		
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$3D,d0 ; "Pick an adventure."
-		trap    #DISPLAY_MESSAGE
+		txt     $3D ; "Pick an adventure."
 		moveq   #1,d0
 		jsr     j_CheckSavedGames
 		bmi.w   loc_3628
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		move.w  d0,((CURRENT_SAVE_SLOT-$1000000)).w
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$2C,d0 ; "Say, what shall I call you?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $2C ; "Say, what shall I call you?[Wait2]"
 		jsr     (j_CloseMessageWindow).l
 		jsr     j_InitializeNewGame
 		clr.w   d0
@@ -7561,11 +7564,9 @@ loc_3492:
 		addq.w  #1,d0
 		dbf     d7,loc_3492
 loc_34A6:
-		jsr     (sub_304).l
-		move.w  #$2D,d0 ; "Nice to meet you,[Line][Hero]! I'm Simone.[Wait2][Line]Come back often[Line]and tell me everything![Wait2]"
-		trap    #DISPLAY_MESSAGE
-		move.w  #$2E,d0 ; "You need to get going! Evil[Line]spreads farther across Rune[Line]with every passing day.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		jsr     (j_OpenMessageWindow).l
+		txt     $2D ; "Nice to meet you,[Line][Hero]! I'm Simone.[Wait2][Line]Come back often[Line]and tell me everything![Wait2]"
+		txt     $2E ; "You need to get going! Evil[Line]spreads farther across Rune[Line]with every passing day.[Wait2]"
 loc_34B8:
 		move.b  #1,((CURRENT_CHAPTER-$1000000)).w
 		jsr     SaveGame(pc)
@@ -7589,11 +7590,9 @@ loc_34B8:
 readerScreenAction_Cont:
 		
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$2F,d0 ; "Let's get going![Line]You're doing great so far![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $2F ; "Let's get going![Line]You're doing great so far![Wait2]"
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$30,d0 ; "Which adventure would you[Line]like to continue?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $30 ; "Which adventure would you[Line]like to continue?[Wait2]"
 		moveq   #2,d0
 		jsr     j_CheckSavedGames
 		bmi.w   loc_3628
@@ -7602,8 +7601,7 @@ readerScreenAction_Cont:
 		nop
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$31,d0 ; "Good luck! And be sure to[Line]stop by to let me know how[Line]you're doing, OK?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $31 ; "Good luck! And be sure to[Line]stop by to let me know how[Line]you're doing, OK?[Wait2]"
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		clr.b   ((IS_DISPLAYING_PORTRAIT-$1000000)).w
 		sndCom  SOUND_COMMAND_FADE_OUT
@@ -7619,16 +7617,14 @@ readerScreenAction_Cont:
 ReaderScreenAction_Del:
 		
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$32,d0 ; "Really? Which adventure[Line]should I delete?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $32 ; "Really? Which adventure[Line]should I delete?[Wait2]"
 		moveq   #2,d0
 		jsr     j_CheckSavedGames
 		bmi.w   loc_3416
 		movem.w d0,-(sp)
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$33,d0 ; "Are you sure?"
-		trap    #DISPLAY_MESSAGE
+		txt     $33 ; "Are you sure?"
 		jsr     (j_YesNoChoiceBox).l
 		tst.w   d0
 		movem.w (sp)+,d0
@@ -7636,8 +7632,7 @@ ReaderScreenAction_Del:
 		move.w  d0,((CURRENT_SAVE_SLOT-$1000000)).w
 		jsr     (j_CreateMessageWindow).l
 		bsr.w   sub_3652
-		move.w  #$34,d0 ; "OK, it's done![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $34 ; "OK, it's done![Wait2]"
 		move.w  ((CURRENT_SAVE_SLOT-$1000000)).w,d0
 		addq.w  #1,d0
 		bclr    d0,(SAVE_FLAGS).l
@@ -7646,16 +7641,14 @@ ReaderScreenAction_Del:
 ReaderScreenAction_Copy:
 		
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$35,d0 ; "Which adventure do you wish[Line]to copy?"
-		trap    #DISPLAY_MESSAGE
+		txt     $35 ; "Which adventure do you wish[Line]to copy?"
 		moveq   #2,d0
 		jsr     j_CheckSavedGames
 		bmi.w   loc_3628
 		movem.w d0,-(sp)
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$36,d0 ; "Where do you wish to copy it[Line]to?"
-		trap    #DISPLAY_MESSAGE
+		txt     $36 ; "Where do you wish to copy it[Line]to?"
 		moveq   #1,d0
 		jsr     j_CheckSavedGames
 		movem.w (sp)+,d1
@@ -7673,20 +7666,16 @@ ReaderScreenAction_Copy:
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     (j_CreateMessageWindow).l
 		bsr.w   sub_3652
-		move.w  #$37,d0 ; "Done![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $37 ; "Done![Wait2]"
 		bra.w   loc_3416
 loc_3628:
 		move.b  #2,((MESSAGE_SPEED-$1000000)).w
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$38,d0 ; "Change your mind? No problem![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $38 ; "Change your mind? No problem![Wait2]"
 		bra.w   loc_3416
-		jsr     (sub_304).l
-		move.w  #$3A,d0 ; "Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]"
-		trap    #DISPLAY_MESSAGE
-		move.w  #$3B,d0 ; "Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		jsr     (j_OpenMessageWindow).l
+		txt     $3A ; "Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]"
+		txt     $3B ; "Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]"
 		rts
 
     ; End of function ReaderScreenAction_Del
@@ -7767,10 +7756,9 @@ CheckSram:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3758:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		sndCom  MUSIC_CURSED_ITEM
-		move.w  #$3A,d0 ; "Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $3A ; "Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]"
 		bsr.w   j_WaitForInputFor3Seconds
 		jsr     (j_CloseMessageWindow).l
 		rts
@@ -8038,9 +8026,8 @@ sub_3B16:
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
 		move.w  #SFX_DIALOG_BLEEP_6,((SPEECH_SFX-$1000000)).w
-		move.w  #$30C,d0        ; "[Hero]? [Hero]?[Line]C'mon, kid, wake up![Line]I didn't hit you that hard.[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		txt     $30C        ; "[Hero]? [Hero]?[Line]C'mon, kid, wake up![Line]I didn't hit you that hard.[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		sndCom  SFX_SWORDS_HIT
 		moveq   #$14,d0
 		jsr     (j_Sleep).l
@@ -8051,8 +8038,7 @@ sub_3B16:
 		moveq   #30,d0
 		jsr     (j_Sleep).l
 		sndCom  SFX_HIT
-		move.w  #$30D,d0        ; "Keep your guard up, kid.[Line]Those beasts of Runefaust[Line]will tear you to pieces![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $30D        ; "Keep your guard up, kid.[Line]Those beasts of Runefaust[Line]will tear you to pieces![Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
@@ -8070,13 +8056,12 @@ sub_3B16:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3B8E:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$15D,d0        ; "[Hero] and the Shining[Line]Force followed Kane's trail[Line]to the town of Rindo....[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $15D        ; "[Hero] and the Shining[Line]Force followed Kane's trail[Line]to the town of Rindo....[Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
@@ -8094,13 +8079,12 @@ sub_3B8E:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3BD2:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$15E,d0        ; "The Shining Force arrived in[Line]Bustoke, a town built into a[Line]mountainside.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $15E        ; "The Shining Force arrived in[Line]Bustoke, a town built into a[Line]mountainside.[Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		move.b  #3,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
@@ -8118,13 +8102,12 @@ sub_3BD2:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3C18:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$15F,d0        ; "The Shining Force reached the[Line]Pao Prairie to discover that[Line]Pao was a town of wagons![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $15F        ; "The Shining Force reached the[Line]Pao Prairie to discover that[Line]Pao was a town of wagons![Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		move.b  #6,((CURRENT_REGION-$1000000)).w
 		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
@@ -8142,13 +8125,12 @@ sub_3C18:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3C5E:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$160,d0        ; "After a week at sea, sentries[Line]spotted a horde of monsters[Line]approaching the ship....[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $160        ; "After a week at sea, sentries[Line]spotted a horde of monsters[Line]approaching the ship....[Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		clr.b   ((CURRENT_REGION-$1000000)).w
 		move.b  #2,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
@@ -8167,13 +8149,12 @@ sub_3C5E:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3CAA:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$161,d0        ; "The Shining Force finally[Line]reached the port of Rudo, far[Line]from Prompt.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $161        ; "The Shining Force finally[Line]reached the port of Rudo, far[Line]from Prompt.[Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		move.b  #3,((CURRENT_MAP_ENTRANCE-$1000000)).w
@@ -8191,13 +8172,12 @@ sub_3CAA:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3CF2:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$162,d0        ; "The Shining Force quickly[Line]reached Prompt, hoping[Line]that they had come in time.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $162        ; "The Shining Force quickly[Line]reached Prompt, hoping[Line]that they had come in time.[Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		move.b  #4,((CURRENT_MAP_ENTRANCE-$1000000)).w
@@ -8215,13 +8195,12 @@ sub_3CF2:
 ; =============== S U B R O U T I N E =======================================
 
 sub_3D3A:
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
 		clr.l   d0
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		move.l  d0,((MESSAGE_ARG_NUMBER-$1000000)).w
-		move.w  #$163,d0        ; "Runefaust at last! The long[Line]and perilous journey is near[Line]its end.[Wait2][Line]It is up to the Shining Force[Line]whether it ends as a[Line]triumph for Light or Darkness.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $163        ; "Runefaust at last! The long[Line]and perilous journey is near[Line]its end.[Wait2][Line]It is up to the Shining Force[Line]whether it ends as a[Line]triumph for Light or Darkness.[Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		clr.b   ((CURRENT_REGION-$1000000)).w
@@ -8248,10 +8227,9 @@ sub_3D80:
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$165,d0        ; "[Hero] and the Shining[Line]Force head toward Bustoke.[Line]What awaits them there?[Wait2][Line]The legacy of the Ancients[Line]is still a mystery. Will[Line]they ever solve it?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $165        ; "[Hero] and the Shining[Line]Force head toward Bustoke.[Line]What awaits them there?[Wait2][Line]The legacy of the Ancients[Line]is still a mystery. Will[Line]they ever solve it?[Wait2]"
 		jsr     (j_FadeOutToBlack).l
 		bra.w   byte_3DEC
 loc_3DBC:
@@ -8260,10 +8238,9 @@ loc_3DBC:
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$16A,d0        ; "The Shining Force is now in a[Line]desperate race against time.[Line]Dark Dragon is awakening![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $16A        ; "The Shining Force is now in a[Line]desperate race against time.[Line]Dark Dragon is awakening![Wait2]"
 		jsr     (j_FadeOutToBlack).l
 byte_3DEC:
 		sndCom  SOUND_COMMAND_FADE_OUT
@@ -8310,7 +8287,7 @@ byte_3DEC:
 		jsr     (j_DisableDisplayAndInterrupts).l
 		jsr     (j_ClearScrollAndSpriteTables).l
 		jsr     (j_EnableDisplayAndInterrupts).l
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		addq.b  #1,((CURRENT_CHAPTER-$1000000)).w
 		move.b  ((CURRENT_CHAPTER-$1000000)).w,d0
 		cmpi.b  #8,d0
@@ -8331,8 +8308,7 @@ loc_3EC8:
 		clr.w   (a0)+
 		sndCom  MUSIC_SIMONE
 		jsr     (j_FadeInFromBlack).l
-		move.w  #$46,d0 ; "Do you want to record your[Line]exploits so far?"
-		trap    #DISPLAY_MESSAGE
+		txt     $46 ; "Do you want to record your[Line]exploits so far?"
 		jsr     (j_YesNoChoiceBox).l
 		bne.s   byte_3F02
 		jsr     (j_SaveGame).l
@@ -10066,29 +10042,29 @@ return_4D98:
 debugMode_ChapterTest:
 		
 		move.b  #1,((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
-		moveq   #KEN,d0
+		moveq   #ALLY_KEN,d0
 		jsr     j_JoinForce
-		moveq   #LUKE,d0
+		moveq   #ALLY_LUKE,d0
 		jsr     j_JoinForce
-		moveq   #TAO,d0
+		moveq   #ALLY_TAO,d0
 		jsr     j_JoinForce
-		moveq   #LOWE,d0
+		moveq   #ALLY_LOWE,d0
 		jsr     j_JoinForce
-		moveq   #HANS,d0
+		moveq   #ALLY_HANS,d0
 		jsr     j_JoinForce
-		moveq   #BLEU,d0
+		moveq   #ALLY_BLEU,d0
 		jsr     j_JoinForce
-		moveq   #ADAM,d0
+		moveq   #ALLY_ADAM,d0
 		jsr     j_JoinForce
-		moveq   #ZYLO,d0
+		moveq   #ALLY_ZYLO,d0
 		jsr     j_JoinForce
-		moveq   #MUSASHI,d0
+		moveq   #ALLY_MUSASHI,d0
 		jsr     j_JoinForce
-		moveq   #HANZOU,d0
+		moveq   #ALLY_HANZOU,d0
 		jsr     j_JoinForce
-		moveq   #JOGURT,d0
+		moveq   #ALLY_JOGURT,d0
 		jsr     j_JoinForce
-		moveq   #MAE,d0
+		moveq   #ALLY_MAE,d0
 		moveq   #NON_LEADER_FORCE_MEMBERS_COUNTER,d7
 loc_4DFC:
 		jsr     j_JoinForce
@@ -10168,29 +10144,29 @@ loc_4EF2:
 debugMode_BattleTest:
 		
 		move.b  #1,((SAVE_GAME_DISABLED_TOGGLE-$1000000)).w
-		moveq   #KEN,d0
+		moveq   #ALLY_KEN,d0
 		jsr     j_JoinForce
-		moveq   #LUKE,d0
+		moveq   #ALLY_LUKE,d0
 		jsr     j_JoinForce
-		moveq   #TAO,d0
+		moveq   #ALLY_TAO,d0
 		jsr     j_JoinForce
-		moveq   #LOWE,d0
+		moveq   #ALLY_LOWE,d0
 		jsr     j_JoinForce
-		moveq   #HANS,d0
+		moveq   #ALLY_HANS,d0
 		jsr     j_JoinForce
-		moveq   #BLEU,d0
+		moveq   #ALLY_BLEU,d0
 		jsr     j_JoinForce
-		moveq   #ADAM,d0
+		moveq   #ALLY_ADAM,d0
 		jsr     j_JoinForce
-		moveq   #ZYLO,d0
+		moveq   #ALLY_ZYLO,d0
 		jsr     j_JoinForce
-		moveq   #MUSASHI,d0
+		moveq   #ALLY_MUSASHI,d0
 		jsr     j_JoinForce
-		moveq   #HANZOU,d0
+		moveq   #ALLY_HANZOU,d0
 		jsr     j_JoinForce
-		moveq   #JOGURT,d0
+		moveq   #ALLY_JOGURT,d0
 		jsr     j_JoinForce
-		moveq   #MAE,d0
+		moveq   #ALLY_MAE,d0
 		moveq   #NON_LEADER_FORCE_MEMBERS_COUNTER,d7
 loc_4F62:
 		jsr     j_JoinForce
@@ -10394,7 +10370,7 @@ loc_5296:
 		bra.w   loc_5236
 loc_52FE:
 		movem.w d0,-(sp)
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		trap    #DISPLAY_MESSAGE
 		movem.w (sp)+,d0
 		bra.w   loc_5236
@@ -10716,7 +10692,7 @@ j_j_MainMenuAction_Search:
 
 mainMenuAction_Talk:
 		
-		cmpi.b  #NOVA,((COMBATANT_1_ENTITY-$1000000)).w
+		cmpi.b  #ALLY_NOVA,((COMBATANT_1_ENTITY-$1000000)).w
 		beq.s   loc_5A98
 		jmp     sub_10028
 		bra.s   MainMenuAction_Magic
@@ -10772,17 +10748,13 @@ loc_5B00:
 		addq.l  #1,d1
 		move.l  d1,((MESSAGE_ARG_NUMBER-$1000000)).w
 		trap    #5
-		move.w  #$1B5,d0        ; "[Name] casts [Spell][Line]level [Num]!"
-		trap    #DISPLAY_MESSAGE
+		txt     $1B5        ; "[Name] casts [Spell][Line]level [Num]!"
 		sndCom  SFX_SPELL_CAST
-		move.w  #$1EA,d0        ; "[Dict][Line]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
-		move.w  #$1D1,d0        ; "But nothing happens."
-		trap    #DISPLAY_MESSAGE
-		move.w  #$1EA,d0        ; "[Dict][Line]"
-		trap    #DISPLAY_MESSAGE
-		trap    #6
+		txt     $1EA        ; "[Dict][Line]"
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $1D1        ; "But nothing happens."
+		txt     $1EA        ; "[Dict][Line]"
+		clstxt
 		clr.w   d0
 		move.w  (sp)+,d1
 		bra.w   loc_5A26
@@ -10809,7 +10781,7 @@ ExecuteItemMenu:
 loc_5B58:
 		tst.w   (word_FFD984).l
 		beq.s   loc_5B62
-		trap    #6
+		clstxt
 loc_5B62:
 		clr.b   ((byte_FFB52A-$1000000)).w
 		move.b  #ITEM_MENU,((CURRENT_MENU-$1000000)).w
@@ -10838,8 +10810,7 @@ itemMenuAction_Use:
 		bsr.w   sub_617C
 loc_5B92:
 		jsr     (j_CreateMessageWindow).l
-		move.w  #$1C,d0         ; "Use whose item?"
-		trap    #DISPLAY_MESSAGE
+		txt     $1C         ; "Use whose item?"
 		jsr     sub_8044
 		tst.w   d0
 		bmi.s   loc_5B58
@@ -10854,13 +10825,13 @@ loc_5B92:
 		move.b  (a0,d0.w),d0
 		andi.w  #ITEMENTRY_MASK_INDEX,d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #CHAOS_BREAKER,d0
+		cmpi.b  #ITEM_CHAOS_BREAKER,d0
 		bne.w   loc_5C30
 		cmpi.b  #8,((CURRENT_CHAPTER-$1000000)).w
 		bne.w   loc_5C30
 		tst.b   ((CURRENT_REGION-$1000000)).w
 		bne.w   loc_5C30
-		cmpi.w  #$170A,((CURSOR_POSITION-$1000000)).w
+		cmpi.w  #$170A,((CURSOR_POSITION_X-$1000000)).w
 		bne.w   loc_5C30
 		moveq   #$29,d0 
 		bsr.w   CheckEventFlag
@@ -10870,29 +10841,26 @@ loc_5B92:
 		bne.w   loc_5C2E
 		moveq   #$31,d0 
 		bsr.w   SetEventFlag
-		trap    #7
-		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #6
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $21C        ; "[Hero] uses the[Line][Item].[Wait2]"
+		clstxt
 		move.b  #5,((WORLD_CUTSCENE_SCRIPT-$1000000)).w
 		clr.b   ((byte_FFB538-$1000000)).w
 		jmp     sub_124008
 loc_5C2E:
-		moveq   #$27,d0 
+		moveq   #ITEM_CHAOS_BREAKER,d0 
 loc_5C30:
-		cmpi.b  #ANTIDOTE,d0
+		cmpi.b  #ITEM_ANTIDOTE,d0
 		bne.w   loc_5C7E
-		trap    #7
-		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $1D         ; "Who will use the[Line][Item]?"
 		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.w   loc_5B92
 		move.w  d0,-(sp)
-		trap    #7
-		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $21C        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		move.w  (sp)+,d2
 		bsr.w   FindCombatantSlot
 		jsr     j_CurePoison
@@ -10901,24 +10869,22 @@ loc_5C30:
 		move.w  ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,d0
 		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
-		trap    #6
+		clstxt
 		rts
 loc_5C7E:
-		cmpi.b  #POWER_POTION,d0
+		cmpi.b  #ITEM_POWER_POTION,d0
 		blt.w   loc_5CE0
-		cmpi.b  #BREAD_OF_LIFE,d0
+		cmpi.b  #ITEM_BREAD_OF_LIFE,d0
 		bgt.w   loc_5CE0
-		trap    #7
-		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $1D         ; "Who will use the[Line][Item]?"
 		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.w   loc_5B92
 		movem.w d0,-(sp)
-		trap    #7
-		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $21C        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		move.w  (sp)+,d2
 		bsr.w   FindCombatantSlot
 		move.w  ((MESSAGE_ARG_NAME_1-$1000000)).w,d1
@@ -10929,7 +10895,7 @@ loc_5C7E:
 		move.w  ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,d0
 		trap    #DISPLAY_MESSAGE
 		bsr.w   sub_5CE6
-		trap    #6
+		clstxt
 		jmp     j_ResetForceMemberStats
 loc_5CE0:
 		jmp     sub_10024
@@ -10940,8 +10906,7 @@ loc_5CE0:
 ; =============== S U B R O U T I N E =======================================
 
 sub_5CE6:
-		move.w  #$1EA,d0        ; "[Dict][Line]"
-		trap    #DISPLAY_MESSAGE
+		txt     $1EA        ; "[Dict][Line]"
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		clr.w   d1
 		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d1
@@ -10964,8 +10929,7 @@ itemMenuAction_Give:
 		
 		trap    #5
 		bsr.w   sub_617C
-		move.w  #$1F,d0         ; "Transfer whose item?"
-		trap    #DISPLAY_MESSAGE
+		txt     $1F         ; "Transfer whose item?"
 		jsr     sub_8044
 		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_5B58
@@ -10984,14 +10948,12 @@ itemMenuAction_Give:
 		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_5D5C        ; branch if item can be unequipped
 		jsr     j_PlayCursedItemMusic
-		trap    #7
-		move.w  #$21,d0 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $21 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
 		bra.w   loc_5E9A
 loc_5D5C:
-		trap    #7
-		move.w  #$20,d0 ; "Who gets the [Item]?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $20 ; "Who gets the [Item]?"
 		jsr     sub_8060
 loc_5D6A:
 		jsr     sub_8064
@@ -11035,9 +10997,8 @@ loc_5DA0:
 		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_5E14
 		jsr     j_PlayCursedItemMusic
-		trap    #7
-		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $F          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		bra.w   loc_5E9A
 loc_5E14:
 		move.w  ((word_FFB7C8-$1000000)).w,d0
@@ -11076,8 +11037,8 @@ loc_5E8C:
 		move.w  ((word_FFB7C6-$1000000)).w,d1
 		jsr     j_RemoveItem
 loc_5E9A:
-		trap    #7
-		trap    #6
+		trap    #CREATE_MESSAGE_WINDOW
+		clstxt
 		rts
 
     ; End of function itemMenuAction_Give
@@ -11089,8 +11050,7 @@ itemMenuAction_Equip:
 		
 		trap    #5
 		bsr.w   sub_617C
-		move.w  #$23,d0 ; "Who do you wish to equip?"
-		trap    #DISPLAY_MESSAGE
+		txt     $23 ; "Who do you wish to equip?"
 		jsr     j_CreateMembersListScreen
 		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_5B58
@@ -11102,10 +11062,9 @@ itemMenuAction_Equip:
 		move.w  #ITEMTYPE_MASK_WEAPON_OR_RING,d1
 		jsr     j_LoadEquippableItems
 		bne.s   loc_5EE0
-		trap    #7
-		move.w  #$22,d0 ; "[Name] can't be[Line]equipped with anything![Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $22 ; "[Name] can't be[Line]equipped with anything![Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.s   loc_5F46
 loc_5EE0:
 		move.w  #ITEMTYPE_MASK_WEAPON,d1
@@ -11117,7 +11076,7 @@ loc_5EE0:
 		tst.w   d0
 		bpl.s   loc_5F08
 		bsr.w   sub_6C6E
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.w   loc_5B58
 loc_5F08:
 		move.w  #ITEMTYPE_MASK_RING,d1
@@ -11133,13 +11092,13 @@ loc_5F08:
 		jsr     j_LoadEquippableItems
 		bne.s   loc_5EE0
 		bsr.w   sub_6C6E
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.w   loc_5B58
 loc_5F42:
 		bsr.w   sub_6C6E
 loc_5F46:
-		trap    #7
-		trap    #6
+		trap    #CREATE_MESSAGE_WINDOW
+		clstxt
 		rts
 
     ; End of function itemMenuAction_Equip
@@ -11151,8 +11110,7 @@ itemMenuAction_Drop:
 		
 		trap    #5
 		bsr.w   sub_617C
-		move.w  #$25,d0 ; "Discard whose item?"
-		trap    #DISPLAY_MESSAGE
+		txt     $25 ; "Discard whose item?"
 		jsr     sub_8044
 		tst.w   d0
 		bmi.w   loc_5B58
@@ -11171,25 +11129,23 @@ itemMenuAction_Drop:
 		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_5FAA
 		jsr     j_PlayCursedItemMusic
-		trap    #7
-		move.w  #$21,d0 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $21 ; "The [Item] is cursed[Line]and can't be given away.[Wait2]"
 		bra.w   loc_5FD0
 loc_5FAA:
 		jsr     j_GetItemType
-		btst    #$B,d2
+		btst    #ITEMTYPE_BIT_CANNOT_DROP,d2
 		bne.s   loc_5FC8
 		jsr     j_IncrementDealsStock
 		move.w  ((word_FFB7C6-$1000000)).w,d1
 		jsr     j_RemoveItem
 		bra.s   loc_5FD0
 loc_5FC8:
-		trap    #7
-		move.w  #$26,d0 ; "[Hero] keeps the[Line][Item].[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $26 ; "[Hero] keeps the[Line][Item].[Wait2]"
 loc_5FD0:
-		trap    #7
-		trap    #6
+		trap    #CREATE_MESSAGE_WINDOW
+		clstxt
 		rts
 
     ; End of function itemMenuAction_Drop
@@ -11198,10 +11154,9 @@ loc_5FD0:
 ; =============== S U B R O U T I N E =======================================
 
 sub_5FD6:
-		trap    #7
-		move.w  #2,d0           ; "A change of heart, eh?[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #6
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     2           ; "A change of heart, eh?[Wait2]"
+		clstxt
 		rts
 
     ; End of function sub_5FD6
@@ -11230,10 +11185,9 @@ ExecuteHeadquartersMenu:
 		jsr     j_ResetCombatants
 		bsr.s   DisplayAdvisorPortrait
 		trap    #5
-		move.w  #0,d0           ; "Well, [Hero],[Line]are you ready to[Line]face the enemy?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     0           ; "Well, [Hero],[Line]are you ready to[Line]face the enemy?[Wait2]"
 loc_6008:
-		trap    #6
+		clstxt
 		clr.b   ((byte_FFB4CA-$1000000)).w
 loc_600E:
 		move.b  #HEADQUARTERS_MENU,((CURRENT_MENU-$1000000)).w
@@ -11242,8 +11196,7 @@ loc_600E:
 		bge.s   loc_6028
 		trap    #5
 loc_6020:
-		move.w  #3,d0           ; "If that is all, then go now,[Line]for the hordes of Runefaust[Line]are still on the attack![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     3           ; "If that is all, then go now,[Line]for the hordes of Runefaust[Line]are still on the attack![Wait2]"
 		rts
 loc_6028:
 		clr.w   d0
@@ -11264,19 +11217,17 @@ rjt_HeadquartersMenuActions:
 ; START OF FUNCTION CHUNK FOR headquartersMenuAction_Join
 
 loc_6042:
-		move.w  #1,d0           ; "Anything else, [Hero]?"
-		trap    #DISPLAY_MESSAGE
+		txt     1           ; "Anything else, [Hero]?"
 		jsr     (j_YesNoChoiceBox).l
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		bge.w   loc_6008
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.s   loc_6020        
 loc_605A:
 		bsr.s   DisplayAdvisorPortrait
-		trap    #7
-		move.w  #2,d0           ; "A change of heart, eh?[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     2           ; "A change of heart, eh?[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.s   loc_6042        
 
 ; END OF FUNCTION CHUNK FOR headquartersMenuAction_Join
@@ -11291,7 +11242,7 @@ headquartersMenuAction_Advice:
 		addi.w  #MESSAGE_ADVICES_START,d0
 						; "A word of advice.[Line]Seek the hermit who lives by[Line]the Gate of the Ancients![Wait2]"
 		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.s   loc_6042        
 
     ; End of function headquartersMenuAction_Advice
@@ -11354,13 +11305,11 @@ loc_60B0:
 		jsr     j_PopulateReservePartyMembersList
 		tst.w   ((FORCE_MEMBERS_LIST_LENGTH-$1000000)).w
 		bne.w   loc_60CA        
-		move.w  #6,d0           ; "[Hero], no one[Line]is waiting![Delay1]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		txt     6           ; "[Hero], no one[Line]is waiting![Delay1]"
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.w   loc_6042        
 loc_60CA:
-		move.w  #4,d0           ; "Who do you wish to take?"
-		trap    #DISPLAY_MESSAGE
+		txt     4           ; "Who do you wish to take?"
 		jsr     j_ClosePortraitWindow
 		move.b  #$FF,((byte_FFC140-$1000000)).w
 		jsr     j_CreateMembersListScreen
@@ -11371,17 +11320,15 @@ loc_60CA:
 		tst.w   d1
 		bne.s   loc_6112
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		trap    #7
-		move.w  #7,d0           ; "Are you sure? After all,[Line][Name] needs to[Line]be revived."
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     7           ; "Are you sure? After all,[Line][Name] needs to[Line]be revived."
 		jsr     (j_YesNoChoiceBox).l
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		bmi.s   loc_60CA        
 loc_6112:
-		trap    #7
-		move.w  #5,d0           ; "Who will you leave behind?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     5           ; "Who will you leave behind?"
 		jsr     j_PopulateBattlePartyMembersList
 		jsr     j_ClosePortraitWindow
 		move.b  #$FF,((byte_FFC140-$1000000)).w
@@ -11390,9 +11337,8 @@ loc_6112:
 		move.w  d0,((word_FFB7C6-$1000000)).w
 		bmi.w   loc_605A
 		bne.s   loc_614A
-		trap    #7
-		move.w  #$1A,d0         ; "Without you, [Hero], who[Line]will lead the Shining Force?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $1A         ; "Without you, [Hero], who[Line]will lead the Shining Force?[Wait2]"
 		bra.s   loc_6112
 loc_614A:
 		move.w  ((word_FFB7C6-$1000000)).w,d0
@@ -11400,11 +11346,10 @@ loc_614A:
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		moveq   #BATTLE_PARTY_SLOTS_COUNTER,d1
 		jsr     j_JoinBattleParty
-		trap    #7
-		move.w  #8,d0           ; "Anyone else to replace?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     8           ; "Anyone else to replace?"
 		jsr     (j_YesNoChoiceBox).l
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_60B0
 		bra.w   loc_6042        
@@ -11450,13 +11395,12 @@ headquartersMenuAction_Status:
 		trap    #5
 		bsr.s   sub_617C
 loc_61D4:
-		move.w  #$18,d0         ; "View whose status?"
-		trap    #DISPLAY_MESSAGE
+		txt     $18         ; "View whose status?"
 		jsr     j_ClosePortraitWindow
 		jsr     j_CreateMembersListScreen
 		move.w  d0,((CURRENT_OBJECT-$1000000)).w
 		bmi.w   loc_605A
-		trap    #6
+		clstxt
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		jsr     j_GetPortrait
 		move.w  d1,d0
@@ -11477,10 +11421,9 @@ loc_61D4:
 		jsr     j_ClosePortraitWindow
 		bsr.w   DisplayAdvisorPortrait
 		trap    #5
-		move.w  #$19,d0         ; "Check someone else's status?"
-		trap    #DISPLAY_MESSAGE
+		txt     $19         ; "Check someone else's status?"
 		jsr     (j_YesNoChoiceBox).l
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_61D4        
 		bra.w   loc_6042        
@@ -11498,25 +11441,25 @@ headquartersMenuAction_Item:
 		cmpi.w  #$FFFF,d0
 		beq.w   loc_600E
 		add.w   d0,d0
-		move.w  off_628A(pc,d0.w),d0
-		jmp     off_628A(pc,d0.w)
+		move.w  rjt_HeadquartersItemActions(pc,d0.w),d0
+		jmp     rjt_HeadquartersItemActions(pc,d0.w)
 
     ; End of function headquartersMenuAction_Item
 
-off_628A:       dc.w sub_6292-off_628A
-		dc.w sub_63B4-off_628A
-		dc.w sub_6588-off_628A
-		dc.w sub_6650-off_628A
+rjt_HeadquartersItemActions:
+                dc.w HeadquartersItemMenu_Use-rjt_HeadquartersItemActions
+		dc.w HeadquartesItemMenu_Give-rjt_HeadquartersItemActions
+		dc.w HeadquartesItemMenu_Equip-rjt_HeadquartersItemActions
+		dc.w HeadquartesItemMenu_Discard-rjt_HeadquartersItemActions
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_6292:
+HeadquartersItemMenu_Use:
 		trap    #5
 		bsr.w   sub_617C
 loc_6298:
 		jsr     (j_CreateMessageWindow).l
-		move.w  #9,d0           ; "Use whose item?"
-		trap    #DISPLAY_MESSAGE
+		txt     9           ; "Use whose item?"
 		jsr     j_ClosePortraitWindow
 		jsr     sub_8044
 		bsr.w   DisplayAdvisorPortrait
@@ -11527,23 +11470,21 @@ loc_6298:
 		clr.w   d0
 		move.b  ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w,d0
 		move.b  (a0,d0.w),d0
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		andi.w  #ITEMENTRY_MASK_INDEX,d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #2,d0
+		cmpi.b  #ITEM_ANTIDOTE,d0
 		bne.w   loc_632A
-		trap    #7
-		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $1D         ; "Who will use the[Line][Item]?"
 		jsr     j_ClosePortraitWindow
 		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.s   loc_6298
 		move.w  d0,-(sp)
-		trap    #7
-		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $21C        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		move.w  (sp)+,d2
 		bsr.w   FindCombatantSlot
 		jsr     j_CurePoison
@@ -11554,22 +11495,20 @@ loc_6298:
 		bsr.w   sub_5CE6
 		bra.w   loc_6398
 loc_632A:
-		cmpi.b  #5,d0
+		cmpi.b  #ITEM_POWER_POTION,d0
 		blt.w   loc_6392        
-		cmpi.b  #9,d0
+		cmpi.b  #ITEM_BREAD_OF_LIFE,d0
 		bgt.w   loc_6392        
-		trap    #7
-		move.w  #$1D,d0         ; "Who will use the[Line][Item]?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $1D         ; "Who will use the[Line][Item]?"
 		jsr     j_ClosePortraitWindow
 		jsr     j_CreateMembersListScreen
 		tst.w   d0
 		bmi.w   loc_6298
 		movem.w d0,-(sp)
-		trap    #7
-		move.w  #$21C,d0        ; "[Hero] uses the[Line][Item].[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $21C        ; "[Hero] uses the[Line][Item].[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		move.w  (sp)+,d2
 		bsr.w   FindCombatantSlot
 		move.w  ((MESSAGE_ARG_NAME_1-$1000000)).w,d1
@@ -11583,29 +11522,26 @@ loc_632A:
 		jsr     j_ResetForceMemberStats
 		bra.s   loc_6398
 loc_6392:
-		move.w  #$B,d0          ; "[Hero]! What are you[Line]trying to do with that?[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $B          ; "[Hero]! What are you[Line]trying to do with that?[Wait2]"
 loc_6398:
-		trap    #7
-		move.w  #$C,d0          ; "Any other item to use?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $C          ; "Any other item to use?"
 		jsr     (j_YesNoChoiceBox).l
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_6298
 		bra.w   loc_6042        
 
-    ; End of function sub_6292
+    ; End of function HeadquartersItemMenu_Use
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_63B4:
+HeadquartesItemMenu_Give:
 		trap    #5
 		bsr.w   sub_617C
 loc_63BA:
-		move.w  #$D,d0          ; "Transfer whose item?"
-		trap    #DISPLAY_MESSAGE
+		txt     $D          ; "Transfer whose item?"
 		jsr     j_ClosePortraitWindow
 		jsr     sub_8044
 		bsr.w   DisplayAdvisorPortrait
@@ -11626,14 +11562,12 @@ loc_63BA:
 		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_641E
 		jsr     j_PlayCursedItemMusic
-		trap    #7
-		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $F          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		bra.w   loc_656C
 loc_641E:
-		trap    #7
-		move.w  #$10,d0         ; "Now, who gets it?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $10         ; "Now, who gets it?"
 		jsr     j_ClosePortraitWindow
 		jsr     sub_8060
 loc_6432:
@@ -11680,9 +11614,8 @@ loc_646E:
 		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_64E6
 		jsr     j_PlayCursedItemMusic
-		trap    #7
-		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $F          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		bra.w   loc_656C
 loc_64E6:
 		move.w  ((word_FFB7C8-$1000000)).w,d0
@@ -11728,29 +11661,27 @@ loc_6562:
 loc_6566:
 		jsr     j_RemoveItemForCombatant
 loc_656C:
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 loc_656E:
-		move.w  #$11,d0         ; "Anything else to transfer?"
-		trap    #DISPLAY_MESSAGE
+		txt     $11         ; "Anything else to transfer?"
 loc_6574:
 		jsr     (j_YesNoChoiceBox).l
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 loc_6580:
 		beq.w   loc_63BA        
 		bra.w   loc_6042        
 
-    ; End of function sub_63B4
+    ; End of function HeadquartesItemMenu_Give
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_6588:
+HeadquartesItemMenu_Equip:
 		trap    #5
 		bsr.w   sub_617C
 loc_658E:
-		move.w  #$12,d0         ; "Who do you wish to equip?"
-		trap    #DISPLAY_MESSAGE
+		txt     $12         ; "Who do you wish to equip?"
 		jsr     j_ClosePortraitWindow
 		jsr     j_CreateMembersListScreen
 		move.w  d0,((CURRENT_OBJECT-$1000000)).w
@@ -11765,10 +11696,9 @@ loc_65B6:
 		jsr     j_LoadEquippableItemsForCombatant
 		bne.s   loc_65CE
 		bsr.w   DisplayAdvisorPortrait
-		trap    #7
-		move.w  #$1B,d0         ; "[Name] can't be[Line]equipped with anything![Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $1B         ; "[Name] can't be[Line]equipped with anything![Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		bra.s   loc_6630
 loc_65CE:
 		move.w  #ITEMTYPE_MASK_WEAPON,d1
@@ -11806,28 +11736,26 @@ loc_662C:
 		bsr.w   sub_6C6E
 loc_6630:
 		bsr.w   DisplayAdvisorPortrait
-		trap    #7
-		move.w  #$14,d0         ; "Anyone else to equip?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $14         ; "Anyone else to equip?"
 		jsr     (j_YesNoChoiceBox).l
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_658E        
 loc_664C:
 		bra.w   loc_6042        
 
-    ; End of function sub_6588
+    ; End of function HeadquartesItemMenu_Equip
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_6650:
+HeadquartesItemMenu_Discard:
 		trap    #5
 loc_6652:
 		bsr.w   sub_617C
 loc_6656:
-		move.w  #$15,d0         ; "Discard whose item?"
-		trap    #DISPLAY_MESSAGE
+		txt     $15         ; "Discard whose item?"
 loc_665C:
 		jsr     j_ClosePortraitWindow
 loc_6662:
@@ -11851,9 +11779,8 @@ loc_667E:
 		btst    #ITEMTYPE_BIT_CURSED,d2
 		beq.s   loc_66B8
 		jsr     j_PlayCursedItemMusic
-		trap    #7
-		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $F          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
 		bra.w   loc_66DE
 loc_66B8:
 		jsr     j_GetItemType
@@ -11864,20 +11791,18 @@ loc_66B8:
 		jsr     j_RemoveItemForCombatant
 		bra.s   loc_66DE
 loc_66D6:
-		trap    #7
-		move.w  #$16,d0         ; "[Hero]! It would be[Line]foolish to discard the[Line][Item].[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $16         ; "[Hero]! It would be[Line]foolish to discard the[Line][Item].[Wait2]"
 loc_66DE:
-		trap    #7
-		move.w  #$17,d0         ; "Anything else to discard?"
-		trap    #DISPLAY_MESSAGE
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $17         ; "Anything else to discard?"
 		jsr     (j_YesNoChoiceBox).l
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		beq.w   loc_6656        
 		bra.w   loc_6042        
 
-    ; End of function sub_6650
+    ; End of function HeadquartesItemMenu_Discard
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -11899,7 +11824,7 @@ sub_6706:
 		jsr     j_ClearTerrainAtOccupiedSquares
 		clr.b   (byte_FFB53A).l
 		move.w  #$15,(SCREEN_POSITION).l
-		move.w  #$21A,(CURSOR_POSITION).l
+		move.w  #$21A,(CURSOR_POSITION_X).l
 		move.b  #1,(byte_FFB4D7).l
 		jsr     sub_8024
 		clr.b   (AREA_CURSOR_INDEX).l
@@ -11951,7 +11876,7 @@ PositionHeadquartersMembers:
 		lea     HeadquartersMembersPositions(pc), a1
 		jsr     j_PopulateBattlePartyMembersList
 		lea     (byte_FFCB85).l,a0; FORCE_MEMBERS_LIST+1
-		moveq   #NOVA,d1
+		moveq   #ALLY_NOVA,d1
 		clr.w   d2
 		move.b  (a1)+,d2
 		jsr     j_SetEntityIndex
@@ -12036,7 +11961,7 @@ LoadHeadquartersMapsprite:
 		movem.l a0-a1,-(sp)
 		move.w  d0,-(sp)
 		move.w  d1,d0
-		cmpi.w  #NOVA,d1
+		cmpi.w  #ALLY_NOVA,d1
 		beq.s   loc_68B8
 		jsr     j_GetCurrentHP
 		tst.w   d1
@@ -12133,6 +12058,7 @@ loc_6950:
 		rol.b   #4,d0
 		move.l  d0,(a1)+
 		dbf     d7,loc_6950
+
 		movea.l a0,a1
 		adda.l  #$240,a1
 		moveq   #$17,d7
@@ -12147,6 +12073,7 @@ loc_6970:
 		rol.b   #4,d0
 		move.l  d0,(a1)+
 		dbf     d7,loc_6970
+
 		movea.l a0,a1
 		adda.l  #$180,a1
 		moveq   #$17,d7
@@ -12162,6 +12089,7 @@ loc_6990:
 		move.l  d0,(a1)+
 		dbf     d7,loc_6990
 		dbf     d6,loc_6946
+
 		movem.l d7-a1,-(sp)
 		lea     (byte_FF3240).l,a0
 		lea     (FF3000_LOADING_SPACE).l,a1
@@ -12182,96 +12110,38 @@ sub_69CA:
     ; End of function sub_69CA
 
 HeadquartersMembersPositions:
-		dc.b 1
-		dc.b 3
-		dc.b $18
-		dc.b 2
-		dc.b $D
-		dc.b $17
-		dc.b 2
-		dc.b $E
-		dc.b $17
-		dc.b 2
-		dc.b $10
-		dc.b $17
-		dc.b 2
-		dc.b $11
-		dc.b $17
-		dc.b 2
-		dc.b $D
-		dc.b $19
-		dc.b 2
-		dc.b $E
-		dc.b $19
-		dc.b 2
-		dc.b $10
-		dc.b $19
-		dc.b 2
-		dc.b $11
-		dc.b $19
-		dc.b 2
-		dc.b $D
-		dc.b $1B
-		dc.b 2
-		dc.b $E
-		dc.b $1B
-		dc.b 2
-		dc.b $10
-		dc.b $1B
-		dc.b 2
-		dc.b $E
-		dc.b 7
-		dc.b 3
-		dc.b $11
-		dc.b 6
-		dc.b 3
-		dc.b $C
-		dc.b $B
-		dc.b 2
-		dc.b $A
-		dc.b 8
-		dc.b 3
-		dc.b $D
-		dc.b $A
-		dc.b 1
-		dc.b $D
-		dc.b 6
-		dc.b 2
-		dc.b $10
-		dc.b 4
-		dc.b 2
-		dc.b $C
-		dc.b 8
-		dc.b 2
-		dc.b 2
-		dc.b 3
-		dc.b 2
-		dc.b $F
-		dc.b 4
-		dc.b 0
-		dc.b $A
-		dc.b 5
-		dc.b 1
-		dc.b 2
-		dc.b 7
-		dc.b 1
-		dc.b 4
-		dc.b 3
-		dc.b 2
-		dc.b $12
-		dc.b 8
-		dc.b 0
-		dc.b 4
-		dc.b 7
-		dc.b 0
-		dc.b 9
-		dc.b 5
-		dc.b 1
-		dc.b 9
-		dc.b 9
-		dc.b 0
-		dc.b 5
-		dc.b $10
+		hqPosition RIGHT, 3, 24   ; advisor
+
+		hqPosition DOWN, 13, 23  ; active members
+		hqPosition DOWN, 14, 23
+		hqPosition DOWN, 16, 23
+		hqPosition DOWN, 17, 23
+		hqPosition DOWN, 13, 25
+		hqPosition DOWN, 14, 25
+		hqPosition DOWN, 16, 25
+		hqPosition DOWN, 17, 25
+		hqPosition DOWN, 13, 27
+		hqPosition DOWN, 14, 27
+		hqPosition DOWN, 16, 27
+
+		hqPosition DOWN, 14, 7   ; reserve members
+		hqPosition LEFT, 17, 6
+		hqPosition LEFT, 12, 11
+		hqPosition DOWN, 10, 8
+		hqPosition LEFT, 13, 10
+		hqPosition RIGHT, 13, 6
+		hqPosition DOWN, 16, 4
+		hqPosition DOWN, 12, 8
+		hqPosition DOWN, 2, 3
+		hqPosition DOWN, 15, 4
+		hqPosition UP, 10, 5
+		hqPosition RIGHT, 2, 7
+		hqPosition RIGHT, 4, 3
+		hqPosition DOWN, 18, 8
+		hqPosition UP, 4, 7
+		hqPosition UP, 9, 5
+		hqPosition RIGHT, 9, 9
+		hqPosition UP, 5, 16
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -12282,7 +12152,7 @@ sub_6A2E:
 		bsr.w   LoadEndingCutsceneCombatantData
 		clr.b   (byte_FFB53A).l
 		move.w  #$1605,(SCREEN_POSITION).l
-		move.w  #$1B09,(CURSOR_POSITION).l
+		move.w  #$1B09,(CURSOR_POSITION_X).l
 		clr.b   (byte_FFB4D7).l
 		jsr     sub_8024
 		clr.b   (AREA_CURSOR_INDEX).l
@@ -12354,8 +12224,8 @@ dword_6AB8:     dc.l $1E1B0900
 sub_6B38:
 		clr.w   d1
 		clr.w   d2
-		move.b  ((CURSOR_POSITION-$1000000)).w,d1
-		move.b  ((CURSOR_POSITION+1-$1000000)).w,d2
+		move.b  ((CURSOR_POSITION_X-$1000000)).w,d1
+		move.b  ((CURSOR_POSITION_Y-$1000000)).w,d2
 loc_6B44:
 		jsr     sub_80A8
 		move.w  d2,d3
@@ -12377,14 +12247,14 @@ loc_6B66:
 loc_6B7C:
 		addq.w  #1,d0
 		dbf     d7,loc_6B66
+
 		trap    #5
-		move.w  #$1B0,d0        ; "No one is in that direction.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $1B0        ; "No one is in that direction.[Wait2]"
 loc_6B8A:
 		bsr.w   j_WaitForVInt
 		tst.b   (P1_INPUT).l    
 		beq.s   loc_6B8A
-		trap    #6
+		clstxt
 		rts
 loc_6B9A:
 		move.w  d0,-(sp)
@@ -12394,7 +12264,7 @@ loc_6B9A:
 		move.w  d1,d0
 		jsr     j_GetMapSprite
 		move.l  a0,-(sp)
-		movea.l (p_SpriteTextSounds).l,a0
+		movea.l (p_tbl_SpriteSpeechSfx).l,a0
 		andi.w  #$FF,d1
 		move.b  (a0,d1.w),d1
 		addi.w  #SFX_DIALOG_BLEEP_1,d1
@@ -12422,7 +12292,7 @@ loc_6BF6:
 		moveq   #MAPSPRITE_NOVA,d2
 		bra.s   loc_6C12
 loc_6C08:
-		cmpi.b  #$15,((CURSOR_POSITION+1-$1000000)).w
+		cmpi.b  #$15,((CURSOR_POSITION_Y-$1000000)).w
 		bge.s   loc_6C12
 		moveq   #$1C,d2
 loc_6C12:
@@ -12443,7 +12313,7 @@ loc_6C12:
 		tst.w   d1
 		ble.s   loc_6C56        
 		andi.w  #$FF,d0
-		addi.w  #$105,d0
+		addi.w  #$105,d0        ; offset to combatant headquarters line
 		add.w   d2,d0
 		bra.s   loc_6C5A
 loc_6C56:
@@ -12453,7 +12323,7 @@ loc_6C5A:
 		move.w  (sp)+,d0
 		jsr     sub_80D4
 		jsr     j_ClosePortraitWindow
-		trap    #6
+		clstxt
 		rts
 
     ; End of function sub_6B38
@@ -12648,10 +12518,9 @@ loc_6EF8:
 		bsr.w   sub_7090
 		bsr.w   sub_71A2
 		bsr.w   sub_6FA0
-		trap    #7
-		move.w  #$F,d0          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $F          ; "The [Item] is cursed[Line]and can't be unequipped.[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		jsr     sub_8088
 		bsr.w   loc_73B6
 loc_6F3A:
@@ -12666,14 +12535,13 @@ loc_6F3C:
 		bsr.w   FindCombatantSlot
 		move.w  d0,(MESSAGE_ARG_NAME_1).l
 		bsr.w   sub_6FA0
-		trap    #7
-		move.w  #$13,d0         ; "[Name] has been cursed....[Wait2]"
-		trap    #DISPLAY_MESSAGE
-		trap    #7
+		trap    #CREATE_MESSAGE_WINDOW
+		txt     $13         ; "[Name] has been cursed....[Wait2]"
+		trap    #CREATE_MESSAGE_WINDOW
 		jsr     sub_8088
 		bsr.w   loc_73B6
 		move.w  (CURRENT_OBJECT).l,d0
-		moveq   #STATUSEFFECT_COUNTER_CURSE,d1
+		moveq   #STATUSEFFECT_CURSE,d1
 		jsr     j_SetStatusEffects
 loc_6F8A:
 		movem.w (sp)+,d0-d1
@@ -12767,7 +12635,7 @@ sub_703A:
 
 sub_7054:
 		lea     (SPRITE_00_PROPERTIES).l,a1
-		lea     word_73EE(pc), a0
+		lea     sprite_MenuSelection(pc), a0
 		nop
 		clr.w   d0
 		move.b  (CURRENT_DIAMOND_MENU_SELECTION).l,d0
@@ -12847,7 +12715,7 @@ loc_70DA:
 
 sub_70E8:
 		bsr.w   sub_71A2
-		lea     wl_EquipMenu_ItemName(pc), a0
+		lea     ItemNameWindowLayout(pc), a0
 		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$CC,d7 
 loc_70FA:
@@ -12861,7 +12729,7 @@ loc_70FA:
 
 BuildEquipMenuStatsWindow:
 		
-		lea     wl_EquipMenu_Stats(pc), a0
+		lea     BattleEquipWindowLayout(pc), a0
 		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$D8,d7 
 		jsr     (j_CopyBytes).l
@@ -12936,6 +12804,7 @@ sub_71C0:
 loc_71F0:
 		clr.l   (a1)+
 		dbf     d0,loc_71F0
+
 		movea.l (sp)+,a1
 		moveq   #1,d1
 		bsr.w   sub_72A0
@@ -12951,6 +12820,7 @@ loc_7200:
 		move.l  (a0)+,$4C(a1)
 		adda.w  #$20,a1 
 		dbf     d7,loc_7200
+
 		adda.w  #$40,a1 
 		moveq   #2,d1
 		bsr.w   sub_72A0
@@ -12966,6 +12836,7 @@ loc_7234:
 		move.l  (a0)+,$4C(a1)
 		adda.w  #$20,a1 
 		dbf     d7,loc_7234
+
 		adda.w  #$40,a1 
 		moveq   #3,d1
 		bsr.w   sub_72A0
@@ -12992,10 +12863,10 @@ sub_72A0:
 		movea.l (p_ItemIcons).l,a0
 		cmp.w   (TABLE_AT_FFA8C0).l,d1
 		blt.s   loc_72C2
-		adda.l  #$2F40,a0
+		adda.l  #$2F40,a0    ; +3F index
 		cmpi.w  #3,d1
 		bne.s   loc_72C0
-		adda.l  #$C0,a0 
+		adda.l  #ICONTILES_BYTESIZE,a0 
 loc_72C0:
 		bra.s   return_72D6
 loc_72C2:
@@ -13017,7 +12888,7 @@ return_72D6:
 
 loc_72D8:
 		movem.l d7-a1,-(sp)
-		lea     wl_EquipMenu_ItemName(pc), a0
+		lea     ItemNameWindowLayout(pc), a0
 		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$78,d7 
 		jsr     (j_CopyBytes).l
@@ -13059,7 +12930,7 @@ loc_734C:
 
 sub_735A:
 		movem.l d7-a1,-(sp)
-		lea     wl_EquipMenu_MemberName(pc), a0
+		lea     MemberNameWindowLayout(pc), a0
 		lea     (WINDOW_LAYOUT_LOADING_SPACE).l,a1
 		move.w  #$6C,d7 
 		jsr     (j_CopyBytes).l
@@ -13111,27 +12982,12 @@ FindCombatantSlot:
 
     ; End of function FindCombatantSlot
 
-word_73EE:      ; sprite properties data
-		dc.w $D7
-		dc.b $B
-		dc.b 1
-		dc.w $C7DC
-		dc.w $9F
-		dc.w $E3
-		dc.b $B
-		dc.b 1
-		dc.w $C7DC
-		dc.w $8F
-		dc.w $E3
-		dc.b $B
-		dc.b 1
-		dc.w $C7DC
-		dc.w $AF
-		dc.w $EF
-		dc.b $B
-		dc.b 1
-		dc.w $C7DC
-		dc.w $9F
+sprite_MenuSelection:      ; sprite properties data
+                vdpSprite 215, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 159
+                vdpSprite 227, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 143
+                vdpSprite 227, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 175
+                vdpSprite 239, V4|H3|1, SELECTION|PALETTE3|PRIORITY_BIT, 159
+
 IconHighlightTiles_Equip:
 		dc.b 0
 		dc.b $AA
@@ -13517,13 +13373,16 @@ IconHighlightTiles_Equip:
 		dc.b 0
 		dc.b 0
 		dc.b 0
+
 byte_758E:      dc.b VDPTILE_ORANGE_UPPERCASE_R
 		dc.b VDPTILE_ORANGE_UPPERCASE_E
 		dc.b VDPTILE_ORANGE_UPPERCASE_M
 		dc.b VDPTILE_ORANGE_UPPERCASE_O
 		dc.b VDPTILE_ORANGE_UPPERCASE_V
 		dc.b VDPTILE_ORANGE_UPPERCASE_E
+
 aWeaponring:    dc.b 'WEAPONRING',0,0
+
 wl_75A0:        dc.w $C000
 		dc.w $C000
 		dc.w $C7C0
@@ -13560,231 +13419,10 @@ wl_75A0:        dc.w $C000
 		dc.w $C7DB
 		dc.w $C000
 		dc.w $C000
-wl_EquipMenu_Stats:
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_C|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_K|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_D|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_N|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_M|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_V|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_G|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_I|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_L|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_I|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_Y|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_NINE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-wl_EquipMenu_MemberName:
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-wl_EquipMenu_ItemName:
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+
+        include "data\graphics\tech\windowlayouts\battleequipwindow.asm"
+        include "data\graphics\tech\windowlayouts\membernamelayout.asm"
+        include "data\graphics\tech\windowlayouts\itemnamelayout.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -13796,15 +13434,15 @@ sub_77A4:
 		jsr     (j_CheckEventFlag).l
 		bne.w   sub_7898
 		bsr.w   sub_80C4
-		cmpi.b  #NOTHING_ITEM,d3
+		cmpi.b  #ITEM_NOTHING_ITEM,d3
 		beq.w   sub_7898
 		clr.w   d7
 		move.b  ((byte_FFB4C5-$1000000)).w,d7
 		move.w  d7,((MESSAGE_ARG_NAME_1-$1000000)).w
-		cmpi.b  #NOTHING_ITEM,d3
+		cmpi.b  #ITEM_NOTHING_ITEM,d3
 		bgt.w   loc_78B0
 		move.w  d3,((MESSAGE_ARG_NAME_2-$1000000)).w
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		clr.w   ((SPEECH_SFX-$1000000)).w
 		movem.w d1,-(sp)
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
@@ -13813,8 +13451,7 @@ sub_77A4:
 		movem.w (sp)+,d1
 		bcs.w   loc_7872
 		sndCom  MUSIC_ITEM
-		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $48 ; "[Name] discovers a[Line][Item]![Wait2]"
 		move.w  #$FB,d0 
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
@@ -13829,9 +13466,8 @@ sub_77A4:
 		beq.s   return_7870
 		moveq   #$25,d0 
 		jsr     (j_SetEventFlag).l
-		jsr     (sub_304).l
-		move.w  #$169,d0        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		jsr     (j_OpenMessageWindow).l
+		txt     $169        ; "Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]"
 		jsr     (j_CloseMessageWindow).l
 		movea.l (dword_FF0EFE).l,sp
 		jsr     (j_FadeOutToBlack).l
@@ -13841,10 +13477,8 @@ return_7870:
 		rts
 loc_7872:
 		movem.w d1-d2,-(sp)
-		move.w  #$48,d0 ; "[Name] discovers a[Line][Item]![Wait2]"
-		trap    #DISPLAY_MESSAGE
-		move.w  #$49,d0 ; "But can't carry it![Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $48 ; "[Name] discovers a[Line][Item]![Wait2]"
+		txt     $49 ; "But can't carry it![Wait2]"
 		movem.w (sp)+,d1-d2
 		jsr     sub_80C8
 
@@ -13863,9 +13497,8 @@ sub_788C:
 ; =============== S U B R O U T I N E =======================================
 
 sub_7898:
-		jsr     (sub_304).l
-		move.w  #$4A,d0 ; "The treasure chest is empty.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		jsr     (j_OpenMessageWindow).l
+		txt     $4A ; "The treasure chest is empty.[Wait2]"
 loc_78A4:
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
 		jsr     (j_SetEventFlag).l
@@ -13877,10 +13510,9 @@ loc_78B0:
 		move.w  tbl_BattleChestGoldAmounts(pc,d3.w),d1
 		move.l  d1,((MESSAGE_ARG_NUMBER-$1000000)).w
 		jsr     j_IncreaseGold
-		jsr     (sub_304).l
+		jsr     (j_OpenMessageWindow).l
 		sndCom  MUSIC_ITEM
-		move.w  #$4C,d0 ; "[Name] gains [Num] coins.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		txt     $4C ; "[Name] gains [Num] coins.[Wait2]"
 		jsr     (j_PlayMusicAfterCurrentOne).l
 		sndCom  SOUND_COMMAND_PLAY_PREVIOUS_MUSIC
 		bra.s   loc_78A4
@@ -13898,9 +13530,8 @@ tbl_BattleChestGoldAmounts:
 loc_78F4:
 		tst.b   ((byte_FFB4D7-$1000000)).w
 		beq.s   return_7908
-		jsr     (sub_304).l
-		move.w  #$4B,d0 ; "Nothing is found.[Wait2]"
-		trap    #DISPLAY_MESSAGE
+		jsr     (j_OpenMessageWindow).l
+		txt     $4B ; "Nothing is found.[Wait2]"
 		bsr.s   sub_788C
 return_7908:
 		rts
@@ -13912,7 +13543,7 @@ return_7908:
 
 optionMenu_Speed:
 		
-		lea     wl_BattleOption_Speed(pc), a0
+		lea     BattleOptionSpeedLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$81C0814,d1
 		move.w  #4,d2
@@ -13946,7 +13577,7 @@ loc_7982:
 		move.b  d0,((MESSAGE_SPEED-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     wl_BattleOption_Speed(pc), a0
+		lea     BattleOptionSpeedLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$8142014,d1
 		move.w  #4,d2
@@ -13957,7 +13588,7 @@ loc_79A8:
 		bset    #0,((byte_FFB4CA-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     wl_BattleOption_Speed(pc), a0
+		lea     BattleOptionSpeedLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$814081C,d1
 		move.w  #4,d2
@@ -13974,7 +13605,7 @@ loc_79A8:
 
 optionMenuAction_Message:
 		
-		lea     wl_BattleOption_Message(pc), a0
+		lea     BattleOptionMessageLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$81C0814,d1
 		move.w  #4,d2
@@ -14010,7 +13641,7 @@ loc_7A52:
 		move.b  d0,((DISPLAY_BATTLE_MESSAGES_TOGGLE-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     wl_BattleOption_Message(pc), a0
+		lea     BattleOptionMessageLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$8142014,d1
 		move.w  #4,d2
@@ -14021,14 +13652,14 @@ loc_7A78:
 		bset    #0,((byte_FFB4CA-$1000000)).w
 		clr.w   d1
 		bsr.w   sub_7B1A
-		lea     wl_BattleOption_Message(pc), a0
+		lea     BattleOptionMessageLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$814081C,d1
 		move.w  #4,d2
 		jsr     j_MoveWindowWithSfx
 		clr.w   d1
 		bsr.w   sub_7B1A
-		moveq   #$FFFFFFFF,d0
+		moveq   #-1,d0
 		rts
 
     ; End of function optionMenuAction_Message
@@ -14040,7 +13671,7 @@ loc_7A78:
 
 optionMenuAction_Quit:
 		
-		lea     layout_BattlefieldQuitWindow(pc), a0
+		lea     BattlefieldQuitLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$81C0814,d1
 		move.w  #4,d2
@@ -14048,7 +13679,7 @@ optionMenuAction_Quit:
 		jsr     (j_YesNoPrompt).l
 		tst.b   ((CURRENT_DIAMOND_MENU_SELECTION-$1000000)).w
 		bge.w   loc_7AEE
-		lea     layout_BattlefieldQuitWindow(pc), a0
+		lea     BattlefieldQuitLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$814081C,d1
 		move.w  #4,d2
@@ -14057,7 +13688,7 @@ optionMenuAction_Quit:
 		moveq   #$FFFFFFFF,d0
 		rts
 loc_7AEE:
-		lea     layout_BattlefieldQuitWindow(pc), a0
+		lea     BattlefieldQuitLayout(pc), a0
 		move.w  #$1107,d0
 		move.l  #$8142014,d1
 		move.w  #4,d2
@@ -14098,364 +13729,7 @@ return_7B56:
 
     ; End of function sub_7B1A
 
-wl_BattleOption_Speed:
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_W|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_H|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_P|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_D|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_QUESTION_MARK|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_ONE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_TWO|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_THREE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_NUMBER_FOUR|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_L|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_W|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_MINUS_SIGN|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_MINUS_SIGN|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-wl_BattleOption_Message:
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_B|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_L|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_M|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_G|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_QUESTION_MARK|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_N|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_F|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-layout_BattlefieldQuitWindow:
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_UPPERCASE_D|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_Y|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_U|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_W|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_N|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_S|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_O|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_P|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_T|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_H|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_G|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_A|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_M|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_LOWERCASE_E|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_QUESTION_MARK|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_ASCII_SPACE|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_VERTICAL_BORDER|VDPTILE_MIRRORED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_HORIZONTAL_BORDER|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-		dc.w VDPTILE_WINDOW_CORNER|VDPTILE_MIRRORED_BIT|VDPTILE_FLIPPED_BIT|VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+        include "data\graphics\tech\windowlayouts\battleoptionspeedwindow.asm"
+        include "data\graphics\tech\windowlayouts\battleoptionmessagewindow.asm"
+        include "data\graphics\tech\windowlayouts\battlefieldquitwindow.asm"
 		align $8000

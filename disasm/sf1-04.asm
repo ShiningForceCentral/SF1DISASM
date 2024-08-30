@@ -2288,6 +2288,7 @@ loc_2051A:
 		move.b  d2,OFFSET_CURRENT_TERRAIN_DATA_TO_MOVE_COSTS(a1)
 		addq.l  #1,a1
 		dbf     d0,loc_2051A
+
 		movem.l (sp)+,d0-d2/a1-a2
 		rts
 
@@ -2322,6 +2323,7 @@ loc_20568:
 		move.b  #$FF,(a0,d1.w)  ; make space at combatant position impassable
 loc_2057A:
 		dbf     d0,loc_2054A
+
 		movem.l (sp)+,d0-d3/a0
 		rts
 
@@ -2388,6 +2390,7 @@ loc_205C4:
 loc_205D2:
 		addq.l  #1,a0
 		dbf     d0,loc_205C4
+
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
@@ -2416,6 +2419,7 @@ loc_205EE:
 		bclr    #1,(a1,d1.w)    ; clear "allowed to stay at" flag at this position
 loc_20612:
 		dbf     d0,loc_205EE
+
 		movem.l (sp)+,d0-d2/a0-a1
 		rts
 
@@ -2467,6 +2471,7 @@ loc_20670:
 loc_20686:
 		addq.l  #1,a1
 		dbf     d0,loc_20670
+
 loc_2068C:
 		movem.l (sp)+,d0-d3/a0-a1
 		rts
@@ -2503,6 +2508,7 @@ loc_206AA:
 loc_206CC:
 		adda.w  #8,a2
 		dbf     d0,loc_206AA
+
 		tst.b   d0
 loc_206D6:
 		movem.l (sp)+,d0-d3/a2-a4
@@ -2510,118 +2516,90 @@ loc_206D6:
 
     ; End of function sub_20692
 
-word_206DC:     dc.w 0                  ; Table of XY offsets, two bytes each X,Y
-		dc.w $FFFD
-		dc.w 0
-		dc.w $FFFE
-		dc.w 0
-		dc.w $FFFD
-		dc.w 0
-		dc.w $FFFF
-		dc.w $FFFF
-		dc.w $FFFE
-		dc.w $FFFF
-		dc.w $FFFF
-		dc.w $FFFF
-		dc.w $FFFE
-		dc.w 0
-		dc.w $FFFF
-		dc.w 0
-		dc.w $FFFE
-		dc.w 0
-		dc.w $FFFF
-		dc.w 1
-		dc.w $FFFE
-		dc.w 0
-		dc.w $FFFF
-		dc.w 1
-		dc.w $FFFE
-		dc.w 1
-		dc.w $FFFF
-		dc.w $FFFE
-		dc.w $FFFF
-		dc.w $FFFF
-		dc.w $FFFF
-		dc.w $FFFE
-		dc.w $FFFF
-		dc.w $FFFF
-		dc.w 0
-		dc.w 2
-		dc.w $FFFF
-		dc.w 1
-		dc.w $FFFF
-		dc.w 2
-		dc.w $FFFF
-		dc.w 1
-		dc.w 0
-		dc.w $FFFD
-		dc.w 0
-		dc.w $FFFE
-		dc.w 0
-		dc.w $FFFD
-		dc.w 0
-		dc.w $FFFF
-		dc.w 0
-		dc.w $FFFE
-		dc.w 0
-		dc.w $FFFF
-		dc.w 0
-		dc.w 2
-		dc.w 0
-		dc.w 1
-		dc.w 0
-		dc.w 3
-		dc.w 0
-		dc.w 1
-		dc.w 0
-		dc.w 3
-		dc.w 0
-		dc.w 2
-		dc.w 0
-		dc.w $FFFE
-		dc.w 1
-		dc.w $FFFF
-		dc.w 0
-		dc.w $FFFE
-		dc.w 1
-		dc.w $FFFF
-		dc.w 1
-		dc.w 2
-		dc.w 1
-		dc.w 1
-		dc.w 0
-		dc.w 2
-		dc.w 1
-		dc.w 1
-		dc.w 1
-		dc.w $FFFF
-		dc.w 2
-		dc.w $FFFF
-		dc.w 1
-		dc.w $FFFF
-		dc.w 2
-		dc.w 0
-		dc.w 1
-		dc.w 0
-		dc.w 2
-		dc.w 0
-		dc.w 1
-		dc.w 1
-		dc.w 2
-		dc.w 0
-		dc.w 1
-		dc.w 1
-		dc.w 2
-		dc.w 1
-		dc.w 1
-		dc.w 0
-		dc.w 3
-		dc.w 0
-		dc.w 1
-		dc.w 0
-		dc.w 3
-		dc.w 0
-		dc.w 2
+word_206DC:               ; Table of XY offsets, two bytes each X,Y
+        dc.w 0,-3         ; Target relative position
+		dc.w 0,-2         ; Obstruction relative position
+
+		dc.w 0,-3
+		dc.w 0,-1
+
+		dc.w -1,-2
+		dc.w -1,-1
+
+		dc.w -1,-2
+		dc.w 0,-1
+
+		dc.w 0,-2
+		dc.w 0,-1
+
+		dc.w 1,-2
+		dc.w 0,-1
+
+		dc.w 1,-2
+		dc.w 1,-1
+
+		dc.w -2,-1
+		dc.w -1,-1
+
+		dc.w -2,-1
+		dc.w -1,0
+
+		dc.w 2,-1
+		dc.w 1,-1
+
+		dc.w 2,-1
+		dc.w 1,0
+
+		dc.w -3,0
+		dc.w -2,0
+
+		dc.w -3,0
+		dc.w -1,0
+
+		dc.w -2,0
+		dc.w -1,0
+
+		dc.w 2,0
+		dc.w 1,0
+
+		dc.w 3,0
+		dc.w 1,0
+
+		dc.w 3,0
+		dc.w 2,0
+
+		dc.w -2,1
+		dc.w -1,0
+
+		dc.w -2,1
+		dc.w -1,1
+
+		dc.w 2,1
+		dc.w 1,0
+
+		dc.w 2,1
+		dc.w 1,1
+
+		dc.w -1,2
+		dc.w -1,1
+
+		dc.w -1,2
+		dc.w 0,1
+
+		dc.w 0,2
+		dc.w 0,1
+
+		dc.w 1,2
+		dc.w 0,1
+
+		dc.w 1, 2
+		dc.w 1,1
+
+		dc.w 0,3
+		dc.w 0,1
+
+		dc.w 0,3
+		dc.w 0,2
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -2686,8 +2664,10 @@ loc_20842:
 		move.b  #1,(a0,d3.w)
 loc_2085A:
 		dbf     d2,loc_20842
+
 loc_2085E:
 		dbf     d1,loc_2083A
+
 loc_20862:
 		movem.l (sp)+,d1-d3/a0
 		rts
@@ -2747,6 +2727,7 @@ loc_208C6:
 loc_208CE:
 		move.b  -(a0),(a1)+
 		dbf     d0,loc_208CE
+
 loc_208D4:
 		move.b  #$FF,(a1)
 		movem.l (sp)+,d0-d3/a0-a1
@@ -2822,6 +2803,7 @@ BlockAllOccupiedSpaces:
 		movem.w (sp)+,d1-d2
 @Next:
 		dbf     d0,@Loop
+
 		movem.l (sp)+,d0-d2/d5-a0
 		rts
 
@@ -2915,6 +2897,7 @@ loc_209D8:
 		bra.s   loc_209FE
 loc_209F8:
 		dbf     d0,loc_209D8
+
 		tst.w   d0
 loc_209FE:
 		movem.l (sp)+,d0-d4
@@ -3055,7 +3038,7 @@ DetermineLaserEyeAction:
 		clr.b   ((LASER_EYE_COUNTDOWN-$1000000)).w
 		bra.s   @Done
 @Countdown:
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		bsr.w   LoadBattlesceneActors
 		lea     ((BATTLE_MESSAGE_INDEX_1-$1000000)).w,a0
 		andi.w  #$FF,d2
@@ -3101,7 +3084,7 @@ InitializeBattlesceneAftermath:
 		
 		clr.w   ((EXPERIENCE_TO_GAIN-$1000000)).w
 		clr.w   ((COINS_TO_GAIN-$1000000)).w
-		move.w  #$FFFF,((ITEM_DROPPED_FLAG-$1000000)).w
+		move.w  #-1,((ITEM_DROPPED_FLAG-$1000000)).w
 		rts
 
     ; End of function InitializeBattlesceneAftermath
@@ -3164,12 +3147,12 @@ CalculateHealingExperience:
 		jsr     j_GetMaxHpForCombatant
 		tst.w   d3
 		beq.s   loc_20CDA       ; skip if healing amount is 0
-		muls.w  #20,d3          ; max EXP per target = 20
+		muls.w  #EXPERIENCE_HEAL_CAP,d3          ; max EXP per target = 20
 		divs.w  d1,d3
 		addq.w  #1,d3
-		cmpi.w  #10,d3
+		cmpi.w  #EXPERIENCE_PER_HEAL,d3
 		bge.s   loc_20CD6
-		move.w  #10,d3
+		move.w  #EXPERIENCE_PER_HEAL,d3
 loc_20CD6:
 		add.w   d3,((EXPERIENCE_TO_GAIN-$1000000)).w
 loc_20CDA:
@@ -3206,9 +3189,9 @@ IsHealerClass:
 
 CapExperienceToGain:
 		
-		cmpi.w  #48,((EXPERIENCE_TO_GAIN-$1000000)).w
+		cmpi.w  #EXPERIENCE_ACTION_CAP,((EXPERIENCE_TO_GAIN-$1000000)).w
 		bcs.s   @Return
-		move.w  #48,((EXPERIENCE_TO_GAIN-$1000000)).w
+		move.w  #EXPERIENCE_ACTION_CAP,((EXPERIENCE_TO_GAIN-$1000000)).w
 @Return:
 		rts
 
@@ -3236,11 +3219,11 @@ loc_20D28:
 						; Cure poison
 		tst.b   EFFECTDEF_OFFSET_STATUS(a0)
 		bne.s   loc_20D3E
-		andi.w  #STATUSEFFECT_COUNTER_SLEEP|STATUSEFFECT_COUNTER_CURSE|STATUSEFFECT_COUNTER_JOGURT|STATUSEFFECT_COUNTER_MUDDLE|STATUSEFFECT_COUNTER_DISPEL|STATUSEFFECT_COUNTER_QUICK|STATUSEFFECT_COUNTER_SLOW|STATUSEFFECT_COUNTER_BOOST|STATUSEFFECT_COUNTER_SHIELD,((EFFECT_STATUS_CHANGE-$1000000)).w
+		andi.w  #(STATUSEFFECT_MASK-STATUSEFFECT_POISON),((EFFECT_STATUS_CHANGE-$1000000)).w
 		move.w  #$1C8,d2        ; "All traces of poison are[Line]purged from [Name]."
 		bra.s   loc_20D48
 loc_20D3E:
-		andi.w  #STATUSEFFECT_COUNTER_QUICK|STATUSEFFECT_COUNTER_BOOST|STATUSEFFECT_COUNTER_SHIELD,((EFFECT_STATUS_CHANGE-$1000000)).w
+		andi.w  #STATUSEFFECT_QUICK|STATUSEFFECT_BOOST|STATUSEFFECT_SHIELD,((EFFECT_STATUS_CHANGE-$1000000)).w
 		move.w  #$1C9,d2        ; "[Name] recovers."
 loc_20D48:
 		cmp.w   ((EFFECT_STATUS_CHANGE-$1000000)).w,d3
@@ -3254,7 +3237,7 @@ loc_20D52:
 		addq.w  #1,((EXPERIENCE_TO_GAIN-$1000000)).w
 		bra.s   loc_20D68
 loc_20D62:
-		addi.w  #10,((EXPERIENCE_TO_GAIN-$1000000)).w
+		addi.w  #EXPERIENCE_PER_HEAL,((EXPERIENCE_TO_GAIN-$1000000)).w
 loc_20D68:
 		move.w  #1,((EFFECT_REACTION-$1000000)).w
 		move.w  d2,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
@@ -3395,22 +3378,22 @@ loc_20E7A:
 		moveq   #5,d1
 loc_20E82:
 		clr.w   d2
-		move.b  table_KillExperienceGains(pc,d1.w),d2
+		move.b  (table_KillExperienceGains+3)(pc,d1.w),d2
 		move.l  (sp)+,d1
 		rts
 
     ; End of function CalculateKillExperience
 
-		dc.b 48
+table_KillExperienceGains:
+		dc.b 48  ; 3 or more levels below target
 		dc.b 32
 		dc.b 24
-table_KillExperienceGains:
-		dc.b 16
+		dc.b 16  ; same level as target
 		dc.b 10
 		dc.b 6
 		dc.b 4
 		dc.b 2
-		dc.b 1
+		dc.b 1   ; 5 or more levels above target
 		dc.b $FF
 
 ; =============== S U B R O U T I N E =======================================
@@ -3445,9 +3428,9 @@ LoadItemToDrop:
 		clr.w   d2
 		move.b  d1,d2
 		jsr     j_GetEntity
-		cmpi.b  #JOGURT,d1
+		cmpi.b  #ALLY_JOGURT,d1
 		bne.s   loc_20EDE
-		move.w  #YOGURT_RING,d1
+		move.w  #ITEM_YOGURT_RING,d1
 		jsr     j_IsItemInDealsOrHeldByForce
 		bcc.s   loc_20EDE
 		move.w  d0,d2
@@ -3555,7 +3538,7 @@ effect_InflictStatusNullifiableByShield:
 		bcs.w   loc_20DE2
 loc_20F94:
 		clr.w   d2              ; default to "Blaze" resistance
-		cmpi.b  #STATUSEFFECT_SLEEP,EFFECTDEF_OFFSET_STATUS(a0)
+		cmpi.b  #EFFECT_STATUS_SLEEP,EFFECTDEF_OFFSET_STATUS(a0)
 		bne.s   loc_20FA0
 		moveq   #CLASS_RESISTANCE_SLEEP_AND_DESOUL,d2
 loc_20FA0:
@@ -3628,34 +3611,34 @@ table_StatusEffectMessageParameters:
 		; 4 bytes per entry : 
 		dc.b 0                  ; Quick
 		dc.b 10
-		dc.w STATUSEFFECT_COUNTER_QUICK
+		dc.w STATUSEFFECT_QUICK
 		dc.b 1                  ; Slow
 		dc.b 10
-		dc.w STATUSEFFECT_COUNTER_SLOW
+		dc.w STATUSEFFECT_SLOW
 		dc.b 2                  ; Boost
 		dc.b 15
-		dc.w STATUSEFFECT_COUNTER_BOOST
+		dc.w STATUSEFFECT_BOOST
 		dc.b 3                  ; Dispel
 		dc.b 0
-		dc.w STATUSEFFECT_COUNTER_DISPEL
+		dc.w STATUSEFFECT_DISPEL
 		dc.b 4                  ; Shield
 		dc.b 0
-		dc.w STATUSEFFECT_COUNTER_SHIELD
+		dc.w STATUSEFFECT_SHIELD
 		dc.b 5                  ; Muddle
 		dc.b 0
-		dc.w STATUSEFFECT_COUNTER_MUDDLE
+		dc.w STATUSEFFECT_MUDDLE
 		dc.b 6                  ; Sleep
 		dc.b 0
-		dc.w STATUSEFFECT_COUNTER_SLEEP
+		dc.w STATUSEFFECT_SLEEP
 		dc.b 7                  ; Poison
 		dc.b 0
-		dc.w STATUSEFFECT_COUNTER_POISON
+		dc.w STATUSEFFECT_POISON
 		dc.b 8                  ; Curse
 		dc.b 0
-		dc.w STATUSEFFECT_COUNTER_CURSE
+		dc.w STATUSEFFECT_CURSE
 		dc.b 9                  ; Jogurt
 		dc.b 0
-		dc.w STATUSEFFECT_COUNTER_JOGURT
+		dc.w STATUSEFFECT_JOGURT
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -3921,7 +3904,7 @@ IsSpellNullified:
 		beq.s   loc_2121E       ; skip if spell costs 0 MP to cast
 		move.b  d1,d0
 		jsr     j_GetStatusEffectsForCombatant
-		andi.w  #STATUSEFFECT_COUNTER_SHIELD,d1
+		andi.w  #STATUSEFFECT_SHIELD,d1
 		beq.s   loc_2121E
 		move.w  #$1C5,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
 						; "But the spell is nullified by[Line]the magic curtain."
@@ -4284,7 +4267,7 @@ specialAttack_InflictPoison:
 		cmpi.w  #25,d7          ; 25% chance to inflict poison
 		bge.s   loc_2147E
 loc_21478:
-		moveq   #STATUSEFFECT_POISON,d2
+		moveq   #EFFECT_STATUS_POISON,d2
 		bsr.w   LoadEffectSuccessMessage
 loc_2147E:
 		movem.l (sp)+,d2/d7
@@ -4305,7 +4288,7 @@ specialAttack_InflictSleep:
 		cmpi.w  #25,d7          ; 25% chance to inflict sleep
 		bge.s   loc_214A2
 loc_2149C:
-		moveq   #STATUSEFFECT_SLEEP,d2
+		moveq   #EFFECT_STATUS_SLEEP,d2
 		bsr.w   LoadEffectSuccessMessage
 loc_214A2:
 		movem.l (sp)+,d2/d7
@@ -4328,10 +4311,10 @@ DetermineDarkDragonFinisher:
 		move.w  #ITEMTYPE_MASK_WEAPON,d1
 		jsr     j_GetEquippedItemForCombatant
 		bcs.s   loc_2151A
-		cmpi.b  #CHAOS_BREAKER,d2
+		cmpi.b  #ITEM_CHAOS_BREAKER,d2
 		bne.s   loc_2151A
 		move.b  d4,d0
-		jsr     j_GetClassForCombatant
+		jsr     j_GetClassForCombatant  ; get class for target
 		cmpi.b  #CLASS_DARK_DRAGON_1,d1
 		beq.s   loc_214E0
 		cmpi.b  #CLASS_DARK_DRAGON_2,d1
@@ -4680,7 +4663,7 @@ NullBattleaction:
 		
 		move.l  a0,-(sp)
 		lea     (BATTLE_SCENE_ACTORS).l,a2
-		move.w  #$FFFF,(a2)+
+		move.w  #-1,(a2)+
 		movea.l (sp)+,a0
 		rts
 
@@ -4747,7 +4730,7 @@ loc_217CE:
 		neg.w   d4
 		jsr     j_GetStatusEffectsForCombatant
 		move.w  d1,d5
-		moveq   #$FFFFFFFF,d6
+		moveq   #-1,d6
 		bsr.w   WriteBattlesceneCommand
 @CheckOpponent:
 		
@@ -4767,7 +4750,7 @@ loc_2180A:
 		jsr     (a1)            ; jump to effect routine
 		move.l  a0,-(sp)
 		lea     ((AFTER_TURN_MESSAGE_INDEX-$1000000)).w,a0
-		cmpi.w  #$FFFF,(a0)
+		cmpi.w  #-1,(a0)
 		beq.s   loc_21820
 		bsr.w   CopyBattlesceneData
 loc_21820:
@@ -4860,13 +4843,13 @@ sub_218EE:
 		lea     ((word_FFA9CA-$1000000)).w,a1
 		move.b  (a0)+,d0
 		bge.s   loc_21900
-		move.w  #$FFFF,(a1)+
+		move.w  #-1,(a1)+
 		bra.s   loc_21906
 loc_21900:
 		andi.w  #7,d0
 		move.w  d0,(a1)+
 loc_21906:
-		move.w  #$FFFF,d0
+		move.w  #-1,d0
 		move.w  d0,(a1)+
 		move.w  d0,(a1)+
 		move.b  d0,((byte_FFCB6B-$1000000)).w
@@ -4875,7 +4858,7 @@ loc_21906:
 		clr.w   (a1)+
 		clr.w   (a1)+
 		addq.l  #2,a1
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		move.w  d1,(a1)+
 		move.w  d1,(a1)+
 		move.w  d1,((BATTLE_MESSAGE_INDEX_1-$1000000)).w
@@ -4903,7 +4886,7 @@ IsTargetOpponent:
 		eor.w   d2,d1
 		btst    #ENTITYENTRY_BIT_ENEMY,d1
 		bne.s   @Opponent
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bra.s   @Done
 @Opponent:
 		move.w  (a3)+,d1
@@ -4936,7 +4919,7 @@ loc_2198C:
 		jsr     j_GetEntity
 		tst.w   d1
 		beq.s   loc_219B2
-		cmpi.b  #HANZOU,d1
+		cmpi.b  #ALLY_HANZOU,d1
 		beq.s   loc_219B2
 		moveq   #7,d1
 loc_2199E:
@@ -5017,7 +5000,7 @@ CheckDispel:
 		tst.w   ((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w
 		beq.s   @Skip
 		jsr     j_GetStatusEffectsForCombatant
-		andi.w  #STATUSEFFECT_COUNTER_DISPEL,d1
+		andi.w  #STATUSEFFECT_DISPEL,d1
 		beq.s   @Skip
 		ori     #1,ccr
 @Skip:
@@ -5213,13 +5196,15 @@ InitializeNewGame:
 		dbf     d0,@EmptyBattleParty_Loop
                 
 		clr.w   d0
-		bsr.w   JoinForce       
+		bsr.w   JoinForce       ; Max joins
 		rts
 
     ; End of function InitializeNewGame
 
 
 ; =============== S U B R O U T I N E =======================================
+
+; initialize battle combatants
 
 sub_21B80:
 		movem.l d0-d2/a0-a1,-(sp)
@@ -5243,7 +5228,7 @@ loc_21BA0:
 		move.b  (a1)+,d0
 loc_21BAE:
 		beq.s   loc_21BBE
-		move.b  3(a1),(a0)+
+		move.b  BATTLEDATA_ENEMY_SPAWN_COUNTER(a1),(a0)+
 		bsr.s   sub_21BF6
 		addq.l  #4,a1
 		addq.b  #1,d1
@@ -5579,17 +5564,17 @@ LoadEnemyStats:
 		jsr     j_RefillMP
 		bsr.w   sub_21EA6
 		jsr     j_GetEntityItemsAddress
-		move.l  #$FFFFFFFF,(a0)
-		move.b  1(a2),d1
+		move.l  #$FFFFFFFF,(a0)  ; 4 empty item slots
+		move.b  BATTLEDATA_ENEMY_ITEM_0(a2),d1
 		move.b  d1,(a0)+
-		cmp.b   2(a2),d1
+		cmp.b   BATTLEDATA_ENEMY_ITEM_1(a2),d1
 		beq.s   loc_21E8E
-		move.b  2(a2),d1
+		move.b  BATTLEDATA_ENEMY_ITEM_1(a2),d1
 		move.b  d1,(a0)
 loc_21E8E:
 		jsr     j_GetCharacterSpellsAddress
-		move.l  #$FFFFFFFF,(a0)
-		move.b  3(a2),d1
+		move.l  #$FFFFFFFF,(a0)  ; 4 empty spell slots
+		move.b  BATTLEDATA_ENEMY_SPELL(a2),d1
 		move.b  d1,(a0)
 loc_21EA0:
 		movem.l (sp)+,d0-d1/a0-a3
@@ -5608,6 +5593,7 @@ sub_21EA6:
 loc_21EB6:
 		clr.b   (a0)+
 		dbf     d1,loc_21EB6
+
 		move.b  ENEMY_OFFSET_11(a3),d1
 		movea.l ((dword_FFC612-$1000000)).w,a0
 		bsr.w   GetVariableLengthEntryAddress
@@ -5616,6 +5602,7 @@ loc_21EB6:
 loc_21ECC:
 		move.b  (a0)+,(a1)+
 		dbf     d1,loc_21ECC
+
 loc_21ED2:
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
@@ -5935,6 +5922,7 @@ IsInBattleParty:
 		bra.s   @Break
 @Next:
 		dbf     d1,@Loop
+
 		clr.w   d1
 @Break:
 		movem.l (sp)+,d1/a0
@@ -5988,6 +5976,7 @@ JoinBattleParty:
 @Next:
 		addq.l  #1,a0
 		dbf     d1,@FindEmptyBattleSlot_Loop
+
 @Break:
 		movem.l (sp)+,d1/a0
 		rts
@@ -6015,6 +6004,7 @@ LeaveBattleParty:
 @Next:
 		addq.l  #1,a0
 		dbf     d1,@Loop
+
 @Break:
 		movem.l (sp)+,d1/a0
 		rts
@@ -6037,6 +6027,7 @@ GetEmptyBattlePartySlot:
 		beq.s   @Break
 		addq.w  #1,d2
 		dbf     d1,@Loop
+
 @Break:
 		movem.l (sp)+,d1/a0
 		rts
@@ -6132,6 +6123,7 @@ RegenerateHP:
 		jsr     j_IncreaseCurrentHP
 @Skip:
 		dbf     d2,@Loop
+
 		movem.l (sp)+,d0-d2/a0
 		rts
 
@@ -6172,7 +6164,7 @@ SetForceLeaderStatsInBattleTestMode:
 		jsr     j_SetBaseMove
 		jsr     j_LoadCombatantData
 		jsr     j_GetEntityItemsAddress
-		move.b  #KINDAN_NOHAKO,2(a0)
+		move.b  #ITEM_KINDAN_NOHAKO,2(a0)
 		jsr     j_GetCharacterSpellsAddress
 		addq.l  #1,a0
 		move.b  #SPELL_BLAZE|LV_4,(a0)+
@@ -6187,11 +6179,11 @@ SetForceLeaderStatsInBattleTestMode:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 entity index -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 entity index -> D1 if they exist, else D1 = -1
 
 GetEntity:
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  (a0),d1
@@ -6205,12 +6197,12 @@ GetEntity:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 X -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 X -> D1 if they exist, else D1 = -1
 
 GetCombatantX:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_X(a0),d1
@@ -6224,12 +6216,12 @@ GetCombatantX:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 Y -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 Y -> D1 if they exist, else D1 = -1
 
 GetCombatantY:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_Y(a0),d1
@@ -6243,12 +6235,12 @@ GetCombatantY:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 modified attack -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 modified attack -> D1 if they exist, else D1 = -1
 
 GetModifiedAttack:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_MODIFIED_ATTACK(a0),d1
@@ -6262,12 +6254,12 @@ GetModifiedAttack:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 modified defense -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 modified defense -> D1 if they exist, else D1 = -1
 
 GetModifiedDefense:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_MODIFIED_DEFENSE(a0),d1
@@ -6281,12 +6273,12 @@ GetModifiedDefense:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 modified agility -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 modified agility -> D1 if they exist, else D1 = -1
 
 GetModifiedAgility:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_MODIFIED_AGILITY(a0),d1
@@ -6300,12 +6292,12 @@ GetModifiedAgility:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 modified move -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 modified move -> D1 if they exist, else D1 = -1
 
 GetModifiedMove:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_MODIFIED_MOVE(a0),d1
@@ -6319,12 +6311,12 @@ GetModifiedMove:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 modified critical -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 modified critical -> D1 if they exist, else D1 = -1
 
 GetModifiedCritical:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_MODIFIED_CRITICAL(a0),d1
@@ -6338,12 +6330,12 @@ GetModifiedCritical:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 modified double attack mode -> D1 if they exist, else D1 = $FFFF
+; Get combatant D0 modified double attack mode -> D1 if they exist, else D1 = -1
 
 GetModifiedDoubleAttackMode:
 		
 		movem.l d0/d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		bsr.w   GetCombatantEntryAddress
 		beq.s   @Skip           ; skip if combatant slot is empty
 		move.b  COMBATANT_OFFSET_MODIFIED_DOUBLE_ATTACK_MODE(a0),d1
@@ -6979,6 +6971,7 @@ GetDisplayedNameAddress:
 loc_22642:
 		move.b  (a0)+,(a1)+
 		dbf     d2,loc_22642
+
 		clr.b   (a1)
 		lea     ((DISPLAYED_EMEMY_NAME-$1000000)).w,a0
 loc_2264E:
@@ -7556,6 +7549,7 @@ LoadForceMemberName:
 @Loop:
 		move.b  (a1)+,(a0)+
 		dbf     d0,@Loop
+
 		movem.l (sp)+,d0/a1
 		rts
 
@@ -7578,9 +7572,9 @@ IncreaseModifiedAttack:
 		clr.w   d1
 		bra.s   loc_22906
 loc_228FC:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_ATT,d1
 		ble.s   loc_22906
-		move.w  #99,d1
+		move.w  #STATCAP_ATT,d1
 loc_22906:
 		bsr.w   SetModifiedAttack
 		movem.l (sp)+,d0/d2
@@ -7605,9 +7599,9 @@ IncreaseModifiedDefense:
 		clr.w   d1
 		bra.s   loc_22930
 loc_22926:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_DEF,d1
 		ble.s   loc_22930
-		move.w  #99,d1
+		move.w  #STATCAP_DEF,d1
 loc_22930:
 		bsr.w   SetModifiedDefense
 		movem.l (sp)+,d0/d2
@@ -7632,9 +7626,9 @@ IncreaseModifiedAgility:
 		clr.w   d1
 		bra.s   loc_2295A
 loc_22950:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_AGI,d1
 		ble.s   loc_2295A
-		move.w  #99,d1
+		move.w  #STATCAP_AGI,d1
 loc_2295A:
 		bsr.w   SetModifiedAgility
 		movem.l (sp)+,d0/d2
@@ -7659,9 +7653,9 @@ IncreaseModifiedMove:
 		clr.w   d1
 		bra.s   loc_22984
 loc_2297A:
-		cmpi.w  #9,d1
+		cmpi.w  #STATCAP_MOV,d1
 		ble.s   loc_22984
-		move.w  #9,d1
+		move.w  #STATCAP_MOV,d1
 loc_22984:
 		bsr.w   SetModifiedMove 
 		movem.l (sp)+,d0/d2
@@ -7686,9 +7680,9 @@ IncreaseModifiedCritical:
 		clr.w   d1
 		bra.s   loc_229AE
 loc_229A4:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_CRIT,d1
 		ble.s   loc_229AE
-		move.w  #99,d1
+		move.w  #STATCAP_CRIT,d1
 loc_229AE:
 		bsr.w   SetModifiedCritical
 		movem.l (sp)+,d0/d2
@@ -7713,9 +7707,9 @@ IncreaseLevel:
 		clr.w   d1
 		bra.s   loc_229D8
 loc_229CE:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_LV,d1
 		ble.s   loc_229D8
-		move.w  #99,d1
+		move.w  #STATCAP_LV,d1
 loc_229D8:
 		bsr.w   SetLevel        
 		movem.l (sp)+,d0/d2
@@ -7740,9 +7734,9 @@ IncreaseBaseAttack:
 		clr.w   d1
 		bra.s   loc_22A02
 loc_229F8:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_ATT,d1
 		ble.s   loc_22A02
-		move.w  #99,d1
+		move.w  #STATCAP_ATT,d1
 loc_22A02:
 		bsr.w   SetBaseAttack   
 		movem.l (sp)+,d0/d2
@@ -7767,9 +7761,9 @@ IncreaseBaseDefense:
 		clr.w   d1
 		bra.s   loc_22A2C
 loc_22A22:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_DEF,d1
 		ble.s   loc_22A2C
-		move.w  #99,d1
+		move.w  #STATCAP_DEF,d1
 loc_22A2C:
 		bsr.w   SetBaseDefense  
 		movem.l (sp)+,d0/d2
@@ -7794,9 +7788,9 @@ IncreaseBaseAgility:
 		clr.w   d1
 		bra.s   loc_22A56
 loc_22A4C:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_AGI,d1
 		ble.s   loc_22A56
-		move.w  #99,d1
+		move.w  #STATCAP_AGI,d1
 loc_22A56:
 		bsr.w   SetBaseAgility  
 		movem.l (sp)+,d0/d2
@@ -7821,9 +7815,9 @@ IncreaseBaseMove:
 		clr.w   d1
 		bra.s   loc_22A80
 loc_22A76:
-		cmpi.w  #9,d1
+		cmpi.w  #STATCAP_MOV,d1
 		ble.s   loc_22A80
-		move.w  #9,d1
+		move.w  #STATCAP_MOV,d1
 loc_22A80:
 		bsr.w   SetBaseMove     
 		movem.l (sp)+,d0/d2
@@ -7848,9 +7842,9 @@ IncreaseBaseCritical:
 		clr.w   d1
 		bra.s   loc_22AAA
 loc_22AA0:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_CRIT,d1
 		ble.s   loc_22AAA
-		move.w  #99,d1
+		move.w  #STATCAP_CRIT,d1
 loc_22AAA:
 		bsr.w   SetBaseCritical 
 		movem.l (sp)+,d0/d2
@@ -7874,9 +7868,9 @@ IncreaseMaxHP:
 		clr.w   d1
 		bra.s   loc_22AD2
 loc_22AC8:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_HP,d1
 		ble.s   loc_22AD2
-		move.w  #99,d1
+		move.w  #STATCAP_HP,d1
 loc_22AD2:
 		bsr.w   SetMaxHP        
 		movem.l (sp)+,d0/d2
@@ -7929,9 +7923,9 @@ IncreaseMaxMP:
 		clr.w   d1
 		bra.s   loc_22B26
 loc_22B1C:
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_MP,d1
 		ble.s   loc_22B26
-		move.w  #99,d1
+		move.w  #STATCAP_MP,d1
 loc_22B26:
 		bsr.w   SetMaxMP        
 		movem.l (sp)+,d0/d2
@@ -8115,7 +8109,7 @@ IncreaseCurrentMP:
 		move.b  d1,d2
 		ext.w   d2
 		bsr.w   GetCurrentMP    
-		cmpi.w  #99,d1
+		cmpi.w  #STATCAP_MP,d1
 		bgt.s   loc_22BFA       ; skip if current MP > 99
 		move.w  d1,-(sp)
 		bsr.w   GetMaxMP        
@@ -8495,6 +8489,7 @@ loc_22D3E:
 loc_22D48:
 		addq.l  #1,a0
 		dbf     d0,loc_22D3E
+
 		ori     #1,ccr
 loc_22D52:
 		movem.l (sp)+,d0-d1/a0
@@ -8585,6 +8580,7 @@ CountOccupiedItemSlots:
 		
 		addq.w  #1,d1
 		dbf     d0,@Loop
+
 		ori     #1,ccr
 @Break:
 		movem.l (sp)+,d0/a0
@@ -8818,6 +8814,7 @@ GetEquippedItem:
 		bne.s   @GetItemIndex
 @Next:
 		dbf     d3,@Loop
+
 		move.w  d3,d2
 		ori     #1,ccr
 		bra.s   @Continue
@@ -9004,8 +9001,9 @@ FindItemToDrop:
 @Next:
 		bra.s   @FindItem
 		dbf     d1,@Loop
+
 @Skip:
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 @ItemFound:
 		movem.l (sp)+,d0/d2-d3/a0-a1
 		rts
@@ -9013,11 +9011,11 @@ FindItemToDrop:
     ; End of function FindItemToDrop
 
 tbl_ItemsToDrop:; List of item indexes to be dropped by enemies, $FF terminated
-		dc.b DOOM_BLADE
-		dc.b HEAT_AXE
-		dc.b ATLAS
-		dc.b DEMON_ROD
-		dc.b YOGURT_RING
+		dc.b ITEM_DOOM_BLADE
+		dc.b ITEM_HEAT_AXE
+		dc.b ITEM_ATLAS
+		dc.b ITEM_DEMON_ROD
+		dc.b ITEM_YOGURT_RING
 		dc.b $FF
 
 ; =============== S U B R O U T I N E =======================================
@@ -9180,6 +9178,8 @@ GetAdjustedGroupFlags:
 
 ; =============== S U B R O U T I N E =======================================
 
+; convert group desigantion for enemy actions
+
 AdjustGroupFlags:
 		
 		move.w  d5,-(sp)
@@ -9196,7 +9196,7 @@ tbl_AdjustedGroupFlags:
 		dc.b RANGE_TARGETS_NONE
 		dc.b RANGE_TARGETS_FOES
 		dc.b RANGE_TARGETS_FRIENDS
-		dc.b RANGE_TARGETS_FRIENDS_AND_FOES
+		dc.b RANGE_TARGETS_FRIENDS|RANGE_TARGETS_FOES
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -9215,134 +9215,7 @@ JumpToRangeOrEquipEffect:
 
     ; End of function JumpToRangeOrEquipEffect
 
-tbl_RangeData:  incbin "data/stats/ranges/range00.bin"
-		bra.w   EquipEffect_IncreaseAttack
-		incbin "data/stats/ranges/range01.bin"
-		bra.w   EquipEffect_IncreaseDefense
-		incbin "data/stats/ranges/range02.bin"
-		bra.w   EquipEffect_IncreaseAgility
-		incbin "data/stats/ranges/range03.bin"
-		bra.w   EquipEffect_IncreaseMove
-		incbin "data/stats/ranges/range04.bin"
-		bra.w   EquipEffect_IncreaseAttackSetCritical
-		incbin "data/stats/ranges/range05.bin"
-		bra.w   EquipEffect_IncreaseAttackAndDefense
-		incbin "data/stats/ranges/range06.bin"
-		bra.w   EquipEffect_SetJogurtStatus
-		incbin "data/stats/ranges/range07.bin"
-		bra.w   nullsub_23378
-		incbin "data/stats/ranges/range08.bin"
-		bra.w   sub_23450       
-		incbin "data/stats/ranges/range09.bin"
-		bra.w   sub_2345E       
-		incbin "data/stats/ranges/range10.bin"
-		bra.w   sub_2346C       
-		incbin "data/stats/ranges/range11.bin"
-		bra.w   sub_2347A       
-		incbin "data/stats/ranges/range12.bin"
-		bra.w   sub_23488       
-		incbin "data/stats/ranges/range13.bin"
-		bra.w   sub_23496       
-		incbin "data/stats/ranges/range14.bin"
-		bra.w   sub_234A4       
-		incbin "data/stats/ranges/range15.bin"
-		bra.w   nullsub_23378
-		incbin "data/stats/ranges/range16.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range17.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range18.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range19.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range20.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range21.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range22.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range23.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range24.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range25.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range26.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range27.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range28.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range29.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range30.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range31.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range32.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range33.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range34.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range35.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range36.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range37.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range38.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range39.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range40.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range41.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range42.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range43.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range44.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range45.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range46.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range47.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range48.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range49.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range50.bin"
-		bra.w   sub_23524
-		incbin "data/stats/ranges/range51.bin"
-		bra.w   nullsub_23378
-		incbin "data/stats/ranges/range52.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range53.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range54.bin"
-		bra.w   DetermineLaserEyeAction
-		incbin "data/stats/ranges/range55.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range56.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range57.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range58.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range59.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range60.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range61.bin"
-		bra.w   KindanNoHako    
-		incbin "data/stats/ranges/range62.bin"
-		bra.w   StartBattleaction
-		incbin "data/stats/ranges/range63.bin"
-		bra.w   StartBattleaction
+    include "data\stats\ranges\rangedata.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -9503,98 +9376,98 @@ EquipEffect_IncreaseMove:
 
 ; Add D5 to force member D0 current HP (not functional)
 
-sub_23450:
+AfterTurn_RecoverHP:
 		move.w  d1,-(sp)
 		move.b  d5,d1
 		jsr     j_IncreaseCurrentHP
 		move.w  (sp)+,d1
 		rts
 
-    ; End of function sub_23450
+    ; End of function AfterTurn_RecoverHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Add D5 to force member D0 current MP (not functional)
 
-sub_2345E:
+AfterTurn_RecoverMP:
 		move.w  d1,-(sp)
 		move.b  d5,d1
 		jsr     j_IncreaseCurrentMP
 		move.w  (sp)+,d1
 		rts
 
-    ; End of function sub_2345E
+    ; End of function AfterTurn_RecoverMP
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Add D5 to force member D0 max HP (not functional)
 
-sub_2346C:
+AfterTurn_GainHP:
 		move.w  d1,-(sp)
 		move.b  d5,d1
 		jsr     j_IncreaseMaxHP
 		move.w  (sp)+,d1
 		rts
 
-    ; End of function sub_2346C
+    ; End of function AfterTurn_GainHP
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Add D5 to force member D0 base attack (not functional)
 
-sub_2347A:
+AfterTurn_GainATK:
 		move.w  d1,-(sp)
 		move.b  d5,d1
 		jsr     j_IncreaseBaseAttack
 		move.w  (sp)+,d1
 		rts
 
-    ; End of function sub_2347A
+    ; End of function AfterTurn_GainATK
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Add D5 to force member D0 base defense (not functional)
 
-sub_23488:
+AfterTurn_GainDEF:
 		move.w  d1,-(sp)
 		move.b  d5,d1
 		jsr     j_IncreaseBaseDefense
 		move.w  (sp)+,d1
 		rts
 
-    ; End of function sub_23488
+    ; End of function AfterTurn_GainDEF
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Add D5 to force member D0 base agility (not functional)
 
-sub_23496:
+AfterTurn_GainAGI:
 		move.w  d1,-(sp)
 		move.b  d5,d1
 		jsr     j_IncreaseBaseAgility
 		move.w  (sp)+,d1
 		rts
 
-    ; End of function sub_23496
+    ; End of function AfterTurn_GainAGI
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Add D5 to force member D0 base move (not functional)
 
-sub_234A4:
+AfterTurn_GainMOV:
 		move.w  d1,-(sp)
 		move.b  d5,d1
 		jsr     j_IncreaseBaseMove
 		move.w  (sp)+,d1
 		rts
 
-    ; End of function sub_234A4
+    ; End of function AfterTurn_GainMOV
 
 
 ; =============== S U B R O U T I N E =======================================
@@ -9688,10 +9561,12 @@ loc_23534:
 loc_23548:
 		bsr.w   IncreaseStatsOnLevelUpForCombatant
 		dbf     d3,loc_23548
+
 loc_23550:
 		jsr     j_RefillHPforCombatant
 		jsr     j_RefillMPforCombatant
 		dbf     d2,loc_23534
+
 		movem.l (sp)+,d0-d3/a0
 		rts
 
@@ -9835,7 +9710,7 @@ UseItem:
 		
 		moveq   #2,d1           ; item is piece of equipment, but cannot be equipped by current actor
 @Continue:
-		moveq   #$FFFFFFFF,d4
+		moveq   #-1,d4
 @Done:
 		move.b  d1,((CANNOT_USE_ITEM_FLAG-$1000000)).w
 		jsr     j_FindTargetableSpaces
@@ -9947,7 +9822,7 @@ SetupBattleaction:
 		bcc.s   @Skip           ; skip if battleaction type >= 3
 		move.b  d2,((BATTLE_MESSAGE_OFFSET-$1000000)).w
 		clr.w   ((MP_COST_OF_SPELL_BEING_CAST-$1000000)).w
-		move.w  #$FFFF,((SELECTED_ITEM_SLOT-$1000000)).w
+		move.w  #-1,((SELECTED_ITEM_SLOT-$1000000)).w
 		clr.b   ((SPECIAL_ATTACK_PERCENT-$1000000)).w
 		move.b  (a0),d0         ; D0 = caster index
 		move.b  BATTLE_ACTION_OFFSET_SPELL_INDEX(a0),d1
@@ -10012,6 +9887,7 @@ MakeMoveEverywhereGrid:
 loc_2378C:
 		move.b  (a0)+,(a1)+     ; copy move costs table to table at $FFA8C0
 		dbf     d1,loc_2378C    
+
 		jsr     j_GetCombatantPosition
 		mulu.w  ((MAP_WIDTH-$1000000)).w,d1
 		add.w   d2,d1           ; D1 = moving combatant's position converted to offset
@@ -10027,6 +9903,7 @@ loc_237B2:
 loc_237BE:
 		addq.l  #1,a0
 		dbf     d1,loc_237B2
+
 		movem.l (sp)+,d1-d2/a0-a1
 		rts
 
@@ -10094,9 +9971,10 @@ loc_2384C:
 		move.w  d0,(a2)+        ; load target index
 loc_2385A:
 		dbf     d0,loc_23812
+
 		move.w  d4,((TABLE_AT_FFA8C0-$1000000)).w
 						; load target list length
-		moveq   #$FFFFFFFF,d4
+		moveq   #-1,d4
 		move.w  d4,(a1)+
 		move.w  d4,(a2)+
 		movem.l (sp)+,d0-d5/a0-a2
@@ -10235,6 +10113,7 @@ LoadVariableLengthEntry:
 loc_23908:
 		move.b  (a0)+,(a1)+
 		dbf     d1,loc_23908
+
 loc_2390E:
 		movem.l (sp)+,d1/a0
 		rts
@@ -10318,15 +10197,15 @@ GetResistance:
 
 ; =============== S U B R O U T I N E =======================================
 
-; Get combatant D0 special bit 6 from class (unused)
+; Get combatant D0 special bit 6 from class (unused)  set: d1 = 2 / clear: d1 = 1
 
 sub_2397C:
 		move.l  a0,-(sp)
 		jsr     j_GetClassForCombatant
 		bsr.w   GetClassEntryAddress
 		move.b  CLASSDEF_OFFSET_PROPERTIES(a0),d1
-		andi.w  #$40,d1 
-		asr.w   #6,d1
+		andi.w  #AISETTING_BIT6,d1 
+		asr.w   #CLASS_PROPERTY_BIT6,d1
 		addq.w  #1,d1
 		movea.l (sp)+,a0
 		rts
@@ -10401,7 +10280,7 @@ GetPortrait:
 		ext.w   d1
 		bra.s   @Done
 @ForceMember:
-		cmpi.b  #NOVA,d0
+		cmpi.b  #ALLY_NOVA,d0
 		bne.s   @CheckIfChangedIntoJogurt
 		move.w  #PORTRAIT_NOVA,d1
 		bra.s   @Done
@@ -10424,40 +10303,7 @@ GetPortrait:
 
     ; End of function GetPortrait
 
-table_PromotedPortraits:
-		; Portraits used by force members after they have been promoted
-		dc.b PORTRAIT_MAX_HERO
-		dc.b PORTRAIT_MAE
-		dc.b PORTRAIT_PELLE
-		dc.b PORTRAIT_KEN
-		dc.b PORTRAIT_VANKAR
-		dc.b PORTRAIT_EARNEST
-		dc.b PORTRAIT_ARTHUR
-		dc.b PORTRAIT_GORT
-		dc.b PORTRAIT_LUKE
-		dc.b PORTRAIT_GUNTZ
-		dc.b PORTRAIT_ANRI
-		dc.b PORTRAIT_ALEF
-		dc.b PORTRAIT_TAO
-		dc.b PORTRAIT_DOMINGO
-		dc.b PORTRAIT_LOWE
-		dc.b PORTRAIT_KHRIS
-		dc.b PORTRAIT_TORASU
-		dc.b PORTRAIT_GONG
-		dc.b PORTRAIT_DIANE
-		dc.b PORTRAIT_HANS
-		dc.b PORTRAIT_LYLE
-		dc.b PORTRAIT_AMON
-		dc.b PORTRAIT_BALBAROY
-		dc.b PORTRAIT_KOKICHI
-		dc.b PORTRAIT_BLEU_GRDR
-		dc.b PORTRAIT_ADAM_CYBG
-		dc.b PORTRAIT_ZYLO
-		dc.b PORTRAIT_MUSASHI
-		dc.b PORTRAIT_HANZOU
-		dc.b PORTRAIT_JOGURT
-		dc.b PORTRAIT_VARIOS
-		dc.b PORTRAIT_NONE
+    include "data\stats\allies\promotedportraits.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10494,7 +10340,7 @@ GetMapsprite:
 		move.b  ENEMY_OFFSET_MAPSPRITE(a1),d1
 		bra.s   @Done
 @ForceMember:
-		cmpi.b  #NOVA,d0
+		cmpi.b  #ALLY_NOVA,d0
 		bne.s   @isChangedIntoJogurt
 		move.w  #MAPSPRITE_NOVA,d1
 		bra.s   @Done
@@ -10549,6 +10395,7 @@ ApplyOutfitItems:
 @NextItemSlot:
 		
 		dbf     d1,@Loop
+
 @Skip:
 		ori     #1,ccr
 @Done:
@@ -10557,15 +10404,7 @@ ApplyOutfitItems:
 
     ; End of function ApplyOutfitItems
 
-tbl_OutfitItems:; 3 bytes per entry, $FF terminated
-		dc.b ANRI
-		dc.b KITUI_HUKU
-		dc.b MAPSPRITE_ANRI_OUTFIT
-		dc.b TAO
-		dc.b SUGOI_MIZUGI
-		dc.b MAPSPRITE_TAO_OUTFIT
-		dc.b $FF
-		dc.b $FF
+    include "data\stats\allies\costumes.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10674,7 +10513,7 @@ LoadBattlespriteAndPaletteIndexes:
 LoadWeaponSpriteIndex:
 		
 		movem.l d1-d3/a0,-(sp)
-		move.w  #$FFFF,((EQUIPPED_WEAPON_INDEX-$1000000)).w
+		move.w  #-1,((EQUIPPED_WEAPON_INDEX-$1000000)).w
 		move.w  #128,((WEAPON_SPRITE_INDEX-$1000000)).w
 		bsr.w   IsCombatantChangedIntoJogurt
 		bne.s   @Skip           ; skip if changed into Jogurt
@@ -10712,7 +10551,7 @@ LoadWeaponSpriteIndex:
 LoadBattleAnimationIndex:
 		
 		movem.l d1-d2/a0,-(sp)
-		move.w  #$FFFF,d1
+		move.w  #-1,d1
 		move.w  d1,((BATTLESCENE_ANIMATION_INDEX-$1000000)).w
 		move.w  d1,((word_FFCBAC-$1000000)).w
 		bsr.s   GetAnimationDataAddress
@@ -10840,7 +10679,7 @@ sub_23CB6:
 
 sub_23CC6:
 		move.w  d1,-(sp)
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		move.b  d1,((byte_FFCB28-$1000000)).w
 		bsr.w   sub_24306
 		move.b  #3,(a1)
@@ -10854,7 +10693,7 @@ sub_23CC6:
 
 sub_23CDA:
 		movem.l d0-d4/d7-a0,-(sp)
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		bsr.w   sub_24306
 		clr.w   d2
 		move.b  (a0)+,d2
@@ -10885,7 +10724,7 @@ return_23D18:
 
 sub_23D1A:
 		movem.l d1/d7-a0,-(sp)
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		bsr.w   sub_24306
 		clr.w   d1
 		move.b  (a0),d1
@@ -10909,7 +10748,7 @@ sub_23D32:
 		move.w  d1,((word_FFCB3A-$1000000)).w
 		bsr.w   sub_242EC
 		move.w  d1,d4
-		cmpi.w  #$FFFF,d4
+		cmpi.w  #-1,d4
 		beq.s   loc_23D94
 loc_23D5A:
 		clr.w   d2
@@ -10953,7 +10792,7 @@ sub_23D9C:
 		bge.s   loc_23DAE
 		bsr.w   sub_23E9A
 loc_23DAE:
-		moveq   #$FFFFFFFF,d6
+		moveq   #-1,d6
 		clr.w   d3
 		bsr.s   sub_23DDE
 		beq.w   loc_23DD8
@@ -11234,31 +11073,8 @@ tbl_AiActionPercents:
 		dc.b 25
 		dc.b 50
 		dc.b 75
-                
-tbl_SpecialAiActionDefs:
-		; Special AI action definitions table -- 2 bytes per entry : 
-		dc.b RANGE_BREATH
-		dc.b EFFECT_FIRE_BREATH_1
-		dc.b RANGE_BREATH
-		dc.b EFFECT_FIRE_BREATH_2
-		dc.b RANGE_BREATH
-		dc.b EFFECT_FIRE_BREATH_3
-		dc.b RANGE_BREATH
-		dc.b EFFECT_ICE_BREATH_1
-		dc.b RANGE_BREATH
-		dc.b EFFECT_ICE_BREATH_2
-		dc.b RANGE_BREATH
-		dc.b EFFECT_ICE_BREATH_3
-		dc.b RANGE_BREATH
-		dc.b EFFECT_ELECTRIC_BREATH
-		dc.b RANGE_MACHINE_GUN
-		dc.b EFFECT_MACHINE_GUN
-		dc.b RANGE_SPEAR_AND_LASER
-		dc.b EFFECT_LASER
-		dc.b RANGE_DEMON_BLAZE_1
-		dc.b EFFECT_DEMON_BLAZE_1
-		dc.b RANGE_DEMON_BLAZE_2
-		dc.b EFFECT_DEMON_BLAZE_2
+
+    include "data\stats\enemies\specialaiactions.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -11375,20 +11191,7 @@ AiAction_DarkDragon:
 
     ; End of function AiAction_DarkDragon
 
-tbl_DarkDragonSpells:
-		; Spells available to Dark Dragon's side heads, 2 bytes per entry : 
-		dc.b 25
-		dc.b SPELL_BLAZE|LV_3
-		dc.b 25
-		dc.b SPELL_BOLT|LV_2
-		dc.b 25
-		dc.b SPELL_FREEZE|LV_2
-		dc.b 12
-		dc.b SPELL_DESOUL|LV_2
-		dc.b 12
-		dc.b SPELL_BOLT|LV_4
-		dc.b 100
-		dc.b SPELL_BLAZE|LV_4
+    include "data\stats\enemies\darkdragonspells.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -11534,6 +11337,7 @@ loc_2420A:
 loc_24214:
 		addq.w  #1,a1
 		dbf     d0,loc_2420A
+
 		movem.l (sp)+,d0/d2/a0-a1
 		rts
 
@@ -11590,6 +11394,7 @@ loc_24268:
 		bset    d2,d3
 loc_24284:
 		dbf     d0,loc_24268
+
 		move.b  d3,((TRIGGERED_AI_REGIONS-$1000000)).w
 		movem.l (sp)+,d0-d3/a0
 		rts
@@ -11636,7 +11441,7 @@ loc_242E0:
 		movem.l (sp)+,d1-d3
 		rts
 loc_242E6:
-		move.w  #$FFFF,d7
+		move.w  #-1,d7
 		bra.s   loc_242E0
 
     ; End of function sub_24292
@@ -11692,6 +11497,7 @@ loc_24348:
 		adda.w  #4,a0
 		adda.w  #2,a1
 		dbf     d1,loc_24348
+
 		bsr.w   sub_245A2
 		tst.w   ((TARGET_PRIORITY_TABLE-$1000000)).w
 		beq.s   loc_24372
@@ -11730,10 +11536,10 @@ priority_ClassDistanceHealth:
 ApplyClassToTargetPriority:
 		
 		movem.l d0-d1/a0,-(sp)
-		lea     table_ClassTargetPriorities(pc), a0
+		lea     table_AiPriority_Null(pc), a0
 		move.w  (a1),d0
 		jsr     j_GetClassForCombatant
-		move.b  (a0,d1.w),d1
+		move.b  (a0,d1.w),d1             ; BUG: does not offset to proper table for movetype
 		andi.w  #$FF,d1
 		muls.w  #2,d1
 		add.w   d1,d6
@@ -11742,295 +11548,7 @@ ApplyClassToTargetPriority:
 
     ; End of function ApplyClassToTargetPriority
 
-table_ClassTargetPriorities:
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 75
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 75
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 25
-		dc.b 75
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 75
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 0
-		dc.b 75
-		dc.b 0
-		dc.b 0
-		dc.b 75
-		dc.b 75
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 75
-		dc.b 0
-		dc.b 0
-		dc.b 75
-		dc.b 75
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 75
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 75
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 75
-		dc.b 25
-		dc.b 100
-		dc.b 100
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 100
-		dc.b 100
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 75
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 25
-		dc.b 100
-		dc.b 100
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 100
-		dc.b 100
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 75
-		dc.b 25
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 100
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 100
-		dc.b 100
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 75
-		dc.b 75
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 100
-		dc.b 25
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 75
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 0
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 25
-		dc.b 100
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 100
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
-		dc.b 0
+    include "data\battles\global\aipriority.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -12102,7 +11620,7 @@ PriorityRoutine_LowHealth:
 
 PriorityRoutine_NotQuickened:
 		
-		move.w  #STATUSEFFECT_COUNTER_QUICK,d6
+		move.w  #STATUSEFFECT_QUICK,d6
 		bra.s   sub_24562
 
     ; End of function PriorityRoutine_NotQuickened
@@ -12112,7 +11630,7 @@ PriorityRoutine_NotQuickened:
 
 PriorityRoutine_NotBoosted:
 		
-		move.w  #STATUSEFFECT_COUNTER_BOOST,d6
+		move.w  #STATUSEFFECT_BOOST,d6
 		bra.s   sub_24562
 
     ; End of function PriorityRoutine_NotBoosted
@@ -12122,7 +11640,7 @@ PriorityRoutine_NotBoosted:
 
 PriorityRoutine_NotShielded:
 		
-		move.w  #STATUSEFFECT_COUNTER_SHIELD,d6
+		move.w  #STATUSEFFECT_SHIELD,d6
 		bra.s   sub_24562
 
     ; End of function PriorityRoutine_NotShielded
@@ -12132,7 +11650,7 @@ PriorityRoutine_NotShielded:
 
 PriorityRoutine_NotSlowed:
 		
-		move.w  #STATUSEFFECT_COUNTER_SLOW,d6
+		move.w  #STATUSEFFECT_SLOW,d6
 		bra.s   sub_24580
 
     ; End of function PriorityRoutine_NotSlowed
@@ -12142,7 +11660,7 @@ PriorityRoutine_NotSlowed:
 
 PriorityRoutine_NotDispelled:
 		
-		move.w  #STATUSEFFECT_COUNTER_DISPEL,d6
+		move.w  #STATUSEFFECT_DISPEL,d6
 		bra.s   sub_24580
 
     ; End of function PriorityRoutine_NotDispelled
@@ -12152,7 +11670,7 @@ PriorityRoutine_NotDispelled:
 
 PriorityRoutine_NotMuddled:
 		
-		move.w  #STATUSEFFECT_COUNTER_MUDDLE,d6
+		move.w  #STATUSEFFECT_MUDDLE,d6
 		bra.s   sub_24580
 
     ; End of function PriorityRoutine_NotMuddled
@@ -12361,14 +11879,16 @@ loc_246CE:
 
     ; End of function GetTerrainBackgrounds
 
-byte_246D4:     dc.b 0
+byte_246D4:
+        dc.b 0
 		dc.b 0
 		dc.b 0
 		dc.b 0
 		dc.b $FF
 		dc.b 0
 		dc.b 0
-byte_246DB:     dc.b 8
+byte_246DB:
+        dc.b 8
 		dc.b 0
 		dc.b 0
 		dc.b 0
@@ -12423,7 +11943,7 @@ IncreaseStatsOnLevelUp:
 		movem.l d0-d4/a0,-(sp)
 		bsr.w   IsAtLevelCap    
 		bcs.w   loc_247EA       ; if so, exit
-		cmpi.b  #JOGURT,d0
+		cmpi.b  #ALLY_JOGURT,d0
 		beq.s   loc_24722       ; if force member is Jogurt, skip
 		moveq   #1,d1           ; otherwise add 1 to level
 		jsr     j_IncreaseLevel
@@ -12566,7 +12086,7 @@ DisplayLevelUpMessages:
 		jsr     j_GetLevelForCombatant
 		move.l  d1,(a0)
 		jsr     j_GetEntity
-		cmpi.b  #JOGURT,d1
+		cmpi.b  #ALLY_JOGURT,d1
 		bne.s   loc_2489A       
 		move.w  #$1F3,d0        ; "...[Wait2]It appears that [Name]'s[Line]level increases to [Num].[Line]"
 		trap    #DISPLAY_MESSAGE
@@ -12956,6 +12476,7 @@ loc_24B42:
 		beq.s   loc_24B5A
 		addq.l  #1,a0
 		dbf     d3,loc_24B42
+
 		bra.s   loc_24B5C
 loc_24B5A:
 		move.b  d1,(a0)
@@ -13113,6 +12634,7 @@ loc_24C70:
 loc_24C84:
 		addq.w  #1,d0
 		dbf     d2,loc_24C70
+
 loc_24C8A:
 		trap    #CLOSE_MESSAGE_WINDOW
 		jsr     j_LoadCursorTiles
@@ -13146,7 +12668,7 @@ tbl_StatusEffectBits:
 
 sub_24CA6:
 		move.w  #1,(SPRITE_03_PROPERTIES).l
-		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l
+		move.l  #$10F3F,(SPRITE_54_PROPERTIES).l   ; Y = 1, size = V4|H4, link = 47
 		rts
 
     ; End of function sub_24CA6
@@ -13201,7 +12723,7 @@ ResetForceMemberStats:
 		moveq   #FORCE_MEMBERS_COUNTER,d0
 loc_24D14:
 		jsr     j_GetStatusEffects
-		andi.w  #STATUSEFFECT_COUNTER_POISON|STATUSEFFECT_COUNTER_CURSE,d1
+		andi.w  #STATUSEFFECT_POISON|STATUSEFFECT_CURSE,d1
 		jsr     j_SetStatusEffects
 		jsr     j_GetCurrentHP
 		tst.w   d1
@@ -13210,6 +12732,7 @@ loc_24D14:
 loc_24D34:
 		jsr     j_RefillMP
 		dbf     d0,loc_24D14
+
 		movem.l (sp)+,d0-d1
 		rts
 
@@ -13481,7 +13004,7 @@ loc_24EA6:
 		move.w  d1,(a3)+
 loc_24EB0:
 		addq.w  #1,d1
-		cmpi.w  #NOTHING_ITEM,d1
+		cmpi.w  #ITEM_NOTHING_ITEM,d1
 		bne.s   loc_24E82
 		move.w  d3,(SHOP_INVENTORY_LENGTH).l
 		movem.l (sp)+,d0-d3/a0-a1/a3
@@ -13523,6 +13046,7 @@ loc_24EE6:
 		cmp.b   d1,d3
 		beq.s   loc_24EF8
 		dbf     d2,loc_24EE6
+
 		ori     #1,ccr
 loc_24EF8:
 		movem.l (sp)+,d1-d3/a0
@@ -13544,6 +13068,7 @@ loc_24F08:
 		bsr.s   IsItemHeldByCharacter
 		bcc.s   loc_24F14
 		dbf     d0,loc_24F08
+
 		ori     #1,ccr
 loc_24F14:
 		movem.l (sp)+,d1-d3/a0
@@ -13708,6 +13233,7 @@ loc_24FD6:
 loc_24FDA:
 		move.b  d1,(a0)+        ; Clear RAM Table (A0)
 		dbf     d0,loc_24FDA
+
 		movem.l (sp)+,d0/a0
 		rts
 
@@ -13744,6 +13270,7 @@ loc_25000:
 		clr.b   -1(a0,d0.w)
 		adda.w  d0,a0
 		dbf     d1,loc_25000
+
 		move.w  ((MAP_HEIGHT-$1000000)).w,d1
 		subq.w  #1,d1
 		mulu.w  d0,d1
@@ -13752,6 +13279,7 @@ loc_25016:
 		clr.b   (a1,d1.w)
 		clr.b   (a1)+
 		dbf     d0,loc_25016
+
 		movem.l (sp)+,d0-d1/a0-a1
 		rts
 
@@ -13795,8 +13323,10 @@ loc_25074:
 		move.b  d1,(a1)+
 		subq.w  #1,d0
 		dbf     d3,loc_2505E
+
 		adda.w  #2,a1
 		dbf     d2,loc_25058
+
 		move.l  ((AI_REGIONS_POINTER-$1000000)).w,d0
 		beq.w   loc_250D4
 		movea.l d0,a0
@@ -13827,8 +13357,10 @@ loc_250C4:
 		subq.w  #1,d0
 loc_250C8:
 		dbf     d3,loc_250A8
+
 		adda.w  #2,a1
 		dbf     d2,loc_250A2
+
 loc_250D4:
 		movem.l (sp)+,d0-d3/a0-a2
 		rts
@@ -13853,6 +13385,7 @@ loc_250E4:
 		clr.b   (a0,d1.w)
 loc_25100:
 		dbf     d0,loc_250E4
+
 		movem.l (sp)+,d0-d2/a0
 		rts
 
@@ -13870,7 +13403,7 @@ LoadPredefinedTargetGrid:
 		lea     ((PASSABILITY_FLAGS-$1000000)).w,a1
 		move.w  ((MAP_WIDTH-$1000000)).w,d0
 		lea     1(a1,d0.w),a1
-		moveq   #$FFFFFFFF,d0
+		moveq   #-1,d0
 		move.w  ((MAP_HEIGHT-$1000000)).w,d2
 		subq.w  #3,d2
 loc_25126:
@@ -13888,28 +13421,27 @@ loc_2513E:
 		move.b  d1,(a1)+
 		subq.w  #1,d0
 		dbf     d3,loc_2512C
+
 		adda.w  #2,a1
 		dbf     d2,loc_25126
+
 		movem.l (sp)+,d0-d3/a0-a1
 		rts
 
     ; End of function LoadPredefinedTargetGrid
 
-InitialForceData:
-		incbin "data/stats/allies/initialforcedata.bin"
-BattleSpriteData:
-		incbin "data/stats/allies/battlespritedata.bin"
-ItemNames:      incbin "data/stats/items/itemnames.bin"
-ItemData:       incbin "data/stats/items/itemdata.bin"
-WeaponSpriteData:
-		incbin "data/stats/items/weaponspritedata.bin"
+		include "data\stats\allies\chardata.asm"
+		include "data\stats\allies\battlespritedata.asm"
+        include "data\stats\items\itemnames.asm"
+        include "data\stats\items\itemdata.asm"
+		include "data\stats\items\weaponsprites.asm"
 ItemTypes:      incbin "data/stats/items/itemtypes.bin"
-ClassNames:     incbin "data/stats/classes/classnames.bin"
-ClassData:      incbin "data/stats/classes/classdata.bin"
-SpellNames:     incbin "data/stats/spells/spellnames.bin"
-SpellData:      incbin "data/stats/spells/spelldata.bin"
-MoveCostData:   incbin "data/battles/global/movecostdata.bin"
-LandEffectData: incbin "data/battles/global/landeffectdata.bin"
+        include "data\stats\classes\classnames.asm"
+        include "data\stats\classes\classdata.asm"
+        include "data\stats\spells\spellnames.asm"
+        include "data\stats\spells\spelldata.asm"
+        include "data\battles\global\movecosts.asm"
+        include "data\battles\global\landeffects.asm"
 ForceAnimationData:
 		incbin "data/stats/allies/forceanimationdata.bin"
 EnemyAnimationData:
@@ -13919,12 +13451,9 @@ byte_26BF2:     dc.b 2
 		dc.b $41
 		dc.b 0
 		dc.b $FF
-GrowthCurves:   incbin "data/stats/allies/growthcurves.bin"
-UnpromotedGrowths:
-		incbin "data/stats/allies/unpromotedgrowths.bin"
-PromotedGrowths:incbin "data/stats/allies/promotedgrowths.bin"
-SpellLearningData:
-		incbin "data/stats/allies/spelllearningdata.bin"
+        include "data\stats\allies\growthcurves.asm"
+        include "data\stats\allies\charactergrowths.asm"
+        include "data\stats\allies\spelllearningdata.asm"
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -13946,7 +13475,7 @@ loc_26E2C:
 		jsr     j_SetClass
 		move.b  #$14,(a2,d0.w)
 		jsr     j_GetEntityItemsAddress
-		moveq   #$FFFFFFFF,d1
+		moveq   #-1,d1
 		move.l  d1,(a0)
 		move.b  (a1)+,(a0)
 		bra.s   loc_26E2C
@@ -14008,14 +13537,13 @@ loc_26EC6:
 		clr.w   (a2)+
 		clr.w   (a2)+
 loc_26EDA:
-		move.w  #$FFFF,(a2)+
+		move.w  #-1,(a2)+
 		movem.l (sp)+,d0-d2/a0/a2
 		rts
 
     ; End of function WriteEndingCreditsBattlesceneScript
 
-EndingCreditsForceData:
-		incbin "data/stats/allies/endingcreditsforcedata.bin"
+		include "data\stats\allies\endcreditsforcedata.asm"
 EndingAnimationSequence:
 		incbin "data/stats/allies/endinganimationsequence.bin"
 
@@ -14144,12 +13672,11 @@ sub_27036:
     ; End of function sub_27036
 
 rpt_MapHeaders: incbin "data/maps/global/mapheaders.bin"
-byte_2751A:     dc.b 0
+byte_2751A:
+        dc.b 0
 		dc.b $FF
-table_EnemyDefs:incbin "data/stats/enemies/enemydefs.bin"
+    include "data\stats\enemies\enemydefs.asm"
 table_BattleTerrain:
-		                
 		incbin "data/battles/global/battleterrain.bin"
-table_BattleData:
-		incbin "data/battles/global/battledata.bin"
+    include "data\battles\global\battledata.asm"
 		align $4000

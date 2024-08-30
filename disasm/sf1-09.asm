@@ -57,6 +57,7 @@ debugMode_CheckInputForSoundTest:
 loc_BC096:
 		clr.l   (a0)+
 		dbf     d7,loc_BC096
+
 		lea     (PLANE_A_MAP_LAYOUT).l,a0
 		lea     ($E000).l,a1
 		move.w  #$800,d0
@@ -198,6 +199,7 @@ loc_BC280:
 		movem.l (sp)+,d7-a0
 		addq.l  #4,a0
 		dbf     d7,loc_BC24E
+
 		bsr.s   sub_BC228
 		rts
 
@@ -232,7 +234,7 @@ SoundTestPalettes:
 SoundTestTiles1:incbin "data/graphics/specialscreens/soundtest/soundtesttiles1.bin"
 SoundTestTiles2:incbin "data/graphics/specialscreens/soundtest/soundtesttiles2.bin"
 SoundTestTiles3:incbin "data/graphics/specialscreens/soundtest/soundtesttiles3.bin"
-SoundTestLayout:dc.b 0                  ; musicians graphics
+SoundTestLayout:dc.b   0                  ; musicians graphics
 		dc.b   0
 		dc.b   0
 		dc.b   0
@@ -2024,7 +2026,8 @@ SoundTestLayout:dc.b 0                  ; musicians graphics
 		dc.b   0
 		dc.b   0
 		dc.b   0
-byte_BE338:     dc.b 6
+
+byte_BE338:     dc.b   6
 		dc.b   3
 		dc.b   6
 		dc.b  $A
@@ -2063,8 +2066,9 @@ byte_BE338:     dc.b 6
 		dc.b   1
 		dc.b $9A 
 		dc.b   1
-		dc.b $9E 
-byte_BE360:     dc.b 6
+		dc.b $9E
+
+byte_BE360:     dc.b   6
 		dc.b   3
 		dc.b   6
 		dc.b  $A
@@ -2103,8 +2107,9 @@ byte_BE360:     dc.b 6
 		dc.b   3
 		dc.b $42 
 		dc.b   3
-		dc.b $46 
-byte_BE388:     dc.b 5
+		dc.b $46
+
+byte_BE388:     dc.b   5
 		dc.b   3
 		dc.b  $D
 		dc.b   9
@@ -2138,7 +2143,8 @@ byte_BE388:     dc.b 5
 		dc.b $11
 		dc.b   2
 		dc.b $15
-byte_BE3AA:     dc.b 5
+
+byte_BE3AA:     dc.b   5
 		dc.b   3
 		dc.b  $D
 		dc.b   9
@@ -2172,7 +2178,8 @@ byte_BE3AA:     dc.b 5
 		dc.b $1E
 		dc.b   3
 		dc.b $52 
-byte_BE3CC:     dc.b 4
+
+byte_BE3CC:     dc.b   4
 		dc.b   3
 		dc.b  $C
 		dc.b  $E
@@ -2199,8 +2206,9 @@ byte_BE3CC:     dc.b 4
 		dc.b   1
 		dc.b $EA 
 		dc.b   1
-		dc.b $EE 
-byte_BE3E8:     dc.b 4
+		dc.b $EE
+
+byte_BE3E8:     dc.b   4
 		dc.b   3
 		dc.b  $C
 		dc.b  $E
@@ -2227,8 +2235,9 @@ byte_BE3E8:     dc.b 4
 		dc.b   3
 		dc.b $2A 
 		dc.b   3
-		dc.b $2E 
-byte_BE404:     dc.b 2
+		dc.b $2E
+
+byte_BE404:     dc.b   2
 		dc.b   3
 		dc.b  $E
 		dc.b   6
@@ -2243,8 +2252,9 @@ byte_BE404:     dc.b 2
 		dc.b   1
 		dc.b $CA 
 		dc.b   1
-		dc.b $CE 
-byte_BE414:     dc.b 2
+		dc.b $CE
+
+byte_BE414:     dc.b   2
 		dc.b   3
 		dc.b  $E
 		dc.b   6
@@ -2259,8 +2269,9 @@ byte_BE414:     dc.b 2
 		dc.b   3
 		dc.b $CA 
 		dc.b   3
-		dc.b $CE 
-byte_BE424:     dc.b 3
+		dc.b $CE
+
+byte_BE424:     dc.b   3
 		dc.b   3
 		dc.b $11
 		dc.b  $B
@@ -2282,7 +2293,8 @@ byte_BE424:     dc.b 3
 		dc.b $1B
 		dc.b   2
 		dc.b $1F
-byte_BE43A:     dc.b 3
+
+byte_BE43A:     dc.b   3
 		dc.b   3
 		dc.b $11
 		dc.b  $B
@@ -2303,8 +2315,9 @@ byte_BE43A:     dc.b 3
 		dc.b   3
 		dc.b $82 
 		dc.b   3
-		dc.b $86 
-byte_BE450:     dc.b 3
+		dc.b $86
+
+byte_BE450:     dc.b   3
 		dc.b   2
 		dc.b $17
 		dc.b  $C
@@ -2319,8 +2332,9 @@ byte_BE450:     dc.b 3
 		dc.b   2
 		dc.b $93 
 		dc.b   2
-		dc.b $97 
-byte_BE460:     dc.b 3
+		dc.b $97
+
+byte_BE460:     dc.b   3
 		dc.b   2
 		dc.b $17
 		dc.b  $C
@@ -2335,7 +2349,8 @@ byte_BE460:     dc.b 3
 		dc.b   3
 		dc.b $91 
 		dc.b   3
-		dc.b $95 
+		dc.b $95
+
 layout_SoundTestWindow:
 		incbin "data/graphics/tech/windowlayouts/wl-soundtest.bin"
 ShiningForceLogoTiles:
@@ -3702,6 +3717,7 @@ byte_BEA56:     dc.b $1E
 		dc.b $80 
 		dc.b $A6 
 		dc.b $80 
+
 pal_BED2A:      dc.w $222               ; unknown palette
 		dc.w $EEE
 		dc.w $2E8
@@ -3718,6 +3734,7 @@ pal_BED2A:      dc.w $222               ; unknown palette
 		dc.w 8
 		dc.w $808
 		dc.w $88
+
 		dc.w 0
 		dc.w $EEE
 		dc.w $E00
@@ -3734,6 +3751,7 @@ pal_BED2A:      dc.w $222               ; unknown palette
 		dc.w 8
 		dc.w $808
 		dc.w $88
+
 		dc.w 0
 		dc.w $EEE
 		dc.w $E00
@@ -3750,6 +3768,7 @@ pal_BED2A:      dc.w $222               ; unknown palette
 		dc.w 8
 		dc.w $808
 		dc.w $88
+
 		dc.w 0
 		dc.w $EEE
 		dc.w $E00
