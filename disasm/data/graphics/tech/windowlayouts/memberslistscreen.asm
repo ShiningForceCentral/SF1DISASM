@@ -1,0 +1,109 @@
+
+; ASM FILE data\graphics\tech\windowlayouts\memberslistscreen.asm :
+; 0xF3C8..0xF48E : Members list screen window layouts
+layout_F3C8:    vdpBaseTile 
+		vdpBaseTile 
+		vdpBaseTile MESSAGE_START2
+		vdpBaseTile 1985
+		vdpBaseTile 
+		vdpBaseTile 
+		vdpBaseTile 1990
+		vdpBaseTile 1991
+		vdpBaseTile 1986
+		vdpBaseTile 1987
+		vdpBaseTile 1998
+		vdpBaseTile 1999
+		vdpBaseTile 1992
+		vdpBaseTile 1993
+		vdpBaseTile 1988
+		vdpBaseTile 1989
+		vdpBaseTile 2000
+		vdpBaseTile 2001
+		vdpBaseTile 1994
+		vdpBaseTile 1995
+		vdpBaseTile 2006
+		vdpBaseTile 2007
+		vdpBaseTile 2002
+		vdpBaseTile 2003
+		vdpBaseTile 1996
+		vdpBaseTile 1997
+		vdpBaseTile 2008
+		vdpBaseTile 2009
+		vdpBaseTile 2004
+		vdpBaseTile 2005
+		vdpBaseTile 
+		vdpBaseTile 
+		vdpBaseTile 2010
+		vdpBaseTile 2011
+		vdpBaseTile 
+		vdpBaseTile 
+                
+layout_MembersListWindow1:
+		vdpBaseTile WINDOW_CORNER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER
+		vdpBaseTile WINDOW_CORNER|MIRRORED_BIT
+                
+layout_MembersListWindow2:
+		vdpBaseTile WINDOW_VERTICAL_BORDER
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile ASCII_SPACE
+		vdpBaseTile WINDOW_VERTICAL_BORDER|MIRRORED_BIT
+                
+layout_MembersListWindow3:
+		vdpBaseTile WINDOW_CORNER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_HORIZONTAL_BORDER|FLIPPED_BIT
+		vdpBaseTile WINDOW_CORNER|MIRRORED_BIT|FLIPPED_BIT
+                
