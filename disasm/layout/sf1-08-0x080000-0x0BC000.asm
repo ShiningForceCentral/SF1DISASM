@@ -4,10 +4,11 @@
 ; FREE SPACE : 7187 bytes.
 
 
-p_pt_TileAnimations:
+p_pt_MapTileAnimations:
 		dc.l pt_MapTileAnimations
 p_pt_Maps:      dc.l pt_Maps
-p_pt_SpriteSets:dc.l pt_Mapspritesets
+p_pt_MapSpritesets:
+		dc.l pt_MapSpritesets
 
 ; =============== S U B R O U T I N E =======================================
 

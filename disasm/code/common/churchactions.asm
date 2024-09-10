@@ -95,6 +95,7 @@ loc_17104:
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_171B4
 @CheckCost_CurePoison:
+		
 		moveq   #CHURCH_CURE_POISON_COST,d0
 		bsr.w   CheckGold       
 		bne.w   @ExecuteCurePoison
@@ -102,6 +103,7 @@ loc_17104:
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_171B4
 @ExecuteCurePoison:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
@@ -155,6 +157,7 @@ loc_171DC:
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_172DC
 @CheckCost_CureCurse:
+		
 		moveq   #CHURCH_CURE_CURSE_COST,d0
 		bsr.w   CheckGold       
 		bne.w   @RemoveCursedWeapon
@@ -162,6 +165,7 @@ loc_171DC:
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_172DC
 @RemoveCursedWeapon:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
@@ -178,6 +182,7 @@ loc_171DC:
 		jsr     j_GetEntityItemsAddress
 		bclr    #ITEMENTRY_BIT_EQUIPPED,(a0,d3.w)
 @RemoveCursedRing:
+		
 		move.w  #ITEMTYPE_MASK_RING,d1
 		jsr     j_GetEquippedItem
 		bcs.s   @ExecuteCureCurse
@@ -188,6 +193,7 @@ loc_171DC:
 		jsr     j_GetEntityItemsAddress
 		bclr    #ITEMENTRY_BIT_EQUIPPED,(a0,d3.w)
 @ExecuteCureCurse:
+		
 		jsr     j_ResetCombatants
 		moveq   #CHURCH_CURE_CURSE_COST,d1
 		jsr     j_DecreaseGold
@@ -240,6 +246,7 @@ loc_1731E:
 		beq.w   @CalculateCost_Raise
 		moveq   #CHURCH_BASE_PROMOTION_LEVEL,d7
 @CalculateCost_Raise:
+		
 		jsr     j_GetLevel
 		add.w   d7,d1
 		mulu.w  #CHURCH_RAISE_COST_PER_LEVEL,d1
@@ -262,6 +269,7 @@ loc_1731E:
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_173EC
 @ExecuteRaise:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
@@ -358,7 +366,7 @@ loc_174E4:
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
 		jsr     j_GetClass
 		cmpi.w  #BASE_CLASSES_END,d1
-		ble.s   @LevelTooLow       
+		ble.s   @LevelTooLow    
 		move.w  d1,((MESSAGE_ARG_NAME_2-$1000000)).w
 		move.w  #425,d0         ; "Hmm...[Line]I think [Name] should[Line]stay as [Class].[Wait2]"
 		bsr.w   DisplayMenuMessage
@@ -368,6 +376,7 @@ loc_174E4:
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_175A8
 @ConfirmPromo:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
@@ -379,6 +388,7 @@ loc_174E4:
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_175A8
 @ExecutePromo:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_2-$1000000)).w

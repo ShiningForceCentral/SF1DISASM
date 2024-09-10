@@ -5786,5 +5786,5 @@ byte_39260:     dc.b $BB
 		dc.b $BC 
 SpecialSprite_Jogurt1:
 		incbin "data/graphics/specialsprites/specialsprite-jogurt1.bin"
-		include "data\graphics\mapsprites\entries.asm"		; Map sprites
+		include "data\graphics\mapsprites\entries.asm"		; Mapsprites
 		align $8000

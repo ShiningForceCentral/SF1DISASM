@@ -699,7 +699,8 @@ loc_12481E:
 		addq.w  #3,d6
 		dbf     d6,loc_124854
                 
-		movea.l (p_pt_Mapsprites_Side).l,a3; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a3
+						; mapsprite_Side table
 		lea     (SPRITE_22_TILE_FLAGS).l,a1
 		move.w  d0,d2
 		lsl.w   #3,d2
@@ -708,12 +709,14 @@ loc_12481E:
 loc_124854:
 		dbf     d6,loc_124860
                 
-		movea.l (p_pt_Mapsprites_Back).l,a3; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a3
+						; mapsprite_Back table
 		bra.s   loc_124892
 loc_124860:
 		dbf     d6,loc_12487C
                 
-		movea.l (p_pt_Mapsprites_Side).l,a3; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a3
+						; mapsprite_Side table
 		lea     (SPRITE_22_TILE_FLAGS).l,a1
 		move.w  d0,d2
 		lsl.w   #3,d2

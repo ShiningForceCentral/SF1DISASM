@@ -2290,7 +2290,7 @@ loc_92A0:
 		move.w  (a0)+,d0
 		blt.s   loc_92DA
 		move.l  a0,-(sp)
-		movea.l (p_pt_TileAnimations).l,a0
+		movea.l (p_pt_MapTileAnimations).l,a0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (j_DecompressGraphics).l
@@ -3375,7 +3375,7 @@ sub_99FC:
 
     ; End of function sub_99FC
 
-palettes_MapSprite:
+palettes_Mapsprite:
 		incbin "data/graphics/tech/palettes/mapspritepalettes.bin"
 defined_byte_9A4E:
 		dc.b $10
@@ -3623,7 +3623,8 @@ loc_9BFC:
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
-		movea.l (p_pt_Mapsprites_Back).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back tabl
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (sub_300).l
@@ -3634,7 +3635,8 @@ loc_9BFC:
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
-		movea.l (p_pt_Mapsprites_Side).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (sub_300).l

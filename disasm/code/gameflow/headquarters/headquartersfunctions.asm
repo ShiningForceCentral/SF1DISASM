@@ -228,7 +228,8 @@ loc_6924:
 ; =============== S U B R O U T I N E =======================================
 
 sub_6932:
-		movea.l (p_pt_Mapsprites_Back).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back table
 		bra.s   loc_6924
 
     ; End of function sub_6932
@@ -301,7 +302,8 @@ loc_6990:
 ; =============== S U B R O U T I N E =======================================
 
 sub_69CA:
-		movea.l (p_pt_Mapsprites_Side).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		bra.w   loc_6924
 
     ; End of function sub_69CA
