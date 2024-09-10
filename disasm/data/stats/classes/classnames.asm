@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\classes\classnames.asm :
 ; 0x25D6C..0x260BC : Names for enemies and ally classes
 
-ClassNames:
+table_ClassNames:
 
         className "SDMN"
         className "KNT"

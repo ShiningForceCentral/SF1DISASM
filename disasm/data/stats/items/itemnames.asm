@@ -1,8 +1,7 @@
 
 ; ASM FILE data\stats\items\itemnames.asm :
-; 0x25640..0x25916 : Item Names
-
-ItemNames:
+; 0x25640..0x25916 : Item names
+table_ItemNames:
 
     itemName "Medical", 9, "Herb"   ; MEDICAL_HERB
     itemName "Healing", 9, "Seed"   ; HEALING_SEED

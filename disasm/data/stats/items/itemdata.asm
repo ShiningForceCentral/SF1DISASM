@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\items\itemdata.asm :
 ; 0x25916..0x25D06 : Item definitions
 
-ItemData:
+table_ItemData:
 
     ; MEDICAL_HERB
         equipFlags   ALL
@@ -97,7 +97,7 @@ ItemData:
     ; POWER_RING
         equipFlags   ALL
         itemType     RING|USEABLE|BREAKABLE|RARE
-        equipEffect  INCREASE_ATK, 4
+        equipEffect  INCREASE_ATTACK, 4
         useEffect    BOOST, BOOST
         turnEffect   NONE, 0
         attackEffect NONE, ATTACK
@@ -106,7 +106,7 @@ ItemData:
     ; SHIELD_RING
         equipFlags   ALL
         itemType     RING|USEABLE|BREAKABLE|RARE
-        equipEffect  INCREASE_DEF, 4
+        equipEffect  INCREASE_DEFENSE, 4
         useEffect    QUICK_1, QUICK
         turnEffect   NONE, 0
         attackEffect NONE, ATTACK
@@ -115,7 +115,7 @@ ItemData:
     ; SPEED_RING
         equipFlags   ALL
         itemType     RING|USEABLE|BREAKABLE|RARE
-        equipEffect  INCREASE_AGI, 4
+        equipEffect  INCREASE_AGILITY, 4
         useEffect    EGRESS, EGRESS
         turnEffect   NONE, 0
         attackEffect NONE, ATTACK
@@ -124,7 +124,7 @@ ItemData:
     ; MOBILITY_RING
         equipFlags   ALL
         itemType     RING|BREAKABLE|RARE
-        equipEffect  INCREASE_MOV, 2
+        equipEffect  INCREASE_MOVE, 2
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect NONE, ATTACK
@@ -133,7 +133,7 @@ ItemData:
     ; WHITE_RING
         equipFlags   SDMN|HEAL|HERO|VICR
         itemType     RING|USEABLE|BREAKABLE|RARE
-        equipEffect  INCREASE_DEF, 6
+        equipEffect  INCREASE_DEFENSE, 6
         useEffect    AURA_2, AURA_2
         turnEffect   NONE, 0
         attackEffect NONE, ATTACK
@@ -142,7 +142,7 @@ ItemData:
     ; BLACK_RING
         equipFlags   SDMN|KNT|WARR|SKNT_1|WKNT|SMR|NINJ|HERO|PLDN|GLDR|SBRN|SKYL
         itemType     RING|USEABLE|BREAKABLE|RARE|CURSED
-        equipEffect  INCREASE_ATK, 6
+        equipEffect  INCREASE_ATTACK, 6
         useEffect    BLAZE_2, BLAZE_2
         turnEffect   NONE, 0
         attackEffect NONE, ATTACK
@@ -151,7 +151,7 @@ ItemData:
     ; EVIL_RING
         equipFlags   SDMN|KNT|WARR|SKNT_1|WKNT|SMR|NINJ|HERO|PLDN|GLDR|SBRN|SKYL
         itemType     RING|USEABLE|BREAKABLE|RARE|CURSED|EVIL
-        equipEffect  INCREASE_ATK, 8
+        equipEffect  INCREASE_ATTACK, 8
         useEffect    BOLT_3, BOLT_3
         turnEffect   NONE, 0
         attackEffect NONE, ATTACK
@@ -250,7 +250,7 @@ ItemData:
     ; GREAT_AXE
         equipFlags   GLDR
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 26
+        equipEffect  INCREASE_ATTACK, 26
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -268,7 +268,7 @@ ItemData:
     ; SHORT_SWORD
         equipFlags   SDMN|WARR|BDMN|SMR|NINJ|HERO|GLDR|SKYW
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 5
+        equipEffect  INCREASE_ATTACK, 5
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -277,7 +277,7 @@ ItemData:
     ; MIDDLE_SWORD
         equipFlags   SDMN|WARR|BDMN|SMR|NINJ|HERO|GLDR|SKYW
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 8
+        equipEffect  INCREASE_ATTACK, 8
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -286,7 +286,7 @@ ItemData:
     ; LONG_SWORD
         equipFlags   SDMN|BDMN|HERO|SKYW
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 12
+        equipEffect  INCREASE_ATTACK, 12
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -295,7 +295,7 @@ ItemData:
     ; STEEL_SWORD
         equipFlags   HERO|SKYW
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 16
+        equipEffect  INCREASE_ATTACK, 16
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -304,7 +304,7 @@ ItemData:
     ; BROAD_SWORD
         equipFlags   HERO|SKYW
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 20
+        equipEffect  INCREASE_ATTACK, 20
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -313,7 +313,7 @@ ItemData:
     ; DOOM_BLADE
         equipFlags   SMR|NINJ|HERO|SKYW
         itemType     WEAPON|RARE
-        equipEffect  INCREASE_ATK, 25
+        equipEffect  INCREASE_ATTACK, 25
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, DOOM_BLADE_ATTACK
@@ -322,7 +322,7 @@ ItemData:
     ; KATANA
         equipFlags   SMR|NINJ|HERO|SKYW
         itemType     WEAPON|RARE
-        equipEffect  INCREASE_ATK_AND_CRIT, 30
+        equipEffect  INCREASE_ATTACK_AND_SET_CRITICAL, 30
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -331,7 +331,7 @@ ItemData:
     ; ELVEN_ARROW
         equipFlags   ACHR|ASKT|BWMS|SKNT_2
         itemType     WEAPON|RARE
-        equipEffect  INCREASE_ATK, 18
+        equipEffect  INCREASE_ATTACK, 18
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect ARROW_LONG, ATTACK
@@ -340,7 +340,7 @@ ItemData:
     ; SWORD_OF_DARKNESS
         equipFlags   HERO|SKYW
         itemType     WEAPON|USEABLE|RARE|CURSED|CANNOT_DROP
-        equipEffect  INCREASE_ATK, 40
+        equipEffect  INCREASE_ATTACK, 40
         useEffect    DESOUL_1, DESOUL_1
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -349,7 +349,7 @@ ItemData:
     ; SWORD_OF_LIGHT
         equipFlags   HERO
         itemType     WEAPON|USEABLE|RARE|CANNOT_DROP
-        equipEffect  INCREASE_ATK, 36
+        equipEffect  INCREASE_ATTACK, 36
         useEffect    BOLT_2, BOLT_2
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -358,7 +358,7 @@ ItemData:
     ; CHAOS_BREAKER
         equipFlags   HERO|SKYW
         itemType     WEAPON|USEABLE|RARE|CANNOT_DROP
-        equipEffect  INCREASE_ATK, 40
+        equipEffect  INCREASE_ATTACK, 40
         useEffect    FREEZE_3, FREEZE_3
         turnEffect   NONE, 0
         attackEffect MELEE, CHAOS_BREAKER_ATTACK
@@ -367,7 +367,7 @@ ItemData:
     ; BRONZE_LANCE
         equipFlags   KNT|SKNT_1|WKNT|PLDN|SBRN|SKYL
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 9
+        equipEffect  INCREASE_ATTACK, 9
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -376,7 +376,7 @@ ItemData:
     ; STEEL_LANCE
         equipFlags   PLDN|SBRN|SKYL
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 18
+        equipEffect  INCREASE_ATTACK, 18
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -385,7 +385,7 @@ ItemData:
     ; CHROME_LANCE
         equipFlags   PLDN|SBRN|SKYL
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 22
+        equipEffect  INCREASE_ATTACK, 22
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -394,7 +394,7 @@ ItemData:
     ; DEVIL_LANCE
         equipFlags   PLDN|SBRN|SKYL
         itemType     WEAPON|BREAKABLE|RARE|CURSED|EVIL
-        equipEffect  INCREASE_ATK, 35
+        equipEffect  INCREASE_ATTACK, 35
         useEffect    SHIELD, SHIELD
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -403,7 +403,7 @@ ItemData:
     ; HALBERD
         equipFlags   PLDN|SBRN|SKYL
         itemType     WEAPON|USEABLE|BREAKABLE|RARE
-        equipEffect  INCREASE_ATK, 25
+        equipEffect  INCREASE_ATTACK, 25
         useEffect    BOLT_1, BOLT_1
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -412,7 +412,7 @@ ItemData:
     ; SPEAR
         equipFlags   KNT|SKNT_1|WKNT|PLDN|SBRN|SKYL
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 6
+        equipEffect  INCREASE_ATTACK, 6
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect SPEAR_AND_LASER, ATTACK
@@ -421,7 +421,7 @@ ItemData:
     ; POWER_SPEAR
         equipFlags   KNT|SKNT_1|WKNT|PLDN|SBRN|SKYL
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 15
+        equipEffect  INCREASE_ATTACK, 15
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect SPEAR_AND_LASER, ATTACK
@@ -430,7 +430,7 @@ ItemData:
     ; VALKYRIE
         equipFlags   PLDN|SBRN|SKYL
         itemType     WEAPON|RARE
-        equipEffect  INCREASE_ATK, 35
+        equipEffect  INCREASE_ATTACK, 35
         useEffect    NONE, ATTACK
         turnEffect   RECOVER_HP, 5
         attackEffect SPEAR_AND_LASER, ATTACK
@@ -439,7 +439,7 @@ ItemData:
     ; HAND_AXE
         equipFlags   WARR|GLDR
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 7
+        equipEffect  INCREASE_ATTACK, 7
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -448,7 +448,7 @@ ItemData:
     ; MIDDLE_AXE
         equipFlags   WARR|GLDR
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 11
+        equipEffect  INCREASE_ATTACK, 11
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -457,7 +457,7 @@ ItemData:
     ; BATTLE_AXE
         equipFlags   GLDR
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 16
+        equipEffect  INCREASE_ATTACK, 16
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -466,7 +466,7 @@ ItemData:
     ; HEAT_AXE
         equipFlags   GLDR
         itemType     WEAPON|USEABLE|BREAKABLE|RARE
-        equipEffect  INCREASE_ATK, 22
+        equipEffect  INCREASE_ATTACK, 22
         useEffect    BLAZE_2, BLAZE_2
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -475,7 +475,7 @@ ItemData:
     ; ATLAS
         equipFlags   GLDR
         itemType     WEAPON|USEABLE|BREAKABLE|RARE|CANNOT_DROP
-        equipEffect  INCREASE_ATK, 33
+        equipEffect  INCREASE_ATTACK, 33
         useEffect    BLAZE_3, BLAZE_3
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -484,7 +484,7 @@ ItemData:
     ; WOODEN_STAFF
         equipFlags   MAGE|HEAL|WIZD|VICR
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 4
+        equipEffect  INCREASE_ATTACK, 4
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -493,7 +493,7 @@ ItemData:
     ; GUARDIAN_STAFF
         equipFlags   WIZD|VICR
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 18
+        equipEffect  INCREASE_ATTACK, 18
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -502,7 +502,7 @@ ItemData:
     ; HOLY_STAFF
         equipFlags   VICR
         itemType     WEAPON|RARE
-        equipEffect  INCREASE_ATK, 26
+        equipEffect  INCREASE_ATTACK, 26
         useEffect    NONE, ATTACK
         turnEffect   RECOVER_HP, 5
         attackEffect MELEE, ATTACK
@@ -511,7 +511,7 @@ ItemData:
     ; POWER_STAFF
         equipFlags   MAGE|HEAL|WIZD|VICR
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 12
+        equipEffect  INCREASE_ATTACK, 12
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -520,7 +520,7 @@ ItemData:
     ; DEMON_ROD
         equipFlags   WIZD|VICR
         itemType     WEAPON|USEABLE|BREAKABLE|RARE|CURSED|EVIL
-        equipEffect  INCREASE_ATK, 35
+        equipEffect  INCREASE_ATTACK, 35
         useEffect    DEMON_ROD, DEMON_ROD_USE
         turnEffect   NONE, 0
         attackEffect MELEE, ATTACK
@@ -538,7 +538,7 @@ ItemData:
     ; WOODEN_ARROW
         equipFlags   ACHR|ASKT|BWMS|SKNT_2
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 8
+        equipEffect  INCREASE_ATTACK, 8
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect ARROW_SHORT, ATTACK
@@ -547,7 +547,7 @@ ItemData:
     ; STEEL_ARROW
         equipFlags   ACHR|ASKT|BWMS|SKNT_2
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 13
+        equipEffect  INCREASE_ATTACK, 13
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect ARROW_SHORT, ATTACK
@@ -556,7 +556,7 @@ ItemData:
     ; ASSAULT_SHELL
         equipFlags   BWMS|SKNT_2
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 27
+        equipEffect  INCREASE_ATTACK, 27
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect ARROW_LONG, ATTACK
@@ -565,7 +565,7 @@ ItemData:
     ; BUSTER_SHOT
         equipFlags   BWMS|SKNT_2
         itemType     WEAPON
-        equipEffect  INCREASE_ATK, 35
+        equipEffect  INCREASE_ATTACK, 35
         useEffect    NONE, ATTACK
         turnEffect   NONE, 0
         attackEffect ARROW_LONG, ATTACK

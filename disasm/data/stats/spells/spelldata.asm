@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\spells\spelldata.asm :
 ; 0x26466..0x26566 : Spell definitions
 
-SpellData:
+table_SpellData:
 
     ; HEAL 1
     spellEffect HEAL_1, HEAL_1
@@ -259,5 +259,3 @@ SpellData:
     ; SLEEP 4
     spellEffect 0, ATTACK
     mpCost      0
-    
-    

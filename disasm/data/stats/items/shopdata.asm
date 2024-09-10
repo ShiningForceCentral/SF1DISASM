@@ -1,7 +1,6 @@
 
 ; ASM FILE data\stats\items\shopdata.asm :
 ; 0x16F62..0x17028 : Shop data
-
 rpt_ShopInventories:
 		dc.w ShopInventory00-ShopInventory00
 		dc.w ShopInventory01-ShopInventory00
@@ -201,3 +200,4 @@ ShopInventory23:
         HEALING_SEED, &
         ANTIDOTE, &
         ANGEL_WING
+

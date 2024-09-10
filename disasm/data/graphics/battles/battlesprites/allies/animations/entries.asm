@@ -1,7 +1,6 @@
 
-; ASM FILE data\graphics\battles\battlesprites\enemies\entries.asm :
-; 0x161A66..0x16226A : Ally animations
-
+; ASM FILE data\graphics\battles\battlesprites\allies\animations\entries.asm :
+; 0x161A66..0x16226A : Ally battlesprite animations
 pt_AllyAnimations:
 		dc.l AllyAnimation000
 		dc.l AllyAnimation001
@@ -180,5 +179,3 @@ AllyAnimation057:
 		incbin "data/graphics/battles/battlesprites/allies/animations/allyanimation057.bin"
 AllyAnimation058:
 		incbin "data/graphics/battles/battlesprites/allies/animations/allyanimation058.bin"
-
-  

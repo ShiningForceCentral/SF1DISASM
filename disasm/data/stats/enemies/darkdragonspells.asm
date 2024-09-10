@@ -1,8 +1,7 @@
 
 ; ASM FILE data\stats\enemies\darkdragonspells.asm :
-; 0x..0x : Special AI actions
-  
-tbl_DarkDragonSpells:
+; 0x240DC..0x240E8 : Dark Dragon spells table
+table_DarkDragonSpells:
 		; Spells available to Dark Dragon's side heads, 2 bytes per entry : 
 		dc.b 25
 		dc.b SPELL_BLAZE|LV_3
@@ -16,5 +15,3 @@ tbl_DarkDragonSpells:
 		dc.b SPELL_BOLT|LV_4
 		dc.b 100
 		dc.b SPELL_BLAZE|LV_4
-
-            

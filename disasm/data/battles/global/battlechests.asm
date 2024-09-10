@@ -4,7 +4,7 @@
 
 ; Syntax    chestItem Map(local)/Region, X, Y, [ITEM_]enum
             
-BattleChests:
+table_BattleChests:
     
             ; Chapter 1
             chestItem 0, 0, 0, MEDICAL_HERB|BROKEN
@@ -35,9 +35,9 @@ BattleChests:
             chestItem 0, 0, 0, MEDICAL_HERB|BROKEN
             chestItem 0, 0, 0, MEDICAL_HERB|BROKEN
             chestItem 2, 31, 9, MEDICAL_HERB
-            chestItem 2, 29, 28, NOTHING_ITEM
-            chestItem 2, 28, 28, NOTHING_ITEM
-            chestItem 2, 27, 22, NOTHING_ITEM
+            chestItem 2, 29, 28, NOTHING
+            chestItem 2, 28, 28, NOTHING
+            chestItem 2, 27, 22, NOTHING
             chestItem 2, 16, 19, MIDDLE_SWORD
     
             ; Chapter 2
@@ -278,4 +278,3 @@ BattleChests:
             chestItem 2, 16, 32, ATLAS
             chestItem 2, 20, 32, HALBERD
 
-    

@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\allies\charactergrowths.asm :
 ; 0x26C1A..0x26D70 : Ally growth tables
 
-UnpromotedGrowths:
+table_UnpromotedGrowths:
 
         ; Max
         atkGrowth  17, EARLYLATE
@@ -246,7 +246,7 @@ UnpromotedGrowths:
         
 
 
-PromotedGrowths:
+table_PromotedGrowths:
 
         ; Max
         atkGrowth  23, LINEAR

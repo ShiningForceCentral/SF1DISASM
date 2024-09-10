@@ -1,12 +1,12 @@
 
 ; ASM FILE data\stats\ranges\rangedata.asm :
-; 0x23178..0x23378 : Range data table
+; 0x23178..0x23378 : Battleactions range data table
 
 ;       range      min,max
 ;       area       
 ;       targetType 
 
-tbl_RangeData:
+table_RangeData:
     ; EquipEffects
         ; Increase Attack
         range      0,0
@@ -61,43 +61,43 @@ tbl_RangeData:
         range      0,0
         area       0
         targetType NONE
-        bra.w   AfterTurn_RecoverHP
+        bra.w   AfterTurn_RecoverHp
 
         ; Recover MP
         range      0,0
         area       0
         targetType NONE
-        bra.w   AfterTurn_RecoverMP
+        bra.w   AfterTurn_RecoverMp
 
         ; Gain HP
         range      0,0
         area       0
         targetType NONE
-        bra.w   AfterTurn_GainHP
+        bra.w   AfterTurn_GainHp
 
         ; Gain ATK
         range      0,0
         area       0
         targetType NONE
-        bra.w   AfterTurn_GainATK
+        bra.w   AfterTurn_GainAttack
 
         ; Gain DEF
         range      0,0
         area       0
         targetType NONE
-        bra.w   AfterTurn_GainDEF
+        bra.w   AfterTurn_GainDefense
 
         ; Gain AGI
         range      0,0
         area       0
         targetType NONE
-        bra.w   AfterTurn_GainAGI
+        bra.w   AfterTurn_GainAgility
 
         ; Gain MOV
         range      0,0
         area       0
         targetType NONE
-        bra.w   AfterTurn_GainMOV
+        bra.w   AfterTurn_GainMove
 
         ; Null
         range      0,0
@@ -393,3 +393,4 @@ tbl_RangeData:
         area       1
         targetType FOES
         bra.w   StartBattleaction
+

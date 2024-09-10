@@ -1,6 +1,6 @@
 
-; ASM FILE data\stats\allies\allybattlesprites.asm :
-; 0x2751C..0x27AC4 : Ally battlesprites table
+; ASM FILE data\stats\enemies\enemydefs.asm :
+; 0x2751C..0x279AC : Enemy definitions
 
 table_EnemyDefs:
 
@@ -16,7 +16,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    GOBLIN
-        battleSprite GOBLIN, 0
+        battlesprite GOBLIN, 0
         portrait     NONE
         
         ; BOWRIDER
@@ -31,7 +31,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    BOWRIDER
-        battleSprite BOW_RIDER, 0
+        battlesprite BOWRIDER, 0
         portrait     NONE
         
         ; RUNE_KNIGHT
@@ -46,7 +46,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    RUNE_KNIGHT
-        battleSprite KNIGHT_ENEMY, 0
+        battlesprite KNIGHT, 0
         portrait     NONE
         
         ; SILVER_KNIGHT
@@ -61,7 +61,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    SILVER_KNIGHT
-        battleSprite KNIGHT_ENEMY, 1
+        battlesprite KNIGHT, 1
         portrait     NONE
         
         ; DURAHAN
@@ -76,7 +76,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    DURAHAN
-        battleSprite DULLAHAN, 0
+        battlesprite DURAHAN, 0
         portrait     NONE
         
         ; DARK_DWARF
@@ -91,7 +91,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    DARK_DWARF
-        battleSprite DWARF, 0
+        battlesprite DWARF, 0
         portrait     NONE
         
         ; HORSEMAN
@@ -106,7 +106,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    HORSEMAN
-        battleSprite BOW_RIDER, 1
+        battlesprite BOWRIDER, 1
         portrait     NONE
         
         ; SNIPER
@@ -121,7 +121,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    SNIPER
-        battleSprite SNIPER, 0
+        battlesprite ELF, 0
         portrait     NONE
         
         ; DARK_ELF
@@ -136,7 +136,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    DARK_ELF
-        battleSprite SNIPER, 1
+        battlesprite ELF, 1
         portrait     NONE
         
         ; LIZARDMAN
@@ -151,7 +151,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    LIZARDMAN
-        battleSprite LIZARDMAN, 0
+        battlesprite LIZARDMAN, 0
         portrait     NONE
         
         ; DARK_MAGE
@@ -166,7 +166,7 @@ table_EnemyDefs:
         baseMP       26
         dc.b         $0
         mapSprite    DARK_MAGE
-        battleSprite MAGE_ENEMY, 0
+        battlesprite MAGE, 0
         portrait     NONE
         
         ; DARK_PRIEST
@@ -181,7 +181,7 @@ table_EnemyDefs:
         baseMP       25
         dc.b         $0
         mapSprite    DARK_PRIEST
-        battleSprite PRIEST, 0
+        battlesprite PRIEST, 0
         portrait     NONE
         
         ; HIGH_PRIEST
@@ -196,7 +196,7 @@ table_EnemyDefs:
         baseMP       33
         dc.b         $0
         mapSprite    HIGH_PRIEST
-        battleSprite PRIEST, 1
+        battlesprite PRIEST, 1
         portrait     NONE
         
         ; CERBERUS
@@ -211,7 +211,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    CERBERUS
-        battleSprite HOUND, 0
+        battlesprite HOUND, 0
         portrait     NONE
         
         ; HELLHOUND
@@ -226,7 +226,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    HELLHOUND
-        battleSprite HOUND, 1
+        battlesprite HOUND, 1
         portrait     NONE
         
         ; GARGOYLE
@@ -241,7 +241,7 @@ table_EnemyDefs:
         baseMP       20
         dc.b         $0
         mapSprite    GARGOYLE
-        battleSprite GARGOYLE, 00
+        battlesprite GARGOYLE, 00
         portrait     NONE
         
         ; BELIAL
@@ -256,7 +256,7 @@ table_EnemyDefs:
         baseMP       35
         dc.b         $0
         mapSprite    BELIAL
-        battleSprite GARGOYLE, 1
+        battlesprite GARGOYLE, 1
         portrait     NONE
         
         ; GOLEM
@@ -271,7 +271,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    GOLEM
-        battleSprite GOLEM, 0
+        battlesprite GOLEM, 0
         portrait     NONE
         
         ; WEED
@@ -286,7 +286,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    WEED
-        battleSprite GOLEM, 1
+        battlesprite GOLEM, 1
         portrait     NONE
         
         ; DARK_PRIEST2
@@ -301,7 +301,7 @@ table_EnemyDefs:
         baseMP       25
         dc.b         $0
         mapSprite    DARK_PRIEST
-        battleSprite PRIEST, 0
+        battlesprite PRIEST, 0
         portrait     NONE
         
         ; ZOMBIE
@@ -316,7 +316,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    ZOMBIE
-        battleSprite ZOMBIE, 0
+        battlesprite ZOMBIE, 0
         portrait     NONE
         
         ; DARK_MAGE2
@@ -331,7 +331,7 @@ table_EnemyDefs:
         baseMP       26
         dc.b         $0
         mapSprite    DARK_MAGE
-        battleSprite MAGE_ENEMY, 0
+        battlesprite MAGE, 0
         portrait     NONE
         
         ; MASTER_MAGE
@@ -346,7 +346,7 @@ table_EnemyDefs:
         baseMP       32
         dc.b         $0
         mapSprite    MASTER_MAGE
-        battleSprite MAGE_ENEMY, 1
+        battlesprite MAGE, 1
         portrait     NONE
         
         ; DEMON_MASTER
@@ -361,7 +361,7 @@ table_EnemyDefs:
         baseMP       46
         dc.b         $0
         mapSprite    DEMON_MASTER
-        battleSprite MAGE_ENEMY, 2
+        battlesprite MAGE, 2
         portrait     NONE
         
         ; GIANT_BAT
@@ -376,7 +376,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    GIANT_BAT
-        battleSprite BAT, 0
+        battlesprite BAT, 0
         portrait     NONE
         
         ; SEABAT
@@ -391,7 +391,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    SEABAT
-        battleSprite BAT, 1
+        battlesprite BAT, 1
         portrait     NONE
         
         ; WORM
@@ -406,7 +406,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    WORM
-        battleSprite WORM, 0
+        battlesprite WORM, 0
         portrait     NONE
         
         ; ICE_WORM
@@ -421,7 +421,7 @@ table_EnemyDefs:
         baseMP       12
         dc.b         $0
         mapSprite    ICE_WORM
-        battleSprite WORM, 1
+        battlesprite WORM, 1
         portrait     NONE
         
         ; MINOTAUR
@@ -436,7 +436,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    MINOTAUR
-        battleSprite MINOTAUR, 0
+        battlesprite MINOTAUR, 0
         portrait     NONE
         
         ; ARTILLERY
@@ -451,7 +451,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    ARTILLERY
-        battleSprite TANK, 0
+        battlesprite ARTILLERY, 0
         portrait     NONE
         
         ; MANNEQUIN
@@ -466,7 +466,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    MANNEQUIN
-        battleSprite PUPPET, 0
+        battlesprite PUPPET, 0
         portrait     NONE
         
         ; EVIL_PUPPET
@@ -481,7 +481,7 @@ table_EnemyDefs:
         baseMP       15
         dc.b         $0
         mapSprite    EVIL_PUPPET
-        battleSprite PUPPET, 1
+        battlesprite PUPPET, 1
         portrait     NONE
         
         ; DIRE_CLOWN
@@ -496,7 +496,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    DIRE_CLOWN
-        battleSprite CLOWN, 0
+        battlesprite CLOWN, 0
         portrait     NONE
         
         ; DURAHAN2
@@ -511,7 +511,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    DURAHAN
-        battleSprite DULLAHAN, 0
+        battlesprite DURAHAN, 0
         portrait     NONE
         
         ; SKELETON
@@ -526,7 +526,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    SKELETON
-        battleSprite SKELETON, 0
+        battlesprite SKELETON, 0
         portrait     NONE
         
         ; HIGH_PRIEST2
@@ -541,7 +541,7 @@ table_EnemyDefs:
         baseMP       33
         dc.b         $0
         mapSprite    HIGH_PRIEST
-        battleSprite PRIEST, 1
+        battlesprite PRIEST, 1
         portrait     NONE
         
         ; MARIONETTE
@@ -556,7 +556,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    MARIONETTE
-        battleSprite MARIONETTE, 0
+        battlesprite MARIONETTE, 0
         portrait     NONE
         
         ; DEMON_MASTER2
@@ -571,7 +571,7 @@ table_EnemyDefs:
         baseMP       46
         dc.b         $0
         mapSprite    DEMON_MASTER
-        battleSprite MAGE_ENEMY, 2
+        battlesprite MAGE, 2
         portrait     NONE
         
         ; ARMED_SKELETON
@@ -586,7 +586,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    ARMED_SKELETON
-        battleSprite SKELE_SOLDIER, 0
+        battlesprite ARMED_SKELETON, 0
         portrait     NONE
         
         ; PEGASUS_KNIGHT
@@ -601,7 +601,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    PEGASUS_KNIGHT
-        battleSprite PEGASUS_KNIGHT, 0
+        battlesprite PEGASUS_KNIGHT, 0
         portrait     NONE
         
         ; ARTILLERY2
@@ -616,7 +616,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    ARTILLERY
-        battleSprite TANK, 0
+        battlesprite ARTILLERY, 0
         portrait     NONE
         
         ; CHIMAERA
@@ -631,7 +631,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    CHIMAERA
-        battleSprite CHIMERA, 0
+        battlesprite CHIMAERA, 0
         portrait     NONE
         
         ; WYVERN
@@ -646,7 +646,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    WYVERN
-        battleSprite WYVERN, 0
+        battlesprite WYVERN, 0
         portrait     NONE
         
         ; BLUE_DRAGON
@@ -661,7 +661,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    BLUE_DRAGON
-        battleSprite DRAGON, 0
+        battlesprite DRAGON, 0
         portrait     NONE
         
         ; CONCH
@@ -676,7 +676,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    CONCH
-        battleSprite SHELLFISH, 0
+        battlesprite SHELLFISH, 0
         portrait     NONE
         
         ; SHELLFISH
@@ -691,7 +691,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    SHELLFISH
-        battleSprite SHELLFISH, 1
+        battlesprite SHELLFISH, 1
         portrait     NONE
         
         ; ARTILLERY3
@@ -706,7 +706,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    ARTILLERY
-        battleSprite TANK, 0
+        battlesprite ARTILLERY, 0
         portrait     NONE
         
         ; STEEL_CLAW
@@ -721,7 +721,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    STEEL_CLAW
-        battleSprite STEEL_CLAW, 0
+        battlesprite STEEL_CLAW, 0
         portrait     NONE
         
         ; TORCH_EYE
@@ -736,7 +736,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    TORCH_EYE
-        battleSprite TORCH_EYE, 0
+        battlesprite TORCH_EYE, 0
         portrait     NONE
         
         ; JET
@@ -751,7 +751,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    JET
-        battleSprite JET, 0
+        battlesprite JET, 0
         portrait     NONE
         
         ; DARKSOL
@@ -766,7 +766,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    DARKSOL
-        battleSprite DARKSOL, 0
+        battlesprite DARKSOL, 0
         portrait     DARKSOL
         
         ; LASER_EYE
@@ -781,7 +781,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    LASER_EYE
-        battleSprite LASER_EYE, 0
+        battlesprite LASER_EYE, 0
         portrait     NONE
         
         ; ELLIOTT
@@ -796,7 +796,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    ELLIOTT
-        battleSprite ELLIOTT, 0
+        battlesprite ELLIOTT, 0
         portrait     ELLIOTT
         
         ; BALBAZAK
@@ -811,7 +811,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    BALBAZAK
-        battleSprite BALBAZAK, 0
+        battlesprite BALBAZAK, 0
         portrait     BALBAZAK
         
         ; MISHAELA
@@ -826,7 +826,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    MISHAELA
-        battleSprite MISHAELA, 0
+        battlesprite MISHAELA, 0
         portrait     MISHAELA
         
         ; CHAOS
@@ -841,7 +841,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    CHAOS
-        battleSprite CHAOS, 0
+        battlesprite CHAOS, 0
         portrait     CHAOS
         
         ; RAMLADU
@@ -856,7 +856,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    RAMLADU
-        battleSprite RAMLADU, 0
+        battlesprite RAMLADU, 0
         portrait     RAMLADU
         
         ; CAIN
@@ -871,7 +871,7 @@ table_EnemyDefs:
         baseMP       24
         dc.b         $0
         mapSprite    KANE
-        battleSprite CAIN, 0
+        battlesprite CAIN, 0
         portrait     KANE_MASKED
         
         ; COLOSSUS
@@ -886,7 +886,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    COLOSSUS
-        battleSprite COLOSSUS, 0
+        battlesprite COLOSSUS, 0
         portrait     COLOSSUS
         
         ; DARK_DRAGON
@@ -901,7 +901,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    DARK_DRAGON
-        battleSprite DARK_DRAGON, 0
+        battlesprite DARK_DRAGON, 0
         portrait     DARK_DRAGON
         
         ; COLOSSUS2
@@ -916,7 +916,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    COLOSSUS
-        battleSprite COLOSSUS, 0
+        battlesprite COLOSSUS, 0
         portrait     COLOSSUS
         
         ; COLOSSUS3
@@ -931,7 +931,7 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    COLOSSUS
-        battleSprite COLOSSUS, 0
+        battlesprite COLOSSUS, 0
         portrait     COLOSSUS
         
         ; DARK_MAGE3
@@ -946,7 +946,7 @@ table_EnemyDefs:
         baseMP       26
         dc.b         $0
         mapSprite    DARK_MAGE
-        battleSprite MAGE_ENEMY, 0
+        battlesprite MAGE, 0
         portrait     NONE
         
         ; ZOMBIE2
@@ -961,7 +961,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    ZOMBIE
-        battleSprite ZOMBIE, 0
+        battlesprite ZOMBIE, 0
         portrait     NONE
         
         ; SKELETON2
@@ -976,7 +976,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    SKELETON
-        battleSprite SKELETON, 0
+        battlesprite SKELETON, 0
         portrait     NONE
         
         ; GHOUL
@@ -991,7 +991,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    GHOUL
-        battleSprite ZOMBIE, 1
+        battlesprite ZOMBIE, 1
         portrait     NONE
         
         ; PEGASUS_KNIGHT2
@@ -1006,7 +1006,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    PEGASUS_KNIGHT
-        battleSprite PEGASUS_KNIGHT, 0
+        battlesprite PEGASUS_KNIGHT, 0
         portrait     NONE
         
         ; DARK_MAGE4
@@ -1021,7 +1021,7 @@ table_EnemyDefs:
         baseMP       32
         dc.b         $0
         mapSprite    MASTER_MAGE
-        battleSprite MAGE_ENEMY, 1
+        battlesprite MAGE, 1
         portrait     NONE
         
         ; DURAHAN3
@@ -1036,7 +1036,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    DURAHAN
-        battleSprite DULLAHAN, 0
+        battlesprite DURAHAN, 0
         portrait     NONE
         
         ; MINOTAUR2
@@ -1051,7 +1051,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    MINOTAUR
-        battleSprite MINOTAUR, 0
+        battlesprite MINOTAUR, 0
         portrait     NONE
         
         ; CHIMAERA2
@@ -1066,7 +1066,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    CHIMAERA
-        battleSprite CHIMERA, 0
+        battlesprite CHIMAERA, 0
         portrait     NONE
         
         ; SKELETON3
@@ -1081,7 +1081,7 @@ table_EnemyDefs:
         baseMP       0
         dc.b         $0
         mapSprite    SKELETON
-        battleSprite SKELETON, 0
+        battlesprite SKELETON, 0
         portrait     NONE
         
         ; DARK_DRAGON2
@@ -1096,7 +1096,6 @@ table_EnemyDefs:
         baseMP       100
         dc.b         $0
         mapSprite    DARK_DRAGON
-        battleSprite DARK_DRAGON, 0
+        battlesprite DARK_DRAGON, 0
         portrait     DARK_DRAGON
-        
         

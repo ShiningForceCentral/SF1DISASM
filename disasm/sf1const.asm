@@ -357,7 +357,7 @@ MAP_DATA: equ $FF52EA
 byte_FF6000: equ $FF6000
 byte_FF72EA: equ $FF72EA
 byte_FF92EA: equ $FF92EA
-CURRENT_CHAPTER: equ $FF9C00
+CURRENT_CHAPTER: equ $FF9C00 ; start of saved data
 CURRENT_REGION: equ $FF9C01
 CURRENT_MAP_ENTRANCE: equ $FF9C02
 CURRENT_MAP_VERSION: equ $FF9C03
@@ -369,7 +369,7 @@ SCREEN_POSITION: equ $FF9C48
 CURSOR_POSITION_X: equ $FF9C4A
 CURSOR_POSITION_Y: equ $FF9C4B
 EGRESS_LOCATION: equ $FF9C4C
-VICTORY_EXIT: equ $FF9C4D
+byte_FF9C4D: equ $FF9C4D
 EVENT_FLAGS: equ $FF9C4E
 byte_FF9C51: equ $FF9C51
 byte_FF9C52: equ $FF9C52
@@ -400,7 +400,7 @@ COMBATANT_DATA: equ $FFA1B6
 COMBATANT_1_ENTITY: equ $FFA1C6
 COMBATANT_1_Y: equ $FFA1C8
 SAVED_BATTLE_DATA: equ $FFA3B6
-byte_FFA476: equ $FFA476
+byte_FFA476: equ $FFA476 ; end of saved data
 byte_FFA496: equ $FFA496
 PASSABILITY_FLAGS: equ $FFA4C0 ; passability flags table : bit 0 = allowed to pass through, bit 1 = allowed to stay
 TABLE_AT_FFA8C0: equ $FFA8C0 ; uses:
@@ -498,7 +498,7 @@ byte_FFB537: equ $FFB537
 byte_FFB538: equ $FFB538
 byte_FFB539: equ $FFB539
 byte_FFB53A: equ $FFB53A
-byte_FFB53B: equ $FFB53B
+CURRENTLY_MOVING_COMBATANT: equ $FFB53B
 SPEECH_SOUND_TOGGLE: equ $FFB53C
 SAVE_GAME_DISABLED_TOGGLE: equ $FFB53D ; 1 = save game function is disabled
 byte_FFB53E: equ $FFB53E
@@ -759,7 +759,7 @@ TEXT_Y_POSITION: equ $FFF803
 byte_FFF804: equ $FFF804
 COMPRESSED_STRING_LENGTH: equ $FFF805
 byte_FFF806: equ $FFF806
-byte_FFF807: equ $FFF807 ; map something something...?
+byte_FFF807: equ $FFF807 ; related to map?
 DIALOG_INDEX: equ $FFF808
 DECODED_TEXT_SYMBOL: equ $FFF809 ; determines which huffman tree to use for next symbol decoding
 byte_FFF80A: equ $FFF80A

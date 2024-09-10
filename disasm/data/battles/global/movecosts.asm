@@ -2,7 +2,7 @@
 ; ASM FILE data\battles\global\movecosts.asm :
 ; 0x26566..0x265E6 : Move costs table
 
-MoveCostData:
+table_MoveCostData:
     
     ; Null
     dc.b 255
@@ -147,5 +147,4 @@ MoveCostData:
     dc.b 255
     dc.b 255
     dc.b 255
-    
     

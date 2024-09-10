@@ -1,7 +1,6 @@
 
 ; ASM FILE data\graphics\battles\battlesprites\enemies\animations\entries.asm :
-; 0x122252..0x1F914 : Enemy animations
-
+; 0x122252..0x122758 : Enemy battle animations
 pt_EnemyAnimations:
 		dc.l EnemyAnimation000
 		dc.l EnemyAnimation001
@@ -216,5 +215,3 @@ EnemyAnimation069:
 		incbin "data/graphics/battles/battlesprites/enemies/animations/enemyanimation069.bin"
 EnemyAnimation070:
 		incbin "data/graphics/battles/battlesprites/enemies/animations/enemyanimation070.bin"
-
-  

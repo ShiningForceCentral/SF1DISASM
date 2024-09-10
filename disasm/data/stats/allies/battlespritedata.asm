@@ -1,36 +1,36 @@
 
-; ASM FILE data\stats\allies\battlespritedata.asm :
-; 0x25604..0x25640 : Ally battlesprites table
+; ASM FILE data\stats\allies\allyBattlespritedata.asm :
+; 0x25604..0x25640 : Ally allyBattlesprites table
 
-BattleSpriteData:
+table_BattleSpriteData:
 
-    battleSprite MAX_SDMN, $0  ; Max
-    battleSprite KNT, $0  ; Mae
-    battleSprite KNT, $1  ; Pell
-    battleSprite KNT, $2  ; Ken
-    battleSprite KNT, $3  ; Vankar
-    battleSprite KNT, $4  ; Earnest
-    battleSprite KNT, $5  ; Arthur
-    battleSprite WARR, $0  ; Gort
-    battleSprite WARR, $1  ; Luke
-    battleSprite GUNTZ_SKNT, $0  ; Guntz
-    battleSprite MAGE, $1  ; Anri
-    battleSprite MAGE, $2  ; Alef
-    battleSprite MAGE, $0  ; Tao
-    battleSprite DOMINGO_1, $0  ; Domingo
-    battleSprite HEAL, $0  ; Lowe
-    battleSprite KHRIS_HEAL, $0  ; Khris
-    battleSprite HEAL, $1  ; Torasu
-    battleSprite GONG_MONK, $0  ; Gong
-    battleSprite ACHR, $1  ; Diane
-    battleSprite ACHR, $0  ; Hans
-    battleSprite LYLE_ASKT, $0  ; Lyle
-    battleSprite BDMN, $1  ; Amon
-    battleSprite BDMN, $0  ; Balbaroy
-    battleSprite KOKICHI_WKNT, $0  ; Kokichi
-    battleSprite BLEU_DRGN, $0  ; Bleu
-    battleSprite ADAM_RBT, $0  ; Adam
-    battleSprite ZYLO_WRWF, $0  ; Zylo
-    battleSprite MUSASHI, $0  ; Musashi
-    battleSprite HANZOU, $0  ; Hanzou
-    battleSprite JOGURT, $0  ; Jogurt
+    allyBattlesprite MAX_SDMN, 0  ; Max
+    allyBattlesprite KNT, 0  ; Mae
+    allyBattlesprite KNT, 1  ; Pell
+    allyBattlesprite KNT, 2  ; Ken
+    allyBattlesprite KNT, 3  ; Vankar
+    allyBattlesprite KNT, 4  ; Earnest
+    allyBattlesprite KNT, 5  ; Arthur
+    allyBattlesprite WARR, 0  ; Gort
+    allyBattlesprite WARR, 1  ; Luke
+    allyBattlesprite GUNTZ_SKNT, 0  ; Guntz
+    allyBattlesprite MAGE, 1  ; Anri
+    allyBattlesprite MAGE, 2  ; Alef
+    allyBattlesprite MAGE, 0  ; Tao
+    allyBattlesprite DOMINGO_1, 0  ; Domingo
+    allyBattlesprite HEAL, 0  ; Lowe
+    allyBattlesprite KHRIS_HEAL, 0  ; Khris
+    allyBattlesprite HEAL, 1  ; Torasu
+    allyBattlesprite GONG_MONK, 0  ; Gong
+    allyBattlesprite ACHR, 1  ; Diane
+    allyBattlesprite ACHR, 0  ; Hans
+    allyBattlesprite LYLE_ASKT, 0  ; Lyle
+    allyBattlesprite BDMN, 1  ; Amon
+    allyBattlesprite BDMN, 0  ; Balbaroy
+    allyBattlesprite KOKICHI_WKNT, 0  ; Kokichi
+    allyBattlesprite BLEU_DRGN, 0  ; Bleu
+    allyBattlesprite ADAM_RBT, 0  ; Adam
+    allyBattlesprite ZYLO_WRWF, 0  ; Zylo
+    allyBattlesprite MUSASHI, 0  ; Musashi
+    allyBattlesprite HANZOU, 0  ; Hanzou
+    allyBattlesprite JOGURT, 0  ; Jogurt

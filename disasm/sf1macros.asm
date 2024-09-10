@@ -23,14 +23,26 @@ sndCom:     macro
                 trap #SOUND_COMMAND
                 dc.w \1
             endm
-    
+
+openTxt:    macro
+                trap #OPEN_MESSAGE_WINDOW
+            endm
+
+closeTxt:   macro
+                trap #CLOSE_MESSAGE_WINDOW
+            endm
+
+clearTxt:   macro
+                trap #CREATE_MESSAGE_WINDOW
+            endm
+
 txt:        macro
                 move.w #\1,d0
-                trap   #DISPLAY_MESSAGE
+                trap #DISPLAY_MESSAGE
             endm
-    
-clstxt:     macro
-                trap #CLOSE_MESSAGE_WINDOW
+
+txtD0:      macro
+                trap #DISPLAY_MESSAGE
             endm
 
 
@@ -43,7 +55,7 @@ defineBitfieldWithParam: macro Prefix,Bitfield,Param
 Value: = \Prefix\\Param
     else
 Value: = \Param
-    endc
+    endif
 Next: substr ,,"\Bitfield"
 i:  = instr("\Next","|")
     while (i>0)
@@ -52,7 +64,7 @@ Symbol: substr ,i-1,"\Next"
 Value: = Value|\Prefix\\Symbol
     else
 Value: = Value|\Symbol
-    endc
+    endif
 Next: substr i+1,,"\Next"
 i:  = instr("\Next","|")
     endw
@@ -60,7 +72,7 @@ i:  = instr("\Next","|")
 Value: = Value|\Prefix\\Next
     else
 Value: = Value|\Next
-    endc
+    endif
     dc.\0 Value
     endm
     
@@ -73,7 +85,7 @@ defineShorthand: macro Prefix,Shorthand
     dc.\0 \Prefix\\Shorthand
     else
     dc.\0 \Shorthand
-    endc
+    endif
     endm
 
 
@@ -101,7 +113,7 @@ area:       macro
             endm
 
 targetType: macro
-                defineBitfield.b RANGE_TARGETS_,\1
+                defineBitfield.b RANGE_GROUP_,\1
             endm
 
 costume:    macro
@@ -142,7 +154,7 @@ className: macro
     defineName \1,\2,\3
     else
     defineName \1
-    endc
+    endif
     endm
     
 enemyName: macro
@@ -154,7 +166,7 @@ itemName: macro
     defineName \1,\2,\3
     else
     defineName \1
-    endc
+    endif
     endm
     
 spellName: macro
@@ -162,7 +174,7 @@ spellName: macro
     defineName \1,\2,\3
     else
     defineName \1
-    endc
+    endif
     endm
     
 ; ally definition
@@ -328,8 +340,13 @@ mapSprite:  macro
                 defineShorthand.b MAPSPRITE_,\1
             endm
     
-battleSprite: macro
-                defineShorthand.b BATTLESPRITE_,\1
+allyBattlesprite: macro
+                defineShorthand.b ALLYBATTLESPRITE_,\1
+                dc.b \2
+            endm
+    
+battlesprite: macro
+                defineShorthand.b ENEMYBATTLESPRITE_,\1
                 dc.b \2
             endm
     
@@ -384,7 +401,7 @@ resistance: macro
     endm
     
 aiSetting: macro
-    defineBitfield.b AISETTING_,\1
+    defineBitfield.b CLASS_PROPERTY_,\1
     endm
     
 specialAttack: macro
@@ -481,23 +498,27 @@ speechSfx:  macro
                 dc.b \1-SFX_DIALOG_BLEEP_1
             endm
 
-creditsAlly:macro
+creditsAlly: macro
                 defineShorthand.b ALLY_,\1
                 defineShorthand.b CLASS_,\2
                 defineBitfield.b ITEM_,\3
             endm
     
-vdpTile:    macro
+vdpTile: macro
             if (narg=0)
-                   dc.w 0
-               else
-                   defineBitfield.w VDPTILE_,\1
-               endc
-            endm
+                dc.w 0
+            else
+                defineBitfield.w VDPTILE_,\1
+            endif
+        endm
     
 vdpBaseTile: macro
+            if (narg=0)
+                dc.w VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
+            else
                 defineBitfieldWithParam.w VDPTILE_,\1,VDPTILE_PALETTE3|VDPTILE_PRIORITY_BIT
-            endm
+            endif
+        endm
 
 vdpSprite:  macro
                 dc.w \1

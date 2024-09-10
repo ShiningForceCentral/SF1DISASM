@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\items\weaponsprites.asm :
 ; 0x25D06..0x25D2C : Weaponsprite table
 
-WeaponSpriteData:
+table_WeaponSpriteData:
     
     dc.b WEAPONS_START  ; WeaponStart
     weaponSprite GREAT_AXE     ; Great Axe
@@ -15,9 +15,9 @@ WeaponSpriteData:
     weaponSprite KATANA        ; Doom Blade
     weaponSprite KATANA        ; Katana
     weaponSprite ARROW         ; Elven Arrow
-    weaponSprite DARK_SWORD    ; Sword of Darkness
-    weaponSprite LIGHT_SWORD   ; Sword of Light
-    weaponSprite LIGHT_SWORD   ; Chaos Breaker
+    weaponSprite SWORD_OF_DARKNESS  ; Sword of Darkness
+    weaponSprite SWORD_OF_LIGHT     ; Sword of Light
+    weaponSprite SWORD_OF_LIGHT     ; Chaos Breaker
     weaponSprite LANCE         ; Bronze Lance
     weaponSprite LANCE         ; Steel Lance
     weaponSprite LANCE         ; Chrome Lance
@@ -41,5 +41,6 @@ WeaponSpriteData:
     weaponSprite ARROW         ; Steel Arrow
     weaponSprite SHELL         ; Assault Shell
     weaponSprite SHOT          ; Buster Shot
+    
     align
 

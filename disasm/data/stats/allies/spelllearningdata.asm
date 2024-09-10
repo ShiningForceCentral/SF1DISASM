@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\allies\spelllearningdata.asm :
 ; 0x26D70..0x26E16 : Ally spell tables
 
-SpellLearningData:
+table_SpellLearningData:
 
         caster ANRI
         spellList &
@@ -110,4 +110,3 @@ SpellLearningData:
             
             dc.w $FFFF
 
-            

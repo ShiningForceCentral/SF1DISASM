@@ -2,7 +2,7 @@
 ; ASM FILE data\battles\global\landeffects.asm :
 ; 0x265E6..0x26666 : Land effect table
 
-LandEffectData:
+table_LandEffectData:
     
     ; Null
     dc.b 0
@@ -147,5 +147,4 @@ LandEffectData:
     dc.b 0
     dc.b 0
     dc.b 0
-    
     

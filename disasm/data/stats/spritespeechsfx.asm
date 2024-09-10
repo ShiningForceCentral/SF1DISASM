@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\spritespeechsfx.asm :
 ; 0x17BBC..0x17C5E : Sprite dialog bleeps
 
-tbl_SpriteSpeechSfx:
+table_MapspriteSpeechSfx:
     speechSfx SFX_DIALOG_BLEEP_5  ; MAX_SDMN
     speechSfx SFX_DIALOG_BLEEP_3  ; MAE_KNT
     speechSfx SFX_DIALOG_BLEEP_6  ; PELLE_KNT

@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\spells\spellnames.asm :
 ; 0x26404..0x26466 : Spell names
 
-SpellNames:
+table_SpellNames:
 
     spellName "HEAL"
     spellName "AURA"
@@ -20,5 +20,3 @@ SpellNames:
     spellName "EGRESS"
     spellName "dummy"
     spellName "SLEEP"
-    
-    

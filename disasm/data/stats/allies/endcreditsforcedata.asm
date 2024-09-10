@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\allies\endcreditsforcedata.asm :
 ; 0x26EE4..0x26F0A : Ally data for credits scenes
 
-EndingCreditsForceData:
+table_EndingCreditsForceData:
     creditsAlly MAX, HERO, CHAOS_BREAKER|EQUIPPED
     creditsAlly MAE, PLDN, VALKYRIE|EQUIPPED
     creditsAlly GORT, GLDR, ATLAS|EQUIPPED
@@ -12,9 +12,8 @@ EndingCreditsForceData:
     creditsAlly HANS, BWMS, STEEL_ARROW|EQUIPPED
     creditsAlly LYLE, SKNT_2, BUSTER_SHOT|EQUIPPED
     creditsAlly AMON, SKYW, SWORD_OF_DARKNESS|EQUIPPED
-    creditsAlly BLEU, GRDR, NOTHING_ITEM|BROKEN
-    creditsAlly ADAM, CYBG, NOTHING_ITEM|BROKEN
-    creditsAlly ZYLO, WFBN, NOTHING_ITEM|BROKEN
+    creditsAlly BLEU, GRDR, NOTHING|BROKEN
+    creditsAlly ADAM, CYBG, NOTHING|BROKEN
+    creditsAlly ZYLO, WFBN, NOTHING|BROKEN
     dc.w $FFFF
 
-    

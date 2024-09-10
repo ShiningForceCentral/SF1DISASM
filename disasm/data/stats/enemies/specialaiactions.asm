@@ -1,8 +1,7 @@
 
 ; ASM FILE data\stats\enemies\specialaiactions.asm :
-; 0x..0x : Special AI actions
-
-tbl_SpecialAiActionDefs:
+; 0x24006..0x2401C : Special AI actions
+table_SpecialAiActionDefs:
 		; Special AI action definitions table -- 2 bytes per entry : 
 		dc.b RANGE_BREATH
 		dc.b EFFECT_FIRE_BREATH_1
@@ -26,5 +25,3 @@ tbl_SpecialAiActionDefs:
 		dc.b EFFECT_DEMON_BLAZE_1
 		dc.b RANGE_DEMON_BLAZE_2
 		dc.b EFFECT_DEMON_BLAZE_2
-
-  
