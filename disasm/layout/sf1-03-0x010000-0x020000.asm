@@ -3054,7 +3054,7 @@ loc_11A10:
 		move.b  d0,(DIALOG_INDEX).l
 		ext.w   d0
 		lsl.w   #2,d0
-		movea.l (p_pt_SpriteSets).l,a0
+		movea.l (p_pt_MapSpritesets).l,a0
 		move.l  (a0,d0.w),(MAP_SPRITE_DATA_POINTER).l
 		rts
 
@@ -3420,11 +3420,13 @@ sub_11D52:
 sub_11D84:
 		movem.l d2/d4/d7-a1,-(sp)
 		mulu.w  #3,d0
-		movea.l (p_pt_MapSprites+8).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back table
 		bsr.s   sub_11DAA
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 		bsr.s   sub_11DAA
-		movea.l (p_pt_MapSprites+4).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		bsr.s   sub_11DAA
 		movem.l (sp)+,d2/d4/d7-a1
 		rts
@@ -3460,11 +3462,13 @@ sub_11DAA:
 sub_11DE6:
 		movem.l d2/d4/d7-a1,-(sp)
 		mulu.w  #3,d0
-		movea.l (p_pt_MapSprites+8).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back table
 		bsr.s   sub_11E0C
-		movea.l (p_pt_MapSprites+4).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		bsr.s   sub_11E0C
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 		bsr.s   sub_11E0C
 		movem.l (sp)+,d2/d4/d7-a1
 		rts
@@ -3501,11 +3505,13 @@ sub_11E0C:
 sub_11E4C:
 		movem.l d2/d4/d7-a1,-(sp)
 		mulu.w  #3,d0
-		movea.l (p_pt_MapSprites+8).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back table
 		bsr.s   sub_11E72
-		movea.l (p_pt_MapSprites+4).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		bsr.s   sub_11E72
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 		bsr.s   sub_11E72
 		movem.l (sp)+,d2/d4/d7-a1
 		rts
@@ -9593,7 +9599,7 @@ sub_159A8:
 		mulu.w  #$6C0,d0
 		addi.w  #$2000,d0
 		movea.w d0,a1
-		movea.l (p_pt_MapSprites+$3C).l,a0
+		movea.l (p_SpecialSprite_Jogurt1).l,a0
 		move.w  #$240,d0
 		move.w  #2,d1
 		jsr     (j_ApplyImmediateVramDmaOnCompressedTiles).l

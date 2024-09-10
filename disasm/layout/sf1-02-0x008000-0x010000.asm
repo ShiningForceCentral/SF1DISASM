@@ -711,7 +711,7 @@ loc_8366:
 		bsr.w   sub_8E52
 		move.w  (sp)+,d0
 		jsr     j_GetMapSpriteForCombatant
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 		lsl.w   #2,d1
 		movea.l (a0,d1.w),a0
 		movem.w d0,-(sp)
@@ -1149,7 +1149,6 @@ loc_884A:
 sprite_TargetingCursors:
 		
 		vdpSprite 116, V4|H4|62, 1664|PALETTE3, 120
-						; sprite properties
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
@@ -1157,6 +1156,7 @@ sprite_TargetingCursors:
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
+                
 		vdpSprite 86, V4|H4|55, 1680|PALETTE3, 120
 		vdpSprite 116, V4|H4|56, 1696|PALETTE3, 96
 		vdpSprite 146, V4|H4|57, 1680|FLIPPED_BIT|PALETTE3, 120
@@ -1165,6 +1165,7 @@ sprite_TargetingCursors:
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
 		vdpSprite 1, V4|H4|62, 1664|PALETTE3, 1
+                
 		vdpSprite 62, V4|H4|55, 1680|PALETTE3, 120
 		vdpSprite 116, V4|H4|56, 1696|PALETTE3, 72
 		vdpSprite 170, V4|H4|57, 1680|FLIPPED_BIT|PALETTE3, 120
@@ -2289,7 +2290,7 @@ loc_92A0:
 		move.w  (a0)+,d0
 		blt.s   loc_92DA
 		move.l  a0,-(sp)
-		movea.l (p_pt_TileAnimations).l,a0
+		movea.l (p_pt_MapTileAnimations).l,a0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (j_DecompressGraphics).l
@@ -3182,7 +3183,7 @@ loc_985A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_9872:
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 		lsl.w   #2,d1
 		movea.l (a0,d1.w),a0
 		movem.w d0,-(sp)
@@ -3374,7 +3375,7 @@ sub_99FC:
 
     ; End of function sub_99FC
 
-palettes_MapSprite:
+palettes_Mapsprite:
 		incbin "data/graphics/tech/palettes/mapspritepalettes.bin"
 defined_byte_9A4E:
 		dc.b $10
@@ -3611,7 +3612,7 @@ loc_9BF6:
 loc_9BFC:
 		move.w  d1,((CURRENT_OBJECT-$1000000)).w
 		move.w  d1,d0
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (sub_300).l
@@ -3622,7 +3623,8 @@ loc_9BFC:
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
-		movea.l (p_pt_MapSprites+8).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back table
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (sub_300).l
@@ -3633,7 +3635,8 @@ loc_9BFC:
 		jsr     (j_CopyBytes).l
 		movem.l (sp)+,d7-a1
 		move.w  ((CURRENT_OBJECT-$1000000)).w,d0
-		movea.l (p_pt_MapSprites+4).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		lsl.w   #2,d0
 		movea.l (a0,d0.w),a0
 		jsr     (sub_300).l
@@ -4466,7 +4469,7 @@ loc_A672:
 loc_A68A:
 		move.b  ((byte_FFB4C5-$1000000)).w,d0
 		jsr     j_GetMapSpriteForCombatant
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 		lsl.w   #2,d1
 		movea.l (a0,d1.w),a0
 		jsr     (sub_300).l

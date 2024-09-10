@@ -1,0 +1,2231 @@
+Well, [Hero],[Line]are you ready to[Line]face the enemy?[Wait2]
+Anything else, [Hero]?
+A change of heart, eh?[Wait2]
+If that is all, then go now,[Line]for the hordes of Runefaust[Line]are still on the attack![Wait2]
+Who do you wish to take?
+Who will you leave behind?
+[Hero], no one[Line]is waiting![Delay1]
+Are you sure? After all,[Line][Name] needs to[Line]be revived.
+Anyone else to replace?
+Use whose item?
+Who will use the [Item]?
+[Hero]! What are you[Line]trying to do with that?[Wait2]
+Any other item to use?
+Transfer whose item?
+Who gets the [Item]?
+The [Item] is cursed[Line]and can't be unequipped.[Wait2]
+Now, who gets it?
+Anything else to transfer?
+Who do you wish to equip?
+[Name] has been cursed....[Wait2]
+Anyone else to equip?
+Discard whose item?
+[Hero]! It would be[Line]foolish to discard the[Line][Item].[Wait2]
+Anything else to discard?
+View whose status?
+Check someone else's status?
+Without you, [Hero], who[Line]will lead the Shining Force?[Wait2]
+[Name] can't be[Line]equipped with anything![Wait2]
+Use whose item?
+Who will use the[Line][Item]?
+Nothing happened.[Wait2]
+Transfer whose item?
+Who gets the [Item]?
+The [Item] is cursed[Line]and can't be given away.[Wait2]
+[Name] can't be[Line]equipped with anything![Wait2]
+Who do you wish to equip?
+[Name] has been[Line]cursed....[Wait2]
+Discard whose item?
+[Hero] keeps the[Line][Item].[Wait2]
+Wow! Dark Dragon, Ancients...[Line]Let's see now, what else does[Line]this old book say?[Wait2][Line]Hmmm. One thousand years[Line]have passed since they[Line]vanquished Dark Dragon.[Wait2][Line]And this book says[Line]Dark Dragon threatened to[Line]return right about now.[Wait2][Line]I bet anything that Dark[Line]Dragon is behind the evil[Line]hordes of Runefaust![Wait2]
+I need to tell someone about[Line]this! But who would listen to[Line]a kid like me?[Wait2]
+Oh, hi! I didn't notice you[Line]there at first. Maybe you'll[Line]listen. Nobody else will.[Wait2]
+This book tells of an ancient[Line]evil that threatened our land[Line]long ago--Dark Dragon![Wait2]
+I think Dark Dragon's coming[Line]back! Will you help us?[Line]C'mon, it'll be an adventure![Wait2]
+Say, what shall I call you?[Wait2]
+Nice to meet you,[Line][Hero]! I'm Simone.[Wait2][Line]Come back often[Line]and tell me everything![Wait2]
+You need to get going! Evil[Line]spreads farther across Rune[Line]with every passing day.[Wait2]
+Let's get going![Line]You're doing great so far![Wait2]
+Which adventure would you[Line]like to continue?[Wait2]
+Good luck! And be sure to[Line]stop by to let me know how[Line]you're doing, OK?[Wait2]
+Really? Which adventure[Line]should I delete?[Wait2]
+Are you sure?
+OK, it's done![Wait2]
+Which adventure do you wish[Line]to copy?
+Where do you wish to copy it[Line]to?
+Done![Wait2]
+Change your mind? No problem![Wait2]
+Come on! Let's get on with[Line]your adventure!
+Oh no! I can't find adventure[Line][Num]! I hope you're not too[Line]mad![Wait2]
+Done for now? That's OK. Get[Line]lots of rest, and I'll see[Line]you soon![Wait2]
+Don't stay away too long,[Line]though. We need you here to[Line]lead the Shining Force![Wait2]
+Pick an adventure.
+Swallowed by the murky brine,[Line]the Castle of the Ancients[Line]was lost forevermore.[Delay2][Delay2]
+The battle over and Rune[Line]saved, the warriors of the[Line]Shining Force returned home.[Delay2][Delay2]
+Led by Mae, Guardiana was[Line]rebuilt and Anri inherited[Line]the throne.[Delay2][Delay2]
+As for [Hero], he is[Line]believed to have perished at[Line]sea along with Dark Dragon.[Delay2][Delay2]
+And that is the official[Line]ending. But you and I know[Line]differently, don't we?[Delay2][Delay2]
+Somewhere, evil stirs in a[Line]land that has need of a[Line]hero.[Delay2][Delay2]
+And I know you'll be up to[Line]the challenge, [Hero]![Delay2][Delay2]
+Well, goodbye for now. I have[Line]a feeling I'll be seeing you[Line]again.[Delay2][Delay2][Delay2]
+Do you want to record your[Line]exploits so far?
+Do you want to take a break?
+[Name] discovers a[Line][Item]![Wait2]
+But can't carry it![Wait2]
+The treasure chest is empty.[Wait2]
+Nothing is found.[Wait2]
+[Name] gains [Num] coins.[Wait2]
+[Hero] opens[Line]the treasure chest![Wait2]
+[Hero] gets[Line]the [Item]![Wait2]
+0
+0
+0
+In ages long forgotten...
+...Light fought Darkness for[Line]control of the world.
+Dark Dragon led the evil[Line]hordes of Darkness.
+The Ancients fought back with[Line]the Powers of Light.
+Dark Dragon was defeated and[Line]cast into another dimension.
+The Lord of Darkness vowed to[Line]return in 1,000 years.
+Time passed, and Dark Dragon[Line]was forgotten by all.
+Ten centuries of peace ruled[Line]the land of Rune.
+Until the kingdom of Runefaust[Line]brought war and fear to Rune.
+Hordes of evil creatures[Line]ravaged every land.
+Here and there, strongholds[Line]of Good still held out...
+...awaiting a Hero who could[Line]wield the Powers of Light!
+Well, hello there.[Delay2][Delay2][Line]You look like you're[Line]a long way from home.[Delay2][Delay2]
+We don't see many folk in[Line]full armor like that.[Delay2][Delay2][Delay2][Line]Quite a fancy getup![Delay2][Delay2][Delay2][Delay2]
+I have come a long way.[Delay2][Delay2][Delay2][Line]Longer than you can[Line]imagine.[Delay2][Delay2][Delay2][Delay2]
+I must say you do look pretty[Line]tired and, well,[Delay2][Delay2][Line]your things have seen[Line]better days.[Delay2][Delay2][Delay2][Delay2]
+I'm tired of wandering.[Delay2][Delay2][Line]I'm looking for a place to[Line]settle down and rest.[Delay2][Delay2][Delay2][Delay2]
+Well, how about right here?[Delay2][Delay2][Line]Lend your hands to the fields[Line]of our village?[Delay2][Delay2][Delay2][Delay2]
+That sounds like just what I[Line]need right now. [Delay2][Delay2][Delay2]I work hard[Line]and I'm a fast learner.[Delay2][Delay2][Delay2][Delay2]
+Good! We've got a deal then.[Delay2][Delay2][Delay2][Line]Folks in the village will be[Line]excited to see a new face![Delay2][Delay2]
+I didn't catch your name.[Line]What do they call you?[Delay2][Delay2][Delay2][Delay2]
+Me? You can call me...[Delay2][Delay2]
+[Hero]![Delay2]
+[Hero]![Line]Goblins! Runefaust[Line]must be up to something![Wait2]
+We can take them,[Line][Hero]![Wait2]
+Move it, vermin! Find the key[Line]to this blasted door![Wait2]
+C'mon, we're almost in![Wait2]
+Where is that blasted key?[Wait2]
+What? Blast it! Those fools[Line]from Guardiana are here![Wait2]
+Earthquake![Wait2]
+Attack, goblins and dwarves![Line]Strike a blow for the honor[Line]of Runefaust![Wait2]
+Fools...you have won here,[Line]but Lord Kane of Runefaust is[Line]even now attacking Guardiana![Wait2]
+If that creature spoke truly,[Line]we must return to help defend[Line]Guardiana![Wait2]
+The earthquake blocked the[Line]road. Head north, but be[Line]ready for battle.[Wait2]
+No one enters Guardiana while[Line]we live! For Darksol![Wait2]
+Death to Guardiana![Wait2]
+Well done, Shining Force![Line]Now, enter Guardiana and find[Line]out what's happened there![Wait2]
+[Hero]! Enemies await[Line]you on the road to Alterone.[Line]Take all precautions![Wait2]
+Excellent! Kane will have to[Line]do better than that to stop[Line]you. On to Alterone![Wait2]
+Lowly worms, I shall crush[Line]you beneath my heel. Attack,[Line]soldiers of Runefaust![Wait2]
+Lord Kane, Lord Darksol[Line]commands you to return to[Line]Runefaust immediately.[Wait2]
+Tell him I'm on my way.[Wait2]
+Yes, sir.[Wait2]
+A shame I can't stay to watch[Line]you meet your doom! My troops[Line]can handle the likes of you.[Wait2]
+[Hero], there's no time[Line]to lose. Kane must be found[Line]and stopped at all costs.[Wait2][Line]Find out all you can and[Line]be sure to talk to the king[Line]of Alterone![Wait2]
+Our enemies seek to stop you[Line]from reaching Anri in[Line]Manarina. You must succeed![Wait2]
+[Hero], now enter[Line]Manarina! We must inform[Line]Anri about Guardiana![Wait2]
+Behold the dreaded Cavern of[Line]Darkness! You must defeat the[Line]monsters to gain the orb![Wait2]
+No! It cannot be! After all[Line]these centuries....[Wait2]
+[Hero], the Orb of Light[Line]must be within that chest.[Line]Take it quickly![Wait2]
+Well, [Hero], remember[Line]me? You'll soon wish you'd[Line]taken my advice in Alterone![Wait2]
+Come, my pets! Look who's[Line]come to play with you. Why,[Line]it's the Shining Force![Wait2]
+I leave you in good hands,[Line][Hero].[Wait2][Line]I have more vital matters[Line]to attend to right now![Wait2]
+Fools! Light will never defeat[Line]the Darkness....[Wait2]
+She...that evil woman...was[Line]going to take me to Runefaust,[Line]to feed me to a dragon![Wait2][Line]Thank you! I'm going home and[Line]I'm never leaving![Wait2]
+Been praying, and well you[Line]might![Wait2]
+You and your pitiful Shining[Line]Force cannot be saved by[Line]prayers! You won't escape![Wait2]
+How fitting that you perish[Line]in a former chapel of Light![Line][Wait2]
+I leave you now in the care[Line]of my minions, who know well[Line]what to do with you....[Wait2]
+Undead! Dispose of these[Line]pests once and for all![Wait2]
+Master, we have found it![Wait2]
+The Laser Eye! At last![Wait2]
+This is the end of that[Line]cursed Shining Force![Wait2]
+Get rid of those men from[Line]Bustoke. They are of no[Line]further use to us.[Wait2]
+Alert! Intruders![Wait2]
+What? The Shining Force![Wait2]
+Stop them! We must have time[Line]to remove the Laser Eye![Wait2]
+You think you've won, but[Line]you've failed. The Laser Eye[Line]is ours now![Wait2]
+[Hero], the Moon Stone[Line]lies inside the cavern.[Wait2]
+Look, they are trying to[Line]block our way to the bridge.[Line]Attack them, Shining Force![Wait2]
+Head for the bridge. We need[Line]to get across quickly![Wait2]
+Traitor! You've betrayed Lord[Line]Kane![Wait2]
+I owe no allegiance to you or[Line]him, foul fiend that he is![Wait2]
+You are only a mercenary. You[Line]do what we pay you to do![Wait2]
+Here, I return your gold. I[Line]shall no longer follow your[Line]orders, toad![Wait2]
+If you are not with us, then[Line]you are against us![Wait2]
+I will have the pleasure of[Line]killing you myself![Wait2]
+Vile fiend! Aiiiieeeee....[Wait2]
+Ha, ha! Thus fall all who[Line]dare to oppose the will of[Line]Darksol![Wait2]
+You may have beaten us here,[Line]but General Elliott will stop[Line]you in Pao![Wait2]
+Whew! I thought I was a[Line]goner, but I caught a branch[Line]and just hung on.[Wait2]
+A great battle! I don't know[Line]who you are, but I want to[Line]tag along![Wait2]
+A good job getting to that[Line]Laser Eye. Hurry on to Pao.[Line]Evil is afoot![Wait2]
+Thus the Shining Force[Line]brought peace to Bustoke. But[Line]a vast army awaits....[Wait2]
+The time for battle has come.[Line]For King Ramladu![Wait2]
+General Elliott is said to be[Line]the finest swordsman in all[Line]of Rune.[Wait2][Line]Take care, [Hero]![Wait2]
+Perhaps you have the strength[Line]to rescue King Ramladu and[Line]Runefaust! Stop Darksol![Wait2][Line]Promise that you will free[Line]Runefaust, known as Protectora[Line]before Darksol came....[Wait2]
+Elliott was a great warrior...[Line]too bad he was our enemy.[Wait2][Line]But look, the traveling town[Line]of Pao is coming up again![Wait2]
+[Hero], you must break[Line]through to reach the harbor.[Line]Be careful, but be quick![Wait2]
+At last we meet, [Hero].[Line]Soon you and your misfits[Line]will trouble us no longer![Wait2]
+Yes, that is Balbazak, a[Line]commander of the Runefaust[Line]army. You must destroy him![Wait2]
+[Hero]! Take the ship,[Line]but please spare my life![Line]Please![Wait2]
+You don't want to[Line]kill me, do you?[Line]Please let me go.[Wait2]
+Thank you! Take the ship, go[Line]after Darksol![Wait2]
+Balbazak, you betrayed me![Wait2]
+No, no, please Darksol![Line]Leave me in peace![Wait2]
+You disgust me, Balbazak![Line]Leave you in peace? I will[Line]leave you in pieces![Wait2]
+Forgive me![Wait2]
+Too late, worm! Receive your[Line]punishment for failure![Wait2]
+I am dying, [Hero]....[Line]You must kill Darksol...[Line]free Runefaust....[Wait2]
+Take the ship, as that fool[Line]said. You will not survive[Line]the voyage! Ha, ha, ha![Wait2]
+The ship is surrounded by[Line]monsters, [Hero]![Line]Prepare to defend it![Wait2]
+The ship was damaged in the[Line]battle. We must repair it.[Line]That island over there....[Wait2]
+Thank you for destroying[Line]those monsters! My name is[Line]Shell of Waral.[Wait2][Line]You can repair your ship in[Line]Waral. Please follow me![Wait2]
+I've heard of Waral. We[Line]should be able to get the[Line]ship fixed there.[Wait2]
+I invoke a path before[Line]me....What?[Wait2]
+Shining Force! I was so[Line]close...so close! I shall[Line]destroy you all![Wait2]
+Arrghh...I was so close...the[Line]way to Metapha...almost[Line]ours....[Wait2]
+Here we go again. We were[Line]just about to land, too! Go[Line]get them![Wait2]
+The ship's helm was destroyed[Line]in the battle. We're now[Line]adrift at sea![Wait2]
+These Guardiana fools must be[Line]stopped. Kane's mission is[Line]vital. Attack![Wait2]
+[Hero], you must quickly[Line]break through to Dragonia![Wait2]
+You'll never beat Kane,[Line]Shining Fools![Wait2]
+[Hero], you must[Line]stop Kane before he finds the[Line]Manual of the Seal. Onward![Wait2]
+Ha! I knew you couldn't hide[Line]in there forever! Come on[Line]out, little hero![Wait2]
+[Hero], be careful.[Line]Remember that Kane killed[Line]Varios![Wait2]
+Arrgh! My mask[Line]is...breaking![Wait2]
+Wh...where am I? I[Line]remember now. Darksol masked[Line]my face to control me....[Wait2][Line]What have I done?[Line]He even made me fight you![Line]Forgive me, [Hero]![Wait2]
+It seems that Darksol is[Line]behind all the evil afoot.[Line]Stop him and it all ends.[Wait2][Line]In any case, let's take[Line]another look at this village.[Wait2][Line]Check the shrine again....[Wait2]
+Well, [Hero], we meet[Line]once more.  For the last time,[Line]I fear, as you will die here.[Wait2][Line]My minions shall take care of[Line]you, but if they fail, I await[Line]you in Demon Castle![Wait2]
+Mishaela is said to possess[Line]the Sword of Light. You must[Line]enter her castle and get it![Wait2][Line]With that legendary weapon,[Line]you stand a much better[Line]chance against Darksol.[Wait2]
+Well, here's the little hero[Line]coming for my Sword of Light![Line]Take it, if you dare![Wait2]
+You'll never leave my castle,[Line]you pitiful fools![Wait2]
+This is as close as you'll[Line]ever come to the Sword of[Line]Light![Wait2]
+[Hero], take great care.[Line]Mishaela is a powerful[Line]wizardess, a dangerous foe![Wait2]
+Though you can take...my[Line]sword...you will never...stop[Line]Darksol.[Wait2][Line]Dark Dragon will be set[Line]free....[Wait2]
+With the Sword of Light you[Line]might be able to defeat[Line]Darksol. We shall see![Wait2]
+The Tower of the Ancients is[Line]to the east. Hurry, while[Line]there's still time![Wait2]
+Now, on to the Tower of the[Line]Ancients![Wait2]
+Stop them! Lord Darksol must[Line]not be disturbed![Wait2]
+We must get inside the tower![Line]Smash through these monsters[Line]quickly, [Hero]![Wait2]
+Lord Darksol...I have failed[Line]...they're coming...into the[Line]tower....[Wait2]
+Get in there, quickly![Wait2]
+Screech! Kill...kill....[Wait2]
+This unit...now ceases to[Line]function...mission incomplete[Line]...system failure....[Wait2]
+To the south is Runefaust.[Line]Their army approaches. You[Line]must fight your way in.[Wait2]
+Now, [Hero], into[Line]Runefaust![Wait2]
+Long have I waited for[Line]this moment, [Hero]![Line]Prepare to meet your death.[Wait2]
+Is that the best you can do?[Line]Well, meet my robots,[Line]weaklings![Wait2]
+I am dying...but my mind is[Line]once more my own. Darksol[Line]was controlling me.[Wait2][Line]You must stop Darksol![Line]If he frees Dark Dragon,[Line]all of Rune is doomed.[Wait2][Line]He has gone to the gate,[Line]to summon the castle from the[Line]depths of the sea. Go![Wait2]
+[Hero]! Darksol has[Line]already entered the Castle of[Line]the Ancients.  You must hurry![Wait2][Line]I found a secret passage[Line]to the gate. It is in the[Line]entry hall of this castle.[Wait2][Line]Return to town and make[Line]your final preparations. Then[Line]take the passage.[Wait2]
+At last, [Hero]!  The[Line]Castle of the Ancients. The[Line]end is near, for good or ill![Wait2]
+None shall pass Colossus,[Line]the eternal sentinel![Line]Leave now![Wait2]
+Colossus! I've heard of it[Line]in legends! [Hero]![Line]They are attacking![Wait2]
+Fools...Dark Dragon...will[Line]come...to destroy you....[Wait2]
+You've destroyed Colossus![Line]But where is Darksol?[Wait2]
+Use the staircase,[Line][Hero].[Line]Darksol must be up there![Wait2]
+Dark Dragon! Awake from your[Line]long sleep! The time has come[Line]for you to reclaim this land![Wait2]
+Awaken, Dark Dragon![Line]Something is wrong....[Wait2]
+[Hero]! Blast![Line]You have meddled for the last[Line]time! Kill them, my servants![Wait2]
+[Hero]! You must stop[Line]Darksol before he completes[Line]his foul ceremony! Attack![Wait2]
+Dark Dragon! With my dying[Line]breath...I summon you....[Line]Arise, Dark Dragon![Wait2]
+Yes! At last, you are[Line]awakening![Wait2]
+I offer myself to you, Dark[Line]Dragon! Use my power to help[Line]you cast off your bonds.[Wait2]
+You are free once more! Let[Line]all of Rune tremble! I die[Line]fulfilled! Cringe fools![Wait2]
+Nooooo! These puny creatures[Line]cannot defeat the Lord of[Line]Darkness![Delay2][Delay2]
+Never! I will not be banished[Line]again! The Powers of Darkness[Line]will sustain me![Delay2][Delay2]
+Dark Dragon still lives![Line]Perhaps we cannot kill him![Line]There must be a way....[Delay2][Delay2]
+[Hero]! Dark Dragon[Line]must be sealed away once[Line]again. And only you can do it![Delay2][Delay2]
+Use the Chaos Breaker! Drive[Line]it through Dark Dragon![Delay2][Delay2]
+Fools! Nothing you do can[Line]stop me! I am Dark Dragon,[Line]Darkness incarnate![Delay2][Delay2]
+[Hero]! Stab him with[Line]the Chaos Breaker![Delay2][Delay2]
+[Hero] stabbed Dark Dragon[Line]with the Chaos Breaker![Delay2][Delay2]
+[Hero]! The Castle of the[Line]Ancients is sinking! Let's[Line]get out of here![Delay2][Delay2]
+But [Hero] cannot move![Delay2][Delay2]
+[Hero] is somehow bound[Line]to the Chaos Breaker![Delay2][Delay2]
+[Hero]! Break free! We[Line]won't leave without you![Delay2][Delay2]
+I can't get free, but you[Line]won't die with me![Delay2]
+[Hero] used his Egress[Line]magic to save us. But[Line]where is [Hero]?[Delay2][Delay2]
+That spell's supposed to[Line]get us all out. Why isn't[Line][Hero] here? Why, Nova?[Delay2][Delay2]
+I have no answers for you.[Line]Perhaps a great hero is[Line]needed to guard the seal.[Delay2][Line]Perhaps he must[Line]stand as an eternal vigil to[Line]prevent Dark Dragon's return.[Delay2][Delay2]
+But why did it have[Line]to be [Hero]? Any of us[Line]would have taken his place....[Delay2][Delay2]
+I won't believe it![Line][Hero] will come back,[Line]I know it![Delay2]
+Perhaps [Hero] will still[Line]come out. Wait, look at[Line]the castle![Delay2][Delay2]
+No! It's gone...the castle...[Line]and [Hero] with it....[Delay2][Delay2]
+That's it. He didn't escape.[Line]He's gone....[Delay2][Delay2]
+[Hero] has saved all of[Line]Rune. His sacrifice will be[Line]remembered forever.[Delay2][Line]And now, friends, it is[Line]time for us to begin the long[Line]journey home....[Delay2][Delay2]
+I won't believe it....[Delay2][Delay2]
+[Hero]!
+Come, [Hero], our[Line]vengeance cannot wait![Wait2]
+Forget about paying me. This[Line]is personal now.[Wait2]
+At last! A chance to become a[Line]real knight! Count me in![Wait2]
+I won't let you down,[Line][Hero]! You can depend[Line]on me, no matter what![Wait2]
+I want to fight at the front![Wait2]
+I can't thank you enough for[Line]letting me join the fight. I[Line]won't let you down![Wait2]
+Let's get going, [Hero]![Wait2]
+I'm ready, [Hero].[Line]You line 'em up, and I'll[Line]chop 'em down![Wait2]
+I'm rarin' to go![Wait2]
+[Hero], thank you for[Line]your efforts. I, too, shall[Line]try my best.[Wait2]
+I'll fight to the end to[Line]defeat Darksol![Wait2]
+I'm eager to try my magic.[Wait2][Line]Let's get out there and toast[Line]some monsters![Wait2]
+I'll stay near the back, if[Line]you don't mind. But I can[Line]fight if I have to.[Wait2]
+I'm most useful as a healer,[Line]but I'll get in a few good[Line]whacks when I have to.[Line][Wait2]I can heal wounds, but please[Line]try not to get injured, OK?[Wait2]
+I can fight and heal wounds.[Line]Lead on, and I will follow.[Wait2]
+Please take care not to get[Line]hurt. If your comrade gets[Line]hurt, I will help you.[Wait2]
+If it's healing and fighting[Line]you need, I'm your man.[Line]I will try my best![Wait2]
+With me along, there is[Line]nothing to fear from flying[Line]enemies.[Wait2]
+Please don't put me in front.[Line]I can't stand being hit.[Wait2]
+Where are our enemies? I'll[Line]blow them all away![Wait2]
+Leave air combat to me! No[Line]one can take me as long as I[Line]have my wings![Wait2]
+I will fight until Darksol[Line]is defeated or I'm finished[Line]on the battlefield.[Wait2]
+Bring on those Runefaust[Line]creeps. I'll mop the[Line]battlefield with them![Wait2]
+I feel my ancestors watching[Line]me as I prepare for battle. I[Line]will make them proud![Wait2]
+I am yours to command,[Line][Hero]. Point out our[Line]foes and step out of my way![Wait2]
+I was born to fight. The[Line]battlefield is like a second[Line]home to me.[Wait2]
+Let's go, [Hero]! I can't[Line]stand the thought of those[Line]beasts overrunning Rune![Wait2]
+Now your foes shall surely[Line]perish.[Wait2]
+Is my helmet on straight?[Line]I think it is.[Wait2]
+I'm just stretching. Need to[Line]keep in tiptop form, you[Line]know.[Wait2]
+I'll just relax, maybe train[Line]a bit. I'll be here if you[Line]need me.[Wait2]
+I think I'll go stir crazy[Line]if you don't let me out of[Line]here soon![Wait2]
+Well, look who's here. Long[Line]time, no see, [Hero]![Wait2]
+Sometimes it's good to stay[Line]down here. It's peaceful, but[Line]a bit noisy.[Wait2]
+Can I fight now? C'mon, let[Line]me at that Darksol![Wait2]
+Hiya, [Hero]. We've got[Line]quite a party going on back[Line]here. See ya later![Wait2]
+This is pretty boring. When[Line]can I get into the fight?[Wait2]
+I am ready for action. Just[Line]give me a chance.[Wait2]
+[Hero]! This constant[Line]gossiping is really getting[Line]to me. Get me out of here![Wait2]
+Boy, that Darksol is sure[Line]lucky I'm down here. He'd be[Line]in trouble with me fighting.[Wait2]
+I'll be ready when you need[Line]me, [Hero].[Wait2]
+Don't worry about us.[Line]We just started singing "1,000[Line]Bottles of Ale on the Wall."[Wait2]
+ZZZZZZzzzzzZZZZZzzzzz....[Wait2]
+I'm resting and practicing[Line]my healing spell.[Wait2]
+[Hero], you should stay[Line]down here. It's great fun![Wait2]
+Pick me! Pick me![Line]C'mon [Hero]![Wait2]
+C'mon, [Hero], let us[Line]in on the fun! We're[Line]bored down here![Wait2]
+[Hero], remember that[Line]we're here if you need us![Wait2]
+Whaa...oh, sorry. I fell[Line]asleep there for a while.[Line]I'm ready now![Wait2]
+Boooooring! I want action![Wait2]
+It feels good to rest![Wait2]
+Exciting times we live in,[Line]eh? Not that I'm seeing[Line]much of them, of course.[Wait2]
+Just practicing my tail whip.[Line]Still haven't gotten the hang[Line]of it.[Wait2]
+I want to punish Darksol for[Line]all he has done. Let me fight![Wait2]
+Take care of your weapons,[Line]that's what my father always[Line]told me![Wait2]
+Yawn. Sorry I must have[Line]dozed off. Did I miss[Line]anything important?[Wait2]
+If I were to fight, they[Line]wouldn't even see me coming.[Wait2]
+Do you like my helmet?[Wait2]
+All that water beneath us. It[Line]makes me nervous![Wait2]
+Don't worry. We'll be fine[Line]once a battle starts.[Wait2]
+Nice ship. Good workmanship.[Line]We have nothing to fear![Wait2]
+I'll be OK. I'll just carry a[Line]bucket with me into battle.[Wait2]
+No seasickness for me! But I[Line]swim like a rock.[Wait2]
+I feel ill. Don't make me[Line]fight, please.[Wait2]
+Ah, the sea. I have long[Line]wished for a sea voyage.[Wait2]
+My first time at sea. Pretty[Line]exciting.[Wait2]
+I hate the sea![Wait2]
+Did I hear "Land Ho!"? No?[Line]Just wishful thinking, I[Line]guess.[Wait2]
+Monsters? Let me at 'em![Wait2]
+So this is a ship? Rad![Wait2]
+I'm tired of looking at the[Line]same people all the time.[Wait2]
+I wish there was a spell to[Line]cure seasickness![Wait2]
+This rocking back and forth[Line]is putting me to sleep.[Wait2]
+0
+Yes. Sea travel is quite[Line]nice. I should have taken a[Line]voyage long ago.[Wait2]
+I like it down here where[Line]it's nice and dry.[Wait2]
+What if I'm thrown into[Line]the sea?[Wait2]
+0
+I'm an expert at attacking[Line]from the air at sea.[Wait2]
+We are most useful at sea,[Line]fighting from the air.[Line]Remember that, OK?[Wait2]
+Hey, I can't swim![Wait2]
+0
+0
+Up and down, up and down.[Line]Pardon me, but my lunch wants[Line]to join the sea.[Wait2]
+0
+0
+I'm ill, but I'll fight if[Line]you really need me.[Wait2]
+....[Wait2]
+[Hero] and the Shining[Line]Force followed Kane's trail[Line]to the town of Rindo....[Wait2]
+The Shining Force arrived in[Line]Bustoke, a town built into a[Line]mountainside.[Wait2]
+The Shining Force reached the[Line]Pao Prairie to discover that[Line]Pao was a town of wagons![Wait2]
+After a week at sea, sentries[Line]spotted a horde of monsters[Line]approaching the ship....[Wait2]
+The Shining Force finally[Line]reached the port of Rudo, far[Line]from Prompt.[Wait2]
+The Shining Force quickly[Line]reached Prompt, hoping[Line]that they had come in time.[Wait2]
+Runefaust at last! The long[Line]and perilous journey is near[Line]its end.[Wait2][Line]It is up to the Shining Force[Line]whether it ends as a[Line]triumph for Light or Darkness.[Wait2]
+The Legacy of the Ancients,[Line]the Door, the Key....What[Line]can it all mean?[Wait2][Line]No matter what the cost, the[Line]mystery must be solved, and[Line]Runefaust's plans foiled.[Wait2]
+[Hero] and the Shining[Line]Force head toward Bustoke.[Line]What awaits them there?[Wait2][Line]The legacy of the Ancients[Line]is still a mystery. Will[Line]they ever solve it?[Wait2]
+With the Laser Eye gone,[Line]the Shining Force heads toward[Line]the moving town of Pao.[Wait2][Line]Knowing that Runefaust is[Line]gathering its forces, our[Line]heroes hurried onward.[Wait2]
+Thus did the Shining Force[Line]free Uranbatol and set sail[Line]for a land of legend....[Wait2]
+The ship drifted off course,[Line]lost at sea. What will become[Line]of the Shining Force?[Wait2]
+Will Darksol release Dark[Line]Dragon from the bonds of the[Line]Ancients?[Wait2][Line]Or will [Hero] stop[Line]Darksol and save all of[Line]Rune from the ultimate evil?[Wait2][Line]The Shining Force hurries[Line]on to Prompt....[Wait2]
+The Shining Force is now in a[Line]desperate race against time.[Line]Dark Dragon is awakening![Wait2]
+Welcome! Do come in! We've[Line]got the best, you know. Take[Line]your time, take your time![Wait2]
+Anything else?
+What do you need, then?[Wait2]
+Thank you. Do come again![Wait2]
+What would you like?
+[Item], right?[Line]That comes to [Num] coins.[Line]OK?
+Rats! We almost had a deal.[Wait2]
+You don't have enough money[Line]to buy that. Sorry.[Wait2]
+Who do you wish to have it?
+[Name] can't use this. Do you[Line]still want it?
+[Name]'s hands are full. How[Line]about someone else?
+Here you go! Use it in good[Line]health, my friend.[Wait2]
+Want anything else?
+Sorry, no deals today.[Wait2]
+I have some great stuff here.[Line]See anything you like?
+Let's see. Who wants to sell,[Line]and which item?
+I'll give you [Num] coins[Line]for it. OK?
+Say, that's nice! How about[Line][Num] coins for it?
+Sorry we couldn't cut a deal.[Wait2]
+I'd like to help, but we[Line]don't deal with these.[Wait2]
+It's mine, all mine![Wait2]
+Thanks, I don't sell this[Line]type of item, but I know[Line]someone who does.[Wait2]
+Thanks, I don't sell this[Line]type of item, but I know[Line]someone who does.[Wait2]
+Anything else to sell?
+Hey, wait a minute. I don't[Line]deal with cursed items! It's[Line]bad luck, you know.[Wait2]
+Repair whose item?
+That'll cost [Num] coins. OK?
+Who are you trying to fool?[Line]That item's not damaged.[Wait2]
+I'd like to repair it, but[Line]you seem to be a bit low on[Line]money. Sorry.[Wait2]
+Whoa! I don't repair cursed[Line]items! Nope, not me. I'm[Line]nobody's fool![Wait2]
+OK. Just a minute.[Wait2]
+I have it right here. It's as[Line]good as new! Try not to[Line]damage it again, OK?[Wait2]
+Anything else?
+Welcome, [Hero]![Line]I've been expecting you.[Wait2][Line]How can I help you[Line]and the Shining Force?[Wait2]
+Remember that I'm always[Line]willing to record your deeds.[Wait2]
+Can I help in some other way?
+May the Powers of Light be[Line]always with you, [Hero]![Wait2]
+Shall I make a record of your[Line]adventures thus far?
+There, my record of your[Line]exploits is complete.[Wait2]
+Will you continue your[Line]journey?
+Yes, you should rest before[Line]continuing. Remember, a tired[Line]warrior is soon a dead one![Wait2]
+Well, let's just see who[Line]needs my help.[Wait2]
+Hmmm...no one's poisoned.[Wait2]
+No one's cursed![Wait2]
+Oh, my![Line][Name] is poisoned![Wait2]
+Oh, my![Line][Name] is cursed![Wait2]
+I can heal [Name],[Line]but it'll cost [Num] coins.[Line]Agreed?
+Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]
+Done. [Name] is cured![Wait2]
+Done. [Name] is cured![Wait2]
+Hmm...everyone seems OK.[Wait2]
+Oh, my! [Name] is in bad[Line]shape. I'll see if I can help.[Wait2]
+I can revive [Name], but it[Line]will cost [Num] coins.[Line]Agreed?
+[Name] has revived![Wait2]
+I'm sorry, but no one has[Line]earned a promotion.[Wait2]
+Does anyone want to be[Line]promoted?
+Changed your mind?[Line]
+Hmm...[Name] needs some more[Line]training. Come back[Line]later.[Wait2]
+[Name] needs to be revived[Line]before being promoted.[Wait2]
+[Name] wants[Line]a promotion?
+I hereby make a promotion.[Line]Now, [Class] [Name] shall[Line]be known as a [Class]![Wait2]
+Congratulations, [Name]![Wait2]
+Hmm...[Line]I think [Name] should[Line]stay as [Class].[Wait2]
+Flag [Num]'s
+[Dict][Num]
+Set [Dict][Wait2]
+Cleared [Dict][Wait2]
+[Dict] is 1.[Wait2]
+[Dict] is 0.[Wait2]
+No one is in that direction.[Wait2]
+[Hero] has been[Line]defeated...[Wait2]
+[Hero]! Do you really[Line]want to retreat from this[Line]battle?
+[Hero]! You've reached[Line]your destination, but some[Line]enemies remain.[Wait2][Line]Will you leave them?
+[Name] attacks!
+[Name] casts [Spell][Line]level [Num]!
+[Name] uses the[Line][Item]!
+(Fire)
+[Name] casts the[Line]Demon Blaze!
+[Name] casts the[Line]Demon Blaze!
+[Name] casts [Spell][Line]level [Num]![Line]But the spell fails.
+Inflicts [Num] points of damage on[Line]the [Name].
+[Name] suffers [Num][Line]points of damage.
+0
+[Name] quickly evades.
+A deadly attack inflicts[Line][Num] points of damage[Line]on [Name].
+A stunning attack! [Name][Line]suffers [Num] points[Line]of damage.
+But [Name] cannot be harmed.
+[Name] is defeated!
+[Name] can fight[Line]no longer.
+But the spell doesn't work.
+But the spell is nullified by[Line]the magic curtain.
+[Name] regains [Num] hit[Line]points.
+[Num] hit points are[Line]regained by all members.[Wait2]
+All traces of poison are[Line]purged from [Name].
+[Name] recovers.
+[Name] can no longer fight.
+[Name] can no longer fight.
+[Name] is asleep.[Wait2]
+The poison in [Name]'s[Line]body inflicts [Num] points of[Line]damage.[Wait2]
+[Name] can no longer fight.[Wait2]
+[Name] uses the Demon's[Line]Smile!
+[Num] magic points are[Line]stolen from [Name].
+But nothing happens.
+[Name] whispers an[Line]ominous incantation!
+[Num] hit points are stolen[Line]from [Name].
+[Name] is killed with a[Line]single blow.
+The [Item] makes a[Line]strange sound.
+[Name] loses [Num] magic[Line]points.
+[Name]'s speed increases[Line]by [Num]. Defense level[Line]increases by [Num].
+[Name]'s speed decreases[Line]by [Num]. Defense level[Line]decreases by [Num].
+[Name]'s offense increases[Line]by [Num].
+[Name]'s spell fails.
+[Name] is enclosed in the[Line]magic curtain.
+[Name] is blanketed by a[Line]thick fog.
+[Name] falls asleep.
+[Name] is poisoned.
+[Name] is cursed.
+Something happens[Line]to [Name]....
+The [Spell] spell ends. Speed[Line]and defense levels[Line]return to normal.[Wait2]
+The [Spell] spell ends. Speed[Line]and defense levels[Line]return to normal.[Wait2]
+The [Spell] spell ends. Attack[Line]level returns to[Line]normal.[Wait2]
+The [Spell] spell ends. Magic[Line]is available again.[Wait2]
+The [Spell] spell ends. The[Line]magic curtain lifts[Line]from [Name].[Wait2]
+The [Spell] spell ends. The[Line]fog vanishes from [Name].[Wait2]
+The [Spell] spell ends.[Line][Name] wakes up.[Wait2]
+A curse! [Name]'s body[Line]suddenly goes numb.
+A curse! [Name] suffers[Line][Num] points of damage.
+[Dict][Line]
+[Name]'s level increases[Line]to [Num]![Wait2]
+Attack level increases[Line]by [Num].[Wait2]
+Defense level increases[Line]by [Num].[Wait2]
+Speed increases by [Num].[Wait2]
+Maximum hit points increases[Line]by [Num].[Wait2]
+Maximum magic points[Line]increases by [Num].[Wait2]
+And learns a new[Line][Spell] spell.[Wait2]
+Now [Spell] level became [Num].[Wait2]
+...[Wait2]It appears that [Name]'s[Line]level increases to [Num].[Line]
+But smoke rises from[Line]the [Item].
+But fine cracks appear on the[Line][Item].
+But a big fissure runs across[Line]the [Item].
+But the [Item][Line]is running out.
+But the [Item] is[Line]damaged.
+But the surface of the [Item][Line]becomes dark.
+But the [Item] is[Line]consumed by flames!
+But the [Item] breaks into[Line]pieces!
+But the [Item] splits[Line]in half!
+But the [Item] is empty!
+But the [Item] shatters!
+But the [Item] rusts to[Line]uselessness!
+[Name] gains [Num][Line]experience points.
+[Name] gains [Num][Line]coins.
+[Name] discovers[Line]a [Item].
+[Name] gains[Line]a [Item].
+[Name] loses[Line]a [Item].
+[Name] appears![Wait2]
+"Warmup sequence initiated.[Line]10 seconds...9..."
+"8...7..."
+"6...5...targeting activated"
+"4...3..."
+"2...1...Fire!"
+[Name]'s attack level[Line]increases by [Num].[Wait2]
+[Name]'s defense level[Line]increases by [Num].[Wait2]
+[Name]'s speed increases[Line]by [Num].[Wait2]
+[Name]'s mobility increases[Line]by [Num].[Wait2]
+[Name]'s maximum HP increases[Line]by [Num].[Wait2]
+[Hero] checks[Line]the treasure chest![Wait2]
+But the treasure chest is[Line]empty![Wait2]
+[Hero] reads the signboard![Wait2]
+[Hero] reads the poster![Wait2]
+[Hero] reads the book titles![Wait2]
+[Hero] checks the doors![Wait2]
+Nothing is unusual.[Wait2]
+It seems locked.[Wait2]
+[Hero] looks into the well,[Wait2]
+but it is too dark to see[Line]anything.[Wait2]
+[Hero] checks the area[Line]directly ahead.[Wait2]
+Nothing is unusual.[Wait2]
+[Hero] uses the[Line][Item].[Wait2]
+But nothing happens.[Wait2]
+Don't mind the boss. He gets[Line]like that sometimes. Perhaps[Line]I can help you out?[Wait2]
+0
+I'd have fought, if I could,[Line]but all I'm good at is buying[Line]and selling.[Wait2]
+You need weapons, and I've[Line]got the best in town. Step[Line]right up![Wait2]
+Welcome, welcome! Come on in[Line]and browse. Nothing but the[Line]best here![Wait2]
+A warrior's only as good as[Line]his tools, right? And you[Line]seem to need some new ones![Wait2]
+Welcome! We have a wide[Line]variety of items for you.[Line]Take a look![Wait2]
+Hello there and welcome to[Line]our Weapon Shop. How can we[Line]help you?[Wait2]
+Hi! You'll need lots of items[Line]for you journey. See anything[Line]you want?[Wait2]
+If you want weapons, you've[Line]come to the right place![Wait2]
+Welcome to my Item Shop.[Line]It's not much to look at,[Line]but I have lots of stuff![Wait2]
+You provide the money, and[Line]I'll provide the supplies.[Line]What'll it be?[Wait2]
+Step right up! No one goes[Line]away without a weapon.[Wait2]
+Step right up! No one goes[Line]away without an item.[Wait2]
+Weapons, weapons, and more[Line]weapons! Step right up![Wait2]
+Items, items, items! Useful[Line]items for any journey.[Line]What'll it be?[Wait2]
+Welcome to the Item Shop.[Line]We've quite a variety.[Line]Please. Look around.[Wait2]
+If anybody has what you[Line]looking for, it's me![Wait2]
+Come right in. We can meet[Line]every need.[Wait2]
+We've got it all. Every[Line]item you'll ever need.[Wait2]
+No messages.[Wait2][Line]Person No. [Num]
+Message No. [Num].[Wait2]
+[Hero] checks the area[Line]directly ahead but finds[Line]nothing.[Wait2]
+[Hero] looks at the bookshelf.[Wait2]
+[Hero] looks at the poster.[Wait2]
+[Hero] looks at the signboard.[Wait2]
+[Hero] looks at the placard.[Wait2]
+[Hero] checks the area[Line]directly ahead.[Wait2]
+Path to Master Swordsmanship,[Line]Warrior Techniques,[Line]and many more books.[Wait2]
+The Light and the Darkness,[Line]How Green Was My Dragon,[Line]and many more books.[Wait2]
+Hand Axe Techniques,[Line]Hunt for the Axe of Legend,[Line]and many more books.[Wait2]
+The Green Dragon[Wait2]
+Disciplining Children,[Line]Home Accounting,[Line]and many more books.[Wait2]
+Weapon and Item Shop[Wait2]
+The Warrior's Code,[Line]All About Weapons,[Line]and many more books.[Wait2]
+Knights' Inn[Wait2]
+Manarina- Land of Magic,[Line]Attack Magic for Beginners,[Line]and many more books.[Wait2]
+Your First Blaze, Pointers[Line]for Mages, and many more[Line]books.[Wait2]
+Your First Spark, Tales of[Line]Otrant, and many more books.[Wait2]
+The Princess' Primer, I Was[Line]a Tomboy Princess, and many[Line]more books.[Wait2]
+Headquarters[Wait2]
+Gold Coins of the World,[Line]101 Places to Hide Money,[Line]and many more books.[Wait2]
+The books are written in a[Line]language unknown to[Line][Hero].[Wait2]
+"Private property![Line]Trespassers will be glared[Line]at!"[Wait2]
+Ye Olde Item Shoppe[Wait2]
+Headquarters[Wait2]
+Chop and Bop Shop[Wait2]
+Goode Eats[Wait2]
+It's a Flat, Flat World,[Line]The King and Us,[Line]and many more books.[Wait2]
+Headquarters[Wait2]
+Castle Rules- No yelling.[Line]No running. No banging[Line]on the ceiling.[Wait2]
+101 Dungeon Crafts,[Line]How Dank Was My Dungeon,[Line]and many more books.[Wait2]
+How to Build a Secret[Line]Passage, How to Hide Gold,[Line]and many more books.[Wait2]
+No spitting. No fighting.[Line]No throwing food![Wait2]
+The Adventurer's Life,[Line]Danger is My Life,[Line]and many more books.[Wait2]
+The History of Rindo,[Line]Famous Rindo Mayors,[Line]and many more books.[Wait2]
+Walk in the Light,[Line]101 Comforting Sayings,[Line]and many more books.[Wait2]
+The Light Shines on Rindo,[Line]Good Folks of Rindo,[Line]and many more books.[Wait2]
+Legends of the Ancients,[Line]Tales of Long Ago,[Line]and many more books.[Wait2]
+Poison Cures,[Line]Basic Reviving,[Line]and many more books.[Wait2]
+Modern Science,[Line]Do Witches Really Float?,[Line]and many more books.[Wait2]
+Inventions and Inventors,[Line]Suits of Armor,[Line]and many more books.[Wait2]
+Secrets of the Universe,[Line]Eerie Science,[Line]and many more books.[Wait2]
+Home Alchemy Handbook, Lead[Line]to Gold and Vice Versa,[Line]and many more books.[Wait2]
+The Rindo Theater Group,[Line]Acting Techniques, and[Line]many more books.[Wait2]
+101 Ways to Cook Dragon,[Line]Love Those Spices,[Line]and many more books.[Wait2]
+Business Sense,[Line]How to Become Rich,[Line]and many more books.[Wait2]
+Club Rindo[Wait2]
+Odds 'n Ends Shop[Wait2]
+Rindo Theater. Actors and[Line]actresses wanted.[Wait2]
+Swords 'n More[Wait2]
+Headquarters[Wait2]
+Circus coming soon to this[Line]location![Wait2]
+The Pool of the Ancients,[Line]Encyclopedia of Magic,[Line]and many more books.[Wait2]
+Wounds and How to Deal With[Line]Them, Healing Made Easy,[Line]and many more books.[Wait2]
+Spark Level 2,[Line]Blaze Level 4,[Line]and many more books.[Wait2]
+Experiments in progress![Line]Proceed at your own risk![Wait2]
+There are many books written[Line]in strange languages.[Wait2]
+There are many books written[Line]in strange languages.[Wait2]
+No more magical duels![Line]It wrecks the town![Wait2]
+Spark Level 4,[Line]Basic Training for Mages,[Line]and many more books.[Wait2]
+Blazing Made Easy,[Line]Freezing Made Easy,[Line]and many more books.[Wait2]
+How to Make Domingo Eggs,[Line]How to Hatch Domingo Eggs,[Line]and many more books.[Wait2]
+Headquarters[Wait2]
+Experiment assistant wanted![Line]Low wages, high risk![Wait2]
+Assistant wanted! Great[Line]excitement guaranteed![Wait2]
+Manarina Mage School[Wait2]
+Do not dump trash here![Wait2]
+Memories of Guardiana,[Line]Introduction to Magic,[Line]and many more books.[Wait2]
+The History of Shade Abbey,[Line]Shade Abbey and Guardiana,[Line]and many more books.[Wait2]
+Mystery of the Shining Path,[Line]All About the Shining Path,[Line]and many more books.[Wait2]
+This week- 6 hens,[Line]2 rabbits, 3 cats.[Wait2]
+VIP Mages' Lounge[Wait2]
+VIP Mages' Lounge[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]dug it up recently.[Wait2]
+Chapel[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+The grave is pretty messed[Line]up. It looks as if somebody[Line]recently dug it up.[Wait2]
+Chapel[Wait2]
+[Hero] finds an old[Line]abbey record and he reads it.[Wait2][Line]"The purpose of this abbey[Line]is to prepare the way for a[Line]young man who will appear..."[Wait2]
+[Hero] finds an old[Line]abbey record and he reads it.[Wait2][Line]"Few know the truth of the[Line]legacy of the Ancients. The[Line]danger is unimaginable...."[Wait2]
+[Hero] finds an old[Line]abbey record and he reads it.[Wait2][Line]"The legacy of the Ancients[Line]was created by the gods to[Line]confine a vast evil."[Wait2]
+Sanctuary[Wait2]
+Crypt. No admittance.[Wait2]
+Do not toll the bells[Line]without permission.[Wait2]
+Library[Wait2]
+The History of Bustoke,[Line]Battling in the Woods,[Line]and many more books.[Wait2]
+How to Fly,[Line]Up and Away,[Line]and many more books.[Wait2]
+Dragonia- Land of Dragons,[Line]Knights First, Archers to the[Line]Rear, and many more books.[Wait2]
+Life on a Cliff,[Line]High-Altitude Cookbook,[Line]and many more books.[Wait2]
+There are many books in[Line]strange languages.[Wait2]
+There are many books in[Line]strange languages.[Wait2]
+Headquarters[Wait2]
+Beware of falling rocks![Wait2]
+Travel Light![Wait2]
+Headquarters[Wait2]
+Traveling Towns, Pao[Line]Journeys, and many[Line]more books.[Wait2]
+The History of Nomads,[Line]People of the Pao Prairie,[Line]and many more books.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Moving People and the Light,[Line]Twenty Years with the Light,[Line]and many more books.[Wait2]
+The History of Nomads,[Line]Little House on the Pao Prairie,[Line]and many more books.[Wait2]
+Headquarters[Wait2]
+How to Travel With Children,[Line]The Big Prairie,[Line]and many more books.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Item Shop Management,[Line]Weapon Shop Management,[Line]and many more books.[Wait2]
+Ye Goode Stuff Shoppe[Wait2]
+Item Shop[Wait2]
+Headquarters[Wait2]
+Island Hotel. Now open![Wait2]
+Tropical Room[Wait2]
+Waral Room[Wait2]
+The History of Waral,[Line]Introduction to Surf-Fishing,[Line]and many more books.[Wait2]
+A Life in the Light,[Line]Secrets of the Waral Region,[Line]and many more books.[Wait2]
+It's a bronze dragon statue.[Line]It reads "Our Dragon[Line]Forever!" on the statue.[Wait2]
+Weapon Shop[Wait2]
+Item  Shop[Wait2]
+Headquarters[Wait2]
+Dragonia- Land of Dragons,[Line]Children and Dragons,[Line]and many more books.[Wait2]
+Do not eat cat food![Wait2]
+The Legacy of the Ancients,[Line]Secrets of the Ancients,[Line]and many more books.[Wait2]
+Long Ago and Not So Far[Line]Away, Ancient Times,[Line]and many more books.[Wait2]
+Dragons,[Line]The History of Dragonia,[Line]and many more books.[Wait2]
+The History of Rudo Village,[Line]Dragons and People,[Line]and many more books.[Wait2]
+Healthy Eating,[Line]Kids' Wisdom,[Line]and many more books.[Wait2]
+Clean-up detail-[Line]Claire, Nana, Lance.[Wait2]
+The World of Children,[Line]Encyclopedia of Play,[Line]and many more books.[Wait2]
+Karin is in.[Wait2]
+Dragons' Shrine...The door[Line]opens for two heros who come[Line]forward and show the way.[Wait2]
+Diary of Bleu's mother-[Line]Bleu is such a crybaby. He's[Line]not like the other dragons.[Wait2]
+Diary of Bleu's mother-[Line]I found steps in the corner of[Line]the room. Bleu made them.[Wait2]
+History of Dragons, Part 1-[Line]Though strong, but we also[Line]have weak points....[Wait2]
+History of Dragons, Part 2-[Line]Our numbers decrease...soon[Line]we will be no more....[Wait2]
+Headquarters[Wait2]
+Dragons' Mission- To protect[Line]the Manual of the Seal from[Line]evil.[Wait2]
+Treasure of Dragonia- The[Line]Manual of the Seal is in the[Line]Dragons' Shrine.[Wait2]
+Weapon Shop[Wait2]
+Item Shop[Wait2]
+No hens in class![Wait2]
+Arithmetic,[Line]How to Write Real Good,[Line]and many more books.[Wait2]
+Headquarters[Wait2]
+Tales of Really Long Ago,[Line]A History of Prompt,[Line]and many more books.[Wait2]
+School Zone. Quiet Please![Wait2]
+Making Noodles,[Line]Making Dumplings,[Line]and many more books.[Wait2]
+Civilization of the Ancients,[Line]Ancient Battles,[Line]and many more books.[Wait2]
+Legends of Dark Dragon,[Line]Weapons of the Ancients,[Line]and many more books.[Wait2]
+The Shining Path[Wait2]
+Children of the Ancients,[Line]Creations of the Ancients,[Line]and many more books.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+I've seen such equipment[Line]before, I think.[Wait2]
+Very odd equipment.[Wait2]
+Very odd equipment.[Wait2]
+There's a large variety of[Line]books written in strange[Line]languages.[Wait2]
+The Way of a Just King,[Line]Politics for the People,[Line]and many more books.[Wait2]
+History of Runefaust-[Line]Protectora, The Ancients,[Line]and many more books.[Wait2]
+The Castle of the Ancients,[Line]Time of the Ancients,[Line]and many more books.[Wait2]
+Emperor Ramladu- Beloved[Line]Leader, All Hail Ramladu,[Line]and many more books.[Wait2]
+History of Runefaust-[Line]Protectora, Encyclopedia of[Line]Evil, and many more books.[Wait2]
+There are many books written[Line]in a strange language.[Wait2]
+The Life of Emperor Ramladu,[Line]The Castle of the Ancients,[Line]and many more books.[Wait2]
+The Legacy of the Ancients,[Line]Beyond the Times,[Line]and many more books.[Wait2]
+Emperor Ramladu[Wait2]
+Club Faust[Wait2]
+Weapon Shop[Wait2]
+Item Shop[Wait2]
+Headquarters[Wait2]
+"Those who seek the Chaos[Line]Breaker must prove[Line]themselves."[Wait2]
+"Take the Chaos Breaker from[Line]the central altar and go[Line]forth to battle evil!"[Wait2]
+"Use Light on the left altar,[Line]Darkness on the right."[Wait2]
+"The Chaos Breaker is forged[Line]from Light and Darkness. It[Line]appears on the center altar."[Wait2]
+"...and two heros will appear[Line]after 1,000 years."[Wait2]
+(Luke, Ken, Tao, and Hans[Line]join the Shining Force!)
+What?[Line]You must be more careful![Wait2]
+A word of advice.[Line]Seek the hermit who lives by[Line]the Gate of the Ancients![Wait2]
+0
+Beware of giant bats![Line]They fly swiftly and[Line]fight fiercely![Wait2]
+The enemy's mages and archers[Line]attack best from afar. Charge[Line]them quickly.[Wait2]
+Zombies and other unnatural[Line]creatures suffer greatly from[Line]magical fire.[Wait2]
+In tight places, such as[Line]caverns, look before you leap[Line]into battle. Plan ahead![Wait2]
+Greater numbers alone will[Line]not win battles. Keep your[Line]troops in close formation![Wait2]
+Mages are powerful, but even[Line]their power has its limits.[Line]Use magic sparingly![Wait2]
+Use your flying friends well.[Line]Also, monks and priests gain[Line]experience by healing.[Wait2]
+Use healing powers as[Line]much as possible.[Wait2]
+When fighting in woods, plan[Line]well before moving. Keep your[Line]troops together.[Wait2][Line]Air warriors and long-range[Line]weapons are very useful in[Line]certain situations.[Wait2]
+There is no refuge on the[Line]Pao Prairie. Stick together[Line]when fighting.[Wait2]
+Be sure to use your archers,[Line]mages, and knights to attack[Line]from afar.[Wait2]
+Clever use of the skills and[Line]strengths of your troops is[Line]the key to victory.[Wait2]
+You must protect against[Line]attacks from both air and[Line]sea. Don't forget![Wait2]
+To confuse the enemy, divide[Line]your troops and advance from[Line]several directions at once.[Wait2]
+Remember to watch for both[Line]air and sea attacks![Wait2]
+Woods and mountains are[Line]difficult terrains. Plan your[Line]attack carefully.[Wait2]
+This is a strange village. It[Line]would be sure death to face a[Line]powerful foe here alone.[Wait2]
+You still have a long way to[Line]go. Use magic wisely. Give[Line]herbs to everyone.[Wait2]
+Word has reached me that[Line]Mishaela is gathering forces[Line]to stop you. Be very careful![Wait2]
+Thick woods are tough to get[Line]through. Close your ranks and[Line]fight as a unit.[Wait2][Line]Move cautiously against[Line]flying opponents. They move[Line]faster than your troops.[Wait2]
+[Hero]! Is there anyone[Line]left to promote? Now is[Line]the time![Wait2]
+Your strongest foes and[Line]hardest battles are[Line]still ahead of you.[Wait2]
+Keep weaker folk away from[Line]the front lines![Wait2]
+Darksol has gathered his best[Line]warriors for the final[Line]battles. Prepare yourself![Wait2]
+Against a mechanical enemy,[Line]brute force may be the best[Line]strategy.[Wait2]
+Do not exhaust yourselves[Line]here. Use Egress to retreat[Line]from overwhelming odds.[Wait2]
+I have no more advise for[Line]you. Fight as best you can.[Wait2]
+I have no more advice for[Line]you. Fight as best you can.[Wait2]
+[Hero]? [Hero]?[Line]C'mon, kid, wake up![Line]I didn't hit you that hard.[Wait2]
+Keep your guard up, kid.[Line]Those beasts of Runefaust[Line]will tear you to pieces![Wait2]
+OK, that's enough for today.[Line]You'd better take it easy for[Line]a while.[Wait2]
+0
+0
+0
+No, [Hero], I think[Line]you've had enough for[Line]today![Wait2]
+Well, [Hero], had enough[Line]swordplay for today?[Wait2]
+I don't know how you keep at[Line]it hour after hour. I'm dead[Line]tired after about 15 minutes![Wait2]
+You have the makings of a[Line]great fighter, [Hero].[Line]You'll be tested soon enough.[Wait2]
+Lord Varios, the king has[Line]sent for you. You must come[Line]at once![Wait2]
+Of course. Lead the way,[Line]guardsman.[Wait2]
+I fear the worst, [Hero]![Line]Prepare yourself for true[Line]battle immediately![Wait2]
+Did you see Varios' face? He[Line]went pale! Something really[Line]big is happening.[Wait2]
+Let's split up and see if we[Line]can't find out what's going[Line]on. I'll see you later.[Wait2]
+0
+Eh? What's a youngster like[Line]you doing moping around? Get[Line]out and fight evil![Wait2]
+I'm sick of feeling helpless![Line]I'm going to ask Varios to[Line]train me to be a fighter![Wait2]
+Back and forth, up and down![Line]Man, I'm tired of guarding[Line]this chapel all day![Wait2]
+Guardiana is beautiful! Clean[Line]water, fresh air, and green[Line]grass. Delightful![Wait2]
+The Castle of Guardiana lies[Line]just ahead. Varios went in[Line]just a while ago.[Wait2]
+My poor girl! I can't seem to[Line]calm her down![Wait2]
+I...I had an awful dream. The[Line]whole town burned down.[Line]Sniff. Our house, too.[Wait2]
+We're all upset about our[Line]daughter's nightmare. Do you[Line]think it means anything?[Wait2]
+Someday I hope to go to[Line]Manarina to become a mage.[Wait2]
+Sigh, not another customer![Line]Buy, sell, buy, sell. That's[Line]all I do! Just go away![Wait2]
+0
+0
+0
+Pay the old man no heed,[Line]youngster. His mind isn't[Line]what it used to be![Wait2]
+Be careful, [Hero]. The[Line]knights resent the time Lord[Line]Varios spends training you![Wait2]
+Bad times, my friend. Not a[Line]guest in two weeks![Wait2]
+0
+Grrr! Woof, woof! Arf![Wait2]
+Sorry, but I'm busy packing.[Line]Grandpa's out somewhere. He[Line]has time to talk![Wait2]
+Grandpa was once the best[Line]warrior in all of Rune. But[Line]that was a long time ago.[Wait2]
+0
+0
+Have you seen my cart? It[Line]rolls away all the time.[Line]Needs new brakes, I guess.[Wait2]
+Hello, [Hero]! I've been[Line]having the worst nightmares.[Line]Have you had any?
+I bet they're the same ones[Line]I've been having![Wait2]
+Well, then, let me tell you[Line]about mine.[Wait2]
+I saw our land in ruins. Evil[Line]creatures roamed our halls![Line]It seemed so real![Wait2]
+Varios seemed very upset when[Line]he passed this way. Perhaps[Line]you should look for him.[Wait2]
+I sense you are headed into[Line]great danger, [Hero].[Line]Can I be of any assistance?[Wait2]
+There are so many monsters[Line]outside the city gates![Line]There's no escape![Wait2]
+Hey there, youngster. My name[Line]is Gort. Care to hear my[Line]story?
+I understand. I had things[Line]to do when I was your age.[Line]Perhaps some other time.[Wait2]
+Thanks. No one talks to me[Line]anymore. All too busy. Want[Line]to hear a secret?
+Never trust anyone outside[Line]this city! Murderers and[Line]thieves, all of 'em![Wait2][Line]I ought to know. I used to[Line]be a great warrior. Been all[Line]over the world.[Wait2][Line]Why, I have half a mind to go[Line]out again. Would if I got a[Line]good offer.[Wait2]
+Hey! What are you doing?[Wait2]
+Hey! Watch it, pal! How'd you[Line]like it if I tried to run you[Line]over with a cart?[Wait2]
+0
+An order from the castle.[Line]No one leaves.[Wait2]
+Sorry, [Hero]. Talk to[Line]the king if you want to[Line]leave. Orders are orders![Wait2]
+I see that you have the King's[Line]permission to leave. Good luck![Wait2]
+If you sense great danger,[Line]don't hesitate to retreat.[Line]Use your Egress spell.[Wait2]
+This is Guardiana Castle![Wait2]
+This is Guardiana Castle![Wait2]
+Watch out, [Hero]![Line]There are REAL knights training[Line]out here! You might get hurt![Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+What kind of treasure? I'm[Line]not sure. Something really[Line]valuable, I guess.[Wait2]
+0
+0
+A great view from the top of[Line]this tower. You can see[Line]forever.[Wait2]
+Yes, it's an interesting tower,[Line]isn't it? So much to see[Line]and do![Wait2]
+0
+0
+0
+0
+The king seems very worried.[Line]Do you know why?
+Well! You young people think[Line]you know everything![Wait2]
+My guess is that thoughts of[Line]the Gate of the Ancients[Line]trouble our noble king![Wait2]
+Princess Anri is away in[Line]Manarina. Do you know about[Line]the land of Manarina?
+I see you are well-informed.[Wait2]
+Manarina holds an Arcane[Line]College, where the best mages[Line]are trained.[Wait2]
+Grrr! I'm so mad! Do you want[Line]to know why?
+It's that Tao! How dare she[Line]call herself a mage? If she's[Line]a mage, I'm a footstool![Wait2]
+Why I never! How rude![Wait2]
+Pardon me, I must clean the[Line]king's bedroom. No time to[Line]talk. Messy, messy, messy![Wait2]
+Take care, [Hero]. It is[Line]more dangerous out there than[Line]you suspect! Or so I've heard.[Wait2]
+Flee when you are in great[Line]danger. A dead hero is of[Line]little use to anyone![Wait2]
+No one enters here without[Line]Lord Varios' permission![Wait2]
+Everybody's waiting. Please[Line]go inside, quickly![Wait2]
+Good luck, [Hero]![Wait2]
+Greetings, [Hero].[Line]I am Mae, Varios' daughter.[Wait2]
+The other knights feel that[Line]father has wasted his time on[Line]you. We shall see![Wait2]
+...that is the story, Varios.[Wait2]
+Mmmm....Then, your majesty,[Line]we have no choice but to send[Line][Hero], a young fighter.[Wait2]
+First you must listen to what[Line]the king has to say.[Wait2]
+For centuries, our people[Line]have watched the Gate of the[Line]Ancients, as its guardians.[Wait2][Line]Beyond that gate lies we know[Line]not what, not even if it is of[Line]the Light or the Darkness.[Wait2][Line]But the Ancients knew, and[Line]they sealed it beyond the gate[Line]and set us as guards.[Wait2][Line]And now we find that we may[Line]have failed in our mission,[Line]our reason for existence.[Wait2][Line]Signs have been seen that[Line]forces of Runefaust are at the[Line]Gate of the Ancients![Wait2][Line]Whatever evil they are[Line]planning, we must stop it[Line]at all costs and at once![Wait2]
+0
+But we must not panic the[Line]people. A small group of[Line]young but skilled warriors...[Wait2]
+Yes! He could do it. He could[Line]leave town unnoticed and have[Line]a chance to succeed, perhaps.[Wait2]
+Hummph! Seems like a mighty[Line]poor plan to me! But who[Line]listens to my advice?[Wait2]
+Yes, Nova, I agree.[Line][Hero]! Will you[Line]take the task?[Wait2]
+Very well! Now, return to[Line]town and gather your troops.[Line]Come back when you're ready.[Wait2]
+What? You refuse?! It seems[Line]that Varios was wrong about[Line]you, after all. Too bad.[Wait2]
+Have you reconsidered? Will[Line]you go to the Gate of the[Line]Ancients and investigate?[Wait2]
+Gather your troops, quickly.[Line]There is no time to lose![Wait2]
+You have your troops, but you[Line]need supplies. Take this to[Line]purchase what you need.[Wait2]
+I'll leave everything to you.[Line]I must fortify the castle.[Wait2]
+It'll never work! We're all[Line]doomed, I tell you. Doomed![Wait2]
+([Hero] gains 100 coins!)[Wait2]
+A cart will take you to the[Line]Gate of the Ancients. Go now[Line]and carry out your task![Wait2]
+Good luck, [Hero]. You[Line]must succeed or Guardiana[Line]falls![Wait2]
+Oh, [Hero]. Good. I was[Line]going to look for you.[Line]First, listen to the King.[Wait2]
+Whew! Training wears me out.[Wait2]
+Beat it, [Hero]! This[Line]training field's too rough[Line]for the likes of you![Wait2]
+We'll make quick work of[Line]those Runefaust beasts![Wait2]
+The Guardiana knights have no[Line]need of you, [Hero]![Wait2]
+Don't let them get to you,[Line][Hero]. Some knights are[Line]always complaining.[Wait2]
+We have trained until our[Line]arms are ready to fall off![Line]When will we see battle?[Wait2]
+These are my quarters. Find[Line]someplace else to sleep![Wait2]
+Why you? Why couldn't I lead[Line]the Shining Force? Arrrgh![Wait2]
+Sir, yes, sir![Wait2]
+What's that troops? I can't[Line]hear you! Louder![Wait2]
+Oh my! What a lovely view![Wait2]
+[Hero] looks into[Line]the telescope.[Wait2]
+A huge eye! Aiiiieeee![Wait2]
+Whoa! You scared me for a[Line]bit there! I was just looking[Line]around, admiring the land.[Wait2][Line]Lately I've seen moving[Line]people or creatures near the[Line]Gate of the Ancients....[Wait2]
+It is indeed a lovely view.[Wait2]
+Huh?[Wait2]
+Hey, cut that out! You can't[Line]just push your way in here.[Line]Get out![Wait2]
+Wait, [Hero]! Nova sent[Line]us. We're going with you. I am[Line]Luke the warrior.[Wait2]
+Ken the knight, at your[Line]service, [Hero]! I'll[Line]follow wherever you lead.[Wait2]
+I am Tao. I'm only an[Line]apprentice mage, but I'll do[Line]my best.[Wait2]
+I am Hans, an elven archer.[Line]I'm coming, but don't put me[Line]in the front lines, OK?[Wait2]
+([Name] joins the[Line]Shining Force!)
+Hey, [Hero]! Don't try to[Line]sneak out of town without[Line]me![Wait2]
+Now that you have your[Line]comrades, return to the king[Line]to hear his final commands.[Wait2][Line]I'll follow your progress[Line]and offer advice as you face[Line]the vile hordes of Runefaust.[Wait2]
+Meet us at headquarters back[Line]in the castle![Wait2]
+[Dict][Wait2]
+Well, that's settled. See you[Line]at headquarters![Wait2]
+0
+0
+Praise the Light that's over![Line]Monsters, fighting...I can't[Line]take much more of this![Wait2]
+Their commander...Kane of[Line]Runefaust...evil to the core![Wait2]
+I wanted to fight. But my legs[Line]were shaking so hard I got[Line]dizzy and passed out.[Wait2]
+0
+0
+0
+Those monsters would've[Line]wrecked my shop, but the old[Line]guy drove them off![Wait2]
+I sent my family away, but I[Line]stayed and fought.[Wait2]
+0
+Those beasts! I'll have[Line]nightmares forever![Wait2]
+Arf...arf![Wait2]
+We won...this time. But what[Line]about the next attack?[Wait2]
+Just let them try to come in[Line]here! I'll whap 'em silly![Wait2]
+0
+Good for you, youngster. Come[Line]see me later. Right now I'm[Line]tired from all the commotion.[Wait2]
+You know, that little fracas[Line]made me want to fight again.[Line][Hero], I'm joining up![Wait2]
+0
+I'll be at headquarters.[Wait2]
+You made it back! You're a[Line]little late. We were almost[Line]overrun by Runefaust![Wait2]
+We held them off, but we've[Line]suffered greatly, as you'll[Line]see as you wander around.[Wait2]
+Most of our knights were lost[Line]in the battle...many homes[Line]were damaged. But we held![Wait2]
+The king is eager to see you.[Line]He's up in the castle,[Line]planning our defense.[Wait2]
+We'll keep watch here.[Line]Runefaust is bound to attack[Line]again, sooner or later.[Wait2]
+Don't worry about your[Line]comrades. We've sent them up[Line]to headquarters.[Wait2]
+We'll keep watch here.[Line]Runefaust is bound to attack[Line]again, sooner or later.[Wait2]
+We almost lost. I still don't[Line]know why they pulled back![Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Sigh. I can't believe the[Line]king is dead.[Wait2]
+Sniff...I was so...frightened.[Line]I saw this in a dream.[Line]I saw it....[Wait2]
+I'm so glad to hear that my[Line]husband's still alive![Wait2]
+0
+Tell Tao "Good Luck" for me,[Line]won't you? She'll need it.[Wait2]
+The king is dead...who shall[Line]lead us now, with Anri far[Line]away?[Wait2]
+Talk to the old man in the[Line]chapel. He knows much.[Line]Perhaps he can advise you.[Wait2]
+Blasted telescope! What good[Line]is it if I couldn't spot the[Line]Runefaust army with it?[Wait2]
+The treasure...they took all[Line]they could carry. Get it[Line]back, [Hero]![Wait2]
+Those beasts were[Line]everywhere! I keep expecting[Line]one to leap at me even now.[Wait2]
+Take care, [Hero].[Line]No place is safe now.[Wait2]
+0
+0
+Good luck, [Hero].[Wait2]
+Defeat Runefaust![Wait2]
+Hurry, [Hero]! Kane of[Line]Runefaust has injured the[Line]king and Lord Varios![Wait2]
+Go away, Kane![Line]I don't understand what[Line]you are talking about![Wait2]
+Anyway, the treasure of[Line]Guardiana is in my hand now.[Wait2]
+I won't let you take that![Line]Just leave![Wait2]
+Sword of Darkness![Line]Show me your power!![Wait2]
+(Varios dies.)[Wait2]
+No! Father![Line]I... I can't believe it![Line][Delay2]I'll, I'll...[Wait2]
+Now, Guardiana is unworthy[Line]of my attention.[Line]Farewell, fools![Wait2]
+[Hero]![Line]Look to the king![Wait2]
+[Hero]...Mae...[Line]I don't think I'll live[Line]much longer, though Varios[Wait2][Line]protected me. Listen,[Line]the gate of the Ancients is[Line]the only access to the Tower.[Wait2][Line]And the gate can be opened[Line]only by the key.[Line]You must find it before it[Wait2][Line]falls into the hands of evil![Line]You should never let them[Line]open the gate![Wait2][Line]Find out why Runefaust is[Line]interested in the gate...[Wait2][Line]Please...[Wait2]
+Mae...[Line]Daughter of the great[Line]Varios, help [Hero]...[Wait2][Line]avenge your father!...[Line]and be strong...[Wait2]
+Your majesty....[Wait2]
+Please tell my daughter,[Line]Anri, in Manarina...to stay[Line]strong, for her people....[Wait2]
+(The king dies.)[Wait2]
+Now is not the time for tears[Line]and grief. Alterone should be[Line]out next goal.[Wait2]
+0
+I'll await you at headquarters.[Line][Delay2]Be quick![Wait2]
+I was so scared...[Line]Kane...[Line]His single glance froze me![Wait2]
+[Hero]![Wait2]
+Let's go find that key![Line]I don't want to see any more[Line]of these tragedies.[Wait2]
+[Dict].....[Delay2][Line].....[Wait2]
+Arrrghhh![Wait2]
+Will your journey take you to[Line]the town of Manarina?
+Oh. That's too bad....[Wait2]
+Then see Princess Anri! She[Line]can help you.[Wait2]
+Good luck, [Hero]![Wait2]
+Good luck, [Hero]![Wait2]
+Alterone? It lies to the[Line]northeast.[Wait2]
+Alterone is an ally of ours.[Line]I wonder if it was also[Line]attacked by Runefaust.[Wait2]
+It's a mystery to me why[Line]Runefaust attacked us.[Wait2]
+0
+0
+Beware of ambushes! The road[Line]is long and dangerous![Wait2]
+We'll protect Guardiana. You[Line]worry about foiling[Line]Runefaust's evil plans.[Wait2]
+Hmmm. Runefaust? But that's[Line]clear across the sea![Wait2]
+Woof! Arf! Woof![Wait2]
+0
+We'll hold out, never fear![Wait2]
+Go, [Hero]. Our hopes go[Line]with you![Wait2]
+0
+0
+Welcome, [Hero]![Line]Those vile Runefausters[Line]have made me mad.[Wait2]
+I have weapons guaranteed to[Line]knock those monsters' heads[Line]off. Take a look.[Wait2]
+Tell Grandpa Gort to fight[Line]hard![Wait2]
+Grandpa Gort wants to go[Line]with you! He's in town[Line]somewhere, looking for you.[Wait2]
+May the Powers of Light be[Line]with you and with all of the[Line]Shining Force![Wait2]
+Hello, [Hero]. I know a[Line]legend that may help you.[Line]Will you hear it?
+Somewhere on Rune is a land[Line]of the Ancients. The key to[Line]the gate might be there.[Wait2]
+Those who despise wisdom are[Line]foolish indeed.[Wait2]
+0
+Watching water relaxes me.[Line]....What? Guard the castle?[Line]Huh? It's not my business![Wait2]
+0
+0
+0
+C'mon, sit down and take it[Line]easy. We do it all day.[Wait2]
+Sleep, eat, and play games.[Line]This is the life for me.[Wait2]
+Maybe I should toss out this[Line]armor. It's too itchy.[Wait2]
+Relax. Have a seat and[Line]shovel down some food.[Wait2]
+Our king is a believer in[Line]helping those in need.[Wait2]
+What! Runefaust attacked[Line]Guardiana? Talk to our king.[Line]I'm sure he can help![Wait2]
+0
+0
+0
+0
+Our king has a strange hobby.[Line]He loves mazes, underground[Line]passages, and hidden rooms![Wait2]
+0
+0
+0
+0
+0
+Do you know the King's secret?
+He seems to like treasure.[Line]It is rumored he has hidden[Line]treasure here and there.[Wait2]
+Oh! you don't. He! He![Line]It may be nothing to you.[Line]Please forget it.[Wait2]
+Khris, where are you? Have[Line]you seen her?
+Well, then where is she?[Wait2]
+Well, don't just stand there,[Line]help me look for her.[Wait2]
+Who are you?[Wait2]
+Huh?[Wait2]
+There's nothing here to see.[Line]Go away![Wait2]
+Enemies? What enemies??[Wait2]
+Get back upstairs![Wait2]
+0
+Be very careful when you meet[Line]the king. That's all I dare[Line]say.[Wait2]
+I've heard all about you.[Line]Talk to our king.[Wait2]
+What? Runefaust attacked[Line]Guardiana? Hard to believe.[Line]Follow me, [Hero].[Wait2][Line]I have a...tactician we[Line]should consult with on this[Line]matter.[Wait2]
+No one enters. We have[Line]important guests.[Wait2]
+The king is waiting for you.[Wait2]
+I'm sorry about this, but I[Line]must protect Alterone.[Wait2]
+I have nothing to say to you,[Line][Hero] of Guardiana.[Wait2]
+Surprised, [Hero]?[Wait2][Line]Alterone has already[Line]surrendered![Line]Put him in a prison cell![Wait2][Line]I'll decide how to best[Line]dispose of him in a day[Line]or two.[Wait2]
+Kane, you promised that[Line]Alterone would not be[Line]involved in any of this![Wait2]
+Quiet, fool! Or I'll[Line]throw you in the cell with him![Line]Take him away.[Wait2]
+(The bars are solid. There's[Line]no way to break them.)[Line]...Footsteps approach![Wait2]
+The time has come to strike[Line]back at Runefaust! I'm letting[Line]you out.[Wait2]
+Please help me save Alterone![Line]I'll fight alongside you. I[Line]can heal too![Wait2]
+There's a secret passage. Use[Line]it to escape.[Wait2]
+I'll be at headquarters.[Wait2]
+We can't go this way. They'll[Line]spot us for sure.[Wait2]
+Please be patient a[Line]little longer. I'll get you[Line]out of here soon.[Wait2]
+I came to tell the king to[Line]fight, but Kane had already[Line]convinced him to surrender.[Wait2]
+Even though I am in prison, I[Line]can still perform my duties.[Line]How can I help you?[Wait2]
+I was freed when you won the[Line]battle. Thank you! Perhaps I[Line]can help you now.[Wait2]
+What? Guardiana was[Line]attacked? By Runefaust?[Line]Rubbish! Get out of here![Wait2]
+You heard him--beat it![Wait2]
+Our king is entertaining an[Line]important guest. Who do you[Line]think you are to barge in?[Wait2]
+The king has given orders[Line]that you may enter. Highly[Line]unusual, but go on in.[Wait2]
+Welcome to Alterone Castle![Wait2]
+Welcome to Alterone Castle![Wait2]
+I'm glad to see you alive[Line]again, [Hero].[Wait2]
+Khris's going with you?[Line]I'll hold you responsible if[Line]she gets hurt![Wait2]
+Sorry, [Hero], no time to[Line]chat. I've got a castle[Line]to guard![Wait2]
+Good job, [Hero]. We'll be[Line]on guard from now on.[Wait2]
+Watching you fight was[Line]inspiring. No more sitting[Line]around all day for me!.[Wait2]
+Well, I hope you're proud of[Line]yourself. You've ruined my[Line]business![Wait2]
+To think that we let a snake[Line]like Kane in here. Never[Line]again, [Hero]![Wait2]
+I shall never fail my king[Line]again, trust me.[Wait2]
+The mages in Manarina are[Line]said to know everything about[Line]everything![Wait2]
+Rindo is a town on the coast.[Line]Ships from far-off lands dock[Line]there.[Wait2]
+Rindo even has a circus! I'd[Line]love to see a circus. Tell me[Line]about it if you see it![Wait2]
+0
+0
+Looking for an underground[Line]path? Check the relief of the[Line]dragon. Can't tell you more![Wait2]
+[Hero], I wasn't myself.[Line]Kane had some power over[Line]me. Can you forgive me?
+Alas, you're right. What I[Line]did was unforgivable.[Wait2]
+Thank you! I want to help[Line]you. Search the dragon head[Line]to reveal a secret passage![Wait2]
+Head toward Rindo, then to[Line]Manarina. Someone there[Line]should be able to help you.[Wait2]
+Kane of Runefaust spoke of a[Line]door and a key. Has he found[Line]the key yet?
+We're doomed! That door is[Line]said to hold back an ancient[Line]evil. All is lost![Wait2]
+Then there's still time! You[Line]must hurry after him![Wait2]
+There is a chain inside the[Line]head! Do you wish to pull it?
+[Hero] pulls the chain![Wait2]
+[Hero] and the Shining[Line]Force chase Kane to[Line]the town of Rindo...[Wait2][Line]But they have no idea[Line]what kind of enemies[Line]await on their way...
+Welcome to Alterone,[Line]stranger![Wait2]
+Danger? From Runefaust? Ha![Wait2]
+The Ancients, Darkness,[Line]Runefaust? Sorry, those things[Line]don't concern us.[Wait2]
+I hear there's an underground[Line]passage in the castle. Sssh![Line]Let's keep it a secret.[Wait2]
+0
+That woman over there gives[Line]me the creeps. They say she's[Line]a witch![Wait2]
+0
+I can't find a thing I want[Line]to buy.[Wait2]
+I hate this place! All they[Line]have is cheap stuff. I can't[Line]stand it.[Wait2]
+This place is pretty busy[Line]today.[Wait2]
+0
+This is a great business.[Line]Everyone in town comes here[Line]at least once a day.[Wait2]
+No one worries about anything[Line]nowadays. It seems pretty odd[Line]to me.[Wait2]
+0
+0
+Hey! Can't you read the sign?[Line]Don't make me glare at you![Wait2]
+There have been a lot of[Line]strangers visiting the castle[Line]lately. A regular parade.[Wait2]
+Don't judge our king too[Line]harshly. He's pretty good, as[Line]kings go.[Wait2]
+The king called the friar to[Line]the castle. I always wanted[Line]to stand up here.[Wait2]
+0
+Don't stand in front of the[Line]drawbridge. You're liable to[Line]get run over by the traffic.[Wait2]
+You haven't seen my daughter[Line]Khris around, have you? She[Line]wants to be an adventurer![Wait2]
+Money makes the world go[Line]'round, youngster. And don't[Line]you ever forget it![Wait2]
+0
+Greetings, [Hero]. With my[Line]powers I can see the future.[Line]Care to know your fate?
+If you are too scared to hear[Line]my words, how can you hope to[Line]survive the trials you face?[Wait2]
+Death lies to the north. Go[Line]back to Guardiana, for your[Line]doom awaits if you continue.[Wait2]
+You must be [Hero],[Line]right?
+Strange...I was so sure....[Wait2]
+I knew it! I lived in[Line]Guardiana until a few months[Line]ago. I just heard a rumor.[Wait2]
+A friend of mine told me that[Line]Guardiana was totally wiped[Line]out. Is that true?[Wait2]
+I hoped it wasn't true. The[Line]friend who told me about it[Line]went to inform the castle.[Wait2]
+Good...but my friend has[Line]already left to inform the[Line]castle![Wait2]
+I love to fish. Hey, a bite,[Line]I feel a bite! Don't just[Line]stand there, help me pull![Wait2]
+Wow! It must be a whale. Pull[Line]again![Wait2]
+One more time![Wait2]
+I caught it![Wait2]
+Drat! More gold coins?[Line]Shucks, I thought I had a[Line]fish. Just toss 'em back.[Wait2]
+Here, fishee, fishee, fishee![Wait2]
+I'm not going to give up![Wait2]
+What a rude thing to do![Wait2]
+Mud all over my new dress![Line]Arrggh! I can't stand it![Wait2]
+I'll get you![Wait2]
+Watch out! I don't want you[Line]to splash mud on my beautiful[Line]new dress![Wait2]
+Who are you? Go back to[Line]wherever you came from![Wait2]
+Thank you, [Hero].[Line]Alterone is now free,[Line]thanks to you.[Wait2]
+Never trust Runefaust, that's[Line]what I always say.[Wait2]
+Thank you, for getting rid of[Line]that evil Kane person.[Wait2]
+I hear there's an underground[Line]passage in the castle. Sssh![Line]Let's keep it a secret.[Wait2]
+0
+Hey, where did that witch go?[Line]She's up to no good, mark my[Line]words![Wait2]
+I think I'll return to[Line]Guardiana. They need me.[Wait2]
+We were never in any real[Line]danger. Who would hurt us?[Wait2]
+Perhaps in Manarina they'll[Line]know how to deal with Kane.[Wait2]
+I wish you well in your[Line]quest! Come back when it's[Line]over and you can relax.[Wait2]
+0
+That was as close as I ever[Line]want to get to a battle![Wait2]
+We're going to help rebuild[Line]Guardiana. It's the least we[Line]can do to repay you.[Wait2]
+0
+Whew! It was amazing. I've[Line]never seen a battle from that[Line]close before![Wait2]
+Battles in the streets, friars[Line]in prison....What's this town[Line]coming to?[Wait2]
+Thank you for driving away[Line]those Runefaust beasts.[Wait2]
+I would have fought with you,[Line]but I didn't want the battle[Line]to be too lopsided.[Wait2]
+0
+Oh, well, it was nice while[Line]it lasted.[Wait2]
+Good luck, [Hero]. Give[Line]Kane a wallop for us![Wait2]
+Before you came, the knights[Line]of Runefaust spoke of the town[Line]of Rindo.[Wait2]
+Ah, Rindo. Lots of money[Line]there! Yes, yes, a fine town.[Wait2]
+0
+Those brutes! They splashed[Line]mud on my new dress![Wait2]
+Now my dress is ripped too![Wait2]
+Welcome to Rindo. Nova[Line]awaits you downstairs.[Wait2]
+0
+0
+0
+They won't let me inside.[Line]They say I'm a bad actor.[Line]What do critics know?[Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+When I get older, I'll have a[Line]shop of my very own![Wait2]
+0
+The legacy of the Ancients?[Line]Go to Manarina and ask the[Line]mages. They'll know.[Wait2]
+When you reach Manarina, see[Line]Otrant. There's nothing he[Line]does not know.[Wait2]
+Have you seen our theater?[Line]There's a new play starting[Line]today. Go see it![Wait2]
+0
+0
+0
+0
+0
+0
+The name's Boken. I'm going[Line]crazy in this dull place.[Line]Does anything ever happen?[Wait2]
+0
+That Dr. Crock! A brilliant[Line]man, but no common sense.[Wait2]
+Sorry, stranger. Soldiers[Line]bought almost all our ships.[Line]That one is the mayor's.[Wait2]
+The answer's still "No!"[Line]That's the mayor's ship. Go[Line]talk to him if you like.[Wait2]
+The mayor's ship is yours![Wait2]
+This is bad! That was the[Line]only ship in town. Maybe the[Line]mayor can help you again.[Wait2]
+I'm sure the mayor is[Line]grateful that you saved his[Line]grandson. Go talk to him.[Wait2]
+I can't wait for the circus![Line]Isn't it exciting?[Wait2]
+The tent is up, but when will[Line]the circus start?[Wait2]
+Guardiana's Princess Anri is[Line]in Manarina. I hope things[Line]are quieter there.[Wait2]
+Did you meet Princess Anri?[Line]Isn't she wonderful?[Wait2]
+Yes, I am the mayor. Kane of[Line]Runefaust bought all our ships[Line]and sailed away.[Wait2][Line]So sorry, no ships are left.[Line]My ship? You can't have it![Line]Now please leave.[Wait2]
+Didn't you hear me?[Line]Get lost![Wait2]
+I have a favor to ask of you.[Line]Grant it and the ship is all[Line]yours! What do you say?[Wait2]
+Well, then, no ship. Please[Line]leave.[Wait2]
+My grandson is missing. If[Line]you find him and bring him[Line]back, my ship is yours.[Wait2]
+So, [Hero], please[Line]find my grandson![Wait2]
+Thank you so much,[Line][Hero]. Take my ship.[Line]It's all yours now![Wait2]
+What! They burnt your[Line]ship? Now we have no[Line]single ship in this town![Wait2]
+The only other town with[Line]ships is Uranbatol. But it's[Line]a long way from here.[Wait2][Line]Are you still determined[Line]to go?
+Well then, stay here. You'll[Line]be fine.[Wait2]
+Did you change your mind?[Wait2]
+Uranbatol is very remote.[Line]It's far to the northeast. Go[Line]to Shade Abbey first.[Wait2]
+Ask my son all the details[Line]about the journey.[Wait2]
+Our son is just dying to see[Line]the circus.[Wait2]
+My son is missing! Have you[Line]seen him?[Wait2]
+Thank you so much for saving[Line]my son.[Wait2]
+My father is the mayor of[Line]this fine town.[Wait2]
+Please help us find our son.[Wait2]
+Thank you, [Hero]![Wait2]
+Head north to Shade Abbey.[Line]You shouldn't have much[Line]trouble finding it.[Wait2]
+I love the circus![Wait2]
+Thank you for saving me![Wait2]
+Yep. The circus tent will be[Line]right over there.[Wait2]
+Sorry, the circus people said[Line]to let no one in yet.[Wait2]
+The mayor's grandson? Yes, he[Line]went in the tent and never[Line]came out! That's strange.[Wait2][Line]I'll let you in to look for[Line]him. Be careful. Some of[Line]those people look dangerous.[Wait2]
+Be careful in there![Wait2]
+It's my fault. I should have[Line]noticed he was in there too[Line]long. Thank you, [Hero]![Wait2]
+Shade Abbey...it has some[Line]connection to Guardiana, but[Line]I can't think of it....[Wait2]
+Whew! It's heavy. And hot![Wait2]
+Crock the Genius, that's me.[Line]Look at my steam suit. Guntz,[Line]walk over here![Wait2]
+I'm still working on it, but[Line]the steam suit is almost[Line]done.[Wait2]
+Whew, heavy! Hot and heavy![Wait2]
+Man, it's really hot. My back[Line]is burning up. This is just[Line]killing me![Wait2]
+It's fixed! My steam suit[Line]finally works! Show him,[Line]Guntz. Walk over here.[Wait2]
+Oh, well. Just a little more[Line]tinkering, that's all.[Wait2]
+I don't care. Just please[Line]finish it and let me out![Wait2]
+It still doesn't seem right.[Wait2]
+Silence! Just do as I ask![Wait2]
+OK, OK![Wait2]
+It stopped! Not again![Wait2]
+Oh, dear. Well, back to the[Line]old drawing board.[Wait2]
+What a great role! The[Line]actor's life is for me![Wait2]
+What a rotten role! I can't[Line]stand this much longer.[Wait2]
+I always enjoy these plays.[Line]"The Glory of Runefaust"[Line]should be wonderful.[Wait2]
+Go Runefaust! Go Runefaust![Wait2]
+A fine play with strong[Line]performances all around. I've[Line]seen it many times already.[Wait2]
+Pow! Bang! Smash![Wait2]
+The play's about to begin.[Wait2][Line]It's about Runefaust routing[Line]Guardiana. Want to see it?[Wait2]
+Too bad. It's wonderful![Wait2]
+Go sit down. It's starting![Wait2]
+Thank you for waiting. The[Line]show will now begin![Wait2]
+Take that, you Guardiana[Line]wimp! And that! And that![Wait2]
+Please don't kill me, mighty[Line]Runefaust knight, please![Wait2]
+You're too weak to live, you[Line]lowly worm. Take that![Wait2]
+Aiiieeee! You've killed me![Wait2]
+So shall Runefaust's foes[Line]always fall![Wait2]
+Clap! Clap! Clap![Wait2]
+Thank you and come again![Wait2]
+We're looking forward to your[Line]next visit.[Wait2]
+This is the worst role. I[Line]should have quit long ago.[Wait2]
+This is a great role. I wish[Line]I could play this forever.[Wait2]
+I always enjoy these plays.[Line]"The Might of Light" should[Line]be wonderful.[Wait2]
+Go Shining Force![Line][Wait2]
+A fine play with strong[Line]performances all around. I've[Line]seen it many times already.[Wait2]
+0
+The play's about to begin.[Line]See the Shining Force trounce[Line]the Runefaust army![Wait2]
+Too bad. It's wonderful![Wait2]
+Go sit down. It's starting![Wait2]
+Thank you for waiting. The[Line]show will now begin![Wait2]
+Please don't hurt me, Shining[Line]Force. I'll change my ways,[Line]you'll see.[Wait2]
+I don't believe you. You'll[Line]work your evil again![Wait2]
+Drat! How did you know?[Wait2]
+Take this![Wait2]
+Aiiiieee! You've killed me![Wait2]
+Clap! Clap! Clap![Wait2]
+Thank you and come again![Wait2]
+We're looking forward to your[Line]next visit.[Wait2]
+This ship will do just fine.[Line]Let's gather the Shining[Line]Force and leave at once![Wait2]
+You defeated my pets, but you[Line]won't bother me any more.[Line]You're going to burn![Wait2]
+Burn, [Hero], burn![Wait2][Line]You'll serve as an example[Line]to all who dare[Line]oppose Runefaust.[Wait2]
+Good riddance, insect![Wait2]
+[Hero], run! The ship's[Line]going down![Wait2]
+Welcome to Manarina, a land[Line]of magic and mystery.[Wait2]
+We're sorry about attacking[Line]you, but we thought you were[Line]from Runefaust.[Wait2]
+0
+Feel free to wander about as[Line]you please.[Wait2]
+0
+0
+The only sane person in this[Line]land is Otrant. Everyone else[Line]is really weird![Wait2]
+0
+0
+0
+What a mess! Won't people[Line]ever learn not to use Blaze[Line]inside?[Wait2]
+Ssssshhh![Wait2]
+Sorry, no time. Got to study.[Wait2]
+Maybe later.[Wait2]
+Sssh. Go away![Wait2]
+Pardon me, I'm in the middle[Line]of a difficult passage here.[Wait2]
+Yes! It's all so clear now.[Wait2]
+0
+0
+0
+Where am I? Don't tell anyone[Line]I got lost. I'm too old to[Line]get lost.[Wait2]
+0
+This place is too busy! I[Line]can't do my research![Wait2]
+0
+0
+0
+0
+0
+0
+So sorry about the attack. We[Line]can't be too careful in these[Line]troubled times.[Wait2]
+Otrant is the wisest among[Line]us. Follow his advice.[Wait2]
+Beneath this building lies[Line]the Cavern of Darkness! A[Line]horrible place, they say![Wait2]
+You made it through the[Line]cavern? No one has ever done[Line]that before![Wait2]
+I am Otrant. You wish to find[Line]the key to the Accursed Door[Line]before Kane of Runefaust?
+Then I cannot help you.[Wait2]
+A legend tells that the Pool[Line]of the Ancients below is tied[Line]in with the Accursed Door.[Wait2][Line]To reach the pool, you first[Line]need the Orb of Light from the[Line]Cavern of Darkness.[Wait2][Line]Defeat the monsters in the[Line]cavern, and the orb is yours.[Line]Then return to me.[Wait2]
+[Hero]! Enter the cavern[Line]and retrieve the Orb of Light![Wait2]
+Use the orb at the pool[Line]behind the secret door below![Wait2]
+The Orb of Light has chosen[Line]you, [Hero], to battle the[Line]evil that threatens Rune.[Wait2][Line]You are truly the servants[Line]of the Powers of Light,[Line]the Shining Force![Wait2]
+Cross the sea from Rindo and[Line]go to the Eastern Continent.[Line]You must stop Kane![Wait2]
+Do you want find the key to[Line]the Accursed Door before the[Line]Runefaust army finds it?[Wait2]
+Have you already seen the[Line]Pool of the Ancients?
+The pool lies beneath this[Line]building. They say it speaks,[Line]but only to a chosen few.[Wait2]
+An amazing sight, eh?[Wait2]
+You spoke with the spirit of[Line]the pool? I though that was[Line]only a legend![Wait2]
+Hello! Don't usually get[Line]guests here. I'm thought to[Line]be rather strange, you know.[Wait2]
+I have something for you.[Line]It's inside that fake monster[Line]over there. Go get it![Wait2][Line]It's a Domingo egg. A very[Line]useful item. Hatch it when[Line]you get a chance![Wait2][Line]Come back before you leave.[Line]I may have some information[Line]for you.[Wait2]
+To cross the sea, take a ship[Line]at Rindo.[Wait2][Line]Goodbye, [Hero]![Line]Perhaps we'll meet again![Wait2]
+[Hero] checks[Line]the machine.[Wait2]
+You did well to reach this[Line]room. Have you ever heard of[Line]a place called Shade Abbey?
+You young people think you[Line]know everything![Wait2]
+It was founded long ago by[Line]folk from Guardiana. They[Line]know much of the Ancients.[Wait2]
+Sorry. No time, no time![Wait2]
+A strange aura is coming from[Line]the direction of Shade Abbey.[Line]Something evil is there.[Wait2]
+Show the Orb of Light to[Line]Otrant. He'll know what you[Line]should do with it.[Wait2]
+Now all shall know you as the[Line]Shining Force![Wait2]
+Yes, I am Anri. What? What[Line]about Guardiana, and my[Line]father? Who are you?[Wait2][Line]I don't have to listen to this[Line]nonsense from someone I don't[Line]even know. Go away now![Wait2]
+Wait, Princess Anri! Please[Line]listen to [Hero]![Wait2]
+Nova![Wait2]
+This is [Hero]. He is[Line]leading the fight against the[Line]Runefaust army.[Wait2]
+But my father...the Sword of[Line]Light...and Guardiana...is it[Line]true, Nova?[Wait2]
+Yes, your majesty, it is all[Line]true, I'm afraid.[Wait2]
+I...I need to be alone for a[Line]while....[Wait2]
+[Hero], Princess Anri is[Line]in great sorrow. Please[Line]go to her and talk to her.[Wait2][Line]Remind her of her duty to[Line]Guardiana. Our people need[Line]her now.[Wait2]
+0
+I know my duty now,[Line][Hero]. It is to hunt[Line]Kane down and make him[Wait2][Line]pay for what he did.[Line]I'll fight with you.[Line]I'm sure that's what my[Wait2][Line]father would want me to do.[Wait2]
+0
+I'll be at headquarters.[Line]Vengeance shall be ours![Wait2]
+What, you again? Go away![Wait2]
+We understand, your majesty.[Line]But do not let your grief[Line]overwhelm you....[Wait2]
+I...I must be alone now....[Wait2]
+Great view, eh?[Wait2]
+Drat! Not as good a view from[Line]down here. Better climb back[Line]up....[Wait2]
+I'll make it someday![Wait2]
+Welcome to my research room.[Line]I change humans into animals.[Line]Care to give it a try?
+No curiosity, eh? When I see[Line]you next, I'll turn you into[Line]a frog![Wait2]
+Very good! Let's start right[Line]away. Please stand over[Line]there.[Wait2]
+Now, let's begin.[Wait2]
+Yes! Success! What a tasty[Line]looking hen![Wait2]
+If I can change humans to[Line]hens, we won't ever have to[Line]worry about food![Wait2]
+Seeing you makes me hungry. I[Line]wonder what's for dinner?[Wait2]
+Things are getting stranger[Line]around here every day![Wait2]
+What in the world is a hen[Line]doing here?! Shoo, shoo![Wait2]
+What's up, hen?[Wait2]
+Old Gert turned you into a[Line]hen? That's easily fixed![Wait2]
+Go away! Only cute animals[Line]can get past me![Wait2]
+Well, what a cute little hen.[Line]Go on through![Wait2]
+A hen went in and a person[Line]came out. What a great place[Line]to work, huh?[Wait2]
+What a nice hen! How could[Line]someone eat a little hen?[Wait2]
+Old Gert's up to her usual[Line]tricks. Someone here should[Line]be able to change you back.[Wait2]
+Oh, [Hero]. It's nice[Line]of you to try to cheer me up.[Line]But I'm not fond of hens.[Wait2]
+Next time, don't volunteer[Line]for experiments![Wait2]
+Chicken soup tonight. Yum![Wait2]
+Har, har! You're just in time.[Line]Would you like to observe?
+Good. Sit quietly and watch a[Line]master at work![Wait2]
+Who said you can refuse?[Line]Stand there and watch![Wait2]
+I'm researching summoning[Line]demons. Now, I'm going to[Line]begin the experiment.[Wait2][Line]I shall summon a dreadful[Line]thing from my worst[Line]nightmares![Wait2][Line]Come forth, oh creature of[Line]Darkness! I conjure you[Line]forth![Wait2]
+Huh?[Wait2]
+You! When are you going to[Line]stop these tricks? Come [Line]home right now![Wait2]
+Oops! Sorry, dear! I'll never[Line]do that again. Yes, I'll be[Line]good, honest![Wait2]
+My name is Arthur. I used to[Line]be a knight. I'm not really a[Line]battle type. I like it here.[Wait2]
+I want to fight again. I can[Line]help you against Runefaust.[Line]I'm coming with you![Wait2]
+0
+I'll be at headquarters. Call[Line]me when you're ready to go[Line]into battle![Wait2]
+The Cavern of Darkness lies[Line]beyond. Only the strongest[Line]survive its trials![Wait2]
+You are not ready for the[Line]Cavern of Darkness. You may[Line]not pass.[Wait2]
+I don't know if I will ever[Line]see you alive again! Good[Line]luck![Wait2]
+You're back! And you have the[Line]Orb of Light! Tell Otrant,[Line]quickly.[Wait2]
+The spirit of the pool spoke[Line]to you? Go tell Otrant all[Line]that was said![Wait2]
+How long I have waited for[Line]this summons! [Hero],[Line]you are a hero without peer![Wait2][Line]The legacy of the Ancients is[Line]an evil being that has been[Line]sealed away for 1,000 years.[Wait2][Line]Darksol now searches for the[Line]key to unlock that seal.[Line]You must stop him![Wait2]
+I am here to help you on your[Line]sea voyage. Are you in need[Line]of my services?[Wait2]
+Welcome to Waral![Wait2]
+It'll take some time to[Line]repair the ship. Try to rest[Line]and relax.[Wait2]
+Waral is a great place, but[Line]nothing ever happens here.[Wait2]
+0
+Welcome to Waral Castle! The[Line]king is in![Wait2]
+Welcome to Waral Castle! The[Line]king is in![Wait2]
+0
+A word of warning- Don't go[Line]past the buoys in the water.[Line]Danger lurks out there![Wait2]
+Welcome to Island Hotel! No,[Line]no! Money is not necessary.[Line]Please make yourself at home![Wait2]
+0
+One of our island's friars[Line]is missing. We can't find him[Line]anywhere![Wait2]
+0
+There's lots to see here.[Line]Take the guest boat if you[Line]get tired of walking.[Wait2]
+I'm Shela, Shell's sister.[Line]Don't go beyond those buoys.[Line]The currents are dangerous![Wait2]
+0
+0
+I'm Shimol, Shell's aunt.[Line]I've seen strange lights at[Line]Ring Reef lately. Spooky![Wait2]
+I feel like I'm in heaven.[Line]This is surely a paradise![Wait2]
+0
+They say the whole sea is[Line]pouring into Ring Reef! What[Line]will become of us?[Wait2]
+Some stranger left for Ring[Line]Reef by ship. I hope nothing[Line]happened to him.[Wait2]
+0
+I hear there's a land called[Line]Dragonia far to the east.[Line]Sacred Dragons live there.[Wait2]
+0
+0
+0
+I want to visit Ring Reef.[Line]Would you go with me?
+Great! But we can't go there[Line]right now. Too dangerous.[Line]Maybe later.[Wait2]
+Well, I'll find someone else.[Wait2]
+Did you come here to see the[Line]famous Ring Reef, by any[Line]chance?
+I thought so. But you can't[Line]go there right now. It's too[Line]dangerous to even get close.[Wait2]
+Off the southern part of the[Line]island is Ring Reef. It's[Line]shaped like a ring.[Wait2][Line]Now there's a hole in it and[Line]water's pouring in and the[Line]current is very strong.[Wait2][Line]It's too dangerous to get[Line]close, and we don't know what[Line]to do about the hole.[Wait2]
+Do you like fish?
+You'll like it here, then.[Line]That's all we eat.[Wait2]
+Too bad. That's all we eat.[Wait2]
+Have you ever heard of[Line]Prompt?
+I bet it's just an old[Line]legend. It doesn't really[Line]exist![Wait2]
+It's said that descendants of[Line]the Ancients live there![Wait2]
+Well, a guest! Would you like[Line]to hear a secret?
+No curiosity, I guess.[Wait2]
+I think our missing friar is[Line]in Ring Reef. Call it a[Line]hunch. Don't tell anyone![Wait2]
+Greetings! We will gladly[Line]repair your ship, if you tell[Line]others of our lovely island.[Wait2]
+I hope you are enjoying[Line]yourself. Rest until your[Line]ship is fully repaired.[Wait2]
+Well, there's no law that[Line]says the king can't own a[Line]shop. Can I help you?[Wait2]
+0
+Hello, [Hero]. Remember[Line]me, Boken? The water's great,[Line]as long as you don't get eaten.[Wait2]
+Do you know there's an[Line]enormous building under this[Line]island? It's amazing![Wait2]
+Hi! I'm Shelra, Shell's mom.[Line]Are you planning to go past[Line]the buoys?
+That's just as well.[Wait2]
+The current could dash your[Line]boat against the rocks. Do[Line]you still want to go?[Wait2]
+That's just as well.[Wait2]
+OK, but be careful![Wait2]
+([Hero]'s ship was caught by the[Line]strong current and dashed to[Line]pieces!)[Wait2]
+Well, I'm glad to see you're[Line]up. You were thrown from your[Line]ship. I rescued you.[Wait2][Line]Strange doings! The water in[Line]Ring Reef vanished and a[Line]strange creature appeared.[Wait2]
+It might have something to do[Line]with the legend of a Shining[Line]Path that leads to Metapha.[Wait2][Line]The legend says Metapha is[Line]a land of the Ancients.[Wait2]
+0
+Please rest here after your[Line]battle![Wait2]
+What are you doing here? I[Line]must inform the master![Wait2]
+[Hero], I was waiting[Line]for you. I used that mermaid[Line]to bring you here....[Wait2]
+(It is the voice of the[Line]spirit from the Pool of the[Line]Ancients....)[Wait2]
+The Shining Path lies behind[Line]this door. It leads to the[Line]land of the Ancients.[Wait2][Line]The key to the Accursed Door[Line]is there. I shall open the way[Line]to the Shining Path now.[Wait2]
+No! Though it takes all of my[Line]remaining strength, you shall[Line]not use the path![Wait2]
+(The voice of the spirit is[Line]heard again....)[Wait2]
+Alas, the path is blocked.[Line]Listen. Two things are needed[Line]to break free Dark Dragon.[Wait2][Line]Darksol must get the key to[Line]the door, as well as the[Line]Manual of the Seal.[Wait2][Line]The manual is in Dragonia.[Line]You must stop Darksol. The[Line]seal must not be broken![Wait2][Line]Go to Prompt. There you[Line]should find another Shining[Line]Path.[Wait2]
+[Hero], quick![Line]This place is collapsing![Line]Run![Wait2]
+I sense that you shall return[Line]here at your journey's end.[Wait2]
+0
+I'm so glad peace has[Line]returned to Ring Reef![Wait2]
+Oh no! Ring Reef has returned[Line]to normal. It's so boring.[Wait2]
+Welcome to Waral Castle![Wait2]
+Welcome to Waral Castle![Wait2]
+0
+You returned Ring Reef to[Line]normal, I see. The king is[Line]quite pleased.[Wait2]
+Please come again. We'll look[Line]forward to seeing you again![Wait2]
+What? You saw a strange[Line]world under Ring Reef? Please[Line]don't tease me like that.[Wait2]
+The other friar was on Ring[Line]Reef? How strange![Wait2]
+That Boken sure likes fish![Wait2]
+Be sure to buy all the[Line]weapons and items you need[Line]before you leave.[Wait2]
+Shell is really happy that[Line]you're safe, [Hero].[Wait2]
+Shell is really anxious to[Line]see you, [Hero].[Line]You must see her.[Wait2]
+0
+0
+Why leave? It's great here![Wait2]
+Be careful. Not everyone's as[Line]nice as people here! That's[Line]what I've heard anyway.[Wait2]
+Peace at last![Wait2]
+Thanks for cleaning up under[Line]the reef![Wait2]
+I'm going to spend more time[Line]outdoors from now on.[Wait2]
+Just once, I want to see a[Line]Sacred Dragon. Maybe I'll go[Line]to Dragonia some day.[Wait2]
+0
+0
+Well, I'm off again. Perhaps[Line]I'll go to Dragonia to see[Line]some Sacred Dragons![Wait2]
+The ship is fixed, but you[Line]can't leave until the king[Line]gives his permission.[Wait2]
+0
+Well, [Hero], your ship is[Line]repaired. Are you leaving[Line]immediately?
+That's a good idea. Rest a[Line]little while.[Wait2]
+I see. The payment for the[Line]repairs comes to 1,000,000[Line]coins. Will you pay it now?
+What? Well, I can't let you[Line]go without paying![Wait2]
+Why, don't you have enough[Line]money![Wait2]
+You almost believed me,[Line]didn't you? I can't take[Line]money from you![Wait2]
+I thank you on behalf of my[Line]people. Take care, and be[Line]sure to return later![Wait2]
+Did you really fight evil[Line]creatures under Ring Reef?
+I almost believed you![Wait2]
+How scary! They were right[Line]under our fins![Wait2]
+I was right. The Shining Path[Line]was here! Too bad it is now[Line]blocked.[Wait2]
+What? Another Shining Path in[Line]Prompt? You must go there[Line]at once![Wait2]
+It's me, Shell! You've been[Line]with the friar at Ring Reef?[Line]Did he tell you his secret?[Wait2]
+It's amazing! You're both[Line]from Guardiana![Wait2]
+His father was a friar of[Line]Shade Abbey. He was born in[Line]Guardiana! Amazing![Wait2]
+Are you leaving now? Please[Line]visit again after your quest[Line]is over.[Wait2][Line]I'll show you[Line]around![Wait2]
+0
+0
+Don't ask me anything. I'm[Line]not from around here. I just[Line]arrived from Rindo.[Wait2]
+Welcome to Prompt![Wait2]
+Is this really Prompt? The[Line]people seem a little...well,[Line]dense, don't they?[Wait2]
+School is good, they say. But[Line]you can't prove it by me![Wait2]
+All I need to know I learned[Line]from my cat![Wait2]
+My brain hurts![Wait2]
+School! Who needs it?[Wait2]
+Be quiet and sit down, you[Line]little beasts![Wait2]
+The people here are so[Line]backward. No one wants to[Line]learn anything.[Wait2]
+0
+Who says thinking is boring?[Line]I think about dinner all the[Line]time![Wait2]
+Dark Dragon? Who cares? Let's[Line]talk about food![Wait2]
+Have they posted the lunch[Line]menu yet? I can't wait![Wait2]
+Ancients? Who are they, a[Line]group of minstrels?[Wait2]
+Shining Force? What does that[Line]taste like? Is it good to[Line]eat?[Wait2]
+Shining Path? Maybe the king[Line]knows about it.[Wait2]
+Welcome. Visitors are[Line]always welcome.[Wait2]
+0
+This is Prompt Castle.[Line]Lovely, isn't it?[Wait2]
+Whoa! I can't let anyone[Line]past. King's orders![Wait2]
+Shining Path, eh? Are you[Line]sure you want to know about[Line]that?
+The king might know something[Line]about it. He's always reading[Line]old books.[Wait2]
+Good, me neither.[Wait2]
+0
+0
+This is weird! Everyone's[Line]acting totally different![Line]Why?[Wait2]
+Welcome to Prompt! I need[Line]to find something better to[Line]do with my life![Wait2]
+0
+Perhaps we should start a[Line]college here in Prompt.[Wait2]
+I'm so bored. The classes are[Line]too easy.[Wait2]
+Teacher! That calculation is[Line]wrong. The correct answer is[Line]34,765,492![Wait2]
+I really don't have time to[Line]do this. I should be helping[Line]with the Shining Path.[Wait2]
+What is going on? I feel like[Line]they're teaching me![Wait2]
+These people are highly[Line]advanced. It's amazing![Wait2]
+0
+So much to know...so many[Line]questions to answer.[Wait2]
+Could Dark Dragon be the[Line]legacy the Ancients left us?[Line]I think so.[Wait2]
+Keep after Darksol,[Line][Hero]. He must not[Line]be allowed to succeed![Wait2]
+We are all the descendants of[Line]the Ancients. We must prevent[Line]Dark Dragon's return![Wait2]
+It's all up to you and the[Line]Shining Force![Wait2]
+Metapha is said to be an[Line]amazing place. I hope to[Line]visit it someday.[Wait2]
+Step right in. Visitors are[Line]always welcome here.[Wait2]
+0
+The castle used to stand on[Line]level ground. But years[Line]passed and it sank down.[Wait2]
+0
+These books were all written[Line]by the Ancients. Are you[Line]interested in them?
+Ignorance is bliss, eh?[Wait2]
+The Shining Path is described[Line]in detail. Too much detail.[Line]We're having trouble with it.[Wait2]
+But we'll repair it,[Line]never fear![Wait2]
+It's by the King's order. No[Line]one can leave here![Wait2]
+You're going out? Enjoy[Line]yourself.[Wait2]
+Welcome back! The King is[Line]waiting for you.[Wait2]
+You are going out again?[Line]Enjoy yourself![Wait2]
+Words are carved into the[Line]wall-[Wait2][Line]"I am Musashi the Samurai.[Line]I have come to join the[Line]fight against evil."[Wait2][Line]"I await at headquarters."[Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+I know about Kane. Darksol[Line]has the key and is on his way[Line]to revive Dark Dragon.[Wait2][Line]The Chaos Breaker may be[Line]able to reseal Dark Dragon[Line]if Darksol frees him.[Wait2][Line]Follow Adam. He will lead[Line]you to where you can create[Line]the Chaos Breaker.[Wait2]
+You are too late. Darksol[Line]took the key to the Accursed[Line]Door.[Wait2][Line]Go to the eye symbol and[Line]use the Orb of Light.[Wait2]
+I am Adam, a robot soldier. I[Line]will show you how to create[Line]the Chaos Breaker.[Wait2]
+There's the weapon to seal[Line]Dark Dragon. Take it, [Hero]![Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Screech! Kill...kill....[Wait2]
+Stop! You are Chaos. You have[Line]been reprogrammed by Darksol.[Line]Revert to original function.[Wait2]
+Screech...go away![Wait2]
+0
+Use the Chaos Breaker to stop[Line]Darksol. I have done all I[Line]can. The rest is up to you![Wait2][Line]Go now, [Hero].[Line]The hopes of all of Rune[Line]go with you![Wait2]
+The writing on the stone[Line]slabs explains what you must[Line]do. Read them and obey.[Wait2]
+0
+Welcome, hero, to my humble[Line]shop.[Wait2]
+0
+Hi again! This is Dragonia,[Line]so where are all the dragons?[Wait2]
+0
+0
+0
+0
+0
+Hey, go away![Wait2]
+I don't want to fight, OK?[Line]Just go away![Wait2]
+Bleu! This person is our[Line]friend. He's here to help![Line]Stop shaking, you baby![Wait2]
+Oh, Karin, you are so mean![Wait2]
+Just leave me alone![Wait2]
+I was worried about Bleu, so[Line]I followed you. I really[Line]think he's hopeless![Wait2]
+I am disappointed in[Line]you, Bleu![Wait2]
+Help! Help! Bleu! [Hero]![Wait2]
+That's Karin's voice![Wait2]
+Well, dragon, if you want to[Line]save this girl, open that[Line]shrine door![Wait2]
+Bleu! Don't listen to him![Line]Remember that you're a Sacred[Line]Dragon![Wait2]
+This girl doesn't know how to[Line]shut up, does she?[Wait2]
+Karin! No![Wait2]
+What are you going to do[Line]about it, crybaby dragon?[Wait2]
+Bleu spews fire![Wait2]
+Arrggggh![Wait2]
+I'm not very confident yet,[Line]but I'll try my best![Wait2]
+0
+I'll be at headquarters.[Wait2]
+I'll return to Rudo. I have[Line]to tell everybody that Bleu[Line]found his courage![Wait2]
+Remember me, [Hero]?[Line]Kane of Runefaust.[Line]Ready for your last fight?[Wait2]
+Go back to your headquarters[Line]and get ready. Then you'll[Line]meet your doom![Wait2]
+From the Shrine of Dragons[Line]comes a voice- "Hero of Light,[Line]come into the shrine."[Wait2][Line]"The Manual of the Seal[Line]awaits you inside."[Wait2]
+A voice comes from the[Line]shrine- "Come to our shrine.[Line]You cannot leave."[Wait2]
+(This door will open only for[Line]two heroes.)[Wait2]
+Please, [Hero], come[Line]with me to the door. We[Line]must stop Darksol at any cost.[Wait2][Line]I want revenge for what he[Line]has done to me. We must[Line]keep that manual from him![Wait2]
+(Two heroes. I have waited[Line]long for such as you! )[Wait2]
+Ah, Kane. Feeling more like[Line]yourself now, are you?[Wait2]
+This is the end, Darksol![Wait2][Line][Hero], get out now![Line]You'll only be destroyed[Line]if you stay![Wait2]
+I can't let [Hero] go![Wait2][Line]Now that I have what I[Line]wanted, I have no further[Line]need of him![Wait2][Line]For you see, dear friends,[Line]I have both the key[Line]and the manual.[Wait2][Line]Dark Dragon will soon[Line]be free again![Wait2]
+Go, [Hero], run![Line]I'll deal with Darksol![Wait2]
+The mission of Dragonia- We[Line]guard the Manual of the Seal.[Wait2]
+The Treasure of Dragonia-[Line]The Manual of the Seal is our[Line]only treasure.[Wait2]
+We are very strong, but we[Line]have our vulnerabilities....[Wait2]
+Baby dragons are fewer and[Line]fewer. Our numbers decrease[Line]every year....[Wait2]
+Only if we fail in our[Line]mission can Dark Dragon be[Line]awakened.[Wait2][Line]It is our eternal pledge[Line]that this shall not happen....[Wait2]
+Diary of Bleu's mother- Bleu[Line]is such a crybaby. That[Line]worries me a lot....[Wait2]
+Diary of Bleu's mother- Bleu[Line]must have made a secret[Line]shelter for himself.[Wait2][Line]I found steps at the corner[Line]of the room. I did not[Line]follow them....[Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Welcome to Shade Abbey! I'm[Line]rather busy now. Please see[Line]me later.[Wait2]
+What are you doing here? Go![Wait2]
+I'm so confused. I don't[Line]know what's real and what's[Line]my imagination.[Wait2]
+Darksol suddenly appeared.[Line]He told us not to speak about[Line]the legacy of the Ancients.[Wait2][Line]Then he attacked our friar.[Line]The friar fought back, but[Line]Darksol overcame him.[Wait2]
+Snarl![Wait2]
+Help! My name is Amon. Please[Line]save Balbaroy. He'll die[Line]unless you help.[Wait2]
+There's nothing back here,[Line]Never mind me.[Wait2]
+Enjoy your visit, stranger![Wait2]
+We seldom get visitors, but[Line]you are welcome.[Wait2]
+Sorry, I can't talk while on[Line]guard duty.[Wait2]
+Huh? Am I alive or dead?[Line]Where am I?[Wait2]
+I need to get out of here.[Line]It's too creepy for me.[Wait2]
+Where...where am I? What am I[Line]doing here?[Wait2]
+Run! It's a trap![Wait2]
+0
+0
+0
+I am Balbaroy! I was turned[Line]to stone by Darksol when he[Line]took the bodies of the dead.[Wait2]
+I will join you to fight[Line]Darksol's evil.[Wait2]
+Thank you for saving[Line]Balbaroy. Let me go with you[Line]so I too can fight evil.[Wait2]
+To reach Uranbatol, you must[Line]go through Bustoke.[Line]We will guide you there.[Wait2][Line]I will join your friends.[Wait2]
+0
+I miss my Daddy! When's[Line]he coming back?[Wait2]
+0
+0
+Our men were taken away to[Line]work in the quarry. All but[Line]Zylo, who's crazy.[Wait2]
+Please don't go this way.[Line]They'll punish me for letting[Line]you through.[Wait2]
+0
+0
+0
+0
+Zylo is inside, but he's been[Line]driven mad. Only Lunar Dew[Line]can save him![Wait2]
+My husband was taken away in[Line]the middle of building our[Line]house. It's only half done![Wait2]
+Please rescue my husband from[Line]the quarry. You're our only[Line]hope![Wait2]
+My father was taken away to[Line]the quarry, too. Please bring[Line]him back![Wait2]
+0
+0
+Look around and buy anything[Line]you like.[Wait2]
+There is a bridge in the[Line]valley that connects Bustoke[Line]and Pao.[Wait2][Line]The Runefaust army is[Line]gathering there, doubtless[Line]preparing an attack.[Wait2]
+0
+I am a master alchemist. I[Line]can make anything! Can I help[Line]you?
+First you must help me.[Wait2]
+But I need your help![Wait2]
+To cure Zylo, I need to make[Line]Lunar Dew. But to do that,[Line]I need Moon Stone![Wait2][Line]You must go to the quarry,[Line]find Moon Stone, and[Line]bring it back to me![Wait2]
+I have been waiting for[Line]warriors of the Shining[Line]Force. Are you one of them?
+Alas, we need heroes badly![Wait2]
+Great! You must help us. The[Line]Runefaust army took our men[Line]to dig in the quarry.[Wait2][Line]They're looking for a weapon[Line]of the Ancients, a Laser Eye.[Line]Diane can lead you there.[Wait2]
+If Zylo were sane, he could[Line]surely help you.[Wait2]
+I really feel sorry for Zylo.[Line]Do you want to hear about[Line]him?
+Oh, well, it's your loss![Wait2]
+The Runefaust army poured[Line]something into Zylo's drink.[Line]It made him crazy.[Wait2][Line]We had to lock him up to[Line]protect ourselves![Wait2]
+Don't go this way! You'll be[Line]forced to work in the quarry[Line]with everyone else.[Wait2]
+Please be careful. Those[Line]Runefaust monsters are[Line]deadly![Wait2]
+Talk to my mother first.[Wait2]
+If you're going to the quarry[Line]to rescue the men, you can[Line]count me in![Wait2]
+0
+I'll be at headquarters.[Wait2]
+He's home! My daddy's home![Line]I'm so happy![Wait2]
+Thank you for saving our men.[Wait2]
+0
+Thank you so much. I'm so[Line]happy to be back with my[Line]daughter.[Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+My father is back and he[Line]wants to talk to you.[Wait2]
+0
+0
+0
+Be sure to buy everything you[Line]need before you leave town.[Wait2]
+The Runefaust army now has a[Line]strange device, a weapon of[Line]the Ancients![Wait2]
+Hi! I'm Boken. I finally[Line]climbed up this mountain![Line]...Where am I?[Wait2]
+0
+Look at this enormous home![Line]My husband finished it![Wait2]
+All's well now, and we owe it[Line]all to you, [Hero]![Wait2]
+It's great to have the men[Line]back, but what about Zylo?[Wait2]
+Good luck to you and Zylo.[Wait2]
+You beat them! We're free![Line]Thank you.[Wait2]
+You beat them! We're free![Line]Thank you.[Wait2]
+Thank you so much for all[Line]you've done.[Wait2]
+You even saved Zylo. How can[Line]we ever thank you enough?[Wait2]
+We're all grateful, but we're[Line]still worried about Zylo.[Wait2]
+We'll be fine here, even[Line]without Zylo.[Wait2]
+Please save Zylo! Ask the[Line]alchemist to make Lunar Dew![Wait2]
+So, Zylo was saved, but he's[Line]going with you? We're going[Line]to miss him....[Wait2]
+I want revenge! Please, can I[Line]join the Shining Force?
+Wait! I must protect Bustoke.[Line]I'll join you some other[Line]time.[Wait2]
+It 's just as well. I'll stay[Line]here and defend Bustoke.[Wait2]
+Kokichi never listens to me[Line]when he's doing research.[Wait2]
+I'm helping Kokichi to figure[Line]out how to fly.[Wait2]
+...Hum, hmm....[Wait2]
+What are you doing? Don't[Line]touch anything, you meddler![Wait2]
+New in town, eh? Go out back[Line]and I'll show you my latest[Line]invention.[Wait2]
+Watch carefully![Wait2]
+Here I go![Wait2]
+Good luck, Kokichi![Wait2]
+Well, it didn't work this[Line]time either....[Wait2]
+It always looks good at[Line]first, then something goes[Line]wrong. It never fails.[Wait2]
+Another failure. I'm starting[Line]to think Kokichi should just[Line]give up.[Wait2]
+You! Did you bring[Line]Moon Stone?
+Not yet? Then we cannot save[Line]Zylo! You must get it![Wait2]
+Yes, that is Moon Stone.[Line]I will make Lunar Dew[Line]immediately.[Wait2]
+Here you go. Lunar Dew![Line]Zylo will make a[Line]full recovery.[Wait2]
+Quick![Line]Take the Lunar Dew to[Line]Zylo immediately![Wait2]
+Good, Zylo was saved! It's[Line]all because of my medicine![Wait2]
+What! You don't have it?[Line]Well, where is it?[Wait2]
+Please save Zylo![Wait2]
+Return here after you get[Line]Lunar Dew. You'll be in great[Line]danger without it![Wait2]
+Do you really want me to open[Line]the prison door?
+That's too bad. You're the[Line]only one who can save him.[Wait2]
+Please be careful![Wait2]
+What do you want? Leave me[Line]alone or I'll tear you apart![Wait2]
+([Hero] poured[Line]Lunar Dew into[Line]Zylo's mouth!)[Wait2]
+Yuk! Awful taste. But I'm[Line]myself again. What a relief![Wait2][Line]I can never repay you for[Line]this, but I'm going to[Line]join the Shining Force![Wait2]
+0
+I'll wait at headquarters.[Wait2]
+Only you can save Zylo![Wait2]
+Zylo is a warwolf warrior. He[Line]can fight better than anyone[Line]in the woods![Wait2]
+Welcome to Pao, a town that's[Line]truly on the move![Wait2]
+0
+0
+0
+0
+0
+0
+Stop and go, stop and go![Line]This nomadic life is really[Line]starting to bother me.[Wait2]
+0
+Runefaust, Guardiana, the[Line]Ancients... I can't worry[Line]about such things.[Wait2]
+0
+We'll move again soon. We're[Line]going to Uranbatol.[Wait2]
+I'm worried about the train[Line]driver. He's talking to those[Line]engines too much![Wait2]
+0
+Paaaoo![Wait2]
+Paaaoo![Wait2]
+Paaaoo![Wait2]
+Paaaoo! Paaaooo![Wait2]
+Paaaoo![Wait2]
+0
+Even if you defeat Elliott,[Line]there's still Balbazak to get[Line]past. Good luck![Wait2]
+I am Earnest. Balbazak[Line]destroyed my town. I want[Line]revenge![Wait2]
+The engine driver decides[Line]where we stop every day. It's[Line]a mystery to the rest of us.[Wait2]
+0
+Who are you? Where is[Line]Vankar? He's supposed to[Line]stop strangers![Wait2]
+0
+0
+Have you heard about[Line]General Elliott?
+He is definitely my type![Line]...But why he is on Runefaust[Line]side? I just don't get it![Wait2]
+General Elliott is one of[Line]the greatest warlords[Line]of Runefaust.[Line][Wait2]But, I'm sure he is not evil of heart.[Line][Wait2]He was the one who saved[Line]us when a group of bandits[Line]invaded this town.[Wait2]
+Then I don't have to tell you[Line]to watch out for sudden[Line]moves.[Wait2]
+I hear the engine. It's[Line]almost time to leave.[Wait2]
+Are you [Hero]?
+The guy in the corner wants[Line]to talk to you. He says it's[Line]very important.[Wait2]
+Oh, sorry. Never mind.[Wait2]
+Say, that was General Elliott![Line]A fine being, so they say.[Wait2]
+I have to pack up soon, or[Line]I'll miss the train![Wait2]
+Who are you? I can't let any[Line]old stranger enter here![Wait2]
+We travel all over Pao[Line]Prairie. And we're getting[Line]ready to leave right now![Wait2]
+Who are you? I can't let any[Line]old stranger enter here![Wait2]
+We travel all over Pao[Line]Prairie. And we're getting[Line]ready to leave right now![Wait2]
+Queen Koron is inside. You[Line]can't come in.[Wait2]
+We travel all over Pao[Line]Prairie. And we're getting[Line]ready to leave right now![Wait2]
+Just look! Don't touch it, or[Line]the train will start to move.[Wait2]
+Everything is ready! Full[Line]power! Wow, this feels great![Line]Makes me feel alive![Wait2]
+Greetings, [Hero]! I am[Line]General Elliott of Runefaust.[Line]Will you listen to me?[Wait2]
+Good, for what I have to say[Line]should interest you....[Wait2]
+No matter, you must hear what[Line]I have to say....[Wait2]
+Runefaust has been corrupted[Line]by Darksol. He came from[Line]nowhere to sway our king.[Wait2][Line]Darksol told King Ramladu[Line]that the world would[Line]be his to rule forever.[Wait2][Line]All he needed was the legacy[Line]of the Ancients, Darksol[Line]claimed. Our King listened.[Wait2][Line]Though I hate Darksol and his[Line]plans, I am a loyal subject[Line]of King Ramladu.[Wait2][Line]When we meet next,[Line][Hero], it will be on the[Line]battlefield![Wait2][Line]Our king is fully under[Line]Darksol's influence. All this[Line]warfare is Darksol's doing.[Wait2]
+If you defeat me in battle,[Line]please free Runefaust from[Line]Darksol's clutches![Wait2]
+I am Queen Koron. Have you[Line]enjoyed your visit? I think[Line]we're ready to leave.[Wait2]
+Everything is ready, your[Line]highness. We can leave any[Line]time you wish.[Wait2]
+0
+Well, let's not be rude to[Line]our visitor. Is it OK with[Line]you if we move along?
+Please let me know when you[Line]are ready.[Wait2]
+We'll be leaving now. Good[Line]luck. Please step outside.[Line]It's time for us to go![Wait2]
+Hey, are you [Hero]?[Line]My name is Vankar. Did[Line]you hear about me in Pao?
+Good, good, I was pretty[Line]famous there. But now I'm[Line]looking for adventure.[Wait2]
+I was a guard there, but I[Line]slept on duty too much. They[Line]fired me.[Wait2]
+I heard about you in Pao. I'm[Line]joining up! No, no, don't[Line]thank me, it's my pleasure![Wait2]
+0
+I'll be at headquarters.[Wait2]
+Wow! What a flight! I've[Line]never been this far from[Line]Bustoke before![Wait2]
+Hey, down there! I want to[Line]help you fight those nasty[Line]Runefaust beasties.[Wait2]
+Whoa! It won't stop! I'll be[Line]right back, I think. Just[Line]wait a moment.[Wait2]
+I'm joining up, youngster. I[Line]figure you need some[Line]experience on this team![Wait2]
+I'll be at headquarters.[Wait2]
+Welcome to Pao, a town that's[Line]truly on the move![Wait2]
+If you want to destroy[Line]Balbazak, you should do it[Line]now, before Earnest gets killed![Wait2][Line]He's in there fighting[Line]all alone, yelling about[Line]vengeance. Go back him up![Wait2]
+Balbazak is a dangerous[Line]opponent. He controls the[Line]fortress and Uranbatol.[Wait2]
+Rollin', rollin',[Line]rollin'...the life of the[Line]nomad is the one for me![Wait2]
+I saw a big chunk of iron[Line]walking, making loud noises,[Line]and steaming all over![Wait2][Line]It's over in the sheep pen![Wait2]
+Pack, unpack, pack, unpack. I[Line]need to get a job in shop[Line]that stays in one place.[Wait2]
+0
+0
+0
+0
+That monster is frightening[Line]everyone. The sheep too![Wait2]
+0
+Paaaoo![Wait2]
+Paaaoo! Paaaaooooooo!!![Wait2]
+Paaaoo![Wait2]
+Paaaoo![Wait2]
+0
+Where's Earnest? When is he[Line]coming back?[Wait2]
+Elliott loved Runefaust but[Line]hated Darksol. I hope he is[Line]at peace now.[Wait2]
+Earnest went to Uranbatol.[Line]That's where you need to go[Line]if you want a ship.[Wait2]
+General Elliott was worried[Line]that Darksol was getting[Line]ready to open some door....[Wait2]
+Earnest heard you defeated[Line]Elliott, and he decided to[Line]attack Balbazak's fortress.[Wait2]
+0
+You can touch it now! The[Line]engine is stopped.[Wait2]
+0
+0
+Before he left, Elliott gave me[Line]a message for you...it was[Line]about Prompt.[Wait2]
+Prompt is across the sea.[Line]There you may find folk who[Line]know much about the Ancients.[Wait2]
+That Vankar! Where did he go?[Line]Do you know where he went?
+You don't? Well, that's no[Line]help to me.[Wait2]
+You saw him? Did you let him[Line]join your troops?
+He's your problem now. He's a[Line]good fighter, when he feels[Line]like it.[Wait2]
+Good for you. Serves him[Line]right. He's a good fighter,[Line]though.[Wait2]
+I've got a great item here.[Line]This thing warms an egg and[Line]hatches it in seconds.[Wait2]
+Let me know if you find any[Line]rare eggs. I really want to[Line]try it![Wait2]
+You have an interesting egg[Line]there. Can I try to warm it?
+Drat! I really want to try[Line]this egg warmer....[Wait2]
+Great! Give it to me, please.[Wait2]
+([Hero] handed over the[Line]Domingo egg!)[Wait2]
+C'mon, do your stuff![Wait2]
+It works! The egg's hatching![Line]What is that thing?[Wait2]
+Thing indeed! How rude! I'm[Line]Domingo, at your service![Wait2]
+0
+I'll be at headquarters.[Line]Thanks for hatching me![Wait2]
+Hey! Good to see you again![Line]It's me, Guntz from Rindo.[Line]Look at this steam suit![Wait2]
+Hey, I'm Guntz. I came[Line]looking for you. I'm a great[Line]fighter in this steam suit![Wait2]
+Look at these moves![Line]The ol' Doc finally[Line]got it working![Wait2]
+0
+I'll be at headquarters.[Wait2]
+Balbazak is a vile worm![Line]Don't let him get away.[Wait2]
+Don't hurt me! I give up. But[Line]Balbazak awaits you in the[Line]town harbor.[Wait2]
+0
+Don't go easy on Balbazak.[Line]He's one nasty fighter![Wait2]
+0
+The Power of Light[Line]shines through you,[Line][Hero].[Wait2][Line]Always try to be worthy[Line]of it![Wait2]
+0
+0
+Oh no! You've killed all[Line]those lovely monsters! Brute![Wait2]
+0
+0
+I surrender. I just can't[Line]fight anyone. Rumors have it[Line]that you are invincible![Wait2]
+0
+0
+Where's Earnest? I hope he's[Line]not in trouble.[Wait2]
+You're [Hero], huh?[Line]Earnest said you'd be coming[Line]through. Be careful! I sense[Line]trouble.[Wait2]
+Behind this door is the[Line]harbor. And Balbazak is[Line]there![Wait2][Line]But first, save Earnest,[Line]then concentrate on getting[Line]Balbazak.[Wait2]
+If you're Earnest's friend, you[Line]must be OK. I'll open the[Line]door for you.[Wait2]
+The harbor's inside. But so[Line]is Balbazak the Beastly![Wait2]
+Back off or...it's you! Let's[Line]join forces. We can help each[Line]other out.[Wait2]
+0
+I'll go ahead...wait! The[Line]secret door vanished! But[Line]that won't stop me![Wait2]
+Charge![Wait2]
+I really could use some rest.[Line]I'm going back to your[Line]headquarters. See you soon![Wait2]
+Man, that took a lot out of[Line]me. I'm glad to see you,[Line][Hero]. Let me join you![Wait2]
+0
+I really could use some rest.[Line]I'm going back to your[Line]headquarters. See you soon![Wait2]
+Get away, you overgrown mutt![Line]I'm not stopping until I[Line]finish Balbazak![Wait2]
+Grrrrrr! Snarrrl.[Wait2]
+Arrrgghh! I've..got..to get[Line]through. Eat steel, you mutt.[Wait2]
+Now if I can ...just[Line]find...Balbazak...before I[Line]die....[Wait2]
+0
+0
+Before Darksol came, our land[Line]was known as Protectora. We[Line]were at peace then.[Wait2]
+0
+This is headquarters. Please[Line]make yourself at home![Wait2]
+Darksol is evil! He tricked[Line]King Ramladu into terrible[Line]wars.[Wait2]
+Darksol is gone! I hope he[Line]never returns![Wait2]
+Welcome! At last the war is[Line]over![Wait2]
+Mahato is waiting for you[Line]inside the castle. Please go[Line]see him.[Wait2]
+You are welcome here. With[Line]Darksol gone, we are at peace[Line]once more.[Wait2]
+That castle is like a haunted[Line]house. Monsters are all over[Line]the place.[Wait2]
+You've freed us from Darksol.[Line]Thank you![Wait2]
+0
+Darksol is gone! I'd feel[Line]better about it if I knew[Line]what he was up to.[Wait2]
+0
+0
+Mahato is waiting for you[Line]inside the castle.[Wait2]
+Mahato is waiting for you[Line]inside the castle.[Wait2]
+The knights have all gone[Line]away. I don't know where.[Wait2]
+Mahato is inside.[Wait2]
+Mahato is inside. I hope[Line]Darksol's monsters haven't[Line]hurt him![Wait2]
+0
+0
+I feel a strange aura. I fear[Line]that Dark Dragon is[Line]awakening![Wait2]
+Mahato once told me a legend.[Line]Would you like to hear it?
+Too bad! It's very[Line]interesting....[Wait2]
+Runefaust and Guardiana are[Line]twin cities built to protect[Line]the Castle of the Ancients.[Wait2]
+The gates prove it. Each city[Line]has one. Guardiana the west,[Line]and Runefaust the east.[Wait2]
+I am Mahato. There is no time[Line]to lose, [Hero]. Darksol[Line]has gone to the gate![Wait2][Line]You must follow him. Go back[Line]through town. The guards will[Line]let you through now.[Wait2][Line]King Ramladu will try to[Line]stop you, for he is Darksol's[Line]creature now![Wait2]
+Fight well! You are the only[Line]one who can defeat Ramladu![Wait2]
+[Hero]! You have[Line]defeated King Ramladu, but[Line]a far greater task awaits.[Wait2][Line]Darksol has sealed the Gate[Line]of the Ancients behind him,[Line]but there is another way....[Wait2]
+Use the Chaos Breaker at the[Line]westernmost point of the[Line]coast. There's a legend....[Wait2][Line]The Chaos Breaker can raise[Line]the Castle of the Ancients[Line]out of the depths of the sea.[Wait2][Line]The gate will then open.[Wait2]
+Shining Force! We no longer[Line]obey Darksol. Are you going[Line]to stop him?
+That's certainly the healthy[Line]choice.[Wait2]
+Go inside. Mahato awaits you[Line]with some information.[Wait2]
+You made it? You've fought[Line]through the castle? But keep[Line]going, for Darksol awaits![Wait2]
+No one gets through to[Line]Runefaust Castle. Mahato's[Line]orders.[Wait2]
+Mahato said to let you[Line]through. The castle is down[Line]this path.[Wait2]
+No one gets through to[Line]Runefaust Castle. Mahato's[Line]orders.[Wait2]
+Take great care. You're our[Line]only hope to be rid of[Line]Darksol.[Wait2]
+I am the ninja Hanzo. I shall[Line]join your battle.[Wait2][Line]I await you at[Line]headquarters.[Wait2]
+0
+0
+0
+We couldn't just leave all[Line]the children alone. A few of[Line]us stayed.[Wait2]
+0
+Bathing in the sun sure does[Line]feel good![Wait2]
+We kids can do anything. We[Line]even have a leader--Karin.[Wait2]
+I'm patrolling to watch for[Line]danger.[Wait2]
+Adults are bad! They just[Line]gave up on dragons![Wait2]
+Woof! Woof![Wait2]
+Hey, don't bother me! Can't[Line]you see that I'm busy?[Wait2]
+Cluck, cluck.[Wait2]
+We made a strong barricade in[Line]case the adults try to come[Line]back![Wait2]
+0
+No adults allowed! Go home![Wait2]
+Your shirt is dirty. You[Line]should wash it![Wait2]
+There used to be lots of[Line]Sacred Dragons, but now[Line]there's only one, Bleu.[Wait2]
+We decided to protect the[Line]Sacred Dragons by ourselves.[Line]We don't need any help![Wait2]
+Boo! Hiss! Down with adults.[Wait2]
+0
+I'm a merchant from Rindo....[Line]I can't do business here.[Line]Everyone here is a child.[Wait2]
+This is Rudo.[Wait2]
+0
+0
+0
+Bleu is a great Sacred[Line]Dragon. He cries because he's[Line]just a baby.[Wait2]
+0
+0
+The children just adore Bleu. That's[Line]why they're so concerned[Line]about the recent rumors.[Wait2]
+Talk to Karin, please![Wait2]
+Did you here about Bleu from[Line]Karin?
+Please help Bleu![Wait2]
+He's the last Sacred Dragon.[Line]Talk to Karin about him.[Wait2]
+0
+You're up! You were half[Line]dead when you got here. Glad[Line]you're feeling better.[Wait2][Line]Be sure to see Karin before[Line]you leave. You're in Rudo,[Line]by the way.[Wait2]
+Talk to Karin, please![Wait2]
+All the children of this[Line]village are friends of Bleu.[Wait2]
+You are going to Dragonia?[Line]Please help Bleu![Wait2]
+I am Karin. We need your[Line]help. To the east is the town[Line]of Dragonia.[Wait2][Line]The Runefaust army is near[Line]Dragonia. But Bleu is all[Line]alone in the village.[Wait2][Line]And he's our friend, a baby[Line]Sacred Dragon. Please help[Line]Dragonia and Bleu![Wait2]
+Did you see my sister Krin?[Line]Her pet is a little wild, so[Line]be careful![Wait2]
+Soon, the exit will be[Line]cleared out. Please go to[Line]Dragonia as fast as you can![Wait2]
+When you see Bleu, tell him[Line]to be a brave Sacred Dragon![Wait2]
+0
+Yip! Yip![Wait2]
+I'm Krin, Karin's sister! I[Line]know lots of stuff. I read[Line]all these old books![Wait2]
+This book has some great[Line]stuff in it. Should I tell[Line]you about it?
+Shucks. It's pretty good.[Wait2]
+The Manual of the Seal is[Line]a book that contains several[Line]chants.[Wait2][Line]One of these breaks the[Line]seal on Dark Dragon, another[Line]renews the seal.[Wait2][Line]The Ancients used the second[Line]chant to bind Dark Dragon[Line]1,000 years ago.[Wait2][Line]The manual has been guarded[Line]by the Sacred Dragons for[Line]centuries.[Wait2][Line]You must go to Dragonia to[Line]try to stop Darksol from[Line]taking the manual![Wait2][Line]Bleu cannot do it on his own![Wait2]
+Oh, you want to hear about it[Line]after all?
+Please let me know if you[Line]find the Manual of the Seal[Line]in Dragonia.[Wait2]
+Grrrr...![Wait2]
+Be quiet, Brit! He's a guest![Wait2]
+Who are you? Brit? Oh, he's[Line]my pet.[Wait2]
+Hi! Nice to see another[Line]stranger in town. By the way,[Line]are you [Hero]?
+I didn't think so. He's said[Line]to be heroic looking.[Wait2]
+Great! I'm Lyle and I've been[Line]looking for you. I'm joining[Line]up to fight evil![Wait2]
+0
+You won't regret it! I'll[Line]wait at headquarters.[Wait2]
+Heave, heave! Heave-ho![Wait2]
+I made a barricade to keep[Line]the adults out. But you can't[Line]get out until I open it up.[Wait2]
+Heave! Heave!...Ah![Wait2]
+What timing! I'm about to[Line]remove the last rocks![Wait2]
+Heave-ho! Heave-ho![Wait2]
+Heeaavee! Heeaavee![Wait2]
+Pretty strong, eh?[Wait2]
+0
+0
+0
+I see you met Bleu![Wait2]
+0
+It's so warm and peaceful, I[Line]feel like taking a snooze.[Wait2]
+Bleu may be brave, but he's[Line]still just a baby dragon![Wait2]
+You are the Shining Force,[Line]right? Cool![Wait2]
+Bleu's going with you, right?[Line]Please tell him, good luck![Wait2]
+Woof![Wait2]
+Thanks for helping Bleu. He[Line]needed a hero![Wait2]
+Cock-a-doodle-doo![Wait2]
+I sure hope the grownups come[Line]back soon![Wait2]
+0
+Sorry about being nasty[Line]earlier. You're OK.[Wait2]
+I had a dream about you last[Line]night. You were going into[Line]a castle shaped like a skull?[Wait2]
+Bleu's great, isn't he?[Wait2]
+My parents are coming back[Line]soon! I'm so excited![Wait2]
+Tell Bleu to return as soon[Line]as he can. We'll miss him![Wait2]
+Whew! Feels good![Wait2]
+Hey, welcome back,[Line][Hero]. Shop early[Line]and often!![Wait2]
+Welcome to Rudo.[Wait2]
+0
+0
+Thanks for saving Bleu. We're[Line]all proud of him.[Wait2]
+Yahoo for Bleu![Wait2]
+Woof![Wait2]
+0
+I just heard that the rest of[Line]the adults are coming back![Wait2]
+Have you seen Krin?
+She's very excited about[Line]something she found.[Wait2]
+Oh. Well, never mind then.[Wait2]
+Welcome back, [Hero]![Line]I told everyone about Bleu.[Line]Thank you so much![Wait2][Line]Krin said she found[Line]something in the old records.[Line]It sounded important.[Wait2]
+Have you seen Krin yet? She[Line]really wants to see you.[Wait2]
+I think you should go to[Line]Prompt first. It's south[Line]of here.[Wait2]
+But be careful! There are[Line]lots of monsters out there![Wait2]
+I checked the old records and[Line]read something interesting.[Line]Do you want to hear about it?
+C'mon, it's important![Wait2]
+Listen- "The Manual of the[Line]Seal holds the key to[Line]awakening Dark Dragon.[Wait2][Line]He must never awaken. The[Line]Sacred Dragon must keep the[Line]manual from evil hands."[Wait2][Line]Also, there's something here[Line]about a sword called[Line]the Chaos Breaker....[Wait2][Line]It says that when the sword[Line]is used at the westernmost[Line]point of the land....[Wait2][Line]The Castle of the Ancients[Line]will rise from the depths[Line]of the sea.[Wait2][Line]Whatever all that means![Wait2]
+Did you get the manual?
+So where is it?[Wait2]
+Darksol has it? Oh, my. This[Line]is bad, very bad! He can use[Line]it to awaken Dark Dragon![Wait2]
+I have no idea what to do....[Wait2]
+Wait! Don't leave yet. Karin[Line]wants to talk to you.[Wait2]
+Be careful out there. There[Line]are lots of weird creatures[Line]wandering around![Wait2]
+Wait! Don't leave yet. Karin[Line]wants to talk to you.[Wait2]
+Welcome to Prompt Castle![Wait2]
+This castle isn't much, but[Line]it's the only one we have![Wait2]
+Go up the stairs to see King[Line]Kusuko, ruler of Prompt.[Wait2]
+0
+Be quiet, please. Somebody's[Line]very sick in the castle.[Wait2]
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Cluck, cluck![Wait2]
+0
+Oh, I'm just resting. Nothing[Line]to see down here. Why don't[Line]you go upstairs?[Wait2]
+0
+0
+Welcome to Prompt Castle![Wait2]
+This castle isn't much, but[Line]it's all we have![Wait2]
+Go up the stairs to see King[Line]Kusuko, ruler of Prompt.[Wait2]
+I found Kane. I hope he gets[Line]well soon.[Wait2]
+Sorry. No time for idle[Line]chatter.[Wait2]
+The Manual of the Seal holds[Line]many secrets. The way to[Line]rouse Dark Dragon, of course.[Wait2][Line]But the way to renew the[Line]seal is also contained with[Line]the manual's pages.[Wait2][Line]Also, there is a robot that[Line]can be activated with the[Line]help of the manual.[Wait2]
+This is grandpa's room. He's[Line]pondering something difficult.[Line]You'd better not disturb him.[Wait2]
+Elders are waiting for you.[Line]Please listen to their words.[Wait2]
+Deep thought requires[Line]absolute silence. Please let[Line]me resume thinking.[Wait2]
+Our records say that the[Line]Ancients used flying machines[Line]to cross the sea in minutes![Wait2]
+Run along now, youngster. I'm[Line]doing vital research here.[Wait2]
+The Ancients had amazing[Line]powers. But Dark Dragon nearly[Line]destroyed them.[Wait2][Line]After a long struggle that[Line]ravaged all of Rune, Dark[Line]Dragon was defeated.[Wait2][Line]The Ancients placed him in[Line]their castle and sank it[Line]beneath the sea.[Wait2][Line]But what could we do against[Line]Dark Dragon if he got[Line]loose now?[Wait2]
+This is King Kusuko, ruler of[Line]Prompt. Be polite or we'll[Line]throw you into prison![Wait2]
+The king has something he[Line]wants to say to you.[Wait2]
+Do as the king asks. We must[Line]all wait for further reports[Line]from our troops.[Wait2]
+Please save Alef and Torasu![Wait2]
+All hail King Kusuko![Wait2]
+Talk to King Kusuko.[Wait2]
+All hail King Kusuko![Wait2]
+These stairs lead to the[Line]prison. Nothing to see down[Line]there now.[Wait2]
+King Kusuko imprisoned you[Line]because he cares about us.[Line]Please forgive him.[Wait2]
+Great equipment, huh? Don't[Line]ask what it does, I have no[Line]idea![Wait2]
+Can you save Alef and Torasu?[Wait2]
+Door? What door? Oh, that[Line]door! It's nothing. Forget[Line]all about it. Run along now.[Wait2]
+The Shining Path begins here[Line]and leads to Metapha. We need[Line]more time to repair it.[Wait2][Line]Come back later, please.[Wait2]
+What brings you to Prompt?[Line]Ancients? Dark Dragon? What[Line]is this nonsense?[Wait2][Line]You're a spy, aren't you,[Line]sent by our enemies to find[Line]our weaknesses. Answer me![Wait2]
+I thought so. We have a place[Line]for toads like you....[Wait2]
+You're lying! We know how to[Line]deal with spies![Wait2]
+Guard! Toss him in prison![Wait2]
+(The thick bars seem[Line]unbreakable.)[Wait2]
+OK, now I'm really lost. Hey,[Line][Hero]! What's up? Don't[Line]worry, I'll let you out![Wait2]
+[Hero], I think I'm going[Line]to stop wandering and settle[Line]down. Maybe in Waral. See ya![Wait2]
+King Kusuko! A message from[Line]those who left for the Tower[Line]of the Ancients![Wait2]
+Alef and Torasu say Darksol[Line]seems unbeatable. They cannot[Line]hold out for long![Wait2]
+You heard the report, I[Line]assume. The Tower of the[Line]Ancients is east of here.[Wait2][Line]When I heard Darksol was[Line]there, I sent troops to[Line]stop him.[Wait2][Line]He is trying to raise the[Line]Castle of the Ancients from[Line]beneath the sea.[Wait2][Line]He must be stopped before[Line]he awakens Dark Dragon.[Wait2][Line]Since my troops have failed,[Line]it's all up to you now,[Line][Hero].[Wait2]
+Rest for now, until all is[Line]ready for your journey.[Wait2]
+Sorry. No visitors until he[Line]recovers from his wounds.[Line]Poor guy, whoever he is.[Wait2]
+Sssh. He's resting.[Wait2]
+Please let us take care of[Line]Kane.[Wait2]
+ZZzzzzz[Wait2]
+His name is Kane. Someone[Line]found him seriously injured.[Wait2]
+When Kane recovers his[Line]strength, you two can talk.[Line]Just be patient![Wait2]
+P...please...King Kusuko,[Line]...let [Hero]...go to...the[Line]Tower of...the Ancients....[Wait2]
+Rest, Kane. There will be[Line]time to talk later.[Wait2]
+I...owe [Hero] a great[Line]deal...please...let him go....[Wait2]
+(Kane passes out.)[Wait2]
+Huh?[Wait2]
+I give in. [Hero]! You[Line]have my permission to enter[Line]the Tower of the Ancients![Wait2]
+Welcome to Prompt Castle![Wait2]
+This castle isn't much, but[Line]it's the only one we have![Wait2]
+King Kusuko is waiting.[Wait2]
+Dark Dragon is incredibly[Line]powerful. I don't see how you[Line]can beat it![Wait2]
+0
+The scholars have something[Line]to tell you.[Wait2]
+0
+0
+0
+0
+Welcome back, [Hero]![Wait2]
+Welcome back, [Hero]![Wait2]
+Kane insisted on leaving. I[Line]couldn't stop him![Wait2]
+0
+0
+Cluck, cluck, cluck![Wait2]
+0
+0
+Kane? He rushed out of the[Line]castle without saying a word.[Wait2]
+I'm so sorry. I didn't know[Line]that Kane was gone...I really[Line]didn't....[Wait2]
+There is a Pool of the[Line]Ancients in Metapha. Use the[Line]Orb of Light there.[Wait2]
+Go, [Hero]. You must[Line]stop Darksol! With the Chaos[Line]Breaker, you have a chance.[Wait2]
+An ancient legend says that a[Line]Sword of Light and a Sword of[Line]Darkness will unite.[Wait2][Line]This union will create a new[Line]sword to combat Darkness![Wait2]
+So the legends are true...the[Line]Chaos Breaker does exist![Line]Tell King Kusuko![Wait2]
+We are doomed, [Hero]![Line]Darksol is awakening[Line]Dark Dragon.[Wait2][Line]It cannot be stopped.[Wait2]
+No! Do not give up. All is[Line]not yet lost![Wait2]
+Who are you to barge into my[Line]throne room?[Wait2]
+I am Otrant of Manarina, King[Line]Kusuko. Have you heard of the[Line]Chaos Breaker?[Wait2]
+Yes, a sword spoken of in[Line]ancient legends....[Wait2]
+When ultimate evil arises, a[Line]Sword of both Light and[Line]Darkness can defeat the evil.[Wait2][Line][Hero] has the Sword of[Line]Light, and Kane had the Sword[Line]of Darkness....[Wait2]
+Kane left it with me.[Line][Hero], take both swords[Line]to Metapha.[Wait2][Line]Once there, you can create[Line]the Chaos Breaker. Here[Line]is the Sword of Darkness.[Wait2]
+Your hands are full! Organize[Line]your belongings and come back[Line]again.[Wait2]
+Kane left the Sword of[Line]Darkness for you. He said[Line]he thought you might need it.[Wait2]
+Now, leave for Metapha![Line]Create the Chaos Breaker and[Line]stop Darksol![Wait2]
+([Hero] receives the[Line]Sword of Darkness.)[Wait2]
+Long ago, [Hero], the[Line]Ancients founded the cities of[Line]Guardiana and Runefaust.[Wait2][Line]Though back then, Runefaust[Line]was called Protectora...[Line]...Where was I? Oh, yes.[Wait2][Line]Guardiana held the western[Line]Gate of the Ancients, while[Line]Protectora held the eastern.[Wait2][Line]Though Protectora has fallen[Line]into evil hands, the gate[Line]remains and still functions.[Wait2]
+Darksol entered the Castle of[Line]the Ancients through the[Line]eastern gate.[Wait2][Line]You must enter Runefaust and[Line]fight your way to the gate.[Line]Good luck, [Hero]![Wait2]
+Go to Metapha and get the Chaos Breaker![Wait2]
+At last, the Chaos Breaker![Wait2]
+You must go to Runefaust now.[Line]See Mahato there. He is[Line]honest and can help you.[Wait2]
+Please take good care of Alef[Line]and Torasu.[Wait2]
+Listen to Otrant. Dark Dragon[Line]must remain sealed or the[Line]world is doomed![Wait2]
+I'm sorry that Kane is dead.[Line]You must ensure that he[Line]didn't die in vain![Wait2]
+You must renew the seal on[Line]Dark Dragon, or he will[Line]ravage the world![Wait2]
+Thank you for saving Alef and[Line]Torasu![Wait2]
+An army has been spotted[Line]leaving Runefaust. It's headed[Line]our way![Wait2]
+The Shining Path is open at[Line]long last. Now you can leave[Line]for Metapha![Wait2]
+Welcome back, [Hero].[Line]King Kusuko is anxious[Line]to hear your story![Wait2]
+Go see King Kusuko![Wait2]
+The Shining Path is only open[Line]if you possess the Orb of[Line]Light. Carry it with you.[Wait2]
+Though the spirit of the pool[Line]is no more, her words still[Line]live in your heart.[Wait2]
+0
+Well, what a surprise! Rarely[Line]do we have guests in such a[Line]remote area.[Wait2][Line]I am a friar, though I may[Line]not look it.[Line]How can I help you?[Wait2]
+Strange things are in the[Line]woods. They give me the[Line]creeps.[Wait2]
+Greetings, [Hero]. I have[Line]been waiting for you.[Wait2]
+I am Gong. I have fought the[Line]evil of Runefaust for many[Line]years. I will aid you.[Wait2]
+I will join your troops.[Wait2]
+You again, [Hero]? How[Line]unfortunate for you![Wait2]
+Now I must be off to summon[Line]Dark Dragon. But don't worry.[Line]Someone is waiting for you.[Wait2]
+King Ramladu will serve my[Line]purposes one last time, then[Line]I will have no need for him![Wait2]
+I must be going. Do enjoy[Line]your meeting with Ramladu.[Line]Dark Dragon arises soon![Wait2]
+Keep going...Darksol...top of[Line]tower...hurry....[Wait2]
+We can't go on...you must[Line]stop Darksol....[Wait2]
+Don't...worry about us...get[Line]Darksol before...it's too[Line]late....[Wait2]
+Maybe you are...strong[Line]enough...to succeed where[Line]we...failed....[Wait2]
+Too late, [Hero]![Wait2]
+It has begun! The Castle of[Line]the Ancients is rising from[Line]the depths.[Wait2][Line]Soon I will awaken Dark[Line]Dragon and he will rule[Line]the world![Wait2]
+And now, the time to end your[Line]meddling is here![Wait2]
+I call upon the Darkness to[Line]crush this....No! It cannot[Line]be![Wait2]
+Kane![Wait2]
+Yes, Darksol. And this time I[Line]will stop you![Wait2]
+Fool! I am now many times[Line]mightier than when we last[Line]met. Your doom is here![Wait2]
+Arrrggghhh![Wait2]
+I have no more time to waste[Line]with you two. Dark Dragon[Line]awaits![Wait2]
+I'm dying...[Hero]...[Line]go to... Metapha...[Line]hurry![Wait2]
+(Kane dies!)[Wait2]
+[Hero], there is no time[Line]for sorrow. Alef and Torasu[Line]are with us. On to Metapha![Wait2]

@@ -365,7 +365,7 @@ off_12C200:     dc.w sub_12C21C-off_12C200
 ; =============== S U B R O U T I N E =======================================
 
 sub_12C208:
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 loc_12C20E:
 		move.w  d1,d0
 		lsl.w   #2,d0
@@ -378,7 +378,8 @@ loc_12C20E:
 ; =============== S U B R O U T I N E =======================================
 
 sub_12C21C:
-		movea.l (p_pt_MapSprites+8).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back table
 		bra.s   loc_12C20E
 
     ; End of function sub_12C21C
@@ -451,7 +452,8 @@ loc_12C27A:
 ; =============== S U B R O U T I N E =======================================
 
 sub_12C2B4:
-		movea.l (p_pt_MapSprites+4).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		bra.w   loc_12C20E
 
     ; End of function sub_12C2B4

@@ -32,11 +32,11 @@ ExecuteChurchMenu:
 		move.w  #400,d0         ; "Shall I make a record of your[Line]adventures thus far?"
 		bsr.w   DisplayMenuMessage
 		bsr.w   CheckYesNoPrompt
-		bne.w   loc_17086
+		bne.w   @SaveFile
 		move.w  #397,d0         ; "Remember that I'm always[Line]willing to record your deeds.[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_175A8
-loc_17086:
+@SaveFile:
 		movem.l d0-a6,-(sp)
 		move.b  #2,((CURRENT_MAP_ENTRANCE-$1000000)).w
 		jsr     (j_SaveGame).l
@@ -90,18 +90,20 @@ loc_17104:
 		bsr.w   DisplayMenuMessage
 		bsr.w   OpenGoldWindowInMenu
 		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_17162
+		bne.w   @CheckCost_CurePoison
 		move.w  #397,d0         ; "Remember that I'm always[Line]willing to record your deeds.[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_171B4
-loc_17162:
+@CheckCost_CurePoison:
+		
 		moveq   #CHURCH_CURE_POISON_COST,d0
 		bsr.w   CheckGold       
-		bne.w   loc_17178
+		bne.w   @ExecuteCurePoison
 		move.w  #410,d0         ; "Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_171B4
-loc_17178:
+@ExecuteCurePoison:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
@@ -150,18 +152,20 @@ loc_171DC:
 		bsr.w   DisplayMenuMessage
 		bsr.w   OpenGoldWindowInMenu
 		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_17238
+		bne.w   @CheckCost_CureCurse
 		move.w  #397,d0         ; "Remember that I'm always[Line]willing to record your deeds.[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_172DC
-loc_17238:
+@CheckCost_CureCurse:
+		
 		moveq   #CHURCH_CURE_CURSE_COST,d0
 		bsr.w   CheckGold       
-		bne.w   loc_1724E
+		bne.w   @RemoveCursedWeapon
 		move.w  #410,d0         ; "Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_172DC
-loc_1724E:
+@RemoveCursedWeapon:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
@@ -170,24 +174,26 @@ loc_1724E:
 		jsr     j_SetStatusEffects
 		move.w  #ITEMTYPE_MASK_WEAPON,d1
 		jsr     j_GetEquippedItem
-		bcs.s   loc_1728E
+		bcs.s   @RemoveCursedRing
 		move.w  d2,d1
 		jsr     j_GetItemType
 		btst    #ITEMTYPE_BIT_CURSED,d2
-		beq.s   loc_1728E
+		beq.s   @RemoveCursedRing
 		jsr     j_GetEntityItemsAddress
 		bclr    #ITEMENTRY_BIT_EQUIPPED,(a0,d3.w)
-loc_1728E:
+@RemoveCursedRing:
+		
 		move.w  #ITEMTYPE_MASK_RING,d1
 		jsr     j_GetEquippedItem
-		bcs.s   loc_172B4
+		bcs.s   @ExecuteCureCurse
 		move.w  d2,d1
 		jsr     j_GetItemType
 		btst    #ITEMTYPE_BIT_CURSED,d2
-		beq.s   loc_172B4
+		beq.s   @ExecuteCureCurse
 		jsr     j_GetEntityItemsAddress
 		bclr    #ITEMENTRY_BIT_EQUIPPED,(a0,d3.w)
-loc_172B4:
+@ExecuteCureCurse:
+		
 		jsr     j_ResetCombatants
 		moveq   #CHURCH_CURE_CURSE_COST,d1
 		jsr     j_DecreaseGold
@@ -237,9 +243,10 @@ loc_1731E:
 		lea     ((PROMOTED_AT_LEVELS-$1000000)).w,a0
 		moveq   #0,d7
 		tst.b   (a0,d0.w)
-		beq.w   loc_17362
+		beq.w   @CalculateCost_Raise
 		moveq   #CHURCH_BASE_PROMOTION_LEVEL,d7
-loc_17362:
+@CalculateCost_Raise:
+		
 		jsr     j_GetLevel
 		add.w   d7,d1
 		mulu.w  #CHURCH_RAISE_COST_PER_LEVEL,d1
@@ -257,11 +264,12 @@ loc_17396:
 		moveq   #0,d0
 		move.w  -4(a6),d0
 		bsr.w   CheckGold       
-		bne.w   loc_173B0
+		bne.w   @ExecuteRaise
 		move.w  #410,d0         ; "Sorry. I'm afraid I can't heal[Line][Name]. Union rules,[Line]you know.[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_173EC
-loc_173B0:
+@ExecuteRaise:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
@@ -336,11 +344,11 @@ loc_17490:
 		jsr     j_CreateMembersListScreen
 		cmpi.w  #-1,d0
 		movem.l (sp)+,d1-a6
-		bne.s   loc_174C2
+		bne.s   @CheckAlive
 		move.w  #419,d0         ; "Changed your mind?[Line]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_175A8
-loc_174C2:
+@CheckAlive:
 		andi.b  #FORCEMEMBERENTRY_MASK_INDEX,d0
 		move.b  d0,-$1C(a6)
 		jsr     j_GetCurrentHp
@@ -352,33 +360,35 @@ loc_174C2:
 		bra.w   loc_175A8
 loc_174E4:
 		tst.b   -$40(a6,d0.w)
-		bne.s   loc_1751C
+		bne.s   @ConfirmPromo
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
 		jsr     j_GetClass
 		cmpi.w  #BASE_CLASSES_END,d1
-		ble.s   loc_17510       
+		ble.s   @LevelTooLow    
 		move.w  d1,((MESSAGE_ARG_NAME_2-$1000000)).w
 		move.w  #425,d0         ; "Hmm...[Line]I think [Name] should[Line]stay as [Class].[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_175A8
-loc_17510:
+@LevelTooLow:
 		move.w  #420,d0         ; "Hmm...[Name] needs some more[Line]training. Come back[Line]later.[Wait2]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_175A8
-loc_1751C:
+@ConfirmPromo:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_1-$1000000)).w
 		move.w  #422,d0         ; "[Name] wants[Line]a promotion?"
 		bsr.w   DisplayMenuMessage
 		bsr.w   DisplayYesNoPromptInMenu
-		bne.w   loc_17542
+		bne.w   @ExecutePromo
 		move.w  #419,d0         ; "Changed your mind?[Line]"
 		bsr.w   DisplayMenuMessage
 		bra.w   loc_175A8
-loc_17542:
+@ExecutePromo:
+		
 		clr.w   d0
 		move.b  -$1C(a6),d0
 		move.w  d0,((MESSAGE_ARG_NAME_2-$1000000)).w
