@@ -26,20 +26,20 @@ PlayIntro:
 		move.l  #sub_1305B4,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
 		txt     82              ; "In ages long forgotten..."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		clearTxt
 		txt     83              ; "...Light fought Darkness for[Line]control of the world."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		clearTxt
 		txt     84              ; "Dark Dragon led the evil[Line]hordes of Darkness."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		closeTxt
 		move.w  #5,((word_FFB7C6-$1000000)).w
 		move.w  #$10,((CURRENT_OBJECT-$1000000)).w
-		move.w  #$19,d0
+		move.w  #25,d0
 		bsr.w   CheckSkipToTitleScreen
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToWhite).l
@@ -73,11 +73,11 @@ loc_1300C4:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
 		txt     85              ; "The Ancients fought back with[Line]the Powers of Light."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		clearTxt
 		txt     86              ; "Dark Dragon was defeated and[Line]cast into another dimension."
-		move.w  #$168,d0
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		closeTxt
 		jsr     (j_FadeOutToBlack).l
@@ -100,10 +100,10 @@ loc_1300C4:
 		move.l  #sub_13062A,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
 		txt     87              ; "The Lord of Darkness vowed to[Line]return in 1,000 years."
-		move.w  #$168,d0
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		closeTxt
-		move.w  #$19,d0
+		move.w  #25,d0
 		bsr.w   CheckSkipToTitleScreen
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeOutToWhite).l
@@ -141,11 +141,11 @@ loc_1301F4:
 		jsr     (j_EnableDisplayAndInterrupts).l
 		jsr     (j_FadeInFromBlack).l
 		txt     88              ; "Time passed, and Dark Dragon[Line]was forgotten by all."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		clearTxt
 		txt     89              ; "Ten centuries of peace ruled[Line]the land of Rune."
-		move.w  #$168,d0
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		closeTxt
 		jsr     (j_FadeOutToBlack).l
@@ -184,28 +184,28 @@ loc_1301F4:
 		move.l  #sub_130694,(VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		jsr     (j_FadeInFromBlack).l
 		txt     90              ; "Until the kingdom of Runefaust[Line]brought war and fear to Rune."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		clearTxt
 		txt     91              ; "Hordes of evil creatures[Line]ravaged every land."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		clearTxt
 		txt     92              ; "Here and there, strongholds[Line]of Good still held out..."
-		move.w  #$B4,d0 
+		move.w  #180,d0
 		bsr.w   CheckSkipToTitleScreen
 		clearTxt
 		txt     93              ; "...awaiting a Hero who could[Line]wield the Powers of Light!"
-		move.w  #$168,d0
+		move.w  #360,d0
 		bsr.w   CheckSkipToTitleScreen
 		closeTxt
 		clr.l   (VINT_CONTEXTUAL_FUNCTION_ADDRESS).l
 		sndCom  SOUND_COMMAND_FADE_OUT
 		jsr     (j_FadeOutToBlack).l
-		move.w  #$3C,d0 
+		move.w  #60,d0
 		bsr.w   CheckSkipToTitleScreen
 		sndCom  MUSIC_TITLE
-		move.w  #$5A,d0 
+		move.w  #90,d0
 		bsr.w   CheckSkipToTitleScreen
 		move.w  #$280,((CURRENT_OBJECT-$1000000)).w
 TitleScreen:

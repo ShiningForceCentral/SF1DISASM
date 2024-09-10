@@ -34,4 +34,5 @@ table_PromotedPortraits:
 		dc.b PORTRAIT_HANZOU
 		dc.b PORTRAIT_JOGURT
 		dc.b PORTRAIT_VARIOS
-		dc.b PORTRAIT_NONE
+                
+		align

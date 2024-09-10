@@ -406,7 +406,7 @@ loc_24A66:
 		andi.w  #GROWTH_MASK_CURVE_INDEX,d2
 						; find growth curve
 		asr.w   #5,d2
-		movea.l (p_GrowthCurves).l,a0
+		movea.l (p_rpt_GrowthCurves).l,a0
 		move.w  (a0,d2.w),d2    ; D2 = offset to curve entry
 		lea     (a0,d2.w),a0    ; A0 = curve entry address
 		moveq   #1,d2           ; find break point in curve

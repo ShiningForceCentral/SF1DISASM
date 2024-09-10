@@ -215,7 +215,7 @@ off_6916:       dc.w sub_6932-off_6916
 ; =============== S U B R O U T I N E =======================================
 
 sub_691E:
-		movea.l (p_pt_MapSprites).l,a0
+		movea.l (p_pt_Mapsprites_Front).l,a0
 loc_6924:
 		move.w  d1,d0
 		lsl.w   #2,d0
@@ -228,7 +228,8 @@ loc_6924:
 ; =============== S U B R O U T I N E =======================================
 
 sub_6932:
-		movea.l (p_pt_MapSprites+8).l,a0; mapsprite_Back table
+		movea.l (p_pt_Mapsprites_Back).l,a0
+						; mapsprite_Back table
 		bra.s   loc_6924
 
     ; End of function sub_6932
@@ -301,7 +302,8 @@ loc_6990:
 ; =============== S U B R O U T I N E =======================================
 
 sub_69CA:
-		movea.l (p_pt_MapSprites+4).l,a0; mapsprite_Side table
+		movea.l (p_pt_Mapsprites_Side).l,a0
+						; mapsprite_Side table
 		bra.w   loc_6924
 
     ; End of function sub_69CA
