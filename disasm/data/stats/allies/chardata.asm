@@ -2,7 +2,7 @@
 ; ASM FILE data\stats\allies\chardata.asm :
 ; 0x25154..0x25604 : Initial character data
 
-InitialForceData:
+table_InitialForceData:
         allyName   "Max"
         allyClass  SDMN
         startLevel 1
@@ -17,9 +17,9 @@ InitialForceData:
         status     NONE
         items &
             MIDDLE_SWORD|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -40,9 +40,9 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -63,9 +63,9 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -86,9 +86,9 @@ InitialForceData:
         status     NONE
         items &
             SPEAR|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -109,9 +109,9 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -132,9 +132,9 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -155,9 +155,9 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -178,9 +178,9 @@ InitialForceData:
         status     NONE
         items &
             HAND_AXE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -201,9 +201,9 @@ InitialForceData:
         status     NONE
         items &
             SHORT_SWORD|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -224,9 +224,9 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -247,9 +247,9 @@ InitialForceData:
         status     NONE
         items &
             POWER_STAFF|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -270,9 +270,9 @@ InitialForceData:
         status     NONE
         items &
             POWER_STAFF|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -293,9 +293,9 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_STAFF|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -315,10 +315,10 @@ InitialForceData:
         startMP    15
         status     NONE
         items &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -339,9 +339,9 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_STAFF|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -362,9 +362,9 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_STAFF|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -385,9 +385,9 @@ InitialForceData:
         status     NONE
         items &
             POWER_STAFF|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -407,10 +407,10 @@ InitialForceData:
         startMP    8
         status     NONE
         items &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -431,9 +431,9 @@ InitialForceData:
         status     NONE
         items &
             STEEL_ARROW|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -454,9 +454,9 @@ InitialForceData:
         status     NONE
         items &
             WOODEN_ARROW|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -477,9 +477,9 @@ InitialForceData:
         status     NONE
         items &
             ELVEN_ARROW|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -500,9 +500,9 @@ InitialForceData:
         status     NONE
         items &
             MIDDLE_SWORD|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -523,9 +523,9 @@ InitialForceData:
         status     NONE
         items &
             MIDDLE_SWORD|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -546,9 +546,9 @@ InitialForceData:
         status     NONE
         items &
             BRONZE_LANCE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -568,10 +568,10 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -591,10 +591,10 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -614,10 +614,10 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -638,9 +638,9 @@ InitialForceData:
         status     NONE
         items &
             KATANA|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -661,9 +661,9 @@ InitialForceData:
         status     NONE
         items &
             DOOM_BLADE|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
@@ -683,10 +683,10 @@ InitialForceData:
         startMP    0
         status     NONE
         items &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED, &
-            NOTHING_ITEM|BROKEN|EQUIPPED
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED, &
+            NOTHING|BROKEN|EQUIPPED
         spells &
             NOTHING|LV_4, &
             NOTHING|LV_4, &
