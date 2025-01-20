@@ -2489,7 +2489,7 @@ ApplyClassToTargetPriority:
 		include "code\common\stats\levelup.asm"		; Level up functions
 		include "code\common\stats\statsfunctions.asm"		; Stats functions
 		include "code\gameflow\battle\battlefunctions.asm"		; Battle functions
-		include "data\stats\allies\characterdata.asm"		; Initial character data
+		include "data\stats\allies\chardata.asm"			; Initial character data
 		include "data\stats\allies\battlespritedata.asm"		; Ally battlesprites table
 		include "data\stats\items\itemnames.asm"		; Item names
 		include "data\stats\items\itemdata.asm"		; Item definitions
