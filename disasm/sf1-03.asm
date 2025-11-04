@@ -3016,27 +3016,27 @@ loc_11994:
 		andi.b  #$F,(byte_FFF80B).l
 		tst.b   (a0)+
 		tst.l   (a0)+
-		move.b  (byte_FFF807).l,d0
-		lea     MapDialogs(pc), a0
+		move.b  (byte_FFF807).l,d0						; Set d0 to the map to be loaded
+		lea     SpriteSetsByMap(pc), a0
 		clr.w   d1
-loc_119EC:
+SpriteSetAssignmentLoop:
 		tst.b   (a0,d1.w)
-		bmi.s   loc_119FC
+		bmi.s   SpriteSetAssignmentTableExhausted		; We've hit the end of the table if (a0,d1.w) is negative - get no sprite set and return
 		cmp.b   (a0,d1.w),d0
-		beq.s   loc_11A10
+		beq.s   SpriteSetAssignmentTableFound			; If (a0,d1.w) == d0 (map to be loaded), we've found our assignment
 		addq.b  #2,d1
-		bra.s   loc_119EC
-loc_119FC:
+		bra.s   SpriteSetAssignmentLoop
+SpriteSetAssignmentTableExhausted:
 		move.l  #$FFFFFFFF,(MAP_SPRITE_DATA_POINTER).l
 		move.b  #$FF,(DIALOG_INDEX).l
 		rts
-loc_11A10:
-		move.b  1(a0,d1.w),d0
-		bsr.s   sub_11A30
-		move.b  d0,(DIALOG_INDEX).l
+SpriteSetAssignmentTableFound:
+		move.b  1(a0,d1.w),d0							; Set d0 to the sprite set to be loaded
+		bsr.s   CheckSpriteSetConditions
+		move.b  d0,(DIALOG_INDEX).l						; Set DIALOG_INDEX to the sprite set to be loaded
 		ext.w   d0
 		lsl.w   #2,d0
-		movea.l (p_pt_SpriteSets).l,a0
+		movea.l (p_pt_SpriteSets).l,a0					; Get actual sprite set data
 		move.l  (a0,d0.w),(MAP_SPRITE_DATA_POINTER).l
 		rts
 
@@ -3045,86 +3045,86 @@ loc_11A10:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_11A30:
-		cmpi.b  #3,d0
-		bne.s   loc_11A62
+CheckSpriteSetConditions:
+		cmpi.b  #3,d0					; Check for sprite set $03, Guardiana
+		bne.s   CheckSpriteSet_00
 		btst    #0,(byte_FF9C56).l
 		bne.s   loc_11A46
-		move.b  #$2D,d0 
+		move.b  #$2D,d0 				; Load sprite set $2D, Varios and Lowe opening
 		rts
 loc_11A46:
 		move.b  (byte_FF9C5B).l,d0
 		andi.b  #$C,d0
 		cmpi.b  #4,d0
-		beq.s   loc_11A5C
-		move.b  #3,d0
+		beq.s   UseSpriteSet_32
+		move.b  #3,d0					; Load sprite set $03, normal Guardiana
 		rts
-loc_11A5C:
-		move.b  #$32,d0 
+UseSpriteSet_32:
+		move.b  #$32,d0 				; Load sprite set $32, Guardiana party recruitment
 		rts
-loc_11A62:
-		cmpi.b  #0,d0
-		bne.s   loc_11A76
+CheckSpriteSet_00:
+		cmpi.b  #0,d0					; Check for sprite set $00, Guardiana Castle
+		bne.s   CheckSpriteSet_06
 		tst.b   (byte_FF9C5A).l
 		bpl.s   return_11A74
-		move.b  #$2F,d0 
+		move.b  #$2F,d0 				; Load sprite set $2F, Kane killing the king and Varios
 return_11A74:
 		rts
-loc_11A76:
-		cmpi.b  #6,d0
-		bne.s   loc_11A8E
+CheckSpriteSet_06:
+		cmpi.b  #6,d0					; Check for sprite set $06, Alterone Castle
+		bne.s   CheckSpriteSet_2E
 		btst    #6,(byte_FF9C5A).l
-		beq.w   return_11B12
-		move.b  #$30,d0 
+		beq.w   return_SpriteSetUnchanged
+		move.b  #$30,d0 				; Load sprite set $30, Alterone Castle post-battle
 		rts
-loc_11A8E:
-		cmpi.b  #$2E,d0 
-		bne.s   loc_11AA4
+CheckSpriteSet_2E:
+		cmpi.b  #$2E,d0 				; Check for sprite set $2E, Destroyed Guardiana
+		bne.s   CheckSpriteSet_05
 		btst    #1,(byte_FF9C59).l
-		beq.s   return_11B12
-		move.b  #4,d0
+		beq.s   return_SpriteSetUnchanged
+		move.b  #4,d0					; Load sprite set $04, Alternate destroyed Guardiana
 		rts
-loc_11AA4:
-		cmpi.b  #5,d0
-		bne.s   loc_11ABA
+CheckSpriteSet_05:
+		cmpi.b  #5,d0					; Check for sprite set $05, Alterone
+		bne.s   CheckSpriteSet_09
 		btst    #1,(byte_FF9C59).l
-		bne.s   return_11B12
-		move.b  #$31,d0 
+		bne.s   return_SpriteSetUnchanged
+		move.b  #$31,d0 				; Load sprite set $31, Guards preventing entrance to Alterone
 		rts
-loc_11ABA:
-		cmpi.b  #9,d0
-		bne.s   loc_11AD0
+CheckSpriteSet_09:
+		cmpi.b  #9,d0					; Check for sprite set $09, Shade Abbey
+		bne.s   CheckSpriteSet_08
 		btst    #4,(byte_FF9C5A).l
-		beq.s   return_11B12
-		move.b  #$33,d0 
+		beq.s   return_SpriteSetUnchanged
+		move.b  #$33,d0 				; Load sprite set $33, Shade Abbey post-battle
 		rts
-loc_11AD0:
-		cmpi.b  #8,d0
-		bne.s   loc_11AE6
+CheckSpriteSet_08:
+		cmpi.b  #8,d0					; Check for sprite set $08, Bustoke
+		bne.s   CheckSpriteSet_0A
 		btst    #3,(byte_FF9C5A).l
-		beq.s   return_11B12
-		move.b  #$34,d0 
+		beq.s   return_SpriteSetUnchanged
+		move.b  #$34,d0 				; Load sprite set $34, Bustoke post-battle
 		rts
-loc_11AE6:
-		cmpi.b  #$A,d0
-		bne.s   loc_11AFC
+CheckSpriteSet_0A:
+		cmpi.b  #$A,d0					; Check for sprite set $0A, Pao 1
+		bne.s   CheckSpriteSet_18
 		btst    #2,(byte_FF9C59).l
-		beq.s   return_11B12
-		move.b  #$2C,d0 
+		beq.s   return_SpriteSetUnchanged
+		move.b  #$2C,d0 				; Load sprite set $2C, Vankar, Kokichi, and a priest
 		rts
-loc_11AFC:
-		cmpi.b  #$18,d0
-		bne.s   return_11B12
+CheckSpriteSet_18:
+		cmpi.b  #$18,d0					; Check for sprite set $18, Rudo
+		bne.s   return_SpriteSetUnchanged
 		btst    #7,(byte_FF9C56).l
-		beq.s   return_11B12
-		move.b  #$35,d0 
+		beq.s   return_SpriteSetUnchanged
+		move.b  #$35,d0 				; Load sprite set $35, Alternate Rudo
 		rts
-return_11B12:
+return_SpriteSetUnchanged:
 		rts
 
-    ; End of function sub_11A30
+    ; End of function CheckSpriteSetConditions
 
-MapDialogs:     dc.b MAP_GUARDIANA_CASTLE
+SpriteSetsByMap:     dc.b MAP_GUARDIANA_CASTLE
 		dc.b 0
 		dc.b MAP_DEMON_CASTLE
 		dc.b 33
@@ -12526,12 +12526,12 @@ sub_17CCA:
 		lea     sub_17E6E(pc), a5
 		moveq   #0,d0
 		move.b  ((DIALOG_INDEX-$1000000)).w,d0
-		moveq   #$22,d7 
+		moveq   #$22,d7 						; $22 -> d7 (34, maximum number of indexes)
 		subq.l  #4,a0
-loc_17D06:
+FindDialogLoop:
 		addq.l  #4,a0
-		cmp.w   (a0)+,d0
-		dbeq    d7,loc_17D06
+		cmp.w   (a0)+,d0						; Compare (a0)+ to d0 to determine if it is the sprite set currently loaded
+		dbeq    d7,FindDialogLoop				; Loop, up to d7 times
                 
 		cmpi.b  #$FD,d1
 		beq.s   loc_17D2E
@@ -12545,8 +12545,8 @@ loc_17D06:
 		move.b  d3,d0
 		bsr.w   sub_17F64       
 loc_17D2E:
-		move.w  (a0)+,d0
-		move.w  (a0),d6
+		move.w  (a0)+,d0						; Put (a0)+ [offset of dialogue tree] into d0
+		move.w  (a0),d6							; Put (a0) [last two bits of assignment] into d6 (not yet sure what this is used for)
 		cmpi.b  #$FC,d1
 		bne.s   loc_17D3E
 		bsr.w   sub_180AC
