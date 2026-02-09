@@ -1141,20 +1141,22 @@ sub_4706:
 		move.b  ((CURRENT_MAP_ENTRANCE-$1000000)).w,d0
 		clr.b   ((CURRENT_MAP_ENTRANCE-$1000000)).w
 		add.w   d0,d0
-		move.w  sub_471A(pc,d0.w),d0
-		jmp     sub_471A(pc,d0.w)
+		move.w  off_471A(pc,d0.w),d0
+		jmp     off_471A(pc,d0.w)
 
     ; End of function sub_4706
 
+off_471A:
+		dc.w sub_471E-off_471A
+		dc.w sub_4726-off_471A
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_471A:
-		ori.b   #$C,d4
+sub_471E:
 		move.b  #4,((CURRENT_REGION-$1000000)).w
 		rts
 
-    ; End of function sub_471A
+    ; End of function sub_471E
 
 
 ; =============== S U B R O U T I N E =======================================
