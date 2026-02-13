@@ -613,26 +613,26 @@ j_InitSprites:
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_314:
-		bra.w   sub_157C
+j_lengthTimesSine:
+		bra.w   lengthTimesSine
 
-    ; End of function sub_314
-
-
-; =============== S U B R O U T I N E =======================================
-
-sub_318:
-		bra.w   sub_1794
-
-    ; End of function sub_318
+    ; End of function j_lengthTimesSine
 
 
 ; =============== S U B R O U T I N E =======================================
 
-sub_31C:
-		bra.w   sub_17C0
+j_squareRoot:
+		bra.w   squareRoot
 
-    ; End of function sub_31C
+    ; End of function j_squareRoot
+
+
+; =============== S U B R O U T I N E =======================================
+
+j_calculateAngleFromXAndY:
+		bra.w   calculateAngleFromXAndY
+
+    ; End of function j_calculateAngleFromXAndY
 
 
 ; =============== S U B R O U T I N E =======================================

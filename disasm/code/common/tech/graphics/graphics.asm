@@ -27,20 +27,31 @@ InitSprites:
 
 
 ; =============== S U B R O U T I N E =======================================
+; Calculates the length of a line scaled by the sine of an angle
+;
+; In:
+; D6 = Length of a line
+; D7 = Angle in 1/256th of a rotation
+;
+; Out:
+; D7 = Length * sin(theta)
 
-sub_157C:
-		movem.l d1,-(sp)
-		andi.w  #$FF,d7
-		add.w   d7,d7
-		move.w  word_1594(pc,d7.w),d7
-		muls.w  d6,d7
-		asr.w   #7,d7
+lengthTimesSine:
+		movem.l d1,-(sp)						; Push unused register to sp
+		andi.w  #$FF,d7							; Clear byte above theta
+		add.w   d7,d7							; Double theta for lookup offset
+		move.w  table_sineLookup(pc,d7.w),d7	; Lookup sine value
+		muls.w  d6,d7							; Multiply length by sine (7 bits fixed-point)
+		asr.w   #7,d7							; Shift out fractional values (round down)
 		movem.l (sp)+,d1
 		rts
 
-    ; End of function sub_157C
+    ; End of function lengthTimesSine
 
-word_1594:      dc.w 0
+; Sine lookup table
+
+table_sineLookup:
+		dc.w 0
 		dc.w 3
 		dc.w 6
 		dc.w 9
@@ -298,78 +309,96 @@ word_1594:      dc.w 0
 		dc.w $FFFD
 
 ; =============== S U B R O U T I N E =======================================
+; Calculates a square root using the Babylonian method
+;
+; In:
+; D6 = Number to square root
+;
+; Out:
+; D7 = Approximate square root
 
-sub_1794:
+squareRoot:
 		movem.l d0-d2,-(sp)
-		ext.l   d6
-		move.w  d6,d0
-		moveq   #$13,d2
-		lsr.w   #1,d0
-		move.w  d0,d7
-loc_17A2:
-		move.w  d7,d1
-		mulu.w  d1,d1
-		lsr.w   #1,d0
-		cmp.l   d1,d6
-		beq.w   loc_17BA
-		blt.s   loc_17B4
-		add.w   d0,d7
-		bra.s   loc_17B6
-loc_17B4:
-		sub.w   d0,d7
-loc_17B6:
-		dbf     d2,loc_17A2
-loc_17BA:
+		ext.l   d6						; Sign extend D6.w to long
+		move.w  d6,d0					; Copy input number to D0
+		moveq   #$13,d2					; Set D2 = max iterations - 1 (20 max)
+		lsr.w   #1,d0					; D0 / 2
+		move.w  d0,d7					; D7 (current guess) = input / 2
+@Loop:
+		move.w  d7,d1					; D1 = current guess
+		mulu.w  d1,d1					; Square D1
+		lsr.w   #1,d0					; D0 / 2
+		cmp.l   d1,d6					; Is D1^2 = D6
+		beq.w   @Return					; Yes -> Done
+		blt.s   @TooBig					; Guess is too big -> TooBig
+		add.w   d0,d7					; Add D0 to D7
+		bra.s   @ContLoop				; Finish this iteration
+@TooBig:
+		sub.w   d0,d7					; Subtract D0 from D7
+@ContLoop:
+		dbf     d2,@Loop				; Decrement D2 and loop again if D2 > -1
+@Return:
 		movem.l (sp)+,d0-d2
 		rts
 
-    ; End of function sub_1794
+    ; End of function squareRoot
 
 
 ; =============== S U B R O U T I N E =======================================
+; Calculates an angle from the given coordinate
+;
+; In:
+; D6 = x value of the point (a)
+; D7 = y value of the point (b)
+;
+; Out:
+; D7 = Rotational angle of the given point
 
-sub_17C0:
+calculateAngleFromXAndY:
 		movem.l d0-d2,-(sp)
-		move.w  d6,d0
-		move.w  d7,d1
-		muls.w  d6,d6
-		muls.w  d7,d7
-		add.w   d7,d6
-		bsr.s   sub_1794
-		move.w  d7,d6
-		move.w  d1,d7
-		bge.s   loc_17D8
-		neg.w   d7
-loc_17D8:
-		lsl.w   #6,d7
-		divs.w  d6,d7
-		move.b  byte_1814(pc,d7.w),d7
-		andi.w  #$FF,d7
-		movem.l d0,-(sp)
-		muls.w  d1,d0
-		movem.l (sp)+,d0
-		blt.s   loc_1800
+		move.w  d6,d0								; Store D6 in D0
+		move.w  d7,d1								; Store D7 in D1
+		muls.w  d6,d6								; Square D6 (a^2)
+		muls.w  d7,d7								; Square D7 (b^2)
+		add.w   d7,d6								; Add D7 to D6 (a^2 + b^2)
+		bsr.s   squareRoot							; D7 = hypotenuse (c)
+		move.w  d7,d6								; D6 = D7
+		move.w  d1,d7								; Restore D7
+		bge.s   @SkipNegate							; If b >= 0, skip next instruction
+		neg.w   d7									; D7 = |b|
+@SkipNegate:
+		lsl.w   #6,d7								; Shift in 6 bits for fixed-point math
+		divs.w  d6,d7								; Divide D7 by D6
+		move.b  table_arcsineLookup(pc,d7.w),d7		; D7 = asin(b / a)
+		andi.w  #$FF,d7								; Mask D7 to bottom 8 bits
+		movem.l d0,-(sp)							; Push D0 (a) to sp
+		muls.w  d1,d0								; Multiply D0 by D1 (a * b)
+		movem.l (sp)+,d0							; Pull D0 from stack (a)
+		blt.s   @OneNeg								; If (a * b) < 0 -> OneNegative
 		tst.w   d1
-		bge.s   loc_17FA
-		addi.w  #$40,d7 
-		bra.s   loc_17FE
-loc_17FA:
-		addi.w  #$C0,d7 
-loc_17FE:
-		bra.s   loc_180E
-loc_1800:
-		subi.w  #$40,d7 
-		neg.w   d7
+		bge.s   @NotNeg								; If D1 not negative -> NotNeg
+		addi.w  #$40,d7 							; Add a quarter rotation to D7
+		bra.s   @Done								; Done -> End
+@NotNeg:
+		addi.w  #$C0,d7 							; Add 3/4 rotation to D7
+@Done:
+		bra.s   @Return								; End
+@OneNeg:
+		subi.w  #$40,d7 							; Subtract a quarter rotation from D7
+		neg.w   d7									; Negate D7
 		tst.w   d1
-		bge.s   loc_180E
-		addi.w  #$80,d7 
-loc_180E:
+		bge.s   @Return								; If D1 not negative -> End
+		addi.w  #$80,d7 							; Add a half rotation to D7
+@Return:
 		movem.l (sp)+,d0-d2
 		rts
 
-    ; End of function sub_17C0
+    ; End of function calculateAngleFromXAndY
 
-byte_1814:      dc.b 0
+; Arcsine lookup table
+
+table_arcsineLookup:								; In 1/256th of a rotation
+		dc.b 0
 		dc.b 1
 		dc.b 1
 		dc.b 2
@@ -433,7 +462,7 @@ byte_1814:      dc.b 0
 		dc.b $35
 		dc.b $37
 		dc.b $3B
-		dc.b $40
+		dc.b $40									; 1/4 of a rotation (90 degrees)
 		dc.b 0
 
 ; =============== S U B R O U T I N E =======================================

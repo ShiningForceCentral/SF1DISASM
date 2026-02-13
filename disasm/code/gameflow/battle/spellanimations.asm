@@ -2861,7 +2861,7 @@ loc_127CB8:
 		clr.w   d2
 		move.w  (a0),d6
 		move.w  SPELLENTITY_OFFSET_Y(a0),d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #$48,d7 
 		move.w  d7,d3
 		move.w  (a0),d7
@@ -2870,7 +2870,7 @@ loc_127CB8:
 		move.w  SPELLENTITY_OFFSET_Y(a0),d7
 		lsr.w   #2,d6
 		subi.w  #$40,d7 
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #$80,d7 
 		move.w  d7,d4
 		move.w  (a0),d7
@@ -3066,13 +3066,13 @@ loc_127E82:
 		lsr.w   #2,d3
 		move.w  d7,-(sp)
 		lsr.w   #1,d6
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #$80,d7 
 		sub.w   d3,d7
 		move.w  d7,d3
 		move.w  (sp)+,d7
 		subi.w  #$40,d7 
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #$70,d7 
 		move.w  d7,d4
 		subi.w  #$C,SPELLENTITY_OFFSET_Y(a0)
@@ -3197,14 +3197,14 @@ loc_127FD4:
 		add.w   d4,d3
 		lsr.w   #2,d3
 		move.w  d7,-(sp)
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #$80,d7 
 		sub.w   d3,d7
 		move.w  d7,d3
 		move.w  (sp)+,d7
 		lsr.w   #1,d6
 		subi.w  #$40,d7 
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #$70,d7 
 		move.w  d7,d4
 		subq.w  #8,SPELLENTITY_OFFSET_Y(a0)
@@ -3359,13 +3359,13 @@ spellanimationUpdate_Desoul:
 		move.w  #$80,d3 
 		move.w  (a0),d6
 		move.w  SPELLENTITY_OFFSET_Y(a0),d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		add.w   d7,d3
 		move.w  #$60,d4 
 		lsr.w   #2,d6
 		move.w  SPELLENTITY_OFFSET_Y(a0),d7
 		subi.w  #$40,d7 
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		add.w   d7,d4
 		move.w  SPELLENTITY_OFFSET_Y(a0),d7
 		lsr.w   #6,d7
@@ -3589,14 +3589,14 @@ loc_12840C:
 sub_128424:
 		move.w  #120,d6
 		move.w  SPELLENTITY_OFFSET_FRAME(a0),d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #96,d7
 		move.w  d7,d3
 		move.w  d3,(a0)
 		move.w  SPELLENTITY_OFFSET_FRAME(a0),d7
 		lsr.w   #2,d6
 		subi.w  #72,d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #64,d7
 		move.w  d7,d4
 		move.w  d4,SPELLENTITY_OFFSET_Y(a0)
@@ -3623,14 +3623,14 @@ return_12847A:
 sub_12847C:
 		move.w  #60,d6
 		move.w  SPELLENTITY_OFFSET_FRAME(a0),d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #156,d7
 		move.w  d7,d3
 		move.w  d3,(a0)
 		move.w  SPELLENTITY_OFFSET_FRAME(a0),d7
 		lsr.w   #2,d6
 		subi.w  #72,d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #64,d7
 		move.w  d7,d4
 		move.w  d4,SPELLENTITY_OFFSET_Y(a0)
@@ -3659,14 +3659,14 @@ loc_1284D8:
 sub_1284E0:
 		move.w  #120,d6
 		move.w  SPELLENTITY_OFFSET_FRAME(a0),d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #216,d7
 		move.w  d7,d3
 		move.w  d3,(a0)
 		move.w  SPELLENTITY_OFFSET_FRAME(a0),d7
 		lsr.w   #2,d6
 		subi.w  #72,d7
-		jsr     (sub_314).l
+		jsr     (j_lengthTimesSine).l
 		addi.w  #64,d7
 		move.w  d7,d4
 		move.w  d4,SPELLENTITY_OFFSET_Y(a0)
