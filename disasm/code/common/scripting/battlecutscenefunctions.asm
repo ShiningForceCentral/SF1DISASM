@@ -115,86 +115,103 @@ WasEntityKilledByLastAttack:
 
 
 ; =============== S U B R O U T I N E =======================================
+; Flickers the selected sprite qucikly at first, slowing down over time
+; Only used to make Darksol reappear on Dark Dragon's body in cutscene
+; after battle 28
+;
+; In:
+; D0	The index of the sprite to flicker
 
-sub_12BFF0:
+flickerSprite_Reappear:
 		move.w  d0,d7
 		lsl.w   #3,d7
 		lea     (SPRITE_22_PROPERTIES).l,a0
 		adda.w  d7,a0
-		moveq   #1,d1
-		moveq   #1,d2
-		moveq   #$1D,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #3,d2
-		moveq   #9,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #5,d2
-		moveq   #4,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #9,d2
-		moveq   #2,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #$13,d2
-		moveq   #2,d7
-		bsr.w   sub_12C080
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #1,d2							; Flicker on 1 frame
+		moveq   #$1D,d7							; Repeat 30 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #3,d2							; Flicker on 3 frames
+		moveq   #9,d7							; Repeat 10 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #5,d2							; Flicker on 5 frames
+		moveq   #4,d7							; Repeat 5 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #9,d2							; Flicker on 9 frames
+		moveq   #2,d7							; Repeat 3 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #$13,d2							; Flicker on 19 frames
+		moveq   #2,d7							; Repeat 3 times
+		bsr.w   flickerSprite
 		moveq   #30,d0
 		jmp     (j_Sleep).l
 
-    ; End of function sub_12BFF0
+    ; End of function flickerSprite_Reappear
 
 
 ; =============== S U B R O U T I N E =======================================
+; Flickers the selected sprite slowly at first, speeding up over time
+;
+; In:
+; D0	The index of the sprite to flicker
 
-sub_12C036:
+flickerSprite_Disappear:
 		move.w  d0,d7
 		lsl.w   #3,d7
 		lea     (SPRITE_22_PROPERTIES).l,a0
 		adda.w  d7,a0
-		moveq   #1,d1
-		moveq   #$13,d2
-		moveq   #2,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #9,d2
-		moveq   #2,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #5,d2
-		moveq   #4,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #3,d2
-		moveq   #9,d7
-		bsr.w   sub_12C080
-		moveq   #1,d1
-		moveq   #1,d2
-		moveq   #$1D,d7
-		bsr.w   sub_12C080
-		eori.w  #$100,(a0)
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #$13,d2							; Flicker on 19 frames
+		moveq   #2,d7							; Repeat 3 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #9,d2							; Flicker on 9 frames
+		moveq   #2,d7							; Repeat 3 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #5,d2							; Flicker on 5 frames
+		moveq   #4,d7							; Repeat 5 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #3,d2							; Flicker on 3 frames
+		moveq   #9,d7							; Repeat 10 times
+		bsr.w   flickerSprite
+		moveq   #1,d1							; Flicker off 1 frame
+		moveq   #1,d2							; Flicker on 1 frame
+		moveq   #$1D,d7							; Repeat 30 times
+		bsr.w   flickerSprite
+		eori.w  #$100,(a0)						; Make sprite disappear again
 		moveq   #30,d0
 		jmp     (j_Sleep).l
 
-    ; End of function sub_12C036
+    ; End of function flickerSprite_Disappear
 
 
 ; =============== S U B R O U T I N E =======================================
+; Flickers the selected sprite
+;
+; In:
+; A0	The properties address of the sprite to flicker
+; D1	Number of frames to disappear
+; D2	Number of frames to reappear
+; D7	Number of times to perform the flicker
 
-sub_12C080:
+flickerSprite:
 		eori.w  #$100,(a0)
 		move.w  d1,d0
 		jsr     (j_Sleep).l
 		eori.w  #$100,(a0)
 		move.w  d2,d0
 		jsr     (j_Sleep).l
-		dbf     d7,sub_12C080
+		dbf     d7,flickerSprite
                 
 		rts
 
-    ; End of function sub_12C080
+    ; End of function flickerSprite
 
 
 ; =============== S U B R O U T I N E =======================================

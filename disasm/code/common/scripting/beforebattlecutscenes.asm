@@ -538,7 +538,7 @@ byte_129608:
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_129628
-		bsr.w   sub_12C036
+		bsr.w   flickerSprite_Disappear
 loc_129628:
 		move.w  #NPC00,d2
 		bsr.w   FindEntityForCutscene
@@ -647,7 +647,7 @@ byte_129760:
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_129778
-		bsr.w   sub_12C036
+		bsr.w   flickerSprite_Disappear
 loc_129778:
 		move.w  #NPC00,d2
 		bsr.w   FindEntityForCutscene

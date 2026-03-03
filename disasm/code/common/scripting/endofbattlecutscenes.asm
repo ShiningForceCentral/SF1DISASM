@@ -420,7 +420,7 @@ byte_12A892:
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_12A8D0
-		bsr.w   sub_12C036
+		bsr.w   flickerSprite_Disappear
 loc_12A8D0:
 		move.w  #NPC00,d2
 		bsr.w   FindEntityForCutscene
@@ -631,7 +631,7 @@ byte_12AA98:
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_12AABE
-		bsr.w   sub_12C036
+		bsr.w   flickerSprite_Disappear
 loc_12AABE:
 		move.w  #NPC00,d2
 		bsr.w   FindEntityForCutscene
@@ -664,7 +664,7 @@ loc_12AAD6:
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_12AB3A
-		bsr.w   sub_12BFF0
+		bsr.w   flickerSprite_Reappear
 loc_12AB3A:
 		moveq   #PORTRAIT_DARKSOL,d0
 		jsr     j_OpenPortraitWindow
@@ -676,7 +676,7 @@ loc_12AB3A:
 		bsr.w   FindEntityForCutscene
 		tst.w   d0
 		blt.s   loc_12AB62
-		bsr.w   sub_12C036
+		bsr.w   flickerSprite_Disappear
 loc_12AB62:
 		move.w  #NPC00,d2
 		bsr.w   FindEntityForCutscene
