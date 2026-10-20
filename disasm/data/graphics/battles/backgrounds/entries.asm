@@ -1,201 +1,232 @@
 
 ; ASM FILE data\graphics\battles\backgrounds\entries.asm :
 ; 0xD398E..0xFFD3C : Backgrounds
-pt_Backgrounds: dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background00
-		dc.l tiles_Background01
-		dc.l tiles_Background02
-		dc.l tiles_Background03
-		dc.l tiles_Background04
-		dc.l tiles_Background05
-		dc.l tiles_Background06
-		dc.l tiles_Background07
-		dc.l tiles_Background08
-		dc.l tiles_Background09
-		dc.l tiles_Background10
-		dc.l tiles_Background11
-		dc.l tiles_Background12
-		dc.l tiles_Background13
-		dc.l tiles_Background14
-		dc.l tiles_Background15
-		dc.l tiles_Background16
-		dc.l tiles_Background17
-		dc.l tiles_Background18
-		dc.l tiles_Background19
-		dc.l tiles_Background20
-		dc.l tiles_Background21
-		dc.l tiles_Background20
-		dc.l tiles_Background21
-		dc.l tiles_Background22
-		dc.l tiles_Background23
-		dc.l tiles_Background24
-		dc.l tiles_Background25
-		dc.l tiles_Background26
-		dc.l tiles_Background27
-		dc.l tiles_Background28
-		dc.l tiles_Background29
-		dc.l tiles_Background30
-		dc.l tiles_Background31
-		dc.l tiles_Background32
-		dc.l tiles_Background33
-		dc.l tiles_Background34
-		dc.l tiles_Background35
-		dc.l tiles_Background36
-		dc.l tiles_Background37
-		dc.l tiles_Background38
-		dc.l tiles_Background39
-		dc.l tiles_Background40
-		dc.l tiles_Background41
-		dc.l tiles_Background42
-		dc.l tiles_Background43
-		dc.l tiles_Background44
-		dc.l tiles_Background45
-		dc.l tiles_Background46
-		dc.l tiles_Background47
-		dc.l tiles_Background48
-		dc.l tiles_Background49
-		dc.l tiles_Background48
-		dc.l tiles_Background49
-		dc.l tiles_Background50
-		dc.l tiles_Background51
-		dc.l tiles_Background52
-		dc.l tiles_Background53
-		dc.l tiles_Background54
-		dc.l tiles_Background55
-		dc.l tiles_Background56
-		dc.l tiles_Background57
-		dc.l tiles_Background58
-		dc.l tiles_Background59
-tiles_Background00:
-		incbin "data/graphics/battles/backgrounds/background00.bin"
-tiles_Background01:
-		incbin "data/graphics/battles/backgrounds/background01.bin"
-tiles_Background02:
-		incbin "data/graphics/battles/backgrounds/background02.bin"
-tiles_Background03:
-		incbin "data/graphics/battles/backgrounds/background03.bin"
-tiles_Background04:
-		incbin "data/graphics/battles/backgrounds/background04.bin"
-tiles_Background05:
-		incbin "data/graphics/battles/backgrounds/background05.bin"
-tiles_Background06:
-		incbin "data/graphics/battles/backgrounds/background06.bin"
-tiles_Background07:
-		incbin "data/graphics/battles/backgrounds/background07.bin"
-tiles_Background08:
-		incbin "data/graphics/battles/backgrounds/background08.bin"
-tiles_Background09:
-		incbin "data/graphics/battles/backgrounds/background09.bin"
-tiles_Background10:
-		incbin "data/graphics/battles/backgrounds/background10.bin"
-tiles_Background11:
-		incbin "data/graphics/battles/backgrounds/background11.bin"
-tiles_Background12:
-		incbin "data/graphics/battles/backgrounds/background12.bin"
-tiles_Background13:
-		incbin "data/graphics/battles/backgrounds/background13.bin"
-tiles_Background14:
-		incbin "data/graphics/battles/backgrounds/background14.bin"
-tiles_Background15:
-		incbin "data/graphics/battles/backgrounds/background15.bin"
-tiles_Background16:
-		incbin "data/graphics/battles/backgrounds/background16.bin"
-tiles_Background17:
-		incbin "data/graphics/battles/backgrounds/background17.bin"
-tiles_Background18:
-		incbin "data/graphics/battles/backgrounds/background18.bin"
-tiles_Background19:
-		incbin "data/graphics/battles/backgrounds/background19.bin"
-tiles_Background20:
-		incbin "data/graphics/battles/backgrounds/background20.bin"
-tiles_Background21:
-		incbin "data/graphics/battles/backgrounds/background21.bin"
-tiles_Background22:
-		incbin "data/graphics/battles/backgrounds/background22.bin"
-tiles_Background23:
-		incbin "data/graphics/battles/backgrounds/background23.bin"
-tiles_Background24:
-		incbin "data/graphics/battles/backgrounds/background24.bin"
-tiles_Background25:
-		incbin "data/graphics/battles/backgrounds/background25.bin"
-tiles_Background26:
-		incbin "data/graphics/battles/backgrounds/background26.bin"
-tiles_Background27:
-		incbin "data/graphics/battles/backgrounds/background27.bin"
-tiles_Background28:
-		incbin "data/graphics/battles/backgrounds/background28.bin"
-tiles_Background29:
-		incbin "data/graphics/battles/backgrounds/background29.bin"
-tiles_Background30:
-		incbin "data/graphics/battles/backgrounds/background30.bin"
-tiles_Background31:
-		incbin "data/graphics/battles/backgrounds/background31.bin"
-tiles_Background32:
-		incbin "data/graphics/battles/backgrounds/background32.bin"
-tiles_Background33:
-		incbin "data/graphics/battles/backgrounds/background33.bin"
-tiles_Background34:
-		incbin "data/graphics/battles/backgrounds/background34.bin"
-tiles_Background35:
-		incbin "data/graphics/battles/backgrounds/background35.bin"
-tiles_Background36:
-		incbin "data/graphics/battles/backgrounds/background36.bin"
-tiles_Background37:
-		incbin "data/graphics/battles/backgrounds/background37.bin"
-tiles_Background38:
-		incbin "data/graphics/battles/backgrounds/background38.bin"
-tiles_Background39:
-		incbin "data/graphics/battles/backgrounds/background39.bin"
-tiles_Background40:
-		incbin "data/graphics/battles/backgrounds/background40.bin"
-tiles_Background41:
-		incbin "data/graphics/battles/backgrounds/background41.bin"
-tiles_Background42:
-		incbin "data/graphics/battles/backgrounds/background42.bin"
-tiles_Background43:
-		incbin "data/graphics/battles/backgrounds/background43.bin"
-tiles_Background44:
-		incbin "data/graphics/battles/backgrounds/background44.bin"
-tiles_Background45:
-		incbin "data/graphics/battles/backgrounds/background45.bin"
-tiles_Background46:
-		incbin "data/graphics/battles/backgrounds/background46.bin"
-tiles_Background47:
-		incbin "data/graphics/battles/backgrounds/background47.bin"
-tiles_Background48:
-		incbin "data/graphics/battles/backgrounds/background48.bin"
-tiles_Background49:
-		incbin "data/graphics/battles/backgrounds/background49.bin"
-tiles_Background50:
-		incbin "data/graphics/battles/backgrounds/background50.bin"
-tiles_Background51:
-		incbin "data/graphics/battles/backgrounds/background51.bin"
-tiles_Background52:
-		incbin "data/graphics/battles/backgrounds/background52.bin"
-tiles_Background53:
-		incbin "data/graphics/battles/backgrounds/background53.bin"
-tiles_Background54:
-		incbin "data/graphics/battles/backgrounds/background54.bin"
-tiles_Background55:
-		incbin "data/graphics/battles/backgrounds/background55.bin"
-tiles_Background56:
-		incbin "data/graphics/battles/backgrounds/background56.bin"
-tiles_Background57:
-		incbin "data/graphics/battles/backgrounds/background57.bin"
-tiles_Background58:
-		incbin "data/graphics/battles/backgrounds/background58.bin"
-tiles_Background59:
-		incbin "data/graphics/battles/backgrounds/background59.bin"
+pt_Backgrounds:
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background00_0
+		dc.l tiles_Background00_1
+		dc.l tiles_Background01_0
+		dc.l tiles_Background01_1
+		dc.l tiles_Background02_0
+		dc.l tiles_Background02_1
+		dc.l tiles_Background03_0
+		dc.l tiles_Background03_1
+		dc.l tiles_Background04_0
+		dc.l tiles_Background04_1
+		dc.l tiles_Background05_0
+		dc.l tiles_Background05_1
+		dc.l tiles_Background06_0
+		dc.l tiles_Background06_1
+		dc.l tiles_Background07_0
+		dc.l tiles_Background07_1
+		dc.l tiles_Background08_0
+		dc.l tiles_Background08_1
+		dc.l tiles_Background09_0
+		dc.l tiles_Background09_1
+		dc.l tiles_Background10_0
+		dc.l tiles_Background10_1
+		dc.l tiles_Background10_0
+		dc.l tiles_Background10_1
+		dc.l tiles_Background11_0
+		dc.l tiles_Background11_1
+		dc.l tiles_Background12_0
+		dc.l tiles_Background12_1
+		dc.l tiles_Background13_0
+		dc.l tiles_Background13_1
+		dc.l tiles_Background14_0
+		dc.l tiles_Background14_1
+		dc.l tiles_Background15_0
+		dc.l tiles_Background15_1
+		dc.l tiles_Background16_0
+		dc.l tiles_Background16_1
+		dc.l tiles_Background17_0
+		dc.l tiles_Background17_1
+		dc.l tiles_Background18_0
+		dc.l tiles_Background18_1
+		dc.l tiles_Background19_0
+		dc.l tiles_Background19_1
+		dc.l tiles_Background20_0
+		dc.l tiles_Background20_1
+		dc.l tiles_Background21_0
+		dc.l tiles_Background21_1
+		dc.l tiles_Background22_0
+		dc.l tiles_Background22_1
+		dc.l tiles_Background23_0
+		dc.l tiles_Background23_1
+		dc.l tiles_Background24_0
+		dc.l tiles_Background24_1
+		dc.l tiles_Background24_0
+		dc.l tiles_Background24_1
+		dc.l tiles_Background25_0
+		dc.l tiles_Background25_1
+		dc.l tiles_Background26_0
+		dc.l tiles_Background26_1
+		dc.l tiles_Background27_0
+		dc.l tiles_Background27_1
+		dc.l tiles_Background28_0
+		dc.l tiles_Background28_1
+		dc.l tiles_Background29_0
+		dc.l tiles_Background29_1
+tiles_Background00_0:
+		incbin "data/graphics/battles/backgrounds/background00_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background00-0.bin"
+tiles_Background00_1:
+		incbin "data/graphics/battles/backgrounds/background00-1.bin"
+tiles_Background01_0:
+		incbin "data/graphics/battles/backgrounds/background01_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background01-0.bin"
+tiles_Background01_1:
+		incbin "data/graphics/battles/backgrounds/background01-1.bin"
+tiles_Background02_0:
+		incbin "data/graphics/battles/backgrounds/background02_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background02-0.bin"
+tiles_Background02_1:
+		incbin "data/graphics/battles/backgrounds/background02-1.bin"
+tiles_Background03_0:
+		incbin "data/graphics/battles/backgrounds/background03_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background03-0.bin"
+tiles_Background03_1:
+		incbin "data/graphics/battles/backgrounds/background03-1.bin"
+tiles_Background04_0:
+		incbin "data/graphics/battles/backgrounds/background04_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background04-0.bin"
+tiles_Background04_1:
+		incbin "data/graphics/battles/backgrounds/background04-1.bin"
+tiles_Background05_0:
+		incbin "data/graphics/battles/backgrounds/background05_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background05-0.bin"
+tiles_Background05_1:
+		incbin "data/graphics/battles/backgrounds/background05-1.bin"
+tiles_Background06_0:
+		incbin "data/graphics/battles/backgrounds/background06_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background06-0.bin"
+tiles_Background06_1:
+		incbin "data/graphics/battles/backgrounds/background06-1.bin"
+tiles_Background07_0:
+		incbin "data/graphics/battles/backgrounds/background07_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background07-0.bin"
+tiles_Background07_1:
+		incbin "data/graphics/battles/backgrounds/background07-1.bin"
+tiles_Background08_0:
+		incbin "data/graphics/battles/backgrounds/background08_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background08-0.bin"
+tiles_Background08_1:
+		incbin "data/graphics/battles/backgrounds/background08-1.bin"
+tiles_Background09_0:
+		incbin "data/graphics/battles/backgrounds/background09_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background09-0.bin"
+tiles_Background09_1:
+		incbin "data/graphics/battles/backgrounds/background09-1.bin"
+tiles_Background10_0:
+		incbin "data/graphics/battles/backgrounds/background10_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background10-0.bin"
+tiles_Background10_1:
+		incbin "data/graphics/battles/backgrounds/background10-1.bin"
+tiles_Background11_0:
+		incbin "data/graphics/battles/backgrounds/background11_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background11-0.bin"
+tiles_Background11_1:
+		incbin "data/graphics/battles/backgrounds/background11-1.bin"
+tiles_Background12_0:
+		incbin "data/graphics/battles/backgrounds/background12_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background12-0.bin"
+tiles_Background12_1:
+		incbin "data/graphics/battles/backgrounds/background12-1.bin"
+tiles_Background13_0:
+		incbin "data/graphics/battles/backgrounds/background13_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background13-0.bin"
+tiles_Background13_1:
+		incbin "data/graphics/battles/backgrounds/background13-1.bin"
+tiles_Background14_0:
+		incbin "data/graphics/battles/backgrounds/background14_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background14-0.bin"
+tiles_Background14_1:
+		incbin "data/graphics/battles/backgrounds/background14-1.bin"
+tiles_Background15_0:
+		incbin "data/graphics/battles/backgrounds/background15_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background15-0.bin"
+tiles_Background15_1:
+		incbin "data/graphics/battles/backgrounds/background15-1.bin"
+tiles_Background16_0:
+		incbin "data/graphics/battles/backgrounds/background16_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background16-0.bin"
+tiles_Background16_1:
+		incbin "data/graphics/battles/backgrounds/background16-1.bin"
+tiles_Background17_0:
+		incbin "data/graphics/battles/backgrounds/background17_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background17-0.bin"
+tiles_Background17_1:
+		incbin "data/graphics/battles/backgrounds/background17-1.bin"
+tiles_Background18_0:
+		incbin "data/graphics/battles/backgrounds/background18_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background18-0.bin"
+tiles_Background18_1:
+		incbin "data/graphics/battles/backgrounds/background18-1.bin"
+tiles_Background19_0:
+		incbin "data/graphics/battles/backgrounds/background19_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background19-0.bin"
+tiles_Background19_1:
+		incbin "data/graphics/battles/backgrounds/background19-1.bin"
+tiles_Background20_0:
+		incbin "data/graphics/battles/backgrounds/background20_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background20-0.bin"
+tiles_Background20_1:
+		incbin "data/graphics/battles/backgrounds/background20-1.bin"
+tiles_Background21_0:
+		incbin "data/graphics/battles/backgrounds/background21_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background21-0.bin"
+tiles_Background21_1:
+		incbin "data/graphics/battles/backgrounds/background21-1.bin"
+tiles_Background22_0:
+		incbin "data/graphics/battles/backgrounds/background22_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background22-0.bin"
+tiles_Background22_1:
+		incbin "data/graphics/battles/backgrounds/background22-1.bin"
+tiles_Background23_0:
+		incbin "data/graphics/battles/backgrounds/background23_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background23-0.bin"
+tiles_Background23_1:
+		incbin "data/graphics/battles/backgrounds/background23-1.bin"
+tiles_Background24_0:
+		incbin "data/graphics/battles/backgrounds/background24_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background24-0.bin"
+tiles_Background24_1:
+		incbin "data/graphics/battles/backgrounds/background24-1.bin"
+tiles_Background25_0:
+		incbin "data/graphics/battles/backgrounds/background25_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background25-0.bin"
+tiles_Background25_1:
+		incbin "data/graphics/battles/backgrounds/background25-1.bin"
+tiles_Background26_0:
+		incbin "data/graphics/battles/backgrounds/background26_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background26-0.bin"
+tiles_Background26_1:
+		incbin "data/graphics/battles/backgrounds/background26-1.bin"
+tiles_Background27_0:
+		incbin "data/graphics/battles/backgrounds/background27_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background27-0.bin"
+tiles_Background27_1:
+		incbin "data/graphics/battles/backgrounds/background27-1.bin"
+tiles_Background28_0:
+		incbin "data/graphics/battles/backgrounds/background28_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background28-0.bin"
+tiles_Background28_1:
+		incbin "data/graphics/battles/backgrounds/background28-1.bin"
+tiles_Background29_0:
+		incbin "data/graphics/battles/backgrounds/background29_palette.bin"
+		incbin "data/graphics/battles/backgrounds/background29-0.bin"
+tiles_Background29_1:
+		incbin "data/graphics/battles/backgrounds/background29-1.bin"
